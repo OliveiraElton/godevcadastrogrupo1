@@ -3,14 +3,14 @@ package model;
 import java.time.LocalDate;
 
 /**
- * Classe que abstrai as informações de uma Empresa contratada. Esta Classe será
- * instanciada na Classe PrestadorServico, e instanciará as classes Endereco e
+ * Classe que abstrai as informaï¿½ï¿½es de uma Empresa contratada. Esta Classe serï¿½
+ * instanciada na Classe PrestadorServico, e instanciarï¿½ as classes Endereco e
  * Contato.
  * 
  * Deve ser instanciada utilizando o EmpresaBuilder.
  *
  * @author Lorran Pereira dos Santos, Samuel Levi, Sarah Neuburger Brito, Thiago
- *         Luiz Barbieri e Vitor Nathan Gonçalves.
+ *         Luiz Barbieri e Vitor Nathan Gonï¿½alves.
  *         
  * @author Bruna <sh4323202@gmail.com>
  * @author Enzo <enzomm.bodyandmind@gmail.com> 
@@ -28,10 +28,17 @@ public class Empresa{
 	private Endereco endereco;
 	private Contatos contato;
 
-	public Empresa(long empresaId, String nomeEmpresa, LocalDate dataInicioContrato, String cnpj, Endereco endereco,
+	/**
+	 * 
+	 * @param nomeEmpresa
+	 * @param dataInicioContrato
+	 * @param cnpj
+	 * @param endereco
+	 * @param contato
+	 */
+	public Empresa(String nomeEmpresa, LocalDate dataInicioContrato, String cnpj, Endereco endereco,
 			Contatos contato) {
 		super();
-		this.empresaId = empresaId;
 		this.nomeEmpresa = nomeEmpresa;
 		this.dataInicioContrato = dataInicioContrato;
 		this.cnpj = cnpj;
@@ -94,12 +101,12 @@ public class Empresa{
 	/**
 	 * Cria Empresa.
 	 *
-	 * É utilizado para criar um objeto da classe Empresa.
+	 * ï¿½ utilizado para criar um objeto da classe Empresa.
 	 * 
 	 * Exemplo de uso:
 	 * Empresa empresa = new Empresa.EmpresaBuilder().empresaId(56).nomeEmpresa("Nome Ilustrativo").
 				dataInicioContrato(LocalDate.of(2004, 6, 26)).cnpj("567895463214").....criarEmpresa() //Colocar quantos atributos
-				forem necessários
+				forem necessï¿½rios
 	 * 
 	 * @author Bruna <sh4323202@gmail.com>
 	 * @author Enzo <enzomm.bodyandmind@gmail.com> 
@@ -147,7 +154,7 @@ public class Empresa{
 		}
 		
 		public Empresa criarEmpresa() {
-			return new Empresa(empresaId, nomeEmpresa, dataInicioContrato, cnpj, endereco, contato);
+			return new Empresa(nomeEmpresa, dataInicioContrato, cnpj, endereco, contato);
 		}
 	}
 	
