@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import model.Empresa;
 
-public class EmpresaDAO implements InterfaceDao<Empresa>{
+public class EmpresaDAO implements InterfaceDao<Empresa> {
 
-	public Integer create(Empresa item) {
+	public Empresa create(Empresa item) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -26,9 +26,19 @@ public class EmpresaDAO implements InterfaceDao<Empresa>{
 		return false;
 	}
 
-	public boolean update(Empresa item, Empresa itemAntigo) {
+	public Empresa readById(Integer id) {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
+	}
+
+	public Integer update(Integer id, Empresa itemAntigo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Empresa readByNome(String nome) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
