@@ -6,7 +6,7 @@ import model.Dependente;
 
 public class DependenteDAO implements InterfaceDao<Dependente>{
 
-	public Integer create(Dependente item) {
+	public Dependente create(Dependente item) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -26,9 +26,25 @@ public class DependenteDAO implements InterfaceDao<Dependente>{
 		return false;
 	}
 
-	public boolean update(Dependente item, Dependente itemAntigo) {
+
+	public Dependente readById(Integer id) {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
+	}
+
+	public Integer update(Integer id, Dependente itemAntigo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Dependente readByNomeSobrenome(String nome, String sobrenome) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Dependente readByIdColab(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

@@ -1,7 +1,6 @@
 package model;
 
 import java.time.LocalDate;
-import enums.EMDadosGeograficos.Nacionalidade;
 import enums.EMDadosPessoais.IdentidadeGenero;
 import enums.EMDadosPessoais.TiposDependentes;
 
