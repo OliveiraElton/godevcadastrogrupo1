@@ -55,12 +55,10 @@ public class Pessoa{
 	 * @param rg
 	 * @param contatos
 	 */
-	public Pessoa(int id, String nome, String sobrenome, String nomeSocial, 
+	public Pessoa(String nome, String sobrenome, String nomeSocial, 
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade,
 			boolean pcd, String genero, IdentidadeGenero identidadeGenero,
 			Endereco endereco, String cpf, String rg, Contatos contatos) {
-		super();
-		this.id = id;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.nomeSocial = nomeSocial;

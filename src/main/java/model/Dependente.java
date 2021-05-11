@@ -27,7 +27,6 @@ public class Dependente extends Pessoa {
 	private boolean optanteIR;
 
 	/**
-	 * @param id
 	 * @param nome
 	 * @param sobrenome
 	 * @param nomeSocial
@@ -40,8 +39,7 @@ public class Dependente extends Pessoa {
 	 * @param endereco
 	 * @param cpf
 	 * @param rg
-	 * @param tel_residencial
-	 * @param tel_celular
+	 * @param contatos
 	 * @param idDependente
 	 * @param idColaborador
 	 * @param tipoDependente
@@ -49,10 +47,10 @@ public class Dependente extends Pessoa {
 	 */
 	public Dependente(String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
 			String nacionalidade, String naturalidade, boolean pcd, String genero, IdentidadeGenero identidadeGenero,
-			Endereco endereco, String cpf, String rg, String tel_residencial, String tel_celular, Integer idDependente,
-			Integer idColaborador, TiposDependentes tipoDependente, boolean optanteIR) {
-		super(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
-				identidadeGenero, endereco, cpf, rg, tel_residencial, tel_celular);
+			Endereco endereco, String cpf, String rg, Contatos contatos, Integer idDependente, Integer idColaborador,
+			TiposDependentes tipoDependente, boolean optanteIR) {
+		super(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero, identidadeGenero,
+				endereco, cpf, rg, contatos);
 		this.idDependente = idDependente;
 		this.idColaborador = idColaborador;
 		this.tipoDependente = tipoDependente;

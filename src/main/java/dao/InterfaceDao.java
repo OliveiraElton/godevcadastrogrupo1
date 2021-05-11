@@ -17,14 +17,14 @@ import java.util.ArrayList;
  */
 public interface InterfaceDao<T> {
 	
-	public boolean create(T item);
+	public T create(T item);
 
-	public T readById(T item);
+	public T readById(Integer id);
 
 	public ArrayList<T> getAll();
 
 	public boolean delete(T item);
 	
-	public boolean update(T item, T itemAntigo);
+	public Integer update(Integer id, T itemAntigo);
 	
 }

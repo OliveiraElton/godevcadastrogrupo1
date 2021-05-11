@@ -1,8 +1,34 @@
 package dao;
 
-import model.Empresa;
-import model.Pessoa;
+import java.util.ArrayList;
 
-public class EmpresaDAO extends DaoFactory<Empresa>{
+import model.Empresa;
+
+public class EmpresaDAO implements InterfaceDao<Empresa>{
+
+	public Integer create(Empresa item) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Empresa readById(Empresa item) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArrayList<Empresa> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean delete(Empresa item) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean update(Empresa item, Empresa itemAntigo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }

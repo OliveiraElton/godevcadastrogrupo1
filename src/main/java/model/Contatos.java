@@ -29,7 +29,6 @@ public class Contatos{
 	 * @param telefoneFamiliar
 	 */
 	public Contatos(String telefonePrincipal, String telefoneSecundario, String email, String telefoneFamiliar) {
-		super();
 		this.telefonePrincipal = telefonePrincipal;
 		this.telefoneSecundario = telefoneSecundario;
 		this.email = email;

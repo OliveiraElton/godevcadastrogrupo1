@@ -2,32 +2,31 @@ package dao;
 
 import java.util.ArrayList;
 
-import model.Endereco;
-import model.Pessoa;
+import model.Conta;
 
-public class EnderecoDAO implements InterfaceDao<Endereco>{
+public class ContaDAO implements InterfaceDao<Conta>{
 
-	public Integer create(Endereco item) {
+	public Integer create(Conta item) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Endereco readById(Endereco item) {
+	public Conta readById(Conta item) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ArrayList<Endereco> getAll() {
+	public ArrayList<Conta> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public boolean delete(Endereco item) {
+	public boolean delete(Conta item) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	public boolean update(Endereco item, Endereco itemAntigo) {
+	public boolean update(Conta item, Conta itemAntigo) {
 		// TODO Auto-generated method stub
 		return false;
 	}

@@ -41,7 +41,6 @@ public class Colaborador extends Pessoa {
 	private ExameMedico exameMedico;
 
 	/**
-	 * @param id
 	 * @param nome
 	 * @param sobrenome
 	 * @param nomeSocial
@@ -65,18 +64,17 @@ public class Colaborador extends Pessoa {
 	 * @param email_corporativo
 	 * @param titulo_eleitor
 	 * @param conta
-	 * @param contatos2
 	 * @param exameMedico
 	 */
-	public Colaborador(int id, String nome, String sobrenome, String nomeSocial, 
+	public Colaborador(String nome, String sobrenome, String nomeSocial, 
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade,
 			boolean pcd, String genero, IdentidadeGenero identidadeGenero,
 			Endereco endereco, String cpf, String rg, Contatos contatos, 
 			Integer idCargo, Integer nit, boolean optanteVT, boolean optanteVAVR,
 			LocalDate dataAdmissao, boolean optanteDependente, String registro_alistamento, 
 			String email_corporativo, String titulo_eleitor, Conta conta, 
-			Contatos contatos2, ExameMedico exameMedico) {
-		super(id, nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, 
+			ExameMedico exameMedico) {
+		super(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, 
 				naturalidade, pcd, genero, identidadeGenero, endereco, cpf, rg, 
 				contatos);
 		this.idCargo = idCargo;
@@ -89,7 +87,7 @@ public class Colaborador extends Pessoa {
 		this.email_corporativo = email_corporativo;
 		this.titulo_eleitor = titulo_eleitor;
 		this.conta = conta;
-		contatos = contatos2;
+		this.contatos = contatos;
 		this.exameMedico = exameMedico;
 	}
 

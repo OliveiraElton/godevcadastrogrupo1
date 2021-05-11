@@ -6,13 +6,13 @@ import enums.EMOutros.TiposExames;
 /**
  * Classe ExameMedico.
  * 
- * Classe recebe informações para cadastro dos exames médicos que serão
+ * Classe recebe informaï¿½ï¿½es para cadastro dos exames mï¿½dicos que serï¿½o
  * instanciados na classe Colaborador para o cadastramento do mesmo.
  * 
  * Deve ser instanciada utilizando o ExameMedicoBuilder.
  * 
  * @author Lorran Pereira dos Santos, Samuel Levi, Sarah Neuburger Brito, Thiago
- *         Luiz Barbieri e Vitor Nathan Gonçalves.
+ *         Luiz Barbieri e Vitor Nathan Gonï¿½alves.
  *         
  * @author Bruna <sh4323202@gmail.com>
  * @author Enzo <enzomm.bodyandmind@gmail.com> 
@@ -26,6 +26,11 @@ public class ExameMedico {
 	private LocalDate dataExame;
 	private boolean apto;
 
+	/**
+	 * @param tipoExame
+	 * @param dataExame
+	 * @param apto
+	 */
 	public ExameMedico(TiposExames tipoExame, LocalDate dataExame, boolean apto) {
 		this.tipoExame = tipoExame;
 		this.dataExame = dataExame;
@@ -63,7 +68,7 @@ public class ExameMedico {
 	/**
 	 * Cria ExameMedico.
 	 *
-	 * É utilizado para criar um objeto da classe ExameMedico.
+	 * ï¿½ utilizado para criar um objeto da classe ExameMedico.
 	 * 
 	 * Exemplo de uso:
 	 * ExameMedico exameMedico = new ExameMedico.ExameMedicoBuilder().
