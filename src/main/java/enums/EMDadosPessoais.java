@@ -22,7 +22,7 @@ public class EMDadosPessoais {
 	 * Classe de apoio para ser utilizada em Dependentes para
 	 * ser o tipo do mesmo.
 	 * 
-	 * @author Vanderlei, Vitor Gonçalves, Sabrina, Enzo Moura e Bruna.
+	 * @author Vanderlei, Vitor Gonï¿½alves, Sabrina, Enzo Moura e Bruna.
 	 */
 	public enum TiposDependentes {
 		FILHO, CONJUGE, MAE, PAI
