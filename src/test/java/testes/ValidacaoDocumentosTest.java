@@ -4,7 +4,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-import controller.ValidacaoDocumentos;
+
+import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDocumentos;
 
 public class ValidacaoDocumentosTest {
 

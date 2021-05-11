@@ -3,7 +3,8 @@ package testes;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-import controller.FormatacaoDocumentos;
+
+import br.com.proway.senior.godevcadastrogrupo1.utils.FormatacaoDocumentos;
 
 public class TesteFormatacaoDocumentos {
 

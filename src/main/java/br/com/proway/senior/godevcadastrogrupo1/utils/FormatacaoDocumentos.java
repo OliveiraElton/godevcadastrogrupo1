@@ -1,9 +1,9 @@
-package controller;
+package br.com.proway.senior.godevcadastrogrupo1.utils;
 
 /**
- * Contém métodos de formatação de dados.
- * Classe responsável por conter todos os métodos de formatação de dados. 
- * É usada em conjunto com a classe ValidacaoDocumentos.
+ * Contï¿½m mï¿½todos de formataï¿½ï¿½o de dados.
+ * Classe responsï¿½vel por conter todos os mï¿½todos de formataï¿½ï¿½o de dados. 
+ * ï¿½ usada em conjunto com a classe ValidacaoDocumentos.
  * 
  * @author Bruna <sh4323202@gmail.com>
  * @author Enzo <enzomm.bodyandmind@gmail.com> 
@@ -21,7 +21,7 @@ public class FormatacaoDocumentos {
 	 * @param String entrada
 	 * @return String
 	 */
-	public String removerCaracteres(String entrada) {
+	public static String removerCaracteres(String entrada) {
 		String output = "";
 		for (byte code : entrada.getBytes()) {
 			if (code - 48 < 10 && code - 48 >= 0) {

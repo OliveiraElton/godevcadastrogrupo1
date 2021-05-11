@@ -1,4 +1,4 @@
-package controller;
+package br.com.proway.senior.godevcadastrogrupo1.utils;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -8,7 +8,7 @@ import model.Pessoa;
 import model.PrestadorServico;
 
 /**
- * Classe utilizada na validação das datas do cadastro.
+ * Classe utilizada na validaï¿½ï¿½o das datas do cadastro.
  * 
  * @author Bruna <sh4323202@gmail.com>
  * @author Enzo <enzomm.bodyandmind@gmail.com> 
@@ -22,19 +22,19 @@ public class ValidacaoDeDatas {
 	public static final int IDADE_MINIMA_PARA_CONTRATO = 14;
 	
 	/**
-	 * Corresponde ao tempo máximo que um colaborador pode ser contratado pela empresa,
-	 * baseando-se no tempo máximo que se espera que um ser humano viva
+	 * Corresponde ao tempo mï¿½ximo que um colaborador pode ser contratado pela empresa,
+	 * baseando-se no tempo mï¿½ximo que se espera que um ser humano viva
 	 */
 	public static final int TEMPO_MAXIMO_PARA_ADMISSAO = IDADE_MAXIMA_PARA_PESSOA - IDADE_MINIMA_PARA_CONTRATO;
 	
 	/**
 	 * Validar a data de nascimento de uma pessoa.
 	 * 
-	 * Verifica se a data de nascimento informada está entre 0 e 120 anos
+	 * Verifica se a data de nascimento informada estï¿½ entre 0 e 120 anos
 	 * @param pessoa
-	 * @return true, caso a data seja válida
+	 * @return true, caso a data seja vï¿½lida
 	 */
-	public boolean validaDataDeNascimento(Pessoa pessoa) {
+	public static boolean validaDataDeNascimento(Pessoa pessoa) {
 
 		if (pessoa.getDataDeNascimento().until(LocalDate.now(), ChronoUnit.YEARS) <= IDADE_MAXIMA_PARA_PESSOA &&
 				pessoa.getDataDeNascimento().until(LocalDate.now(), ChronoUnit.DAYS) > 0)  {
@@ -46,24 +46,24 @@ public class ValidacaoDeDatas {
 	/**
 	 * Valida a data de nascimento de um colaborador.
 	 * 
-	 * Verifica se a data está de acordo com as normas de contratação (14 <= idade <= 120).
+	 * Verifica se a data estï¿½ de acordo com as normas de contrataï¿½ï¿½o (14 <= idade <= 120).
 	 * @param colaborador
-	 * @return true, caso a data seja válida
+	 * @return true, caso a data seja vï¿½lida
 	 */
-	public boolean validaDataDeNascimentoColaborador(Colaborador colaborador) {
-		if (colaborador.getPessoa().getDataDeNascimento().until(LocalDate.now(), ChronoUnit.YEARS) >= IDADE_MINIMA_PARA_CONTRATO &&
-				colaborador.getPessoa().getDataDeNascimento().until(LocalDate.now(), ChronoUnit.YEARS) <= IDADE_MAXIMA_PARA_PESSOA) {
+	public static boolean validaDataDeNascimentoColaborador(Colaborador colaborador) {
+		if (colaborador.getDataDeNascimento().until(LocalDate.now(), ChronoUnit.YEARS) >= IDADE_MINIMA_PARA_CONTRATO &&
+				colaborador.getDataDeNascimento().until(LocalDate.now(), ChronoUnit.YEARS) <= IDADE_MAXIMA_PARA_PESSOA) {
 			return true;
 		}
 		return false;
 	}
 
 	/**
-	 * Verifica se a data informada é condizente com uma data de admissão (0<=Tempo<=TEMPO_MAXIMO_PARA_ADMISSAO).
+	 * Verifica se a data informada ï¿½ condizente com uma data de admissï¿½o (0<=Tempo<=TEMPO_MAXIMO_PARA_ADMISSAO).
 	 * @param colaborador
-	 * @return true, caso a data seja válida
+	 * @return true, caso a data seja vï¿½lida
 	 */
-	public boolean validaDataAdmissao(Colaborador colaborador) {
+	public static boolean validaDataAdmissao(Colaborador colaborador) {
 		if (colaborador.getDataAdmissao().until(LocalDate.now(), ChronoUnit.DAYS) >= 0 && 
 				colaborador.getDataAdmissao().until(LocalDate.now(), ChronoUnit.YEARS) <= TEMPO_MAXIMO_PARA_ADMISSAO) {
 			return true;
@@ -72,13 +72,13 @@ public class ValidacaoDeDatas {
 	}
 	
 	/**
-	 * Verifica se a data informada é condizente com uma data de contrato entre a 
-	 * empresa e o Prestador de Serviço.
+	 * Verifica se a data informada ï¿½ condizente com uma data de contrato entre a 
+	 * empresa e o Prestador de Serviï¿½o.
 	 * 
 	 * @param colaborador
-	 * @return true, caso a data seja válida
+	 * @return true, caso a data seja vï¿½lida
 	 */
-	public boolean validaDataInicioContrato(PrestadorServico presServico) {
+	public static boolean validaDataInicioContrato(PrestadorServico presServico) {
 		if (presServico.getDataInicioContrato().until(LocalDate.now(), ChronoUnit.DAYS) >= 0 )	 {
 			return true;
 		}
@@ -90,14 +90,12 @@ public class ValidacaoDeDatas {
 	 * @param data
 	 * @return true, caso a data seja no passado
 	 */
-	public boolean validaDataPassada(LocalDate data) {
+	public static boolean validaDataPassada(LocalDate data) {
 		if(data.until(LocalDate.now(), ChronoUnit.YEARS)>0) {
 			return true;
 		}
 		return false;	
 	}
-
-	
 	
 }
 

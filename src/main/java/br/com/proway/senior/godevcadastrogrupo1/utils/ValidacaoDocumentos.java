@@ -1,7 +1,7 @@
-package controller;
+package br.com.proway.senior.godevcadastrogrupo1.utils;
 
 /**
- * Classe responsável por validar os dados dos documentos. Utilizado em conjunto
+ * Classe responsï¿½vel por validar os dados dos documentos. Utilizado em conjunto
  * com a classe FormatacaoDocumentos.
  *
  * @author Bruna <sh4323202@gmail.com>
@@ -12,28 +12,28 @@ package controller;
  *
  */
 public class ValidacaoDocumentos {
-	FormatacaoDocumentos formatadocumento = new FormatacaoDocumentos();
 
+	
 	/**
 	 * Validar CPF.
 	 * 
-	 * Utiliza o algoritmo para verificar se o CPF contido na String é válido.
+	 * Utiliza o algoritmo para verificar se o CPF contido na String ï¿½ vï¿½lido.
 	 * 
 	 * @param CPF
 	 * @return boolean
 	 */
-	public boolean validarCPF(String CPF) {
+	public static  boolean validarCPF(String CPF) {
 
-		String CPFFormatado = formatadocumento.removerCaracteres(CPF);
+		String CPFFormatado = FormatacaoDocumentos.removerCaracteres(CPF);
 		if (CPF.length() != 11) {
 			return false;
 		}
 
-		return this.validaPrimeiroDigitoCPF(CPFFormatado) &&
-				this.validaSegundoDigitoCPF(CPFFormatado);
+		return validaPrimeiroDigitoCPF(CPFFormatado) &&
+				validaPrimeiroDigitoCPF(CPFFormatado);
 	}
 
-	public boolean validaPrimeiroDigitoCPF(String CPFFormatado) {
+	public static boolean validaPrimeiroDigitoCPF(String CPFFormatado) {
 		int soma = 0;
 		int mult = 10;
 
@@ -47,7 +47,7 @@ public class ValidacaoDocumentos {
 
 	}
 
-	public boolean validaSegundoDigitoCPF(String CPFFormatado) {
+	public static boolean validaSegundoDigitoCPF(String CPFFormatado) {
 		int soma = 0;
 		int mult = 11;
 
@@ -60,15 +60,15 @@ public class ValidacaoDocumentos {
 	}
 
 	/**
-	 * ATENÇÃO: TELEFONE MOVEL Valida o tamanho do telefone
+	 * ATENï¿½ï¿½O: TELEFONE MOVEL Valida o tamanho do telefone
 	 * 
-	 * Este método verifica se há 11 dígitos no telefone. Se houver ele retorna true
-	 * caso contrário, retorna false.
+	 * Este mï¿½todo verifica se hï¿½ 11 dï¿½gitos no telefone. Se houver ele retorna true
+	 * caso contrï¿½rio, retorna false.
 	 * 
 	 * @param telefone
 	 * @return boolean
 	 */
-	public boolean validarTamanhoTelMovel(String telefone) {
+	public static boolean validarTamanhoTelMovel(String telefone) {
 		if (telefone.length() != 11) {
 			return false;
 		}
@@ -76,15 +76,15 @@ public class ValidacaoDocumentos {
 	}
 
 	/**
-	 * ATENÇÃO: TELEFONE FIXO Valida o tamanho do telefone fixo.
+	 * ATENï¿½ï¿½O: TELEFONE FIXO Valida o tamanho do telefone fixo.
 	 * 
-	 * Este método verifica se há 10 dígitos no telefone. Se houver ele retorna true
-	 * caso contrário, retorna false.
+	 * Este mï¿½todo verifica se hï¿½ 10 dï¿½gitos no telefone. Se houver ele retorna true
+	 * caso contrï¿½rio, retorna false.
 	 * 
 	 * @param telefone
 	 * @return boolean
 	 */
-	public boolean validarTamanhoTelFixo(String telefone) {
+	public static boolean validarTamanhoTelFixo(String telefone) {
 		if (telefone.length() != 10) {
 			return false;
 		}
@@ -92,16 +92,16 @@ public class ValidacaoDocumentos {
 	}
 
 	/**
-	 * Verifica se um número de CNPJ é valido.
+	 * Verifica se um nï¿½mero de CNPJ ï¿½ valido.
 	 * 
-	 * Retorna true, caso o CNPJ seja válido
+	 * Retorna true, caso o CNPJ seja vï¿½lido
 	 * 
 	 * @param cnpj
 	 * @return
 	 */
-	public boolean validarCNPJ(String cnpj) {
+	public static boolean validarCNPJ(String cnpj) {
 
-		String cnpjFormatado = formatadocumento.removerCaracteres(cnpj);
+		String cnpjFormatado = FormatacaoDocumentos.removerCaracteres(cnpj);
 		if (cnpjFormatado.length() == 14) {
 			String cnpjInvertido = "";
 
@@ -145,12 +145,12 @@ public class ValidacaoDocumentos {
 	/**
 	 * Validar email
 	 * 
-	 * Realiza validação do email para verificar se possui o caracter "@".
+	 * Realiza validaï¿½ï¿½o do email para verificar se possui o caracter "@".
 	 * 
 	 * @param String email
 	 * @return boolean
 	 */
-	public boolean validarEmail(String email) {
+	public static boolean validarEmail(String email) {
 		if (!email.contains("@")) {
 			return false;
 		}
@@ -158,13 +158,13 @@ public class ValidacaoDocumentos {
 	}
 
 	/**
-	 * Verifica se CEP contém 8 dígitos
+	 * Verifica se CEP contï¿½m 8 dï¿½gitos
 	 * 
 	 * @param cep
 	 * @return
 	 */
-	public boolean validarCEP(String cep) {
-		if (formatadocumento.removerCaracteres(cep).length() != 8) {
+	public static boolean validarCEP(String cep) {
+		if (FormatacaoDocumentos.removerCaracteres(cep).length() != 8) {
 			return false;
 		}
 		return true;

@@ -4,7 +4,8 @@ import static org.junit.Assert.*;
 
 import java.time.LocalDate;
 import org.junit.Test;
-import controller.ValidacaoDeDatas;
+
+import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDeDatas;
 import model.Colaborador;
 import model.Pessoa;
 
