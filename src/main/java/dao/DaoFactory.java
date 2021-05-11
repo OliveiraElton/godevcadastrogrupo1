@@ -3,9 +3,9 @@ package dao;
 import java.util.ArrayList;
 
 /**
- * Implementa métodos do DAO.
- * Classe responsável por implementar de forma genérica os métodos da interface DAO.
- * Deve ser extendida pelas classes específicas para os métodos serem utilizáveis.
+ * Implementa mï¿½todos do DAO.
+ * Classe responsï¿½vel por implementar de forma genï¿½rica os mï¿½todos da interface DAO.
+ * Deve ser extendida pelas classes especï¿½ficas para os mï¿½todos serem utilizï¿½veis.
  * 
  * @author Bruna <sh4323202@gmail.com>
  * @author Enzo <enzomm.bodyandmind@gmail.com> 
@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * @author Vitor <vitornathang@gmail.com>
  * @param <T>
  */
-public class DaoFactory<T> implements DAO<T>{
+public class DaoFactory<T> implements InterfaceDao<T>{
 	
 	public ArrayList<T> itens = new ArrayList<T>();
 	
@@ -23,10 +23,10 @@ public class DaoFactory<T> implements DAO<T>{
 	 * 
 	 * Insere algo de determinado tipo no ArrayList de determinado tipo
 	 * 
-	 * @param item; de tipo flexível  
+	 * @param item; de tipo flexï¿½vel  
 	 * @return true; cadastro realizado com sucesso
 	 */
-	public boolean cadastrar(T item) {
+	public boolean create(T item) {
 		itens.add(item);
 		return true;
 	}
@@ -36,11 +36,11 @@ public class DaoFactory<T> implements DAO<T>{
 	 * 
 	 * Retorna algo de determiando tipo contido no ArrayList de determinado tipo
 	 * 
-	 * @param item; de tipo flexível  
+	 * @param item; de tipo flexï¿½vel  
 	 * @return item; algo desejado existe 
-	 * @return null; cadastro não existe
+	 * @return null; cadastro nï¿½o existe
 	 */
-	public T listar(T item) {
+	public T readById(T item) {
 		if (itens.contains(item)) {
 			return (item);
 		} else {
@@ -53,9 +53,9 @@ public class DaoFactory<T> implements DAO<T>{
 	 * 
 	 * Retorna o ArrayList de determinado tipo	  
 	 * 
-	 * @return itens; ArrayList que contém todos os cadastros
+	 * @return itens; ArrayList que contï¿½m todos os cadastros
 	 */
-	public ArrayList<T> listarTudo() {
+	public ArrayList<T> getAll() {
 		return itens;
 	}
 
@@ -64,8 +64,8 @@ public class DaoFactory<T> implements DAO<T>{
 	 * 
 	 * Tira algo de determinado tipo do ArrayList de determinado tipo
 	 * 
-	 * @param item; de tipo flexível  
-	 * @return true; deletação realizada com sucesso
+	 * @param item; de tipo flexï¿½vel  
+	 * @return true; deletaï¿½ï¿½o realizada com sucesso
 	 */
 	public boolean delete(T item) {
 		itens.remove(item);
@@ -77,11 +77,11 @@ public class DaoFactory<T> implements DAO<T>{
 	 * 
 	 * Troca algo de determinado tipo no ArrayList de determinado tipo por outro do mesmo tipo;
 	 * 
-	 * @param item; de tipo flexível  
-	 * @param itemAntigo; de tipo flexível 
-	 * @return true; atualização realizada com sucesso
+	 * @param item; de tipo flexï¿½vel  
+	 * @param itemAntigo; de tipo flexï¿½vel 
+	 * @return true; atualizaï¿½ï¿½o realizada com sucesso
 	 */
-	public boolean atualizar(T item, T itemAntigo) {
+	public boolean update(T item, T itemAntigo) {
 		int indice = itens.indexOf(itemAntigo);
 		itens.set(indice, item);
 		return true;

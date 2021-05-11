@@ -6,47 +6,65 @@ import enums.EMDadosPessoais.IdentidadeGenero;
 import enums.EMDadosPessoais.TiposDependentes;
 
 /**
- * Classe Dependente
- * Esta classe instancia a classe Pessoa para o cadastro de Dependente.
- * Deve ser instancianda usando DependenteBuilder.
+ * Classe Dependente Esta classe instancia a classe Pessoa para o cadastro de
+ * Dependente. Deve ser instancianda usando DependenteBuilder.
  * 
  * @author Lorran Pereira dos Santos, Samuel Levi, Sarah Neuburger Brito, Thiago
- *         Luiz Barbieri e Vitor Nathan Gonçalves.
- *         
+ *         Luiz Barbieri e Vitor Nathan Gonï¿½alves.
+ * 
  * @author Bruna <sh4323202@gmail.com>
- * @author Enzo <enzomm.bodyandmind@gmail.com> 
+ * @author Enzo <enzomm.bodyandmind@gmail.com>
  * @author Sabrina <sabrinaschmidt335@gmail.com>
  * @author Vanderlei <vanderleik@yahoo.com.br>
  * @author Vitor <vitornathang@gmail.com>
  */
 
-public class Dependente {
+public class Dependente extends Pessoa {
 
-	private Pessoa pessoa;
 	private Integer idDependente;
 	private Integer idColaborador;
 	private TiposDependentes tipoDependente;
 	private boolean optanteIR;
 
-	public Dependente(String nome, String sobrenome, LocalDate dataDeNascimento, String nomeSocial, String genero,
-			IdentidadeGenero identidadeGenero, String nomeDaMae, String cpf, Nacionalidade nacionalidade, boolean pcd, Integer id,
+	/**
+	 * @param id
+	 * @param nome
+	 * @param sobrenome
+	 * @param nomeSocial
+	 * @param dataDeNascimento
+	 * @param nacionalidade
+	 * @param naturalidade
+	 * @param pcd
+	 * @param genero
+	 * @param identidadeGenero
+	 * @param endereco
+	 * @param cpf
+	 * @param rg
+	 * @param tel_residencial
+	 * @param tel_celular
+	 * @param idDependente
+	 * @param idColaborador
+	 * @param tipoDependente
+	 * @param optanteIR
+	 */
+	public Dependente(String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
+			String nacionalidade, String naturalidade, boolean pcd, String genero, IdentidadeGenero identidadeGenero,
+			Endereco endereco, String cpf, String rg, String tel_residencial, String tel_celular, Integer idDependente,
 			Integer idColaborador, TiposDependentes tipoDependente, boolean optanteIR) {
-		this.pessoa = new Pessoa.PessoaBuilder().nome(nome).sobrenome(sobrenome).dataDeNascimento(dataDeNascimento).nomeSocial(nomeSocial).
-				genero(genero).identidadeGenero(identidadeGenero).nomeDaMae(nomeDaMae).cpf(cpf).nacionalidade(nacionalidade).pcd(pcd).criarPessoa();
-		this.idDependente = id;
+		super(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
+				identidadeGenero, endereco, cpf, rg, tel_residencial, tel_celular);
+		this.idDependente = idDependente;
 		this.idColaborador = idColaborador;
 		this.tipoDependente = tipoDependente;
 		this.optanteIR = optanteIR;
 	}
 
-	public Dependente() {}
-
-	public Integer getId() {
+	public Integer getIdDependente() {
 		return idDependente;
 	}
 
-	public void setId(Integer id) {
-		this.idDependente = id;
+	public void setIdDependente(Integer idDependente) {
+		this.idDependente = idDependente;
 	}
 
 	public Integer getIdColaborador() {
@@ -73,117 +91,4 @@ public class Dependente {
 		this.optanteIR = optanteIR;
 	}
 	
-	/**
-	 * Cria Dependente.
-	 *
-	 * É utilizado para criar um objeto da classe Dependente.
-	 * 
-	 * Exemplo de uso:
-	 * Dependente dependente = new Dependente.DependenteBuilder().nome("José").
-				sobrenome("Bezerra").dataDeNascimento(LocalDate.of(1986, 4, 23)).....criarDependente() //Colocar quantos atributos
-				forem necessários
-	 * 
-	 * @author Bruna <sh4323202@gmail.com>
-	 * @author Enzo <enzomm.bodyandmind@gmail.com> 
-	 * @author Sabrina <sabrinaschmidt335@gmail.com>
-	 * @author Vanderlei <vanderleik@yahoo.com.br>
-	 * @author Vitor <vitornathang@gmail.com>
-	 */
-	public static class DependenteBuilder {
-		private String nome;
-		private String sobrenome;
-		private LocalDate dataDeNascimento;
-		private String nomeSocial;
-		private String genero;
-		private IdentidadeGenero identidadeGenero;
-		private String nomeDaMae;
-		private String cpf;
-		private Nacionalidade nacionalidade;
-		private boolean pcd;
-		private Integer idDependente;
-		private Integer idColaborador;
-		private TiposDependentes tipoDependente;
-		private boolean optanteIR;
-		
-		public DependenteBuilder nome(String nome) {
-			this.nome = nome;
-			return this;
-		}
-
-		public DependenteBuilder sobrenome(String sobrenome) {
-			this.sobrenome = sobrenome;
-			return this;
-		}
-		
-		public DependenteBuilder dataDeNascimento(LocalDate dataDeNascimento) {
-			this.dataDeNascimento = dataDeNascimento;
-			return this;
-		}
-		
-		public DependenteBuilder nomeSocial(String nomeSocial) {
-			this.nomeSocial = nomeSocial;
-			return this;
-		}
-		
-		public DependenteBuilder genero(String genero) {
-			this.genero = genero;
-			return this;
-		}
-		
-		public DependenteBuilder identidadeGenero(IdentidadeGenero identidadeGenero) {
-			this.identidadeGenero = identidadeGenero;
-			return this;
-		}
-		
-		public DependenteBuilder nomeDaMae(String nomeDaMae) {
-			this.nomeDaMae = nomeDaMae;
-			return this;
-		}
-		
-		public DependenteBuilder cpf(String cpf) {
-			this.cpf = cpf;
-			return this;
-		}
-		
-		public DependenteBuilder nacionalidade(Nacionalidade nacionalidade) {
-			this.nacionalidade = nacionalidade;
-			return this;
-		}
-	
-		public DependenteBuilder pcd(Boolean pcd) {
-			this.pcd = pcd;
-			return this;
-		}
-		
-		public DependenteBuilder idDependente(Integer idDependente) {
-			this.idDependente = idDependente;
-			return this;
-		}
-		
-		public DependenteBuilder idColaborador(Integer idColaborador) {
-			this.idColaborador = idColaborador;
-			return this;
-		}
-		
-		public DependenteBuilder tipoDependentes(TiposDependentes tipoDependente) {
-			this.tipoDependente = tipoDependente;
-			return this;
-		}
-		
-		public DependenteBuilder optanteIR(boolean optanteIR) {
-			this.optanteIR = optanteIR;
-			return this;
-		}
-		
-		public Dependente criarDependente() {
-			return new Dependente(nome,sobrenome, dataDeNascimento,  nomeSocial,  genero,
-					 identidadeGenero,  nomeDaMae,  cpf,  nacionalidade, pcd, idDependente, idColaborador, tipoDependente, optanteIR);
-		}
-	}
-
-	@Override
-	public String toString() {
-		return "Dependente [pessoa=" + pessoa + ", idDependente=" + idDependente + ", idColaborador=" + idColaborador
-				+ ", tipoDependente=" + tipoDependente + ", optanteIR=" + optanteIR + "]";
-	}
 }

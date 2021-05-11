@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 /**
  * Interface gerenciamento de dados.
- * Interface responsável por definir quais serão os
- * métodos que serão utilizados no gerenciamento de dados.
+ * Interface responsï¿½vel por definir quais serï¿½o os
+ * mï¿½todos que serï¿½o utilizados no gerenciamento de dados.
  * 
  * @author Bruna <sh4323202@gmail.com>
  * @author Enzo <enzomm.bodyandmind@gmail.com> 
@@ -15,16 +15,16 @@ import java.util.ArrayList;
  *
  * @param <T>
  */
-public interface DAO<T> {
+public interface InterfaceDao<T> {
 	
-	public boolean cadastrar(T item);
+	public boolean create(T item);
 
-	public T listar(T item);
+	public T readById(T item);
 
-	public ArrayList<T> listarTudo();
+	public ArrayList<T> getAll();
 
 	public boolean delete(T item);
 	
-	public boolean atualizar(T item, T itemAntigo);
+	public boolean update(T item, T itemAntigo);
 	
 }

@@ -1,6 +1,7 @@
 package testes;
 
 import org.junit.Test;
+
 import enums.EMDadosGeograficos.Cidades;
 import enums.EMDadosGeograficos.Pais;
 import enums.EMDadosGeograficos.UF;

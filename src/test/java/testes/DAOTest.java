@@ -14,38 +14,38 @@ public class DAOTest {
 	@Test
 	public void testCadastrarPessoa() {
 		p1.setNome("Marcos");
-		p2.setNome("João");
+		p2.setNome("Joï¿½o");
 		PessoaDAO dao = new PessoaDAO();
-		dao.cadastrar(p1);
+		dao.create(p1);
 		assertEquals(dao.itens.get(0), p1);
 	}
 
 	@Test
 	public void testeListar() {
 		p1.setNome("Marcos");
-		p2.setNome("João");
+		p2.setNome("Joï¿½o");
 		PessoaDAO dao = new PessoaDAO();
 		dao.itens.add(p1);
-		assertEquals(dao.listar(p1), p1);
+		assertEquals(dao.readById(p1), p1);
 	}
 
 	@Test
 	public void testeListarTudo() {
 		p1.setNome("Marcos");
-		p2.setNome("João");
+		p2.setNome("Joï¿½o");
 		PessoaDAO dao = new PessoaDAO();
 		dao.itens.add(p1);
 		dao.itens.add(p2);
 		ArrayList<Pessoa> arrayTeste = new ArrayList();
 		arrayTeste.add(p1);
 		arrayTeste.add(p2);
-		assertEquals(dao.listarTudo(), arrayTeste);		
+		assertEquals(dao.getAll(), arrayTeste);		
 	}
 
 	@Test
 	public void testDeletarPessoa() {
 		p1.setNome("Marcos");
-		p2.setNome("João");
+		p2.setNome("Joï¿½o");
 		PessoaDAO dao = new PessoaDAO();
 		dao.itens.add(p1);
 		dao.delete(p1);
@@ -55,10 +55,10 @@ public class DAOTest {
 	@Test
 	public void testAtualizarPessoa() {
 		p1.setNome("Marcos");
-		p2.setNome("João");
+		p2.setNome("Joï¿½o");
 		PessoaDAO dao = new PessoaDAO();
 		dao.itens.add(p1);
-		dao.atualizar(p2, p1);
+		dao.update(p2, p1);
 		assertEquals(dao.itens.get(0), p2);
 	}
 }

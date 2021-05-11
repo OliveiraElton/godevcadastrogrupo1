@@ -7,93 +7,98 @@ import enums.EMDadosGeograficos.Pais;
 import enums.EMDadosPessoais.IdentidadeGenero;
 import enums.EMDadosGeograficos.UF;
 
-public class Colaborador{
+public class Colaborador extends Pessoa {
 
 	/**
 	 * Classe Colaborador.
 	 * 
-	 * A classe Colaborador instancia as classes Pessoa,
-	 * Documentos, Enderecos, Contatos e ExameMedico para concluir o cadastro do
-	 * colaborador.
+	 * A classe Colaborador instancia as classes Pessoa, Documentos, Enderecos,
+	 * Contatos e ExameMedico para concluir o cadastro do colaborador.
 	 * 
 	 * Deve ser instanciado utilizando o ColaboradorBuilder.
 	 * 
 	 * @author Lorran Pereira dos Santos, Samuel Levi, Sarah Neuburger Brito, Thiago
-	 *         Luiz Barbieri e Vitor Nathan Gonçalves.
+	 *         Luiz Barbieri e Vitor Nathan Gonï¿½alves.
 	 * 
 	 * @author Bruna <sh4323202@gmail.com>
-	 * @author Enzo <enzomm.bodyandmind@gmail.com> 
+	 * @author Enzo <enzomm.bodyandmind@gmail.com>
 	 * @author Sabrina <sabrinaschmidt335@gmail.com>
 	 * @author Vanderlei <vanderleik@yahoo.com.br>
 	 * @author Vitor <vitornathang@gmail.com>
 	 */
 
-	private Pessoa pessoa;
-	private Integer idColaborador;
-	private Integer numCargo;
+	private Integer idCargo;
 	private Integer nit;
 	private boolean optanteVT;
 	private boolean optanteVAVR;
 	private LocalDate dataAdmissao;
 	private boolean optanteDependente;
-	private Cidades cidadeNascimento;
-	private UF UfNascimento;
-	private Pais paisNascimento;
-	private Documentos documentos;
-	private Endereco endereco;
+	private String registro_alistamento;
+	private String email_corporativo;
+	private String titulo_eleitor;
+	private Conta conta;
 	private Contatos contatos;
 	private ExameMedico exameMedico;
 
-	protected Colaborador(String nome, String sobrenome, LocalDate dataDeNascimento, String nomeSocial, String genero,
-			IdentidadeGenero identidadeGenero, String nomeDaMae, String cpf, Nacionalidade nacionalidade, boolean pcd,
-			Integer idColaborador, Integer numCargo, Integer nit, boolean optanteVT, boolean optanteVAVR,
-			LocalDate dataAdmissao, boolean optanteDependente, Cidades cidadeNascimento,
-			UF ufNascimento, Pais paisNascimento, Documentos documentos, Endereco endereco,
-			Contatos contatos, ExameMedico exameMedico) {
-
-		this.pessoa = new Pessoa.PessoaBuilder().nome(nome).sobrenome(sobrenome).dataDeNascimento(dataDeNascimento).nomeSocial(nomeSocial).genero(genero)
-				.identidadeGenero(identidadeGenero).nomeDaMae(nomeDaMae).cpf(cpf).nacionalidade(nacionalidade).pcd(pcd).criarPessoa();
-
-		this.idColaborador = idColaborador;
-		this.numCargo = numCargo;
+	/**
+	 * @param id
+	 * @param nome
+	 * @param sobrenome
+	 * @param nomeSocial
+	 * @param dataDeNascimento
+	 * @param nacionalidade
+	 * @param naturalidade
+	 * @param pcd
+	 * @param genero
+	 * @param identidadeGenero
+	 * @param endereco
+	 * @param cpf
+	 * @param rg
+	 * @param contatos
+	 * @param idCargo
+	 * @param nit
+	 * @param optanteVT
+	 * @param optanteVAVR
+	 * @param dataAdmissao
+	 * @param optanteDependente
+	 * @param registro_alistamento
+	 * @param email_corporativo
+	 * @param titulo_eleitor
+	 * @param conta
+	 * @param contatos2
+	 * @param exameMedico
+	 */
+	public Colaborador(int id, String nome, String sobrenome, String nomeSocial, 
+			LocalDate dataDeNascimento, String nacionalidade, String naturalidade,
+			boolean pcd, String genero, IdentidadeGenero identidadeGenero,
+			Endereco endereco, String cpf, String rg, Contatos contatos, 
+			Integer idCargo, Integer nit, boolean optanteVT, boolean optanteVAVR,
+			LocalDate dataAdmissao, boolean optanteDependente, String registro_alistamento, 
+			String email_corporativo, String titulo_eleitor, Conta conta, 
+			Contatos contatos2, ExameMedico exameMedico) {
+		super(id, nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, 
+				naturalidade, pcd, genero, identidadeGenero, endereco, cpf, rg, 
+				contatos);
+		this.idCargo = idCargo;
 		this.nit = nit;
 		this.optanteVT = optanteVT;
 		this.optanteVAVR = optanteVAVR;
 		this.dataAdmissao = dataAdmissao;
 		this.optanteDependente = optanteDependente;
-		this.cidadeNascimento = cidadeNascimento;
-		this.UfNascimento = ufNascimento;
-		this.paisNascimento = paisNascimento;
-		this.documentos = documentos;
-		this.endereco = endereco;
-		this.contatos = contatos;
+		this.registro_alistamento = registro_alistamento;
+		this.email_corporativo = email_corporativo;
+		this.titulo_eleitor = titulo_eleitor;
+		this.conta = conta;
+		contatos = contatos2;
 		this.exameMedico = exameMedico;
 	}
-	
-	public Colaborador() {}
 
-	public Pessoa getPessoa() {
-		return pessoa;
+	public Integer getIdCargo() {
+		return idCargo;
 	}
 
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
-	}
-
-	public Integer getIdColaborador() {
-		return idColaborador;
-	}
-
-	public void setIdColaborador(Integer idColaborador) {
-		this.idColaborador = idColaborador;
-	}
-
-	public Integer getNumCargo() {
-		return numCargo;
-	}
-
-	public void setNumCargo(Integer numCargo) {
-		this.numCargo = numCargo;
+	public void setIdCargo(Integer idCargo) {
+		this.idCargo = idCargo;
 	}
 
 	public Integer getNit() {
@@ -136,44 +141,36 @@ public class Colaborador{
 		this.optanteDependente = optanteDependente;
 	}
 
-	public Cidades getCidadeNascimento() {
-		return cidadeNascimento;
+	public String getRegistro_alistamento() {
+		return registro_alistamento;
 	}
 
-	public void setCidadeNascimento(Cidades cidadeNascimento) {
-		this.cidadeNascimento = cidadeNascimento;
+	public void setRegistro_alistamento(String registro_alistamento) {
+		this.registro_alistamento = registro_alistamento;
 	}
 
-	public UF getUfNascimento() {
-		return UfNascimento;
+	public String getEmail_corporativo() {
+		return email_corporativo;
 	}
 
-	public void setUfNascimento(UF ufNascimento) {
-		UfNascimento = ufNascimento;
+	public void setEmail_corporativo(String email_corporativo) {
+		this.email_corporativo = email_corporativo;
 	}
 
-	public Pais getPaisNascimento() {
-		return paisNascimento;
+	public String getTitulo_eleitor() {
+		return titulo_eleitor;
 	}
 
-	public void setPaisNascimento(Pais paisNascimento) {
-		this.paisNascimento = paisNascimento;
+	public void setTitulo_eleitor(String titulo_eleitor) {
+		this.titulo_eleitor = titulo_eleitor;
 	}
 
-	public Documentos getDocumentos() {
-		return documentos;
+	public Conta getConta() {
+		return conta;
 	}
 
-	public void setDocumentos(Documentos documentos) {
-		this.documentos = documentos;
-	}
-
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
+	public void setConta(Conta conta) {
+		this.conta = conta;
 	}
 
 	public Contatos getContatos() {
@@ -192,182 +189,4 @@ public class Colaborador{
 		this.exameMedico = exameMedico;
 	}
 
-
-	@Override
-	public String toString() {
-		return "Colaborador [pessoa=" + pessoa + ", idColaborador=" + idColaborador + ", numCargo=" + numCargo
-				+ ", nit=" + nit + ", optanteVT=" + optanteVT + ", optanteVAVR=" + optanteVAVR + ", dataAdmissao="
-				+ dataAdmissao + ", optanteDependente=" + optanteDependente + ", cidadeNascimento=" + cidadeNascimento
-				+ ", UfNascimento=" + UfNascimento + ", paisNascimento=" + paisNascimento + ", documentos=" + documentos
-				+ ", endereco=" + endereco + ", contatos=" + contatos + ", exameMedico=" + exameMedico + "]";
-	}
-
-	/**
-	 * Cria colaborador.
-	 * É utilizado para criar um objeto da classe Colaborador.
-	 * 
-	 * Exemplo de uso:
-	 * Colaborador colaborador = new Colaborador.ColaboradorBuilder().nome("José").
-				sobrenome("Bezerra").dataDeNascimento(LocalDate.of(1986, 4, 23)).
-				genero("Masculino").identidadeGenero(SexoPessoa.CIS).nomeDaMae("Lúcia").....criarColaborador() //Colocar quantos atributos
-				forem necessários
-	 * 
-	 * @author Bruna <sh4323202@gmail.com>
-	 * @author Enzo <enzomm.bodyandmind@gmail.com> 
-	 * @author Sabrina <sabrinaschmidt335@gmail.com>
-	 * @author Vanderlei <vanderleik@yahoo.com.br>
-	 * @author Vitor <vitornathang@gmail.com>
-	 */
-	public static class ColaboradorBuilder {
-		private String nome;
-		private String sobrenome;
-		private LocalDate dataDeNascimento;
-		private String nomeSocial;
-		private String genero;
-		private IdentidadeGenero identidadeGenero;
-		private String nomeDaMae;
-		private String cpf;
-		private Nacionalidade nacionalidade;
-		private boolean pcd = false;
-		private Integer idColaborador;
-		private Integer numCargo;
-		private Integer nit;
-		private boolean optanteVT;
-		private boolean optanteVAVR;
-		private LocalDate dataAdmissao;
-		private boolean optanteDependente;
-		private Cidades cidadeNascimento;
-		private UF UfNascimento;
-		private Pais paisNascimento;
-		private Documentos documentos;
-		private Endereco endereco;
-		private Contatos contatos;
-		private ExameMedico exameMedico;
-
-		public ColaboradorBuilder nome(String nome) {
-			this.nome = nome;
-			return this;
-		}
-
-		public ColaboradorBuilder sobrenome(String sobrenome) {
-			this.sobrenome = sobrenome;
-			return this;
-		}
-
-		public ColaboradorBuilder dataDeNascimento(LocalDate dataDeNascimento) {
-			this.dataDeNascimento = dataDeNascimento;
-			return this;
-		}
-
-		public ColaboradorBuilder nomeSocial(String nomeSocial) {
-			this.nomeSocial = nomeSocial;
-			return this;
-		}
-
-		public ColaboradorBuilder genero(String genero) {
-			this.genero = genero;
-			return this;
-		}
-
-		public ColaboradorBuilder identidadeGenero(IdentidadeGenero identidadeGenero) {
-			this.identidadeGenero = identidadeGenero;
-			return this;
-		}
-
-		public ColaboradorBuilder nomeDaMae(String nomeDaMae) {
-			this.nomeDaMae = nomeDaMae;
-			return this;
-		}
-
-		public ColaboradorBuilder cpf(String cpf) {
-			this.cpf = cpf;
-			return this;
-		}
-
-		public ColaboradorBuilder nacionalidade(Nacionalidade nacionalidade) {
-			this.nacionalidade = nacionalidade;
-			return this;
-		}
-
-		public ColaboradorBuilder pcd(Boolean pcd) {
-			this.pcd = pcd;
-			return this;
-		}
-
-		public ColaboradorBuilder idColaborador(int idColaborador) {
-			this.idColaborador = idColaborador;
-			return this;
-		}
-
-		public ColaboradorBuilder numCargo(int numCargo) {
-			this.numCargo = numCargo;
-			return this;
-		}
-
-		public ColaboradorBuilder nit(int nit) {
-			this.nit = nit;
-			return this;
-		}
-
-		public ColaboradorBuilder optanteVT(boolean optanteVT) {
-			this.optanteVT = optanteVT;
-			return this;
-		}
-
-		public ColaboradorBuilder optanteVAVR(Boolean optanteVAVR) {
-			this.optanteVAVR = optanteVAVR;
-			return this;
-		}
-
-		public ColaboradorBuilder dataAdmissao(LocalDate dataAdmissao) {
-			this.dataAdmissao = dataAdmissao;
-			return this;
-		}
-
-		public ColaboradorBuilder optanteDependente(boolean optanteDependente) {
-			this.optanteDependente = optanteDependente;
-			return this;
-		}
-
-		public ColaboradorBuilder cidadeNascimento(Cidades cidadeNascimento) {
-			this.cidadeNascimento = cidadeNascimento;
-			return this;
-		}
-
-		public ColaboradorBuilder UfNascimento(UF UfNascimento) {
-			this.UfNascimento = UfNascimento;
-			return this;
-		}
-
-		public ColaboradorBuilder paisNascimento(Pais paisNascimento) {
-			this.paisNascimento = paisNascimento;
-			return this;
-		}
-
-		public ColaboradorBuilder documentos(Documentos documentos) {
-			this.documentos = documentos;
-			return this;
-		}
-
-		public ColaboradorBuilder endereco(Endereco endereco) {
-			this.endereco = endereco;
-			return this;
-		}
-
-		public ColaboradorBuilder contatos(Contatos contatos) {
-			this.contatos = contatos;
-			return this;
-		}
-
-		public ColaboradorBuilder exameMedico(ExameMedico exameMedico) {
-			this.exameMedico = exameMedico;
-			return this;
-		}
-
-		public Colaborador criarColaborador() {
-			return new Colaborador(nome,sobrenome, dataDeNascimento,  nomeSocial,  genero,
-					identidadeGenero,  nomeDaMae,  cpf,  nacionalidade, pcd, idColaborador, numCargo, nit, optanteVT, optanteVAVR, dataAdmissao,
-					optanteDependente, cidadeNascimento, UfNascimento, paisNascimento, documentos, endereco, contatos, exameMedico);
-		}
-	}
 }
