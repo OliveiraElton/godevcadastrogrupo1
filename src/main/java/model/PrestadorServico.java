@@ -48,16 +48,15 @@ public class PrestadorServico extends Pessoa {
 	 * @param idSetor
 	 * @param contatos2
 	 */
-	public PrestadorServico(int id, String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
+	public PrestadorServico(String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
 			String nacionalidade, String naturalidade, boolean pcd, String genero, IdentidadeGenero identidadeGenero,
 			Endereco endereco, String cpf, String rg, Contatos contatos, LocalDate dataInicioContrato, Empresa empresa,
-			Integer idSetor, Contatos contatos2) {
-		super(id, nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
+			Integer idSetor) {
+		super(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
 				identidadeGenero, endereco, cpf, rg, contatos);
 		this.dataInicioContrato = dataInicioContrato;
 		this.empresa = empresa;
 		this.idSetor = idSetor;
-		contatos = contatos2;
 	}
 	
 	public LocalDate getDataInicioContrato() {
