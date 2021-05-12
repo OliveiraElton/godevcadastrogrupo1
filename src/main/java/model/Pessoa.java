@@ -26,11 +26,7 @@ import enums.EMDadosPessoais.IdentidadeGenero;
  */
 
 public class Pessoa{
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
+
 	private String nome;
 	private String sobrenome;
 	private String nomeSocial;
@@ -78,12 +74,6 @@ public class Pessoa{
 		this.rg = rg;
 	}
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public String getNome() {
 		return nome;
 	}

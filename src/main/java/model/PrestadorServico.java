@@ -1,7 +1,13 @@
 package model;
 
 import java.time.LocalDate;
-import enums.EMDadosGeograficos.Nacionalidade;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
 import enums.EMDadosPessoais.IdentidadeGenero;
 
 /**
@@ -21,11 +27,20 @@ import enums.EMDadosPessoais.IdentidadeGenero;
  * @author Vitor <vitornathang@gmail.com>
  */
 
+@Entity
 public class PrestadorServico extends Pessoa {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	
 	private LocalDate dataInicioContrato;
+	
+	@OneToOne
 	private Empresa empresa;
 	private Integer idSetor;
+	
+	@OneToOne
 	private Contatos contatos;
 	
 	/**
@@ -53,7 +68,7 @@ public class PrestadorServico extends Pessoa {
 			Endereco endereco, String cpf, String rg, Contatos contatos, LocalDate dataInicioContrato, Empresa empresa,
 			Integer idSetor) {
 		super(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
-				identidadeGenero, endereco, cpf, rg, contatos);
+				identidadeGenero, endereco, cpf, rg);
 		this.dataInicioContrato = dataInicioContrato;
 		this.empresa = empresa;
 		this.idSetor = idSetor;

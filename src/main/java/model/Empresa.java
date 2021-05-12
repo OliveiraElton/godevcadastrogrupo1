@@ -2,6 +2,12 @@ package model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
 /**
  * Classe que abstrai as informa��es de uma Empresa contratada. Esta Classe ser�
  * instanciada na Classe PrestadorServico, e instanciar� as classes Endereco e
@@ -19,13 +25,21 @@ import java.time.LocalDate;
  * @author Vitor <vitornathang@gmail.com>
  *
  */
+@Entity
 public class Empresa{
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	
 	private long empresaId;
 	private String nomeEmpresa;
 	private LocalDate dataInicioContrato;
 	private String cnpj;
+	
+	@OneToOne
 	private Endereco endereco;
+	@OneToOne
 	private Contatos contato;
 
 	/**

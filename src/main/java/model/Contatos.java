@@ -1,5 +1,10 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Armazena os contatos necess�rios de um colaborador, empresa ou prestador de
  * servi�o.
@@ -15,8 +20,13 @@ package model;
  * @author Vitor <vitornathang@gmail.com>
  */
 
+@Entity
 public class Contatos{
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	
 	private String telefonePrincipal;
 	private String telefoneSecundario;
 	private String email;

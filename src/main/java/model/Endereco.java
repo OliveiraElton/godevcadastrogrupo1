@@ -1,8 +1,9 @@
 package model;
 
-import enums.EMDadosGeograficos.Cidades;
-import enums.EMDadosGeograficos.Pais;
-import enums.EMDadosGeograficos.UF;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * Classe que engloba e abstrai as informa��es de endereco de um
@@ -20,8 +21,13 @@ import enums.EMDadosGeograficos.UF;
  * @author Vitor <vitornathang@gmail.com>
  *
  */
+@Entity
 public class Endereco {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	
 	private String logradouro;
 	private Integer numero;
 	private String complemento;

@@ -1,6 +1,12 @@
 package model;
 
 import java.time.LocalDate;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import enums.EMOutros.TiposExames;
 
 /**
@@ -20,8 +26,14 @@ import enums.EMOutros.TiposExames;
  * @author Vanderlei <vanderleik@yahoo.com.br>
  * @author Vitor <vitornathang@gmail.com>
  */
+
+@Entity
 public class ExameMedico {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	
 	TiposExames tipoExame;
 	private LocalDate dataExame;
 	private boolean apto;
@@ -37,9 +49,9 @@ public class ExameMedico {
 		this.apto = apto;
 	}
 
-	public ExameMedico() {
-
-	}
+//	public ExameMedico() {
+//
+//	}
 
 	public TiposExames getTipoExame() {
 		return tipoExame;

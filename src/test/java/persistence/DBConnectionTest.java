@@ -10,9 +10,7 @@ public class DBConnectionTest {
 
 	@Test
 	public void testConnection() {
-
-		SessionFactory sf = DBConnection.getSessionFactory();
-		Session session = sf.getCurrentSession();
+		Session session = DBConnection.getSession();
 		assertNotNull(session);
 
 		// String url =

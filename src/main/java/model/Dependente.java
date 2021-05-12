@@ -1,6 +1,12 @@
 package model;
 
 import java.time.LocalDate;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import enums.EMDadosPessoais.IdentidadeGenero;
 import enums.EMDadosPessoais.TiposDependentes;
 
@@ -18,8 +24,13 @@ import enums.EMDadosPessoais.TiposDependentes;
  * @author Vitor <vitornathang@gmail.com>
  */
 
+@Entity
 public class Dependente extends Pessoa {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	
 	private Integer idDependente;
 	private Integer idColaborador;
 	private TiposDependentes tipoDependente;
@@ -38,7 +49,6 @@ public class Dependente extends Pessoa {
 	 * @param endereco
 	 * @param cpf
 	 * @param rg
-	 * @param contatos
 	 * @param idDependente
 	 * @param idColaborador
 	 * @param tipoDependente
@@ -46,10 +56,10 @@ public class Dependente extends Pessoa {
 	 */
 	public Dependente(String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
 			String nacionalidade, String naturalidade, boolean pcd, String genero, IdentidadeGenero identidadeGenero,
-			Endereco endereco, String cpf, String rg, Contatos contatos, Integer idDependente, Integer idColaborador,
+			Endereco endereco, String cpf, String rg, Integer idDependente, Integer idColaborador,
 			TiposDependentes tipoDependente, boolean optanteIR) {
 		super(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero, identidadeGenero,
-				endereco, cpf, rg, contatos);
+				endereco, cpf, rg);
 		this.idDependente = idDependente;
 		this.idColaborador = idColaborador;
 		this.tipoDependente = tipoDependente;

@@ -1,8 +1,13 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -28,6 +33,9 @@ public class Colaborador extends Pessoa {
 	 * @author Vanderlei <vanderleik@yahoo.com.br>
 	 * @author Vitor <vitornathang@gmail.com>
 	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
 	
 	private Integer idCargo;
 	private Integer nit;
@@ -39,12 +47,12 @@ public class Colaborador extends Pessoa {
 	private String email_corporativo;
 	private String titulo_eleitor;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Conta conta;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Contatos contatos;
-	@OneToMany
-	private ExameMedico exameMedico;
+	@OneToMany(cascade = CascadeType.PERSIST)
+	private ArrayList<ExameMedico> exameMedico;
 
 	/**
 	 * @param nome
@@ -79,7 +87,7 @@ public class Colaborador extends Pessoa {
 			Integer idCargo, Integer nit, boolean optanteVT, boolean optanteVAVR,
 			LocalDate dataAdmissao, boolean optanteDependente, String registro_alistamento, 
 			String email_corporativo, String titulo_eleitor, Conta conta, 
-			ExameMedico exameMedico) {
+			ArrayList<ExameMedico> exameMedico) {
 		super(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, 
 				naturalidade, pcd, genero, identidadeGenero, endereco, cpf, rg);
 		this.idCargo = idCargo;
@@ -94,6 +102,14 @@ public class Colaborador extends Pessoa {
 		this.conta = conta;
 		this.contatos = contatos;
 		this.exameMedico = exameMedico;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public Integer getIdCargo() {
@@ -184,11 +200,11 @@ public class Colaborador extends Pessoa {
 		this.contatos = contatos;
 	}
 
-	public ExameMedico getExameMedico() {
+	public ArrayList<ExameMedico> getExameMedico() {
 		return exameMedico;
 	}
 
-	public void setExameMedico(ExameMedico exameMedico) {
+	public void setExameMedico(ArrayList<ExameMedico> exameMedico) {
 		this.exameMedico = exameMedico;
 	}
 
