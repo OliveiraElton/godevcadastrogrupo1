@@ -1,12 +1,14 @@
 package model;
 
 import java.time.LocalDate;
-import enums.EMDadosGeograficos.Cidades;
-import enums.EMDadosGeograficos.Nacionalidade;
-import enums.EMDadosGeograficos.Pais;
-import enums.EMDadosPessoais.IdentidadeGenero;
-import enums.EMDadosGeograficos.UF;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import enums.EMDadosPessoais.IdentidadeGenero;
+
+@Entity
 public class Colaborador extends Pessoa {
 
 	/**
@@ -26,7 +28,7 @@ public class Colaborador extends Pessoa {
 	 * @author Vanderlei <vanderleik@yahoo.com.br>
 	 * @author Vitor <vitornathang@gmail.com>
 	 */
-
+	
 	private Integer idCargo;
 	private Integer nit;
 	private boolean optanteVT;
@@ -36,8 +38,12 @@ public class Colaborador extends Pessoa {
 	private String registro_alistamento;
 	private String email_corporativo;
 	private String titulo_eleitor;
+	
+	@OneToOne
 	private Conta conta;
+	@OneToOne
 	private Contatos contatos;
+	@OneToMany
 	private ExameMedico exameMedico;
 
 	/**
@@ -75,8 +81,7 @@ public class Colaborador extends Pessoa {
 			String email_corporativo, String titulo_eleitor, Conta conta, 
 			ExameMedico exameMedico) {
 		super(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, 
-				naturalidade, pcd, genero, identidadeGenero, endereco, cpf, rg, 
-				contatos);
+				naturalidade, pcd, genero, identidadeGenero, endereco, cpf, rg);
 		this.idCargo = idCargo;
 		this.nit = nit;
 		this.optanteVT = optanteVT;

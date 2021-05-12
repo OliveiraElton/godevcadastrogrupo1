@@ -2,7 +2,10 @@ package model;
 
 import java.time.LocalDate;
 
-import enums.EMDadosGeograficos.Nacionalidade;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import enums.EMDadosPessoais.IdentidadeGenero;
 
 /**
@@ -24,7 +27,10 @@ import enums.EMDadosPessoais.IdentidadeGenero;
 
 public class Pessoa{
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 	private String nome;
 	private String sobrenome;
 	private String nomeSocial;
@@ -37,7 +43,6 @@ public class Pessoa{
 	private Endereco endereco;
 	private String cpf;
 	private String rg;
-	private Contatos contatos;
 	
 	/**
 	 * @param id
@@ -58,7 +63,7 @@ public class Pessoa{
 	public Pessoa(String nome, String sobrenome, String nomeSocial, 
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade,
 			boolean pcd, String genero, IdentidadeGenero identidadeGenero,
-			Endereco endereco, String cpf, String rg, Contatos contatos) {
+			Endereco endereco, String cpf, String rg) {
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.nomeSocial = nomeSocial;
@@ -71,7 +76,6 @@ public class Pessoa{
 		this.endereco = endereco;
 		this.cpf = cpf;
 		this.rg = rg;
-		this.contatos = contatos;
 	}
 	
 	public int getId() {
@@ -152,11 +156,4 @@ public class Pessoa{
 	public void setRg(String rg) {
 		this.rg = rg;
 	}
-	public Contatos getContatos() {
-		return contatos;
-	}
-	public void setContatos(Contatos contatos) {
-		this.contatos = contatos;
-	}
-	
 }
