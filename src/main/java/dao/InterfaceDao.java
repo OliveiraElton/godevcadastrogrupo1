@@ -1,6 +1,6 @@
 package dao;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Interface gerenciamento de dados.
@@ -21,10 +21,10 @@ public interface InterfaceDao<T> {
 
 	public T readById(Integer id);
 
-	public ArrayList<T> getAll();
+	public List<T> getAll();
 
 	public boolean delete(T item);
 	
-	public Integer update(Integer id, T itemAntigo);
+	public Integer update(T item);
 	
 }
