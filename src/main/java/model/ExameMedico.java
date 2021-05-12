@@ -49,9 +49,7 @@ public class ExameMedico {
 		this.apto = apto;
 	}
 
-//	public ExameMedico() {
-//
-//	}
+	public ExameMedico() {}
 
 	public TiposExames getTipoExame() {
 		return tipoExame;

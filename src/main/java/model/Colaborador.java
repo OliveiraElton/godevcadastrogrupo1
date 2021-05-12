@@ -2,6 +2,7 @@ package model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -52,7 +53,7 @@ public class Colaborador extends Pessoa {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Contatos contatos;
 	@OneToMany(cascade = CascadeType.PERSIST)
-	private ArrayList<ExameMedico> exameMedico;
+	private List<ExameMedico> exameMedico;
 
 	/**
 	 * @param nome
@@ -87,7 +88,7 @@ public class Colaborador extends Pessoa {
 			Integer idCargo, Integer nit, boolean optanteVT, boolean optanteVAVR,
 			LocalDate dataAdmissao, boolean optanteDependente, String registro_alistamento, 
 			String email_corporativo, String titulo_eleitor, Conta conta, 
-			ArrayList<ExameMedico> exameMedico) {
+			ExameMedico exameMedico) {
 		super(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, 
 				naturalidade, pcd, genero, identidadeGenero, endereco, cpf, rg);
 		this.idCargo = idCargo;
@@ -101,7 +102,7 @@ public class Colaborador extends Pessoa {
 		this.titulo_eleitor = titulo_eleitor;
 		this.conta = conta;
 		this.contatos = contatos;
-		this.exameMedico = exameMedico;
+		this.exameMedico.add(exameMedico);
 	}
 
 	public int getId() {
@@ -200,12 +201,12 @@ public class Colaborador extends Pessoa {
 		this.contatos = contatos;
 	}
 
-	public ArrayList<ExameMedico> getExameMedico() {
+	public List<ExameMedico> getExameMedico() {
 		return exameMedico;
 	}
 
-	public void setExameMedico(ArrayList<ExameMedico> exameMedico) {
-		this.exameMedico = exameMedico;
+	public void addExameMedico(ExameMedico exameMedico) {
+		this.exameMedico.add(exameMedico);
 	}
 
 }
