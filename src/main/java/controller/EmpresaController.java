@@ -11,7 +11,7 @@ import model.Empresa;
 import model.Endereco;
 
 public class EmpresaController {
-	private EmpresaDAO empresaDAO = new EmpresaDAO();
+	private EmpresaDAO empresaDAO = new EmpresaDAO());
 
 	/**
 	 * Cria Empresa
