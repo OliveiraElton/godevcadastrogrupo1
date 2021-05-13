@@ -1,44 +1,56 @@
 package dao;
 
-import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+
+import org.hibernate.Session;
 
 import model.Empresa;
 
-public class EmpresaDAO implements InterfaceDao<Empresa> {
 
-	public Empresa create(Empresa item) {
-		// TODO Auto-generated method stub
-		return null;
+public class EmpresaDAO extends Dao<Empresa> implements InterfaceDao<Empresa>{
+
+	protected static EmpresaDAO instance;
+	
+
+	public static EmpresaDAO getInstance(Session session) {
+		if (instance == null)
+			instance = new EmpresaDAO(session);
+		return instance;
 	}
 
-	public Empresa readById(Empresa item) {
-		// TODO Auto-generated method stub
-		return null;
+	private EmpresaDAO(Session session) {
+		this.session = session;
 	}
-
-	public ArrayList<Empresa> getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public boolean delete(Empresa item) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
+	
+	/**
+	 * Buscar Empresa por Id
+	 * 
+	 * Busca no banco a Empresa com o id igual ao passado como parametro
+	 * 
+	 * @param id Da Empresa desejada
+	 * @return Empresa desejado
+	 */
 	public Empresa readById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return session.get(Empresa.class, id);
 	}
-
-	public Integer update(Integer id, Empresa itemAntigo) {
-		// TODO Auto-generated method stub
-		return null;
+	/**
+	 * Buscar tods os Endereços
+	 * Busca no banco de dados tdos os endereços cadastrados
+	 * 
+	 */
+	public List<Empresa> getAll() {
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Empresa> criteria = builder.createQuery(Empresa.class);
+		criteria.from(Empresa.class);
+		List<Empresa> empresa = session.createQuery(criteria).getResultList();
+		return empresa;
 	}
-
-	public Empresa readByNome(String nome) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 }
+
+
+
+	
