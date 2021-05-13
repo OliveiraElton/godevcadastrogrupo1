@@ -20,6 +20,7 @@ public class Conta {
 	public Conta() {
 		
 	}
+	
 	/**
 	 * @param nomeBanco
 	 * @param agencia
@@ -63,6 +64,10 @@ public class Conta {
 
 	public void setDigitoVerificador(String digitoVerificador) {
 		this.digitoVerificador = digitoVerificador;
+	}
+
+	public Integer getId() {
+		return this.id;
 	}
 	
 }
