@@ -56,12 +56,5 @@ public class EnderecoDAOTest {
 		assertEquals(0, dao.getAll().size());
 	}
 
-	@Test
-	public void testUpdate() {
-		Endereco endereco = new Endereco("Rua joao pessoa", null, null, null, null, null, null, null);
-		dao.create(endereco);
-		endereco.setLogradouro("Av. Brasil");
-		assertEquals("Av. Brasil", dao.update(endereco).getLogradouro());
 
-	}
 }
