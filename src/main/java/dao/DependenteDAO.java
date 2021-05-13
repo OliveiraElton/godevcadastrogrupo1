@@ -1,50 +1,50 @@
 package dao;
 
-import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+
+import org.hibernate.Session;
 
 import model.Dependente;
 
-public class DependenteDAO implements InterfaceDao<Dependente>{
+public class DependenteDAO extends Dao<Dependente> implements InterfaceDao<Dependente>{
 
-	public Dependente create(Dependente item) {
-		// TODO Auto-generated method stub
-		return null;
+	protected static DependenteDAO instance;
+	
+		
+	public static DependenteDAO getInstance(Session session) {
+		if (instance == null)
+			instance = new DependenteDAO(session);
+		return instance;
 	}
 
-	public Dependente readById(Dependente item) {
-		// TODO Auto-generated method stub
-		return null;
+	private DependenteDAO(Session session) {
+		this.session = session;
 	}
 
-	public ArrayList<Dependente> getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public boolean delete(Dependente item) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
+	/**
+	 * Buscar Dependente por Id
+	 * 
+	 * Busca no banco o dependente com o id igual ao passado como parametro
+	 * 
+	 * @param id Do dependente desejado
+	 * @return Dependente desejado
+	 */
 
 	public Dependente readById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return session.get(Dependente.class, id);
 	}
 
-	public Integer update(Integer id, Dependente itemAntigo) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Dependente> getAll() {
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Dependente> criteria = builder.createQuery(Dependente.class);
+		criteria.from(Dependente.class);
+		List<Dependente> dependente = session.createQuery(criteria).getResultList();
+		return dependente;
 	}
-
-	public Dependente readByNomeSobrenome(String nome, String sobrenome) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Dependente readByIdColab(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 }
+	
+	
+		

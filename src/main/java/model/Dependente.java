@@ -14,14 +14,12 @@ import enums.EMDadosPessoais.TiposDependentes;
  * Classe Dependente Esta classe instancia a classe Pessoa para o cadastro de
  * Dependente. Deve ser instancianda usando DependenteBuilder.
  * 
- * @author Lorran Pereira dos Santos, Samuel Levi, Sarah Neuburger Brito, Thiago
- *         Luiz Barbieri e Vitor Nathan Gon�alves.
- * 
- * @author Bruna <sh4323202@gmail.com>
- * @author Enzo <enzomm.bodyandmind@gmail.com>
- * @author Sabrina <sabrinaschmidt335@gmail.com>
- * @author Vanderlei <vanderleik@yahoo.com.br>
- * @author Vitor <vitornathang@gmail.com>
+ *
+ * @author Bruno Marques <brunoliveira.marques@gmail.com
+ * @author Daniella Lira <dev.danilira@gmail.com>
+ * @author David Hildebrnadt <davihildebran@gmail.com>
+ * @author David Willian <dwillian676@gmail.com>
+ * @author Elton Frncisco de Oliveira <eltonf.oliveira22@gmail.com>
  */
 
 @Entity
@@ -100,6 +98,10 @@ public class Dependente extends Pessoa {
 
 	public void setOptanteIR(boolean optanteIR) {
 		this.optanteIR = optanteIR;
+	}
+	
+	public Integer getId() {
+		return this.id;
 	}
 	
 }
