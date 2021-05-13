@@ -1,36 +1,48 @@
 package dao;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+
+import org.hibernate.Session;
 
 import model.Contatos;
+import model.Endereco;
 
-public class ContatosDAO implements InterfaceDao<Contatos>{
+public class ContatosDAO extends Dao<Contatos> implements InterfaceDao<Contatos>{
 
-	public Integer create(Contatos item) {
-		// TODO Auto-generated method stub
-		return null;
+
+	protected static ContatosDAO instance;
+	
+
+	public static ContatosDAO getInstance(Session session) {
+		if (instance == null)
+			instance = new ContatosDAO(session);
+		return instance;
 	}
 
-	public Contatos readById(Contatos item) {
-		// TODO Auto-generated method stub
-		return null;
+	private ContatosDAO(Session session) {
+		this.session = session;
 	}
 
-	public ArrayList<Contatos> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	
+	public Contatos readById(Integer id) {
+		return session.get(Contatos.class, id);
 	}
 
-	public boolean delete(Contatos item) {
-		// TODO Auto-generated method stub
-		return false;
+	public List<Contatos> getAll() {
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Contatos> criteria = builder.createQuery(Contatos.class);
+		criteria.from(Contatos.class);
+		List<Contatos> contatos = session.createQuery(criteria).getResultList();
+		return contatos;
 	}
+	
 
-	public boolean update(Contatos item, Contatos itemAntigo) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
+	
 	
 	
 }

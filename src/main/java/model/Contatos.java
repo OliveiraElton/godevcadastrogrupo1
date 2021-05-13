@@ -79,5 +79,10 @@ public class Contatos{
 	public void setTelefoneFamiliar(String telefoneFamiliar) {
 		this.telefoneFamiliar = telefoneFamiliar;
 	}
+
+	public int getId() {
+		return id;
+	}
+	
 	
 }
