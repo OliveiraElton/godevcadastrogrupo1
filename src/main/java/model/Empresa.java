@@ -17,26 +17,26 @@ import javax.persistence.OneToOne;
  *
  * @author Lorran Pereira dos Santos, Samuel Levi, Sarah Neuburger Brito, Thiago
  *         Luiz Barbieri e Vitor Nathan Gon�alves.
- *         
+ * 
  * @author Bruna <sh4323202@gmail.com>
- * @author Enzo <enzomm.bodyandmind@gmail.com> 
+ * @author Enzo <enzomm.bodyandmind@gmail.com>
  * @author Sabrina <sabrinaschmidt335@gmail.com>
  * @author Vanderlei <vanderleik@yahoo.com.br>
  * @author Vitor <vitornathang@gmail.com>
  *
  */
 @Entity
-public class Empresa{
+public class Empresa {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
+
 	private long empresaId;
 	private String nomeEmpresa;
 	private LocalDate dataInicioContrato;
 	private String cnpj;
-	
+
 	@OneToOne
 	private Endereco endereco;
 	@OneToOne
@@ -50,8 +50,7 @@ public class Empresa{
 	 * @param endereco
 	 * @param contato
 	 */
-	public Empresa(String nomeEmpresa, LocalDate dataInicioContrato, String cnpj, Endereco endereco,
-			Contatos contato) {
+	public Empresa(String nomeEmpresa, LocalDate dataInicioContrato, String cnpj, Endereco endereco, Contatos contato) {
 		super();
 		this.nomeEmpresa = nomeEmpresa;
 		this.dataInicioContrato = dataInicioContrato;
@@ -111,24 +110,25 @@ public class Empresa{
 	public void setContato(Contatos contato) {
 		this.contato = contato;
 	}
-	
+
 	/**
 	 * Cria Empresa.
 	 *
 	 * � utilizado para criar um objeto da classe Empresa.
 	 * 
-	 * Exemplo de uso:
-	 * Empresa empresa = new Empresa.EmpresaBuilder().empresaId(56).nomeEmpresa("Nome Ilustrativo").
-				dataInicioContrato(LocalDate.of(2004, 6, 26)).cnpj("567895463214").....criarEmpresa() //Colocar quantos atributos
-				forem necess�rios
+	 * Exemplo de uso: Empresa empresa = new
+	 * Empresa.EmpresaBuilder().empresaId(56).nomeEmpresa("Nome Ilustrativo").
+	 * dataInicioContrato(LocalDate.of(2004, 6,
+	 * 26)).cnpj("567895463214").....criarEmpresa() //Colocar quantos atributos
+	 * forem necess�rios
 	 * 
 	 * @author Bruna <sh4323202@gmail.com>
-	 * @author Enzo <enzomm.bodyandmind@gmail.com> 
+	 * @author Enzo <enzomm.bodyandmind@gmail.com>
 	 * @author Sabrina <sabrinaschmidt335@gmail.com>
 	 * @author Vanderlei <vanderleik@yahoo.com.br>
 	 * @author Vitor <vitornathang@gmail.com>
 	 */
-	
+
 	public static class EmpresaBuilder {
 		private long empresaId;
 		private String nomeEmpresa;
@@ -136,46 +136,50 @@ public class Empresa{
 		private String cnpj;
 		private Endereco endereco;
 		private Contatos contato;
-	
+
 		public EmpresaBuilder empresaId(long empresaId) {
 			this.empresaId = empresaId;
 			return this;
 		}
-		
+
 		public EmpresaBuilder nomeEmpresa(String nomeEmpresa) {
 			this.nomeEmpresa = nomeEmpresa;
 			return this;
 		}
-		
+
 		public EmpresaBuilder dataInicioContrato(LocalDate dataInicioContrato) {
 			this.dataInicioContrato = dataInicioContrato;
 			return this;
 		}
-		
+
 		public EmpresaBuilder cnpj(String cnpj) {
 			this.cnpj = cnpj;
 			return this;
 		}
-		
+
 		public EmpresaBuilder endereco(Endereco endereco) {
 			this.endereco = endereco;
 			return this;
 		}
-		
+
 		public EmpresaBuilder contato(Contatos contato) {
 			this.contato = contato;
 			return this;
 		}
-		
+
 		public Empresa criarEmpresa() {
 			return new Empresa(nomeEmpresa, dataInicioContrato, cnpj, endereco, contato);
 		}
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Empresa [empresaId=" + empresaId + ", nomeEmpresa=" + nomeEmpresa + ", dataInicioContrato="
 				+ dataInicioContrato + ", cnpj=" + cnpj + ", endereco=" + endereco + ", contato= " + contato + "]";
+	}
+
+	public Integer getId() {
+		return this.id;
 	}
 
 }

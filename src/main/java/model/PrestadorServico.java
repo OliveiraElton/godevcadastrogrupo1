@@ -101,5 +101,8 @@ public class PrestadorServico extends Pessoa {
 	public void setContatos(Contatos contatos) {
 		this.contatos = contatos;
 	}
+	public Integer getId() {
+		return this.id;
+	}
 	
 }
