@@ -1,49 +1,51 @@
 package dao;
 
-import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+
+import org.hibernate.Session;
 
 import model.PrestadorServico;
 
-public class PrestadorServicoDAO implements InterfaceDao<PrestadorServico> {
+public class PrestadorServicoDAO extends Dao<PrestadorServico> implements InterfaceDao<PrestadorServico> {
 
-	public PrestadorServico create(PrestadorServico item) {
-		// TODO Auto-generated method stub
-		return null;
+	protected static PrestadorServicoDAO instance;
+
+	public static PrestadorServicoDAO getInstance(Session session) {
+		if (instance == null)
+			instance = new PrestadorServicoDAO(session);
+		return instance;
 	}
 
-	public PrestadorServico readById(PrestadorServico item) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	public PrestadorServico readByNomeSobrenome(String nome, String sobrenome) {
-		// TODO Auto-generated method stub
-		return null;
+	private PrestadorServicoDAO(Session session) {
+		this.session = session;
 	}
 
-	public ArrayList<PrestadorServico> getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public boolean delete(PrestadorServico item) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public boolean update(PrestadorServico item, PrestadorServico itemAntigo) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
+	/**
+	 * Buscar PrestadorServico por Id
+	 * 
+	 * Busca no banco o PrestadorServico com o id igual ao passado como parametro
+	 * 
+	 * @param id Do PrestadorServico desejado
+	 * @return PrestadorServico desejado
+	 */
 	public PrestadorServico readById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return session.get(PrestadorServico.class, id);
 	}
 
-	public Integer update(Integer id, PrestadorServico itemAntigo) {
-		// TODO Auto-generated method stub
-		return null;
+	/**
+	 * Buscar todos os PrestadorServico Busca no banco de dados todos os
+	 * PrestadorServico cadastrados
+	 * 
+	 */
+	public List<PrestadorServico> getAll() {
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<PrestadorServico> criteria = builder.createQuery(PrestadorServico.class);
+		criteria.from(PrestadorServico.class);
+		List<PrestadorServico> prestadorServico = session.createQuery(criteria).getResultList();
+		return prestadorServico;
 	}
 
 }
