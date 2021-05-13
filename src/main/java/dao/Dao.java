@@ -13,7 +13,7 @@ public abstract class Dao<T>{
 	 * generica de acordo com a classe DAO que vai herdar esta classe.
 	 * 
 	 * @param item
-	 * @return
+	 * @return Item criado
 	 */
 	public T create(T item) {
 		if (!session.getTransaction().isActive())

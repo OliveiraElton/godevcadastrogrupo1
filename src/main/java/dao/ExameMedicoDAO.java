@@ -7,7 +7,6 @@ import javax.persistence.criteria.CriteriaQuery;
 
 import org.hibernate.Session;
 
-import model.Endereco;
 import model.ExameMedico;
 
 public class ExameMedicoDAO extends Dao<ExameMedico> implements InterfaceDao<ExameMedico>{
