@@ -77,50 +77,7 @@ public class ExameMedico {
 		this.apto = apto;
 	}
 
-	/**
-	 * Cria ExameMedico.
-	 *
-	 * � utilizado para criar um objeto da classe ExameMedico.
-	 * 
-	 * Exemplo de uso:
-	 * ExameMedico exameMedico = new ExameMedico.ExameMedicoBuilder().
-				tipoExame(TiposExames.ADMISSIONAL).dataExame(LocalDate.of(2016, 11, 5)).
-				apto(true).criarExameMedico();
-	 *
-	 * @author Bruna <sh4323202@gmail.com>
-	 * @author Enzo <enzomm.bodyandmind@gmail.com> 
-	 * @author Sabrina <sabrinaschmidt335@gmail.com>
-	 * @author Vanderlei <vanderleik@yahoo.com.br>
-	 * @author Vitor <vitornathang@gmail.com>
-	 */
-	public static class ExameMedicoBuilder {
-
-		TiposExames tipoExame;
-		private LocalDate dataExame;
-		private boolean apto;
-
-		public ExameMedicoBuilder tipoExame(TiposExames tipoExame) {
-			this.tipoExame = tipoExame;
-			return this;
-		}
-
-		public ExameMedicoBuilder dataExame(LocalDate dataExame) {
-			this.dataExame = dataExame;
-			return this;
-		}
-
-		public ExameMedicoBuilder apto(boolean apto) {
-			this.apto = apto;
-			return this;
-		}
-
-		public ExameMedico criarExameMedico() {
-			return new ExameMedico(tipoExame, dataExame, apto);
-		}
-	}
-
-	@Override
-	public String toString() {
-		return "ExameMedico [tipoExame=" + tipoExame + ", dataExame=" + dataExame + ", apto=" + apto;
+	public Integer getId() {
+		return this.id;
 	}
 }
