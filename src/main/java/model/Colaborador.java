@@ -52,9 +52,13 @@ public class Colaborador extends Pessoa {
 	private Conta conta;
 	@OneToOne(cascade = CascadeType.ALL)
 	private Contatos contatos;
-	@OneToMany(cascade = CascadeType.PERSIST)
-	private List<ExameMedico> exameMedico;
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<ExameMedico> exameMedico = new ArrayList<ExameMedico>();
 
+	public Colaborador() {
+		super();
+	}
+	
 	/**
 	 * @param nome
 	 * @param sobrenome
@@ -102,7 +106,7 @@ public class Colaborador extends Pessoa {
 		this.titulo_eleitor = titulo_eleitor;
 		this.conta = conta;
 		this.contatos = contatos;
-		this.exameMedico.add(exameMedico);
+		this.addExameMedico(exameMedico);
 	}
 
 	public int getId() {

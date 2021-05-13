@@ -2,9 +2,8 @@ package model;
 
 import java.time.LocalDate;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToOne;
 
 import enums.EMDadosPessoais.IdentidadeGenero;
 
@@ -25,6 +24,7 @@ import enums.EMDadosPessoais.IdentidadeGenero;
  * @author Vitor <vitornathang@gmail.com>
  */
 
+@MappedSuperclass
 public class Pessoa{
 
 	private String nome;
@@ -36,10 +36,14 @@ public class Pessoa{
 	private boolean pcd = false;
 	private String genero;
 	private IdentidadeGenero identidadeGenero;
+	@OneToOne
 	private Endereco endereco;
 	private String cpf;
 	private String rg;
 	
+	public Pessoa() {
+		
+	}
 	/**
 	 * @param id
 	 * @param nome

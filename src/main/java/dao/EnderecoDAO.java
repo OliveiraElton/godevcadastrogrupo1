@@ -1,35 +1,53 @@
 package dao;
 
-import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+
+import org.hibernate.Session;
 
 import model.Endereco;
-import model.Pessoa;
 
-public class EnderecoDAO implements InterfaceDao<Endereco>{
+public class EnderecoDAO extends Dao<Endereco> implements InterfaceDao<Endereco>{
 
-	public Integer create(Endereco item) {
-		// TODO Auto-generated method stub
-		return null;
+	protected static EnderecoDAO instance;
+	
+
+	public static EnderecoDAO getInstance(Session session) {
+		if (instance == null)
+			instance = new EnderecoDAO(session);
+		return instance;
 	}
 
-	public Endereco readById(Endereco item) {
-		// TODO Auto-generated method stub
-		return null;
+	private EnderecoDAO(Session session) {
+		this.session = session;
+	}
+	
+	/**
+	 * Buscar Endereço por Id
+	 * 
+	 * Busca no banco o Endereço com o id igual ao passado como parametro
+	 * 
+	 * @param id Do endereço desejado
+	 * @return Endereço desejado
+	 */
+	public Endereco readById(Integer id) {
+		return session.get(Endereco.class, id);
 	}
 
-	public ArrayList<Endereco> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+	/**
+	 * Buscar tods os Endereços
+	 * Busca no banco de dados tdos os endereços cadastrados
+	 * 
+	 */
+	public List<Endereco> getAll() {
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Endereco> criteria = builder.createQuery(Endereco.class);
+		criteria.from(Endereco.class);
+		List<Endereco> endereco = session.createQuery(criteria).getResultList();
+		return endereco;
 	}
-
-	public boolean delete(Endereco item) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public boolean update(Endereco item, Endereco itemAntigo) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
+	
+	
 }

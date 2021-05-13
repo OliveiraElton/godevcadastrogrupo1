@@ -36,6 +36,12 @@ public class Endereco {
 	private String pais;
 	private String cidade;
 	private String uf;
+	
+	
+	public Endereco() {
+		
+	}
+	
 	/**
 	 * @param logradouro
 	 * @param numero
@@ -105,6 +111,13 @@ public class Endereco {
 	}
 	public void setUf(String uf) {
 		this.uf = uf;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public Integer getId() {
+		return this.id;
 	}
 
 }

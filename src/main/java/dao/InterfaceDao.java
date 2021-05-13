@@ -25,6 +25,6 @@ public interface InterfaceDao<T> {
 
 	public boolean delete(T item);
 	
-	public Integer update(T item);
+	public T update(T item);
 	
 }

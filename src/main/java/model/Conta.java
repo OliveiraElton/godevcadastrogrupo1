@@ -17,6 +17,9 @@ public class Conta {
 	private String numeroConta;
 	private String digitoVerificador;
 	
+	public Conta() {
+		
+	}
 	/**
 	 * @param nomeBanco
 	 * @param agencia

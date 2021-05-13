@@ -43,6 +43,9 @@ public class PrestadorServico extends Pessoa {
 	@OneToOne
 	private Contatos contatos;
 	
+	public PrestadorServico() {
+		super();
+	}
 	/**
 	 * @param id
 	 * @param nome

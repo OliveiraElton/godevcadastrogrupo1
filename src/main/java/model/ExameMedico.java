@@ -37,7 +37,11 @@ public class ExameMedico {
 	TiposExames tipoExame;
 	private LocalDate dataExame;
 	private boolean apto;
-
+	
+	public ExameMedico() {
+		
+	}
+	
 	/**
 	 * @param tipoExame
 	 * @param dataExame
@@ -48,9 +52,7 @@ public class ExameMedico {
 		this.dataExame = dataExame;
 		this.apto = apto;
 	}
-
-	public ExameMedico() {}
-
+	
 	public TiposExames getTipoExame() {
 		return tipoExame;
 	}

@@ -35,7 +35,11 @@ public class Dependente extends Pessoa {
 	private Integer idColaborador;
 	private TiposDependentes tipoDependente;
 	private boolean optanteIR;
-
+	
+	public Dependente() {
+		super();
+	}
+	
 	/**
 	 * @param nome
 	 * @param sobrenome

@@ -1,59 +1,62 @@
 package dao;
 
-import java.util.List;
-
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-
 import org.hibernate.Session;
 
-public class Dao<T> implements InterfaceDao<T>{
+public abstract class Dao<T>{
 
-	private static Dao instance;
-	private Session session;
-	
-	public static Dao getInstance(Session session) {
-		if (instance == null)
-			instance = new Dao(session);
-		return instance;
-	}
-	
-	private Dao(Session session) {
-		this.session = session;
-	}
+	protected Session session;	
 
+	/**
+	 * Metodo para inserir dados no banco de dados
+	 * 
+	 * Metodo para inserir informacoes no banco de dados, funciona de forma
+	 * generica de acordo com a classe DAO que vai herdar esta classe.
+	 * 
+	 * @param item
+	 * @return
+	 */
 	public T create(T item) {
+		if (!session.getTransaction().isActive())
+			session.beginTransaction();
 		session.save(item);
+		session.getTransaction().commit();
 		return item;
 	}
 
-	public T readById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public List<T> getAll() {
-		CriteriaBuilder builder = session.getCriteriaBuilder();
-		CriteriaQuery<T> criteria = builder.createQuery(T.class);
-		criteria.from(T.class);
-		List<T> select = session.createQuery(criteria).getResultList();
-		return select;
-	}
-
+	/**
+	 * Metodo para deletar dados no banco de dados
+	 * 
+	 * Metodo para deletar informações no banco de dados, funciona de forma
+	 * generica de acordo com a classe DAO que vai herdar esta classe, 
+	 * e utiliza o objeto recebido como parametro para saber qual item deletar.
+	 * 
+	 * @param item
+	 * @return
+	 */
 	public boolean delete(T item) {
 		if (!session.getTransaction().isActive())
 			session.beginTransaction();
 		session.delete(item);
 		session.getTransaction().commit();
-		return false;
+		return true;
 	}
 
-	public Integer update(T item) {
+	/**
+	 * Metodo para atualizar informaçoes no banco de dados
+	 * 
+	 * Metodo para atualizar informacoes no banco de dados, funciona de forma
+	 * generica de acordo com a classe DAO que vai herdar esta classe, 
+	 * e utiliza o objeto recebido como parametro para saber qual Objeto atualizar.
+	 * 
+	 * @param item
+	 * @return
+	 */
+	public T update(T item) {
 		if (!session.getTransaction().isActive())
 			session.beginTransaction();
 		session.update(item);
 		session.getTransaction().commit();
-		return null;
+		return item;
 	}
 	
 }

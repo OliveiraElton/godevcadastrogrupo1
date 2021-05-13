@@ -32,6 +32,9 @@ public class Contatos{
 	private String email;
 	private String telefoneFamiliar;
 	
+	public Contatos() {
+		
+	}
 	/**
 	 * @param telefonePrincipal
 	 * @param telefoneSecundario
