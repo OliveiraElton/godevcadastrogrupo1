@@ -7,6 +7,7 @@ import javax.persistence.criteria.CriteriaQuery;
 
 import org.hibernate.Session;
 
+import model.Colaborador;
 import model.Dependente;
 
 public class DependenteDAO extends Dao<Dependente> implements InterfaceDao<Dependente>{
@@ -43,6 +44,17 @@ public class DependenteDAO extends Dao<Dependente> implements InterfaceDao<Depen
 		criteria.from(Dependente.class);
 		List<Dependente> dependente = session.createQuery(criteria).getResultList();
 		return dependente;
+	}
+
+	public Dependente readByIdColab(Integer id) {
+		Colaborador colaborador = session.get(Colaborador.class, id);
+		colaborador.depe
+		return session.get(Dependente.class, id);
+	}
+
+	public Dependente readByNomeSobrenome(String nome, String sobrenome) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
 	

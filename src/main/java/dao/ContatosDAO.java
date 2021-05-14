@@ -29,7 +29,7 @@ public class ContatosDAO extends Dao<Contatos> implements InterfaceDao<Contatos>
 		return instance;
 	}
 
-	private ContatosDAO(Session session) {
+	public ContatosDAO(Session session) {
 		this.session = session;
 	}
 

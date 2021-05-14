@@ -1,7 +1,6 @@
 package controller;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -9,13 +8,16 @@ import org.hibernate.Session;
 import dao.ColaboradorDAO;
 import dao.ContaDAO;
 import dao.ContatosDAO;
+import dao.DependenteDAO;
 import dao.EnderecoDAO;
 import dao.ExameMedicoDAO;
 import enums.EMDadosPessoais.IdentidadeGenero;
+import enums.EMDadosPessoais.TiposDependentes;
 import enums.EMOutros.TiposExames;
 import model.Colaborador;
 import model.Conta;
 import model.Contatos;
+import model.Dependente;
 import model.Endereco;
 import model.ExameMedico;
 import persistence.DBConnection;
@@ -41,6 +43,7 @@ public class ColaboradorController {
 	static ContatosDAO daoContatos = ContatosDAO.getInstance(session);
 	static EnderecoDAO daoEndereco = EnderecoDAO.getInstance(session);
 	static ExameMedicoDAO daoExameMedico = ExameMedicoDAO.getInstance(session);
+	static DependenteDAO daoDependente = DependenteDAO.getInstance(session);
 	
 	/**
 	 * Criar Colaborador. 
@@ -102,7 +105,9 @@ public class ColaboradorController {
             String complemento, String cep, String bairro, String pais, String cidade, 
 			String uf, String telefonePrincipal, String telefoneSecundario, String email, 
 			String telefoneFamiliar, TiposExames tipoExame, LocalDate dataExame, boolean apto,
-			String nomeBanco, String agencia, String numeroConta, String digitoVerificador) {
+			String nomeBanco, String agencia, String numeroConta, String digitoVerificador,
+			Integer idDependente, Integer idColaborador,TiposDependentes tipoDependente, 
+			boolean optanteIR) {
 		
 		Contatos contatos = new Contatos(telefonePrincipal, telefoneSecundario, 
 				email, telefoneFamiliar);
@@ -118,12 +123,17 @@ public class ColaboradorController {
 				bairro, pais, cidade, uf);
 		daoEndereco.create(endereco);
 		
+		Dependente dependente = new Dependente(nome,sobrenome,nomeSocial, 
+				dataDeNascimento,nacionalidade,naturalidade, pcd, genero, identidadeGenero,
+				endereco, cpf,  rg, idDependente, idColaborador, tipoDependente, optanteIR);
+		daoDependente.create(dependente);
+		
 		Colaborador colaborador = new Colaborador(nome, sobrenome, nomeSocial, 
 				dataDeNascimento, nacionalidade, naturalidade, pcd, genero, 
 				identidadeGenero, endereco, cpf, rg, contatos, idCargo, nit, 
 				optanteVT, optanteVAVR, dataAdmissao, optanteDependente, 
 				registro_alistamento, email_corporativo, titulo_eleitor, conta, 
-				exameMedico);
+				exameMedico, dependente);
 		
 		return daoColaborador.create(colaborador);
 	}
@@ -181,14 +191,14 @@ public class ColaboradorController {
 			Endereco endereco, String cpf, String rg, Contatos contatos, Integer idCargo, 
 			Integer nit, boolean optanteVT, boolean optanteVAVR, LocalDate dataAdmissao, 
 			boolean optanteDependente, String registro_alistamento, String email_corporativo,
-			String titulo_eleitor, Conta conta, ExameMedico exameMedico) {
+			String titulo_eleitor, Conta conta, ExameMedico exameMedico, Dependente dependente) {
 		
 		Colaborador colab = new Colaborador(nome, sobrenome, nomeSocial, 
 				dataDeNascimento, nacionalidade, naturalidade, pcd, genero, 
 				identidadeGenero, endereco, cpf, rg, contatos, idCargo, nit, 
 				optanteVT, optanteVAVR, dataAdmissao, optanteDependente, 
 				registro_alistamento, email_corporativo, titulo_eleitor, conta, 
-				exameMedico);
+				exameMedico, dependente);
 		session.clear();
 		colab.setId(id);		
 		return daoColaborador.update(colab);
