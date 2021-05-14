@@ -1,20 +1,29 @@
 package controller;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Session;
 
 import dao.ContatosDAO;
-import dao.EnderecoDAO;
+import dao.EmpresaDAO;
 import dao.PrestadorServicoDAO;
 import enums.EMDadosPessoais.IdentidadeGenero;
 import model.Contatos;
 import model.Empresa;
 import model.Endereco;
 import model.PrestadorServico;
+import persistence.DBConnection;
 
 public class PrestadorServicoController {
 
-	private static PrestadorServicoDAO prestadorServicoDAO = new PrestadorServicoDAO();
+	// private static PrestadorServicoDAO prestadorServicoDAO = new
+	// PrestadorServicoDAO();
+
+	static Session session = DBConnection.getSession();
+	static PrestadorServicoDAO daoPrestadorServico = PrestadorServicoDAO.getInstance(session);
+	static ContatosDAO daoContatos = ContatosDAO.getInstance(session);
+	static EmpresaDAO daoEmpresa = EmpresaDAO.getInstance(session);
 
 	/**
 	 * Criar Prestador de Serviço.
@@ -60,23 +69,22 @@ public class PrestadorServicoController {
 			IdentidadeGenero identidadeGenero, Endereco endereco, String cpf, String rg, Contatos contatos,
 			LocalDate dataInicioContrato, Empresa empresa, Integer idSetor, String telefonePrincipal,
 			String telefoneSecundario, String email, String telefoneFamiliar, String logradouro, Integer numero,
-			String complemento, String cep, String bairro, String pais, String cidade, String uf) {
+			String complemento, String cep, String bairro, String pais, String cidade, String uf, String nomeEmpresa,
+			String cnpj) {
 
 		Contatos contatosPrestador = new Contatos(telefonePrincipal, telefoneSecundario, email, telefoneFamiliar);
-		ContatosDAO contatosDao = new ContatosDAO();
-		contatosDao.create(contatosPrestador);
+		daoContatos.create(contatosPrestador);
 
-		Endereco enderecoPrestador = new Endereco(logradouro, numero, complemento, cep, bairro, pais, cidade, uf);
-		EnderecoDAO enderecoDao = new EnderecoDAO();
-		enderecoDao.create(enderecoPrestador);
+		Empresa empresaPrestador = new Empresa(nomeEmpresa, dataInicioContrato, cnpj, endereco, contatos);
+		daoEmpresa.create(empresaPrestador);
 
 		PrestadorServico prestadorServico = new PrestadorServico(nome, sobrenome, nomeSocial, dataDeNascimento,
 				nacionalidade, naturalidade, pcd, genero, identidadeGenero, endereco, cpf, rg, contatos,
 				dataInicioContrato, empresa, idSetor);
 
-		return prestadorServicoDAO.create(prestadorServico);
+		return daoPrestadorServico.create(prestadorServico);
 	}
-	
+
 	/**
 	 * Deletar Prestador de servico.
 	 * 
@@ -88,7 +96,7 @@ public class PrestadorServicoController {
 	 * @author Elton F Oliveira.
 	 */
 	public static boolean deletePrestadorServico(PrestadorServico prestadorServico) {
-		return prestadorServicoDAO.delete(prestadorServico);
+		return daoPrestadorServico.delete(prestadorServico);
 	}
 
 	/**
@@ -129,20 +137,22 @@ public class PrestadorServicoController {
 	 * 
 	 * @author Elton F Oliveira.
 	 */
-	public static Integer atualizarPrestadorServico(Integer id, String nome, String sobrenome, String nomeSocial,
-			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd, String genero,
-			IdentidadeGenero identidadeGenero, Endereco endereco, String cpf, String rg, Contatos contatos,
-			LocalDate dataInicioContrato, Empresa empresa, Integer idSetor, String telefonePrincipal,
+	public static PrestadorServico atualizarPrestadorServico(Integer id, String nome, String sobrenome,
+			String nomeSocial, LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd,
+			String genero, IdentidadeGenero identidadeGenero, Endereco endereco, String cpf, String rg,
+			Contatos contatos, LocalDate dataInicioContrato, Empresa empresa, Integer idSetor, String telefonePrincipal,
 			String telefoneSecundario, String email, String telefoneFamiliar, String logradouro, Integer numero,
 			String complemento, String cep, String bairro, String pais, String cidade, String uf) {
-	
+
 		PrestadorServico prestadorServico = new PrestadorServico(nome, sobrenome, nomeSocial, dataDeNascimento,
 				nacionalidade, naturalidade, pcd, genero, identidadeGenero, endereco, cpf, rg, contatos,
 				dataInicioContrato, empresa, idSetor);
-		
-		return prestadorServicoDAO.update(id, prestadorServico);
+		session.clear();
+		prestadorServico.setId(id);
+
+		return daoPrestadorServico.update(prestadorServico);
 	}
-	
+
 	/**
 	 * Busca Prestador de servico.
 	 * 
@@ -153,31 +163,32 @@ public class PrestadorServicoController {
 	 * @author Elton F Oliveira.
 	 */
 	public static PrestadorServico buscarPrestadorServicoPorId(Integer id) {
-		return prestadorServicoDAO.readById(id);
+		return daoPrestadorServico.readById(id);
 	}
-	
+
 	/**
 	 * Busca Prestador de servico.
 	 * 
-	 * Busca o Prestador de servico cujo nome e sobrenome são iguais aos passados como 
-	 * parâmetro.
+	 * Busca o Prestador de servico cujo nome e sobrenome são iguais aos passados
+	 * como parâmetro.
 	 * 
 	 * @param nome
 	 * @param sobrenome
 	 * @return
 	 * @author Elton F Oliveira.
 	 */
-	public static PrestadorServico buscarPrestadorServicoPorNomeSobrenome(String nome, String sobrenome) {
-		return prestadorServicoDAO.readByNomeSobrenome(nome, sobrenome);
-	
-	}
-	
+//	public static PrestadorServico buscarPrestadorServicoPorNomeSobrenome(String nome, String sobrenome) {
+//		return daoPrestadorServico.readByNomeSobrenome(nome, sobrenome);
+//
+//	}
+
 	/**
 	 * Busca todos os Prestadores de servico.
+	 * 
 	 * @return
 	 * @author Elton F Oliveira.
 	 */
-	public static ArrayList<PrestadorServico> buscarTodosPrestadorServico(){
-		return prestadorServicoDAO.getAll();
+	public static List<PrestadorServico> buscarTodosPrestadorServico() {
+		return daoPrestadorServico.getAll();
 	}
 }

@@ -100,8 +100,6 @@ public class ColaboradorControllerTest {
 		
 	}
 
-
-
 	@Test
 	public void testBuscarTodosColaborador() {
 		Conta conta = new Conta(null, null, null, null);
