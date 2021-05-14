@@ -1,11 +1,10 @@
 package controller;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.hibernate.Session;
 
-import dao.ColaboradorDAO;
-import dao.ContaDAO;
 import dao.ContatosDAO;
 import dao.DependenteDAO;
 import dao.EnderecoDAO;
@@ -18,29 +17,28 @@ import model.Endereco;
 import persistence.DBConnection;
 
 /**
-* Controller do dependente.
-*
-* Classe que faz a comunicação dos dados recebidos com os dao relacionados ao
-* dependente.
-* 
-* @author Bruno Marques <brunoliveira.marques@gmail.com
-*
-*/
+ * Controller do dependente.
+ *
+ * Classe que faz a comunicação dos dados recebidos com os dao relacionados ao
+ * dependente.
+ * 
+ * @author Bruno Marques <brunoliveira.marques@gmail.com
+ *
+ */
 public class DependenteController {
-	
+
 	static Session session = DBConnection.getSession();
-	static DependenteDAO daoDependente= DependenteDAO.getInstance(session);
+	static DependenteDAO daoDependente = DependenteDAO.getInstance(session);
 	static ContatosDAO daoContatos = ContatosDAO.getInstance(session);
 	static EnderecoDAO daoEndereco = EnderecoDAO.getInstance(session);
 	static ExameMedicoDAO daoExameMedico = ExameMedicoDAO.getInstance(session);
-	
-		
+
 	/**
-	 * Criar Dependente. 
+	 * Criar Dependente.
 	 * 
-	 * Recebe os dados do dependente separados, cria todos os dados e chama os 
-	 * DAO necessários para a criação do dependente, por fim chama o DAO do
-	 * dependente para salvar no banco.
+	 * Recebe os dados do dependente separados, cria todos os dados e chama os DAO
+	 * necessários para a criação do dependente, por fim chama o DAO do dependente
+	 * para salvar no banco.
 	 * 
 	 * @param nome
 	 * @param sobrenome
@@ -72,30 +70,25 @@ public class DependenteController {
 	 * @param email
 	 * @param telefoneFamiliar
 	 * 
-	 * @return Retorna o Dependente caso tenha sido cadastrado ou null caso contrário
+	 * @return Retorna o Dependente caso tenha sido cadastrado ou null caso
+	 *         contrário
 	 */
-	public static Dependente criarDependente(String nome, String sobrenome, 
-			String nomeSocial, LocalDate dataDeNascimento, String nacionalidade,
-			String naturalidade, boolean pcd, String genero, IdentidadeGenero 
-			identidadeGenero, String cpf, String rg, Integer idDependente, 
-			Integer idColaborador, TiposDependentes tipoDependente, boolean optanteIR,
-			String email_corporativo, String titulo_eleitor,String logradouro, 
-			Integer numero, String complemento, String cep, String bairro, String pais,
-			String cidade, String uf, String telefonePrincipal, String telefoneSecundario,
-			String email, String telefoneFamiliar) {		
+	public static Dependente criarDependente(String nome, String sobrenome, String nomeSocial,
+			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd, String genero,
+			IdentidadeGenero identidadeGenero, String cpf, String rg, TiposDependentes tipoDependente,
+			boolean optanteIR, String email_corporativo, String titulo_eleitor, String logradouro, Integer numero,
+			String complemento, String cep, String bairro, String pais, String cidade, String uf,
+			String telefonePrincipal, String telefoneSecundario, String email, String telefoneFamiliar) {
 
-		Endereco endereco = new Endereco(logradouro, numero, complemento, cep, 
-				bairro, pais, cidade, uf);
-			daoEndereco.create(endereco);
-		
-		Dependente dependente = new Dependente(nome, sobrenome, nomeSocial,
-				dataDeNascimento, nacionalidade, naturalidade, pcd, genero, 
-				identidadeGenero, endereco, cpf, rg, idDependente, 
-				idColaborador, tipoDependente, optanteIR);		
-		
+		Endereco endereco = new Endereco(logradouro, numero, complemento, cep, bairro, pais, cidade, uf);
+		daoEndereco.create(endereco);
+
+		Dependente dependente = new Dependente(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade,
+				naturalidade, pcd, genero, identidadeGenero, endereco, cpf, rg, tipoDependente, optanteIR);
+
 		return daoDependente.create(dependente);
 	}
-	
+
 	/**
 	 * Deleta Dependente.
 	 * 
@@ -108,7 +101,7 @@ public class DependenteController {
 	public static boolean deleteDependente(Dependente dependente) {
 		return daoDependente.delete(dependente);
 	}
-	
+
 	/**
 	 * Atualizar Dependente.
 	 * 
@@ -136,22 +129,17 @@ public class DependenteController {
 	 * @param contatos
 	 * @return id do dependente caso seja atualizado ou false caso contrário.
 	 */
-	public static Integer atualizarDependente(String nome, String sobrenome, 
-			String nomeSocial, LocalDate dataDeNascimento, String nacionalidade,
-			String naturalidade, boolean pcd, String genero, IdentidadeGenero 
-			identidadeGenero, String cpf, String rg, Integer idDependente, 
-			Integer idColaborador, TiposDependentes tipoDependente, boolean optanteIR,
-			String email_corporativo, String titulo_eleitor, Endereco endereco,
-			Contatos contatos) {
-		
-		Dependente dependente = new Dependente(nome, sobrenome, nomeSocial, dataDeNascimento,
-				nacionalidade, naturalidade, pcd, genero, identidadeGenero,
-				endereco, cpf, rg, idDependente, idColaborador,
-				tipoDependente, optanteIR);
-		
-		return daoDependente.update(idDependente, dependente);
+	public static Dependente atualizarDependente(Integer id, String nome, String sobrenome, String nomeSocial,
+			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd, String genero,
+			IdentidadeGenero identidadeGenero, String cpf, String rg, TiposDependentes tipoDependente,
+			boolean optanteIR, String email_corporativo, String titulo_eleitor, Endereco endereco) {
+
+		Dependente dependente = new Dependente(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade,
+				naturalidade, pcd, genero, identidadeGenero, endereco, cpf, rg, tipoDependente, optanteIR);
+		dependente.setId(id);
+		return daoDependente.update(dependente);
 	}
-	
+
 	/**
 	 * Busca Dependente por id.
 	 * 
@@ -159,25 +147,24 @@ public class DependenteController {
 	 * 
 	 * @param id Do dependente desejado.
 	 * 
-	 * @return Dependente ou null caso não encontrado. 
+	 * @return Dependente ou null caso não encontrado.
 	 */
-	public static Dependente buscarDependentePorId(Integer id) {		
+	public static Dependente buscarDependentePorId(Integer id) {
 		return daoDependente.readById(id);
 	}
-	
+
 	/**
 	 * Busca Dependente por id do Colaborador.
 	 * 
-	 * Busca o Dependente relacionado ao Colaborador cujo id é igual ao passado 
-	 * como parâmetro.
+	 * Busca o Dependente relacionado ao Colaborador cujo id é igual ao passado como
+	 * parâmetro.
 	 * 
 	 * @param id do Colaborador desejado.
 	 * 
-	 * @return Dependente ou null caso não encontrado. 
+	 * @return Dependente ou null caso não encontrado.
 	 */
-	public static Dependente buscarDependentePorIdColaborador(Integer id) {		
+	public static List<Dependente> buscarDependentePorIdColaborador(Integer id) {
 		return daoDependente.readByIdColab(id);
 	}
-	
-	
+
 }

@@ -1,32 +1,26 @@
 package dao;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNull;
+
+import java.time.LocalDate;
 
 import org.hibernate.Session;
-import org.junit.Before;
 import org.junit.Test;
 
 import model.Dependente;
-import model.Endereco;
 import persistence.DBConnection;
 
 public class DependenteDAOTest {
 
 	Session session = DBConnection.getSession();
 	DependenteDAO dao = DependenteDAO.getInstance(session);
-
-	@Before
-	public void limparDependente() {
-		if (!session.getTransaction().isActive())
-			session.beginTransaction();
-		session.createSQLQuery("DELETE FROM Dependente;").executeUpdate();
-		session.getTransaction().commit();
-	}
+	static LocalDate data = LocalDate.of(2002, 01, 28);
 
 	@Test
 	public void testReadById() {
-		Dependente dependente = new Dependente("Joãozinho", null, null, null, null, null, false, null, null, null, null, null, null, null, null, false);
+		Dependente dependente = new Dependente("Joãozinho", "Fonseca", "Jenifer", data, "Venezuelano",
+				"Cidade del Leste", true, null, null, null, "09619039610", null, null, true);
 		dao.create(dependente);
 		Integer id = dependente.getId();
 		assertEquals(dependente, dao.readById(id));
@@ -34,32 +28,37 @@ public class DependenteDAOTest {
 
 	@Test
 	public void testGetAll() {
-		Dependente dependente = new Dependente ("Joãozinho", null, null, null, null, null, false, null, null, null, null, null, null, null, null, false);
-		Dependente dependente2 = new Dependente("Mariazinha", null, null, null, null, null, false, null, null, null, null, null, null, null, null, false);
+		int tamanhoAnterior = dao.getAll().size();
+		Dependente dependente = new Dependente("Joãozinho", "Fonseca", "Jenifer", data, "Venezuelano",
+				"Cidade del Leste", true, null, null, null, "09619039610", null, null, true);
+		Dependente dependente2 = new Dependente("Joãozinho", "Fonseca", "Jenifer", data, "Venezuelano",
+				"Cidade del Leste", true, null, null, null, "09619039610", null, null, true);
 		dao.create(dependente);
 		dao.create(dependente2);
-		assertEquals(2, dao.getAll().size());
+		assertEquals(tamanhoAnterior + 2, dao.getAll().size());
 
 	}
 
 	@Test
 	public void testCreate() {
-		Dependente dependente = new Dependente("Joãozinho", null, null, null, null, null, false, null, null, null, null, null, null, null, null, false);
+		Dependente dependente = new Dependente("Joãozinho", "Fonseca", "Jenifer", data, "Venezuelano",
+				"Cidade del Leste", true, null, null, null, "09619039610", null, null, true);
 		assertEquals(dependente, dao.create(dependente));
 	}
 
 	@Test
 	public void testDelete() {
-		Dependente dependente = new Dependente("Joãozinho", null, null, null, null, null, false, null, null, null, null, null, null, null, null, false);
+		Dependente dependente = new Dependente("Joãozinho", "Fonseca", "Jenifer", data, "Venezuelano",
+				"Cidade del Leste", true, null, null, null, "09619039610", null, null, true);
 		dao.create(dependente);
-
-		dao.delete(dependente);
-		assertEquals(0, dao.getAll().size());
+		assertEquals(true, dao.delete(dependente));
+		assertNull(dao.readById(dependente.getId()));
 	}
 	
 	@Test
 	public void testUpdate() {
-		Dependente dependente = new Dependente("Joãozinho", null, null, null, null, null, false, null, null, null, null, null, null, null, null, false);
+		Dependente dependente = new Dependente("Joãozinho", "Fonseca", "Jenifer", data, "Venezuelano",
+				"Cidade del Leste", true, null, null, null, "09619039610", null, null, true);
 		dao.create(dependente);
 		dependente.setRg("012345678");
 		assertEquals("012345678", dao.update(dependente).getRg());

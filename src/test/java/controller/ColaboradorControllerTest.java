@@ -75,10 +75,10 @@ public class ColaboradorControllerTest {
 		dao.create(colaborador);
 		session.clear();
 		Integer id = colaborador.getId();
-		Colaborador c = ColaboradorController.atualizarColaborador(id, "João2", "Nunes", "luquinha", data, "Americano", "burro", false,
+		ColaboradorController.atualizarColaborador(id, "João2", "Nunes", "luquinha", data, "Americano", "burro", false,
 				"Masculino", ig, endereco, "21164028324", "45124563", contatos, null, null, false, false, data, false,
 				null, "lucas.nunes@senior.com.br", "554555", conta, exameMedico, dependente);
-		assertEquals("João2", c.getNome());
+		assertEquals("João2", dao.readById(id).getNome());
 	}
 
 	@Test

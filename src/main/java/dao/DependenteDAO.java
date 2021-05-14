@@ -46,16 +46,11 @@ public class DependenteDAO extends Dao<Dependente> implements InterfaceDao<Depen
 		return dependente;
 	}
 
-	public Dependente readByIdColab(Integer id) {
+	public List<Dependente> readByIdColab(Integer id) {
 		Colaborador colaborador = session.get(Colaborador.class, id);
-		colaborador.depe
-		return session.get(Dependente.class, id);
+		return colaborador.getDependente();
 	}
 
-	public Dependente readByNomeSobrenome(String nome, String sobrenome) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
 	
 	
