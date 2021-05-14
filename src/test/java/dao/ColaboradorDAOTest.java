@@ -1,12 +1,12 @@
 package dao;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertNull;
 
 import java.time.LocalDate;
 
 import org.hibernate.Session;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -24,37 +24,52 @@ import persistence.DBConnection;
 public class ColaboradorDAOTest {
 
 	static Session session = DBConnection.getSession();
-	static ColaboradorDAO dao = ColaboradorDAO.getInstance(session);
+	ColaboradorDAO dao = ColaboradorDAO.getInstance(session);
 	static ContaDAO daoConta = ContaDAO.getInstance(session);
 	static ContatosDAO daoContatos = ContatosDAO.getInstance(session);
 	static EnderecoDAO daoEndereco = EnderecoDAO.getInstance(session);
 	static ExameMedicoDAO daoExameMedico = ExameMedicoDAO.getInstance(session);
 	static IdentidadeGenero ig = EMDadosPessoais.IdentidadeGenero.TRANS;
 	static TiposExames em = EMOutros.TiposExames.ADMISSIONAL;
-	static Conta conta = new Conta(null, null, null, null);
-	static Endereco endereco = new Endereco(null, null, null, null, null, null, 
+	Conta conta = new Conta(null, null, null, null);
+	Endereco endereco = new Endereco(null, null, null, null, null, null, 
 			null, null);
-	static Contatos contatos = new Contatos(null, null, null, null);
-	static ExameMedico exameMedico = new ExameMedico(em, LocalDate.now(), true);
+	String email = "teste@gmail.com";
+	Contatos contatos = new Contatos(null, null, email, null);
+	ExameMedico exameMedico = new ExameMedico(em, LocalDate.now(), true);
+	ExameMedico exameMedico2 = new ExameMedico(em, LocalDate.now(), false);
 	
-	@BeforeClass
-	public static void criarTabelas() {
-		daoConta.create(conta);
+	@Before
+	public void criarTabelas() {
+		daoConta.create(conta);	
 		daoContatos.create(contatos);
 		daoEndereco.create(endereco);
 		daoExameMedico.create(exameMedico);
+		daoExameMedico.create(exameMedico2);
 	}
 	
-	@Ignore
+	@Test
 	public void testReadById() {
+		Colaborador colaborador = new Colaborador("Teste", null, null, null, null,
+				null, false, null, ig, endereco, null, null, contatos, null, null, 
+				false, false, null, false, null, null, null, conta, exameMedico);	
 		dao.create(colaborador);
-		assertEquals(colaborador, dao.readById(1));
+		Integer id = colaborador.getId();
+		assertEquals(colaborador, dao.readById(id));
 	}
 
-	@Ignore
+	@Test
 	public void testGetAll() {
+		int tamanhoAntes = dao.getAll().size();
+		Colaborador colaborador = new Colaborador("Teste", null, null, null, null,
+				null, false, null, ig, endereco, null, null, contatos, null, null, 
+				false, false, null, false, null, null, null, conta, exameMedico);	
+		Colaborador colaborador1 = new Colaborador("Teste2", null, null, null, null,
+				null, false, null, ig, endereco, null, null, contatos, null, null, 
+				false, false, null, false, null, null, null, conta, exameMedico2);	
 		dao.create(colaborador);
-		assertEquals(1, dao.getAll().size());
+		dao.create(colaborador1);		
+		assertEquals(tamanhoAntes + 2, dao.getAll().size());
 	}
 
 	@Test
@@ -65,14 +80,32 @@ public class ColaboradorDAOTest {
 		assertEquals(colaborador, dao.create(colaborador));
 	}
 
-	@Ignore
+	@Test
 	public void testDelete() {
-		fail("Not yet implemented");
+		Colaborador colaborador = new Colaborador("Teste", null, null, null, null,
+				null, false, null, ig, endereco, null, null, contatos, null, null, 
+				false, false, null, false, null, null, null, conta, exameMedico);
+		dao.create(colaborador);
+		Integer id = colaborador.getId();
+		assertEquals(true, dao.delete(colaborador));
+		assertNull(dao.readById(id));
 	}
 
-	@Ignore
+	@Test
 	public void testUpdate() {
-		fail("Not yet implemented");
+		Colaborador colaborador = new Colaborador("Teste", null, null, null, null,
+				null, false, null, ig, endereco, null, null, contatos, null, null, 
+				false, false, null, false, null, null, null, conta, exameMedico);
+		dao.create(colaborador);	
+	}
+	
+	@Ignore
+	public void testReadByEmail() {
+		Colaborador colaborador = new Colaborador("Teste", null, null, null, null,
+				null, false, null, ig, endereco, null, null, contatos, null, null, 
+				false, false, null, false, null, "email@empresa.com.br", null, conta, exameMedico);	
+		dao.create(colaborador);
+		assertEquals(colaborador, dao.readByEmail("email@empresa.com.br"));
 	}
 
 }
