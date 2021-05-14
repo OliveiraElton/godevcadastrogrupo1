@@ -34,6 +34,7 @@ public abstract class Dao<T>{
 	 * @return
 	 */
 	public boolean delete(T item) {
+		session.clear();
 		if (!session.getTransaction().isActive())
 			session.beginTransaction();
 		session.delete(item);

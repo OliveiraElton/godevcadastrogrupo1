@@ -21,6 +21,7 @@ public class PrestadorServicoDAOTest {
 
 	Session session = DBConnection.getSession();
 	PrestadorServicoDAO dao = PrestadorServicoDAO.getInstance(session);
+	protected static PrestadorServicoDAO instance;
 
 	@Before
 	public void limparPrestadorServico() {

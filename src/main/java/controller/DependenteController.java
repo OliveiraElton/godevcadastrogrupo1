@@ -2,14 +2,20 @@ package controller;
 
 import java.time.LocalDate;
 
+import org.hibernate.Session;
+
+import dao.ColaboradorDAO;
+import dao.ContaDAO;
 import dao.ContatosDAO;
 import dao.DependenteDAO;
 import dao.EnderecoDAO;
+import dao.ExameMedicoDAO;
 import enums.EMDadosPessoais.IdentidadeGenero;
 import enums.EMDadosPessoais.TiposDependentes;
 import model.Contatos;
 import model.Dependente;
 import model.Endereco;
+import persistence.DBConnection;
 
 /**
 * Controller do dependente.
@@ -22,8 +28,13 @@ import model.Endereco;
 */
 public class DependenteController {
 	
-	static DependenteDAO dependenteDao = new DependenteDAO();
+	static Session session = DBConnection.getSession();
+	static DependenteDAO daoDependente= DependenteDAO.getInstance(session);
+	static ContatosDAO daoContatos = ContatosDAO.getInstance(session);
+	static EnderecoDAO daoEndereco = EnderecoDAO.getInstance(session);
+	static ExameMedicoDAO daoExameMedico = ExameMedicoDAO.getInstance(session);
 	
+		
 	/**
 	 * Criar Dependente. 
 	 * 
@@ -71,24 +82,18 @@ public class DependenteController {
 			String email_corporativo, String titulo_eleitor,String logradouro, 
 			Integer numero, String complemento, String cep, String bairro, String pais,
 			String cidade, String uf, String telefonePrincipal, String telefoneSecundario,
-			String email, String telefoneFamiliar) {
-		
-		Contatos contatos = new Contatos(telefonePrincipal, telefoneSecundario, 
-				email, telefoneFamiliar);
-		ContatosDAO contatosDao = new ContatosDAO();
-		contatosDao.create(contatos);
+			String email, String telefoneFamiliar) {		
 
 		Endereco endereco = new Endereco(logradouro, numero, complemento, cep, 
 				bairro, pais, cidade, uf);
-		EnderecoDAO enderecoDao = new EnderecoDAO();
-		enderecoDao.create(endereco);
+			daoEndereco.create(endereco);
 		
 		Dependente dependente = new Dependente(nome, sobrenome, nomeSocial,
 				dataDeNascimento, nacionalidade, naturalidade, pcd, genero, 
-				identidadeGenero, endereco, cpf, rg, contatos, idDependente, 
-				idColaborador, tipoDependente, optanteIR);
+				identidadeGenero, endereco, cpf, rg, idDependente, 
+				idColaborador, tipoDependente, optanteIR);		
 		
-		return dependenteDao.create(dependente);
+		return daoDependente.create(dependente);
 	}
 	
 	/**
@@ -101,7 +106,7 @@ public class DependenteController {
 	 * @return true caso seja deletado ou false caso contrário
 	 */
 	public static boolean deleteDependente(Dependente dependente) {
-		return dependenteDao.delete(dependente);
+		return daoDependente.delete(dependente);
 	}
 	
 	/**
@@ -141,10 +146,10 @@ public class DependenteController {
 		
 		Dependente dependente = new Dependente(nome, sobrenome, nomeSocial, dataDeNascimento,
 				nacionalidade, naturalidade, pcd, genero, identidadeGenero,
-				endereco, cpf, rg, contatos, idDependente, idColaborador,
+				endereco, cpf, rg, idDependente, idColaborador,
 				tipoDependente, optanteIR);
 		
-		return dependenteDao.update(idDependente, dependente);
+		return daoDependente.update(idDependente, dependente);
 	}
 	
 	/**
@@ -157,7 +162,7 @@ public class DependenteController {
 	 * @return Dependente ou null caso não encontrado. 
 	 */
 	public static Dependente buscarDependentePorId(Integer id) {		
-		return dependenteDao.readById(id);
+		return daoDependente.readById(id);
 	}
 	
 	/**
@@ -171,22 +176,8 @@ public class DependenteController {
 	 * @return Dependente ou null caso não encontrado. 
 	 */
 	public static Dependente buscarDependentePorIdColaborador(Integer id) {		
-		return dependenteDao.readByIdColab(id);
+		return daoDependente.readByIdColab(id);
 	}
 	
-	/**
-	 * Busca Dependente por Nome e Sobrenome.
-	 * 
-	 * Busca o Dependente cujo nome e sobrenome são iguais aos passados como 
-	 * parâmetro.
-	 * 
-	 * @param nome Do dependente desejado.
-	 * @param sobrenome Do dependente desejado.
-	 * 
-	 * @return Dependente ou null caso dependente não encontrado. 
-	 */
-	public static Dependente buscarDependentePorNomeSobrenome(String nome, String sobrenome) {		
-		return dependenteDao.readByNomeSobrenome(nome, sobrenome);
-	}
 	
 }

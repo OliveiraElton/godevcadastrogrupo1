@@ -55,6 +55,8 @@ public class Colaborador extends Pessoa{
 	private Contatos contatos;
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<ExameMedico> exameMedico = new ArrayList<ExameMedico>();
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Dependente> dependente = new ArrayList<Dependente>();
 
 	public Colaborador() {
 		super();
@@ -93,7 +95,7 @@ public class Colaborador extends Pessoa{
 			Integer idCargo, Integer nit, boolean optanteVT, boolean optanteVAVR,
 			LocalDate dataAdmissao, boolean optanteDependente, String registro_alistamento, 
 			String email_corporativo, String titulo_eleitor, Conta conta, 
-			ExameMedico exameMedico) {
+			ExameMedico exameMedico, Dependente dependente) {
 		super(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, 
 				naturalidade, pcd, genero, identidadeGenero, endereco, cpf, rg);
 		this.idCargo = idCargo;
@@ -108,6 +110,7 @@ public class Colaborador extends Pessoa{
 		this.conta = conta;
 		this.contatos = contatos;
 		this.addExameMedico(exameMedico);
+		this.addDependente(dependente);
 	}
 
 	public int getId() {
@@ -218,6 +221,14 @@ public class Colaborador extends Pessoa{
 
 	public void addExameMedico(ExameMedico exameMedico) {
 		this.exameMedico.add(exameMedico);
+	}
+
+	public List<Dependente> getDependente() {
+		return dependente;
+	}
+
+	public void addDependente(Dependente dependente) {
+		this.dependente.add(dependente);
 	}
 
 }
