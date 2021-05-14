@@ -1,18 +1,14 @@
 package controller;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
 
-import dao.ColaboradorDAO;
-import dao.ContaDAO;
 import dao.ContatosDAO;
 import dao.EmpresaDAO;
 import dao.EnderecoDAO;
-import dao.ExameMedicoDAO;
-import model.Contatos;
+import model.Contatos;S
 import model.Empresa;
 import model.Endereco;
 import persistence.DBConnection;
