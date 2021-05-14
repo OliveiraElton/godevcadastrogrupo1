@@ -182,4 +182,9 @@ public class Empresa {
 		return this.id;
 	}
 
+	public Integer setId(Integer id2) {
+		// TODO Auto-generated method stub
+		return this.id;
+	}
+
 }
