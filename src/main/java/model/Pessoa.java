@@ -86,13 +86,25 @@ public class Pessoa{
 		return nome;
 	}
 	public void setNome(String nome) {
-		this.nome = FormatacaoDocumentos.removerCaracteres(nome);
+		try{
+			FormatacaoDocumentos.removerCaracteres(nome);
+			this.nome = nome;
+		}
+		catch(Exception e){
+			e.getMessage();
+		}
 	}
 	public String getSobrenome() {
 		return sobrenome;
 	}
 	public void setSobrenome(String sobrenome) {
-		this.sobrenome = FormatacaoDocumentos.removerCaracteres(sobrenome);
+		try{
+			FormatacaoDocumentos.removerCaracteres(sobrenome);
+			this.sobrenome = sobrenome;
+		}
+		catch(Exception e){
+			e.getMessage();
+		}
 	}
 	public String getNomeSocial() {
 		return nomeSocial;

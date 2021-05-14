@@ -106,7 +106,7 @@ public class ColaboradorController {
 			String uf, String telefonePrincipal, String telefoneSecundario, String email, 
 			String telefoneFamiliar, TiposExames tipoExame, LocalDate dataExame, boolean apto,
 			String nomeBanco, String agencia, String numeroConta, String digitoVerificador,
-			Integer idDependente, Integer idColaborador,TiposDependentes tipoDependente, 
+			TiposDependentes tipoDependente, 
 			boolean optanteIR) {
 		
 		Contatos contatos = new Contatos(telefonePrincipal, telefoneSecundario, 
@@ -125,7 +125,7 @@ public class ColaboradorController {
 		
 		Dependente dependente = new Dependente(nome,sobrenome,nomeSocial, 
 				dataDeNascimento,nacionalidade,naturalidade, pcd, genero, identidadeGenero,
-				endereco, cpf,  rg, idDependente, idColaborador, tipoDependente, optanteIR);
+				endereco, cpf,  rg, tipoDependente, optanteIR);
 		daoDependente.create(dependente);
 		
 		Colaborador colaborador = new Colaborador(nome, sobrenome, nomeSocial, 

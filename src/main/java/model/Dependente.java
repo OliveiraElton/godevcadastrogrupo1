@@ -29,8 +29,6 @@ public class Dependente extends Pessoa{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-	private Integer idDependente;
-	private Integer idColaborador;
 	private TiposDependentes tipoDependente;
 	private boolean optanteIR;
 	
@@ -58,30 +56,12 @@ public class Dependente extends Pessoa{
 	 */
 	public Dependente(String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
 			String nacionalidade, String naturalidade, boolean pcd, String genero, IdentidadeGenero identidadeGenero,
-			Endereco endereco, String cpf, String rg, Integer idDependente, Integer idColaborador,
+			Endereco endereco, String cpf, String rg,
 			TiposDependentes tipoDependente, boolean optanteIR) {
 		super(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero, identidadeGenero,
 				endereco, cpf, rg);
-		this.idDependente = idDependente;
-		this.idColaborador = idColaborador;
 		this.tipoDependente = tipoDependente;
 		this.optanteIR = optanteIR;
-	}
-
-	public Integer getIdDependente() {
-		return idDependente;
-	}
-
-	public void setIdDependente(Integer idDependente) {
-		this.idDependente = idDependente;
-	}
-
-	public Integer getIdColaborador() {
-		return idColaborador;
-	}
-
-	public void setIdColaborador(Integer idColaborador) {
-		this.idColaborador = idColaborador;
 	}
 
 	public TiposDependentes getTipoDependente() {
