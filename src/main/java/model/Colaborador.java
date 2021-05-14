@@ -12,10 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDeDatas;
 import enums.EMDadosPessoais.IdentidadeGenero;
 
 @Entity
-public class Colaborador extends Pessoa {
+public class Colaborador extends Pessoa{
 
 	/**
 	 * Classe Colaborador.
@@ -99,7 +100,7 @@ public class Colaborador extends Pessoa {
 		this.nit = nit;
 		this.optanteVT = optanteVT;
 		this.optanteVAVR = optanteVAVR;
-		this.dataAdmissao = dataAdmissao;
+		this.setDataAdmissao(dataAdmissao);
 		this.optanteDependente = optanteDependente;
 		this.registro_alistamento = registro_alistamento;
 		this.email_corporativo = email_corporativo;
@@ -154,7 +155,13 @@ public class Colaborador extends Pessoa {
 	}
 
 	public void setDataAdmissao(LocalDate dataAdmissao) {
-		this.dataAdmissao = dataAdmissao;
+		try {
+			ValidacaoDeDatas.validaDataAdmissao(dataAdmissao);
+			this.dataAdmissao = dataAdmissao;
+		}
+		catch (Exception e){
+			e.getMessage();
+		}
 	}
 
 	public boolean isOptanteDependente() {

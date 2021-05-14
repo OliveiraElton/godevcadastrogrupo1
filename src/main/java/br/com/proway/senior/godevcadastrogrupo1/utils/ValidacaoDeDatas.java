@@ -3,10 +3,6 @@ package br.com.proway.senior.godevcadastrogrupo1.utils;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-import model.Colaborador;
-import model.Pessoa;
-import model.PrestadorServico;
-
 /**
  * Classe utilizada na valida��o das datas do cadastro.
  * 
@@ -34,25 +30,9 @@ public class ValidacaoDeDatas {
 	 * @param pessoa
 	 * @return true, caso a data seja v�lida
 	 */
-	public static boolean validaDataDeNascimento(Pessoa pessoa) {
-
-		if (pessoa.getDataDeNascimento().until(LocalDate.now(), ChronoUnit.YEARS) <= IDADE_MAXIMA_PARA_PESSOA &&
-				pessoa.getDataDeNascimento().until(LocalDate.now(), ChronoUnit.DAYS) > 0)  {
-			return true;
-		}
-		return false;
-	}
-
-	/**
-	 * Valida a data de nascimento de um colaborador.
-	 * 
-	 * Verifica se a data est� de acordo com as normas de contrata��o (14 <= idade <= 120).
-	 * @param colaborador
-	 * @return true, caso a data seja v�lida
-	 */
-	public static boolean validaDataDeNascimentoColaborador(Colaborador colaborador) {
-		if (colaborador.getDataDeNascimento().until(LocalDate.now(), ChronoUnit.YEARS) >= IDADE_MINIMA_PARA_CONTRATO &&
-				colaborador.getDataDeNascimento().until(LocalDate.now(), ChronoUnit.YEARS) <= IDADE_MAXIMA_PARA_PESSOA) {
+	public static boolean validaDataDeNascimento(LocalDate data) {
+		if (data.until(LocalDate.now(), ChronoUnit.YEARS) <= IDADE_MAXIMA_PARA_PESSOA &&
+				data.until(LocalDate.now(), ChronoUnit.DAYS) > 0)  {
 			return true;
 		}
 		return false;
@@ -63,9 +43,9 @@ public class ValidacaoDeDatas {
 	 * @param colaborador
 	 * @return true, caso a data seja v�lida
 	 */
-	public static boolean validaDataAdmissao(Colaborador colaborador) {
-		if (colaborador.getDataAdmissao().until(LocalDate.now(), ChronoUnit.DAYS) >= 0 && 
-				colaborador.getDataAdmissao().until(LocalDate.now(), ChronoUnit.YEARS) <= TEMPO_MAXIMO_PARA_ADMISSAO) {
+	public static boolean validaDataAdmissao(LocalDate data) {
+		if (data.until(LocalDate.now(), ChronoUnit.DAYS) >= 0 && 
+				data.until(LocalDate.now(), ChronoUnit.YEARS) <= TEMPO_MAXIMO_PARA_ADMISSAO) {
 			return true;
 		}
 		return false;
@@ -78,8 +58,8 @@ public class ValidacaoDeDatas {
 	 * @param colaborador
 	 * @return true, caso a data seja v�lida
 	 */
-	public static boolean validaDataInicioContrato(PrestadorServico presServico) {
-		if (presServico.getDataInicioContrato().until(LocalDate.now(), ChronoUnit.DAYS) >= 0 )	 {
+	public static boolean validaDataInicioContrato(LocalDate data) {
+		if (data.until(LocalDate.now(), ChronoUnit.DAYS) >= 0 )	 {
 			return true;
 		}
 		return false;

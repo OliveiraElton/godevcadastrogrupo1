@@ -6,6 +6,9 @@ import javax.persistence.CascadeType;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 
+import br.com.proway.senior.godevcadastrogrupo1.utils.FormatacaoDocumentos;
+import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDeDatas;
+import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDocumentos;
 import enums.EMDadosPessoais.IdentidadeGenero;
 
 /**
@@ -65,10 +68,10 @@ public class Pessoa{
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade,
 			boolean pcd, String genero, IdentidadeGenero identidadeGenero,
 			Endereco endereco, String cpf, String rg) {
-		this.nome = nome;
-		this.sobrenome = sobrenome;
-		this.nomeSocial = nomeSocial;
-		this.dataDeNascimento = dataDeNascimento;
+		this.setNome(nome);
+		this.setSobrenome(sobrenome);
+		this.setNomeSocial(nomeSocial);
+		this.setDataDeNascimento(dataDeNascimento);;
 		this.nacionalidade = nacionalidade;
 		this.naturalidade = naturalidade;
 		this.pcd = pcd;
@@ -83,72 +86,102 @@ public class Pessoa{
 		return nome;
 	}
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.nome = FormatacaoDocumentos.removerCaracteres(nome);
 	}
 	public String getSobrenome() {
 		return sobrenome;
 	}
 	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
+		this.sobrenome = FormatacaoDocumentos.removerCaracteres(sobrenome);
 	}
 	public String getNomeSocial() {
 		return nomeSocial;
 	}
 	public void setNomeSocial(String nomeSocial) {
-		this.nomeSocial = nomeSocial;
+		this.nomeSocial = FormatacaoDocumentos.removerCaracteres(nomeSocial);;
 	}
 	public LocalDate getDataDeNascimento() {
 		return dataDeNascimento;
 	}
 	public void setDataDeNascimento(LocalDate dataDeNascimento) {
-		this.dataDeNascimento = dataDeNascimento;
+		try {
+			if(ValidacaoDeDatas.validaDataDeNascimento(dataDeNascimento)) {
+				this.dataDeNascimento = dataDeNascimento;
+			}
+		}
+		catch(Exception e) {
+			e.getMessage();
+		}
 	}
 	public String getNacionalidade() {
 		return nacionalidade;
 	}
+	
 	public void setNacionalidade(String nacionalidade) {
 		this.nacionalidade = nacionalidade;
 	}
+	
 	public String getNaturalidade() {
 		return naturalidade;
 	}
+	
 	public void setNaturalidade(String naturalidade) {
 		this.naturalidade = naturalidade;
 	}
+	
 	public boolean isPcd() {
 		return pcd;
 	}
+	
 	public void setPcd(boolean pcd) {
 		this.pcd = pcd;
 	}
+	
 	public String getGenero() {
 		return genero;
 	}
+	
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
+	
 	public IdentidadeGenero getIdentidadeGenero() {
 		return identidadeGenero;
 	}
+	
 	public void setIdentidadeGenero(IdentidadeGenero identidadeGenero) {
 		this.identidadeGenero = identidadeGenero;
 	}
+	
 	public Endereco getEndereco() {
 		return endereco;
 	}
+	
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
+	
 	public String getCpf() {
 		return cpf;
 	}
+	
 	public void setCpf(String cpf) {
-		this.cpf = cpf;
+		try{
+			if(ValidacaoDocumentos.validarCPF(cpf)) {
+				this.cpf = cpf;
+			}
+		}
+		catch(Exception e) {
+			e.getMessage();
+		}
 	}
+	
 	public String getRg() {
 		return rg;
 	}
+	
 	public void setRg(String rg) {
 		this.rg = rg;
 	}
+
 }

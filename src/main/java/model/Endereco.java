@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDocumentos;
+
 /**
  * Classe que engloba e abstrai as informa��es de endereco de um
  * Colaborador/Empresa. Esta classe ser� instanciada nas classes Colaborador e
@@ -64,6 +66,7 @@ public class Endereco {
 		this.cidade = cidade;
 		this.uf = uf;
 	}
+	
 	public String getLogradouro() {
 		return logradouro;
 	}
@@ -86,7 +89,13 @@ public class Endereco {
 		return cep;
 	}
 	public void setCep(String cep) {
-		this.cep = cep;
+		try{
+			ValidacaoDocumentos.validarCEP(cep);
+			this.cep = cep;
+		}
+		catch(Exception e) {
+			e.getMessage();
+		}
 	}
 	public String getBairro() {
 		return bairro;

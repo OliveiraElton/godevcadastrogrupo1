@@ -23,7 +23,7 @@ import enums.EMDadosPessoais.TiposDependentes;
  */
 
 @Entity
-public class Dependente extends Pessoa {
+public class Dependente extends Pessoa{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

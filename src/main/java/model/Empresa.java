@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDocumentos;
+
 /**
  * Classe que abstrai as informa��es de uma Empresa contratada. Esta Classe ser�
  * instanciada na Classe PrestadorServico, e instanciar� as classes Endereco e
@@ -92,7 +94,14 @@ public class Empresa {
 	}
 
 	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
+		try{
+			ValidacaoDocumentos.validarCNPJ(cnpj);
+			this.cnpj = cnpj;
+		}
+		catch(Exception e){
+			e.getMessage();
+		}
+		
 	}
 
 	public Endereco getEndereco() {
@@ -109,77 +118,6 @@ public class Empresa {
 
 	public void setContato(Contatos contato) {
 		this.contato = contato;
-	}
-
-	/**
-	 * Cria Empresa.
-	 *
-	 * � utilizado para criar um objeto da classe Empresa.
-	 * 
-	 * Exemplo de uso: Empresa empresa = new
-	 * Empresa.EmpresaBuilder().empresaId(56).nomeEmpresa("Nome Ilustrativo").
-	 * dataInicioContrato(LocalDate.of(2004, 6,
-	 * 26)).cnpj("567895463214").....criarEmpresa() //Colocar quantos atributos
-	 * forem necess�rios
-	 * 
-	 * @author Bruna <sh4323202@gmail.com>
-	 * @author Enzo <enzomm.bodyandmind@gmail.com>
-	 * @author Sabrina <sabrinaschmidt335@gmail.com>
-	 * @author Vanderlei <vanderleik@yahoo.com.br>
-	 * @author Vitor <vitornathang@gmail.com>
-	 */
-
-	public static class EmpresaBuilder {
-		private long empresaId;
-		private String nomeEmpresa;
-		private LocalDate dataInicioContrato;
-		private String cnpj;
-		private Endereco endereco;
-		private Contatos contato;
-
-		public EmpresaBuilder empresaId(long empresaId) {
-			this.empresaId = empresaId;
-			return this;
-		}
-
-		public EmpresaBuilder nomeEmpresa(String nomeEmpresa) {
-			this.nomeEmpresa = nomeEmpresa;
-			return this;
-		}
-
-		public EmpresaBuilder dataInicioContrato(LocalDate dataInicioContrato) {
-			this.dataInicioContrato = dataInicioContrato;
-			return this;
-		}
-
-		public EmpresaBuilder cnpj(String cnpj) {
-			this.cnpj = cnpj;
-			return this;
-		}
-
-		public EmpresaBuilder endereco(Endereco endereco) {
-			this.endereco = endereco;
-			return this;
-		}
-
-		public EmpresaBuilder contato(Contatos contato) {
-			this.contato = contato;
-			return this;
-		}
-
-		public Empresa criarEmpresa() {
-			return new Empresa(nomeEmpresa, dataInicioContrato, cnpj, endereco, contato);
-		}
-	}
-
-	@Override
-	public String toString() {
-		return "Empresa [empresaId=" + empresaId + ", nomeEmpresa=" + nomeEmpresa + ", dataInicioContrato="
-				+ dataInicioContrato + ", cnpj=" + cnpj + ", endereco=" + endereco + ", contato= " + contato + "]";
-	}
-
-	public Integer getId() {
-		return this.id;
 	}
 
 }

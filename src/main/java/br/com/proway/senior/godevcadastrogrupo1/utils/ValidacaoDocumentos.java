@@ -30,10 +30,10 @@ public class ValidacaoDocumentos {
 		}
 
 		return validaPrimeiroDigitoCPF(CPFFormatado) &&
-				validaPrimeiroDigitoCPF(CPFFormatado);
+				validaSegundoDigitoCPF(CPFFormatado);
 	}
 
-	public static boolean validaPrimeiroDigitoCPF(String CPFFormatado) {
+	private static boolean validaPrimeiroDigitoCPF(String CPFFormatado) {
 		int soma = 0;
 		int mult = 10;
 
@@ -47,7 +47,7 @@ public class ValidacaoDocumentos {
 
 	}
 
-	public static boolean validaSegundoDigitoCPF(String CPFFormatado) {
+	private static boolean validaSegundoDigitoCPF(String CPFFormatado) {
 		int soma = 0;
 		int mult = 11;
 
@@ -60,32 +60,16 @@ public class ValidacaoDocumentos {
 	}
 
 	/**
-	 * ATEN��O: TELEFONE MOVEL Valida o tamanho do telefone
+	 * ATEN��O: TELEFONE Valida o tamanho do telefone
 	 * 
-	 * Este m�todo verifica se h� 11 d�gitos no telefone. Se houver ele retorna true
+	 * Este m�todo verifica se h� 11  ou 10 d�gitos no telefone. Se houver ele retorna true
 	 * caso contr�rio, retorna false.
 	 * 
 	 * @param telefone
 	 * @return boolean
 	 */
-	public static boolean validarTamanhoTelMovel(String telefone) {
-		if (telefone.length() != 11) {
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * ATEN��O: TELEFONE FIXO Valida o tamanho do telefone fixo.
-	 * 
-	 * Este m�todo verifica se h� 10 d�gitos no telefone. Se houver ele retorna true
-	 * caso contr�rio, retorna false.
-	 * 
-	 * @param telefone
-	 * @return boolean
-	 */
-	public static boolean validarTamanhoTelFixo(String telefone) {
-		if (telefone.length() != 10) {
+	public static boolean validarTamanhoTelefone(String telefone) {
+		if (telefone.length() != 11 && telefone.length() != 10 ) {
 			return false;
 		}
 		return true;

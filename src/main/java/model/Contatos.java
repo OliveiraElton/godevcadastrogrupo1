@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDocumentos;
+
 /**
  * Armazena os contatos necess�rios de um colaborador, empresa ou prestador de
  * servi�o.
@@ -53,7 +55,13 @@ public class Contatos{
 	}
 
 	public void setTelefonePrincipal(String telefonePrincipal) {
-		this.telefonePrincipal = telefonePrincipal;
+		try{
+			ValidacaoDocumentos.validarTamanhoTelefone(telefonePrincipal);
+			this.telefonePrincipal = telefonePrincipal;
+		}
+		catch(Exception e){
+			e.getMessage();
+		}
 	}
 
 	public String getTelefoneSecundario() {
@@ -61,7 +69,13 @@ public class Contatos{
 	}
 
 	public void setTelefoneSecundario(String telefoneSecundario) {
-		this.telefoneSecundario = telefoneSecundario;
+		try{
+			ValidacaoDocumentos.validarTamanhoTelefone(telefonePrincipal);
+			this.telefoneSecundario = telefoneSecundario;
+		}
+		catch(Exception e){
+			e.getMessage();
+		}
 	}
 
 	public String getEmail() {
@@ -69,7 +83,13 @@ public class Contatos{
 	}
 
 	public void setEmail(String email) {
-		this.email = email;
+		try {
+			ValidacaoDocumentos.validarEmail(email);
+			this.email = email;
+		}
+		catch(Exception e) {
+			e.getMessage();
+		}
 	}
 
 	public String getTelefoneFamiliar() {

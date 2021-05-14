@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDeDatas;
 import enums.EMDadosPessoais.IdentidadeGenero;
 
 /**
@@ -28,7 +29,7 @@ import enums.EMDadosPessoais.IdentidadeGenero;
  */
 
 @Entity
-public class PrestadorServico extends Pessoa {
+public class PrestadorServico extends Pessoa{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -81,7 +82,13 @@ public class PrestadorServico extends Pessoa {
 		return dataInicioContrato;
 	}
 	public void setDataInicioContrato(LocalDate dataInicioContrato) {
-		this.dataInicioContrato = dataInicioContrato;
+		try{
+			ValidacaoDeDatas.validaDataInicioContrato(dataInicioContrato);
+			this.dataInicioContrato = dataInicioContrato;
+		}
+		catch(Exception e) {
+			e.getMessage();
+		}
 	}
 	public Empresa getEmpresa() {
 		return empresa;

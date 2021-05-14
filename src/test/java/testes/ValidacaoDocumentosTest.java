@@ -9,41 +9,35 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDocumentos;
 
 public class ValidacaoDocumentosTest {
 
-	ValidacaoDocumentos vd = new ValidacaoDocumentos();
-	
 	@Test
 	public void testeValidaCPF() {
-		assertTrue(vd.validarCPF("21164028324"));
-		assertFalse(vd.validarCPF("2116428324"));
+		assertTrue(ValidacaoDocumentos.validarCPF("21164028324"));
+		assertFalse(ValidacaoDocumentos.validarCPF("2116428324"));
 	}
 	
 	@Test
 	public void testeValidaCNPJ() {
-		assertTrue(vd.validarCNPJ("05975585000189"));
-		assertFalse(vd.validarCNPJ("0595585000189"));
+		assertTrue(ValidacaoDocumentos.validarCNPJ("05975585000189"));
+		assertFalse(ValidacaoDocumentos.validarCNPJ("0595585000189"));
 	}
 	
 	@Test
 	public void testValidaEmail() {
-		assertTrue(vd.validarEmail("email@test.com.br"));
-		assertFalse(vd.validarEmail("emailtest.com.br"));
+		assertTrue(ValidacaoDocumentos.validarEmail("email@test.com.br"));
+		assertFalse(ValidacaoDocumentos.validarEmail("emailtest.com.br"));
 	}
 	
 	@Test
 	public void testValidaCEP() {
-		assertTrue(vd.validarCEP("78541256"));
-		assertFalse(vd.validarCEP("7854156"));
+		assertTrue(ValidacaoDocumentos.validarCEP("78541256"));
+		assertFalse(ValidacaoDocumentos.validarCEP("7854156"));
 	}
 	
 	@Test
-	public void testValidaTelefoneMovel() {
-		assertTrue(vd.validarTamanhoTelMovel("47940028922"));
-		assertFalse(vd.validarTamanhoTelMovel("4794002822"));
+	public void testValidaTelefone() {
+		assertTrue(ValidacaoDocumentos.validarTamanhoTelefone("52463248965"));
+		assertFalse(ValidacaoDocumentos.validarTamanhoTelefone("5246324896555"));
+		assertTrue(ValidacaoDocumentos.validarTamanhoTelefone("4785478965"));
 	}
 	
-	@Test
-	public void testValidaTelefoneFixo() {
-		assertTrue(vd.validarTamanhoTelFixo("4740028922"));
-		assertFalse(vd.validarTamanhoTelFixo("47940028922"));
-	}
 }

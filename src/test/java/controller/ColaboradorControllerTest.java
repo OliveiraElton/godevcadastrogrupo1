@@ -81,11 +81,7 @@ public class ColaboradorControllerTest {
 
 	@Ignore
 	public void testBuscarColaboradorPorNomeSobrenome() {
-		ColaboradorDAO cDao = new ColaboradorDAO();
-		cDao.create(colaborador);
-		colaborador.setNome("Joesley");
-		colaborador.setSobrenome("Batista");
-		assertEquals(colaborador,  ColaboradorController.buscarColaboradorPorNomeSobrenome("Joesley", "Batista"));
+		// TODO Teste buscar colaborador por nome e sobrenome
 	}
 
 	@Test
