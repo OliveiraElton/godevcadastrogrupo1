@@ -79,14 +79,14 @@ public class ColaboradorControllerTest {
 		
 	}
 
-	@Ignore
-	public void testBuscarColaboradorPorNomeSobrenome() {
-		ColaboradorDAO cDao = new ColaboradorDAO();
-		cDao.create(colaborador);
-		colaborador.setNome("Joesley");
-		colaborador.setSobrenome("Batista");
-		assertEquals(colaborador,  ColaboradorController.buscarColaboradorPorNomeSobrenome("Joesley", "Batista"));
-	}
+//	@Ignore
+//	public void testBuscarColaboradorPorNomeSobrenome() {
+//		ColaboradorDAO cDao = new ColaboradorDAO();
+//		cDao.create(colaborador);
+//		colaborador.setNome("Joesley");
+//		colaborador.setSobrenome("Batista");
+//		assertEquals(colaborador,  ColaboradorController.buscarColaboradorPorNomeSobrenome("Joesley", "Batista"));
+//	}
 
 	@Test
 	public void testBuscarTodosColaborador() {
