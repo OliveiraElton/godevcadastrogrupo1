@@ -2,6 +2,9 @@ package controller;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Session;
 
 import dao.ColaboradorDAO;
 import dao.ContaDAO;
@@ -15,6 +18,7 @@ import model.Conta;
 import model.Contatos;
 import model.Endereco;
 import model.ExameMedico;
+import persistence.DBConnection;
 
 /**
  * Controller do colaborador.
@@ -31,7 +35,12 @@ import model.ExameMedico;
  */
 public class ColaboradorController {
 
-	private static ColaboradorDAO colaboradorDAO = new ColaboradorDAO();
+	static Session session = DBConnection.getSession();
+	static ColaboradorDAO daoColaborador = ColaboradorDAO.getInstance(session);
+	static ContaDAO daoConta = ContaDAO.getInstance(session);
+	static ContatosDAO daoContatos = ContatosDAO.getInstance(session);
+	static EnderecoDAO daoEndereco = EnderecoDAO.getInstance(session);
+	static ExameMedicoDAO daoExameMedico = ExameMedicoDAO.getInstance(session);
 	
 	/**
 	 * Criar Colaborador. 
@@ -97,21 +106,17 @@ public class ColaboradorController {
 		
 		Contatos contatos = new Contatos(telefonePrincipal, telefoneSecundario, 
 				email, telefoneFamiliar);
-		ContatosDAO contatosDao = new ContatosDAO();
-		contatosDao.create(contatos);
+		daoContatos.create(contatos);
 		
 		Conta conta = new Conta(nomeBanco, agencia, numeroConta, digitoVerificador);
-		ContaDAO contaDao = new ContaDAO();
-		contaDao.create(conta);
+		daoConta.create(conta);
 		
 		ExameMedico exameMedico = new ExameMedico(tipoExame, dataExame, apto);
-		ExameMedicoDAO exameMedicoDao = new ExameMedicoDAO();
-		exameMedicoDao.create(exameMedico);
+		daoExameMedico.create(exameMedico);
 		
 		Endereco endereco = new Endereco(logradouro, numero, complemento, cep, 
 				bairro, pais, cidade, uf);
-		EnderecoDAO enderecoDao = new EnderecoDAO();
-		enderecoDao.create(endereco);
+		daoEndereco.create(endereco);
 		
 		Colaborador colaborador = new Colaborador(nome, sobrenome, nomeSocial, 
 				dataDeNascimento, nacionalidade, naturalidade, pcd, genero, 
@@ -120,7 +125,7 @@ public class ColaboradorController {
 				registro_alistamento, email_corporativo, titulo_eleitor, conta, 
 				exameMedico);
 		
-		return colaboradorDAO.create(colaborador);
+		return daoColaborador.create(colaborador);
 	}
 	
 	/**
@@ -133,7 +138,7 @@ public class ColaboradorController {
 	 * @return true caso seja deletado ou false caso contrário
 	 */
 	public static boolean deleteColabordor(Colaborador colaborador) {
-		return colaboradorDAO.delete(colaborador);
+		return daoColaborador.delete(colaborador);
 	}
 	
 	/**
@@ -170,7 +175,7 @@ public class ColaboradorController {
 	 * 
 	 * @return id do colaborador caso seja atualizado ou false caso contrário.
 	 */
-	public static Integer atualizarColaborador(Integer id, String nome, String sobrenome,
+	public static Colaborador atualizarColaborador(Integer id, String nome, String sobrenome,
 			String nomeSocial, LocalDate dataDeNascimento, String nacionalidade, 
 			String naturalidade, boolean pcd, String genero, IdentidadeGenero identidadeGenero, 
 			Endereco endereco, String cpf, String rg, Contatos contatos, Integer idCargo, 
@@ -178,14 +183,15 @@ public class ColaboradorController {
 			boolean optanteDependente, String registro_alistamento, String email_corporativo,
 			String titulo_eleitor, Conta conta, ExameMedico exameMedico) {
 		
-		Colaborador colaborador = new Colaborador(nome, sobrenome, nomeSocial, 
+		Colaborador colab = new Colaborador(nome, sobrenome, nomeSocial, 
 				dataDeNascimento, nacionalidade, naturalidade, pcd, genero, 
 				identidadeGenero, endereco, cpf, rg, contatos, idCargo, nit, 
 				optanteVT, optanteVAVR, dataAdmissao, optanteDependente, 
 				registro_alistamento, email_corporativo, titulo_eleitor, conta, 
 				exameMedico);
-		
-		return colaboradorDAO.update(id, colaborador);
+		session.clear();
+		colab.setId(id);		
+		return daoColaborador.update(colab);
 	}
 	
 	/**
@@ -198,31 +204,31 @@ public class ColaboradorController {
 	 * @return Colaborador ou null caso não encontrado. 
 	 */
 	public static Colaborador buscarColaboradorPorId(Integer id) {		
-		return colaboradorDAO.readById(id);
+		return daoColaborador.readById(id);
 	}
 	
-	/**
-	 * Busca Colaborador.
-	 * 
-	 * Busca o Colaborador cujo nome e sobrenome são iguais aos passados como 
-	 * parâmetro.
-	 * 
-	 * @param nome Do colaborador desejado.
-	 * @param sobrenome Do colaborador desejado.
-	 * 
-	 * @return Colaborador ou null caso colaborador não encontrado. 
-	 */
-	public static Colaborador buscarColaboradorPorNomeSobrenome(String nome, String sobrenome) {		
-		return colaboradorDAO.readByNomeSobrenome(nome, sobrenome);
-	}
+//	/**
+//	 * Busca Colaborador.
+//	 * 
+//	 * Busca o Colaborador cujo nome e sobrenome são iguais aos passados como 
+//	 * parâmetro.
+//	 * 
+//	 * @param nome Do colaborador desejado.
+//	 * @param sobrenome Do colaborador desejado.
+//	 * 
+//	 * @return Colaborador ou null caso colaborador não encontrado. 
+//	 */
+//	public static Colaborador buscarColaboradorPorNomeSobrenome(String nome, String sobrenome) {		
+//		return daoColaborador.readByNomeSobrenome(nome, sobrenome);
+//	}
 	
 	/**
 	 * Busca todos os Colaboradores.
 	 * 
 	 * @return lista com todos os Colaboradores.
 	 */
-	public static ArrayList<Colaborador> buscarTodosColaborador() {		
-		return colaboradorDAO.getAll();
+	public static List<Colaborador> buscarTodosColaborador() {		
+		return daoColaborador.getAll();
 	}
 
 }

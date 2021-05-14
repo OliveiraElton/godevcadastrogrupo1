@@ -1,8 +1,13 @@
 package controller;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
+import java.util.List;
+
+import org.hibernate.Session;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import dao.ColaboradorDAO;
@@ -13,8 +18,11 @@ import model.Conta;
 import model.Contatos;
 import model.Endereco;
 import model.ExameMedico;
+import persistence.DBConnection;
 
 public class ColaboradorControllerTest {
+	static Session session = DBConnection.getSession();
+	static ColaboradorDAO dao = ColaboradorDAO.getInstance(session);	
 	static IdentidadeGenero ig = EMDadosPessoais.IdentidadeGenero.TRANS;
 	static Conta conta = new Conta(null, null, null, null);
 	static Endereco endereco = new Endereco(null, null, null, null, null, null, 
@@ -32,36 +40,46 @@ public class ColaboradorControllerTest {
 				false, null, false, null, null, null, null, null, null, null, null, 
 				null, null, null, null, null, null, null, null, null, false, 
 				null, null, null, null);
-		assertEquals("Teste", c.getNome());
+		Colaborador colaborador = dao.readById(c.getId());
+		assertNotNull(colaborador);
 	}
 
 	@Test
 	public void testDeleteColabordor() {
-		ColaboradorDAO cDao = new ColaboradorDAO();
-		cDao.create(colaborador);
-		assertEquals(true, ColaboradorController.deleteColabordor(colaborador));
+		Colaborador colaborador = new Colaborador("Teste", null, null, null, null,
+				null, false, null, ig, endereco, null, null, contatos, null, null, 
+			false, false, null, false, null, null, null, conta, exameMedico);
+		dao.create(colaborador);
+		ColaboradorController.deleteColabordor(colaborador);
+		assertNull(dao.readById(colaborador.getId()));
 	}
 
 	@Test
 	public void testAtualizarColaborador() {
-		ColaboradorDAO cDao = new ColaboradorDAO();
-		cDao.create(colaborador);
-		String nome = "João";
-		assertEquals(1, (int) ColaboradorController.atualizarColaborador(0, nome, null, null,
+		Colaborador colaborador = new Colaborador("Teste", null, null, null, null,
+				null, false, null, ig, endereco, null, null, contatos, null, null, 
+			false, false, null, false, null, null, null, conta, exameMedico);
+		dao.create(colaborador);
+		Integer id = colaborador.getId();
+		Colaborador c = ColaboradorController.atualizarColaborador(id, "João2", "sobrenome",
+				null,
 				null, null, null, false, null, ig, endereco, null, null, contatos, 
 			    null, null, false, false, null, false, null, null, null, 
-				conta, exameMedico));
+				conta, exameMedico);
+		assertEquals("João2", c.getNome());
 	}
 
 	@Test
 	public void testBuscarColaboradorPorId() {
-		ColaboradorDAO cDao = new ColaboradorDAO();
-		cDao.create(colaborador);
-		assertEquals(colaborador , ColaboradorController.buscarColaboradorPorId(1));
+		Colaborador colaborador = new Colaborador("Teste", null, null, null, null,
+				null, false, null, ig, endereco, null, null, contatos, null, null, 
+			false, false, null, false, null, null, null, conta, exameMedico);
+		dao.create(colaborador);
+		assertEquals(colaborador , ColaboradorController.buscarColaboradorPorId(colaborador.getId()));
 		
 	}
 
-	@Test
+	@Ignore
 	public void testBuscarColaboradorPorNomeSobrenome() {
 		ColaboradorDAO cDao = new ColaboradorDAO();
 		cDao.create(colaborador);
@@ -72,9 +90,12 @@ public class ColaboradorControllerTest {
 
 	@Test
 	public void testBuscarTodosColaborador() {
-		ColaboradorDAO cDao = new ColaboradorDAO();
-		cDao.create(colaborador);
-		assertEquals(1, ColaboradorController.buscarTodosColaborador().size());
+		Colaborador colaborador = new Colaborador("getAll", null, null, null, null,
+				null, false, null, ig, endereco, null, null, contatos, null, null, 
+			false, false, null, false, null, null, null, conta, exameMedico);
+		dao.create(colaborador);
+		List<Colaborador> colaboradores = ColaboradorController.buscarTodosColaborador(); 
+		assertEquals("getAll", colaboradores.get(colaboradores.size() - 1).getNome());
 	}
 
 }

@@ -2,6 +2,7 @@ package model;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 
@@ -36,7 +37,7 @@ public class Pessoa{
 	private boolean pcd = false;
 	private String genero;
 	private IdentidadeGenero identidadeGenero;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Endereco endereco;
 	private String cpf;
 	private String rg;
