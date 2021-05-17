@@ -1,4 +1,4 @@
-package testes;
+package utils;
 
 import static org.junit.Assert.assertEquals;
 
@@ -7,8 +7,8 @@ import org.junit.Test;
 import br.com.proway.senior.godevcadastrogrupo1.utils.FormatacaoDocumentos;
 
 public class TesteFormatacaoDocumentos {
-
-	FormatacaoDocumentos fd = new FormatacaoDocumentos();
+	
+FormatacaoDocumentos fd = new FormatacaoDocumentos();
 	
 	@Test
 	public void testeFormataCPF() {
@@ -29,4 +29,5 @@ public class TesteFormatacaoDocumentos {
 	public void testeFormataTelefone() {
 		assertEquals(FormatacaoDocumentos.removerCaracteres("4002-8922"), "40028922");
 	}
+
 }

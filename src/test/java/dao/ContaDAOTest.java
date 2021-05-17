@@ -15,14 +15,7 @@ public class ContaDAOTest {
 	
 	Session session = DBConnection.getSession();
 	ContaDAO dao = ContaDAO.getInstance(session);
-	
-	@Before
-	public void limparConta() {
-		if (!session.getTransaction().isActive())
-			session.beginTransaction();
-		session.createSQLQuery("DELETE FROM Conta;").executeUpdate();
-		session.getTransaction().commit();
-	}
+
 
 	@Test
 	public void testReadById() {
@@ -35,10 +28,9 @@ public class ContaDAOTest {
 	@Test
 	public void testGetAll() {
 		Conta conta = new Conta("698955", "9", "0456", null);
-		Conta conta2 = new Conta("698955", "9", "0456", null);
+		Integer valorAntes = dao.getAll().size();
 		dao.create(conta);
-		dao.create(conta2);
-		assertEquals(2, dao.getAll().size());
+		assertEquals(valorAntes + 1, dao.getAll().size());
 	}
 
 	@Test
@@ -51,9 +43,9 @@ public class ContaDAOTest {
 	public void testDelete() {
 		Conta conta = new Conta("15623", null, null, null);
 		dao.create(conta);
-
+		Integer valorAntes = dao.getAll().size();
 		dao.delete(conta);
-		assertEquals(0, dao.getAll().size());
+		assertEquals(valorAntes -1, dao.getAll().size());
 	}
 
 	@Test

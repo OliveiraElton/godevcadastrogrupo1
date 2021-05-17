@@ -15,14 +15,6 @@ public class EnderecoDAOTest {
 	Session session = DBConnection.getSession();
 	EnderecoDAO dao = EnderecoDAO.getInstance(session);
 
-	@Before
-	public void limparEndereco() {
-		if (!session.getTransaction().isActive())
-			session.beginTransaction();
-		session.createSQLQuery("DELETE FROM Endereco;").executeUpdate();
-		session.getTransaction().commit();
-	}
-
 	@Test
 	public void testReadById() {
 		Endereco endereco = new Endereco("Rua joao pessoa", null, null, null, null, null, null, null);
@@ -35,9 +27,10 @@ public class EnderecoDAOTest {
 	public void testGetAll() {
 		Endereco endereco = new Endereco("Rua joao pessoa", null, null, null, null, null, null, null);
 		Endereco endereco2 = new Endereco("Rua joao pessoa", null, null, null, null, null, null, null);
+		Integer valorAntes = dao.getAll().size();
 		dao.create(endereco);
 		dao.create(endereco2);
-		assertEquals(2, dao.getAll().size());
+		assertEquals(valorAntes + 2, dao.getAll().size());
 
 	}
 
@@ -51,9 +44,9 @@ public class EnderecoDAOTest {
 	public void testDelete() {
 		Endereco endereco = new Endereco("Rua joao pessoa", null, null, null, null, null, null, null);
 		dao.create(endereco);
-
+		Integer valorAntes = dao.getAll().size();
 		dao.delete(endereco);
-		assertEquals(0, dao.getAll().size());
+		assertEquals(valorAntes -1, dao.getAll().size());
 	}
 
 

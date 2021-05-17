@@ -1,4 +1,4 @@
-package testes;
+package utils;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -8,7 +8,7 @@ import org.junit.Test;
 import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDocumentos;
 
 public class ValidacaoDocumentosTest {
-
+	
 	@Test
 	public void testeValidaCPF() {
 		assertTrue(ValidacaoDocumentos.validarCPF("21164028324"));
@@ -39,5 +39,5 @@ public class ValidacaoDocumentosTest {
 		assertFalse(ValidacaoDocumentos.validarTamanhoTelefone("5246324896555"));
 		assertTrue(ValidacaoDocumentos.validarTamanhoTelefone("4785478965"));
 	}
-	
+
 }

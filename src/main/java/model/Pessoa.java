@@ -110,7 +110,7 @@ public class Pessoa{
 		return nomeSocial;
 	}
 	public void setNomeSocial(String nomeSocial) {
-		this.nomeSocial = FormatacaoDocumentos.removerCaracteres(nomeSocial);;
+		this.nomeSocial = nomeSocial;
 	}
 	public LocalDate getDataDeNascimento() {
 		return dataDeNascimento;

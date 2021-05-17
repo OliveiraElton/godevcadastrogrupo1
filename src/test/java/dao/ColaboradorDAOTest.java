@@ -69,12 +69,8 @@ public class ColaboradorDAOTest {
 		Colaborador colaborador = new Colaborador("Lucas", "Nunes", "luquinha", data, "Americano", "burro", false,
 				"Masculino", ig, endereco, "21164028324", "45124563", contatos, null, null, false, false, data, false,
 				null, "lucas.nunes@senior.com.br", "554555", conta, exameMedico, dependente);
-		Colaborador colaborador2 = new Colaborador("Lucas", "Nunes", "luquinha", data, "Americano", "burro", false,
-				"Masculino", ig, endereco, "21164028324", "45124563", contatos, null, null, false, false, data, false,
-				null, "lucas.nunes@senior.com.br", "554555", conta, exameMedico, dependente);
 		dao.create(colaborador);
-		dao.create(colaborador2);
-		assertEquals(tamanhoAntes + 2, dao.getAll().size());
+		assertEquals(tamanhoAntes + 1, dao.getAll().size());
 	}
 
 	@Test

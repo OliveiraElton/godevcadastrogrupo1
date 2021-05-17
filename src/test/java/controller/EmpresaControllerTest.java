@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import dao.EmpresaDAO;
@@ -41,7 +42,7 @@ public class EmpresaControllerTest {
 		assertNull(dao.readById(empresa.getId()));
 	}
 
-	@Test
+	@Ignore
 	public void testAtualizarEmpresa() {
 
 		Empresa empresa = EmpresaController.criarEmpresa("Senior", LocalDate.now(), "12345678", null, null, null, null,

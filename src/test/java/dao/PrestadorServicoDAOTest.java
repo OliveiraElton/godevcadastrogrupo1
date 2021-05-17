@@ -23,14 +23,6 @@ public class PrestadorServicoDAOTest {
 	PrestadorServicoDAO dao = PrestadorServicoDAO.getInstance(session);
 	protected static PrestadorServicoDAO instance;
 
-	@Before
-	public void limparPrestadorServico() {
-		if (!session.getTransaction().isActive())
-			session.beginTransaction();
-		session.createSQLQuery("DELETE FROM PrestadorServico;").executeUpdate();
-		session.getTransaction().commit();
-	}
-
 	@Test
 	public void testReadById() {
 		PrestadorServico prestadorServico = new PrestadorServico(null, null, null, LocalDate.now(), "12345678", null,
@@ -46,9 +38,10 @@ public class PrestadorServicoDAOTest {
 				false, null, null, null, null, null, null, null, null, null);
 		PrestadorServico prestadorServico2 = new PrestadorServico(null, null, null, LocalDate.now(), "12345678", null,
 				false, null, null, null, null, null, null, null, null, null);
+		Integer valorAntes = dao.getAll().size();
 		dao.create(prestadorServico);
 		dao.create(prestadorServico2);
-		assertEquals(2, dao.getAll().size());
+		assertEquals(valorAntes +2, dao.getAll().size());
 
 	}
 
@@ -64,8 +57,9 @@ public class PrestadorServicoDAOTest {
 		PrestadorServico prestadorServico = new PrestadorServico(null, null, null, LocalDate.now(), "12345678", null,
 				false, null, null, null, null, null, null, null, null, null);
 		dao.create(prestadorServico);
+		Integer valorAntes = dao.getAll().size();
 		dao.delete(prestadorServico);
-		assertEquals(0, dao.getAll().size());
+		assertEquals(valorAntes -1, dao.getAll().size());
 	}
 
 	@Test
