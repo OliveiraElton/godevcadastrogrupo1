@@ -10,9 +10,15 @@ import org.hibernate.Session;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import dao.ColaboradorDAO;
+import dao.ColaboradorDAOTest;
 import dao.DependenteDAO;
+import model.Colaborador;
+import model.Conta;
+import model.Contatos;
 import model.Dependente;
 import model.Endereco;
+import model.ExameMedico;
 import persistence.DBConnection;
 
 public class DependenteControllerTest {
@@ -20,6 +26,7 @@ public class DependenteControllerTest {
 	static LocalDate data = LocalDate.of(2002, 01, 28);
 	static Session session = DBConnection.getSession();
 	static DependenteDAO dao = DependenteDAO.getInstance(session);
+	static ColaboradorDAO daoColab = ColaboradorDAO.getInstance(session);
 	
 	@Test
 	public void testCriarDependente() {
@@ -36,14 +43,14 @@ public class DependenteControllerTest {
 
 	@Test
 	public void testDeleteDependente() {
-		int quantidadeAnterior = dao.getAll().size();
 		Endereco endereco = new Endereco(null, null, null, "54215365", null, null, null, null);
 		Dependente dependente = new Dependente("Joãozinho", "Fonseca", "Jenifer", data, "Venezuelano",
 				"Cidade del Leste", true, null, null, endereco, "09619039610", null, null, true);
 		dao.create(dependente);
-		assertEquals(true, dao.delete(dependente));
-		assertEquals(quantidadeAnterior, dao.getAll().size());
-		// TODO ARRUMAR DELETE DEPENDENTE
+		int quantidadeAnterior = dao.getAll().size();
+		session.clear();
+		DependenteController.deleteDependente(dependente);
+		assertEquals(quantidadeAnterior - 1, dao.getAll().size());
 	}
 	
 
@@ -73,13 +80,23 @@ public class DependenteControllerTest {
 		assertEquals(dependente, DependenteController.buscarDependentePorId(dependente.getId()));
 	}
 
-	@Ignore
+	@Test
 	public void testBuscarDependentePorIdColaborador() {
 		Endereco endereco = new Endereco(null, null, null, "54215365", null, null, null, null);
 		Dependente dependente = new Dependente("Joãozinho", "Fonseca", "Jenifer", data, "Venezuelano",
 				"Cidade del Leste", true, null, null, endereco, "09619039610", null, null, true);
+		Conta conta = new Conta(null, null, null, null);
+		String email = "teste@gmail.com";
+		Contatos contatos = new Contatos(null, null, email, null);
+		ExameMedico exameMedico = new ExameMedico(null, LocalDate.now(), true);
+		Colaborador colaborador = new Colaborador("Lucas", "Nunes", "luquinha", data, "Americano", "burro", false,
+				"Masculino", null, endereco, "21164028324", "45124563", contatos, null, null, false, false, data, false,
+				null, "lucas.nunes@senior.com.br", "554555", conta, exameMedico, dependente);
+		daoColab.create(colaborador);
 		dao.create(dependente);
-		// TODO Implementar teste buscar lista de dependentes do colaborador
+		Integer idColaborador = colaborador.getId();
+		assertEquals(1, DependenteController.buscarDependentePorIdColaborador(idColaborador).size());
+		
 	}
 
 }

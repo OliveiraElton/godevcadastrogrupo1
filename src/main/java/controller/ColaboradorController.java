@@ -240,5 +240,10 @@ public class ColaboradorController {
 	public static List<Colaborador> buscarTodosColaborador() {		
 		return daoColaborador.getAll();
 	}
+	
+	public static Colaborador addDependente(Colaborador colaborador, Dependente dependente) {
+		colaborador.addDependente(dependente);
+		return daoColaborador.update(colaborador);
+	}
 
 }
