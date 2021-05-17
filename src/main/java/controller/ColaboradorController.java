@@ -44,12 +44,12 @@ public class ColaboradorController {
 	static EnderecoDAO daoEndereco = EnderecoDAO.getInstance(session);
 	static ExameMedicoDAO daoExameMedico = ExameMedicoDAO.getInstance(session);
 	static DependenteDAO daoDependente = DependenteDAO.getInstance(session);
-	
+
 	/**
-	 * Criar Colaborador. 
+	 * Criar Colaborador.
 	 * 
-	 * Recebe os dados do colaborador separdos e cria todos os dados e chama os 
-	 * DAO necessários para a criação do colaborador e por último chama o DAO do
+	 * Recebe os dados do colaborador separdos e cria todos os dados e chama os DAO
+	 * necessários para a criação do colaborador e por último chama o DAO do
 	 * colaborador para salvar no banco.
 	 * 
 	 * @param nome
@@ -92,56 +92,54 @@ public class ColaboradorController {
 	 * @param numeroConta
 	 * @param digitoVerificador
 	 * 
-	 * @return Retorna o Colaborador caso tenha sido cadastrado ou null caso contrário
+	 * @return Retorna o Colaborador caso tenha sido cadastrado ou null caso
+	 *         contrário
 	 */
-	public static Colaborador criarColaborador(String nome, String sobrenome, String nomeSocial, 
-			LocalDate dataDeNascimento, String nacionalidade, String naturalidade,
-			boolean pcd, String genero, IdentidadeGenero identidadeGenero,
-			String cpf, String rg, Integer idCargo, Integer nit, 
-			boolean optanteVT, boolean optanteVAVR, LocalDate dataAdmissao, 
-			boolean optanteDependente, String registro_alistamento, 
-			String email_corporativo, String titulo_eleitor,
-			String logradouro, Integer numero, 
-            String complemento, String cep, String bairro, String pais, String cidade, 
-			String uf, String telefonePrincipal, String telefoneSecundario, String email, 
-			String telefoneFamiliar, TiposExames tipoExame, LocalDate dataExame, boolean apto,
-			String nomeBanco, String agencia, String numeroConta, String digitoVerificador,
-			TiposDependentes tipoDependente, 
+	public static Colaborador criarColaborador(String nome, String sobrenome, String nomeSocial,
+			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd, String genero,
+			IdentidadeGenero identidadeGenero, String cpf, String rg, Integer idCargo, Integer nit, boolean optanteVT,
+			boolean optanteVAVR, LocalDate dataAdmissao, boolean optanteDependente, String registro_alistamento,
+			String email_corporativo, String titulo_eleitor, String logradouro, Integer numero, String complemento,
+			String cep, String bairro, String pais, String cidade, String uf, String telefonePrincipal,
+			String telefoneSecundario, String email, String telefoneFamiliar, TiposExames tipoExame,
+			LocalDate dataExame, boolean apto, String nomeBanco, String agencia, String numeroConta,
+			String digitoVerificador, String nomeDependente, String sobrenomeDependente, String nomeSocialDependente,
+			LocalDate dataDeNascimentoDependente, String nacionalidadeDependente, String naturalidadeDependente,
+			boolean pcdDependente, String generoDependente, IdentidadeGenero identidadeGeneroDependente,
+			Endereco enderecoDependente, String cpfDependente, String rgDependente, TiposDependentes tipoDependente,
 			boolean optanteIR) {
+
+		ColaboradorBuilder builder = new ColaboradorBuilder();
+		builder.setNome(nome);
+		builder.setSobrenome(sobrenome);
+		builder.setNomeSocial(nomeSocial);
+		builder.setDataDeNascimento(dataDeNascimento);
+		builder.setNacionalidade(nacionalidade);
+		builder.setNaturalidade(naturalidade);
+		builder.setPcd(pcd);
+		builder.setGenero(genero);
+		builder.setIdentidadeGenero(identidadeGenero);
+		builder.setEndereco(logradouro, numero, complemento, cep, bairro, pais, cidade, uf);
+		builder.setCpf(cpf);
+		builder.setRg(rg);
+		builder.setContatos(telefonePrincipal, telefoneSecundario, email, telefoneFamiliar);
+		builder.setIdCargo(idCargo);
+		builder.setNit(nit);
+		builder.setOptanteVT(optanteVT);
+		builder.setOptanteVAVR(optanteVAVR);
+		builder.setDataAdmissao(dataAdmissao);
+		builder.setOptanteDependente(optanteDependente);
+		builder.setRegistro_alistamento(registro_alistamento);
+		builder.setEmail_corporativo(email_corporativo);
+		builder.setTitulo_eleitor(titulo_eleitor);
+		builder.setConta(nomeBanco, agencia, numeroConta, digitoVerificador);
+		builder.setExameMedico(tipoExame, dataExame, apto);
+		builder.setDependente(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade,
+				pcd, genero, identidadeGenero, cpf, rg, tipoDependente, optanteIR);
 		
-		Contatos contatos = new Contatos(telefonePrincipal, telefoneSecundario, 
-				email, telefoneFamiliar);
-		daoContatos.create(contatos);
-		
-		Conta conta = new Conta(nomeBanco, agencia, numeroConta, digitoVerificador);
-		daoConta.create(conta);
-		
-		ExameMedico exameMedico = new ExameMedico(tipoExame, dataExame, apto);
-		daoExameMedico.create(exameMedico);
-		
-		Endereco endereco = new Endereco(logradouro, numero, complemento, cep, 
-				bairro, pais, cidade, uf);
-		daoEndereco.create(endereco);
-		
-		Dependente dependente = new Dependente(nome,sobrenome,nomeSocial, 
-				dataDeNascimento,nacionalidade,naturalidade, pcd, genero, identidadeGenero,
-				endereco, cpf,  rg, tipoDependente, optanteIR);
-		daoDependente.create(dependente);
-		
-//		ColaboradorBuilder builder = new ColaboradorBuilder();
-//		builder.setNome(nome);
-//		builder.setSobrenome(sobrenome);
-		
-		Colaborador colaborador = new Colaborador(nome, sobrenome, nomeSocial, 
-				dataDeNascimento, nacionalidade, naturalidade, pcd, genero, 
-				identidadeGenero, endereco, cpf, rg, contatos, idCargo, nit, 
-				optanteVT, optanteVAVR, dataAdmissao, optanteDependente, 
-				registro_alistamento, email_corporativo, titulo_eleitor, conta, 
-				exameMedico, dependente);
-		
-		return daoColaborador.create(colaborador);
+		return daoColaborador.create(builder.build());
 	}
-	
+
 	/**
 	 * Deletar Colaborador.
 	 * 
@@ -154,14 +152,14 @@ public class ColaboradorController {
 	public static boolean deleteColabordor(Colaborador colaborador) {
 		return daoColaborador.delete(colaborador);
 	}
-	
+
 	/**
 	 * Atualizar Colaborador.
 	 * 
 	 * cria um novo colaborador com os dados recebidos e os altera no colaborador
 	 * passado como parâmetro chamando o DAO do colaborador.
 	 * 
-	 * @param id Do Colaborador a ser alterado.
+	 * @param id                   Do Colaborador a ser alterado.
 	 * @param nome
 	 * @param sobrenome
 	 * @param nomeSocial
@@ -189,25 +187,22 @@ public class ColaboradorController {
 	 * 
 	 * @return id do colaborador caso seja atualizado ou false caso contrário.
 	 */
-	public static Colaborador atualizarColaborador(Integer id, String nome, String sobrenome,
-			String nomeSocial, LocalDate dataDeNascimento, String nacionalidade, 
-			String naturalidade, boolean pcd, String genero, IdentidadeGenero identidadeGenero, 
-			Endereco endereco, String cpf, String rg, Contatos contatos, Integer idCargo, 
-			Integer nit, boolean optanteVT, boolean optanteVAVR, LocalDate dataAdmissao, 
-			boolean optanteDependente, String registro_alistamento, String email_corporativo,
-			String titulo_eleitor, Conta conta, ExameMedico exameMedico, Dependente dependente) {
-		
-		Colaborador colab = new Colaborador(nome, sobrenome, nomeSocial, 
-				dataDeNascimento, nacionalidade, naturalidade, pcd, genero, 
-				identidadeGenero, endereco, cpf, rg, contatos, idCargo, nit, 
-				optanteVT, optanteVAVR, dataAdmissao, optanteDependente, 
-				registro_alistamento, email_corporativo, titulo_eleitor, conta, 
+	public static Colaborador atualizarColaborador(Integer id, String nome, String sobrenome, String nomeSocial,
+			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd, String genero,
+			IdentidadeGenero identidadeGenero, Endereco endereco, String cpf, String rg, Contatos contatos,
+			Integer idCargo, Integer nit, boolean optanteVT, boolean optanteVAVR, LocalDate dataAdmissao,
+			boolean optanteDependente, String registro_alistamento, String email_corporativo, String titulo_eleitor,
+			Conta conta, ExameMedico exameMedico, Dependente dependente) {
+
+		Colaborador colab = new Colaborador(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade,
+				pcd, genero, identidadeGenero, endereco, cpf, rg, contatos, idCargo, nit, optanteVT, optanteVAVR,
+				dataAdmissao, optanteDependente, registro_alistamento, email_corporativo, titulo_eleitor, conta,
 				exameMedico, dependente);
 		session.clear();
-		colab.setId(id);		
+		colab.setId(id);
 		return daoColaborador.update(colab);
 	}
-	
+
 	/**
 	 * Busca Colaborador.
 	 * 
@@ -215,12 +210,12 @@ public class ColaboradorController {
 	 * 
 	 * @param id Do colaborador desejado.
 	 * 
-	 * @return Colaborador ou null caso não encontrado. 
+	 * @return Colaborador ou null caso não encontrado.
 	 */
-	public static Colaborador buscarColaboradorPorId(Integer id) {		
+	public static Colaborador buscarColaboradorPorId(Integer id) {
 		return daoColaborador.readById(id);
 	}
-	
+
 //	/**
 //	 * Busca Colaborador.
 //	 * 
@@ -235,16 +230,16 @@ public class ColaboradorController {
 //	public static Colaborador buscarColaboradorPorNomeSobrenome(String nome, String sobrenome) {		
 //		return daoColaborador.readByNomeSobrenome(nome, sobrenome);
 //	}
-	
+
 	/**
 	 * Busca todos os Colaboradores.
 	 * 
 	 * @return lista com todos os Colaboradores.
 	 */
-	public static List<Colaborador> buscarTodosColaborador() {		
+	public static List<Colaborador> buscarTodosColaborador() {
 		return daoColaborador.getAll();
 	}
-	
+
 	public static Colaborador addDependente(Colaborador colaborador, Dependente dependente) {
 		colaborador.addDependente(dependente);
 		return daoColaborador.update(colaborador);

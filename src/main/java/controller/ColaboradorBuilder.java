@@ -153,7 +153,7 @@ public class ColaboradorBuilder implements Builder {
 
 	public void setDependente(String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
 			String nacionalidade, String naturalidade, boolean pcd, String genero, IdentidadeGenero identidadeGenero,
-			Endereco endereco, String cpf, String rg, TiposDependentes tipoDependente, boolean optanteIR) {
+			String cpf, String rg, TiposDependentes tipoDependente, boolean optanteIR) {
 		this.dependente = new Dependente(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade,
 				pcd, genero, identidadeGenero, endereco, cpf, rg, tipoDependente, optanteIR);
 		DependenteDAO.getInstance(session).create(this.dependente);
