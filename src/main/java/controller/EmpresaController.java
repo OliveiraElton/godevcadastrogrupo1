@@ -8,7 +8,7 @@ import org.hibernate.Session;
 import dao.ContatosDAO;
 import dao.EmpresaDAO;
 import dao.EnderecoDAO;
-import model.Contatos;S
+import model.Contatos;
 import model.Empresa;
 import model.Endereco;
 import persistence.DBConnection;
