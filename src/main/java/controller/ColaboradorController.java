@@ -128,6 +128,10 @@ public class ColaboradorController {
 				endereco, cpf,  rg, tipoDependente, optanteIR);
 		daoDependente.create(dependente);
 		
+//		ColaboradorBuilder builder = new ColaboradorBuilder();
+//		builder.setNome(nome);
+//		builder.setSobrenome(sobrenome);
+		
 		Colaborador colaborador = new Colaborador(nome, sobrenome, nomeSocial, 
 				dataDeNascimento, nacionalidade, naturalidade, pcd, genero, 
 				identidadeGenero, endereco, cpf, rg, contatos, idCargo, nit, 
