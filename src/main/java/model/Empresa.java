@@ -94,14 +94,13 @@ public class Empresa {
 	}
 
 	public void setCnpj(String cnpj) {
-		try{
+		try {
 			ValidacaoDocumentos.validarCNPJ(cnpj);
 			this.cnpj = cnpj;
-		}
-		catch(Exception e){
+		} catch (Exception e) {
 			e.getMessage();
 		}
-		
+
 	}
 
 	public Endereco getEndereco() {
@@ -120,4 +119,7 @@ public class Empresa {
 		this.contato = contato;
 	}
 
+	public Integer getId() {
+		return this.id;
+	}
 }

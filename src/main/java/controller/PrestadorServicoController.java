@@ -17,9 +17,6 @@ import persistence.DBConnection;
 
 public class PrestadorServicoController {
 
-	// private static PrestadorServicoDAO prestadorServicoDAO = new
-	// PrestadorServicoDAO();
-
 	static Session session = DBConnection.getSession();
 	static PrestadorServicoDAO daoPrestadorServico = PrestadorServicoDAO.getInstance(session);
 	static ContatosDAO daoContatos = ContatosDAO.getInstance(session);
@@ -61,8 +58,7 @@ public class PrestadorServicoController {
 	 * @param cidade
 	 * @param uf
 	 * @return
-	 * 
-	 * @author Elton F Oliveira.
+	 *
 	 */
 	public static PrestadorServico criarPrestadorServico(String nome, String sobrenome, String nomeSocial,
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd, String genero,
@@ -93,7 +89,6 @@ public class PrestadorServicoController {
 	 * @param prestadorServico a ser deletado.
 	 * @return
 	 * 
-	 * @author Elton F Oliveira.
 	 */
 	public static boolean deletePrestadorServico(PrestadorServico prestadorServico) {
 		return daoPrestadorServico.delete(prestadorServico);
@@ -135,7 +130,6 @@ public class PrestadorServicoController {
 	 * @param uf
 	 * @return
 	 * 
-	 * @author Elton F Oliveira.
 	 */
 	public static PrestadorServico atualizarPrestadorServico(Integer id, String nome, String sobrenome,
 			String nomeSocial, LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd,
@@ -160,7 +154,6 @@ public class PrestadorServicoController {
 	 * 
 	 * @param id
 	 * @return
-	 * @author Elton F Oliveira.
 	 */
 	public static PrestadorServico buscarPrestadorServicoPorId(Integer id) {
 		return daoPrestadorServico.readById(id);
@@ -175,7 +168,6 @@ public class PrestadorServicoController {
 	 * @param nome
 	 * @param sobrenome
 	 * @return
-	 * @author Elton F Oliveira.
 	 */
 //	public static PrestadorServico buscarPrestadorServicoPorNomeSobrenome(String nome, String sobrenome) {
 //		return daoPrestadorServico.readByNomeSobrenome(nome, sobrenome);
@@ -186,7 +178,6 @@ public class PrestadorServicoController {
 	 * Busca todos os Prestadores de servico.
 	 * 
 	 * @return
-	 * @author Elton F Oliveira.
 	 */
 	public static List<PrestadorServico> buscarTodosPrestadorServico() {
 		return daoPrestadorServico.getAll();

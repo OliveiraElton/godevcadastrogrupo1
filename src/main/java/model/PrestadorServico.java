@@ -29,24 +29,25 @@ import enums.EMDadosPessoais.IdentidadeGenero;
  */
 
 @Entity
-public class PrestadorServico extends Pessoa{
+public class PrestadorServico extends Pessoa {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
+
 	private LocalDate dataInicioContrato;
-	
+
 	@OneToOne
 	private Empresa empresa;
 	private Integer idSetor;
-	
+
 	@OneToOne
 	private Contatos contatos;
-	
+
 	public PrestadorServico() {
 		super();
 	}
+
 	/**
 	 * @param id
 	 * @param nome
@@ -71,50 +72,56 @@ public class PrestadorServico extends Pessoa{
 			String nacionalidade, String naturalidade, boolean pcd, String genero, IdentidadeGenero identidadeGenero,
 			Endereco endereco, String cpf, String rg, Contatos contatos, LocalDate dataInicioContrato, Empresa empresa,
 			Integer idSetor) {
-		super(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
-				identidadeGenero, endereco, cpf, rg);
+		super(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero, identidadeGenero,
+				endereco, cpf, rg);
 		this.dataInicioContrato = dataInicioContrato;
 		this.empresa = empresa;
 		this.idSetor = idSetor;
 	}
-	
+
 	public LocalDate getDataInicioContrato() {
 		return dataInicioContrato;
 	}
+
 	public void setDataInicioContrato(LocalDate dataInicioContrato) {
-		try{
+		try {
 			ValidacaoDeDatas.validaDataInicioContrato(dataInicioContrato);
 			this.dataInicioContrato = dataInicioContrato;
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			e.getMessage();
 		}
 	}
+
 	public Empresa getEmpresa() {
 		return empresa;
 	}
+
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
 	}
+
 	public Integer getIdSetor() {
 		return idSetor;
 	}
+
 	public void setIdSetor(Integer idSetor) {
 		this.idSetor = idSetor;
 	}
+
 	public Contatos getContatos() {
 		return contatos;
 	}
+
 	public void setContatos(Contatos contatos) {
 		this.contatos = contatos;
 	}
-	
-	public void setId(int id) {
-		this.id = id;
-	}
-	
+
 	public Integer getId() {
 		return this.id;
 	}
-	
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 }

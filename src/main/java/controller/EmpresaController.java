@@ -1,7 +1,9 @@
 package controller;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Session;
 
 import dao.ContatosDAO;
 import dao.EmpresaDAO;
@@ -9,9 +11,13 @@ import dao.EnderecoDAO;
 import model.Contatos;
 import model.Empresa;
 import model.Endereco;
+import persistence.DBConnection;
 
 public class EmpresaController {
-	private EmpresaDAO empresaDAO = new EmpresaDAO());
+	static Session session = DBConnection.getSession();
+	static EmpresaDAO daoEmpresa = EmpresaDAO.getInstance(session);
+	static ContatosDAO daoContatos = ContatosDAO.getInstance(session);
+	static EnderecoDAO daoEndereco = EnderecoDAO.getInstance(session);
 
 	/**
 	 * Cria Empresa
@@ -37,24 +43,20 @@ public class EmpresaController {
 	 * @param uf
 	 * @return
 	 */
-	public Empresa criarEmpresa(String nomeEmpresa, LocalDate dataInicioContrato, String Cnpj,
+	public static Empresa criarEmpresa(String nomeEmpresa, LocalDate dataInicioContrato, String Cnpj,
 			String telefonePrincipal, String telefoneSecundario, String email, String telefoneFamiliar,
 			String logradouro, Integer numero, String complemento, String cep, String bairro, String pais,
 			String cidade, String uf) {
 
 		Contatos contatos = new Contatos(telefonePrincipal, telefoneSecundario, email, telefoneFamiliar);
-		ContatosDAO contatosDao = new ContatosDAO();
-		contatosDao.create(contatos);
+		daoContatos.create(contatos);
 
 		Endereco endereco = new Endereco(logradouro, numero, complemento, cep, bairro, pais, cidade, uf);
-		EnderecoDAO enderecoDao = new EnderecoDAO();
-		enderecoDao.create(endereco);
+		daoEndereco.create(endereco);
 
 		Empresa empresa = new Empresa(nomeEmpresa, dataInicioContrato, Cnpj, endereco, contatos);
-		EmpresaDAO empresaDao = new EmpresaDAO();
-		empresaDao.create(empresa);
 
-		return empresaDAO.create(empresa);
+		return daoEmpresa.create(empresa);
 	}
 
 	/**
@@ -66,14 +68,16 @@ public class EmpresaController {
 	 * 
 	 * @return true caso seja deletado ou false caso contrário
 	 */
-	public boolean deleteEmpresa(Empresa empresa) {
-		return empresaDAO.delete(empresa);
+	public static boolean deleteEmpresa(Empresa empresa) {
+		return daoEmpresa.delete(empresa);
 	}
+
 	/**
 	 * Metodo que faz a atualização dos dados
 	 * 
-	 * cria uma nova empresa com os dados recebidos e os altera na empresa
-	 * passado como parâmetro chamando o DAO da empresa.
+	 * cria uma nova empresa com os dados recebidos e os altera na empresa passado
+	 * como parâmetro chamando o DAO da empresa.
+	 * 
 	 * @param id
 	 * @param nomeEmpresa
 	 * @param dataInicioContrato
@@ -82,14 +86,15 @@ public class EmpresaController {
 	 * @param endereco
 	 * @return
 	 */
-	public Integer atualizarEmpresa(Integer id, String nomeEmpresa, LocalDate dataInicioContrato, String cnpj,
+	public static Empresa atualizarEmpresa(Integer id, String nomeEmpresa, LocalDate dataInicioContrato, String cnpj,
 			Contatos contatos, Endereco endereco) {
 
 		Empresa empresa = new Empresa(nomeEmpresa, dataInicioContrato, cnpj, endereco, contatos);
-
-		return empresaDAO.update(id, empresa);
+		session.clear();
+		empresa.setId(id);
+		return daoEmpresa.update(empresa);
 	}
-	
+
 	/**
 	 * Busca empresa.
 	 * 
@@ -97,32 +102,18 @@ public class EmpresaController {
 	 * 
 	 * @param id Do colaborador desejado.
 	 * 
-	 * @return Colaborador ou null caso não encontrado. 
+	 * @return Colaborador ou null caso não encontrado.
 	 */
-	public Empresa buscarEmpresaPorId(Integer id) {		
-		return empresaDAO.readById(id);
+	public static Empresa buscarEmpresaPorId(Integer id) {
+		return daoEmpresa.readById(id);
 	}
-	
-	/**
-	 * Busca Empresa.
-	 * 
-	 * Busca a Empresa cujo nome é iguais ao passado como 
-	 * parâmetro.
-	 * 
-	 * @param nome Da Empresa desejada.
-	 * 
-	 * @return Empresa ou null caso Empresa não encontrada. 
-	 */
-	public  Empresa buscarCEmpresaPorNome(String nome) {		
-		return empresaDAO.readByNome(nome);
-	}
-	
+
 	/**
 	 * Busca todas as Empresa.
 	 * 
 	 * @return lista com todos as Empresa.
 	 */
-	public ArrayList<Empresa> buscarTodasEmpresas() {		
-		return empresaDAO.getAll();
+	public static List<Empresa> buscarTodasEmpresas() {
+		return daoEmpresa.getAll();
 	}
 }
