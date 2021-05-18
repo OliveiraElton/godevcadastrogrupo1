@@ -54,16 +54,17 @@ public class ColaboradorDAO extends Dao<Colaborador>
 	 * @param email corporativo Do colaborador desejado
 	 * @return Colaborador desejado
 	 */
-	public Colaborador readByEmail(String email) {
+	public List<Colaborador> readByEmail(String email) {
 		CriteriaBuilder builder = session.getCriteriaBuilder();
 		CriteriaQuery<Colaborador> criteria = builder.createQuery(Colaborador.class);
-		criteria.from(Colaborador.class);
 		Root<Colaborador> root = criteria.from(Colaborador.class);
-		Query query = session.createQuery(criteria);
+
 		CriteriaQuery<Colaborador> rootQuery = criteria.select(root);
+	
 		Expression emailBuscado = (Expression) root.get("email_corporativo");
 		criteria.select(root).where(builder.equal(emailBuscado, email));
-		Colaborador colaborador = (Colaborador) query.getSingleResult();
+		Query query = session.createQuery(criteria);
+		List<Colaborador> colaborador = query.getResultList();
 		return colaborador;
 	}
 	

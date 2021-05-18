@@ -16,6 +16,7 @@ import enums.EMDadosPessoais.TiposDependentes;
 import enums.EMOutros.TiposExames;
 import model.Colaborador;
 import model.Dependente;
+import model.ExameMedico;
 import persistence.DBConnection;
 
 /**
@@ -120,6 +121,65 @@ public class ColaboradorController {
 				cpfDependente, rgDependente, tipoDependente, optanteIR);
 		Colaborador colaborador = (Colaborador) builder.build();
 		return daoColaborador.create(colaborador);
+	}
+	
+	/**
+	 * Adicionar Dependente
+	 * 
+	 * Adiciona um novo dependente, caso o colaborador tenha mais de um.
+	 * 
+	 * @param colaborador
+	 * @param nome
+	 * @param sobrenome
+	 * @param nomeSocial
+	 * @param dataDeNascimento
+	 * @param nacionalidade
+	 * @param naturalidade
+	 * @param pcd
+	 * @param genero
+	 * @param identidadeGenero
+	 * @param cpf
+	 * @param rg
+	 * @param tipoDependente
+	 * @param optanteIR
+	 * @param logradouro
+	 * @param numero
+	 * @param complemento
+	 * @param cep
+	 * @param bairro
+	 * @param pais
+	 * @param cidade
+	 * @param uf
+	 */
+	public static void adicionarDependente(Colaborador colaborador, String nome, String sobrenome, String nomeSocial,
+			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd, String genero,
+			IdentidadeGenero identidadeGenero, String cpf, String rg, TiposDependentes tipoDependente,
+			boolean optanteIR, String logradouro, Integer numero, String complemento, String cep, String bairro,
+			String pais, String cidade, String uf) {
+		
+		Dependente novoDependente = DependenteController.criarDependente(nome, sobrenome, nomeSocial,
+				dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
+				identidadeGenero, cpf, rg, tipoDependente,
+				optanteIR, logradouro, numero, complemento, cep, bairro,
+				pais,cidade, uf);
+		
+		colaborador.addDependente(novoDependente);
+		daoColaborador.update(colaborador);
+	}
+	
+	/**
+	 * Adicionado Exame médico
+	 * 
+	 * Adiciona novo exame medico ao colaborador, caso necessario.
+	 * @param colaborador
+	 * @param tipoExame
+	 * @param dataExame
+	 * @param apto
+	 */
+	public static void adicionarExameMedico(Colaborador colaborador,TiposExames tipoExame, LocalDate dataExame, boolean apto){
+		ExameMedico novoExame = new ExameMedico(tipoExame, dataExame, apto);
+		colaborador.addExameMedico(novoExame);
+		daoColaborador.update(colaborador);
 	}
 
 	/**
@@ -239,9 +299,5 @@ public class ColaboradorController {
 		return daoColaborador.getAll();
 	}
 
-	public static Colaborador addDependente(Colaborador colaborador, Dependente dependente) {
-		colaborador.addDependente(dependente);
-		return daoColaborador.update(colaborador);
-	}
 
 }

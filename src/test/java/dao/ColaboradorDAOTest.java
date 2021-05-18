@@ -1,6 +1,7 @@
 package dao;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 import java.time.LocalDate;
@@ -100,13 +101,13 @@ public class ColaboradorDAOTest {
 		dao.create(colaborador);
 	}
 
-	@Ignore
+	@Test
 	public void testReadByEmail() {
 		Colaborador colaborador = new Colaborador("Lucas", "Nunes", "luquinha", data, "Americano", "burro", false,
 				"Masculino", ig, endereco, "21164028324", "45124563", contatos, null, null, false, false, data, false,
-				null, "lucas.nunes@senior.com.br", "554555", conta, exameMedico, dependente);
+				null, "bruno@pessoa.maravilhosa.com", "554555", conta, exameMedico, dependente);
 		dao.create(colaborador);
-		assertEquals(colaborador, dao.readByEmail("email@empresa.com.br"));
+		assertNotNull(dao.readByEmail("bruno@pessoa.maravilhosa.com"));
 	}
 
 }

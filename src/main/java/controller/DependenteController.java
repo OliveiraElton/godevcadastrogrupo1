@@ -76,12 +76,13 @@ public class DependenteController {
 			IdentidadeGenero identidadeGenero, String cpf, String rg, TiposDependentes tipoDependente,
 			boolean optanteIR, String logradouro, Integer numero, String complemento, String cep, String bairro,
 			String pais, String cidade, String uf) {
-		
+
 		PessoaBuilder builder = new PessoaBuilder();
-		Director.criarDependente(builder, nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade,
-				naturalidade, pcd, genero, identidadeGenero, cpf, rg, logradouro, numero, complemento, cep, bairro,
-				pais, cidade, uf, tipoDependente, optanteIR);
+		Director.criarDependente(builder, nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade,
+				pcd, genero, identidadeGenero, cpf, rg, logradouro, numero, complemento, cep, bairro, pais, cidade, uf,
+				tipoDependente, optanteIR);
 		Dependente dependente = (Dependente) builder.build();
+		
 		return daoDependente.create(dependente);
 	}
 
@@ -131,10 +132,10 @@ public class DependenteController {
 			boolean optanteIR, String logradouro, Integer numero, String complemento, String cep, String bairro,
 			String pais, String cidade, String uf) {
 		PessoaBuilder builder = new PessoaBuilder();
-		Director.criarDependente(builder, nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade,
-				naturalidade, pcd, genero, identidadeGenero, cpf, rg, logradouro, numero, complemento, cep, bairro,
-				pais, cidade, uf, tipoDependente, optanteIR);
-		Dependente dependente = (Dependente) builder.build();		
+		Director.criarDependente(builder, nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade,
+				pcd, genero, identidadeGenero, cpf, rg, logradouro, numero, complemento, cep, bairro, pais, cidade, uf,
+				tipoDependente, optanteIR);
+		Dependente dependente = (Dependente) builder.build();
 		dependente.setId(id);
 		return daoDependente.update(dependente);
 	}
