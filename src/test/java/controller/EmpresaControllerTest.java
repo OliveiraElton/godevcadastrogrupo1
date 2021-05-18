@@ -42,15 +42,15 @@ public class EmpresaControllerTest {
 		assertNull(dao.readById(empresa.getId()));
 	}
 
-	@Ignore
+	@Test
 	public void testAtualizarEmpresa() {
 
 		Empresa empresa = EmpresaController.criarEmpresa("Senior", LocalDate.now(), "12345678", null, null, null, null,
 				null, null, null, null, null, null, null, null);
 		dao.create(empresa);
 		Integer id = empresa.getId();
-		Empresa ps = EmpresaController.atualizarEmpresa(id, "teste5", null, null, null, null);
-		assertEquals("teste5", ps.getNomeEmpresa());
+		EmpresaController.atualizarEmpresa(id, "teste5", null, null, null, null);
+		assertEquals("teste5", dao.readById(id).getNomeEmpresa());
 
 	}
 
