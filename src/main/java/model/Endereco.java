@@ -27,7 +27,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDocumentos;
 public class Endereco {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	private String logradouro;

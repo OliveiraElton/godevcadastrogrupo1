@@ -106,37 +106,16 @@ public class ColaboradorController {
 			String digitoVerificador, String nomeDependente, String sobrenomeDependente, String nomeSocialDependente,
 			LocalDate dataDeNascimentoDependente, String nacionalidadeDependente, String naturalidadeDependente,
 			boolean pcdDependente, String generoDependente, IdentidadeGenero identidadeGeneroDependente,
-			Endereco enderecoDependente, String cpfDependente, String rgDependente, TiposDependentes tipoDependente,
-			boolean optanteIR) {
+			String cpfDependente, String rgDependente, TiposDependentes tipoDependente, boolean optanteIR) {
 
-		ColaboradorBuilder builder = new ColaboradorBuilder();
-		builder.setNome(nome);
-		builder.setSobrenome(sobrenome);
-		builder.setNomeSocial(nomeSocial);
-		builder.setDataDeNascimento(dataDeNascimento);
-		builder.setNacionalidade(nacionalidade);
-		builder.setNaturalidade(naturalidade);
-		builder.setPcd(pcd);
-		builder.setGenero(genero);
-		builder.setIdentidadeGenero(identidadeGenero);
-		builder.setEndereco(logradouro, numero, complemento, cep, bairro, pais, cidade, uf);
-		builder.setCpf(cpf);
-		builder.setRg(rg);
-		builder.setContatos(telefonePrincipal, telefoneSecundario, email, telefoneFamiliar);
-		builder.setIdCargo(idCargo);
-		builder.setNit(nit);
-		builder.setOptanteVT(optanteVT);
-		builder.setOptanteVAVR(optanteVAVR);
-		builder.setDataAdmissao(dataAdmissao);
-		builder.setOptanteDependente(optanteDependente);
-		builder.setRegistro_alistamento(registro_alistamento);
-		builder.setEmail_corporativo(email_corporativo);
-		builder.setTitulo_eleitor(titulo_eleitor);
-		builder.setConta(nomeBanco, agencia, numeroConta, digitoVerificador);
-		builder.setExameMedico(tipoExame, dataExame, apto);
-		builder.setDependente(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade,
-				pcd, genero, identidadeGenero, cpf, rg, tipoDependente, optanteIR);
-		
+		Director.criarColaborador(nome, sobrenome, dataDeNascimento, nacionalidade, naturalidade,
+				numero, idCargo, optanteVT, optanteVAVR, dataAdmissao, optanteDependente, registro_alistamento,
+				email_corporativo, titulo_eleitor, logradouro, numero, complemento, cep, bairro, pais, cidade, uf,
+				telefonePrincipal, telefoneSecundario, email, telefoneFamiliar, tipoExame, dataExame, apto, nomeBanco,
+				agencia, numeroConta, digitoVerificador, nomeDependente, sobrenomeDependente, nomeSocialDependente,
+				dataDeNascimentoDependente, nacionalidadeDependente, naturalidadeDependente, pcdDependente,
+				generoDependente, identidadeGeneroDependente, cpfDependente, rgDependente, tipoDependente, optanteIR);
+
 		return daoColaborador.create(builder.build());
 	}
 

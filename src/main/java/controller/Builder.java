@@ -6,6 +6,7 @@ import enums.EMDadosPessoais.IdentidadeGenero;
 import enums.EMDadosPessoais.TiposDependentes;
 import enums.EMOutros.TiposExames;
 import model.Dependente;
+import model.Empresa;
 import model.Endereco;
 
 public interface Builder {
@@ -38,7 +39,12 @@ public interface Builder {
 	public void setExameMedico(TiposExames tipoExame, LocalDate dataExame, boolean apto);
 	public void setDependente(String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
 			String nacionalidade, String naturalidade, boolean pcd, String genero, IdentidadeGenero identidadeGenero,
-			Endereco endereco, String cpf, String rg,
+			String cpf, String rg,
 			TiposDependentes tipoDependente, boolean optanteIR);
-
+	public void setTipoDependente(TiposDependentes tipoDependente);
+	public void setOptanteIR(boolean optanteIR);
+	public void setDataInicioContrato(LocalDate dataInicioContrato);
+	public void setEmpresa(Empresa empresa);
+	public void setIdSetor(Integer setor);
+	
 }

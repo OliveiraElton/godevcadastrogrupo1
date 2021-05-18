@@ -31,7 +31,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDocumentos;
 public class Empresa {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	private long empresaId;

@@ -16,11 +16,13 @@ import model.Colaborador;
 import model.Conta;
 import model.Contatos;
 import model.Dependente;
+import model.Empresa;
 import model.Endereco;
 import model.ExameMedico;
+import model.PrestadorServico;
 import persistence.DBConnection;
 
-public class ColaboradorBuilder implements Builder {
+public class PessoaBuilder implements Builder {
 
 	Session session = DBConnection.getSession();
 	private String nome;
@@ -35,19 +37,41 @@ public class ColaboradorBuilder implements Builder {
 	private Endereco endereco = null;
 	private String cpf;
 	private String rg;
-	private Integer idCargo;
-	private Integer nit;
-	private boolean optanteVT;
-	private boolean optanteVAVR;
-	private LocalDate dataAdmissao;
-	private boolean optanteDependente;
-	private String registro_alistamento;
-	private String email_corporativo;
-	private String titulo_eleitor;
+	private Integer idCargo = null;
+	private Integer nit  = null;
+	private Boolean optanteVT  = null;
+	private Boolean optanteVAVR = null;
+	private LocalDate dataAdmissao = null;
+	private Boolean optanteDependente = null;
+	private String registro_alistamento = null;
+	private String email_corporativo = null;
+	private String titulo_eleitor = null;
 	private Conta conta = null;
 	private Contatos contatos = null;
 	private ExameMedico exameMedico = null;
 	private Dependente dependente = null;
+	private TiposDependentes tipoDependente = null;
+	private Boolean optanteIR = null;
+	private LocalDate dataInicioContrato = null;
+	private Integer idSetor = null;
+
+	public void setTipoDependente(TiposDependentes tipoDependente) {
+		this.tipoDependente = tipoDependente;
+	}
+
+	public void setOptanteIR(boolean optanteIR) {
+		this.optanteIR = optanteIR;
+	}
+
+	public void setDataInicioContrato(LocalDate dataInicioContrato) {
+		this.dataInicioContrato = dataInicioContrato;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+
+	private Empresa empresa;
 
 	public void setNome(String nome) {
 		this.nome = nome;
@@ -73,7 +97,7 @@ public class ColaboradorBuilder implements Builder {
 		this.naturalidade = naturalidade;
 	}
 
-	public void setPcd(boolean pcd) {
+	public void setPcd(Boolean pcd) {
 		this.pcd = pcd;
 	}
 
@@ -107,11 +131,11 @@ public class ColaboradorBuilder implements Builder {
 		this.nit = nit;
 	}
 
-	public void setOptanteVT(boolean optanteVT) {
+	public void setOptanteVT(Boolean optanteVT) {
 		this.optanteVT = optanteVT;
 	}
 
-	public void setOptanteVAVR(boolean optanteVAVR) {
+	public void setOptanteVAVR(Boolean optanteVAVR) {
 		this.optanteVAVR = optanteVAVR;
 	}
 
@@ -119,7 +143,7 @@ public class ColaboradorBuilder implements Builder {
 		this.dataAdmissao = dataAdmissao;
 	}
 
-	public void setOptanteDependente(boolean optanteDependente) {
+	public void setOptanteDependente(Boolean optanteDependente) {
 		this.optanteDependente = optanteDependente;
 	}
 
@@ -160,10 +184,22 @@ public class ColaboradorBuilder implements Builder {
 	}
 
 	public Colaborador build() {
-		return new Colaborador(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
-				identidadeGenero, endereco, cpf, rg, contatos, idCargo, nit, optanteVT, optanteVAVR, dataAdmissao,
-				optanteDependente, registro_alistamento, email_corporativo, titulo_eleitor, conta, exameMedico,
-				dependente);
+		if(tipoDependente != null) {
+//			return new Dependente();
+		}else if(empresa != null) {
+			return new PrestadorServico(nome, sobrenome, nomeSocial,
+					dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
+					identidadeGenero, endereco, cpf, rg, contatos,
+					dataInicioContrato, empresa, idSetor, telefonePrincipal,
+					telefoneSecundario, email, telefoneFamiliar, logradouro, numero,
+					complemento, cep, bairro, pais, cidade, uf, nomeEmpresa,
+					cnpj);
+		}else {
+			return new Colaborador(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
+					identidadeGenero, endereco, cpf, rg, contatos, idCargo, nit, optanteVT, optanteVAVR, dataAdmissao,
+					optanteDependente, registro_alistamento, email_corporativo, titulo_eleitor, conta, exameMedico,
+					dependente);
+		}
 	}
 
 }

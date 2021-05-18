@@ -26,7 +26,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDocumentos;
 public class Contatos{
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	private String telefonePrincipal;

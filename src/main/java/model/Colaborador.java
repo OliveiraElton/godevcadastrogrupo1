@@ -36,7 +36,7 @@ public class Colaborador extends Pessoa{
 	 * @author Vitor <vitornathang@gmail.com>
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	private Integer idCargo;

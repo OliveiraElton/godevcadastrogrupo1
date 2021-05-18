@@ -26,7 +26,7 @@ import enums.EMDadosPessoais.TiposDependentes;
 public class Dependente extends Pessoa{
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	private TiposDependentes tipoDependente;

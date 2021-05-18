@@ -41,38 +41,31 @@ public class ColaboradorControllerTest {
 				"Blumenauense", true, null, ig, "09619039610", "mg14388606", 8, null, false, false, data, false, null,
 				"brian@gmail.com", null, null, null, null, "54126547", null, null, null, null, "4521452015",
 				"5421452103", "brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00", "055",
-				"438614625", "154", td, true);
-		assertNotNull(dao.create(c));
+				"438614625", "154","joãozinho", "Santos","Erika", data, "Venezuelano",
+				"Blumenauense", true, null, ig, "09619039610", "mg14388606",td, true);
+		assertNotNull(c);
 	}
 
 	@Test
 	public void testDeleteColabordor() {
-		Conta conta = new Conta(null, null, null, null);
-		Endereco endereco = new Endereco(null, null, null, "54215365", null, null, null, null);
-		Contatos contatos = new Contatos("4521456985", "4521456985", "Jenifer", "4521456985");
-		ExameMedico exameMedico = new ExameMedico(null, null, false);
-		Dependente dependente = new Dependente("Joãozinho", "Fonseca", "Jenifer", data, "Venezuelano",
-				"Cidade del Leste", true, null, null, endereco, "09619039610", null, td, true);
-		Colaborador colaborador = new Colaborador("Lucas", "Nunes", "luquinha", data, "Americano", "burro", false,
-				"Masculino", ig, endereco, "21164028324", "45124563", contatos, null, null, false, false, data, false,
-				null, "lucas.nunes@senior.com.br", "554555", conta, exameMedico, dependente);
-		dao.create(colaborador);
-		ColaboradorController.deleteColabordor(dao.readById(colaborador.getId()));
-		assertNull(dao.readById(colaborador.getId()));
+		Colaborador c = ColaboradorController.criarColaborador("Brian", "Santos", "Erika", data, "Venezuelano",
+				"Blumenauense", true, null, ig, "09619039610", "mg14388606", 8, null, false, false, data, false, null,
+				"brian@gmail.com", null, null, null, null, "54126547", null, null, null, null, "4521452015",
+				"5421452103", "brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00", "055",
+				"438614625", "154","joãozinho", "Santos","Erika", data, "Venezuelano",
+				"Blumenauense", true, null, ig, "09619039610", "mg14388606",td, true);
+		ColaboradorController.deleteColabordor(dao.readById(c.getId()));
+		assertNull(dao.readById(c.getId()));
 	}
 
 	@Test
 	public void testAtualizarColaborador() {
-		Conta conta = new Conta(null, null, null, null);
-		Endereco endereco = new Endereco(null, null, null, "54215365", null, null, null, null);
-		Contatos contatos = new Contatos("4521456985", "4521456985", "Jenifer", "4521456985");
-		ExameMedico exameMedico = new ExameMedico(null, null, false);
-		Dependente dependente = new Dependente("Joãozinho", "Fonseca", "Jenifer", data, "Venezuelano",
-				"Cidade del Leste", true, null, null, endereco, "09619039610", null, td, true);
-		Colaborador colaborador = new Colaborador("Lucas", "Nunes", "luquinha", data, "Americano", "burro", false,
-				"Masculino", ig, endereco, "21164028324", "45124563", contatos, null, null, false, false, data, false,
-				null, "lucas.nunes@senior.com.br", "554555", conta, exameMedico, dependente);
-		dao.create(colaborador);
+		Colaborador c = ColaboradorController.criarColaborador("Brian", "Santos", "Erika", data, "Venezuelano",
+				"Blumenauense", true, null, ig, "09619039610", "mg14388606", 8, null, false, false, data, false, null,
+				"brian@gmail.com", null, null, null, null, "54126547", null, null, null, null, "4521452015",
+				"5421452103", "brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00", "055",
+				"438614625", "154","joãozinho", "Santos","Erika", data, "Venezuelano",
+				"Blumenauense", true, null, ig, "09619039610", "mg14388606",td, true);
 		session.clear();
 		Integer id = colaborador.getId();
 		ColaboradorController.atualizarColaborador(id, "João2", "Nunes", "luquinha", data, "Americano", "burro", false,

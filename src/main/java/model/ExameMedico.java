@@ -31,7 +31,7 @@ import enums.EMOutros.TiposExames;
 public class ExameMedico {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	TiposExames tipoExame;
