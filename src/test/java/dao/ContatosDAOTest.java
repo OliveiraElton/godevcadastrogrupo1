@@ -1,9 +1,8 @@
 package dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.hibernate.Session;
-import org.junit.Before;
 import org.junit.Test;
 
 import model.Contatos;

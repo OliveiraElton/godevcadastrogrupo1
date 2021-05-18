@@ -1,6 +1,5 @@
 package dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -9,7 +8,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import org.hibernate.Session;
 
 import model.Conta;
-import model.Endereco;
 
 public class ContaDAO extends Dao<Conta> implements InterfaceDao<Conta>{
 	

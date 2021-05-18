@@ -9,9 +9,7 @@ import dao.ContatosDAO;
 import dao.EmpresaDAO;
 import dao.PrestadorServicoDAO;
 import enums.EMDadosPessoais.IdentidadeGenero;
-import model.Contatos;
 import model.Empresa;
-import model.Endereco;
 import model.PrestadorServico;
 import persistence.DBConnection;
 

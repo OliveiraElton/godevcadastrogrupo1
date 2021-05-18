@@ -7,10 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import controller.Builder;
 import enums.EMDadosPessoais.IdentidadeGenero;
 import enums.EMDadosPessoais.TiposDependentes;
-import enums.EMOutros.TiposExames;
 
 /**
  * Classe Dependente Esta classe instancia a classe Pessoa para o cadastro de

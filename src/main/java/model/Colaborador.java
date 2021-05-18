@@ -13,10 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDeDatas;
-import controller.Builder;
 import enums.EMDadosPessoais.IdentidadeGenero;
-import enums.EMDadosPessoais.TiposDependentes;
-import enums.EMOutros.TiposExames;
 
 @Entity
 public class Colaborador extends Pessoa {

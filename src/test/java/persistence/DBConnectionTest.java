@@ -3,7 +3,6 @@ package persistence;
 import static org.junit.Assert.assertNotNull;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.junit.Test;
 
 public class DBConnectionTest {

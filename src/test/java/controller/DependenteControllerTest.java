@@ -7,15 +7,11 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.hibernate.Session;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import dao.ColaboradorDAO;
-import dao.ColaboradorDAOTest;
 import dao.DependenteDAO;
 import enums.EMDadosPessoais;
-import enums.EMDadosPessoais.IdentidadeGenero;
-import enums.EMDadosPessoais.TiposDependentes;
 import model.Colaborador;
 import model.Conta;
 import model.Contatos;

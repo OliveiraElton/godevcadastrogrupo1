@@ -1,11 +1,11 @@
 package dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import java.time.LocalDate;
 
 import org.hibernate.Session;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 

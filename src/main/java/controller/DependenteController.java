@@ -11,9 +11,7 @@ import dao.EnderecoDAO;
 import dao.ExameMedicoDAO;
 import enums.EMDadosPessoais.IdentidadeGenero;
 import enums.EMDadosPessoais.TiposDependentes;
-import model.Contatos;
 import model.Dependente;
-import model.Endereco;
 import persistence.DBConnection;
 
 /**

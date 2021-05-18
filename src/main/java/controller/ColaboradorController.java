@@ -15,11 +15,7 @@ import enums.EMDadosPessoais.IdentidadeGenero;
 import enums.EMDadosPessoais.TiposDependentes;
 import enums.EMOutros.TiposExames;
 import model.Colaborador;
-import model.Conta;
-import model.Contatos;
 import model.Dependente;
-import model.Endereco;
-import model.ExameMedico;
 import persistence.DBConnection;
 
 /**

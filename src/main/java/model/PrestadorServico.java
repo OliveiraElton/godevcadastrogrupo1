@@ -9,10 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDeDatas;
-import controller.Builder;
 import enums.EMDadosPessoais.IdentidadeGenero;
-import enums.EMDadosPessoais.TiposDependentes;
-import enums.EMOutros.TiposExames;
 
 /**
  * Classe que abstrai as informa��es do prestador de servi�o contratado.

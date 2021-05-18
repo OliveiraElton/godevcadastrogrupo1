@@ -1,7 +1,5 @@
 package enums;
 
-import java.util.EnumMap;
-
 public class EMOutros {
 	
 	/**
@@ -18,12 +16,4 @@ public class EMOutros {
 		ADMISSIONAL, PERIODICO, DEMISSIONAL;
 	}
 
-//	public EnumMap<TiposExames, Integer> Exames;
-//	{
-//		EnumMap<TiposExames, Integer> tiposExames = new EnumMap<TiposExames, Integer>(TiposExames.class);
-//		tiposExames.put(TiposExames.ADMISSIONAL, 1);
-//		tiposExames.put(TiposExames.PERIODICO, 2);
-//		tiposExames.put(TiposExames.DEMISSIONAL, 3);
-//	}
-	
 }

@@ -5,11 +5,9 @@ import static org.junit.Assert.assertEquals;
 import java.time.LocalDate;
 
 import org.hibernate.Session;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import model.Empresa;
 import model.PrestadorServico;
 import persistence.DBConnection;
 

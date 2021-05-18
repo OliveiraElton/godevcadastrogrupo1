@@ -5,9 +5,7 @@ import java.time.LocalDate;
 import enums.EMDadosPessoais.IdentidadeGenero;
 import enums.EMDadosPessoais.TiposDependentes;
 import enums.EMOutros.TiposExames;
-import model.Dependente;
 import model.Empresa;
-import model.Endereco;
 
 public interface Builder {
 	
