@@ -21,14 +21,6 @@ public class EmpresaDAOTest {
 	Session session = DBConnection.getSession();
 	EmpresaDAO dao = EmpresaDAO.getInstance(session);
 
-	@Before
-	public void limparEmpresa() {
-		if (!session.getTransaction().isActive())
-			session.beginTransaction();
-		session.createSQLQuery("DELETE FROM Empresa;").executeUpdate();
-		session.getTransaction().commit();
-	}
-
 	@Test
 	public void testReadById() {
 		Empresa empresa = new Empresa("Senior", LocalDate.now(), "12345678", null, null);
@@ -39,11 +31,12 @@ public class EmpresaDAOTest {
 
 	@Test
 	public void testGetAll() {
+		Integer valorAntes = dao.getAll().size();
 		Empresa empresa = new Empresa("Senior", LocalDate.now(), "12345678", null, null);
 		Empresa empresa2 = new Empresa("Senior", LocalDate.now(), "12345678", null, null);
 		dao.create(empresa);
 		dao.create(empresa2);
-		assertEquals(2, dao.getAll().size());
+		assertEquals(valorAntes + 2, dao.getAll().size());
 
 	}
 
@@ -58,7 +51,7 @@ public class EmpresaDAOTest {
 		Empresa empresa = new Empresa("Senior", LocalDate.now(), "12345678", null, null);
 		dao.create(empresa);
 		dao.delete(empresa);
-		assertEquals(0, dao.getAll().size());
+		assertNull(dao.readById(empresa.getId()));
 	}
 
 	@Test

@@ -12,6 +12,10 @@ import java.util.EnumMap;
 	 * @author Vanderlei <vanderleik@yahoo.com.br>
 	 * @author Vitor <vitornathang@gmail.com>
 	 */
+/**
+ * @author Senior
+ *
+ */
 public class EMDadosPessoais {
 	
 	public enum IdentidadeGenero {
@@ -38,17 +42,17 @@ public class EMDadosPessoais {
 	 * @author Vitor <vitornathang@gmail.com>
 	 */
 	
-	public EnumMap<?, ?> DadosPessoais;
-	{
-		EnumMap<IdentidadeGenero, Integer> sexoPessoa = new EnumMap<IdentidadeGenero, Integer>(IdentidadeGenero.class);
-		sexoPessoa.put(IdentidadeGenero.TRANS, 1);
-		sexoPessoa.put(IdentidadeGenero.CIS, 2);
-
-		EnumMap<TiposDependentes, Integer> tiposDependentes = new EnumMap<TiposDependentes, Integer>(
-				TiposDependentes.class);
-		tiposDependentes.put(TiposDependentes.FILHO, 1);
-		tiposDependentes.put(TiposDependentes.CONJUGE, 2);
-		tiposDependentes.put(TiposDependentes.MAE, 3);
-		tiposDependentes.put(TiposDependentes.PAI, 4);
-	}
+//	public EnumMap<?, ?> DadosPessoais;
+//	{
+//		EnumMap<IdentidadeGenero, Integer> sexoPessoa = new EnumMap<IdentidadeGenero, Integer>(IdentidadeGenero.class);
+//		sexoPessoa.put(IdentidadeGenero.TRANS, 1);
+//		sexoPessoa.put(IdentidadeGenero.CIS, 2);
+//
+//		EnumMap<TiposDependentes, Integer> tiposDependentes = new EnumMap<TiposDependentes, Integer>(
+//				TiposDependentes.class);
+//		tiposDependentes.put(TiposDependentes.FILHO, 1);
+//		tiposDependentes.put(TiposDependentes.CONJUGE, 2);
+//		tiposDependentes.put(TiposDependentes.MAE, 3);
+//		tiposDependentes.put(TiposDependentes.PAI, 4);
+//	}
 }

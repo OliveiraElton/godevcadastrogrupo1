@@ -13,6 +13,9 @@ import org.junit.Test;
 import dao.ColaboradorDAO;
 import dao.ColaboradorDAOTest;
 import dao.DependenteDAO;
+import enums.EMDadosPessoais;
+import enums.EMDadosPessoais.IdentidadeGenero;
+import enums.EMDadosPessoais.TiposDependentes;
 import model.Colaborador;
 import model.Conta;
 import model.Contatos;
@@ -30,13 +33,11 @@ public class DependenteControllerTest {
 	
 	@Test
 	public void testCriarDependente() {
-		Dependente d = DependenteController.criarDependente("Joãozinho", "moro", 
-				"Jenifer", data, "Venezuelano",
-				"del rio", true, "Masculino", null, "", "25415365", null, true,
-				"João@gmail.com", null, null, 
-				null, null, "54868452", null, null,
-				null, null, "4521546583", "48524869754",
-				"João@gmail.com", "5412457845");
+		Dependente d = DependenteController.criarDependente("Jorge", "Maravilha", "jessica",
+				data, "Brasileiro", null, true, null,
+				null, "256.103.800-90", "mg14388606", EMDadosPessoais.TiposDependentes.FILHO,
+				true, "Rua das oliveiras", 32, "casa", "89032640", "Passo Manso",
+				"Brasil", "Blumenau", "SC");
 		assertNotNull(d);
 		assertEquals(d, dao.readById(d.getId()));
 	}
@@ -56,18 +57,20 @@ public class DependenteControllerTest {
 
 	@Test
 	public void testAtualizarDependente() {
-		Endereco endereco = new Endereco(null, null, null, "54215365", null, null, null, null);
-		Dependente dependente = new Dependente("Joãozinho", "Fonseca", "Jenifer", data, "Venezuelano",
-				"Cidade del Leste", true, null, null, endereco, "09619039610", null, null, true);
-		dao.create(dependente);
-		Integer id = dependente.getId();
+		Dependente d = DependenteController.criarDependente("Jorge", "Maravilha", "jessica",
+				data, "Brasileiro", null, true, null,
+				null, "256.103.800-90", "mg14388606", EMDadosPessoais.TiposDependentes.FILHO,
+				true, "Rua das oliveiras", 32, "casa", "89032640", "Passo Manso",
+				"Brasil", "Blumenau", "SC");
+		dao.create(d);
 		session.clear();
-		DependenteController.atualizarDependente(id, "Jorge", "Fonseca", "Jenifer",
-				data, "Brazil", "brasil", true, "masculino",
-				null, "09619039610", null, null,
-				true, "jorge@", null, endereco);
+		DependenteController.atualizarDependente(d.getId(), "Brunão", "Maravilha", "jessica",
+				data, "Brasileiro", null, true, null,
+				null, "256.103.800-90", "mg14388606", EMDadosPessoais.TiposDependentes.CONJUGE,
+				true, "Rua das oliveiras", 32, "casa", "89032640", "Passo Manso",
+				"Brasil", "Blumenau", "SC");
 		List<Dependente> dependentes = dao.getAll();
-		assertEquals("Jorge", dependentes.get(dependentes.size() -1).getNome());
+		assertEquals("Brunão", dependentes.get(dependentes.size() -1).getNome());
 		
 	}
 

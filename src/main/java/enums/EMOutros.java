@@ -6,7 +6,7 @@ public class EMOutros {
 	
 	/**
 	 * Classe de apoio para ser utilizada na classe ExameMedico
-	 * visando a seleção do tipo de exame a ser cadastrado.
+	 * visando a seleï¿½ï¿½o do tipo de exame a ser cadastrado.
 	 * 
 	 * @author Bruna <sh4323202@gmail.com>
 	 * @author Enzo <enzomm.bodyandmind@gmail.com> 
@@ -18,12 +18,12 @@ public class EMOutros {
 		ADMISSIONAL, PERIODICO, DEMISSIONAL;
 	}
 
-	public EnumMap<TiposExames, Integer> Exames;
-	{
-		EnumMap<TiposExames, Integer> tiposExames = new EnumMap<TiposExames, Integer>(TiposExames.class);
-		tiposExames.put(TiposExames.ADMISSIONAL, 1);
-		tiposExames.put(TiposExames.PERIODICO, 2);
-		tiposExames.put(TiposExames.DEMISSIONAL, 3);
-	}
+//	public EnumMap<TiposExames, Integer> Exames;
+//	{
+//		EnumMap<TiposExames, Integer> tiposExames = new EnumMap<TiposExames, Integer>(TiposExames.class);
+//		tiposExames.put(TiposExames.ADMISSIONAL, 1);
+//		tiposExames.put(TiposExames.PERIODICO, 2);
+//		tiposExames.put(TiposExames.DEMISSIONAL, 3);
+//	}
 	
 }

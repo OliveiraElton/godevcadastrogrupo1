@@ -76,16 +76,14 @@ public class DependenteController {
 	public static Dependente criarDependente(String nome, String sobrenome, String nomeSocial,
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd, String genero,
 			IdentidadeGenero identidadeGenero, String cpf, String rg, TiposDependentes tipoDependente,
-			boolean optanteIR, String email_corporativo, String titulo_eleitor, String logradouro, Integer numero,
-			String complemento, String cep, String bairro, String pais, String cidade, String uf,
-			String telefonePrincipal, String telefoneSecundario, String email, String telefoneFamiliar) {
-
-		Endereco endereco = new Endereco(logradouro, numero, complemento, cep, bairro, pais, cidade, uf);
-		daoEndereco.create(endereco);
-
-		Dependente dependente = new Dependente(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade,
-				naturalidade, pcd, genero, identidadeGenero, endereco, cpf, rg, tipoDependente, optanteIR);
-
+			boolean optanteIR, String logradouro, Integer numero, String complemento, String cep, String bairro,
+			String pais, String cidade, String uf) {
+		
+		PessoaBuilder builder = new PessoaBuilder();
+		Director.criarDependente(builder, nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade,
+				naturalidade, pcd, genero, identidadeGenero, cpf, rg, logradouro, numero, complemento, cep, bairro,
+				pais, cidade, uf, tipoDependente, optanteIR);
+		Dependente dependente = (Dependente) builder.build();
 		return daoDependente.create(dependente);
 	}
 
@@ -132,10 +130,13 @@ public class DependenteController {
 	public static Dependente atualizarDependente(Integer id, String nome, String sobrenome, String nomeSocial,
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd, String genero,
 			IdentidadeGenero identidadeGenero, String cpf, String rg, TiposDependentes tipoDependente,
-			boolean optanteIR, String email_corporativo, String titulo_eleitor, Endereco endereco) {
-
-		Dependente dependente = new Dependente(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade,
-				naturalidade, pcd, genero, identidadeGenero, endereco, cpf, rg, tipoDependente, optanteIR);
+			boolean optanteIR, String logradouro, Integer numero, String complemento, String cep, String bairro,
+			String pais, String cidade, String uf) {
+		PessoaBuilder builder = new PessoaBuilder();
+		Director.criarDependente(builder, nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade,
+				naturalidade, pcd, genero, identidadeGenero, cpf, rg, logradouro, numero, complemento, cep, bairro,
+				pais, cidade, uf, tipoDependente, optanteIR);
+		Dependente dependente = (Dependente) builder.build();		
 		dependente.setId(id);
 		return daoDependente.update(dependente);
 	}

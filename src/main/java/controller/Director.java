@@ -158,11 +158,10 @@ public class Director {
 	 */
 	public static void criarPrestadorServico(Builder builder, String nome, String sobrenome, String nomeSocial,
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd, String genero,
-			IdentidadeGenero identidadeGenero, Endereco endereco, String cpf, String rg, Contatos contatos,
-			LocalDate dataInicioContrato, Empresa empresa, Integer idSetor, String telefonePrincipal,
+			IdentidadeGenero identidadeGenero, String cpf, String rg,
+			LocalDate dataInicioContrato, Integer idSetor, String telefonePrincipal,
 			String telefoneSecundario, String email, String telefoneFamiliar, String logradouro, Integer numero,
-			String complemento, String cep, String bairro, String pais, String cidade, String uf, String nomeEmpresa,
-			String cnpj) {
+			String complemento, String cep, String bairro, String pais, String cidade, String uf, Empresa empresa) {
 		criarPessoa(builder, nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
 				identidadeGenero, cpf, rg, logradouro, numero, complemento, cep, bairro, pais, cidade, uf);
 		builder.setContatos(telefonePrincipal, telefoneSecundario, email, telefoneFamiliar);
@@ -192,7 +191,7 @@ public class Director {
 	 */
 	public static void criarDependente(Builder builder, String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
 			String nacionalidade, String naturalidade, boolean pcd, String genero, IdentidadeGenero identidadeGenero,
-			Endereco endereco, String cpf, String rg, String logradouro, Integer numero, String complemento, String cep,
+			String cpf, String rg, String logradouro, Integer numero, String complemento, String cep,
 			String bairro, String pais, String cidade, String uf, TiposDependentes tipoDependente, boolean optanteIR) {
 		criarPessoa(builder, nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
 				identidadeGenero, cpf, rg, logradouro, numero, complemento, cep, bairro, pais, cidade, uf);

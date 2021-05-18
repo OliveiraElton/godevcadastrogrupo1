@@ -62,22 +62,18 @@ public class PrestadorServicoController {
 	 */
 	public static PrestadorServico criarPrestadorServico(String nome, String sobrenome, String nomeSocial,
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd, String genero,
-			IdentidadeGenero identidadeGenero, Endereco endereco, String cpf, String rg, Contatos contatos,
-			LocalDate dataInicioContrato, Empresa empresa, Integer idSetor, String telefonePrincipal,
+			IdentidadeGenero identidadeGenero, String cpf, String rg,
+			LocalDate dataInicioContrato, Integer idSetor, String telefonePrincipal,
 			String telefoneSecundario, String email, String telefoneFamiliar, String logradouro, Integer numero,
-			String complemento, String cep, String bairro, String pais, String cidade, String uf, String nomeEmpresa,
-			String cnpj) {
-
-		Contatos contatosPrestador = new Contatos(telefonePrincipal, telefoneSecundario, email, telefoneFamiliar);
-		daoContatos.create(contatosPrestador);
-
-		Empresa empresaPrestador = new Empresa(nomeEmpresa, dataInicioContrato, cnpj, endereco, contatos);
-		daoEmpresa.create(empresaPrestador);
-
-		PrestadorServico prestadorServico = new PrestadorServico(nome, sobrenome, nomeSocial, dataDeNascimento,
-				nacionalidade, naturalidade, pcd, genero, identidadeGenero, endereco, cpf, rg, contatos,
-				dataInicioContrato, empresa, idSetor);
-
+			String complemento, String cep, String bairro, String pais, String cidade, String uf, Empresa empresa) {
+		PessoaBuilder builder = new PessoaBuilder();
+		Director.criarPrestadorServico(builder, nome, sobrenome, nomeSocial,
+				dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
+				identidadeGenero, cpf, rg,
+				dataInicioContrato, idSetor, telefonePrincipal,
+				telefoneSecundario, email, telefoneFamiliar, logradouro, numero,
+				complemento, cep, bairro, pais, cidade, uf, empresa);
+		PrestadorServico prestadorServico = (PrestadorServico) builder.build();
 		return daoPrestadorServico.create(prestadorServico);
 	}
 
@@ -131,19 +127,23 @@ public class PrestadorServicoController {
 	 * @return
 	 * 
 	 */
-	public static PrestadorServico atualizarPrestadorServico(Integer id, String nome, String sobrenome,
-			String nomeSocial, LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd,
-			String genero, IdentidadeGenero identidadeGenero, Endereco endereco, String cpf, String rg,
-			Contatos contatos, LocalDate dataInicioContrato, Empresa empresa, Integer idSetor, String telefonePrincipal,
+	public static PrestadorServico atualizarPrestadorServico(Integer id, String nome, String sobrenome, String nomeSocial,
+			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd, String genero,
+			IdentidadeGenero identidadeGenero, String cpf, String rg,
+			LocalDate dataInicioContrato, Integer idSetor, String telefonePrincipal,
 			String telefoneSecundario, String email, String telefoneFamiliar, String logradouro, Integer numero,
-			String complemento, String cep, String bairro, String pais, String cidade, String uf) {
-
-		PrestadorServico prestadorServico = new PrestadorServico(nome, sobrenome, nomeSocial, dataDeNascimento,
-				nacionalidade, naturalidade, pcd, genero, identidadeGenero, endereco, cpf, rg, contatos,
-				dataInicioContrato, empresa, idSetor);
+			String complemento, String cep, String bairro, String pais, String cidade, String uf, Empresa empresa) {
+		PessoaBuilder builder = new PessoaBuilder();
+		Director.criarPrestadorServico(builder, nome, sobrenome, nomeSocial,
+				dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
+				identidadeGenero, cpf, rg,
+				dataInicioContrato, idSetor, telefonePrincipal,
+				telefoneSecundario, email, telefoneFamiliar, logradouro, numero,
+				complemento, cep, bairro, pais, cidade, uf, empresa);
+		PrestadorServico prestadorServico = (PrestadorServico) builder.build();
+		prestadorServico.setId(id);
 		session.clear();
 		prestadorServico.setId(id);
-
 		return daoPrestadorServico.update(prestadorServico);
 	}
 
