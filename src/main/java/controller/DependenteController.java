@@ -131,7 +131,7 @@ public class DependenteController {
 			IdentidadeGenero identidadeGenero, String cpf, String rg, TiposDependentes tipoDependente,
 			boolean optanteIR, String logradouro, Integer numero, String complemento, String cep, String bairro,
 			String pais, String cidade, String uf) {
-		PessoaBuilder builder = new PessoaBuilder();
+		PessoaBuilder builder = new PessoaBuilder(); 
 		Director.criarDependente(builder, nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade,
 				pcd, genero, identidadeGenero, cpf, rg, logradouro, numero, complemento, cep, bairro, pais, cidade, uf,
 				tipoDependente, optanteIR);
