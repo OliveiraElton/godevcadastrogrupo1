@@ -13,10 +13,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDeDatas;
+import controller.Builder;
 import enums.EMDadosPessoais.IdentidadeGenero;
+import enums.EMDadosPessoais.TiposDependentes;
+import enums.EMOutros.TiposExames;
 
 @Entity
-public class Colaborador extends Pessoa{
+public class Colaborador extends Pessoa {
 
 	/**
 	 * Classe Colaborador.
@@ -41,10 +44,10 @@ public class Colaborador extends Pessoa{
 	
 	private Integer idCargo;
 	private Integer nit;
-	private boolean optanteVT;
-	private boolean optanteVAVR;
+	private Boolean optanteVT;
+	private Boolean optanteVAVR;
 	private LocalDate dataAdmissao;
-	private boolean optanteDependente;
+	private Boolean optanteDependente;
 	private String registro_alistamento;
 	private String email_corporativo;
 	private String titulo_eleitor;
@@ -90,10 +93,10 @@ public class Colaborador extends Pessoa{
 	 */
 	public Colaborador(String nome, String sobrenome, String nomeSocial, 
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade,
-			boolean pcd, String genero, IdentidadeGenero identidadeGenero,
+			Boolean pcd, String genero, IdentidadeGenero identidadeGenero,
 			Endereco endereco, String cpf, String rg, Contatos contatos, 
-			Integer idCargo, Integer nit, boolean optanteVT, boolean optanteVAVR,
-			LocalDate dataAdmissao, boolean optanteDependente, String registro_alistamento, 
+			Integer idCargo, Integer nit, Boolean optanteVT, Boolean optanteVAVR,
+			LocalDate dataAdmissao, Boolean optanteDependente, String registro_alistamento, 
 			String email_corporativo, String titulo_eleitor, Conta conta, 
 			ExameMedico exameMedico, Dependente dependente) {
 		super(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, 
@@ -137,19 +140,19 @@ public class Colaborador extends Pessoa{
 		this.nit = nit;
 	}
 
-	public boolean isOptanteVT() {
+	public Boolean isOptanteVT() {
 		return optanteVT;
 	}
 
-	public void setOptanteVT(boolean optanteVT) {
+	public void setOptanteVT(Boolean optanteVT) {
 		this.optanteVT = optanteVT;
 	}
 
-	public boolean isOptanteVAVR() {
+	public Boolean isOptanteVAVR() {
 		return optanteVAVR;
 	}
 
-	public void setOptanteVAVR(boolean optanteVAVR) {
+	public void setOptanteVAVR(Boolean optanteVAVR) {
 		this.optanteVAVR = optanteVAVR;
 	}
 
@@ -167,11 +170,11 @@ public class Colaborador extends Pessoa{
 		}
 	}
 
-	public boolean isOptanteDependente() {
+	public Boolean isOptanteDependente() {
 		return optanteDependente;
 	}
 
-	public void setOptanteDependente(boolean optanteDependente) {
+	public void setOptanteDependente(Boolean optanteDependente) {
 		this.optanteDependente = optanteDependente;
 	}
 

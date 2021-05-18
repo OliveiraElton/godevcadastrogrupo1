@@ -19,6 +19,7 @@ import model.Dependente;
 import model.Empresa;
 import model.Endereco;
 import model.ExameMedico;
+import model.Pessoa;
 import model.PrestadorServico;
 import persistence.DBConnection;
 
@@ -31,15 +32,15 @@ public class PessoaBuilder implements Builder {
 	private LocalDate dataDeNascimento;
 	private String nacionalidade;
 	private String naturalidade;
-	private boolean pcd = false;
+	private Boolean pcd = false;
 	private String genero;
 	private IdentidadeGenero identidadeGenero;
 	private Endereco endereco = null;
 	private String cpf;
 	private String rg;
 	private Integer idCargo = null;
-	private Integer nit  = null;
-	private Boolean optanteVT  = null;
+	private Integer nit = null;
+	private Boolean optanteVT = null;
 	private Boolean optanteVAVR = null;
 	private LocalDate dataAdmissao = null;
 	private Boolean optanteDependente = null;
@@ -59,7 +60,7 @@ public class PessoaBuilder implements Builder {
 		this.tipoDependente = tipoDependente;
 	}
 
-	public void setOptanteIR(boolean optanteIR) {
+	public void setOptanteIR(Boolean optanteIR) {
 		this.optanteIR = optanteIR;
 	}
 
@@ -155,6 +156,10 @@ public class PessoaBuilder implements Builder {
 		this.email_corporativo = email_corporativo;
 	}
 
+	public void setIdSetor(Integer setor) {
+		this.idSetor = setor;
+	}
+
 	public void setTitulo_eleitor(String titulo_eleitor) {
 		this.titulo_eleitor = titulo_eleitor;
 	}
@@ -170,35 +175,31 @@ public class PessoaBuilder implements Builder {
 		ContatosDAO.getInstance(session).create(this.contatos);
 	}
 
-	public void setExameMedico(TiposExames tipoExame, LocalDate dataExame, boolean apto) {
+	public void setExameMedico(TiposExames tipoExame, LocalDate dataExame, Boolean apto) {
 		this.exameMedico = new ExameMedico(tipoExame, dataExame, apto);
 		ExameMedicoDAO.getInstance(session).create(exameMedico);
 	}
 
 	public void setDependente(String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
-			String nacionalidade, String naturalidade, boolean pcd, String genero, IdentidadeGenero identidadeGenero,
-			String cpf, String rg, TiposDependentes tipoDependente, boolean optanteIR) {
+			String nacionalidade, String naturalidade, Boolean pcd, String genero, IdentidadeGenero identidadeGenero,
+			String cpf, String rg, TiposDependentes tipoDependente, Boolean optanteIR) {
 		this.dependente = new Dependente(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade,
 				pcd, genero, identidadeGenero, endereco, cpf, rg, tipoDependente, optanteIR);
 		DependenteDAO.getInstance(session).create(this.dependente);
 	}
 
-	public Colaborador build() {
-		if(tipoDependente != null) {
-//			return new Dependente();
-		}else if(empresa != null) {
-			return new PrestadorServico(nome, sobrenome, nomeSocial,
-					dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
-					identidadeGenero, endereco, cpf, rg, contatos,
-					dataInicioContrato, empresa, idSetor, telefonePrincipal,
-					telefoneSecundario, email, telefoneFamiliar, logradouro, numero,
-					complemento, cep, bairro, pais, cidade, uf, nomeEmpresa,
-					cnpj);
-		}else {
-			return new Colaborador(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
-					identidadeGenero, endereco, cpf, rg, contatos, idCargo, nit, optanteVT, optanteVAVR, dataAdmissao,
-					optanteDependente, registro_alistamento, email_corporativo, titulo_eleitor, conta, exameMedico,
-					dependente);
+	public Pessoa build() {
+		if (tipoDependente != null) {
+			return new Dependente(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
+					identidadeGenero, endereco, cpf, rg, tipoDependente, optanteIR);
+		} else if (empresa != null) {
+			return new PrestadorServico(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd,
+					genero, identidadeGenero, endereco, cpf, rg, contatos, dataInicioContrato, empresa, idSetor);
+		} else {
+			return new Colaborador(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd,
+					genero, identidadeGenero, endereco, cpf, rg, contatos, idCargo, nit, optanteVT, optanteVAVR,
+					dataAdmissao, optanteDependente, registro_alistamento, email_corporativo, titulo_eleitor, conta,
+					exameMedico, dependente);
 		}
 	}
 

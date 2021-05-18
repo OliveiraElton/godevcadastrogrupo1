@@ -96,27 +96,34 @@ public class ColaboradorController {
 	 *         contrário
 	 */
 	public static Colaborador criarColaborador(String nome, String sobrenome, String nomeSocial,
-			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd, String genero,
-			IdentidadeGenero identidadeGenero, String cpf, String rg, Integer idCargo, Integer nit, boolean optanteVT,
-			boolean optanteVAVR, LocalDate dataAdmissao, boolean optanteDependente, String registro_alistamento,
+			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, Boolean pcd, String genero,
+			IdentidadeGenero identidadeGenero, String cpf, String rg, Integer idCargo, Integer nit, Boolean optanteVT,
+			Boolean optanteVAVR, LocalDate dataAdmissao, Boolean optanteDependente, String registro_alistamento,
 			String email_corporativo, String titulo_eleitor, String logradouro, Integer numero, String complemento,
 			String cep, String bairro, String pais, String cidade, String uf, String telefonePrincipal,
 			String telefoneSecundario, String email, String telefoneFamiliar, TiposExames tipoExame,
-			LocalDate dataExame, boolean apto, String nomeBanco, String agencia, String numeroConta,
+			LocalDate dataExame, Boolean apto, String nomeBanco, String agencia, String numeroConta,
 			String digitoVerificador, String nomeDependente, String sobrenomeDependente, String nomeSocialDependente,
 			LocalDate dataDeNascimentoDependente, String nacionalidadeDependente, String naturalidadeDependente,
-			boolean pcdDependente, String generoDependente, IdentidadeGenero identidadeGeneroDependente,
-			String cpfDependente, String rgDependente, TiposDependentes tipoDependente, boolean optanteIR) {
-
-		Director.criarColaborador(nome, sobrenome, dataDeNascimento, nacionalidade, naturalidade,
-				numero, idCargo, optanteVT, optanteVAVR, dataAdmissao, optanteDependente, registro_alistamento,
-				email_corporativo, titulo_eleitor, logradouro, numero, complemento, cep, bairro, pais, cidade, uf,
-				telefonePrincipal, telefoneSecundario, email, telefoneFamiliar, tipoExame, dataExame, apto, nomeBanco,
-				agencia, numeroConta, digitoVerificador, nomeDependente, sobrenomeDependente, nomeSocialDependente,
-				dataDeNascimentoDependente, nacionalidadeDependente, naturalidadeDependente, pcdDependente,
-				generoDependente, identidadeGeneroDependente, cpfDependente, rgDependente, tipoDependente, optanteIR);
-
-		return daoColaborador.create(builder.build());
+			Boolean pcdDependente, String generoDependente, IdentidadeGenero identidadeGeneroDependente,
+			String cpfDependente, String rgDependente, TiposDependentes tipoDependente, Boolean optanteIR) {
+		
+		PessoaBuilder builder = new PessoaBuilder();
+		
+		Director.criarColaborador(builder, nome, sobrenome, nomeSocial,
+				dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
+				identidadeGenero, cpf, rg, idCargo, nit, optanteVT,
+				optanteVAVR, dataAdmissao, optanteDependente, registro_alistamento,
+				email_corporativo, titulo_eleitor, logradouro, numero, complemento,
+				cep, bairro, pais, cidade, uf, telefonePrincipal,
+				telefoneSecundario, email, telefoneFamiliar, tipoExame,
+				dataExame, apto, nomeBanco, agencia, numeroConta,
+				digitoVerificador, nomeDependente, sobrenomeDependente, nomeSocialDependente,
+				dataDeNascimentoDependente, nacionalidadeDependente, naturalidadeDependente,
+				pcdDependente, generoDependente, identidadeGeneroDependente,
+				cpfDependente, rgDependente, tipoDependente, optanteIR);
+		Colaborador colaborador = (Colaborador) builder.build();
+		return daoColaborador.create(colaborador);
 	}
 
 	/**
@@ -128,7 +135,7 @@ public class ColaboradorController {
 	 * 
 	 * @return true caso seja deletado ou false caso contrário
 	 */
-	public static boolean deleteColabordor(Colaborador colaborador) {
+	public static Boolean deleteColabordor(Colaborador colaborador) {
 		return daoColaborador.delete(colaborador);
 	}
 
@@ -167,10 +174,10 @@ public class ColaboradorController {
 	 * @return id do colaborador caso seja atualizado ou false caso contrário.
 	 */
 	public static Colaborador atualizarColaborador(Integer id, String nome, String sobrenome, String nomeSocial,
-			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd, String genero,
+			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, Boolean pcd, String genero,
 			IdentidadeGenero identidadeGenero, Endereco endereco, String cpf, String rg, Contatos contatos,
-			Integer idCargo, Integer nit, boolean optanteVT, boolean optanteVAVR, LocalDate dataAdmissao,
-			boolean optanteDependente, String registro_alistamento, String email_corporativo, String titulo_eleitor,
+			Integer idCargo, Integer nit, Boolean optanteVT, Boolean optanteVAVR, LocalDate dataAdmissao,
+			Boolean optanteDependente, String registro_alistamento, String email_corporativo, String titulo_eleitor,
 			Conta conta, ExameMedico exameMedico, Dependente dependente) {
 
 		Colaborador colab = new Colaborador(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade,

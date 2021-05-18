@@ -37,7 +37,7 @@ public class Pessoa{
 	private LocalDate dataDeNascimento;
 	private String nacionalidade;
 	private String naturalidade;
-	private boolean pcd = false;
+	private Boolean pcd = false;
 	private String genero;
 	private IdentidadeGenero identidadeGenero;
 	@OneToOne(cascade = CascadeType.ALL)
@@ -66,7 +66,7 @@ public class Pessoa{
 	 */
 	public Pessoa(String nome, String sobrenome, String nomeSocial, 
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade,
-			boolean pcd, String genero, IdentidadeGenero identidadeGenero,
+			Boolean pcd, String genero, IdentidadeGenero identidadeGenero,
 			Endereco endereco, String cpf, String rg) {
 		this.setNome(nome);
 		this.setSobrenome(sobrenome);
@@ -141,11 +141,11 @@ public class Pessoa{
 		this.naturalidade = naturalidade;
 	}
 	
-	public boolean isPcd() {
+	public Boolean isPcd() {
 		return pcd;
 	}
 	
-	public void setPcd(boolean pcd) {
+	public void setPcd(Boolean pcd) {
 		this.pcd = pcd;
 	}
 	

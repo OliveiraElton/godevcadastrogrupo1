@@ -7,8 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import controller.Builder;
 import enums.EMDadosPessoais.IdentidadeGenero;
 import enums.EMDadosPessoais.TiposDependentes;
+import enums.EMOutros.TiposExames;
 
 /**
  * Classe Dependente Esta classe instancia a classe Pessoa para o cadastro de
@@ -23,19 +25,19 @@ import enums.EMDadosPessoais.TiposDependentes;
  */
 
 @Entity
-public class Dependente extends Pessoa{
+public class Dependente extends Pessoa  {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private TiposDependentes tipoDependente;
-	private boolean optanteIR;
-	
+	private Boolean optanteIR;
+
 	public Dependente() {
 		super();
 	}
-	
+
 	/**
 	 * @param nome
 	 * @param sobrenome
@@ -55,9 +57,8 @@ public class Dependente extends Pessoa{
 	 * @param optanteIR
 	 */
 	public Dependente(String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
-			String nacionalidade, String naturalidade, boolean pcd, String genero, IdentidadeGenero identidadeGenero,
-			Endereco endereco, String cpf, String rg,
-			TiposDependentes tipoDependente, boolean optanteIR) {
+			String nacionalidade, String naturalidade, Boolean pcd, String genero, IdentidadeGenero identidadeGenero,
+			Endereco endereco, String cpf, String rg, TiposDependentes tipoDependente, Boolean optanteIR) {
 		super(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero, identidadeGenero,
 				endereco, cpf, rg);
 		this.tipoDependente = tipoDependente;
@@ -72,14 +73,14 @@ public class Dependente extends Pessoa{
 		this.tipoDependente = tipoDependente;
 	}
 
-	public boolean isOptanteIR() {
+	public Boolean isOptanteIR() {
 		return optanteIR;
 	}
 
-	public void setOptanteIR(boolean optanteIR) {
+	public void setOptanteIR(Boolean optanteIR) {
 		this.optanteIR = optanteIR;
 	}
-	
+
 	public Integer getId() {
 		return this.id;
 	}
@@ -87,5 +88,5 @@ public class Dependente extends Pessoa{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
 }

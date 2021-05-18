@@ -9,7 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDeDatas;
+import controller.Builder;
 import enums.EMDadosPessoais.IdentidadeGenero;
+import enums.EMDadosPessoais.TiposDependentes;
+import enums.EMOutros.TiposExames;
 
 /**
  * Classe que abstrai as informa��es do prestador de servi�o contratado.
@@ -69,7 +72,7 @@ public class PrestadorServico extends Pessoa {
 	 * @param contatos2
 	 */
 	public PrestadorServico(String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
-			String nacionalidade, String naturalidade, boolean pcd, String genero, IdentidadeGenero identidadeGenero,
+			String nacionalidade, String naturalidade, Boolean pcd, String genero, IdentidadeGenero identidadeGenero,
 			Endereco endereco, String cpf, String rg, Contatos contatos, LocalDate dataInicioContrato, Empresa empresa,
 			Integer idSetor) {
 		super(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero, identidadeGenero,
@@ -123,5 +126,5 @@ public class PrestadorServico extends Pessoa {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
+	
 }
