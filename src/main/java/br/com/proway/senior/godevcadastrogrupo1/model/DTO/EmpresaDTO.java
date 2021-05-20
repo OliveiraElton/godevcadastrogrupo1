@@ -23,5 +23,37 @@ public class EmpresaDTO {
 	private Endereco endereco;
 	private Contatos contato;
 	
+	/**
+	 * Construtor que irá interagir com o Controller da API, disponibilizando as informações
+	 * de {@link Empresa}.
+	 * 
+	 * @param Empresa modelOriginal
+	 */
+	public EmpresaDTO (Empresa modelOrginal) {
+		this.id = modelOrginal.getId();
+		this.nomeEmpresa = modelOrginal.getNomeEmpresa();
+		this.dataInicioContrato = modelOrginal.getDataInicioContrato();
+		this.cnpj = modelOrginal.getCnpj();
+		this.endereco = modelOrginal.getEndereco();
+		this.contato = modelOrginal.getContato();
+	}
 	
+	public int getId() {
+		return id;
+	}
+	public String getNomeEmpresa() {
+		return nomeEmpresa;
+	}
+	public LocalDate getDataInicioContrato() {
+		return dataInicioContrato;
+	}
+	public String getCnpj() {
+		return cnpj;
+	}
+	public Endereco getEndereco() {
+		return endereco;
+	}
+	public Contatos getContato() {
+		return contato;
+	}
 }
