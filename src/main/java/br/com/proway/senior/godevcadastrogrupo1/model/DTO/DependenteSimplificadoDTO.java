@@ -9,11 +9,13 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDep
  * Classe DependenteDTO.
  * 
  * Classe para interação via Controller API, referencia a {@link Dependente}. 
+ * Os dados são simplicados, proporcionando somente as informações necessárias
+ * para os demais módulos do sistema.
  * 
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b> - Sprint 6
  *
  */
-public class DependenteDTO {
+public class DependenteSimplificadoDTO {
 
 	private int id;
 	private TiposDependentes tipoDependente;
@@ -30,7 +32,7 @@ public class DependenteDTO {
 	 * 
 	 * @param Dependente modelOriginal
 	 */
-	public DependenteDTO (Dependente modelOriginal) {
+	public DependenteSimplificadoDTO (Dependente modelOriginal) {
 		this.id = modelOriginal.getId();
 		this.tipoDependente = modelOriginal.getTipoDependente();
 		this.optanteIR = modelOriginal.isOptanteIR();

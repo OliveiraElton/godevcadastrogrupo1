@@ -14,11 +14,11 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDep
 /**
  * Classe DependenteDTOTest
  * 
- * Testa os métodos da classe {@link DependenteDTO}.
+ * Testa os métodos da classe {@link DependenteSimplificadoDTO}.
  * 
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
  */
-public class DependenteDTOTest {
+public class DependenteSimplificadoDTOTest {
 
 	
 	
@@ -26,7 +26,7 @@ public class DependenteDTOTest {
 	public void testDependenteDTO() {
 		Dependente original = new Dependente("Maria", "Silva", "Nada consta", LocalDate.of(2000, 12, 3), "Brasileiro", "Blumenau", true, "Feminino",
 				IdentidadeGenero.TRANS, new Endereco(), "03209507832", "545454", TiposDependentes.FILHO, false);
-		DependenteDTO dto = new DependenteDTO(original);
+		DependenteSimplificadoDTO dto = new DependenteSimplificadoDTO(original);
 		assertEquals(0, dto.getId());
 		assertEquals(dto.getNome(), original.getNome());
 		assertEquals(dto.getSobrenome(), original.getSobrenome());
