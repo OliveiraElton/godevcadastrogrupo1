@@ -72,7 +72,7 @@ public class ColaboradorCompletoDTO {
 		this.cpf = modelOriginal.getCpf(); 
 		this.rg = modelOriginal.getRg(); 
 		this.contatos = modelOriginal.getContatos(); 
-		this.idPostoDeTrabalho = modelOriginal.getIdCargo();
+		this.idPostoDeTrabalho = modelOriginal.getIdPostoDeTrabalho();
 		this.nit = modelOriginal.getNit(); 
 		this.optanteVT = modelOriginal.isOptanteVT(); 
 		this.optanteVAVR = modelOriginal.isOptanteVAVR();

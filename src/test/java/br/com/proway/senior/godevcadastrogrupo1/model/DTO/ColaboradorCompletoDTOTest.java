@@ -42,7 +42,7 @@ public class ColaboradorCompletoDTOTest {
 		assertEquals(original.getCpf(), dto.getCpf());
 		assertEquals(original.getRg(), dto.getRg());
 		assertEquals(original.getContatos(), dto.getContatos());
-		assertEquals(original.getIdCargo(), dto.getIdPostoDeTrabalho());
+		assertEquals(original.getIdPostoDeTrabalho(), dto.getIdPostoDeTrabalho());
 		assertEquals(original.getNit(), dto.getNit());
 		assertEquals(original.isOptanteVT(), dto.getOptanteVT());
 		assertEquals(original.isOptanteVAVR(), dto.getOptanteVAVR());
