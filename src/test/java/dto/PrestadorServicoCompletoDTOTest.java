@@ -7,16 +7,16 @@ import java.time.LocalDate;
 import org.junit.Test;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
-import br.com.proway.senior.godevcadastrogrupo1.model.DTO.PrestadorServicoDTO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DTO.PrestadorServicoCompletoDTO;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
 
-public class PrestadorServicoDTOTest {
+public class PrestadorServicoCompletoDTOTest {
 
 	@Test
 	public void testPrestadorServicoDTO() {
 		PrestadorServico novo = new PrestadorServico("Joao", "Costa", null, LocalDate.of(1990, 02, 03), "xxx", "yyy",
 				false, "Masculino", IdentidadeGenero.CIS, null, null, null, null, null, null, null);
-	PrestadorServicoDTO dto = new PrestadorServicoDTO(novo);
+	PrestadorServicoCompletoDTO dto = new PrestadorServicoCompletoDTO(novo);
 	assertEquals(0, dto.getId());
 	assertEquals(novo.getNome(), dto.getNome());
 	assertEquals(novo.getSobrenome(), dto.getSobrenome());

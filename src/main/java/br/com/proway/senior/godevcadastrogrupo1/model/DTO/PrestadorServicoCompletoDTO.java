@@ -16,7 +16,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.Identida
 * 
 * @author Elton Oliveira <elton.oliveira@senior.com.br>
  */
-public class PrestadorServicoDTO {
+public class PrestadorServicoCompletoDTO {
 	
 	private int id;
 	private LocalDate dataInicioContrato;
@@ -37,7 +37,7 @@ public class PrestadorServicoDTO {
 	private String rg;
 	
 
-	public PrestadorServicoDTO(PrestadorServico prestadorServico) {
+	public PrestadorServicoCompletoDTO(PrestadorServico prestadorServico) {
 		this.id = prestadorServico.getId();
 		this.dataInicioContrato = prestadorServico.getDataInicioContrato();
 		this.empresa = prestadorServico.getEmpresa();
