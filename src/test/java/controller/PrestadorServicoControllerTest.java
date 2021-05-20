@@ -11,11 +11,12 @@ import org.hibernate.Session;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import dao.EmpresaDAO;
-import dao.PrestadorServicoDAO;
-import model.Empresa;
-import model.PrestadorServico;
-import persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.controller.PrestadorServicoController;
+import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
+import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EmpresaDAO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.PrestadorServicoDAO;
+import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 public class PrestadorServicoControllerTest {
 

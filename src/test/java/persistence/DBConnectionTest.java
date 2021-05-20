@@ -5,6 +5,8 @@ import static org.junit.Assert.assertNotNull;
 import org.hibernate.Session;
 import org.junit.Test;
 
+import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+
 public class DBConnectionTest {
 
 	@Test

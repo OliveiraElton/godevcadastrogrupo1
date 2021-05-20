@@ -8,8 +8,9 @@ import org.hibernate.Session;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import model.PrestadorServico;
-import persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.PrestadorServicoDAO;
+import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 public class PrestadorServicoDAOTest {
 

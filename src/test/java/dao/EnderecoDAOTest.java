@@ -5,8 +5,9 @@ import static org.junit.Assert.assertEquals;
 import org.hibernate.Session;
 import org.junit.Test;
 
-import model.Endereco;
-import persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
+import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 public class EnderecoDAOTest {
 

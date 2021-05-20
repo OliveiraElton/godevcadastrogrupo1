@@ -7,17 +7,18 @@ import java.time.LocalDate;
 import org.hibernate.Session;
 import org.junit.Test;
 
-import enums.EMOutros;
-import enums.EMOutros.TiposExames;
-import model.ExameMedico;
-import persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.model.ExameMedico;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ExameMedicoDAO;
+import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos;
+import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExames;
 
 public class ExameMedicoDAOTest {
 
 	Session session = DBConnection.getSession();
 	ExameMedicoDAO dao = ExameMedicoDAO.getInstance(session);
-	static TiposExames exameAdm = EMOutros.TiposExames.ADMISSIONAL;
-	static TiposExames exameDem = EMOutros.TiposExames.DEMISSIONAL;
+	static TiposExames exameAdm = EnumExamesMedicos.TiposExames.ADMISSIONAL;
+	static TiposExames exameDem = EnumExamesMedicos.TiposExames.DEMISSIONAL;
 	static LocalDate data = LocalDate.now();
 
 	@Test

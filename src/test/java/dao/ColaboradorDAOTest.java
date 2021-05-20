@@ -11,17 +11,23 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import enums.EMDadosPessoais;
-import enums.EMDadosPessoais.IdentidadeGenero;
-import enums.EMOutros;
-import enums.EMOutros.TiposExames;
-import model.Colaborador;
-import model.Conta;
-import model.Contatos;
-import model.Dependente;
-import model.Endereco;
-import model.ExameMedico;
-import persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
+import br.com.proway.senior.godevcadastrogrupo1.model.Conta;
+import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
+import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
+import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
+import br.com.proway.senior.godevcadastrogrupo1.model.ExameMedico;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ColaboradorDAO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ContaDAO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ContatosDAO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ExameMedicoDAO;
+import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais;
+import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos;
+import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExames;
 
 public class ColaboradorDAOTest {
 
@@ -32,8 +38,8 @@ public class ColaboradorDAOTest {
 	static EnderecoDAO daoEndereco = EnderecoDAO.getInstance(session);
 	static ExameMedicoDAO daoExameMedico = ExameMedicoDAO.getInstance(session);
 	static DependenteDAO daoDependente = DependenteDAO.getInstance(session);
-	static IdentidadeGenero ig = EMDadosPessoais.IdentidadeGenero.TRANS;
-	static TiposExames em = EMOutros.TiposExames.ADMISSIONAL;
+	static IdentidadeGenero ig = EnumDadosPessoais.IdentidadeGenero.TRANS;
+	static TiposExames em = EnumExamesMedicos.TiposExames.ADMISSIONAL;
 	static LocalDate data = LocalDate.of(2002, 01, 28);
 	Conta conta = new Conta(null, null, null, null);
 	Endereco endereco = new Endereco(null, null, null, null, null, null, null, null);

@@ -9,16 +9,17 @@ import java.util.List;
 import org.hibernate.Session;
 import org.junit.Test;
 
-import dao.ColaboradorDAO;
-import dao.DependenteDAO;
-import enums.EMDadosPessoais;
-import model.Colaborador;
-import model.Conta;
-import model.Contatos;
-import model.Dependente;
-import model.Endereco;
-import model.ExameMedico;
-import persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.controller.DependenteController;
+import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
+import br.com.proway.senior.godevcadastrogrupo1.model.Conta;
+import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
+import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
+import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
+import br.com.proway.senior.godevcadastrogrupo1.model.ExameMedico;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ColaboradorDAO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
+import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais;
 
 public class DependenteControllerTest {
 	
@@ -31,7 +32,7 @@ public class DependenteControllerTest {
 	public void testCriarDependente() {
 		Dependente d = DependenteController.criarDependente("Jorge", "Maravilha", "jessica",
 				data, "Brasileiro", null, true, null,
-				null, "256.103.800-90", "mg14388606", EMDadosPessoais.TiposDependentes.FILHO,
+				null, "256.103.800-90", "mg14388606", EnumDadosPessoais.TiposDependentes.FILHO,
 				true, "Rua das oliveiras", 32, "casa", "89032640", "Passo Manso",
 				"Brasil", "Blumenau", "SC");
 		assertNotNull(d);
@@ -55,14 +56,14 @@ public class DependenteControllerTest {
 	public void testAtualizarDependente() {
 		Dependente d = DependenteController.criarDependente("Jorge", "Maravilha", "jessica",
 				data, "Brasileiro", null, true, null,
-				null, "256.103.800-90", "mg14388606", EMDadosPessoais.TiposDependentes.FILHO,
+				null, "256.103.800-90", "mg14388606", EnumDadosPessoais.TiposDependentes.FILHO,
 				true, "Rua das oliveiras", 32, "casa", "89032640", "Passo Manso",
 				"Brasil", "Blumenau", "SC");
 		dao.create(d);
 		session.clear();
 		DependenteController.atualizarDependente(d.getId(), "Brunão", "Maravilha", "jessica",
 				data, "Brasileiro", null, true, null,
-				null, "256.103.800-90", "mg14388606", EMDadosPessoais.TiposDependentes.CONJUGE,
+				null, "256.103.800-90", "mg14388606", EnumDadosPessoais.TiposDependentes.CONJUGE,
 				true, "Rua das oliveiras", 32, "casa", "89032640", "Passo Manso",
 				"Brasil", "Blumenau", "SC");
 		List<Dependente> dependentes = dao.getAll();

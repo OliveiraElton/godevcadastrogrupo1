@@ -11,10 +11,11 @@ import org.hibernate.Session;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import dao.EmpresaDAO;
-import model.Contatos;
-import model.Empresa;
-import persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.controller.EmpresaController;
+import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
+import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EmpresaDAO;
+import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 public class EmpresaControllerTest {
 

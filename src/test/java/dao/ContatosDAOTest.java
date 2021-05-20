@@ -5,8 +5,9 @@ import static org.junit.Assert.assertEquals;
 import org.hibernate.Session;
 import org.junit.Test;
 
-import model.Contatos;
-import persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ContatosDAO;
+import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 public class ContatosDAOTest {
 

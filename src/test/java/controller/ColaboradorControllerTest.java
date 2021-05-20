@@ -11,28 +11,29 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import dao.ColaboradorDAO;
-import enums.EMDadosPessoais;
-import enums.EMDadosPessoais.IdentidadeGenero;
-import enums.EMDadosPessoais.TiposDependentes;
-import enums.EMOutros;
-import enums.EMOutros.TiposExames;
-import model.Colaborador;
-import model.Conta;
-import model.Contatos;
-import model.Dependente;
-import model.Endereco;
-import model.ExameMedico;
-import persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.controller.ColaboradorController;
+import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
+import br.com.proway.senior.godevcadastrogrupo1.model.Conta;
+import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
+import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
+import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
+import br.com.proway.senior.godevcadastrogrupo1.model.ExameMedico;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ColaboradorDAO;
+import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais;
+import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos;
+import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDependentes;
+import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExames;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ColaboradorControllerTest {
 	static Session session = DBConnection.getSession();
 	static ColaboradorDAO dao = ColaboradorDAO.getInstance(session);
-	static IdentidadeGenero ig = EMDadosPessoais.IdentidadeGenero.TRANS;
+	static IdentidadeGenero ig = EnumDadosPessoais.IdentidadeGenero.TRANS;
 	static LocalDate data = LocalDate.of(2002, 01, 28);
-	static TiposExames te = EMOutros.TiposExames.ADMISSIONAL;
-	static TiposDependentes td = EMDadosPessoais.TiposDependentes.CONJUGE;
+	static TiposExames te = EnumExamesMedicos.TiposExames.ADMISSIONAL;
+	static TiposDependentes td = EnumDadosPessoais.TiposDependentes.CONJUGE;
 
 	@Test
 	public void testCriarColaborador() {
@@ -114,7 +115,7 @@ public class ColaboradorControllerTest {
 				"Blumenauense", true, null, ig, "09619039610", "mg14388606",td, true);
 		ColaboradorController.adicionarDependente(colaborador, "David", "Hilderbrant", "Dávi",
 				null, "Braza", "Blumenauano", true, null,
-				null, "123.587.893-50", "Mg-14.388.606", EMDadosPessoais.TiposDependentes.PAI,
+				null, "123.587.893-50", "Mg-14.388.606", EnumDadosPessoais.TiposDependentes.PAI,
 				false, "Rua sem saida", 666, "segue reto toda vida", null, "Garcia",
 				"O sul é meu país","Brusque", "SC");
 		assertEquals(2, colaborador.getDependente().size());	
@@ -129,7 +130,7 @@ public class ColaboradorControllerTest {
 					"5421452103", "brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00", "055",
 					"438614625", "154","joãozinho", "Santos","Erika", data, "Venezuelano",
 					"Blumenauense", true, null, ig, "09619039610", "mg14388606",td, true);
-			TiposExames te2 = EMOutros.TiposExames.PERIODICO;
+			TiposExames te2 = EnumExamesMedicos.TiposExames.PERIODICO;
 			ColaboradorController.adicionarExameMedico(colaborador, te2, data, true) ;
 			assertEquals(2, colaborador.getExameMedico().size());
 	

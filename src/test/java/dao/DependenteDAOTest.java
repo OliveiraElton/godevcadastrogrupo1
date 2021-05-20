@@ -8,8 +8,9 @@ import java.time.LocalDate;
 import org.hibernate.Session;
 import org.junit.Test;
 
-import model.Dependente;
-import persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
+import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 public class DependenteDAOTest {
 
