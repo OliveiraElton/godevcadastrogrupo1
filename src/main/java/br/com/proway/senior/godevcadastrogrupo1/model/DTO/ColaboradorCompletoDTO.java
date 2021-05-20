@@ -49,4 +49,89 @@ public class ColaboradorCompletoDTO {
 	private ExameMedico exameMedico;
 	private Dependente dependente;
 	
+	
+	
+	
+	
+	public Integer getId() {
+		return id;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public String getSobrenome() {
+		return sobrenome;
+	}
+	public String getNomeSocial() {
+		return nomeSocial;
+	}
+	public LocalDate getDataDeNascimento() {
+		return dataDeNascimento;
+	}
+	public String getNacionalidade() {
+		return nacionalidade;
+	}
+	public String getNaturalidade() {
+		return naturalidade;
+	}
+	public Boolean getPcd() {
+		return pcd;
+	}
+	public String getGenero() {
+		return genero;
+	}
+	public IdentidadeGenero getIdentidadeGenero() {
+		return identidadeGenero;
+	}
+	public Endereco getEndereco() {
+		return endereco;
+	}
+	public String getCpf() {
+		return cpf;
+	}
+	public String getRg() {
+		return rg;
+	}
+	public Contatos getContatos() {
+		return contatos;
+	}
+	public Integer getIdPostoDeTrabalho() {
+		return idPostoDeTrabalho;
+	}
+	public Integer getNit() {
+		return nit;
+	}
+	public Boolean getOptanteVT() {
+		return optanteVT;
+	}
+	public Boolean getOptanteVAVR() {
+		return optanteVAVR;
+	}
+	public LocalDate getDataAdmissao() {
+		return dataAdmissao;
+	}
+	public Boolean getOptanteDependente() {
+		return optanteDependente;
+	}
+	public String getRegistro_alistamento() {
+		return registro_alistamento;
+	}
+	public String getEmail_corporativo() {
+		return email_corporativo;
+	}
+	public String getTitulo_eleitor() {
+		return titulo_eleitor;
+	}
+	public Conta getConta() {
+		return conta;
+	}
+	public ExameMedico getExameMedico() {
+		return exameMedico;
+	}
+	public Dependente getDependente() {
+		return dependente;
+	}
+	
+	
+	
 }
