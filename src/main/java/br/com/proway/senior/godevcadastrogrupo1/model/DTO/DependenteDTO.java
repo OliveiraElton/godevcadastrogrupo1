@@ -8,7 +8,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDep
 /**
  * Classe DependenteDTO.
  * 
- * Classe para interação via API, referencia a {@link Dependente}. 
+ * Classe para interação via Controller API, referencia a {@link Dependente}. 
  * 
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b> - Sprint 6
  *
