@@ -18,6 +18,7 @@ public class ContaDTOTest {
 		assertEquals("102", contaDto.getAgencia());
 		assertNotEquals("25986", contaDto.getNumeroConta());
 		assertEquals("14", contaDto.getDigitoVerificador());
+		assertEquals(0, contaDto.getId());
 	}
 
 }

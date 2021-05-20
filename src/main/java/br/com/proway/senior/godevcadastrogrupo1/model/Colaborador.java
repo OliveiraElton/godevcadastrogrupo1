@@ -121,7 +121,7 @@ public class Colaborador extends Pessoa {
 		this.id = id;
 	}
 
-	public Integer getIdCargo() {
+	public Integer getIdPostoDeTrabalho() {
 		return idPostoDeTRabalho;
 	}
 
