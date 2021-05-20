@@ -34,7 +34,6 @@ public class Empresa {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	private long empresaId;
 	private String nomeEmpresa;
 	private LocalDate dataInicioContrato;
 	private String cnpj;
@@ -63,14 +62,6 @@ public class Empresa {
 
 	public Empresa() {
 		super();
-	}
-
-	public long getEmpresaId() {
-		return empresaId;
-	}
-
-	public void setEmpresaId(long empresaId) {
-		this.empresaId = empresaId;
 	}
 
 	public String getNomeEmpresa() {
