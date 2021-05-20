@@ -28,13 +28,13 @@ public class DependenteDTOTest {
 				IdentidadeGenero.TRANS, new Endereco(), "03209507832", "545454", TiposDependentes.FILHO, false);
 		DependenteDTO dto = new DependenteDTO(original);
 		assertEquals(0, dto.getId());
-		assertEquals(original.getNome(), dto.getNome());
-		assertEquals(original.getSobrenome(), dto.getSobrenome());
-		assertEquals(original.getDataDeNascimento(), dto.getDataDeNascimento());
-		assertEquals(original.isOptanteIR(), dto.isOptanteIR());
-		assertEquals(original.isPcd(), dto.isPcd());
-		assertEquals(original.getTipoDependente(), dto.getTipoDependente());
-		assertEquals(original.getCpf(), dto.getCpf());
+		assertEquals(dto.getNome(), original.getNome());
+		assertEquals(dto.getSobrenome(), original.getSobrenome());
+		assertEquals(dto.getDataDeNascimento(), original.getDataDeNascimento());
+		assertEquals(dto.isOptanteIR(), original.isOptanteIR());
+		assertEquals(dto.isPcd(), original.isPcd());
+		assertEquals(dto.getTipoDependente(), original.getTipoDependente());
+		assertEquals(dto.getCpf(), original.getCpf());
 	}
 
 }
