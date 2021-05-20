@@ -2,6 +2,13 @@ package br.com.proway.senior.godevcadastrogrupo1.model.DTO;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
 
+/*
+ * Classe de envio de dados do objeto para outros módulos.
+ * 
+ * Classe DTO que recebe atributos de objeto para interacao com outros módulos.
+ * 
+ * @author Vitor Peres <b>vitor.peres@senior.com.br</b>
+ */
 public class ContatosDTO {
 
 	
