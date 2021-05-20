@@ -25,7 +25,8 @@ public class ValidacaoDocumentos {
 	public static  boolean validarCPF(String CPF) {
 
 		String CPFFormatado = FormatacaoDocumentos.removerCaracteres(CPF);
-		if (CPF.length() != 11) {
+		if (CPFFormatado.length() != 11) {
+			
 			return false;
 		}
 
