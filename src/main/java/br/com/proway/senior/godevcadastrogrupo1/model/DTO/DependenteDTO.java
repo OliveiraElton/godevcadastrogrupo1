@@ -44,50 +44,33 @@ public class DependenteDTO {
 	public int getId() {
 		return id;
 	}
-	public void setId(int id) {
-		this.id = id;
-	}
+
 	public TiposDependentes getTipoDependente() {
 		return tipoDependente;
 	}
-	public void setTipoDependente(TiposDependentes tipoDependente) {
-		this.tipoDependente = tipoDependente;
-	}
-	public Boolean getOptanteIR() {
+
+	public Boolean isOptanteIR() {
 		return optanteIR;
 	}
-	public void setOptanteIR(Boolean optanteIR) {
-		this.optanteIR = optanteIR;
-	}
+
 	public String getNome() {
 		return nome;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+
 	public String getSobrenome() {
 		return sobrenome;
 	}
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
-	}
+
 	public LocalDate getDataDeNascimento() {
 		return dataDeNascimento;
 	}
-	public void setDataDeNascimento(LocalDate dataDeNascimento) {
-		this.dataDeNascimento = dataDeNascimento;
-	}
-	public Boolean getPcd() {
+
+	public Boolean isPcd() {
 		return pcd;
 	}
-	public void setPcd(Boolean pcd) {
-		this.pcd = pcd;
-	}
+
 	public String getCpf() {
 		return cpf;
 	}
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}	
-	
+
 }

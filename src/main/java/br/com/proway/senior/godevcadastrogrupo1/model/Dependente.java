@@ -87,12 +87,6 @@ public class Dependente extends Pessoa  {
 		this.id = id;
 	}
 
-	public Boolean getOptanteIR() {
-		return optanteIR;
-	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
 
 }
