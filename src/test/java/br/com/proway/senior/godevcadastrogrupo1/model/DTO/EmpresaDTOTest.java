@@ -16,7 +16,6 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
  * Testa os métodos da classe {@link Empresa}.
  * 
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
- *
  */
 public class EmpresaDTOTest {
 

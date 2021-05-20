@@ -18,7 +18,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDep
  * 
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
  */
-public class DependenteDTOTest {
+public class DependenteSimplificadoDTOTest {
 
 	
 	

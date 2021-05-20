@@ -56,48 +56,61 @@ public class DependenteCompletoDTO {
 		this.tipoDependente = modelOriginal.getTipoDependente();
 		this.optanteIR = modelOriginal.isOptanteIR();
 	}
-	
-	public void setId(int id) {
-		this.id = id;
+
+	public int getId() {
+		return id;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+
+	public String getNome() {
+		return nome;
 	}
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
+
+	public String getSobrenome() {
+		return sobrenome;
 	}
-	public void setNomeSocial(String nomeSocial) {
-		this.nomeSocial = nomeSocial;
+
+	public String getNomeSocial() {
+		return nomeSocial;
 	}
-	public void setDataDeNascimento(LocalDate dataDeNascimento) {
-		this.dataDeNascimento = dataDeNascimento;
+
+	public LocalDate getDataDeNascimento() {
+		return dataDeNascimento;
 	}
-	public void setNacionalidade(String nacionalidade) {
-		this.nacionalidade = nacionalidade;
+
+	public String getNacionalidade() {
+		return nacionalidade;
 	}
-	public void setNaturalidade(String naturalidade) {
-		this.naturalidade = naturalidade;
+
+	public String getNaturalidade() {
+		return naturalidade;
 	}
-	public void setPcd(Boolean pcd) {
-		this.pcd = pcd;
+
+	public Boolean isPcd() {
+		return pcd;
 	}
-	public void setGenero(String genero) {
-		this.genero = genero;
+
+	public String getGenero() {
+		return genero;
 	}
-	public void setIdentidadeGenero(IdentidadeGenero identidadeGenero) {
-		this.identidadeGenero = identidadeGenero;
+
+	public IdentidadeGenero getIdentidadeGenero() {
+		return identidadeGenero;
 	}
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+
+	public String getCpf() {
+		return cpf;
 	}
-	public void setRg(String rg) {
-		this.rg = rg;
+
+	public String getRg() {
+		return rg;
 	}
-	public void setTipoDependente(TiposDependentes tipoDependente) {
-		this.tipoDependente = tipoDependente;
+
+	public TiposDependentes getTipoDependente() {
+		return tipoDependente;
 	}
-	public void setOptanteIR(Boolean optanteIR) {
-		this.optanteIR = optanteIR;
+
+	public Boolean isOptanteIR() {
+		return optanteIR;
 	}
 	
 }
