@@ -49,8 +49,40 @@ public class ColaboradorCompletoDTO {
 	private ExameMedico exameMedico;
 	private Dependente dependente;
 	
-	
-	
+	/**
+	 * Construtor que irá interagir com o Controller da API, disponibilizando as informações
+	 * de {@link Colaborador}.
+	 * 
+	 * @param Colaborador modelOriginal
+	 */
+	public ColaboradorCompletoDTO (Colaborador modelOriginal) {
+		this.id = modelOriginal.getId();
+		this.nome = modelOriginal.getNome();
+		this.sobrenome = modelOriginal.getSobrenome();
+		this.nomeSocial = modelOriginal.getNomeSocial();
+		this.dataDeNascimento = modelOriginal.getDataDeNascimento();
+		this.nacionalidade = modelOriginal.getNacionalidade();
+		this.naturalidade = modelOriginal.getNaturalidade();
+		this.pcd = modelOriginal.isPcd(); 
+		this.genero = modelOriginal.getGenero(); 
+		this.identidadeGenero = modelOriginal.getIdentidadeGenero();
+		this.endereco = modelOriginal.getEndereco(); 
+		this.cpf = modelOriginal.getCpf(); 
+		this.rg = modelOriginal.getRg(); 
+		this.contatos = modelOriginal.getContatos(); 
+		this.idPostoDeTrabalho = modelOriginal.getIdCargo();
+		this.nit = modelOriginal.getNit(); 
+		this.optanteVT = modelOriginal.isOptanteVT(); 
+		this.optanteVAVR = modelOriginal.isOptanteVAVR();
+		this.dataAdmissao = modelOriginal.getDataAdmissao();
+		this.optanteDependente = modelOriginal.isOptanteDependente();
+		this.registro_alistamento = modelOriginal.getRegistro_alistamento(); 
+		this.email_corporativo = modelOriginal.getEmail_corporativo();
+		this.titulo_eleitor = modelOriginal.getTitulo_eleitor();
+		this.conta = modelOriginal.getConta(); 
+		this.exameMedico = (ExameMedico) modelOriginal.getExameMedico();
+		this.dependente = (Dependente) modelOriginal.getDependente();
+	}
 	
 	
 	public Integer getId() {
