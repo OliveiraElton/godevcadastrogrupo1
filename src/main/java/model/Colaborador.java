@@ -39,7 +39,7 @@ public class Colaborador extends Pessoa {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	private Integer idCargo;
+	private Integer idPostoDeTRabalho;
 	private Integer nit;
 	private Boolean optanteVT;
 	private Boolean optanteVAVR;
@@ -98,7 +98,7 @@ public class Colaborador extends Pessoa {
 			ExameMedico exameMedico, Dependente dependente) {
 		super(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, 
 				naturalidade, pcd, genero, identidadeGenero, endereco, cpf, rg);
-		this.idCargo = idCargo;
+		this.idPostoDeTRabalho = idCargo;
 		this.nit = nit;
 		this.optanteVT = optanteVT;
 		this.optanteVAVR = optanteVAVR;
@@ -122,11 +122,11 @@ public class Colaborador extends Pessoa {
 	}
 
 	public Integer getIdCargo() {
-		return idCargo;
+		return idPostoDeTRabalho;
 	}
 
 	public void setIdCargo(Integer idCargo) {
-		this.idCargo = idCargo;
+		this.idPostoDeTRabalho = idCargo;
 	}
 
 	public Integer getNit() {
