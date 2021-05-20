@@ -1,6 +1,8 @@
 package br.com.proway.senior.godevcadastrogrupo1.model.DTO;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Conta;
@@ -46,8 +48,8 @@ public class ColaboradorCompletoDTO {
 	private String email_corporativo;
 	private String titulo_eleitor;
 	private Conta conta; 
-	private ExameMedico exameMedico;
-	private Dependente dependente;
+	private List<ExameMedico> exameMedico;
+	private List<Dependente> dependente;
 	
 	/**
 	 * Construtor que irá interagir com o Controller da API, disponibilizando as informações
@@ -80,8 +82,8 @@ public class ColaboradorCompletoDTO {
 		this.email_corporativo = modelOriginal.getEmail_corporativo();
 		this.titulo_eleitor = modelOriginal.getTitulo_eleitor();
 		this.conta = modelOriginal.getConta(); 
-		this.exameMedico = (ExameMedico) modelOriginal.getExameMedico();
-		this.dependente = (Dependente) modelOriginal.getDependente();
+		this.exameMedico = modelOriginal.getExameMedico();
+		this.dependente = modelOriginal.getDependente();
 	}
 	
 	
@@ -157,13 +159,11 @@ public class ColaboradorCompletoDTO {
 	public Conta getConta() {
 		return conta;
 	}
-	public ExameMedico getExameMedico() {
+	public List<ExameMedico> getExameMedico() {
 		return exameMedico;
 	}
-	public Dependente getDependente() {
+	public List<Dependente> getDependente() {
 		return dependente;
 	}
-	
-	
 	
 }
