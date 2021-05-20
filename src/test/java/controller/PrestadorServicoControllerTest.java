@@ -3,6 +3,7 @@ package controller;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -102,6 +103,25 @@ public class PrestadorServicoControllerTest {
 		dao.create(ps);
 		List<PrestadorServico> prestadoresServico = PrestadorServicoController.buscarTodosPrestadorServico(); 
 		assertEquals("Beatriz", prestadoresServico.get(prestadoresServico.size() - 1).getNome());
+	}
+	@Test
+	public void testBuscarTodosPrestadorServicoPorNome() {
+		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Vampeta", "Da Massa", "Jhon",
+				data, "Brasil", "São Paulo", true, null,
+				null, "256.103.800-90", null, 
+				LocalDate.of(2020, 01, 28), null, "1543652548",
+				"1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510,
+				"Prédio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
+		PrestadorServico ps2 = PrestadorServicoController.criarPrestadorServico("Vampeta", "Fulana", "Jhon",
+				data, "Brasil", "São Paulo", true, null,
+				null, "256.103.800-90", null, 
+				LocalDate.of(2020, 01, 28), null, "1543652548",
+				"1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510,
+				"Prédio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
+		dao.create(ps);
+		dao.create(ps2);
+		List<PrestadorServico> prestadoresServico = PrestadorServicoController.buscarPrestadorServicoPorNome("Vampeta");
+		assertEquals(2, prestadoresServico.size());
 	}
 
 }
