@@ -64,7 +64,7 @@ protected static ContaDAO instance;
 		if (!this.session.getTransaction().isActive()) {
 			this.session.beginTransaction();
 		}
-		int modificados = this.session.createSQLQuery("TRUNCATE colaborador CASCADE").executeUpdate();
+		int modificados = this.session.createSQLQuery("TRUNCATE conta CASCADE").executeUpdate();
 		this.session.getTransaction().commit();
 		return modificados > 0 ? true : false;
 	}
