@@ -6,6 +6,7 @@ import static org.junit.Assert.assertFalse;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import br.com.proway.senior.godevcadastrogrupo1.controller.EmpresaController;
@@ -59,11 +60,9 @@ public class EmpresaControllerAPITest {
 	}
 	
 	
-//	@Before
-//	public void limparTabela() {
-//		Session session = DBConnection.getSession();
-//		EmpresaDAO dao = EmpresaDAO.getInstance(session);
-//		dao.deleteAll();
-//	}
-//	
+	@Before
+	public void limparTabela() {
+		dao.deleteAll();
+	}
+	
 }

@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.proway.senior.godevcadastrogrupo1.controller.EmpresaController;
+import br.com.proway.senior.godevcadastrogrupo1.controller.PrestadorServicoController;
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
+import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.EmpresaDTO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DTO.PrestadorServicoDTO;
 
 /**
  * Classe EmpresaControllerAPI
@@ -41,15 +44,23 @@ public class EmpresaControllerAPI {
 	 * Método busca as informações de todas as empresas cadastradas no banco de dados.
 	 * Retorna uma lista de todos os registros de empresas.
 	 * 
-	 * @return listaPrestadorDTO lista de registros localizados.
+	 * @return listaEmpresaDTO lista de registros localizados.
 	 */
 	public static List<EmpresaDTO> buscarTodasEmpresas() {
-		List<EmpresaDTO> listaPrestadorDTO = new ArrayList<EmpresaDTO>();
+		List<EmpresaDTO> listaEmpresaDTO = new ArrayList<EmpresaDTO>();
 		List<Empresa> listaImprime = controllerOriginal.buscarTodasEmpresas();
 		for(Empresa empresa : controllerOriginal.buscarTodasEmpresas()) {
-			listaPrestadorDTO.add(new EmpresaDTO(empresa));
+			listaEmpresaDTO.add(new EmpresaDTO(empresa));
 		}
-		return listaPrestadorDTO;
+		return listaEmpresaDTO;
+	}
+	
+	public static List<EmpresaDTO> buscarPrestadorServicoPorNome(String nomeEmpresa){
+		List<EmpresaDTO> listaEmpresaDTO = new ArrayList<EmpresaDTO>();
+		for(PrestadorServico empresa : PrestadorServicoController.buscarPrestadorServicoPorNome(nomeEmpresa)) {
+			listaEmpresaDTO.add(new EmpresaDTO(empresa));
+		}
+		return listaEmpresaDTO;
 	}
 	
 }

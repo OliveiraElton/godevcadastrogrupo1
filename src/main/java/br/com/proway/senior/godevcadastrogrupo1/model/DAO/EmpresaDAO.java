@@ -1,13 +1,19 @@
 package br.com.proway.senior.godevcadastrogrupo1.model.DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
+import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
+import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
+import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 /**
  * EmpresaDAO.
@@ -92,6 +98,29 @@ public class EmpresaDAO extends Dao<Empresa> implements InterfaceDao<Empresa>{
 		return modificados > 0 ? true : false;
 	}
 	
+	/**
+	 * Buscar empresas por nome.
+	 * 
+	 * Método busca as empresas no banco de dados através dos seus respectivos nomes,
+	 * é possível passar um parâmetro parcial para retorna todos os registros que contenham
+	 * determinado texto em seu nomeEmpresa.
+	 * 
+	 * @param nomeEmpresa nome da(s) empresa(s) procuradas.
+	 * @return resultados lista de registros localizados.
+	 */
+	public List<Empresa> buscarPorNome(String nomeEmpresa){
+		Session session = DBConnection.getSession();
+		CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+		CriteriaQuery<Empresa> criteria = criteriaBuilder.createQuery(Empresa.class);	
+		Root<Empresa> root = criteria.from(Empresa.class);
+		Expression<String> coluna = root.get("nomeEmpresa");
+		String filtro = "%" + nomeEmpresa + "%";
+		criteria.select(root).where(criteriaBuilder.like(coluna, filtro));	
+		Query query = session.createQuery(criteria);
+		List<Empresa> resultados = query.getResultList();
+		return new ArrayList<Empresa>(resultados);
+	}
+
 }
 
 
