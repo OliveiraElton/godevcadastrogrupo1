@@ -30,6 +30,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExa
  * @author David Hildebrnadt <davihildebran@gmail.com>
  * @author David Willian <dwillian676@gmail.com>
  * @author Elton Frncisco de Oliveira <eltonf.oliveira22@gmail.com>
+ * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b> - Sprint 6
  *
  */
 public class ColaboradorController {
@@ -275,20 +276,18 @@ public class ColaboradorController {
 		return daoColaborador.readById(id);
 	}
 
-//	/**
-//	 * Busca Colaborador.
-//	 * 
-//	 * Busca o Colaborador cujo nome e sobrenome são iguais aos passados como 
-//	 * parâmetro.
-//	 * 
-//	 * @param nome Do colaborador desejado.
-//	 * @param sobrenome Do colaborador desejado.
-//	 * 
-//	 * @return Colaborador ou null caso colaborador não encontrado. 
-//	 */
-//	public static Colaborador buscarColaboradorPorNomeSobrenome(String nome, String sobrenome) {		
-//		return daoColaborador.readByNomeSobrenome(nome, sobrenome);
-//	}
+	/**
+	 * Busca Colaborador por nome.
+	 * 
+	 * Busca o colaborador por nome, conforme par�metro passado. Busca de forma
+	 * @param nome Do colaborador desejado.
+	 * @param sobrenome Do colaborador desejado.
+	 * 
+	 * @return Colaborador ou null caso colaborador não encontrado. 
+	 */
+	public static List<Colaborador> buscarColaboradorPorNomeSobrenome(String nomeColaborador) {		
+		return daoColaborador.buscarPorNome(nomeColaborador);
+	}
 
 	/**
 	 * Busca todos os Colaboradores.
@@ -299,5 +298,7 @@ public class ColaboradorController {
 		return daoColaborador.getAll();
 	}
 
+	
+	
 
 }
