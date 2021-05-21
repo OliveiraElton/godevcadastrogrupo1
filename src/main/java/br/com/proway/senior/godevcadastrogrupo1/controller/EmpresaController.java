@@ -1,6 +1,7 @@
 package br.com.proway.senior.godevcadastrogrupo1.controller;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -12,7 +13,16 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ContatosDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EmpresaDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
-
+/**
+ * Classe EmpresaController
+ * 
+ * Classe de interação com o DAO {@link EmpresaDAO}, realiza as tratativas
+ * necessárias para envio do objeto {@link Empresa} para o banco de dados.
+ * 
+ * @author Sprint 5
+ * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
+ *
+ */
 public class EmpresaController {
 	static Session session = DBConnection.getSession();
 	static EmpresaDAO daoEmpresa = EmpresaDAO.getInstance(session);
@@ -116,4 +126,19 @@ public class EmpresaController {
 	public static List<Empresa> buscarTodasEmpresas() {
 		return daoEmpresa.getAll();
 	}
+	
+	/**
+	 * Busca empresa por nome.
+	 * 
+	 * Método busca as empresas no banco de dados através dos seus respectivos nomes,
+	 * é possível passar um parâmetro parcial para retorna todos os registros que contenham
+	 * determinado texto em seu nomeEmpresa.
+	 * 
+	 * @param nomeEmpresa nome dos registros que estão sendo procurados.
+	 * @return ArrayList Empresa lista de registros localizados.
+	 */
+	public static ArrayList<Empresa> buscarEmpresaPorNome(String nomeEmpresa) {
+		return (ArrayList<Empresa>) daoEmpresa.buscarPorNome(nomeEmpresa);
+	}
+
 }
