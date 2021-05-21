@@ -13,6 +13,7 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
 public class EmpresaDAO extends Dao<Empresa> implements InterfaceDao<Empresa>{
 
 	protected static EmpresaDAO instance;
+	private Session sessao;
 	
 
 	public static EmpresaDAO getInstance(Session session) {
@@ -21,7 +22,7 @@ public class EmpresaDAO extends Dao<Empresa> implements InterfaceDao<Empresa>{
 		return instance;
 	}
 
-	private EmpresaDAO(Session session) {
+	public EmpresaDAO(Session session) {
 		this.session = session;
 	}
 	
@@ -47,6 +48,16 @@ public class EmpresaDAO extends Dao<Empresa> implements InterfaceDao<Empresa>{
 		criteria.from(Empresa.class);
 		List<Empresa> empresa = session.createQuery(criteria).getResultList();
 		return empresa;
+	}
+	
+	public boolean deletarTodasEmpresas() {
+		if (!this.sessao.getTransaction().isActive()) {
+			this.sessao.beginTransaction();
+		}
+		int modificados = this.sessao.createSQLQuery("DELETE FROM empresa")
+				.executeUpdate();
+		this.sessao.getTransaction().commit();
+		return modificados > 0 ? true : false;
 	}
 	
 }

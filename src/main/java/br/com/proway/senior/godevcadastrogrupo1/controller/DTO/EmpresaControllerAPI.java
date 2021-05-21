@@ -1,9 +1,7 @@
 package br.com.proway.senior.godevcadastrogrupo1.controller.DTO;
 
 import br.com.proway.senior.godevcadastrogrupo1.controller.EmpresaController;
-import br.com.proway.senior.godevcadastrogrupo1.controller.PrestadorServicoController;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.EmpresaDTO;
-import br.com.proway.senior.godevcadastrogrupo1.model.DTO.PrestadorServicoDTO;
 
 /**
  * Classe EmpresaControllerAPI
