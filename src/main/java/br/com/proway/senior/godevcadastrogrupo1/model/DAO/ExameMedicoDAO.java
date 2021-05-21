@@ -49,5 +49,21 @@ protected static ExameMedicoDAO instance;
 		return exameMedico;
 	}
 
+	/**
+	 * Deletar todos os exames medicos.
+	 * 
+	 * Metodo deleta todos os registros de exames medicos constantes no banco de dados.
+	 * 
+	 * @return boolean false, caso nenhum registro tenha sido deletado e true caso ao menos
+	 * um registro tenha sido deletado.
+	 */
+	public boolean deleteAll() {
+		if (!this.session.getTransaction().isActive()) {
+			this.session.beginTransaction();
+		}
+		int modificados = this.session.createSQLQuery("TRUNCATE examemedico CASCADE").executeUpdate();
+		this.session.getTransaction().commit();
+		return modificados > 0 ? true : false;
+	}
 	
 }
