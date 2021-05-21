@@ -9,8 +9,12 @@ import org.hibernate.Session;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
+import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ContatosDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EmpresaDAO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 public class EmpresaDAOTest {
@@ -43,8 +47,12 @@ public class EmpresaDAOTest {
 
 	@Test
 	public void testCreate() {
-		Empresa empresa = new Empresa("Senior", LocalDate.now(), "12345678", null, null);
-		assertEquals(empresa, dao.create(empresa));
+		Endereco endereco = new Endereco("Rua Sete de Setembro", 123, "Taruma Office", "89010911", "Centro", "Brasil",
+				"Blumenau", "SC");
+		Contatos contatos = new Contatos("4799944899", "47988994455", "proway@proway.com", "47988553322");
+		Empresa empresa = new Empresa("Senior", LocalDate.now(), "00360305000104", endereco, contatos);
+		Empresa empresaCriada = dao.create(empresa);
+		assertEquals("Senior", empresaCriada.getNomeEmpresa());
 	}
 
 	@Test

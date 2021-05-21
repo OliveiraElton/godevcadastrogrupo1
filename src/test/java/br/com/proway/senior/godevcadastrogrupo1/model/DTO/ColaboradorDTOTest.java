@@ -29,7 +29,7 @@ public class ColaboradorDTOTest {
 				"juca@empresa.com" , "1234565879", conta, exame, null);
 		
 		
-		ColaboradorDTO colaboradorDto = new ColaboradorDTO(colaborador, conta);
+		ColaboradorDTO colaboradorDto = new ColaboradorDTO(colaborador);
 		
 		assertEquals((Integer) 1234567891, colaboradorDto.getNit());
 		assertEquals(colaborador.getId(), colaboradorDto.getId());

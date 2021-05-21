@@ -2,11 +2,14 @@ package br.com.proway.senior.godevcadastrogrupo1.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.Cascade;
 
 import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDocumentos;
 
@@ -38,9 +41,9 @@ public class Empresa {
 	private LocalDate dataInicioContrato;
 	private String cnpj;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Endereco endereco;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Contatos contato;
 
 	/**
