@@ -1,8 +1,22 @@
 package br.com.proway.senior.godevcadastrogrupo1.model.DTO;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
+import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 
 public class EnderecoDTO {
+	
+
+	/**
+	 * @param idColaborador
+	 * @param logradouro
+	 * @param numero
+	 * @param complemento
+	 * @param cep
+	 * @param bairro
+	 * @param pais
+	 * @param cidade
+	 * @param uf
+	 */
 	
 
 	private Integer idColaborador;
@@ -25,6 +39,17 @@ public class EnderecoDTO {
 		this.pais = colaborador.getEndereco().getPais();
 		this.cidade = colaborador.getEndereco().getCidade();
 		this.uf = colaborador.getEndereco().getUf();
+	}
+	public EnderecoDTO(Endereco endereco) {
+		super();
+		this.logradouro = endereco.getLogradouro();
+		this.numero = endereco.getNumero();
+		this.complemento = endereco.getComplemento();
+		this.cep = endereco.getCep();
+		this.bairro = endereco.getBairro();
+		this.pais = endereco.getPais();
+		this.cidade = endereco.getCidade();
+		this.uf = endereco.getUf();
 	}
 
 	public Integer getId() {
