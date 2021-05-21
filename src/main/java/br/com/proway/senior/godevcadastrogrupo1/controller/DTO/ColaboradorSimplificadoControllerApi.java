@@ -7,28 +7,28 @@ import br.com.proway.senior.godevcadastrogrupo1.controller.ColaboradorController
 import br.com.proway.senior.godevcadastrogrupo1.controller.PrestadorServicoController;
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
-import br.com.proway.senior.godevcadastrogrupo1.model.DTO.ColaboradorDTO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DTO.ColaboradorSimplificadoDTO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.PrestadorServicoDTO;
 
-public class ColaboradorControllerApi {
+public class ColaboradorSimplificadoControllerApi {
 
 	/**
-	 * Retorna um registro de {@link ColaboradorDTO} atraves do id repassado no parametro.
+	 * Retorna um registro de {@link ColaboradorSimplificadoDTO} atraves do id repassado no parametro.
 	 * @param id
 	 * @return
 	 */
-	public ColaboradorDTO buscarColaboradorPorId(int id) {
+	public ColaboradorSimplificadoDTO buscarColaboradorPorId(int id) {
 		Colaborador colaborador = ColaboradorController.buscarColaboradorPorId(id);
-		ColaboradorDTO colaboradorDto = new ColaboradorDTO(colaborador);
+		ColaboradorSimplificadoDTO colaboradorDto = new ColaboradorSimplificadoDTO(colaborador);
 		return colaboradorDto;
 	}
 
-	public List<ColaboradorDTO> buscarTodos() {
-		List<ColaboradorDTO> listaColaboradorDto = new ArrayList<ColaboradorDTO>();
+	public List<ColaboradorSimplificadoDTO> buscarTodos() {
+		List<ColaboradorSimplificadoDTO> listaColaboradorDto = new ArrayList<ColaboradorSimplificadoDTO>();
 		List<Colaborador> listaColaborador = ColaboradorController.buscarTodosColaborador();
 
 		for (Colaborador colaborador : listaColaborador) {
-			listaColaboradorDto.add(new ColaboradorDTO(colaborador));
+			listaColaboradorDto.add(new ColaboradorSimplificadoDTO(colaborador));
 		}
 		return listaColaboradorDto;
 	}
