@@ -91,7 +91,7 @@ public class EmpresaController {
 
 		Empresa empresa = new Empresa(nomeEmpresa, dataInicioContrato, cnpj, endereco, contatos);
 		session.clear();
-		empresa.setId(id);
+		empresa.setId(empresa.getId());
 		return daoEmpresa.update(empresa);
 	}
 
