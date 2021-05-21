@@ -2,13 +2,16 @@ package br.com.proway.senior.godevcadastrogrupo1.model.DAO;
 
 import java.util.List;
 
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
 
 import org.hibernate.Session;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
+import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
 
 public class DependenteDAO extends Dao<Dependente> implements InterfaceDao<Dependente>{
 
@@ -51,6 +54,23 @@ public class DependenteDAO extends Dao<Dependente> implements InterfaceDao<Depen
 		return colaborador.getDependente();
 	}
 
+	public boolean limparTabela() {
+		if (!session.getTransaction().isActive()) {
+			session.beginTransaction();
+		}
+		try {
+		
+			CriteriaBuilder builder = session.getCriteriaBuilder();
+			CriteriaDelete<Dependente> criteriaDelete = builder.createCriteriaDelete(Dependente.class);
+			criteriaDelete.from(Dependente.class);
+			Query query = session.createQuery(criteriaDelete);
+			query.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			e.getMessage();
+			return false;
+		}
+	}
 }
 	
 	

@@ -44,8 +44,6 @@ public class PrestadorServicoControllerApi {
 	 */
 	public static List<PrestadorServicoDTO> buscarTodosPrestadorServico() {
 		List<PrestadorServicoDTO> listaPrestadorDTO = new ArrayList<PrestadorServicoDTO>();
-		List<PrestadorServico> listaImprime = PrestadorServicoController.buscarTodosPrestadorServico();
-		System.out.println(listaImprime.get(0).getNome());
 		for (PrestadorServico prestador : PrestadorServicoController.buscarTodosPrestadorServico()) {
 			listaPrestadorDTO.add(new PrestadorServicoDTO(prestador));
 		}

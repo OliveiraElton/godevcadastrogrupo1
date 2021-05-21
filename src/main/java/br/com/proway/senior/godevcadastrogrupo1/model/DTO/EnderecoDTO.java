@@ -1,4 +1,6 @@
-package br.com.proway.senior.godevcadastrogrupo1.model;
+package br.com.proway.senior.godevcadastrogrupo1.model.DTO;
+
+import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 
 public class EnderecoDTO {
 	

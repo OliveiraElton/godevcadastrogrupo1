@@ -166,5 +166,21 @@ public class DependenteController {
 	public static List<Dependente> buscarDependentePorIdColaborador(Integer id) {
 		return daoDependente.readByIdColab(id);
 	}
+	/**
+	 * Busca todos os dependentes do banco de dados.
+	 * 
+	 * @return List de {@link Dependente}
+	 */
+	public static List<Dependente> buscarTodosDependentes(){
+		return daoDependente.getAll();
+	}
+	
+	/**
+	 * Limpa a tabela para testes.
+	 * 
+	 */
+	public static void limparTabela() {
+		daoDependente.limparTabela();
+	}
 
 }
