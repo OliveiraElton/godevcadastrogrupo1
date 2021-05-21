@@ -70,4 +70,21 @@ public class EnderecoDAO extends Dao<Endereco> implements InterfaceDao<Endereco>
 		}
 	}
 	
+	/**
+	 * Deletar todos os enderecos.
+	 * 
+	 * Metodo deleta todos os registros de enderecos constantes no banco de dados.
+	 * 
+	 * @return boolean false, caso nenhum registro tenha sido deletado e true caso ao menos
+	 * um registro tenha sido deletado.
+	 */
+	public boolean deleteAll() {
+		if (!this.session.getTransaction().isActive()) {
+			this.session.beginTransaction();
+		}
+		int modificados = this.session.createSQLQuery("TRUNCATE endereco CASCADE").executeUpdate();
+		this.session.getTransaction().commit();
+		return modificados > 0 ? true : false;
+	}
+	
 }
