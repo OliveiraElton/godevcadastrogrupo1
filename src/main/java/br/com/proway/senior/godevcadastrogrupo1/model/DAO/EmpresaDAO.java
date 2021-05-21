@@ -9,19 +9,41 @@ import org.hibernate.Session;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
 
+/**
+ * EmpresaDAO.
+ * 
+ * Classe de interação com o banco de dados através do Hibernate.
+ * 
+ * @author Sprint 5
+ * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b> - Sprint 6
+ *
+ */
 
 public class EmpresaDAO extends Dao<Empresa> implements InterfaceDao<Empresa>{
 
 	protected static EmpresaDAO instance;
 	private Session sessao;
 	
-
+	/**
+	 * Método getInstance.
+	 * 
+	 * Verifica se já há uma sessão instanciada e, caso não, inicia uma.
+	 * 
+	 * @param Session session.
+	 * @return instance retorna a instância da conexão.
+	 */
 	public static EmpresaDAO getInstance(Session session) {
 		if (instance == null)
 			instance = new EmpresaDAO(session);
 		return instance;
 	}
 
+	/**
+	 * Contrutor da classe que recebe uma Session como parâmetro para conexão com o 
+	 * Hibernate.
+	 * 
+	 * @param Seseion session
+	 */
 	public EmpresaDAO(Session session) {
 		this.session = session;
 	}
@@ -37,10 +59,12 @@ public class EmpresaDAO extends Dao<Empresa> implements InterfaceDao<Empresa>{
 	public Empresa readById(Integer id) {
 		return session.get(Empresa.class, id);
 	}
+	
 	/**
 	 * Buscar tods os EndereÃ§os
 	 * Busca no banco de dados tdos os endereÃ§os cadastrados
 	 * 
+	 * @return List Empresa, lista de empresas cadastradas.
 	 */
 	public List<Empresa> getAll() {
 		CriteriaBuilder builder = session.getCriteriaBuilder();
@@ -50,6 +74,13 @@ public class EmpresaDAO extends Dao<Empresa> implements InterfaceDao<Empresa>{
 		return empresa;
 	}
 	
+	/**
+	 * Deletar todas as empresas.
+	 * 
+	 * Método deleta todos os registros de empresas constantes no banco de dados.
+	 * 
+	 * @return boolean
+	 */
 	public boolean deletarTodasEmpresas() {
 		if (!this.sessao.getTransaction().isActive()) {
 			this.sessao.beginTransaction();
