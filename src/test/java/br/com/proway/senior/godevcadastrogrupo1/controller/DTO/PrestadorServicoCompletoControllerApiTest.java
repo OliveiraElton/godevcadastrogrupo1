@@ -33,7 +33,7 @@ public class PrestadorServicoCompletoControllerApiTest {
 	@Test
 	public void testBuscarTodosPrestadorServico() {
 		List<PrestadorServicoCompletoDTO> listaPrestadorCompletoDTO = prestadorApi.buscarTodosPrestadorServicoCompleto();
-		assertEquals(2, listaPrestadorCompletoDTO.size());
+		assertEquals(3, listaPrestadorCompletoDTO.size());
 	}
 	
 	@Test

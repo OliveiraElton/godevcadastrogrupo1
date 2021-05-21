@@ -20,7 +20,6 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DTO.PrestadorServicoComple
 public class PrestadorServicoCompletoControllerApi {
 	
 	public PrestadorServicoCompletoDTO buscarPrestadorServicoCompletoPorId(Integer id) {
-		
 	PrestadorServicoCompletoDTO prestadorCompletoDTO = new PrestadorServicoCompletoDTO(PrestadorServicoController.buscarPrestadorServicoPorId(id));
 		return prestadorCompletoDTO;
 	}
