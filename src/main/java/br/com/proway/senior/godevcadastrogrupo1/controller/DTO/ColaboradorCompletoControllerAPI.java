@@ -12,5 +12,7 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DTO.ColaboradorCompletoDTO
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
  */
 public class ColaboradorCompletoControllerAPI {
+	
+	
 
 }

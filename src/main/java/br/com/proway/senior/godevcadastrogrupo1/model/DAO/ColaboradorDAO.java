@@ -92,16 +92,16 @@ public class ColaboradorDAO extends Dao<Colaborador> implements InterfaceDao<Col
 	/**
 	 * Deletar todos os colaboradores.
 	 * 
-	 * Método deleta todos os registros de colaboradores constantes no banco de dados.
+	 * Metodo deleta todos os registros de colaboradores constantes no banco de dados.
 	 * 
-	 * @return boolean
+	 * @return boolean false, caso nenhum registro tenha sido deletado e true caso ao menos
+	 * um registro tenha sido deletado.
 	 */
 	public boolean deleteAll() {
 		if (!this.session.getTransaction().isActive()) {
 			this.session.beginTransaction();
 		}
-		int modificados = this.session.createSQLQuery("DELETE FROM colaborador")
-				.executeUpdate();
+		int modificados = this.session.createSQLQuery("TRUNCATE colaborador CASCADE").executeUpdate();
 		this.session.getTransaction().commit();
 		return modificados > 0 ? true : false;
 	}
@@ -109,8 +109,8 @@ public class ColaboradorDAO extends Dao<Colaborador> implements InterfaceDao<Col
 	/**
 	 * Buscar colaborador por nome.
 	 * 
-	 * Método busca os colaboradores no banco de dados através dos seus respectivos nomes,
-	 * é possível passar um parâmetro parcial para retorna todos os registros que contenham
+	 * Metodo busca os colaboradores no banco de dados atraves dos seus respectivos nomes,
+	 * eh possivel passar um parametro parcial para retorna todos os registros que contenham
 	 * determinado texto em seu nome.
 	 * 
 	 * @param nomeColaborador nome do(s) colaborador(es) procurado(s).

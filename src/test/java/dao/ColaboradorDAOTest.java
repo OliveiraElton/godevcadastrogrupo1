@@ -8,10 +8,9 @@ import java.time.LocalDate;
 
 import org.hibernate.Session;
 import org.junit.Before;
-import org.junit.Ignore;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.com.proway.senior.godevcadastrogrupo1.controller.ColaboradorController;
 import br.com.proway.senior.godevcadastrogrupo1.controller.DTO.ColaboradorSimplificadoControllerApi;
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Conta;
@@ -27,15 +26,25 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ExameMedicoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExames;
 
+/**
+ * Classe ColaboradorDAOTest.
+ * 
+ * Realiza os testes da classe {@link ColaboradorDAO}.
+ * 
+ * @author Sprint 5
+ * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b> - Sprint 6
+ * @author Lucas Walim <b>lucas.walim@senior.com.br</b> - Sprint 6
+ *
+ */
 public class ColaboradorDAOTest {
 
 	ColaboradorSimplificadoControllerApi colabControllerApi = new ColaboradorSimplificadoControllerApi();
 	static Session session = DBConnection.getSession();
-	ColaboradorDAO dao = ColaboradorDAO.getInstance(session);
+	static ColaboradorDAO dao = ColaboradorDAO.getInstance(session);
 	static ContaDAO daoConta = ContaDAO.getInstance(session);
 	static ContatosDAO daoContatos = ContatosDAO.getInstance(session);
 	static EnderecoDAO daoEndereco = EnderecoDAO.getInstance(session);
@@ -73,6 +82,7 @@ public class ColaboradorDAOTest {
 		dao.create(colaborador);
 		Integer id = colaborador.getId();
 		assertEquals(colaborador, dao.readById(id));
+		
 	}
 
 	@Test
@@ -148,5 +158,12 @@ public class ColaboradorDAOTest {
 		dao.create(colaborador);
 		assertNotNull(dao.readByEmail("daniela.goncalves@gmail.com"));
 	}
+	
+	@BeforeClass
+	public static void limparTabela() {
+		dao.deleteAll();
+	}
+	
+	
 
 }

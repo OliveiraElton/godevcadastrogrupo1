@@ -31,7 +31,7 @@ public class Dependente extends Pessoa  {
 
 	private TiposDependentes tipoDependente;
 	private Boolean optanteIR;
-
+	
 	public Dependente() {
 		super();
 	}
