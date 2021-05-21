@@ -56,9 +56,4 @@ public class ContatosDAO extends Dao<Contatos> implements InterfaceDao<Contatos>
 		List<Contatos> contatos = session.createQuery(criteria).getResultList();
 		return contatos;
 	}
-	
-
-	
-	
-	
 }

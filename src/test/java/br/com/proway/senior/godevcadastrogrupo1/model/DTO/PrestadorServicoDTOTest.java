@@ -21,7 +21,7 @@ public class PrestadorServicoDTOTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		prestador.setId(1);
-		prestador.setDataInicioContrato(LocalDate.now());
+		prestador.setDataInicioContrato(LocalDate.of(2021, 05, 21));
 		Empresa empresa = new Empresa();
 		empresa.setNomeEmpresa("Empresa teste");
 		prestador.setEmpresa(empresa);
@@ -48,7 +48,7 @@ public class PrestadorServicoDTOTest {
 
 	@Test
 	public void testGetDataInicioContrato() {
-		assertEquals(LocalDate.of(2021, 05, 20), prestadorDTO.getDataInicioContrato());
+		assertEquals(LocalDate.of(2021, 05, 21), prestadorDTO.getDataInicioContrato());
 	}
 
 	@Test

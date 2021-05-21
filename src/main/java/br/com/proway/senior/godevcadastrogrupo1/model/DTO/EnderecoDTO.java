@@ -4,6 +4,7 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 
 public class EnderecoDTO {
 	
+
 	private Integer idColaborador;
 	private String logradouro;
 	private Integer numero;
