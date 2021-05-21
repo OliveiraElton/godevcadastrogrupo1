@@ -33,8 +33,8 @@ public class ColaboradorCompletoControllerAPI {
 	 * @return ColaboradorCompletoDTO objeto com as informações do banco.
 	 */
 	public ColaboradorCompletoDTO buscarEmpresaPorId(Integer idColaborador) {
-		ColaboradorCompletoDTO empresaDTO = new ColaboradorCompletoDTO(controllerOriginal.buscarEmpresaPorId(idEmpresa));
-		return empresaDTO;
+		ColaboradorCompletoDTO colaboradorDTO = new ColaboradorCompletoDTO(controllerOriginal.buscarColaboradorPorId(idColaborador));
+		return colaboradorDTO;
 	}
 
 	/**
