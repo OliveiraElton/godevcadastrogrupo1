@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Root;
@@ -53,7 +54,13 @@ public class PrestadorServicoDAO extends Dao<PrestadorServico> implements Interf
 		return prestadorServico;
 	}
 	
-	public List<PrestadorServico> buscarPorNome(String valorColuna){
+	/**
+	 * Buscar todos os {@link PrestadorServico} no banco de dados com nome igual
+	 * ao passado como parametro.
+	 * @param String nome
+	 * @return List<PrestadorServico>
+	 */
+	public List<PrestadorServico> buscarPorNome(String nome){
 			Session session = DBConnection.getSession();
 			CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
 			CriteriaQuery<PrestadorServico> criteria = criteriaBuilder.createQuery(PrestadorServico.class);
@@ -61,7 +68,7 @@ public class PrestadorServicoDAO extends Dao<PrestadorServico> implements Interf
 			Root<PrestadorServico> root = criteria.from(PrestadorServico.class);
 			Expression<String> selectedColumn = root.get("nome");
 			
-			String filter = "%" + valorColuna + "%";
+			String filter = "%" + nome + "%";
 			criteria.select(root)
 				.where(criteriaBuilder.like(selectedColumn, filter));
 				
@@ -69,5 +76,22 @@ public class PrestadorServicoDAO extends Dao<PrestadorServico> implements Interf
 			List<PrestadorServico> results = query.getResultList();
 			return new ArrayList<PrestadorServico>(results);
 		}
+	public boolean limparTabela() {
+		if (!session.getTransaction().isActive()) {
+			session.beginTransaction();
+		}
+		try {
+		
+			CriteriaBuilder builder = session.getCriteriaBuilder();
+			CriteriaDelete<PrestadorServico> criteriaDelete = builder.createCriteriaDelete(PrestadorServico.class);
+			criteriaDelete.from(PrestadorServico.class);
+			Query query = session.createQuery(criteriaDelete);
+			query.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			e.getMessage();
+			return false;
+		}
+	}
 
 }

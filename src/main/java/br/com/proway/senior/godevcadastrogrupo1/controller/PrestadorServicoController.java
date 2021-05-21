@@ -158,21 +158,6 @@ public class PrestadorServicoController {
 	}
 
 	/**
-	 * Busca Prestador de servico.
-	 * 
-	 * Busca o Prestador de servico cujo nome e sobrenome são iguais aos passados
-	 * como parâmetro.
-	 * 
-	 * @param nome
-	 * @param sobrenome
-	 * @return
-	 */
-//	public static PrestadorServico buscarPrestadorServicoPorNomeSobrenome(String nome, String sobrenome) {
-//		return daoPrestadorServico.readByNomeSobrenome(nome, sobrenome);
-//
-//	}
-
-	/**
 	 * Busca todos os Prestadores de servico.
 	 * 
 	 * @return
@@ -187,5 +172,9 @@ public class PrestadorServicoController {
 	 */
 	public static List<PrestadorServico> buscarPrestadorServicoPorNome(String nome) {
 		return daoPrestadorServico.buscarPorNome(nome);
+	}
+	
+	public void limpaTabela() {
+		daoPrestadorServico.limparTabela();
 	}
 }
