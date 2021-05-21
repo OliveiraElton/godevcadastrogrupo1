@@ -53,9 +53,9 @@ public class Colaborador extends Pessoa {
 	private Conta conta;
 	@OneToOne(cascade = CascadeType.ALL)
 	private Contatos contatos;
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ExameMedico> exameMedico = new ArrayList<ExameMedico>();
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Dependente> dependente = new ArrayList<Dependente>();
 
 	public Colaborador() {

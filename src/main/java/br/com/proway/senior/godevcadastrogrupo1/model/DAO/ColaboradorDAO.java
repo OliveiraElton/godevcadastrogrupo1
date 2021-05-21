@@ -1,5 +1,6 @@
 package br.com.proway.senior.godevcadastrogrupo1.model.DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -11,9 +12,20 @@ import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
+import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
+import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
-public class ColaboradorDAO extends Dao<Colaborador> 
-							implements InterfaceDao<Colaborador> {
+/**
+ * Classe ColaboradorDAO.
+ * 
+ * Classe de interação com o banco de dados via hibernate. Extende a {@link Dao} e
+ * implementa a interface {@link InterfaceDao}.
+ * 
+ * @author Sprint 5
+ * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b> - Sprint 6 
+ *
+ */
+public class ColaboradorDAO extends Dao<Colaborador> implements InterfaceDao<Colaborador> {
 
 	protected static ColaboradorDAO instance;
 
@@ -74,6 +86,47 @@ public class ColaboradorDAO extends Dao<Colaborador>
 		criteria.from(Colaborador.class);
 		List<Colaborador> colaborador = session.createQuery(criteria).getResultList();
 		return colaborador;
+	}
+	
+	
+	/**
+	 * Deletar todos os colaboradores.
+	 * 
+	 * Metodo deleta todos os registros de colaboradores constantes no banco de dados.
+	 * 
+	 * @return boolean false, caso nenhum registro tenha sido deletado e true caso ao menos
+	 * um registro tenha sido deletado.
+	 */
+	public boolean deleteAll() {
+		if (!this.session.getTransaction().isActive()) {
+			this.session.beginTransaction();
+		}
+		int modificados = this.session.createSQLQuery("TRUNCATE colaborador CASCADE").executeUpdate();
+		this.session.getTransaction().commit();
+		return modificados > 0 ? true : false;
+	}
+	
+	/**
+	 * Buscar colaborador por nome.
+	 * 
+	 * Metodo busca os colaboradores no banco de dados atraves dos seus respectivos nomes,
+	 * eh possivel passar um parametro parcial para retorna todos os registros que contenham
+	 * determinado texto em seu nome.
+	 * 
+	 * @param nomeColaborador nome do(s) colaborador(es) procurado(s).
+	 * @return resultados lista de registros localizados.
+	 */
+	public List<Colaborador> buscarPorNome(String nomeColaborador){
+		Session session = DBConnection.getSession();
+		CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+		CriteriaQuery<Colaborador> criteria = criteriaBuilder.createQuery(Colaborador.class);	
+		Root<Colaborador> root = criteria.from(Colaborador.class);
+		Expression<String> coluna = root.get("nome");
+		String filtro = "%" + coluna + "%";
+		criteria.select(root).where(criteriaBuilder.like(coluna, filtro));	
+		Query query = session.createQuery(criteria);
+		List<Colaborador> resultados = query.getResultList();
+		return new ArrayList<Colaborador>(resultados);
 	}
 
 }

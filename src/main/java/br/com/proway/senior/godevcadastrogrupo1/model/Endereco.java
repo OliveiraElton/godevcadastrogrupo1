@@ -8,8 +8,8 @@ import javax.persistence.Id;
 import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDocumentos;
 
 /**
- * Classe que engloba e abstrai as informa��es de endereco de um
- * Colaborador/Empresa. Esta classe ser� instanciada nas classes Colaborador e
+ * Classe que engloba e abstrai as informacoes de endereco de um
+ * Colaborador/Empresa. Esta classe sera instanciada nas classes Colaborador e
  * Empresa.
  * 
  * Deve ser instanciada utilizando o EnderecoBuilder.
@@ -38,7 +38,6 @@ public class Endereco {
 	private String pais;
 	private String cidade;
 	private String uf;
-	
 	
 	public Endereco() {
 		

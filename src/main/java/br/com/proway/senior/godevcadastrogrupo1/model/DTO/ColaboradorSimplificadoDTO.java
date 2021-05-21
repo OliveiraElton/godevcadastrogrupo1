@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Conta;
 
-public class ColaboradorDTO {
+public class ColaboradorSimplificadoDTO {
 
 	private int id;
 	private String nome;
@@ -21,7 +21,7 @@ public class ColaboradorDTO {
 	private String email_corporativo;
 	private Conta conta;
 
-	public ColaboradorDTO(Colaborador colaborador, Conta conta) {
+	public ColaboradorSimplificadoDTO(Colaborador colaborador) {
 		this.id = colaborador.getId();
 		this.nome = colaborador.getNome();
 		this.sobrenome = colaborador.getSobrenome();
@@ -34,7 +34,7 @@ public class ColaboradorDTO {
 		this.dataAdmissao = colaborador.getDataAdmissao();
 		this.optanteDependente = colaborador.isOptanteDependente();
 		this.email_corporativo = colaborador.getEmail_corporativo();
-		this.conta = conta;
+		this.conta = colaborador.getConta();
 	}
 
 	public int getId() {

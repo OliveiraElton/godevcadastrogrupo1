@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.junit.Before;
 import org.junit.Test;
 
 import br.com.proway.senior.godevcadastrogrupo1.controller.DependenteController;
@@ -98,5 +99,19 @@ public class DependenteControllerTest {
 		assertEquals(1, DependenteController.buscarDependentePorIdColaborador(idColaborador).size());
 		
 	}
+	//Buscar todos funciona, mas não da pra testar pq metodo limpar nao esta funcionando
+	//devido a chave estrangeira que esta na tabela colaborador_dependente
+	// (cascade somente do registro da relacao entre colaborador e dependente(?))
+//	@Test
+//	public void testBuscarTodosDependentes() {
+//		Dependente d = DependenteController.criarDependente("Jorge", "Maravilha", "jessica",
+//				data, "Brasileiro", null, true, null,
+//				null, "256.103.800-90", "mg14388606", EnumDadosPessoais.TiposDependentes.FILHO,
+//				true, "Rua das oliveiras", 32, "casa", "89032640", "Passo Manso",
+//				"Brasil", "Blumenau", "SC");
+//		
+//		assertEquals(DependenteController.buscarTodosDependentes().size());
+//		
+//	}
 
 }

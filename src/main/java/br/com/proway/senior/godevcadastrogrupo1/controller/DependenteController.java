@@ -69,8 +69,7 @@ public class DependenteController {
 	 * @param email
 	 * @param telefoneFamiliar
 	 * 
-	 * @return Retorna o Dependente caso tenha sido cadastrado ou null caso
-	 *         contrário
+	 * @return Retorna o Dependente caso tenha sido cadastrado ou null caso contrário
 	 */
 	public static Dependente criarDependente(String nome, String sobrenome, String nomeSocial,
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd, String genero,
@@ -170,6 +169,24 @@ public class DependenteController {
 	
 	public static List<Dependente> buscarDependentePorNome(String nome) {
 		return daoDependente.buscarPorNome(nome);
+	}
+	public static List<Dependente> buscarDependentePorIdColaborador(Integer id){
+		return daoDependente.readByIdColab(id);
+	}
+	/**
+	 * Busca todos os dependentes do banco de dados.
+	 * 
+	 * @return List de {@link Dependente}
+	 */
+	public static List<Dependente> buscarTodosDependentes(){
+		return daoDependente.getAll();
+	}
+	/**
+	 * Limpa a tabela para testes.
+	 * 
+	 */
+	public static void limparTabela() {
+		daoDependente.limparTabela();
 	}
 
 }
