@@ -45,7 +45,7 @@ public class ColaboradorSimplificadoControllerApi {
 	 * @return
 	 */
 	public List<ColaboradorSimplificadoDTO> buscarColaboradorPorNome(String nome) {
-		List<Colaborador> listaColaborador = ColaboradorController.buscarColaboradorPorNomeSobrenome(nome);
+		List<Colaborador> listaColaborador = ColaboradorController.buscarColaboradorPorNome(nome);
 		List<ColaboradorSimplificadoDTO> listaColaboradorDto = new ArrayList<ColaboradorSimplificadoDTO>();
 		for (Colaborador colaborador : listaColaborador) {
 			listaColaboradorDto.add(new ColaboradorSimplificadoDTO(colaborador));
