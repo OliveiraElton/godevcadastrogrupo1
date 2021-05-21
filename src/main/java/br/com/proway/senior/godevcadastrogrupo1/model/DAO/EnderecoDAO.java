@@ -25,9 +25,9 @@ public class EnderecoDAO extends Dao<Endereco> implements InterfaceDao<Endereco>
 	}
 	
 	/**
-	 * Buscar Endereço por Id
+	 * Buscar Endereço por Id.
 	 * 
-	 * Busca no banco o Endereço com o id igual ao passado como parametro
+	 * Busca no banco o Endereço com o id igual ao passado como parametro.
 	 * 
 	 * @param id Do endereço desejado
 	 * @return Endereço desejado
@@ -37,8 +37,9 @@ public class EnderecoDAO extends Dao<Endereco> implements InterfaceDao<Endereco>
 	}
 
 	/**
-	 * Buscar tods os Endereços
-	 * Busca no banco de dados tdos os endereços cadastrados
+	 * Buscar todos os Endereços.
+	 * 
+	 * Busca no banco de dados todos os endereços cadastrados.
 	 * 
 	 */
 	public List<Endereco> getAll() {

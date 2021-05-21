@@ -68,8 +68,7 @@ public class DependenteController {
 	 * @param email
 	 * @param telefoneFamiliar
 	 * 
-	 * @return Retorna o Dependente caso tenha sido cadastrado ou null caso
-	 *         contrário
+	 * @return Retorna o Dependente caso tenha sido cadastrado ou null caso contrário
 	 */
 	public static Dependente criarDependente(String nome, String sobrenome, String nomeSocial,
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd, String genero,

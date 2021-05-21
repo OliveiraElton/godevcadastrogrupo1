@@ -4,7 +4,8 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 
 public class EnderecoDTO {
 	
-	private int idColaborador;
+
+	private Integer idColaborador;
 	private String logradouro;
 	private Integer numero;
 	private String complemento;
@@ -26,6 +27,9 @@ public class EnderecoDTO {
 		this.uf = colaborador.getEndereco().getUf();
 	}
 
+	public Integer getId() {
+		return idColaborador;
+	}
 	public String getLogradouro() {
 		return logradouro;
 	}
