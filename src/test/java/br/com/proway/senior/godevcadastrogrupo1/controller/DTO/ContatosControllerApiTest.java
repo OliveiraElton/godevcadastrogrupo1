@@ -8,6 +8,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.ContatosDTO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DTO.PrestadorServicoCompletoDTO;
 
 public class ContatosControllerApiTest {
 
@@ -27,5 +28,11 @@ public class ContatosControllerApiTest {
 	public void testBuscarTodosContatos() {
 		List<ContatosDTO> listaContatosDTO = contatosApi.buscarTodosContatos();;
 		assertEquals(6, listaContatosDTO.size());
+	}
+	
+	@Test
+	public void testBuscarContatosPorEmail() {
+		List<ContatosDTO> listaContatosDTO = contatosApi.buscarPrestadorServicoPorEmail("teste@gmail.com");
+		assertEquals(5 ,listaContatosDTO.size());
 	}
 }
