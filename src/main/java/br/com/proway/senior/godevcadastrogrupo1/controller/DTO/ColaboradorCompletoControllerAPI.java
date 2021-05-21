@@ -56,21 +56,21 @@ public class ColaboradorCompletoControllerAPI {
 	}
 
 	/**
-	 * Busca empresa por nome.
+	 * Busca colaborador por nome.
 	 * 
-	 * Método busca as empresas no banco de dados através dos seus respectivos
+	 * Método busca os colaboradores no banco de dados através dos seus respectivos
 	 * nomes, é possível passar um parâmetro parcial para retorna todos os registros
-	 * que contenham determinado texto em seu nomeEmpresa.
+	 * que contenham determinado texto em seu nomeColaborador.
 	 * 
-	 * @param nomeEmpresa nome dos registros que estão sendo procurados.
+	 * @param nomeColaborador nome dos registros que estão sendo procurados.
 	 * @return ArrayList Empresa lista de registros localizados.
 	 */
-	public static List<EmpresaDTO> buscarEmpresaPorNome(String nomeEmpresa) {
-		List<EmpresaDTO> listaEmpresaDTO = new ArrayList<EmpresaDTO>();
-		for (Empresa empresa : controllerOriginal.buscarEmpresaPorNome(nomeEmpresa)) {
-			listaEmpresaDTO.add(new EmpresaDTO(empresa));
+	public static List<ColaboradorCompletoDTO> buscarColaboradorPorNome(String nomeColaborador) {
+		List<ColaboradorCompletoDTO> listaColaboradorDTO = new ArrayList<ColaboradorCompletoDTO>();
+		for (Colaborador colaborador : controllerOriginal.buscarColaboradorPorNome(nomeColaborador)) {
+			listaColaboradorDTO.add(new ColaboradorCompletoDTO(colaborador));
 		}
-		return listaEmpresaDTO;
+		return listaColaboradorDTO;
 	}
 
 }
