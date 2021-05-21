@@ -1,6 +1,10 @@
 package br.com.proway.senior.godevcadastrogrupo1.controller.DTO;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.proway.senior.godevcadastrogrupo1.controller.EmpresaController;
+import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.EmpresaDTO;
 
 /**
@@ -14,7 +18,7 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DTO.EmpresaDTO;
  */
 public class EmpresaControllerAPI {
 
-	EmpresaController controllerOriginal = new EmpresaController();
+	static EmpresaController controllerOriginal = new EmpresaController();
 
 	/**
 	 * Buscar empresa por Id.
@@ -31,4 +35,21 @@ public class EmpresaControllerAPI {
 		return empresaDTO;
 	}
 
+	/**
+	 * Buscar todas as empresas.
+	 * 
+	 * Método busca as informações de todas as empresas cadastradas no banco de dados.
+	 * Retorna uma lista de todos os registros de empresas.
+	 * 
+	 * @return listaPrestadorDTO lista de registros localizados.
+	 */
+	public static List<EmpresaDTO> buscarTodasEmpresas() {
+		List<EmpresaDTO> listaPrestadorDTO = new ArrayList<EmpresaDTO>();
+		List<Empresa> listaImprime = controllerOriginal.buscarTodasEmpresas();
+		for(Empresa empresa : controllerOriginal.buscarTodasEmpresas()) {
+			listaPrestadorDTO.add(new EmpresaDTO(empresa));
+		}
+		return listaPrestadorDTO;
+	}
+	
 }
