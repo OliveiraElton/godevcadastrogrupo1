@@ -298,7 +298,7 @@ public class ColaboradorController {
 	 * 
 	 * @return lista com todos os colaboradores cadastrados.
 	 */
-	public static List<Colaborador> buscarTodosColaborador() {
+	public static List<Colaborador> buscarTodosColaboradores() {
 		return daoColaborador.getAll();
 	}
 

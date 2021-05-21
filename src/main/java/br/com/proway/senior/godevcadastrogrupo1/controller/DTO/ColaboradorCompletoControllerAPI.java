@@ -5,6 +5,7 @@ import java.util.List;
 
 import br.com.proway.senior.godevcadastrogrupo1.controller.ColaboradorController;
 import br.com.proway.senior.godevcadastrogrupo1.controller.EmpresaController;
+import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.ColaboradorCompletoDTO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.EmpresaDTO;
@@ -32,26 +33,26 @@ public class ColaboradorCompletoControllerAPI {
 	 * @param idColaborador identificação do colaborador que será retornado.
 	 * @return ColaboradorCompletoDTO objeto com as informações do banco.
 	 */
-	public ColaboradorCompletoDTO buscarEmpresaPorId(Integer idColaborador) {
+	public ColaboradorCompletoDTO buscarColaboradorPorId(Integer idColaborador) {
 		ColaboradorCompletoDTO colaboradorDTO = new ColaboradorCompletoDTO(controllerOriginal.buscarColaboradorPorId(idColaborador));
 		return colaboradorDTO;
 	}
 
 	/**
-	 * Buscar todas as empresas.
+	 * Buscar todos os colaboradores.
 	 * 
-	 * Método busca as informações de todas as empresas cadastradas no banco de
-	 * dados. Retorna uma lista de todos os registros de empresas.
+	 * Método busca as informações de todos os colaboradores cadastrados no banco de
+	 * dados. Retorna uma lista de todos os registros de colaboradores.
 	 * 
-	 * @return listaEmpresaDTO lista de registros localizados.
+	 * @return listaColaboradorDTO lista de registros localizados.
 	 */
-	public static List<EmpresaDTO> buscarTodasEmpresas() {
-		List<EmpresaDTO> listaEmpresaDTO = new ArrayList<EmpresaDTO>();
-		List<Empresa> listaImprime = controllerOriginal.buscarTodasEmpresas();
-		for (Empresa empresa : controllerOriginal.buscarTodasEmpresas()) {
-			listaEmpresaDTO.add(new EmpresaDTO(empresa));
+	public static List<ColaboradorCompletoDTO> buscarTodosColaboradores() {
+		List<ColaboradorCompletoDTO> listaColaboradorDTO = new ArrayList<ColaboradorCompletoDTO>();
+		List<Colaborador> listaImprime = controllerOriginal.buscarTodosColaboradores();
+		for (Colaborador colaborador : listaImprime) {
+			listaColaboradorDTO.add(new ColaboradorCompletoDTO(colaborador));
 		}
-		return listaEmpresaDTO;
+		return listaColaboradorDTO;
 	}
 
 	/**

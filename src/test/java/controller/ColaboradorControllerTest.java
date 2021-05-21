@@ -97,14 +97,14 @@ public class ColaboradorControllerTest {
 
 	@Test
 	public void testBuscarTodosColaborador() {
-		Integer valorAntes = ColaboradorController.buscarTodosColaborador().size();
+		Integer valorAntes = ColaboradorController.buscarTodosColaboradores().size();
 		ColaboradorController.criarColaborador("Brian", "Santos", "Erika", data, "Venezuelano", "Blumenauense", true,
 				null, ig, "09619039610", "mg14388606", 8, null, false, false, data, false, null, "brian@gmail.com",
 				null, null, null, null, "54126547", null, null, null, null, "4521452015", "5421452103",
 				"brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00", "055", "438614625", "14",
 				"joãozinho", "Santos", "Erika", data, "Venezuelano", "Blumenauense", true, null, ig, "09619039610",
 				"mg14388606", td, true);
-		assertEquals(valorAntes + 1, ColaboradorController.buscarTodosColaborador().size());
+		assertEquals(valorAntes + 1, ColaboradorController.buscarTodosColaboradores().size());
 	}
 
 	@Test
