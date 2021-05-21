@@ -70,13 +70,14 @@ public class EnderecoController {
 	 * @param uf
 	 * @return vai retornar um id do endereco caso o endereco for atualizado ou false caso contrario
 	 */
-	public static Endereco atualizarEndereco(String logradouro, Integer numero, String complemento,
+	public static Endereco atualizarEndereco(Integer id, String logradouro, Integer numero, String complemento,
 			String cep, String bairro, String pais, String cidade, String uf) {
 
 		Endereco enderecoAtualizar = new Endereco(logradouro, numero, complemento, cep, bairro, pais,
 				cidade, uf);
 		session.clear();
 		enderecoAtualizar.setNumero(numero);
+		enderecoAtualizar.setId(id);
 		return enderecoDao.update(enderecoAtualizar);
 	}
 
@@ -101,5 +102,9 @@ public class EnderecoController {
 	 */
 	public static List<Endereco> listarTodosEnderecos() {
 		return enderecoDao.getAll();
+	}
+	
+	public static void limparTabela() {
+		enderecoDao.limparTabela();
 	}
 }

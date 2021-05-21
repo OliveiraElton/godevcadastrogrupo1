@@ -37,7 +37,7 @@ public class EnderecoControllerTest {
 	public void testAtualizarEndereco() {
 		Endereco endereco = EnderecoController.criarEndereco("teste", 11, "4567777", "teste3", "brasil", "bluemani", "saas", "sc");
 		enderecoDao.create(endereco);
-		//session.clear();
-		EnderecoController.atualizarEndereco("logradouro1", 11, "complemento11", "90485858", "velha central", "brasil", "blumenau", "sc");
+
+		EnderecoController.atualizarEndereco(endereco.getId(), "logradouro1", 11, "complemento11", "90485858", "velha central", "brasil", "blumenau", "sc");
 	}
 }
