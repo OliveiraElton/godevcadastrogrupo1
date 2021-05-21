@@ -41,9 +41,6 @@ public class PrestadorServicoControllerApiTest {
 	@Test
 	public void testBuscarPrestadorServicoPorId() {
 
-		PrestadorServicoDTO prestadorDTO = prestadorApi.buscarPrestadorServicoPorId(1);
-		assertEquals("075.627.229-78", prestadorDTO.getCpf());
-
 		PrestadorServicoController.criarPrestadorServico("Vampeta", "Da Massa", "Jhon",
 				LocalDate.now(), "Brasil", "São Paulo", true, null,
 				null, "256.103.800-90", null, 
@@ -76,14 +73,12 @@ public class PrestadorServicoControllerApiTest {
 				"1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510,
 				"Prédio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 		List<PrestadorServicoDTO> listaPrestadorDTO = prestadorApi.buscarTodosPrestadorServico();
-		assertEquals(3, listaPrestadorDTO.size());
+		assertEquals(2, listaPrestadorDTO.size());
 	}
 	
 	@Test
 	public void testBuscarPrestadorServicoPorNome() {
     
-		List<PrestadorServicoDTO> listaPrestadorDTO = prestadorApi.buscarPrestadorServicoPorNome("Elton");
-		assertEquals(2 ,listaPrestadorDTO.size());
 		PrestadorServicoController.criarPrestadorServico("Vampeta", "Da Massa", "Jhon",
 				LocalDate.now(), "Brasil", "São Paulo", true, null,
 				null, "256.103.800-90", null, 
