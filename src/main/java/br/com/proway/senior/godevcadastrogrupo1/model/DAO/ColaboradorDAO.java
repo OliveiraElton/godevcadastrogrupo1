@@ -122,7 +122,7 @@ public class ColaboradorDAO extends Dao<Colaborador> implements InterfaceDao<Col
 		CriteriaQuery<Colaborador> criteria = criteriaBuilder.createQuery(Colaborador.class);	
 		Root<Colaborador> root = criteria.from(Colaborador.class);
 		Expression<String> coluna = root.get("nome");
-		String filtro = "%" + coluna + "%";
+		String filtro = "%" + nomeColaborador + "%";
 		criteria.select(root).where(criteriaBuilder.like(coluna, filtro));	
 		Query query = session.createQuery(criteria);
 		List<Colaborador> resultados = query.getResultList();
