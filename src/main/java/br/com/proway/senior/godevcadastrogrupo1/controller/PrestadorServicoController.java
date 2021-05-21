@@ -180,4 +180,12 @@ public class PrestadorServicoController {
 	public static List<PrestadorServico> buscarTodosPrestadorServico() {
 		return daoPrestadorServico.getAll();
 	}
+	/**
+	 * Busca todos os prestadores de serviço pelo nome.
+	 * @param String nome
+	 * @return List<nome>
+	 */
+	public static List<PrestadorServico> buscarPrestadorServicoPorNome(String nome) {
+		return daoPrestadorServico.buscarPorNome(nome);
+	}
 }
