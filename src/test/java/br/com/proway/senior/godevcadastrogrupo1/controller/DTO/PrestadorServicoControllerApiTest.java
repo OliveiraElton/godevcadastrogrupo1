@@ -27,7 +27,7 @@ public class PrestadorServicoControllerApiTest {
 	@Test
 	public void testBuscarTodosPrestadorServico() {
 		List<PrestadorServicoDTO> listaPrestadorDTO = prestadorApi.buscarTodosPrestadorServico();
-		assertEquals(6, listaPrestadorDTO.size());
+		assertEquals(2, listaPrestadorDTO.size());
 	}
 	
 	@Test
