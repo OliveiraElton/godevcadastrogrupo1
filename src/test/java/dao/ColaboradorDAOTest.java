@@ -159,6 +159,17 @@ public class ColaboradorDAOTest {
 		assertNotNull(dao.readByEmail("daniela.goncalves@gmail.com"));
 	}
 	
+	@Test
+	public void testDeletarTodosColaborador() {
+		Colaborador colaborador = new Colaborador("Maria", "Silva", "Nada consta", data, "Americano", "burro", false,
+				"Masculino", ig, endereco, "15553232", "6566522354", contatos, 5, 555112324, false, false, LocalDate.of(2020, 4, 17), false,
+				"65123478", "maria@gmail.com", "554555", conta, exameMedico, dependente);
+		dao.create(colaborador);
+		dao.deleteAll();
+		assertEquals(0, dao.getAll().size());
+	}
+	
+	
 	@BeforeClass
 	public static void limparTabela() {
 		dao.deleteAll();
