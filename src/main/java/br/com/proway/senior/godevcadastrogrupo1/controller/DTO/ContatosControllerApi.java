@@ -13,41 +13,40 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DTO.ContatosDTO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 /**
- * * 
-* Classe para interação via Controller API, tem referência com {@link Colaborador} e {@link PrestadorServico}.
-* Disponibiliza todas as informações na API.
-* 
-* @author Elton Oliveira <elton.oliveira@senior.com.br>
+ * * Classe para interação via Controller API, tem referência com
+ * {@link Colaborador} e {@link PrestadorServico}. Disponibiliza todas as
+ * informações na API.
+ * 
+ * @author Elton Oliveira <elton.oliveira@senior.com.br>
  *
  */
 public class ContatosControllerApi {
-	
+
 	static Session session = DBConnection.getSession();
 	static ContatosDAO daoContatos = ContatosDAO.getInstance(session);
-	
+
 	public ContatosDTO buscarContatosPorId(Integer id) {
 		ContatosDTO contatosDTO = new ContatosDTO(ContatosDAO.getInstance(session).readById(id));
 		System.out.println(contatosDTO.getEmail());
 		return contatosDTO;
 	}
-	
+
 	public static List<ContatosDTO> buscarTodosContatos() {
 		List<ContatosDTO> listaContatosDTO = new ArrayList<ContatosDTO>();
 		List<Contatos> listaImprime = ContatosDAO.getInstance(session).getAll();
 		System.out.println(listaImprime.get(0).getEmail());
 		System.out.println(listaImprime.get(1).getEmail());
-		for(Contatos contatos : ContatosDAO.getInstance(session).getAll()) {
+		for (Contatos contatos : ContatosDAO.getInstance(session).getAll()) {
 			listaContatosDTO.add(new ContatosDTO(contatos));
 		}
 		return listaContatosDTO;
 	}
-	
-	//Verificar se precisamos do metodo de buscar por nome.
-//	public static List<ContatosDTO> buscarPrestadorServicoPorNome(String nome){
-//		List<ContatosDTO> listaContatosDTO = new ArrayList<ContatosDTO>();
-//		for(Contatos contatos : ContatosDAO.getInstance(session)) {
-//			listaContatosDTO.add(new ContatosDTO(contatos));
-//		}
-//		return listaContatosDTO;
-//	}
+
+	public static List<ContatosDTO> buscarPrestadorServicoPorEmail(String email) {
+		List<ContatosDTO> listaContatosDTO = new ArrayList<ContatosDTO>();
+		for (Contatos contatos : ContatosDAO.getInstance(session).buscarPorEmail(email)) {
+			listaContatosDTO.add(new ContatosDTO(contatos));
+		}
+		return listaContatosDTO;
+	}
 }
