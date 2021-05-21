@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import org.hibernate.Session;
 import org.junit.Before;
@@ -27,6 +28,7 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ExameMedicoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDependentes;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExames;
 
@@ -76,7 +78,7 @@ public class ColaboradorDAOTest {
 
 	@Test
 	public void testReadById() {
-		Colaborador colaborador = new Colaborador("Lucas", "Nunes", "luquinha", data, "Americano", "burro", false,
+		Colaborador colaborador = new Colaborador("Lucas", "Nunes", "luquinha", data, "Americano", "Blumenau", false,
 				"Masculino", ig, endereco, "21164028324", "45124563", contatos, null, null, false, false, data, false,
 				null, "lucas.nunes@senior.com.br", "554555", conta, exameMedico, dependente);
 		dao.create(colaborador);
@@ -88,7 +90,7 @@ public class ColaboradorDAOTest {
 	@Test
 	public void testGetAll() {
 		int tamanhoAntes = dao.getAll().size();
-		Colaborador colaborador = new Colaborador("Lucas", "Nunes", "luquinha", data, "Americano", "burro", false,
+		Colaborador colaborador = new Colaborador("Lucas", "Nunes", "luquinha", data, "Americano", "Blumenau", false,
 				"Masculino", ig, endereco, "21164028324", "45124563", contatos, null, null, false, false, data, false,
 				null, "lucas.nunes@senior.com.br", "554555", conta, exameMedico, dependente);
 		dao.create(colaborador);
@@ -152,7 +154,7 @@ public class ColaboradorDAOTest {
 
 	@Test
 	public void testReadByEmail() {
-		Colaborador colaborador = new Colaborador("Danieela", "Goncalves", "Dani", data, "Americano", "burro", false,
+		Colaborador colaborador = new Colaborador("Danieela", "Goncalves", "Dani", data, "Americano", "Blumenau", false,
 				"Masculino", ig, endereco, "15553232", "6566522354", contatos, 5, 555112324, false, false, LocalDate.of(2020, 4, 17), false,
 				"65123478", "daniela.goncalves@gmail.com", "554555", conta, exameMedico, dependente);
 		dao.create(colaborador);
@@ -161,12 +163,37 @@ public class ColaboradorDAOTest {
 	
 	@Test
 	public void testDeletarTodosColaborador() {
-		Colaborador colaborador = new Colaborador("Maria", "Silva", "Nada consta", data, "Americano", "burro", false,
+		Colaborador colaborador = new Colaborador("Maria", "Silva", "Nada consta", data, "Americano", "Blumenau", false,
 				"Masculino", ig, endereco, "15553232", "6566522354", contatos, 5, 555112324, false, false, LocalDate.of(2020, 4, 17), false,
 				"65123478", "maria@gmail.com", "554555", conta, exameMedico, dependente);
 		dao.create(colaborador);
 		dao.deleteAll();
 		assertEquals(0, dao.getAll().size());
+	}
+	
+	@Test
+	public void testBuscarPorNome() {
+		Dependente dependente1 = new Dependente("Marta", "Fonseca", "Marta", data, "Venezuelano", "Cidade del Leste",
+				true, "Feminino", ig, endereco, "09619039610", "8808080", TiposDependentes.FILHO, true);
+		Colaborador colaborador1 = new Colaborador("Joana", "Silva", "Nada consta", data, "Americano", "Blumenau", false,
+				"Masculino", ig, endereco, "15553232", "6566522354", contatos, 5, 555112324, false, false, LocalDate.of(2020, 4, 17), false,
+				"65123478", "joana@gmail.com", "554555", new Conta("Santander","0506", "05050505", "1"), new ExameMedico(TiposExames.ADMISSIONAL, 
+						LocalDate.of(2021, 8, 7), true), dependente1);
+		dao.create(colaborador1);
+		Dependente dependente2 = new Dependente("Clementina", "Fonseca", "Clementina", data, "Venezuelano", "Cidade del Leste",
+				true, "Feminino", ig, endereco, "09619039610", "808080", TiposDependentes.MAE, true);
+		Colaborador colaborador2 = new Colaborador("Joana", "Pinheiro", "Nada consta", data, "Americano", "Blumenau", false,
+				"Masculino", ig, endereco, "15553232", "6566522354", contatos, 5, 555112324, false, false, LocalDate.of(2020, 4, 17), false,
+				"65123478", "joana@gmail.com", "554555", new Conta("Caixa","0506", "05050505", "1"), new ExameMedico(TiposExames.ADMISSIONAL, 
+						LocalDate.of(2020, 8, 7), false), dependente2);
+		dao.create(colaborador2);
+		ArrayList<Colaborador> listaRetorno = (ArrayList<Colaborador>) dao.buscarPorNome("Joana");
+		assertEquals(colaborador1.getNome(), listaRetorno.get(0).getNome());
+		assertEquals(colaborador1.getCpf(), listaRetorno.get(0).getCpf());
+		assertEquals(colaborador1.getConta(), listaRetorno.get(0).getConta());
+		assertEquals(colaborador2.getNome(), listaRetorno.get(1).getNome());
+		assertEquals(colaborador2.getCpf(), listaRetorno.get(1).getCpf());
+		assertEquals(colaborador2.getConta(), listaRetorno.get(1).getConta());
 	}
 	
 	
