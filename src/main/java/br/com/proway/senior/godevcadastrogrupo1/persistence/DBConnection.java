@@ -1,4 +1,4 @@
-package br.com.proway.senior.godevcadastrogrupo1.persistence;
+	package br.com.proway.senior.godevcadastrogrupo1.persistence;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

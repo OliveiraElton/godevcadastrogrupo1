@@ -13,7 +13,7 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 /**
  * Classe EmpresaDTOTest.
  * 
- * Testa os métodos da classe {@link Empresa}.
+ * Testa os métodos da classe {@link EmpresaDTO}.
  * 
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
  */

@@ -13,7 +13,7 @@ public class EnderecoControllerApi {
 	static Session session = DBConnection.getSession();
 	static EnderecoDAO daoEndereco = EnderecoDAO.getInstance(session);
 
-	public static Colaborador buscarEnderecoDoColaborador(int id) {
+	public static Endereco buscarEnderecoDoColaborador(int id) {
 		ColaboradorController colaboradorController = new ColaboradorController();
 		Colaborador colaborador = colaboradorController.buscarColaboradorPorId(id);
 		Endereco end = EnderecoDTO(colaborador);

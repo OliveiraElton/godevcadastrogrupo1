@@ -2,7 +2,7 @@ package br.com.proway.senior.godevcadastrogrupo1.model;
 
 public class EnderecoDTO {
 	
-	private int id;	
+	private int idColaborador;
 	private String logradouro;
 	private Integer numero;
 	private String complemento;
@@ -12,20 +12,16 @@ public class EnderecoDTO {
 	private String cidade;
 	private String uf;
 	
-	public EnderecoDTO(Endereco endereco) {
-		this.id = endereco.getId();
-		this.logradouro = endereco.getLogradouro();
-		this.numero = endereco.getNumero();
-		this.complemento = endereco.getComplemento();
-		this.cep = endereco.getCep();
-		this.bairro = endereco.getBairro();
-		this.pais = endereco.getPais();
-		this.cidade = endereco.getCidade();
-		this.uf = endereco.getUf();
-	}
-
-	public int getId() {
-		return id;
+	public EnderecoDTO(Colaborador colaborador) {
+		this.idColaborador = colaborador.getId();
+		this.logradouro = colaborador.getEndereco().getLogradouro();
+		this.numero = colaborador.getEndereco().getNumero();
+		this.complemento = colaborador.getEndereco().getComplemento();
+		this.cep = colaborador.getEndereco().getCep();
+		this.bairro = colaborador.getEndereco().getBairro();
+		this.pais = colaborador.getEndereco().getPais();
+		this.cidade = colaborador.getEndereco().getCidade();
+		this.uf = colaborador.getEndereco().getUf();
 	}
 
 	public String getLogradouro() {
@@ -59,6 +55,4 @@ public class EnderecoDTO {
 	public String getUf() {
 		return uf;
 	}
-	
-	
 }
