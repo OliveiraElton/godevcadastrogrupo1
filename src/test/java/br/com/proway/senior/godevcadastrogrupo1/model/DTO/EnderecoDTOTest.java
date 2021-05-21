@@ -3,7 +3,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
-import br.com.proway.senior.godevcadastrogrupo1.model.EnderecoDTO;
 
 public class EnderecoDTOTest {
 
