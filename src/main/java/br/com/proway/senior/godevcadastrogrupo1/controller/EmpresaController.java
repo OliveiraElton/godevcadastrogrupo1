@@ -130,9 +130,9 @@ public class EmpresaController {
 	/**
 	 * Busca empresa por nome.
 	 * 
-	 * Método busca as empresas no banco de dados através dos seus respectivos nomes,
-	 * é possível passar um parâmetro parcial para retorna todos os registros que contenham
-	 * determinado texto em seu nomeEmpresa.
+	 * Método busca as empresas no banco de dados através dos seus respectivos
+	 * nomes, é possível passar um parâmetro parcial para retorna todos os registros
+	 * que contenham determinado texto em seu nomeEmpresa.
 	 * 
 	 * @param nomeEmpresa nome dos registros que estão sendo procurados.
 	 * @return ArrayList Empresa lista de registros localizados.

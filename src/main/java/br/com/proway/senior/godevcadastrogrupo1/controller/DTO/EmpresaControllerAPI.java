@@ -4,11 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.proway.senior.godevcadastrogrupo1.controller.EmpresaController;
-import br.com.proway.senior.godevcadastrogrupo1.controller.PrestadorServicoController;
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
-import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.EmpresaDTO;
-import br.com.proway.senior.godevcadastrogrupo1.model.DTO.PrestadorServicoDTO;
 
 /**
  * Classe EmpresaControllerAPI
@@ -41,26 +38,36 @@ public class EmpresaControllerAPI {
 	/**
 	 * Buscar todas as empresas.
 	 * 
-	 * Método busca as informações de todas as empresas cadastradas no banco de dados.
-	 * Retorna uma lista de todos os registros de empresas.
+	 * Método busca as informações de todas as empresas cadastradas no banco de
+	 * dados. Retorna uma lista de todos os registros de empresas.
 	 * 
 	 * @return listaEmpresaDTO lista de registros localizados.
 	 */
 	public static List<EmpresaDTO> buscarTodasEmpresas() {
 		List<EmpresaDTO> listaEmpresaDTO = new ArrayList<EmpresaDTO>();
 		List<Empresa> listaImprime = controllerOriginal.buscarTodasEmpresas();
-		for(Empresa empresa : controllerOriginal.buscarTodasEmpresas()) {
+		for (Empresa empresa : controllerOriginal.buscarTodasEmpresas()) {
 			listaEmpresaDTO.add(new EmpresaDTO(empresa));
 		}
 		return listaEmpresaDTO;
 	}
-	
-	public static List<EmpresaDTO> buscarPrestadorServicoPorNome(String nomeEmpresa){
+
+	/**
+	 * Busca empresa por nome.
+	 * 
+	 * Método busca as empresas no banco de dados através dos seus respectivos
+	 * nomes, é possível passar um parâmetro parcial para retorna todos os registros
+	 * que contenham determinado texto em seu nomeEmpresa.
+	 * 
+	 * @param nomeEmpresa nome dos registros que estão sendo procurados.
+	 * @return ArrayList Empresa lista de registros localizados.
+	 */
+	public static List<EmpresaDTO> buscarEmpresaPorNome(String nomeEmpresa) {
 		List<EmpresaDTO> listaEmpresaDTO = new ArrayList<EmpresaDTO>();
-		for(PrestadorServico empresa : controllerOriginal.bu(nomeEmpresa)) {
+		for (Empresa empresa : controllerOriginal.buscarEmpresaPorNome(nomeEmpresa)) {
 			listaEmpresaDTO.add(new EmpresaDTO(empresa));
 		}
 		return listaEmpresaDTO;
 	}
-	
+
 }

@@ -12,7 +12,6 @@ import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
-import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 /**
