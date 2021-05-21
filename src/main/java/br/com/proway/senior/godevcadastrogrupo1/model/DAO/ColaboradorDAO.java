@@ -42,6 +42,12 @@ public class ColaboradorDAO extends Dao<Colaborador> implements InterfaceDao<Col
 		return instance;
 	}
 
+	/**
+	 * Contrutor da classe, será utilizado para iniciar a sessao,
+	 * quando chamado em outras classes.
+	 * 
+	 * @param Session session
+	 */
 	public ColaboradorDAO(Session session) {
 		this.session = session;
 	}
@@ -80,6 +86,14 @@ public class ColaboradorDAO extends Dao<Colaborador> implements InterfaceDao<Col
 		return colaborador;
 	}
 	
+	/**
+	 * Buscar todos os colaboradores.
+	 * 
+	 * Método busca todos os registros de colaboradores constantes no banco
+	 * e retorna em uma lista.
+	 * 
+	 * @return List colaborador lista de colaboradores cadastrados.
+	 */
 	public List<Colaborador> getAll() {
 		CriteriaBuilder builder = session.getCriteriaBuilder();
 		CriteriaQuery<Colaborador> criteria = builder.createQuery(Colaborador.class);
