@@ -286,7 +286,7 @@ public class ColaboradorController {
 	 * @param nome do colaborador desejado.
 	 * @return List Colaborador lista de colaborador localizados. 
 	 */
-	public static List<Colaborador> buscarColaboradorPorNomeSobrenome(String nomeColaborador) {		
+	public static List<Colaborador> buscarColaboradorPorNome(String nomeColaborador) {		
 		return daoColaborador.buscarPorNome(nomeColaborador);
 	}
 
@@ -298,7 +298,7 @@ public class ColaboradorController {
 	 * 
 	 * @return lista com todos os colaboradores cadastrados.
 	 */
-	public static List<Colaborador> buscarTodosColaborador() {
+	public static List<Colaborador> buscarTodosColaboradores() {
 		return daoColaborador.getAll();
 	}
 

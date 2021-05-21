@@ -25,7 +25,7 @@ public class ColaboradorSimplificadoControllerApi {
 
 	public List<ColaboradorSimplificadoDTO> buscarTodos() {
 		List<ColaboradorSimplificadoDTO> listaColaboradorDto = new ArrayList<ColaboradorSimplificadoDTO>();
-		List<Colaborador> listaColaborador = ColaboradorController.buscarTodosColaborador();
+		List<Colaborador> listaColaborador = ColaboradorController.buscarTodosColaboradores();
 
 		for (Colaborador colaborador : listaColaborador) {
 			listaColaboradorDto.add(new ColaboradorSimplificadoDTO(colaborador));

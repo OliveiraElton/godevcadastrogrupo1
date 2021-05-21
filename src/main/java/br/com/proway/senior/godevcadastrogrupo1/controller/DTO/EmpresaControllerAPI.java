@@ -46,7 +46,7 @@ public class EmpresaControllerAPI {
 	public static List<EmpresaDTO> buscarTodasEmpresas() {
 		List<EmpresaDTO> listaEmpresaDTO = new ArrayList<EmpresaDTO>();
 		List<Empresa> listaImprime = controllerOriginal.buscarTodasEmpresas();
-		for (Empresa empresa : controllerOriginal.buscarTodasEmpresas()) {
+		for (Empresa empresa : listaImprime) {
 			listaEmpresaDTO.add(new EmpresaDTO(empresa));
 		}
 		return listaEmpresaDTO;
