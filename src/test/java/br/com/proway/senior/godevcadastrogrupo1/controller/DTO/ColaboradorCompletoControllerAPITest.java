@@ -71,7 +71,6 @@ public class ColaboradorCompletoControllerAPITest {
 				"4521452015", "5421452103", "brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00",
 				"055", "438614625", "154", "joãozinho", "Santos", "Erika", data, "Venezuelano", "Blumenauense", true,
 				"Feminino", ig, "09619039610", "mg14388606", td, true);
-		
 		ArrayList<ColaboradorCompletoDTO> listaRetorno = (ArrayList<ColaboradorCompletoDTO>) controllerAPI.buscarTodosColaboradores();
 		assertEquals(2, listaRetorno.size());
 		assertEquals(colaborador1.getNome(), listaRetorno.get(0).getNome());
@@ -84,7 +83,26 @@ public class ColaboradorCompletoControllerAPITest {
 
 	@Test
 	public void testBuscarColaboradorPorNome() {
-		fail("Not yet implemented");
+		Colaborador colaborador1 = ColaboradorController.criarColaborador("Joana", "Marla", "Nada consta", data,
+				"Venezuelano", "Blumenauense", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data,
+				false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
+				"4521452015", "5421452103", "brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00",
+				"055", "438614625", "154", "joãozinho", "Santos", "Erika", data, "Venezuelano", "Blumenauense", true,
+				"Feminino", ig, "09619039610", "mg14388606", td, true);
+		Colaborador colaborador2 = ColaboradorController.criarColaborador("Joana", "Pereira", "Nada consta", data,
+				"Venezuelano", "Blumenauense", true, "Feminino", ig, "7878888878", "mg14388606", 8, 8788881, false, false, data,
+				false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
+				"4521452015", "5421452103", "brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00",
+				"055", "438614625", "154", "joãozinho", "Santos", "Erika", data, "Venezuelano", "Blumenauense", true,
+				"Feminino", ig, "09619039610", "mg14388606", td, true);
+		ArrayList<ColaboradorCompletoDTO> listaRetorno = (ArrayList<ColaboradorCompletoDTO>) controllerAPI.buscarColaboradorPorNome("Joana");
+		assertEquals(2, listaRetorno.size());
+		assertEquals(colaborador1.getNome(), listaRetorno.get(0).getNome());
+		assertEquals(colaborador1.getConta(), listaRetorno.get(0).getConta());
+		assertEquals(colaborador1.getEndereco(), listaRetorno.get(0).getEndereco());
+		assertEquals(colaborador2.getEndereco(), listaRetorno.get(1).getEndereco());
+		assertEquals(colaborador2.getEndereco(), listaRetorno.get(1).getEndereco());
+		assertEquals(colaborador2.getEndereco(), listaRetorno.get(1).getEndereco());
 	}
 
 	@Before
