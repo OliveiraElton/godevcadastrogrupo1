@@ -93,5 +93,14 @@ public class PrestadorServicoDAO extends Dao<PrestadorServico> implements Interf
 			return false;
 		}
 	}
+	
+	public boolean deleteAll() {
+		if (!this.session.getTransaction().isActive()) {
+			this.session.beginTransaction();
+		}
+		int modificados = this.session.createSQLQuery("TRUNCATE prestadorservico CASCADE").executeUpdate();
+		this.session.getTransaction().commit();
+		return modificados > 0 ? true : false;
+	}
 
 }
