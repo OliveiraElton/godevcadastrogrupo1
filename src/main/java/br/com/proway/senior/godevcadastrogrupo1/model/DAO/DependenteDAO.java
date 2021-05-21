@@ -1,16 +1,20 @@
 package br.com.proway.senior.godevcadastrogrupo1.model.DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
+import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
+import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
 
 public class DependenteDAO extends Dao<Dependente> implements InterfaceDao<Dependente>{
@@ -52,6 +56,23 @@ public class DependenteDAO extends Dao<Dependente> implements InterfaceDao<Depen
 	public List<Dependente> readByIdColab(Integer id) {
 		Colaborador colaborador = session.get(Colaborador.class, id);
 		return colaborador.getDependente();
+	}
+	
+	public List<Dependente> buscarPorNome(String valorColuna){
+		Session session = DBConnection.getSession();
+		CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+		CriteriaQuery<Dependente> criteria = criteriaBuilder.createQuery(Dependente.class);
+		
+		Root<Dependente> root = criteria.from(Dependente.class);
+		Expression<String> selectedColumn = root.get("nome");
+		
+		String filter = "%" + valorColuna + "%";
+		criteria.select(root)
+			.where(criteriaBuilder.like(selectedColumn, filter));
+			
+		Query query = session.createQuery(criteria);
+		List<Dependente> results = query.getResultList();
+		return new ArrayList<Dependente>(results);
 	}
 
 	public boolean limparTabela() {

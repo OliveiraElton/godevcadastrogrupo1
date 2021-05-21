@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.Session;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
+import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ContatosDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
@@ -162,8 +163,12 @@ public class DependenteController {
 	 * 
 	 * @return Dependente ou null caso não encontrado.
 	 */
-	public static List<Dependente> buscarDependentePorIdColaborador(Integer id) {
-		return daoDependente.readByIdColab(id);
+	public static List<Dependente> buscarTodosDependente() {
+		return daoDependente.getAll();
+	}
+	
+	public static List<Dependente> buscarDependentePorNome(String nome) {
+		return daoDependente.buscarPorNome(nome);
 	}
 	/**
 	 * Busca todos os dependentes do banco de dados.
