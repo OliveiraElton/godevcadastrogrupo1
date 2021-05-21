@@ -42,7 +42,7 @@ public class ColaboradorDAO extends Dao<Colaborador> implements InterfaceDao<Col
 		return instance;
 	}
 
-	private ColaboradorDAO(Session session) {
+	public ColaboradorDAO(Session session) {
 		this.session = session;
 	}
 

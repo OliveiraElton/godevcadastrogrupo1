@@ -4,11 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.proway.senior.godevcadastrogrupo1.controller.ColaboradorController;
-import br.com.proway.senior.godevcadastrogrupo1.controller.EmpresaController;
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
-import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.ColaboradorCompletoDTO;
-import br.com.proway.senior.godevcadastrogrupo1.model.DTO.EmpresaDTO;
 
 /**
  * Classe ColaboradorCompletoControllerAPI
