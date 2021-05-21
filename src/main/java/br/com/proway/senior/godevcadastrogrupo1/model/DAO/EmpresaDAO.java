@@ -13,6 +13,8 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
  * EmpresaDAO.
  * 
  * Classe de interação com o banco de dados através do Hibernate.
+ * Extende a classe {@Dao} que possui os métodos create, update e delete.
+ * Implementa a interface {@link InterfaceDao} com os métodos de buscar.
  * 
  * @author Sprint 5
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b> - Sprint 6
