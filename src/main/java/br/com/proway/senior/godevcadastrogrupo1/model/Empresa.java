@@ -2,6 +2,7 @@ package br.com.proway.senior.godevcadastrogrupo1.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,7 +12,7 @@ import javax.persistence.OneToOne;
 import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDocumentos;
 
 /**
- * Classe que abstrai as informaï¿½ï¿½es de uma Empresa contratada. Esta Classe serï¿½
+ * Classe que abstrai as informações de uma Empresa contratada. Esta Classe serï¿½
  * instanciada na Classe PrestadorServico, e instanciarï¿½ as classes Endereco e
  * Contato.
  * 
@@ -38,9 +39,9 @@ public class Empresa {
 	private LocalDate dataInicioContrato;
 	private String cnpj;
 
-	@OneToOne
+	@OneToOne (cascade = CascadeType.ALL)
 	private Endereco endereco;
-	@OneToOne
+	@OneToOne (cascade = CascadeType.ALL)
 	private Contatos contato;
 
 	/**

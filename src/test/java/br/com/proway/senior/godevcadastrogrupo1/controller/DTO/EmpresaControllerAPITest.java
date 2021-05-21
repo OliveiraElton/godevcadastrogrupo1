@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.proway.senior.godevcadastrogrupo1.controller.EmpresaController;
 import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
@@ -21,7 +22,10 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
  *
  */
 public class EmpresaControllerAPITest {
-
+	
+	EmpresaController controllerOriginal = new EmpresaController();
+	EmpresaControllerAPI controllerApi = new EmpresaControllerAPI();
+	EmpresaDAO dao = new EmpresaDAO(DBConnection.getSession());
 	
 	
 	@Test
@@ -30,14 +34,17 @@ public class EmpresaControllerAPITest {
 		Contatos contatos = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
 		Empresa original = new Empresa("Proway", LocalDate.of(2021, 10, 13), "89123987000112", endereco, contatos);
 		EmpresaDTO dto = new EmpresaDTO(original);
+		dao.create(original);
+		
+		
 	}
 
 	
-	@Before
-	public void limparTabela() {
-		Session session = DBConnection.getSession();
-		EmpresaDAO dao = EmpresaDAO.getInstance(session);
-		dao.deletarTodasEmpresas();
-	}
-	
+//	@Before
+//	public void limparTabela() {
+//		Session session = DBConnection.getSession();
+//		EmpresaDAO dao = EmpresaDAO.getInstance(session);
+//		dao.deleteAll();
+//	}
+//	
 }

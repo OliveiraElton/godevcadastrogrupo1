@@ -24,7 +24,6 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
 public class EmpresaDAO extends Dao<Empresa> implements InterfaceDao<Empresa>{
 
 	protected static EmpresaDAO instance;
-	private Session sessao;
 	
 	/**
 	 * Método getInstance.
@@ -83,13 +82,13 @@ public class EmpresaDAO extends Dao<Empresa> implements InterfaceDao<Empresa>{
 	 * 
 	 * @return boolean
 	 */
-	public boolean deletarTodasEmpresas() {
-		if (!this.sessao.getTransaction().isActive()) {
-			this.sessao.beginTransaction();
+	public boolean deleteAll() {
+		if (!this.session.getTransaction().isActive()) {
+			this.session.beginTransaction();
 		}
-		int modificados = this.sessao.createSQLQuery("DELETE FROM empresa")
+		int modificados = this.session.createSQLQuery("DELETE FROM empresa")
 				.executeUpdate();
-		this.sessao.getTransaction().commit();
+		this.session.getTransaction().commit();
 		return modificados > 0 ? true : false;
 	}
 	
