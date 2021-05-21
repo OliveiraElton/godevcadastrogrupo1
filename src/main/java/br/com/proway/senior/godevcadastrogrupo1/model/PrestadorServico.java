@@ -2,6 +2,7 @@ package br.com.proway.senior.godevcadastrogrupo1.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -37,11 +38,11 @@ public class PrestadorServico extends Pessoa {
 
 	private LocalDate dataInicioContrato;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Empresa empresa;
 	private Integer idSetor;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Contatos contatos;
 
 	public PrestadorServico() {
