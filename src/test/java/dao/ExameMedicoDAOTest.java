@@ -30,7 +30,7 @@ public class ExameMedicoDAOTest {
 
 	@Test
 	public void testGetAll() {
-		ExameMedico exameMedico = new ExameMedico(exameAdm, data, true);
+		ExameMedico exameMedico = new ExameMedico(exameAdm, LocalDate.of(2021, 7, 13), false);
 		ExameMedico exameMedico2 = new ExameMedico(exameDem, data, true);
 		Integer valorAntes = dao.getAll().size();
 		dao.create(exameMedico);

@@ -17,7 +17,7 @@ public class ContaDAOTest {
 
 	@Test
 	public void testReadById() {
-		Conta conta = new Conta("989896565", "9", "0456", null);
+		Conta conta = new Conta("Viacredi", "932", "125687", "7");
 		dao.create(conta);
 		Integer id = conta.getId();
 		assertEquals(conta, dao.readById(id));
@@ -25,7 +25,7 @@ public class ContaDAOTest {
 
 	@Test
 	public void testGetAll() {
-		Conta conta = new Conta("698955", "9", "0456", null);
+		Conta conta = new Conta("Caixa", "932", "55661", "13");
 		Integer valorAntes = dao.getAll().size();
 		dao.create(conta);
 		assertEquals(valorAntes + 1, dao.getAll().size());
@@ -33,8 +33,10 @@ public class ContaDAOTest {
 
 	@Test
 	public void testCreate() {
-		Conta conta = new Conta("Brasil", "0155", "05633558", "7");
-		assertEquals(conta, dao.create(conta));
+		Conta conta = new Conta("Banco do Brasil", "4125", "3366914", "3");
+		int quantidade = dao.getAll().size();
+		dao.create(conta);
+		assertEquals(quantidade + 1, dao.getAll().size());
 	}
 
 	@Test
@@ -48,10 +50,10 @@ public class ContaDAOTest {
 
 	@Test
 	public void testUpdate() {
-		Conta conta = new Conta("15623", "B13", null, null);
+		Conta conta = new Conta("Santander", "2222", "987635", "96");
 		dao.create(conta);
-		conta.setAgencia("B11");
-		assertEquals("B11", dao.update(conta).getAgencia());
+		conta.setAgencia("9852");
+		assertEquals("9852", dao.update(conta).getAgencia());
 	}
 
 }

@@ -9,17 +9,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.Cascade;
+
 import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDocumentos;
 
 /**
- * Classe que abstrai as informa��es de uma Empresa contratada. Esta Classe ser�
- * instanciada na Classe PrestadorServico, e instanciar� as classes Endereco e
+ * Classe que abstrai as informações de uma Empresa contratada. Esta Classe serï¿½
+ * instanciada na Classe PrestadorServico, e instanciarï¿½ as classes Endereco e
  * Contato.
  * 
  * Deve ser instanciada utilizando o EmpresaBuilder.
  *
  * @author Lorran Pereira dos Santos, Samuel Levi, Sarah Neuburger Brito, Thiago
- *         Luiz Barbieri e Vitor Nathan Gon�alves.
+ *         Luiz Barbieri e Vitor Nathan Gonï¿½alves.
  * 
  * @author Bruna <sh4323202@gmail.com>
  * @author Enzo <enzomm.bodyandmind@gmail.com>
@@ -38,6 +40,7 @@ public class Empresa {
 	private String nomeEmpresa;
 	private LocalDate dataInicioContrato;
 	private String cnpj;
+
 
 	@OneToOne (cascade = CascadeType.ALL)
 	private Endereco endereco;

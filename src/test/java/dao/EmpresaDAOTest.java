@@ -15,11 +15,12 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EmpresaDAO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 /**
  * Classe EmpresaDAOTest.
  * 
- * Testa os métodos da classe {@link EmpresaDAO}.
+ * Testa os mÃ©todos da classe {@link EmpresaDAO}.
  * 
  * @author Sprint 5
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
