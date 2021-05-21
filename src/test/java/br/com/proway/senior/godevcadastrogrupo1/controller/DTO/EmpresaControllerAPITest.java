@@ -1,8 +1,10 @@
 package br.com.proway.senior.godevcadastrogrupo1.controller.DTO;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import org.junit.Test;
 
@@ -42,6 +44,20 @@ public class EmpresaControllerAPITest {
 		assertEquals(empresaCriada.getContato(), dtoRetornada.getContato());	
 	}
 
+	@Test
+	public void testBuscarTodasEmpresa() {
+		Endereco endereco1 = new Endereco("Rua Sete de Setembro", 123, "Taruma Office", "89035193", "Centro", "Brasil", "Blumenau", "SC");
+		Contatos contatos1 = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
+		Empresa original1 = new Empresa("Proway", LocalDate.of(2021, 10, 13), "89123987000112", endereco1, contatos1);
+		Empresa empresaCriada1 = dao.create(original1);
+		Endereco endereco2 = new Endereco("Rua Sete de Setembro", 789, "Nada consta", "89035193", "Centro", "Brasil", "Blumenau", "SC");
+		Contatos contatos2 = new Contatos("47999448899", "47988994455", "contato@shopping.com", "47988553322");
+		Empresa original2 = new Empresa("Neumarket Shopping", LocalDate.of(2019, 9, 13), "89123987000112", endereco2, contatos2);
+		Empresa empresaCriada2 = dao.create(original2);
+		ArrayList<EmpresaDTO> listaRetorno = (ArrayList<EmpresaDTO>) controllerApi.buscarTodasEmpresas();
+		assertFalse(listaRetorno.isEmpty());
+	}
+	
 	
 //	@Before
 //	public void limparTabela() {
