@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import org.hibernate.Session;
 import org.junit.Before;
@@ -99,6 +100,18 @@ public class EmpresaDAOTest {
 		dao.create(empresa);
 		dao.deleteAll();
 		assertTrue(dao.getAll().isEmpty());
+	}
+	
+	@Test
+	public void testBuscarPorNome() {
+		Endereco endereco = new Endereco("Rua Sete de Setembro", 123, "Taruma Office", "89010-911", "Centro", "Brasil",
+				"Blumenau", "SC");
+		Contatos contatos = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
+		Empresa empresa = new Empresa("Proway", LocalDate.of(2021, 04, 15), "00.360.305/0001-04", endereco, contatos);
+		dao.create(empresa);
+		ArrayList<Empresa> listaRetorno = (ArrayList<Empresa>) dao.buscarPorNome("Pro");
+		System.out.println(listaRetorno.get(0).getNomeEmpresa());
+		assertTrue(listaRetorno.size() == 1);		
 	}
 
 	@Before

@@ -57,7 +57,7 @@ public class EmpresaControllerAPI {
 	
 	public static List<EmpresaDTO> buscarPrestadorServicoPorNome(String nomeEmpresa){
 		List<EmpresaDTO> listaEmpresaDTO = new ArrayList<EmpresaDTO>();
-		for(PrestadorServico empresa : PrestadorServicoController.buscarPrestadorServicoPorNome(nomeEmpresa)) {
+		for(PrestadorServico empresa : controllerOriginal.bu(nomeEmpresa)) {
 			listaEmpresaDTO.add(new EmpresaDTO(empresa));
 		}
 		return listaEmpresaDTO;
