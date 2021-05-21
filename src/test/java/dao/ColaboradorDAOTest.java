@@ -11,6 +11,8 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import br.com.proway.senior.godevcadastrogrupo1.controller.ColaboradorController;
+import br.com.proway.senior.godevcadastrogrupo1.controller.DTO.ColaboradorControllerApi;
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Conta;
 import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
@@ -31,6 +33,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExa
 
 public class ColaboradorDAOTest {
 
+	ColaboradorControllerApi colabControllerApi = new ColaboradorControllerApi();
 	static Session session = DBConnection.getSession();
 	ColaboradorDAO dao = ColaboradorDAO.getInstance(session);
 	static ContaDAO daoConta = ContaDAO.getInstance(session);
@@ -41,12 +44,14 @@ public class ColaboradorDAOTest {
 	static IdentidadeGenero ig = EnumDadosPessoais.IdentidadeGenero.TRANS;
 	static TiposExames em = EnumExamesMedicos.TiposExames.ADMISSIONAL;
 	static LocalDate data = LocalDate.of(2002, 01, 28);
-	Conta conta = new Conta(null, null, null, null);
-	Endereco endereco = new Endereco(null, null, null, null, null, null, null, null);
+	Conta conta = new Conta("Caixa", "105", "2569874", "15");
+	Endereco endereco = new Endereco("Rua xv de Novembro", 154, "Casa", "89065544", "Centro", "Brasil", "Blumenau",
+			"SC");
 	String email = "teste@gmail.com";
-	Contatos contatos = new Contatos(null, null, email, null);
+	Contatos contatos = new Contatos("47988554466", "4732569874", email, "479875643");
 	ExameMedico exameMedico = new ExameMedico(em, LocalDate.now(), true);
 	ExameMedico exameMedico2 = new ExameMedico(em, LocalDate.now(), false);
+	ExameMedico exameMedico3 = new ExameMedico(em, LocalDate.now(), true);
 	Dependente dependente = new Dependente("Joãozinho", "Fonseca", "Jenifer", data, "Venezuelano", "Cidade del Leste",
 			true, null, null, endereco, "09619039610", null, null, true);
 
@@ -82,17 +87,35 @@ public class ColaboradorDAOTest {
 
 	@Test
 	public void testCreate() {
-		Colaborador colaborador = new Colaborador("Lucas", "Nunes", "luquinha", data, "Americano", "burro", false,
-				"Masculino", ig, endereco, "21164028324", "45124563", contatos, null, null, false, false, data, false,
-				null, "lucas.nunes@senior.com.br", "554555", conta, exameMedico, dependente);
-		assertEquals(colaborador, dao.create(colaborador));
+		int antes = colabControllerApi.buscarTodos().size();
+
+		Colaborador colaborador = new Colaborador("Lucas", "Nunes", "lucas", LocalDate.of(2000, 01, 02), "Brasileiro",
+				"Blumenau", false, "Masculino", ig, endereco, "21164028324", "45124563", contatos, 12, 123456789, false,
+				false, LocalDate.now(), false, "12345687552", "lucas.nunes@senior.com.br", "5544555", conta,
+				exameMedico, dependente);
+
+		Colaborador colaborador2 = new Colaborador("Maria", "Silva", "Maria", LocalDate.of(1998, 07, 11), "Brasileira",
+				"Joinville", false, "Feminino", IdentidadeGenero.CIS, endereco, "87872123445", "3322584", contatos, 12, 98851456, false,
+				false, LocalDate.now(), false, "123111444", "maria@senior.com.br", "6564645", conta,
+				exameMedico2, new Dependente());
+		
+		Colaborador colaborador3 = new Colaborador("Junior", "Santos", "Juninho", LocalDate.of(1980, 4, 12), "Brasileira",
+				"Blumenau", false, "Feminino", IdentidadeGenero.TRANS, endereco, "555412354", "98794455", contatos, 12, 1234587, false,
+				false, LocalDate.now(), false, "123111444", "junior@senior.com.br", "3124551", conta,
+				exameMedico3, new Dependente());
+		
+		dao.create(colaborador);
+		dao.create(colaborador2);
+		dao.create(colaborador3);
+		
+		assertEquals(antes + 3, colabControllerApi.buscarTodos().size());
 	}
 
 	@Test
 	public void testDelete() {
-		Colaborador colaborador = new Colaborador("Lucas", "Nunes", "luquinha", data, "Americano", "burro", false,
-				"Masculino", ig, endereco, "21164028324", "45124563", contatos, null, null, false, false, data, false,
-				null, "lucas.nunes@senior.com.br", "554555", conta, exameMedico, dependente);
+		Colaborador colaborador = new Colaborador("Teste", "Teste", "Teste", data, "Teste", "Teste", false,
+				"Masculino", ig, endereco, "21164028324", "45124563", contatos, 1, 84536112, false, false, data, false,
+				"1234555688", "lucas.nunes@senior.com.br", "554555", conta, exameMedico, dependente);
 		dao.create(colaborador);
 		Integer id = colaborador.getId();
 		assertEquals(true, dao.delete(colaborador));
@@ -101,19 +124,29 @@ public class ColaboradorDAOTest {
 
 	@Test
 	public void testUpdate() {
-		Colaborador colaborador = new Colaborador("Lucas", "Nunes", "luquinha", data, "Americano", "burro", false,
-				"Masculino", ig, endereco, "21164028324", "45124563", contatos, null, null, false, false, data, false,
-				null, "lucas.nunes@senior.com.br", "554555", conta, exameMedico, dependente);
+		Colaborador colaborador = new Colaborador("Pedro", "dos Anjos", "Pedro", data, "Teste", "Rio do Sul", false,
+				"Masculino", ig, endereco, "21164028324", "45124563", contatos, 2, 65448896, false, false, LocalDate.of(2021, 01, 25), false,
+				"989555633", "pedro@senior.com.br", "322321555", conta, exameMedico, dependente);
 		dao.create(colaborador);
+		
+		colaborador.setCpf("99999999999");
+		colaborador.setNome("Mariana");
+		colaborador.setIdentidadeGenero(IdentidadeGenero.TRANS);
+		colaborador.setNacionalidade("Brasil");
+		colaborador.setDataDeNascimento(LocalDate.of(1985, 8, 23));
+		
+		dao.update(colaborador);
+		
+		assertEquals("Mariana", colaborador.getNome());
 	}
 
 	@Test
 	public void testReadByEmail() {
-		Colaborador colaborador = new Colaborador("Lucas", "Nunes", "luquinha", data, "Americano", "burro", false,
-				"Masculino", ig, endereco, "21164028324", "45124563", contatos, null, null, false, false, data, false,
-				null, "bruno@pessoa.maravilhosa.com", "554555", conta, exameMedico, dependente);
+		Colaborador colaborador = new Colaborador("Danieela", "Goncalves", "Dani", data, "Americano", "burro", false,
+				"Masculino", ig, endereco, "15553232", "6566522354", contatos, 5, 555112324, false, false, LocalDate.of(2020, 4, 17), false,
+				"65123478", "daniela.goncalves@gmail.com", "554555", conta, exameMedico, dependente);
 		dao.create(colaborador);
-		assertNotNull(dao.readByEmail("bruno@pessoa.maravilhosa.com"));
+		assertNotNull(dao.readByEmail("daniela.goncalves@gmail.com"));
 	}
 
 }
