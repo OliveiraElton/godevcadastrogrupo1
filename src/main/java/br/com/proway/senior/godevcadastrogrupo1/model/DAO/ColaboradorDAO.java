@@ -101,8 +101,7 @@ public class ColaboradorDAO extends Dao<Colaborador> implements InterfaceDao<Col
 		if (!this.session.getTransaction().isActive()) {
 			this.session.beginTransaction();
 		}
-		int modificados = this.session.createSQLQuery("DELETE FROM colaborador")
-				.executeUpdate();
+		int modificados = this.session.createSQLQuery("TRUNCATE colaborador CASCADE").executeUpdate();
 		this.session.getTransaction().commit();
 		return modificados > 0 ? true : false;
 	}
