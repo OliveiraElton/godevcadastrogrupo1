@@ -170,6 +170,9 @@ public class DependenteController {
 	public static List<Dependente> buscarDependentePorNome(String nome) {
 		return daoDependente.buscarPorNome(nome);
 	}
+	public static List<Dependente> buscarDependentePorIdColaborador(Integer id){
+		return daoDependente.readByIdColab(id);
+	}
 	/**
 	 * Busca todos os dependentes do banco de dados.
 	 * 
@@ -178,7 +181,6 @@ public class DependenteController {
 	public static List<Dependente> buscarTodosDependentes(){
 		return daoDependente.getAll();
 	}
-	
 	/**
 	 * Limpa a tabela para testes.
 	 * 
