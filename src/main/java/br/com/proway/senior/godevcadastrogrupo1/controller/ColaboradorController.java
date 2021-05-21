@@ -22,7 +22,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExa
 /**
  * Controller do colaborador.
  *
- * Classe que faz a comunicação dos dados recebidos com os dao relacionados ao
+ * Classe que faz a comunicacao dos dados recebidos com os dao relacionados ao
  * colaborador.
  * 
  * @author Bruno Marques <brunoliveira.marques@gmail.com
@@ -47,7 +47,7 @@ public class ColaboradorController {
 	 * Criar Colaborador.
 	 * 
 	 * Recebe os dados do colaborador separdos e cria todos os dados e chama os DAO
-	 * necessários para a criação do colaborador e por último chama o DAO do
+	 * necessarios para a criacao do colaborador e por ultimo chama o DAO do
 	 * colaborador para salvar no banco.
 	 * 
 	 * @param nome
@@ -169,7 +169,7 @@ public class ColaboradorController {
 	}
 	
 	/**
-	 * Adicionado Exame médico
+	 * Adicionado Exame Medico
 	 * 
 	 * Adiciona novo exame medico ao colaborador, caso necessario.
 	 * @param colaborador
@@ -264,35 +264,39 @@ public class ColaboradorController {
 	}
 
 	/**
-	 * Busca Colaborador.
+	 * Busca colaborador por id.
 	 * 
-	 * Busca o Colaborador cujo id é igual ao passado como parâmetro.
+	 * Busca o colaborador cujo id eh igual ao passado como parametro.
 	 * 
-	 * @param id Do colaborador desejado.
+	 * @param id do colaborador desejado.
 	 * 
-	 * @return Colaborador ou null caso não encontrado.
+	 * @return objeto colaborador ou objeto vazio caso nao encontrado.
 	 */
 	public static Colaborador buscarColaboradorPorId(Integer id) {
 		return daoColaborador.readById(id);
 	}
 
 	/**
-	 * Busca Colaborador por nome.
+	 * Busca colaborador por nome.
 	 * 
-	 * Busca o colaborador por nome, conforme par�metro passado. Busca de forma
-	 * @param nome Do colaborador desejado.
-	 * @param sobrenome Do colaborador desejado.
+	 * Metodo busca os colaboradores no banco de dados atraves dos seus respectivos nomes,
+	 * eh possivel passar um parametro parcial para retorna todos os registros que contenham
+	 * determinado texto em seu nome.
 	 * 
-	 * @return Colaborador ou null caso colaborador não encontrado. 
+	 * @param nome do colaborador desejado.
+	 * @return List Colaborador lista de colaborador localizados. 
 	 */
 	public static List<Colaborador> buscarColaboradorPorNomeSobrenome(String nomeColaborador) {		
 		return daoColaborador.buscarPorNome(nomeColaborador);
 	}
 
 	/**
-	 * Busca todos os Colaboradores.
+	 * Busca todos os colaboradores.
 	 * 
-	 * @return lista com todos os Colaboradores.
+	 * Metodo realiza a busca no banco de todos os colaboradores e retorna 
+	 * os registros em uma lista.
+	 * 
+	 * @return lista com todos os colaboradores cadastrados.
 	 */
 	public static List<Colaborador> buscarTodosColaborador() {
 		return daoColaborador.getAll();
