@@ -16,7 +16,7 @@ public class EnderecoDAOTest {
 
 	@Test
 	public void testReadById() {
-		Endereco endereco = new Endereco("Rua joao pessoa", null, null, null, null, null, null, null);
+		Endereco endereco = new Endereco("Rua joao pessoa", 985, "", "8965123", "Centro", "Brasil", "Blumenau", "SC");
 		dao.create(endereco);
 		Integer id = endereco.getId();
 		assertEquals(endereco, dao.readById(id));
@@ -24,8 +24,8 @@ public class EnderecoDAOTest {
 
 	@Test
 	public void testGetAll() {
-		Endereco endereco = new Endereco("Rua joao pessoa", null, null, null, null, null, null, null);
-		Endereco endereco2 = new Endereco("Rua joao pessoa", null, null, null, null, null, null, null);
+		Endereco endereco = new Endereco("Rua xv de Novembro", 1234, "", "8977445", "Centro", "Brasil", "Blumenau", "SC");
+		Endereco endereco2 = new Endereco("Rua 7 de Setembro", 45, "", "8974335", "Centro", "Brasil", "Blumenau", "SC");
 		Integer valorAntes = dao.getAll().size();
 		dao.create(endereco);
 		dao.create(endereco2);
@@ -35,8 +35,9 @@ public class EnderecoDAOTest {
 
 	@Test
 	public void testCreate() {
-		Endereco endereco = new Endereco("Rua joao pessoa", null, null, null, null, null, null, null);
-		assertEquals(endereco, dao.create(endereco));
+		Endereco endereco = new Endereco("Rua 2 de Setembro", 2, "", "8765512", "Itoupava Norte", "Brasil", "Blumenau", "SC");
+		dao.create(endereco);
+		assertEquals("Itoupava Norte", endereco.getBairro());
 	}
 
 	@Test

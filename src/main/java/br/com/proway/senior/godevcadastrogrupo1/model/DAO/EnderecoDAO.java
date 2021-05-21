@@ -2,11 +2,14 @@ package br.com.proway.senior.godevcadastrogrupo1.model.DAO;
 
 import java.util.List;
 
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
 
 import org.hibernate.Session;
 
+import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 
 public class EnderecoDAO extends Dao<Endereco> implements InterfaceDao<Endereco>{
@@ -25,9 +28,9 @@ public class EnderecoDAO extends Dao<Endereco> implements InterfaceDao<Endereco>
 	}
 	
 	/**
-	 * Buscar Endereço por Id
+	 * Buscar Endereço por Id.
 	 * 
-	 * Busca no banco o Endereço com o id igual ao passado como parametro
+	 * Busca no banco o Endereço com o id igual ao passado como parametro.
 	 * 
 	 * @param id Do endereço desejado
 	 * @return Endereço desejado
@@ -37,8 +40,9 @@ public class EnderecoDAO extends Dao<Endereco> implements InterfaceDao<Endereco>
 	}
 
 	/**
-	 * Buscar tods os Endereços
-	 * Busca no banco de dados tdos os endereços cadastrados
+	 * Buscar todos os Endereços.
+	 * 
+	 * Busca no banco de dados todos os endereços cadastrados.
 	 * 
 	 */
 	public List<Endereco> getAll() {
@@ -48,6 +52,22 @@ public class EnderecoDAO extends Dao<Endereco> implements InterfaceDao<Endereco>
 		List<Endereco> endereco = session.createQuery(criteria).getResultList();
 		return endereco;
 	}
-	
+	public boolean limparTabela() {
+		if (!session.getTransaction().isActive()) {
+			session.beginTransaction();
+		}
+		try {
+		
+			CriteriaBuilder builder = session.getCriteriaBuilder();
+			CriteriaDelete<Endereco> criteriaDelete = builder.createCriteriaDelete(Endereco.class);
+			criteriaDelete.from(Endereco.class);
+			Query query = session.createQuery(criteriaDelete);
+			query.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			e.getMessage();
+			return false;
+		}
+	}
 	
 }
