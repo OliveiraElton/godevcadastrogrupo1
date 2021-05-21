@@ -74,4 +74,13 @@ public class ContatosDAO extends Dao<Contatos> implements InterfaceDao<Contatos>
 		List<Contatos> contatos = query.getResultList();
 		return contatos;
 	}
+	
+	public boolean deleteAll() {
+		if (!this.session.getTransaction().isActive()) {
+			this.session.beginTransaction();
+		}
+		int modificados = this.session.createSQLQuery("TRUNCATE contatos CASCADE").executeUpdate();
+		this.session.getTransaction().commit();
+		return modificados > 0 ? true : false;
+	}
 }
