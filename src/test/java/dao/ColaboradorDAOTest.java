@@ -12,7 +12,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import br.com.proway.senior.godevcadastrogrupo1.controller.ColaboradorController;
-import br.com.proway.senior.godevcadastrogrupo1.controller.DTO.ColaboradorControllerApi;
+import br.com.proway.senior.godevcadastrogrupo1.controller.DTO.ColaboradorSimplificadoControllerApi;
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Conta;
 import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
@@ -33,7 +33,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExa
 
 public class ColaboradorDAOTest {
 
-	ColaboradorControllerApi colabControllerApi = new ColaboradorControllerApi();
+	ColaboradorSimplificadoControllerApi colabControllerApi = new ColaboradorSimplificadoControllerApi();
 	static Session session = DBConnection.getSession();
 	ColaboradorDAO dao = ColaboradorDAO.getInstance(session);
 	static ContaDAO daoConta = ContaDAO.getInstance(session);
