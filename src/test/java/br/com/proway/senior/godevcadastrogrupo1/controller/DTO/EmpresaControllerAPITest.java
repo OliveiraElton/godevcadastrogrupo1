@@ -1,9 +1,9 @@
 package br.com.proway.senior.godevcadastrogrupo1.controller.DTO;
 
+import static org.junit.Assert.assertEquals;
+
 import java.time.LocalDate;
 
-import org.hibernate.Session;
-import org.junit.Before;
 import org.junit.Test;
 
 import br.com.proway.senior.godevcadastrogrupo1.controller.EmpresaController;
@@ -33,10 +33,13 @@ public class EmpresaControllerAPITest {
 		Endereco endereco = new Endereco("Rua Sete de Setembro", 123, "Taruma Office", "89035193", "Centro", "Brasil", "Blumenau", "SC");
 		Contatos contatos = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
 		Empresa original = new Empresa("Proway", LocalDate.of(2021, 10, 13), "89123987000112", endereco, contatos);
-		EmpresaDTO dto = new EmpresaDTO(original);
-		dao.create(original);
-		
-		
+		Empresa empresaCriada = dao.create(original);
+		EmpresaDTO dtoRetornada = controllerApi.buscarEmpresaPorId(empresaCriada.getId());
+		assertEquals(empresaCriada.getNomeEmpresa(), dtoRetornada.getNomeEmpresa());
+		assertEquals(empresaCriada.getCnpj(), dtoRetornada.getCnpj());
+		assertEquals(empresaCriada.getDataInicioContrato(), dtoRetornada.getDataInicioContrato());
+		assertEquals(empresaCriada.getEndereco(), dtoRetornada.getEndereco());
+		assertEquals(empresaCriada.getContato(), dtoRetornada.getContato());	
 	}
 
 	
