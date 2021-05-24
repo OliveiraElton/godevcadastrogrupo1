@@ -21,7 +21,7 @@ public class ValidacaoDocumentosTest {
 		assertFalse(ValidacaoDocumentos.validarCNPJ("0595585000189"));
 	}
 	
-	@Test
+	@Test(expected = Exception.class)
 	public void testValidaEmail() throws Exception {
 		assertTrue(ValidacaoDocumentos.validarEmail("email@test.com.br"));
 		assertFalse(ValidacaoDocumentos.validarEmail("emailtest.com.br"));
@@ -33,11 +33,11 @@ public class ValidacaoDocumentosTest {
 		assertFalse(ValidacaoDocumentos.validarCEP("7854156"));
 	}
 	
-	@Test
+	@Test (expected = Exception.class)
 	public void testValidaTelefone() throws Exception {
 		assertTrue(ValidacaoDocumentos.validarTamanhoTelefone("52463248965"));
-		assertFalse(ValidacaoDocumentos.validarTamanhoTelefone("5246324896555"));
 		assertTrue(ValidacaoDocumentos.validarTamanhoTelefone("4785478965"));
+		assertFalse(ValidacaoDocumentos.validarTamanhoTelefone("5246324896555"));
 	}
 
 }

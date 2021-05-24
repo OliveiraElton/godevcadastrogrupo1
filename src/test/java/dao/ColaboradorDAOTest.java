@@ -62,26 +62,22 @@ public class ColaboradorDAOTest {
 	Conta conta = new Conta("Caixa", "105", "2569874", "15");
 	Endereco endereco = new Endereco("Rua XV de Novembro", 154, "Casa", "89065544", "Centro", "Brasil", "Blumenau",
 			"SC");
-	Contatos contatos;
+	static Contatos contatos;
 	ExameMedico exameMedico = new ExameMedico(em, LocalDate.now(), true);
 	ExameMedico exameMedico2 = new ExameMedico(em, LocalDate.now(), false);
 	ExameMedico exameMedico3 = new ExameMedico(em, LocalDate.now(), true);
 	Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Venezuelano", "Cidade del Leste",
 			true, null, null, endereco, "09619039610", null, null, true);
 
-	@BeforeClass()
-	public void setUpStaticos() throws Exception {
-		contatos = new Contatos("47988554466", "4732569874", "teste@teste.com", "479875643");
-	
-	}
 	@Before
-	public void limparTabelas() {
+	public void limparTabelas() throws Exception {
 		dao.deleteAll();
 		daoConta.deleteAll();
 		daoContatos.deleteAll();
 		daoEndereco.deleteAll();
 		daoExameMedico.deleteAll();
 		daoDependente.deleteAll();
+		contatos = new Contatos("47988554466", "47325698740", "teste@teste.com", "47988554466");
 	}
 
 	@Test

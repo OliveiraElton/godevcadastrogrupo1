@@ -38,7 +38,7 @@ public class PrestadorServicoDAOTest {
 	public void testReadById() throws Exception {
 		Endereco endereco = new Endereco("Rua xv de Novembro", 154, "Casa", "89065544", "Centro", "Brasil", "Blumenau",
 				"SC");
-		Contatos contatos = new Contatos("47988554466", "4732569874", "adriana@gmail.com", "479875643");
+		Contatos contatos = new Contatos("47988554466", "47325698740", "adriana@gmail.com", "4798756430");
 
 		Empresa empresa = EmpresaDAO.getInstance(DBConnection.getSession()).readById(1);
 
@@ -55,7 +55,7 @@ public class PrestadorServicoDAOTest {
 	public void testGetAll() throws Exception {
 		Endereco endereco = new Endereco("Rua xv de Novembro", 154, "Casa", "89065544", "Centro", "Brasil", "Blumenau",
 				"SC");
-		Contatos contatos = new Contatos("47988554466", "4732569874", "adriana@gmail.com", "479875643");
+		Contatos contatos = new Contatos("47988554466", "4732569874", "adriana@gmail.com", "4798756430");
 
 		Empresa empresa = EmpresaDAO.getInstance(DBConnection.getSession()).readById(1);
 
@@ -77,7 +77,7 @@ public class PrestadorServicoDAOTest {
 	public void testCreate() throws Exception {
 		Endereco endereco = new Endereco("Rua Itra", 3, "Casa", "96634455", "Escola Agricola", "Brasil", "Blumenau",
 				"SC");
-		Contatos contatos = new Contatos("4788552145", "4733256984", "Ricardo@gmail.com", "479853115");
+		Contatos contatos = new Contatos("4788552145", "4733256984", "Ricardo@gmail.com", "4798531150");
 
 		Empresa empresa = EmpresaDAO.getInstance(DBConnection.getSession()).readById(11);
 
@@ -103,7 +103,7 @@ public class PrestadorServicoDAOTest {
 
 	@Test
 	public void testUpdate() throws Exception {
-		Contatos contatos = new Contatos("4788552145", "4733256984", "Ricardo@gmail.com", "479853115");
+		Contatos contatos = new Contatos("4788552145", "4733256984", "Ricardo@gmail.com", "4798531150");
 
 		Empresa empresa = EmpresaDAO.getInstance(DBConnection.getSession()).readById(11);
 		Endereco endereco = new Endereco("Rua Casarao", 33, "Casa", "8975665", "Escola Agricola", "Brasil", "Blumenau",
