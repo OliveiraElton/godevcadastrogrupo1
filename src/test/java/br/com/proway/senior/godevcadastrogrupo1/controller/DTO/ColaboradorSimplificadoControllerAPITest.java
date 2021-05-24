@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.hibernate.Session;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -17,6 +18,11 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.ExameMedico;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ColaboradorDAO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ContaDAO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ContatosDAO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ExameMedicoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.ColaboradorSimplificadoDTO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
@@ -28,6 +34,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExa
  * Testa os métodos da classe {@link ColaboradorCompletoControllerAPI}.
  * 
  * @author Lucas Walim <b>lucas.walim@senior.com.br</b>
+ * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ColaboradorSimplificadoControllerAPITest {
@@ -39,11 +46,23 @@ public class ColaboradorSimplificadoControllerAPITest {
 	static String email = "teste@gmail.com";
 	static Contatos contatos = new Contatos("47988554466", "4732569874", email, "479875643");
 	static ExameMedico exameMedico = new ExameMedico(TiposExames.ADMISSIONAL, LocalDate.now(), true);
-	ColaboradorDAO dao = new ColaboradorDAO(DBConnection.getSession());
+	static Session session = DBConnection.getSession();
+	static ColaboradorDAO dao = ColaboradorDAO.getInstance(session);
+	static ContaDAO daoConta = ContaDAO.getInstance(session);
+	static ContatosDAO daoContatos = ContatosDAO.getInstance(session);
+	static EnderecoDAO daoEndereco = EnderecoDAO.getInstance(session);
+	static ExameMedicoDAO daoExameMedico = ExameMedicoDAO.getInstance(session);
+	static DependenteDAO daoDependente = DependenteDAO.getInstance(session);
 
 	@Before
 	public void setUpBeforeClass() throws Exception {
 		dao.deleteAll();
+		daoConta.deleteAll();
+		daoContatos.deleteAll();
+		daoEndereco.deleteAll();
+		daoExameMedico.deleteAll();
+		daoExameMedico.deleteAll();
+		daoDependente.deleteAll();
 	}
 
 	@Test
