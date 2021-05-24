@@ -83,12 +83,14 @@ public class ValidacaoDocumentos {
 	 * 
 	 * @param String telefone que sera verificado.
 	 * @return boolean
+	 * @throws Exception 
 	 */
-	public static boolean validarTamanhoTelefone(String telefone) {
-		if (telefone.length() != 11 && telefone.length() != 10) {
-			return false;
+
+	public static boolean validarTamanhoTelefone(String telefone) throws Exception {
+		if (telefone.length() == 11 || telefone.length() == 10 ) {
+			return true;
 		}
-		return true;
+		throw new Exception("Numero de digitos incorretos");
 	}
 
 	/**
@@ -150,11 +152,11 @@ public class ValidacaoDocumentos {
 	 * @param String email que sera verificado.
 	 * @return boolean
 	 */
-	public static boolean validarEmail(String email) {
-		if (!email.contains("@")) {
-			return false;
+	public static boolean validarEmail(String email) throws Exception {
+		if (email.contains("@") || email.contains(".com")) {
+			return true;
 		}
-		return true;
+		throw new Exception("Email informado inválido");
 	}
 
 	/**

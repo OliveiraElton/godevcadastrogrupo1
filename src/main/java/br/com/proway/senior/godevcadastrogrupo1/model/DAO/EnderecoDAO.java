@@ -52,23 +52,6 @@ public class EnderecoDAO extends Dao<Endereco> implements InterfaceDao<Endereco>
 		List<Endereco> endereco = session.createQuery(criteria).getResultList();
 		return endereco;
 	}
-	public boolean limparTabela() {
-		if (!session.getTransaction().isActive()) {
-			session.beginTransaction();
-		}
-		try {
-		
-			CriteriaBuilder builder = session.getCriteriaBuilder();
-			CriteriaDelete<Endereco> criteriaDelete = builder.createCriteriaDelete(Endereco.class);
-			criteriaDelete.from(Endereco.class);
-			Query query = session.createQuery(criteriaDelete);
-			query.executeUpdate();
-			return true;
-		} catch (Exception e) {
-			e.getMessage();
-			return false;
-		}
-	}
 	
 	/**
 	 * Deletar todos os enderecos.

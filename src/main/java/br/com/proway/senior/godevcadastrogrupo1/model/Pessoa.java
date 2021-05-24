@@ -73,12 +73,12 @@ public class Pessoa{
 		this.setNomeSocial(nomeSocial);
 		this.setDataDeNascimento(dataDeNascimento);;
 		this.nacionalidade = nacionalidade;
-		this.naturalidade = naturalidade;
-		this.pcd = pcd;
-		this.genero = genero;
+		this.setNaturalidade(naturalidade);
+		this.setPcd(pcd);
+		this.setGenero(genero);
 		this.identidadeGenero = identidadeGenero;
 		this.endereco = endereco;
-		this.cpf = cpf;
+		this.setCpf(cpf);
 		this.rg = rg;
 	}
 	
