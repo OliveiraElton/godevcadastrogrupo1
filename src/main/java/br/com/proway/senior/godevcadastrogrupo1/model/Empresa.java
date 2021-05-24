@@ -101,7 +101,7 @@ public class Empresa {
 		if (ValidacaoDocumentos.validarCNPJ(cnpj)) {
 			this.cnpj = cnpj;
 		}
-		throw (new Exception("Por favor, insira um CNPG válido."));
+		throw (new Exception("Por favor, insira um CNPJ válido."));
 	}
 
 	public Endereco getEndereco() {
