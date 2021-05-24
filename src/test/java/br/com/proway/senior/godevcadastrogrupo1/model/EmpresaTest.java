@@ -62,4 +62,13 @@ public class EmpresaTest {
 		empresa.setCnpj("819930900001");
 	}
 	
+	@Test 
+	public void testSetEGetEndereco() throws Exception {
+		Empresa empresa = new Empresa();
+		empresa.setEndereco(endereco);
+		assertEquals(endereco, empresa.getEndereco());
+		assertEquals(endereco.getLogradouro(), empresa.getEndereco().getLogradouro());
+		assertEquals(endereco.getComplemento(), empresa.getEndereco().getComplemento());
+	}
+	
 }
