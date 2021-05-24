@@ -63,8 +63,12 @@ public class DependenteSimplificadoControllerApiTest{
 		Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Venezuelano",
 				"Cidade del Leste", true, "Masculino", IdentidadeGenero.TRANS, endereco, "09619039610","123", 
 				EnumDadosPessoais.TiposDependentes.FILHO, true);
+		Dependente dependenteCadastrado = dao.create(dependente);
 		DependenteSimplificadoDTO dependenteDTO = new DependenteSimplificadoDTO(dependente);
-		assertEquals(dependenteDTO.getId(), dependenteApi.buscarDependentePorId(dependenteDTO.getId()).getId());
+		DependenteSimplificadoDTO dependenteDTORetorno = dependenteApi.buscarDependentePorId(dependenteDTO.getId());
+		assertEquals(dependenteCadastrado.getId(), (Integer) dependenteDTORetorno.getId());
+		assertEquals(dependenteCadastrado.getDataDeNascimento(), dependenteDTORetorno.getDataDeNascimento());
+		assertEquals(dependenteCadastrado.getCpf(), dependenteDTORetorno.getCpf());
 	}
 
 	@Test
