@@ -17,8 +17,17 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ColaboradorDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.DependenteCompletoDTO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+import dao.DependenteDAOT;
 
-
+/**
+ * Classe DependenteDAOTest
+ * 
+ * Testes dos métodos da classe {@link DependenteDAOT}.
+ *
+ * @author Elton Oliveira
+ * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
+ *
+ */
 public class DependenteCompletoControllerApiTest {
 	
 	static LocalDate data;
@@ -42,7 +51,7 @@ public class DependenteCompletoControllerApiTest {
 
 	@Test
 	public void testBuscarDependentePorId() {
-		Endereco endereco = new Endereco(null, null, null, "54215365", null, null, null, null);
+		Endereco endereco = new Endereco("Rua 10", 10, "Casa", "54215365", "Centro", "Brasil", "Blumenau", "SC");
 		Dependente dependente = new Dependente("JoÃ£ozinho", "Fonseca", "Jenifer", data, "Venezuelano",
 				"Cidade del Leste", true, null, null, endereco, "09619039610", null, null, true);
 		dao.create(dependente);
