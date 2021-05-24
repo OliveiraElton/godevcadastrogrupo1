@@ -98,17 +98,17 @@ public class Colaborador extends Pessoa {
 			ExameMedico exameMedico, Dependente dependente) {
 		super(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, 
 				naturalidade, pcd, genero, identidadeGenero, endereco, cpf, rg);
-		this.idPostoDeTRabalho = idPostoDeTrabalho;
-		this.nit = nit;
-		this.optanteVT = optanteVT;
-		this.optanteVAVR = optanteVAVR;
+		this.setIdPostoDeTrabalho(idPostoDeTrabalho);
+		this.setNit(nit);
+		this.setOptanteVT(optanteVT);
+		this.setOptanteVAVR(optanteVAVR);
 		this.setDataAdmissao(dataAdmissao);
-		this.optanteDependente = optanteDependente;
-		this.registro_alistamento = registro_alistamento;
-		this.email_corporativo = email_corporativo;
-		this.titulo_eleitor = titulo_eleitor;
-		this.conta = conta;
-		this.contatos = contatos;
+		this.setOptanteDependente(optanteDependente);
+		this.setRegistro_alistamento(registro_alistamento);
+		this.setEmail_corporativo(email_corporativo);
+		this.setTitulo_eleitor(titulo_eleitor);
+		this.setConta(conta);
+		this.setContatos(contatos);
 		this.addExameMedico(exameMedico);
 		this.addDependente(dependente);
 	}
