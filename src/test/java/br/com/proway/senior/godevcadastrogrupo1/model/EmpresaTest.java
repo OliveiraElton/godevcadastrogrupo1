@@ -35,4 +35,11 @@ public class EmpresaTest {
 		assertEquals("Proway", empresa.getNomeEmpresa());
 	}
 
+	@Test 
+	public void testSetEGetDataInicio() {
+		Empresa empresa = new Empresa();
+		empresa.setDataInicioContrato(LocalDate.of(2021, 10, 15));
+		assertEquals(LocalDate.of(2021, 10, 15), empresa.getDataInicioContrato());
+	}
+	
 }
