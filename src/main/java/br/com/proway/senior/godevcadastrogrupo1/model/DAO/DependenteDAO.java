@@ -42,7 +42,12 @@ public class DependenteDAO extends Dao<Dependente> implements InterfaceDao<Depen
 	 */
 
 	public Dependente readById(Integer id) {
+		try {
 		return session.get(Dependente.class, id);
+		}catch(Exception e) {
+			session.clear();
+		}
+		return null;
 	}
 
 	public List<Dependente> getAll() {
@@ -84,12 +89,17 @@ public class DependenteDAO extends Dao<Dependente> implements InterfaceDao<Depen
 	 * um registro tenha sido deletado.
 	 */
 	public boolean deleteAll() {
+		try {
 		if (!this.session.getTransaction().isActive()) {
 			this.session.beginTransaction();
 		}
 		int modificados = this.session.createSQLQuery("TRUNCATE dependente CASCADE").executeUpdate();
 		this.session.getTransaction().commit();
 		return modificados > 0 ? true : false;
+		}catch(Exception e) {
+			session.clear();
+		}
+		return false;
 	}
 	
 }

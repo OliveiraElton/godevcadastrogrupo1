@@ -16,11 +16,16 @@ public abstract class Dao<T>{
 	 * @return Item criado
 	 */
 	public T create(T item) {
+		try {
 		if (!session.getTransaction().isActive())
 			session.beginTransaction();
 		session.save(item);
 		session.getTransaction().commit();
 		return item;
+		}catch(Exception e) {
+			session.clear();
+		}
+		return null;
 	}
 
 	/**
@@ -34,12 +39,17 @@ public abstract class Dao<T>{
 	 * @return
 	 */
 	public boolean delete(T item) {
+		try {
 		session.clear();
 		if (!session.getTransaction().isActive())
 			session.beginTransaction();
 		session.delete(item);
 		session.getTransaction().commit();
 		return true;
+		}catch(Exception e) {
+			session.clear();
+		}
+		return false;
 	}
 
 	/**
@@ -53,10 +63,15 @@ public abstract class Dao<T>{
 	 * @return
 	 */
 	public T update(T item) {
+		try {
 		if (!session.getTransaction().isActive())
 			session.beginTransaction();
 		session.update(item);
 		session.getTransaction().commit();
+		return item;
+		}catch(Exception e) {
+			session.clear();
+		}
 		return item;
 	}
 	

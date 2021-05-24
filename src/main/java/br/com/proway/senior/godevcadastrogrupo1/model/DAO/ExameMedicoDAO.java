@@ -33,7 +33,12 @@ protected static ExameMedicoDAO instance;
 	 * @return ExameMedico desejado
 	 */
 	public ExameMedico readById(Integer id) {
-		return session.get(ExameMedico.class, id);
+		try {
+			return session.get(ExameMedico.class, id);
+		}catch(Exception e) {
+			session.clear();
+		}
+		return null;
 	}
 
 	/**
@@ -42,11 +47,16 @@ protected static ExameMedicoDAO instance;
 	 * 
 	 */
 	public List<ExameMedico> getAll() {
+		try {
 		CriteriaBuilder builder = session.getCriteriaBuilder();
 		CriteriaQuery<ExameMedico> criteria = builder.createQuery(ExameMedico.class);
 		criteria.from(ExameMedico.class);
 		List<ExameMedico> exameMedico = session.createQuery(criteria).getResultList();
 		return exameMedico;
+		}catch(Exception e) {
+			session.clear();
+		}
+		return null;
 	}
 
 	/**
@@ -58,12 +68,17 @@ protected static ExameMedicoDAO instance;
 	 * um registro tenha sido deletado.
 	 */
 	public boolean deleteAll() {
+		try {
 		if (!this.session.getTransaction().isActive()) {
 			this.session.beginTransaction();
 		}
 		int modificados = this.session.createSQLQuery("TRUNCATE examemedico CASCADE").executeUpdate();
 		this.session.getTransaction().commit();
 		return modificados > 0 ? true : false;
+		}catch(Exception e) {
+			session.clear();
+		}
+		return false;
 	}
 	
 }

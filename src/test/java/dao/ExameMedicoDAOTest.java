@@ -32,32 +32,31 @@ public class ExameMedicoDAOTest {
 	public void testReadById() {
 		ExameMedico exameMedico = new ExameMedico(exameAdm, data, true);
 		dao.create(exameMedico);
-		assertEquals(exameMedico, dao.readById(exameMedico.getId()));
+		assertEquals(exameMedico.getId(), dao.readById(exameMedico.getId()).getId());
 	}
 
 	@Test
 	public void testGetAll() {
 		ExameMedico exameMedico = new ExameMedico(exameAdm, LocalDate.of(2021, 7, 13), false);
 		ExameMedico exameMedico2 = new ExameMedico(exameDem, data, true);
-		Integer valorAntes = dao.getAll().size();
 		dao.create(exameMedico);
 		dao.create(exameMedico2);
-		assertEquals(valorAntes + 2, dao.getAll().size());
+		assertEquals(2, dao.getAll().size());
 	}
 
 	@Test
 	public void testCreate() {
 		ExameMedico exameMedico = new ExameMedico(exameAdm, data, true);
-		assertEquals(exameMedico.getTipoExame(), dao.create(exameMedico).getTipoExame());
+		dao.create(exameMedico);
+		assertEquals(exameMedico.getTipoExame(), dao.readById(exameMedico.getId()).getTipoExame());
 	}
 
 	@Test
 	public void testDelete() {
 		ExameMedico exameMedico = new ExameMedico(exameAdm, data, true);
 		dao.create(exameMedico);
-		Integer valorAntes = dao.getAll().size();
 		dao.delete(exameMedico);
-		assertEquals(valorAntes -1, dao.getAll().size());
+		assertEquals(0, dao.getAll().size());
 	}
 
 	@Test

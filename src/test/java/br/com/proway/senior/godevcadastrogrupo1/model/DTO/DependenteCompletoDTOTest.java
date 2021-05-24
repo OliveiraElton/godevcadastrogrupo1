@@ -16,7 +16,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDep
 /**
  * Classe DependenteCompletoDTOTest.
  * 
- * Testa os m�todos da classe {@link DependenteCompletoDTO}.
+ * Testa os metodos da classe {@link DependenteCompletoDTO}.
  * 
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
  */
@@ -26,6 +26,7 @@ public class DependenteCompletoDTOTest {
 	public void limparTabela() {
 		DependenteController.deleteAll();
 	}
+  
 	@Test
 	public void testDependenteCompletoDTO() {
 		Dependente original = new Dependente("Maria", "Silva", "Nada consta", LocalDate.of(2000, 12, 3), "Brasileiro", "Blumenau", true, "Feminino",

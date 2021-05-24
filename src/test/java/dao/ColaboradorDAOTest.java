@@ -67,7 +67,7 @@ public class ColaboradorDAOTest {
 	ExameMedico exameMedico = new ExameMedico(em, LocalDate.now(), true);
 	ExameMedico exameMedico2 = new ExameMedico(em, LocalDate.now(), false);
 	ExameMedico exameMedico3 = new ExameMedico(em, LocalDate.now(), true);
-	Dependente dependente = new Dependente("Joaozinho", "Fonseca", "Jenifer", data, "Venezuelano", "Cidade del Leste",
+	Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Venezuelano", "Cidade del Leste",
 			true, null, null, endereco, "09619039610", null, null, true);
 
 	@Before
