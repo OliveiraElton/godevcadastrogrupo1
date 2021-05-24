@@ -137,7 +137,7 @@ public class ValidacaoDocumentos {
 	 * @return boolean
 	 */
 	public static boolean validarEmail(String email) throws Exception {
-		if (email.contains("@") || email.contains(".com")) {
+		if (email.contains("@") && email.contains(".com")) {
 			return true;
 		}
 		throw new Exception("Email informado inválido");
