@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -62,8 +61,7 @@ public class ColaboradorDAOTest {
 	Conta conta = new Conta("Caixa", "105", "2569874", "15");
 	Endereco endereco = new Endereco("Rua XV de Novembro", 154, "Casa", "89065544", "Centro", "Brasil", "Blumenau",
 			"SC");
-	String email = "teste@gmail.com";
-	Contatos contatos = new Contatos("47988554466", "4732569874", email, "479875643");
+	Contatos contatos = new Contatos("47988632145", "47986532145", "email@teste.com", "4787456321");
 	ExameMedico exameMedico = new ExameMedico(em, LocalDate.now(), true);
 	ExameMedico exameMedico2 = new ExameMedico(em, LocalDate.now(), false);
 	ExameMedico exameMedico3 = new ExameMedico(em, LocalDate.now(), true);

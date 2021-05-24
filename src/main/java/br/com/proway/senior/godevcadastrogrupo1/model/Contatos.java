@@ -78,7 +78,6 @@ public class Contatos{
 		if(ValidacaoDocumentos.validarEmail(email)) {
 			this.email = email;
 		}
-		
 	}
 
 	public String getTelefoneFamiliar() {

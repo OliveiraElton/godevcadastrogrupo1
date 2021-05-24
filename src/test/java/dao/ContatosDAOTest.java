@@ -71,9 +71,9 @@ public class ContatosDAOTest {
 		
 	}
 	
-	@Test 
+	@Test (expected = Exception.class)
 	public void testFEmailIncorreto() throws Exception {
-		Contatos contato = new Contatos("4735222215","4798484962","joao@gmail.com","4799991111");
+		Contatos contato = new Contatos("4735222215","4798484962","joao@gmailcom","4799991111");
 	}
 	
 	@Test
