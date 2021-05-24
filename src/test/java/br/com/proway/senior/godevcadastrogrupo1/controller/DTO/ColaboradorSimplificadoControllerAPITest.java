@@ -22,9 +22,15 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DTO.ColaboradorSimplificad
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExames;
-
+/**
+ * Classe ColaboradorSimplificadoControllerAPITest.
+ * 
+ * Testa os métodos da classe {@link ColaboradorCompletoControllerAPI}.
+ * 
+ * @author Lucas Walim <b>lucas.walim@senior.com.br</b>
+ */
 @FixMethodOrder (MethodSorters.NAME_ASCENDING)
-public class ColaboradorControllerApiTest {
+public class ColaboradorSimplificadoControllerAPITest {
 
 	static ColaboradorSimplificadoControllerApi colaboradorControllerApi = new ColaboradorSimplificadoControllerApi();
 	static Conta conta = new Conta("Caixa", "105", "2569874", "15");
