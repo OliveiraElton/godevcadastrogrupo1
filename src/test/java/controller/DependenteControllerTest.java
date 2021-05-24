@@ -21,6 +21,7 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ColaboradorDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais;
+import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
 /**
  * Classe DependenteControllerTest
  * 
@@ -42,22 +43,22 @@ public class DependenteControllerTest {
 	public void limparTabela() {
 		DependenteController.deleteAll();
 	}
+	
 	@Test
 	public void testCriarDependente() {
-		Dependente d = DependenteController.criarDependente("Jorge", "Martins", "Jessica",
-				data, "Brasileira", null, true, null,
-				null, "256.103.800-90", "mg14388606", EnumDadosPessoais.TiposDependentes.FILHO,
-				true, "Rua das Oliveiras", 32, "casa", "89032640", "Passo Manso",
-				"Brasil", "Blumenau", "SC");
-		assertNotNull(d);
-		assertEquals(d, dao.readById(d.getId()));
+		Dependente dependente = DependenteController.criarDependente("Jorge", "Martins", "Jessica", data, "Brasileira", "Blumenau", true, "Masculino",
+				IdentidadeGenero.TRANS, "256.103.800-90", "mg14388606", EnumDadosPessoais.TiposDependentes.FILHO,
+				true, "Rua das Oliveiras", 32, "casa", "89032640", "Passo Manso", "Brasil", "Blumenau", "SC");
+		assertNotNull(dependente);
+		assertEquals(dependente, dao.readById(dependente.getId()));
 	}
 
 	@Test
 	public void testDeleteDependente() {
 		Endereco endereco = new Endereco("Rua 1", 10, "Casa", "54215365", "Centro", "Brasil", "Blumenau", "SC");
 		Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Venezuelano",
-				"Cidade del Leste", true, null, null, endereco, "09619039610", null, null, true);
+				"Cidade del Leste", false, "Masculino", IdentidadeGenero.TRANS, endereco, "09619039610","", 
+				EnumDadosPessoais.TiposDependentes.FILHO, true);
 		dao.create(dependente);
 		int quantidadeAnterior = dao.getAll().size();
 		session.clear();
@@ -126,20 +127,20 @@ public class DependenteControllerTest {
 	}
 	@Test
 	public void testBuscarTodosDependentesPorNome() {
-		Dependente d = DependenteController.criarDependente("Jorge", "Martins", "jessica",
-				data, "Brasileiro", null, true, null,
+		Dependente d = DependenteController.criarDependente("Jorge", "Martins", "Nada consta",
+				data, "Brasileira", null, true, null,
 				null, "256.103.800-90", "mg14388606", EnumDadosPessoais.TiposDependentes.FILHO,
 				true, "Rua das oliveiras", 32, "casa", "89032640", "Passo Manso",
 				"Brasil", "Blumenau", "SC");
 		Dependente d2 = DependenteController.criarDependente("Carlos", "Martins", "Nada consta",
-				data, "Brasileiro", null, true, null,
+				data, "Brasileira", null, true, null,
 				null, "256.103.800-90", "mg14388606", EnumDadosPessoais.TiposDependentes.FILHO,
 				true, "Rua das oliveiras", 32, "casa", "89032640", "Passo Manso",
 				"Brasil", "Blumenau", "SC");
 		Dependente d3 = DependenteController.criarDependente("Mateus", "Martins", "Nada consta",
-				data, "Brasileiro", null, true, null,
+				data, "Brasileira", null, true, null,
 				null, "256.103.800-90", "mg14388606", EnumDadosPessoais.TiposDependentes.FILHO,
-				true, "Rua das oliveiras", 32, "casa", "89032640", "Passo Manso",
+				true, "Rua das Oliveiras", 32, "casa", "89032640", "Passo Manso",
 				"Brasil", "Blumenau", "SC");
 		assertEquals(2, DependenteController.buscarDependentePorNome(d2.getNome()).size());
 		
