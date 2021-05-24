@@ -12,7 +12,9 @@ import br.com.proway.senior.godevcadastrogrupo1.controller.ColaboradorController
 import br.com.proway.senior.godevcadastrogrupo1.controller.EnderecoController;
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.EnderecoDTO;
+import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDependentes;
@@ -26,6 +28,7 @@ public class EnderecoControllerApiTest {
 	static LocalDate data;
 	static TiposExames te;
 	static TiposDependentes td;
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		enderecoApi = new EnderecoControllerApi();
@@ -37,7 +40,7 @@ public class EnderecoControllerApiTest {
 	
 	@Before
 	public void limparTabela() {
-		EnderecoController.limparTabela();
+		EnderecoDAO.getInstance(DBConnection.getSession()).deleteAll();
 	}
 
 	@Test

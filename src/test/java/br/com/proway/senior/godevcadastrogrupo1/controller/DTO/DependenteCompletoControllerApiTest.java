@@ -20,10 +20,11 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
 
+
 /**
  * Classe DependenteDAOTest
  * 
- * Testes dos métodos da classe {@link DependenteDAOT}.
+ * Testes dos mï¿½todos da classe {@link DependenteDAOT}.
  *
  * @author Elton Oliveira
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
@@ -41,6 +42,7 @@ public class DependenteCompletoControllerApiTest {
 	public void limparTabela() {
 		DependenteController.deleteAll();
 	}
+  
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		data = LocalDate.of(2002, 01, 28);
@@ -59,7 +61,6 @@ public class DependenteCompletoControllerApiTest {
 		dao.create(dependente);
 		DependenteCompletoDTO dependenteCompletoDTO = new DependenteCompletoDTO(dependente);
 		assertEquals(dependenteCompletoDTO.getId(), dependenteApi.buscarDependentePorId(dependenteCompletoDTO.getId()).getId());
-
 	}
 	
 	@Test
@@ -74,7 +75,6 @@ public class DependenteCompletoControllerApiTest {
 				"Cidade del Leste", true, "Feminino", IdentidadeGenero.CIS, endereco2, "09619039610", "123", 
 				EnumDadosPessoais.TiposDependentes.FILHO, true);
 		dao.create(dependente2);
-		
 		List<DependenteCompletoDTO> listaDependenteCompletoDTO = dependenteApi.buscarTodosDependenteCompleto();
 		assertEquals(2, listaDependenteCompletoDTO.size());
 	}

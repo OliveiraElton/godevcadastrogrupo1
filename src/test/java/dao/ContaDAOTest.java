@@ -3,6 +3,7 @@ package dao;
 import static org.junit.Assert.assertEquals;
 
 import org.hibernate.Session;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Conta;
@@ -11,10 +12,15 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 public class ContaDAOTest {
 	
-	Session session = DBConnection.getSession();
-	ContaDAO dao = ContaDAO.getInstance(session);
-
-
+	static Session session = DBConnection.getSession();
+	static ContaDAO dao = ContaDAO.getInstance(session);
+	
+	@BeforeClass
+	public static void limparTabela() {
+		dao.deleteAll();
+		
+	}
+	
 	@Test
 	public void testReadById() {
 		Conta conta = new Conta("Viacredi", "932", "125687", "7");
@@ -55,5 +61,5 @@ public class ContaDAOTest {
 		conta.setAgencia("9852");
 		assertEquals("9852", dao.update(conta).getAgencia());
 	}
-
+	
 }

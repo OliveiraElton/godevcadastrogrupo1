@@ -1,6 +1,8 @@
 package dao;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 
 import org.hibernate.Session;
 import org.junit.Test;
@@ -14,17 +16,19 @@ public class EnderecoDAOTest {
 	Session session = DBConnection.getSession();
 	EnderecoDAO dao = EnderecoDAO.getInstance(session);
 
+
 	@Test
 	public void testReadById() {
-		Endereco endereco = new Endereco("Rua joao pessoa", 985, "", "8965123", "Centro", "Brasil", "Blumenau", "SC");
+		Endereco endereco = new Endereco("Rua joao pessoa", 985, "lado esquerdo da rua", "8965123", 
+				"Centro", "Brasil", "Blumenau", "SC");
 		dao.create(endereco);
-		Integer id = endereco.getId();
-		assertEquals(endereco, dao.readById(id));
+		assertEquals(endereco, dao.readById(endereco.getId()));
 	}
 
 	@Test
 	public void testGetAll() {
-		Endereco endereco = new Endereco("Rua xv de Novembro", 1234, "", "8977445", "Centro", "Brasil", "Blumenau", "SC");
+		Endereco endereco = new Endereco("Rua xv de Novembro", 1234, "", "8977445", "Centro", "Brasil", "Blumenau",
+				"SC");
 		Endereco endereco2 = new Endereco("Rua 7 de Setembro", 45, "", "8974335", "Centro", "Brasil", "Blumenau", "SC");
 		Integer valorAntes = dao.getAll().size();
 		dao.create(endereco);
@@ -33,21 +37,38 @@ public class EnderecoDAOTest {
 
 	}
 
+
 	@Test
 	public void testCreate() {
-		Endereco endereco = new Endereco("Rua 2 de Setembro", 2, "", "8765512", "Itoupava Norte", "Brasil", "Blumenau", "SC");
+		Endereco endereco = new Endereco("Rua 2 de Setembro", 2, "", "8765512", "Itoupava Norte", "Brasil", "Blumenau",
+				"SC");
 		dao.create(endereco);
+		assertEquals("Rua 2 de Setembro", endereco.getLogradouro());
+		//falta o do numero da casa
+		assertEquals("8765512", endereco.getCep());
 		assertEquals("Itoupava Norte", endereco.getBairro());
+		assertEquals("Brasil", endereco.getPais());
+		assertEquals("Blumenau", endereco.getCidade());
+		assertEquals("SC", endereco.getUf());
+
 	}
 
 	@Test
 	public void testDelete() {
 		Endereco endereco = new Endereco("Rua joao pessoa", null, null, null, null, null, null, null);
 		dao.create(endereco);
+		
 		Integer valorAntes = dao.getAll().size();
+		
 		dao.delete(endereco);
-		assertEquals(valorAntes -1, dao.getAll().size());
+		assertEquals(valorAntes - 1, dao.getAll().size());
 	}
 
+	@Test
+	public void testDeleteAll() {
+		EnderecoDAO dao = EnderecoDAO.getInstance(session);
+		dao.deleteAll();
+		assertFalse(dao.getAll().size() > 0);
+	}
 
 }

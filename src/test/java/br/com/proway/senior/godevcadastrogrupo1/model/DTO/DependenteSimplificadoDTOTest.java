@@ -21,6 +21,11 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDep
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
  */
 public class DependenteSimplificadoDTOTest {
+	
+	@Before
+	public void limparTabela() {
+		DependenteController.deleteAll();
+	}
 
 	@Test
 	public void testDependenteDTO() {

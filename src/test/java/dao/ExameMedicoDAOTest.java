@@ -65,6 +65,7 @@ public class ExameMedicoDAOTest {
 		dao.create(exameMedico);
 		exameMedico.setTipoExame(exameDem);
 		assertEquals(exameMedico, dao.update(exameMedico));
+		dao.delete(exameMedico);
 	}
 
 }

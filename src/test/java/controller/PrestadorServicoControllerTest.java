@@ -28,15 +28,13 @@ public class PrestadorServicoControllerTest {
 	static EmpresaDAO daoEmpresa = EmpresaDAO.getInstance(session);
 	
 	@BeforeClass
-	public static void criarEmpresa() {
+	public static void limparTabela(){
+		dao.deleteAll();
 		daoEmpresa.create(empresa);
 	}
-	@Before
-	public void limparTabela(){
-		dao.limparTabela();
-	}
+	
 	@Test
-	public void testCriarPrestadorServico() {
+	public void testACriarPrestadorServico() {
 		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Beatriz", "Da Massa", "Jhon",
 				data, "Brasil", "São Paulo", true, null,
 				null, "256.103.800-90", null, 
@@ -48,7 +46,7 @@ public class PrestadorServicoControllerTest {
 	}
 
 	@Test
-	public void testDeletePrestadorServico() {
+	public void testEDeletePrestadorServico() {
 		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Beatriz", "Da Massa", "Jhon",
 				data, "Brasil", "São Paulo", true, null,
 				null, "256.103.800-90", null, 
@@ -60,7 +58,7 @@ public class PrestadorServicoControllerTest {
 	}
 
 	@Test
-	public void testAtualizarPrestadorServico() {
+	public void testDAtualizarPrestadorServico() {
 		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Beatriz", "Da Massa", "Jhon",
 				data, "Brasil", "São Paulo", true, null,
 				null, "256.103.800-90", null, 
@@ -80,7 +78,7 @@ public class PrestadorServicoControllerTest {
 	}
 
 	@Test
-	public void testBuscarPrestadorServicoPorId() {
+	public void testBBuscarPrestadorServicoPorId() {
 		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Beatriz", "Da Massa", "Jhon",
 				data, "Brasil", "São Paulo", true, null,
 				null, "256.103.800-90", null, 
@@ -92,7 +90,7 @@ public class PrestadorServicoControllerTest {
 	}
 
 	@Test
-	public void testBuscarTodosPrestadorServico() {
+	public void testFBuscarTodosPrestadorServico() {
 		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Beatriz", "Da Massa", "Jhon",
 				data, "Brasil", "São Paulo", true, null,
 				null, "256.103.800-90", null, 
@@ -102,8 +100,9 @@ public class PrestadorServicoControllerTest {
 		List<PrestadorServico> prestadoresServico = PrestadorServicoController.buscarTodosPrestadorServico(); 
 		assertEquals("Beatriz", prestadoresServico.get(prestadoresServico.size() - 1).getNome());
 	}
+	
 	@Test
-	public void testBuscarTodosPrestadorServicoPorNome() {
+	public void testCBuscarTodosPrestadorServicoPorNome() {
 		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Vampeta", "Da Massa", "Jhon",
 				data, "Brasil", "São Paulo", true, null,
 				null, "256.103.800-90", null, 
@@ -121,4 +120,8 @@ public class PrestadorServicoControllerTest {
 		assertEquals(2, prestadoresServico.size());
 	}
 
+	@Before
+	public void limpar(){
+		dao.deleteAll();
+	}
 }

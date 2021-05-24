@@ -5,11 +5,9 @@ import static org.junit.Assert.assertEquals;
 import java.time.LocalDate;
 
 import org.hibernate.Session;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.com.proway.senior.godevcadastrogrupo1.controller.PrestadorServicoController;
 import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
@@ -29,9 +27,11 @@ public class PrestadorServicoDAOTest {
 		session = DBConnection.getSession();
 		dao = PrestadorServicoDAO.getInstance(session);
 	}
-	@Before
-	public void limparTabela() throws Exception{
-		dao.limparTabela();
+	
+	@BeforeClass
+	public static void limparTabela() {
+		dao.deleteAll();
+		
 	}
 
 	@Test

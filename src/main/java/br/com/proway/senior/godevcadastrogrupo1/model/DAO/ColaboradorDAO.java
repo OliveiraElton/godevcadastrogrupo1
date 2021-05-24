@@ -119,7 +119,7 @@ public class ColaboradorDAO extends Dao<Colaborador> implements InterfaceDao<Col
 		this.session.getTransaction().commit();
 		return modificados > 0 ? true : false;
 	}
-	
+		
 	/**
 	 * Buscar colaborador por nome.
 	 * 

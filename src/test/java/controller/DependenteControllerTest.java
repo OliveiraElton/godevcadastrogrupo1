@@ -27,7 +27,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExa
 /**
  * Classe DependenteControllerTest
  * 
- * Testes dos métodos da classe {@link DependenteController}.
+ * Testes dos metodos da classe {@link DependenteController}.
  * 
  * @author Sprint 5
  * @author Vitor Cesar Peres <b>vitor.peres@senior.com.br</b>
@@ -83,7 +83,6 @@ public class DependenteControllerTest {
 				"Passo Manso", "Brasil", "Blumenau", "SC");
 		List<Dependente> dependentes = dao.getAll();
 		assertEquals("Bruno", dependentes.get(dependentes.size() - 1).getNome());
-
 	}
 
 	@Test
@@ -113,7 +112,6 @@ public class DependenteControllerTest {
 		dao.create(dependente);
 		Integer idColaborador = colaborador.getId();
 		assertEquals(1, DependenteController.buscarDependentePorIdColaborador(idColaborador).size());
-
 	}
 
 	@Test
@@ -123,7 +121,6 @@ public class DependenteControllerTest {
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das Oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
 		assertEquals(1, DependenteController.buscarTodosDependentes().size());
-
 	}
 
 	@Test
@@ -141,7 +138,6 @@ public class DependenteControllerTest {
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das Oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
 		assertEquals(2, DependenteController.buscarDependentePorNome(dependente2.getNome()).size());
-
 	}
 
 }
