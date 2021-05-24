@@ -95,7 +95,7 @@ public class Empresa {
 	 * lanca a Exception para ajuste da informacao.
 	 * 
 	 * @param String cnpj CNPJ que sera validado.
-	 * @throws Exception
+	 * @throws Exception caso o CNPJ nao seja valido.
 	 */
 	public void setCnpj(String cnpj) throws Exception {
 		if (ValidacaoDocumentos.validarCNPJ(cnpj)) {
