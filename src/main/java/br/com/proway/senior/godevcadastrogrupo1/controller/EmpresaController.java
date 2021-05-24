@@ -100,8 +100,8 @@ public class EmpresaController {
 			Contatos contatos, Endereco endereco) {
 
 		Empresa empresa = new Empresa(nomeEmpresa, dataInicioContrato, cnpj, endereco, contatos);
-		session.clear();
-		empresa.setId(empresa.getId());
+		
+		empresa.setId(id);
 		return daoEmpresa.update(empresa);
 	}
 
