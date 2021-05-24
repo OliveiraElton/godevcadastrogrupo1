@@ -6,12 +6,18 @@ import static org.junit.Assert.fail;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import org.hibernate.Session;
 import org.junit.Before;
 import org.junit.Test;
 
 import br.com.proway.senior.godevcadastrogrupo1.controller.ColaboradorController;
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ColaboradorDAO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ContaDAO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ContatosDAO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ExameMedicoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.ColaboradorCompletoDTO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais;
@@ -33,7 +39,13 @@ public class ColaboradorCompletoControllerAPITest {
 
 	ColaboradorController controllerOriginal = new ColaboradorController();
 	ColaboradorCompletoControllerAPI controllerAPI = new ColaboradorCompletoControllerAPI();
-	ColaboradorDAO dao = new ColaboradorDAO(DBConnection.getSession());
+	static Session session = DBConnection.getSession();
+	static ColaboradorDAO dao = ColaboradorDAO.getInstance(session);
+	static ContaDAO daoConta = ContaDAO.getInstance(session);
+	static ContatosDAO daoContatos = ContatosDAO.getInstance(session);
+	static EnderecoDAO daoEndereco = EnderecoDAO.getInstance(session);
+	static ExameMedicoDAO daoExameMedico = ExameMedicoDAO.getInstance(session);
+	static DependenteDAO daoDependente = DependenteDAO.getInstance(session);
 	static IdentidadeGenero ig = EnumDadosPessoais.IdentidadeGenero.TRANS;
 	static LocalDate data = LocalDate.of(2002, 01, 28);
 	static TiposExames te = EnumExamesMedicos.TiposExames.ADMISSIONAL;
@@ -108,5 +120,11 @@ public class ColaboradorCompletoControllerAPITest {
 	@Before
 	public void limparTabela() {
 		dao.deleteAll();
+		daoConta.deleteAll();
+		daoContatos.deleteAll();
+		daoEndereco.deleteAll();
+		daoExameMedico.deleteAll();
+		daoExameMedico.deleteAll();
+		daoDependente.deleteAll();
 	}
 }
