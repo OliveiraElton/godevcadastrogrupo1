@@ -21,7 +21,16 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ColaboradorDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais;
-
+/**
+ * Classe DependenteControllerTest
+ * 
+ * Testes dos métodos da classe {@link DependenteController}.
+ * 
+ * @author Sprint 5
+ * @author Vitor Cesar Peres <b>vitor.peres@senior.com.br</b>
+ * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
+ *
+ */
 public class DependenteControllerTest {
 	
 	static LocalDate data = LocalDate.of(2002, 01, 28);
@@ -78,7 +87,7 @@ public class DependenteControllerTest {
 
 	@Test
 	public void testBuscarDependentePorId() {
-		Endereco endereco = new Endereco(null, null, null, "54215365", null, null, null, null);
+		Endereco endereco = new Endereco("Rua 1", 10, "Casa", "54215365", "Centro", "Brasil", "Blumenau", "SC");
 		Dependente dependente = new Dependente("Joao", "Fonseca", "Nada consta", data, "Venezuelano",
 				"Cidade del Leste", true, null, null, endereco, "09619039610", null, null, true);
 		dao.create(dependente);
@@ -87,7 +96,7 @@ public class DependenteControllerTest {
 
 	@Test
 	public void testBuscarDependentePorIdColaborador() {
-		Endereco endereco = new Endereco(null, null, null, "54215365", null, null, null, null);
+		Endereco endereco = new Endereco("Rua 1", 10, "Casa", "54215365", "Centro", "Brasil", "Blumenau", "SC");
 		Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Venezuelano",
 				"Cidade del Leste", true, null, null, endereco, "09619039610", null, null, true);
 		Conta conta = new Conta(null, null, null, null);
