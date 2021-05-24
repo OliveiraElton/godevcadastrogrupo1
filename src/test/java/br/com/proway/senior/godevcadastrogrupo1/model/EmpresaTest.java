@@ -63,12 +63,21 @@ public class EmpresaTest {
 	}
 	
 	@Test 
-	public void testSetEGetEndereco() throws Exception {
+	public void testSetEGetEndereco() {
 		Empresa empresa = new Empresa();
 		empresa.setEndereco(endereco);
 		assertEquals(endereco, empresa.getEndereco());
 		assertEquals(endereco.getLogradouro(), empresa.getEndereco().getLogradouro());
 		assertEquals(endereco.getComplemento(), empresa.getEndereco().getComplemento());
+	}
+	
+	@Test 
+	public void testSetEGetContatos() {
+		Empresa empresa = new Empresa();
+		empresa.setContato(contatos);
+		assertEquals(contatos, empresa.getContato());
+		assertEquals(contatos.getEmail(), empresa.getContato().getEmail());
+		assertEquals(contatos.getTelefoneFamiliar(), empresa.getContato().getTelefoneFamiliar());
 	}
 	
 }
