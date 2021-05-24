@@ -35,7 +35,7 @@ public class PrestadorServicoDAOTest {
 	}
 
 	@Test
-	public void testReadById() {
+	public void testReadById() throws Exception {
 		Endereco endereco = new Endereco("Rua xv de Novembro", 154, "Casa", "89065544", "Centro", "Brasil", "Blumenau",
 				"SC");
 		Contatos contatos = new Contatos("47988554466", "4732569874", "adriana@gmail.com", "479875643");
@@ -52,7 +52,7 @@ public class PrestadorServicoDAOTest {
 	}
 
 	@Test
-	public void testGetAll() {
+	public void testGetAll() throws Exception {
 		Endereco endereco = new Endereco("Rua xv de Novembro", 154, "Casa", "89065544", "Centro", "Brasil", "Blumenau",
 				"SC");
 		Contatos contatos = new Contatos("47988554466", "4732569874", "adriana@gmail.com", "479875643");
@@ -74,7 +74,7 @@ public class PrestadorServicoDAOTest {
 	}
 
 	@Test
-	public void testCreate() {
+	public void testCreate() throws Exception {
 		Endereco endereco = new Endereco("Rua Itra", 3, "Casa", "96634455", "Escola Agricola", "Brasil", "Blumenau",
 				"SC");
 		Contatos contatos = new Contatos("4788552145", "4733256984", "Ricardo@gmail.com", "479853115");
@@ -102,7 +102,7 @@ public class PrestadorServicoDAOTest {
 	}
 
 	@Test
-	public void testUpdate() {
+	public void testUpdate() throws Exception {
 		Contatos contatos = new Contatos("4788552145", "4733256984", "Ricardo@gmail.com", "479853115");
 
 		Empresa empresa = EmpresaDAO.getInstance(DBConnection.getSession()).readById(11);

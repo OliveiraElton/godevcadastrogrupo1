@@ -28,7 +28,7 @@ public class ContatosControllerApiTest {
 
 	@Test
 	public void testABuscarContatosPorId() throws Exception {
-		Contatos contato = new Contatos("47988361245", "47988663322", "elton@gmail.com", "332544579");
+		Contatos contato = new Contatos("47988361245", "47988663322", "elton@gmail.com", "47332544579");
 		ContatosDAO.getInstance(DBConnection.getSession()).create(contato);
 
 		ContatosDTO contatosDTO = contatosControllerApi.buscarContatosPorId(contato.getId());
@@ -40,7 +40,7 @@ public class ContatosControllerApiTest {
 		Contatos contato = new Contatos("47988361245", "47988663322", "junior@gmail.com", "333654894");
 		ContatosDAO.getInstance(DBConnection.getSession()).create(contato);
 
-		Contatos contato2 = new Contatos("478964123", "479885566441", "amanda@gmail.com", "123456785");
+		Contatos contato2 = new Contatos("478964123", "479885566441", "amanda@gmail.com", "4734567850");
 		ContatosDAO.getInstance(DBConnection.getSession()).create(contato2);
 
 		List<ContatosDTO> listaContatosDTO = contatosControllerApi.buscarTodosContatos();
@@ -50,7 +50,7 @@ public class ContatosControllerApiTest {
 
 	@Test
 	public void testBBuscarContatosPorEmail() throws Exception {
-		Contatos contato = new Contatos("4788556644", "478965412", "ricardinho@gmail.com", "336515945");
+		Contatos contato = new Contatos("4788556644", "4789654120", "ricardinho@gmail.com", "47336515945");
 		ContatosDAO.getInstance(DBConnection.getSession()).create(contato);
 
 		List<ContatosDTO> listaContatosDTO = contatosControllerApi
