@@ -24,7 +24,7 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 /**
  * Classe EmpresaControllerTest.
  * 
- * Testa os métodos da classe {@link EmpresaController}.
+ * Testa os mï¿½todos da classe {@link EmpresaController}.
  * 
  * @author Sprint 5
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b> - Sprint 6
@@ -35,7 +35,7 @@ public class EmpresaControllerTest {
 
 	static Session session = DBConnection.getSession();
 	static EmpresaDAO dao = EmpresaDAO.getInstance(session);
-	static Contatos contatos = new Contatos("478889996655", "47985556633", "empresa@gmail.com", "47987456321");
+	static Contatos contatos;
 	static Endereco endereco = new Endereco("Rua Principal", 15, "Nada consta", "Centro", "89789456", "Brasil",
 			"Blumenau", "SC");
 	static Empresa empresa = new Empresa("Senior", LocalDate.now(), "12345678", null, null);
@@ -43,25 +43,26 @@ public class EmpresaControllerTest {
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		contatos = new Contatos("478889996655", "47985556633", "empresa@gmail.com", "47987456321");
 		dao.deleteAll();
 		
 	}
 	
 	@Test
-	public void testACriarEmpresa() {
+	public void testACriarEmpresa() throws Exception {
 		Empresa empresaCriada = EmpresaController.criarEmpresa("Cooper", LocalDate.of(2019, 12, 31), "78456963000115",
-				"4798888556633", "47888997852", "atendimento@cooper.com", "4788896655", "Rua XV", 78, "Próximo à",
-				"89036789", "Escola Agrícola", "Brasil", "Blumenau", "SC");
+				"4798888556633", "47888997852", "atendimento@cooper.com", "4788896655", "Rua XV", 78, "Prï¿½ximo ï¿½",
+				"89036789", "Escola Agrï¿½cola", "Brasil", "Blumenau", "SC");
 		
 		assertEquals("Cooper", empresaCriada.getNomeEmpresa());
 		assertEquals("78456963000115", empresaCriada.getCnpj());
-		assertEquals("Escola Agrícola", empresaCriada.getEndereco().getBairro());
+		assertEquals("Escola Agrï¿½cola", empresaCriada.getEndereco().getBairro());
 	}
 
 	@Test
-	public void testEDeleteEmpresa() {
+	public void testEDeleteEmpresa() throws Exception {
 		Empresa empresaCriada = EmpresaController.criarEmpresa("Viacred", LocalDate.of(218, 12, 31), "78456963000115",
-				"4798888556633", "47888997852", "atendimento@cooper.com", "4788896655", "Rua XV", 78, "Próximo à",
+				"4798888556633", "47888997852", "atendimento@cooper.com", "4788896655", "Rua XV", 78, "Prï¿½ximo ï¿½",
 				"89036789", "Centro", "Brasil", "Blumenau", "SC");
 		
 		EmpresaController.deleteEmpresa(empresaCriada);
@@ -69,27 +70,27 @@ public class EmpresaControllerTest {
 	}
 
 	@Test
-	public void testDAtualizarEmpresa() {
+	public void testDAtualizarEmpresa() throws Exception {
 		Empresa empresaCriada = EmpresaController.criarEmpresa("Caixa", LocalDate.of(2019, 12, 31), "78456963000115",
-				"4798888556633", "47888997852", "atendimento@caixa.com", "4788896655", "Rua XV", 78, "Próximo à",
-				"89036789", "Escola Agrícola", "Brasil", "Blumenau", "SC");
+				"4798888556633", "47888997852", "atendimento@caixa.com", "4788896655", "Rua XV", 78, "Prï¿½ximo ï¿½",
+				"89036789", "Escola Agrï¿½cola", "Brasil", "Blumenau", "SC");
 		
 		session.clear();
 		
-		Empresa empresaAlterada = EmpresaController.atualizarEmpresa(empresaCriada.getId(), "Caixa Econômica",
+		Empresa empresaAlterada = EmpresaController.atualizarEmpresa(empresaCriada.getId(), "Caixa Econï¿½mica",
 				LocalDate.of(2021, 03, 31), "89456789000123", contatos, endereco);
 		
 		assertEquals(empresaCriada.getId(), empresaAlterada.getId());
 		assertNotEquals("Caixa", empresaAlterada.getNomeEmpresa());
-		assertEquals("Caixa Econômica", empresaAlterada.getNomeEmpresa());
+		assertEquals("Caixa Econï¿½mica", empresaAlterada.getNomeEmpresa());
 
 	}
 
 	@Test
-	public void testBBuscarEmpresaPorId() {
+	public void testBBuscarEmpresaPorId() throws Exception {
 		Empresa empresaCriada = EmpresaController.criarEmpresa("Selecionar", LocalDate.of(2019, 12, 31),
 				"78456963000115", "4798888556633", "47888997852", "atendimento@selecionar.com", "4788896655", "Rua XV",
-				78, "Próximo à", "89036789", "Victor Konder", "Brasil", "Blumenau", "SC");
+				78, "Prï¿½ximo ï¿½", "89036789", "Victor Konder", "Brasil", "Blumenau", "SC");
 		
 		Empresa empresaRetornada = EmpresaController.buscarEmpresaPorId(empresaCriada.getId());
 		
@@ -102,13 +103,13 @@ public class EmpresaControllerTest {
 	}
 
 	@Test
-	public void testFBuscarTodasEmpresas() {
+	public void testFBuscarTodasEmpresas() throws Exception {
 		Empresa empresaCriada1 = EmpresaController.criarEmpresa("Hering", LocalDate.of(2019, 12, 31), "45123987000123",
-				"4798888556633", "47888997852", "atendimento@hering.com.br", "4788896655", "Rua XV", 78, "Próximo à",
+				"4798888556633", "47888997852", "atendimento@hering.com.br", "4788896655", "Rua XV", 78, "Prï¿½ximo ï¿½",
 				"89036789", "Bom Retiro", "Brasil", "Blumenau", "SC");
 		
 		Empresa empresaCriada2 = EmpresaController.criarEmpresa("Marisa", LocalDate.of(2018, 12, 31), "78963258000178",
-				"4798888556633", "47888997852", "atendimento@marisa.com.br", "4788896655", "Rua XV", 78, "Próximo à",
+				"4798888556633", "47888997852", "atendimento@marisa.com.br", "4788896655", "Rua XV", 78, "Prï¿½ximo ï¿½",
 				"89036789", "Bom Retiro", "Brasil", "Blumenau", "SC");
 		
 		List<Empresa> listaEmpresas = EmpresaController.buscarTodasEmpresas();
@@ -117,13 +118,13 @@ public class EmpresaControllerTest {
 	}
 
 	@Test
-	public void testCBuscarEmpresaPorNome() {
+	public void testCBuscarEmpresaPorNome() throws Exception {
 		EmpresaController.criarEmpresa("Magalu Rua XV", LocalDate.of(2019, 12, 31), "45123987000123", "4798888556633",
-				"47888997852", "atendimento@magalu.com.br", "4788896655", "Rua XV", 78, "Próximo à", "89036789",
+				"47888997852", "atendimento@magalu.com.br", "4788896655", "Rua XV", 78, "Prï¿½ximo ï¿½", "89036789",
 				"Bom Retiro", "Brasil", "Blumenau", "SC");
 		
 		EmpresaController.criarEmpresa("Magalu Centro", LocalDate.of(2018, 12, 31), "78963258000178", "4798888556633",
-				"47888997852", "atendimento@magalu.com.br", "4788896655", "Rua XV", 78, "Próximo à", "89036789",
+				"47888997852", "atendimento@magalu.com.br", "4788896655", "Rua XV", 78, "Prï¿½ximo ï¿½", "89036789",
 				"Bom Retiro", "Brasil", "Blumenau", "SC");
 		
 		List<Empresa> listaEmpresas = EmpresaController.buscarEmpresaPorNome("Magalu");

@@ -22,7 +22,7 @@ public class ValidacaoDocumentosTest {
 	}
 	
 	@Test
-	public void testValidaEmail() {
+	public void testValidaEmail() throws Exception {
 		assertTrue(ValidacaoDocumentos.validarEmail("email@test.com.br"));
 		assertFalse(ValidacaoDocumentos.validarEmail("emailtest.com.br"));
 	}
@@ -34,7 +34,7 @@ public class ValidacaoDocumentosTest {
 	}
 	
 	@Test
-	public void testValidaTelefone() {
+	public void testValidaTelefone() throws Exception {
 		assertTrue(ValidacaoDocumentos.validarTamanhoTelefone("52463248965"));
 		assertFalse(ValidacaoDocumentos.validarTamanhoTelefone("5246324896555"));
 		assertTrue(ValidacaoDocumentos.validarTamanhoTelefone("4785478965"));

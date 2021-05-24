@@ -94,6 +94,7 @@ public class ColaboradorController {
 	 * 
 	 * @return Retorna o Colaborador caso tenha sido cadastrado ou null caso
 	 *         contrario
+	 * @throws Exception 
 	 */
 	public static Colaborador criarColaborador(String nome, String sobrenome, String nomeSocial,
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, Boolean pcd, String genero,
@@ -106,7 +107,7 @@ public class ColaboradorController {
 			String digitoVerificador, String nomeDependente, String sobrenomeDependente, String nomeSocialDependente,
 			LocalDate dataDeNascimentoDependente, String nacionalidadeDependente, String naturalidadeDependente,
 			Boolean pcdDependente, String generoDependente, IdentidadeGenero identidadeGeneroDependente,
-			String cpfDependente, String rgDependente, TiposDependentes tipoDependente, Boolean optanteIR) {
+			String cpfDependente, String rgDependente, TiposDependentes tipoDependente, Boolean optanteIR) throws Exception {
 		
 		PessoaBuilder builder = new PessoaBuilder();
 		
@@ -231,6 +232,7 @@ public class ColaboradorController {
 	 * @param exameMedico
 	 * 
 	 * @return id do colaborador caso seja atualizado ou false caso contrário.
+	 * @throws Exception 
 	 */
 	public static Colaborador atualizarColaborador(Integer id, String nome, String sobrenome, String nomeSocial,
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, Boolean pcd, String genero,
@@ -243,7 +245,7 @@ public class ColaboradorController {
 			String digitoVerificador, String nomeDependente, String sobrenomeDependente, String nomeSocialDependente,
 			LocalDate dataDeNascimentoDependente, String nacionalidadeDependente, String naturalidadeDependente,
 			Boolean pcdDependente, String generoDependente, IdentidadeGenero identidadeGeneroDependente,
-			String cpfDependente, String rgDependente, TiposDependentes tipoDependente, Boolean optanteIR) {
+			String cpfDependente, String rgDependente, TiposDependentes tipoDependente, Boolean optanteIR) throws Exception {
 		
 		PessoaBuilder builder = new PessoaBuilder();
 		

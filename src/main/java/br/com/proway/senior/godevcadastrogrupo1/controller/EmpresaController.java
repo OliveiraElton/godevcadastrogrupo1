@@ -16,8 +16,8 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 /**
  * Classe EmpresaController
  * 
- * Classe de interação com o DAO {@link EmpresaDAO}, realiza as tratativas
- * necessárias para envio do objeto {@link Empresa} para o banco de dados.
+ * Classe de interaï¿½ï¿½o com o DAO {@link EmpresaDAO}, realiza as tratativas
+ * necessï¿½rias para envio do objeto {@link Empresa} para o banco de dados.
  * 
  * @author Sprint 5
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
@@ -52,11 +52,12 @@ public class EmpresaController {
 	 * @param cidade
 	 * @param uf
 	 * @return
+	 * @throws Exception 
 	 */
 	public static Empresa criarEmpresa(String nomeEmpresa, LocalDate dataInicioContrato, String Cnpj,
 			String telefonePrincipal, String telefoneSecundario, String email, String telefoneFamiliar,
 			String logradouro, Integer numero, String complemento, String cep, String bairro, String pais,
-			String cidade, String uf) {
+			String cidade, String uf) throws Exception {
 
 		Contatos contatos = new Contatos(telefonePrincipal, telefoneSecundario, email, telefoneFamiliar);
 		daoContatos.create(contatos);
@@ -130,11 +131,11 @@ public class EmpresaController {
 	/**
 	 * Busca empresa por nome.
 	 * 
-	 * Método busca as empresas no banco de dados através dos seus respectivos
-	 * nomes, é possível passar um parâmetro parcial para retorna todos os registros
+	 * Mï¿½todo busca as empresas no banco de dados atravï¿½s dos seus respectivos
+	 * nomes, ï¿½ possï¿½vel passar um parï¿½metro parcial para retorna todos os registros
 	 * que contenham determinado texto em seu nomeEmpresa.
 	 * 
-	 * @param nomeEmpresa nome dos registros que estão sendo procurados.
+	 * @param nomeEmpresa nome dos registros que estï¿½o sendo procurados.
 	 * @return ArrayList Empresa lista de registros localizados.
 	 */
 	public static ArrayList<Empresa> buscarEmpresaPorNome(String nomeEmpresa) {

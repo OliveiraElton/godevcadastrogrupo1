@@ -72,14 +72,14 @@ public class Pessoa{
 		this.setSobrenome(sobrenome);
 		this.setNomeSocial(nomeSocial);
 		this.setDataDeNascimento(dataDeNascimento);;
-		this.nacionalidade = nacionalidade;
+		this.setNacionalidade(nacionalidade);
 		this.setNaturalidade(naturalidade);
 		this.setPcd(pcd);
 		this.setGenero(genero);
-		this.identidadeGenero = identidadeGenero;
-		this.endereco = endereco;
+		this.setIdentidadeGenero(identidadeGenero);
+		this.setEndereco(endereco);
 		this.setCpf(cpf);
-		this.rg = rg;
+		this.setRg(rg);
 	}
 	
 	public String getNome() {

@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
@@ -31,7 +32,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExa
 /**
  * Classe ColaboradorSimplificadoControllerAPITest.
  * 
- * Testa os métodos da classe {@link ColaboradorCompletoControllerAPI}.
+ * Testa os mï¿½todos da classe {@link ColaboradorCompletoControllerAPI}.
  * 
  * @author Lucas Walim <b>lucas.walim@senior.com.br</b>
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
@@ -44,7 +45,7 @@ public class ColaboradorSimplificadoControllerAPITest {
 	static Endereco endereco = new Endereco("Rua xv de Novembro", 154, "Casa", "89065544", "Centro", "Brasil",
 			"Blumenau", "SC");
 	static String email = "teste@gmail.com";
-	static Contatos contatos = new Contatos("47988554466", "4732569874", email, "479875643");
+	static Contatos contatos;
 	static ExameMedico exameMedico = new ExameMedico(TiposExames.ADMISSIONAL, LocalDate.now(), true);
 	static Session session = DBConnection.getSession();
 	static ColaboradorDAO dao = ColaboradorDAO.getInstance(session);
@@ -54,6 +55,10 @@ public class ColaboradorSimplificadoControllerAPITest {
 	static ExameMedicoDAO daoExameMedico = ExameMedicoDAO.getInstance(session);
 	static DependenteDAO daoDependente = DependenteDAO.getInstance(session);
 
+	@BeforeClass
+	public void setUpStaticos() throws Exception {
+		contatos = new Contatos("47988554466", "4732569874", email, "479875643");
+	}
 	@Before
 	public void limparTabelas() throws Exception {
 		dao.deleteAll();
@@ -77,7 +82,7 @@ public class ColaboradorSimplificadoControllerAPITest {
 	}
 
 	@Test
-	public void testBBuscaTodos() {
+	public void testBBuscaTodos() throws Exception {
 
 		Conta conta3 = new Conta("Santander", "333", "1231551", "3");
 		Endereco endereco3 = new Endereco("Rua Oito", 44, "Casa", "89665422", "Norte", "Brasil", "Blumenau", "SC");
@@ -104,7 +109,7 @@ public class ColaboradorSimplificadoControllerAPITest {
 	}
 
 	@Test
-	public void testCBuscaPorNome() {
+	public void testCBuscaPorNome() throws Exception {
 		Conta conta3 = new Conta("Santander", "333", "1231551", "3");
 		Endereco endereco3 = new Endereco("Rua Oito", 44, "Casa", "89665422", "Norte", "Brasil", "Blumenau", "SC");
 		Contatos contatos3 = new Contatos("47988554466", "4732569874", email, "479875643");
@@ -120,7 +125,7 @@ public class ColaboradorSimplificadoControllerAPITest {
 	}
 
 	@Test
-	public void testCBuscaPorNome2() {
+	public void testCBuscaPorNome2() throws Exception {
 		Conta conta3 = new Conta("Santander", "333", "1231551", "3");
 		Endereco endereco3 = new Endereco("Rua Oito", 44, "Casa", "89665422", "Norte", "Brasil", "Blumenau", "SC");
 		Contatos contatos3 = new Contatos("47988554466", "4732569874", email, "479875643");

@@ -56,6 +56,7 @@ public class PrestadorServicoController {
 	 * @param cidade
 	 * @param uf
 	 * @return
+	 * @throws Exception 
 	 *
 	 */
 	public static PrestadorServico criarPrestadorServico(String nome, String sobrenome, String nomeSocial,
@@ -63,7 +64,7 @@ public class PrestadorServicoController {
 			IdentidadeGenero identidadeGenero, String cpf, String rg,
 			LocalDate dataInicioContrato, Integer idSetor, String telefonePrincipal,
 			String telefoneSecundario, String email, String telefoneFamiliar, String logradouro, Integer numero,
-			String complemento, String cep, String bairro, String pais, String cidade, String uf, Empresa empresa) {
+			String complemento, String cep, String bairro, String pais, String cidade, String uf, Empresa empresa) throws Exception {
 		PessoaBuilder builder = new PessoaBuilder();
 		Director.criarPrestadorServico(builder, nome, sobrenome, nomeSocial,
 				dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
@@ -123,6 +124,7 @@ public class PrestadorServicoController {
 	 * @param cidade
 	 * @param uf
 	 * @return
+	 * @throws Exception 
 	 * 
 	 */
 	public static PrestadorServico atualizarPrestadorServico(Integer id, String nome, String sobrenome, String nomeSocial,
@@ -130,7 +132,7 @@ public class PrestadorServicoController {
 			IdentidadeGenero identidadeGenero, String cpf, String rg,
 			LocalDate dataInicioContrato, Integer idSetor, String telefonePrincipal,
 			String telefoneSecundario, String email, String telefoneFamiliar, String logradouro, Integer numero,
-			String complemento, String cep, String bairro, String pais, String cidade, String uf, Empresa empresa) {
+			String complemento, String cep, String bairro, String pais, String cidade, String uf, Empresa empresa) throws Exception {
 		PessoaBuilder builder = new PessoaBuilder();
 		Director.criarPrestadorServico(builder, nome, sobrenome, nomeSocial,
 				dataDeNascimento, nacionalidade, naturalidade, pcd, genero,

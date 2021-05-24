@@ -27,7 +27,7 @@ public class ContatosControllerApiTest {
 	}
 
 	@Test
-	public void testABuscarContatosPorId() {
+	public void testABuscarContatosPorId() throws Exception {
 		Contatos contato = new Contatos("47988361245", "47988663322", "elton@gmail.com", "332544579");
 		ContatosDAO.getInstance(DBConnection.getSession()).create(contato);
 
@@ -36,7 +36,7 @@ public class ContatosControllerApiTest {
 	}
 
 	@Test
-	public void testCBuscarTodosContatos() {
+	public void testCBuscarTodosContatos() throws Exception {
 		Contatos contato = new Contatos("47988361245", "47988663322", "junior@gmail.com", "333654894");
 		ContatosDAO.getInstance(DBConnection.getSession()).create(contato);
 
@@ -49,7 +49,7 @@ public class ContatosControllerApiTest {
 	}
 
 	@Test
-	public void testBBuscarContatosPorEmail() {
+	public void testBBuscarContatosPorEmail() throws Exception {
 		Contatos contato = new Contatos("4788556644", "478965412", "ricardinho@gmail.com", "336515945");
 		ContatosDAO.getInstance(DBConnection.getSession()).create(contato);
 

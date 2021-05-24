@@ -35,7 +35,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExa
 /**
  * Classe ColaboradorControllerTest.
  * 
- * Teste os métodos da classe {@link ColaboradorControllerTest}.
+ * Teste os mï¿½todos da classe {@link ColaboradorControllerTest}.
  * 
  * @author Sprint 5
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
@@ -56,20 +56,20 @@ public class ColaboradorControllerTest {
 	static TiposDependentes tipoDep = EnumDadosPessoais.TiposDependentes.CONJUGE;
 	
 	@Test
-	public void testCriarColaborador() {
+	public void testCriarColaborador() throws Exception {
 		Colaborador colaboradorCriado = ColaboradorController.criarColaborador("Rodrigo", "Moraes", "Nada consta", data, "Brasileira", "Blumenau", true, 
 				"Masculino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data, false, "88080888708", "rodrigo@gmail.com", "04040505050", 
-				"Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Florianópolis", "SC", "4521452015", "5421452103", "rodrigo@empresa.com.br", "1542413655", 
+				"Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Florianï¿½polis", "SC", "4521452015", "5421452103", "rodrigo@empresa.com.br", "1542413655", 
 				te, LocalDate.of(2020, 10, 5), true, "Caixa", "055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", 
 				true, "Feminino", ig, "09619039610", "mg14388606", tipoDep, true);
 		assertNotNull(colaboradorCriado);
 	}
 
 	@Test
-	public void testDeleteColabordor() {
+	public void testDeleteColabordor() throws Exception {
 		Colaborador colaboradorCriado = ColaboradorController.criarColaborador("Carlos", "Moraes", "Nada consta", data, "Brasileira", "Blumenau", true, 
 				"Masculino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data, false, "88080888708", "carlos@gmail.com", "04040505050", 
-				"Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Florianópolis", "SC", "4521452015", "5421452103", "carlos@empresa.com.br", "1542413655", 
+				"Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Florianï¿½polis", "SC", "4521452015", "5421452103", "carlos@empresa.com.br", "1542413655", 
 				te, LocalDate.of(2020, 10, 5), true, "Caixa", "055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", 
 				true, "Feminino", ig, "09619039610", "mg14388606", tipoDep, true);
 		ColaboradorController.deleteColabordor(dao.readById(colaboradorCriado.getId()));
@@ -77,7 +77,7 @@ public class ColaboradorControllerTest {
 	}
 
 	@Test
-	public void testAtualizarColaborador() {
+	public void testAtualizarColaborador() throws Exception {
 		Colaborador colaboradorCriado = ColaboradorController.criarColaborador("Camila", "Moraes", "Nada consta", data,
 				"Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data,
 				false, "88080888708", "camila@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
@@ -97,7 +97,7 @@ public class ColaboradorControllerTest {
 	}
 
 	@Test
-	public void testBuscarColaboradorPorId() {
+	public void testBuscarColaboradorPorId() throws Exception {
 		Conta conta = new Conta("Santander", "0850", "0084044", "0");
 		Endereco endereco = new Endereco("Rua 10", 15, "Casa", "54215365", "Centro", "Brasil", "Blumemau", "SC");
 		Contatos contatos = new Contatos("4521456985", "4521456985", "Jenifer", "4521456985");
@@ -113,18 +113,18 @@ public class ColaboradorControllerTest {
 	}
 
 	@Test
-	public void testBuscarTodosColaborador() {
+	public void testBuscarTodosColaborador() throws Exception {
 		Integer valorAntes = ColaboradorController.buscarTodosColaboradores().size();
 		ColaboradorController.criarColaborador("Carlos", "Moraes", "Nada consta", data, "Brasileira", "Blumenau", true, "Masculino", ig, "09619039610", 
 				"mg14388606", 8, 8788881, false, false, data, false, "88080888708", "carlos@gmail.com", "04040505050", "Rua 1", 9, "Casa", 
-				"54126547", "Centro", "Brasil", "Florianópolis", "SC", "4521452015", "5421452103", "carlos@empresa.com.br", "1542413655", te, 
+				"54126547", "Centro", "Brasil", "Florianï¿½polis", "SC", "4521452015", "5421452103", "carlos@empresa.com.br", "1542413655", te, 
 				LocalDate.of(2020, 10, 5), true, "Caixa", "055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", 
 				true, "Feminino", ig, "09619039610", "mg14388606", tipoDep, true);
 		assertEquals(valorAntes + 1, ColaboradorController.buscarTodosColaboradores().size());
 	}
 
 	@Test
-	public void testAdicionarNovoDependente() {
+	public void testAdicionarNovoDependente() throws Exception {
 		Colaborador colaborador = ColaboradorController.criarColaborador("Camila", "Moraes", "Nada consta", data,
 				"Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data,
 				false, "88080888708", "camila@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
@@ -139,7 +139,7 @@ public class ColaboradorControllerTest {
 	}
 
 	@Test
-	public void testAdicionarNovoExameMedico() {
+	public void testAdicionarNovoExameMedico() throws Exception {
 		Colaborador colaborador = ColaboradorController.criarColaborador("Maria", "Santos", "Nada consta", data,
 				"Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data,
 				false, "88080888708", "maria@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
@@ -153,7 +153,7 @@ public class ColaboradorControllerTest {
 	}
 
 	@Test
-	public void testBuscarPorNome() {
+	public void testBuscarPorNome() throws Exception {
 		Colaborador colaborador1 = ColaboradorController.criarColaborador("Joana", "Marla", "Nada consta", data,
 				"Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data,
 				false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",

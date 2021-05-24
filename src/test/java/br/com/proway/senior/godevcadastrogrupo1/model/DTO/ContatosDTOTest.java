@@ -11,10 +11,12 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
 
 public class ContatosDTOTest {
 
-	static Contatos contatos = new Contatos("Telefone Principal", "Telefone Secundário", "Email", "Telefone Familiar");
+	static Contatos contatos;
+
 	static ContatosDTO contatosDTO;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		contatos = new Contatos("95631458974", "9563145897", "teste@teste.com.br", "95631458974");
 		contatosDTO = new ContatosDTO(contatos);
 	}
 

@@ -82,6 +82,7 @@ public class Director {
 	 * @param rgDependente
 	 * @param tipoDependente
 	 * @param optanteIR
+	 * @throws Exception 
 	 */
 	public static void criarColaborador(Builder builder, String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
 			String nacionalidade, String naturalidade, boolean pcd, String genero, IdentidadeGenero identidadeGenero,
@@ -94,7 +95,7 @@ public class Director {
 			String sobrenomeDependente, String nomeSocialDependente, LocalDate dataDeNascimentoDependente,
 			String nacionalidadeDependente, String naturalidadeDependente, boolean pcdDependente,
 			String generoDependente, IdentidadeGenero identidadeGeneroDependente, String cpfDependente,
-			String rgDependente, TiposDependentes tipoDependente, boolean optanteIR) {
+			String rgDependente, TiposDependentes tipoDependente, boolean optanteIR) throws Exception {
 
 		criarPessoa(builder, nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
 				identidadeGenero, cpf, rg, logradouro, numero, complemento, cep, bairro, pais, cidade, uf);
@@ -153,13 +154,14 @@ public class Director {
 	 * @param uf
 	 * @param nomeEmpresa
 	 * @param cnpj
+	 * @throws Exception 
 	 */
 	public static void criarPrestadorServico(Builder builder, String nome, String sobrenome, String nomeSocial,
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd, String genero,
 			IdentidadeGenero identidadeGenero, String cpf, String rg,
 			LocalDate dataInicioContrato, Integer idSetor, String telefonePrincipal,
 			String telefoneSecundario, String email, String telefoneFamiliar, String logradouro, Integer numero,
-			String complemento, String cep, String bairro, String pais, String cidade, String uf, Empresa empresa) {
+			String complemento, String cep, String bairro, String pais, String cidade, String uf, Empresa empresa) throws Exception {
 		criarPessoa(builder, nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
 				identidadeGenero, cpf, rg, logradouro, numero, complemento, cep, bairro, pais, cidade, uf);
 		builder.setContatos(telefonePrincipal, telefoneSecundario, email, telefoneFamiliar);

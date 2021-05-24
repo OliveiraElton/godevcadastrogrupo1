@@ -19,7 +19,7 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 /**
  * Classe EmpresaControllerAPITest.
  * 
- * Realiza os testes dos métodos da classe {@link EmpresaControllerAPI}.
+ * Realiza os testes dos mï¿½todos da classe {@link EmpresaControllerAPI}.
  * 
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
  *
@@ -32,7 +32,7 @@ public class EmpresaControllerAPITest {
 	
 	
 	@Test
-	public void testBuscarEmpresaPorID() {
+	public void testBuscarEmpresaPorID() throws Exception {
 		Endereco endereco = new Endereco("Rua Sete de Setembro", 123, "Taruma Office", "89035193", "Centro", "Brasil", "Blumenau", "SC");
 		Contatos contatos = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
 		Empresa original = new Empresa("Proway", LocalDate.of(2021, 10, 13), "89123987000112", endereco, contatos);
@@ -46,7 +46,7 @@ public class EmpresaControllerAPITest {
 	}
 
 	@Test
-	public void testBuscarTodasEmpresa() {
+	public void testBuscarTodasEmpresa() throws Exception {
 		Endereco endereco1 = new Endereco("Rua Sete de Setembro", 123, "Taruma Office", "89035193", "Centro", "Brasil", "Blumenau", "SC");
 		Contatos contatos1 = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
 		Empresa original1 = new Empresa("Proway", LocalDate.of(2021, 10, 13), "89123987000112", endereco1, contatos1);
@@ -60,7 +60,7 @@ public class EmpresaControllerAPITest {
 	}
 	
 	@Test
-	public void testBuscarEmpresaPorNome() {
+	public void testBuscarEmpresaPorNome() throws Exception {
 		Endereco endereco1 = new Endereco("Rua XV", 123, "Taruma Office", "89035193", "Centro", "Brasil", "Blumenau", "SC");
 		Contatos contatos1 = new Contatos("47999448899", "47988994455", "contato@magalu.com", "47988553322");
 		Empresa original1 = new Empresa("Magalu Rua XV", LocalDate.of(2021, 10, 13), "89123900000112", endereco1, contatos1);

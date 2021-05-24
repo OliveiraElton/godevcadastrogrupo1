@@ -29,7 +29,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExa
 /**
  * Classe ColaboradorCompletoControllerAPITest.
  * 
- * Testa os métodos da classe {@link ColaboradorCompletoControllerAPI}.
+ * Testa os mï¿½todos da classe {@link ColaboradorCompletoControllerAPI}.
  * 
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
  *
@@ -52,7 +52,7 @@ public class ColaboradorCompletoControllerAPITest {
 	static TiposDependentes td = EnumDadosPessoais.TiposDependentes.CONJUGE;
 	
 	@Test
-	public void testBuscarColaboradorPorId() {
+	public void testBuscarColaboradorPorId() throws Exception {
 		Colaborador colaborador = ColaboradorController.criarColaborador("Joana", "Marla", "Nada consta", data,
 				"Venezuelano", "Blumenauense", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data,
 				false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
@@ -70,7 +70,7 @@ public class ColaboradorCompletoControllerAPITest {
 	}
 
 	@Test
-	public void testBuscarTodosColaboradores() {
+	public void testBuscarTodosColaboradores() throws Exception {
 		Colaborador colaborador1 = ColaboradorController.criarColaborador("Joana", "Marla", "Nada consta", data,
 				"Venezuelano", "Blumenauense", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data,
 				false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
@@ -94,7 +94,7 @@ public class ColaboradorCompletoControllerAPITest {
 	}
 
 	@Test
-	public void testBuscarColaboradorPorNome() {
+	public void testBuscarColaboradorPorNome() throws Exception {
 		Colaborador colaborador1 = ColaboradorController.criarColaborador("Joana", "Marla", "Nada consta", data,
 				"Venezuelano", "Blumenauense", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data,
 				false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",

@@ -170,7 +170,7 @@ public class PessoaBuilder implements Builder {
 	}
 
 	public void setContatos(String telefonePrincipal, String telefoneSecundario, String email,
-			String telefoneFamiliar) {
+			String telefoneFamiliar) throws Exception {
 		this.contatos = new Contatos(telefonePrincipal, telefoneSecundario, email, telefoneFamiliar);
 		ContatosDAO.getInstance(session).create(this.contatos);
 	}

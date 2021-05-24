@@ -27,7 +27,7 @@ public class PrestadorServicoDTOTest {
 		prestador.setEmpresa(empresa);
 		prestador.setIdSetor(1);
 		Contatos contatos = new Contatos();
-		contatos.setEmail("Email teste");
+		contatos.setEmail("teste@teste.com.br");
 		prestador.setContatos(contatos);
 		prestador.setNome("Nome");
 		prestador.setSobrenome("Sobrenome");
