@@ -100,7 +100,7 @@ public class ColaboradorControllerTest {
 	public void testBuscarColaboradorPorId() throws Exception {
 		Conta conta = new Conta("Santander", "0850", "0084044", "0");
 		Endereco endereco = new Endereco("Rua 10", 15, "Casa", "54215365", "Centro", "Brasil", "Blumemau", "SC");
-		Contatos contatos = new Contatos("4521456985", "4521456985", "Jenifer", "4521456985");
+		Contatos contatos = new Contatos("4521456985", "4521456985", "teste@teste.com", "4521456985");
 		ExameMedico exameMedico = new ExameMedico(te, LocalDate.of(2020, 10, 5), true);
 		Dependente dependente = new Dependente("Jenifer", "Fonseca", "Jenifer", data, "Brasileira",
 				"Blumenau", true, null, null, endereco, "09619039610", null, tipoDep, true);

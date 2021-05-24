@@ -27,22 +27,22 @@ public class ContatosDTOTest {
 
 	@Test
 	public void testGetTelefonePrincipal() {
-		assertEquals("Telefone Principal", contatosDTO.getTelefonePrincipal());
+		assertEquals("95631458974", contatosDTO.getTelefonePrincipal());
 	}
 
 	@Test
 	public void testGetTelefoneSecundario() {
-		assertEquals("Telefone Secundário", contatosDTO.getTelefoneSecundario());	
+		assertEquals("9563145897", contatosDTO.getTelefoneSecundario());	
 	}
 
 	@Test
 	public void testGetEmail() {
-		assertEquals("Email", contatosDTO.getEmail());
+		assertEquals("teste@teste.com.br", contatosDTO.getEmail());
 	}
 
 	@Test
 	public void testGetTelefoneFamiliar() {
-		assertEquals("Telefone Familiar", contatosDTO.getTelefoneFamiliar());
+		assertEquals("95631458974", contatosDTO.getTelefoneFamiliar());
 	}
 
 }

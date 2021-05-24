@@ -38,7 +38,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExa
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class ColaboradorSimplificadoControllerAPITest {
+public class ColaboradorSimplificadoControllerAPITest{
 
 	static ColaboradorSimplificadoControllerApi colaboradorControllerApi = new ColaboradorSimplificadoControllerApi();
 	static Conta conta = new Conta("Caixa", "105", "2569874", "15");
@@ -56,8 +56,8 @@ public class ColaboradorSimplificadoControllerAPITest {
 	static DependenteDAO daoDependente = DependenteDAO.getInstance(session);
 
 	@BeforeClass
-	public void setUpStaticos() throws Exception {
-		contatos = new Contatos("47988554466", "4732569874", email, "479875643");
+	public static void setUpStaticos() throws Exception {
+		contatos = new Contatos("47988554466", "4732569874", email, "4798756430");
 	}
 	@Before
 	public void limparTabelas() throws Exception {
@@ -86,7 +86,7 @@ public class ColaboradorSimplificadoControllerAPITest {
 
 		Conta conta3 = new Conta("Santander", "333", "1231551", "3");
 		Endereco endereco3 = new Endereco("Rua Oito", 44, "Casa", "89665422", "Norte", "Brasil", "Blumenau", "SC");
-		Contatos contatos3 = new Contatos("47988554466", "4732569874", email, "479875643");
+		Contatos contatos3 = new Contatos("47988554466", "4732569874", email, "4798756430");
 		ExameMedico exameMedico3 = new ExameMedico(TiposExames.ADMISSIONAL, LocalDate.now(), true);
 		Colaborador colaborador = new Colaborador("Luiza", "Fernanda", "Luiza", LocalDate.of(2000, 07, 30),
 				"Brasileira", "Blumenau", false, "Feminino", IdentidadeGenero.TRANS, endereco3, "21164028324",
@@ -96,7 +96,7 @@ public class ColaboradorSimplificadoControllerAPITest {
 		Conta conta2 = new Conta("Viacredi", "333", "1231551", "3");
 		Endereco endereco2 = new Endereco("Rua 2 de Setembro", 44, "Casa", "89665422", "Itoupava Norte", "Brasil",
 				"Blumenau", "SC");
-		Contatos contatos2 = new Contatos("47988554466", "4732569874", email, "479875643");
+		Contatos contatos2 = new Contatos("47988554466", "4732569874", email, "4798756430");
 		ExameMedico exameMedico2 = new ExameMedico(TiposExames.ADMISSIONAL, LocalDate.now(), true);
 
 		Colaborador colaborador2 = new Colaborador("Ana", "Da Silva", "Ana", LocalDate.of(2004, 02, 10), "Brasileira",
@@ -112,7 +112,7 @@ public class ColaboradorSimplificadoControllerAPITest {
 	public void testCBuscaPorNome() throws Exception {
 		Conta conta3 = new Conta("Santander", "333", "1231551", "3");
 		Endereco endereco3 = new Endereco("Rua Oito", 44, "Casa", "89665422", "Norte", "Brasil", "Blumenau", "SC");
-		Contatos contatos3 = new Contatos("47988554466", "4732569874", email, "479875643");
+		Contatos contatos3 = new Contatos("47988554466", "4732569874", email, "4798756430");
 		ExameMedico exameMedico3 = new ExameMedico(TiposExames.ADMISSIONAL, LocalDate.now(), true);
 
 		Colaborador colaborador = new Colaborador("Luiza", "Fernanda", "Luiza", LocalDate.of(2000, 07, 30),
@@ -128,7 +128,7 @@ public class ColaboradorSimplificadoControllerAPITest {
 	public void testCBuscaPorNome2() throws Exception {
 		Conta conta3 = new Conta("Santander", "333", "1231551", "3");
 		Endereco endereco3 = new Endereco("Rua Oito", 44, "Casa", "89665422", "Norte", "Brasil", "Blumenau", "SC");
-		Contatos contatos3 = new Contatos("47988554466", "4732569874", email, "479875643");
+		Contatos contatos3 = new Contatos("47988554466", "4732569874", email, "4798756430");
 		ExameMedico exameMedico3 = new ExameMedico(TiposExames.ADMISSIONAL, LocalDate.now(), true);
 
 		Colaborador colaborador = new Colaborador("Luiza", "Fernanda", "Luiza", LocalDate.of(2000, 07, 30),
@@ -139,7 +139,7 @@ public class ColaboradorSimplificadoControllerAPITest {
 		Conta conta2 = new Conta("Viacredi", "333", "1231551", "3");
 		Endereco endereco2 = new Endereco("Rua 2 de Setembro", 44, "Casa", "89665422", "Itoupava Norte", "Brasil",
 				"Blumenau", "SC");
-		Contatos contatos2 = new Contatos("47988554466", "4732569874", email, "479875643");
+		Contatos contatos2 = new Contatos("47988554466", "4732569874", email, "4798756430");
 		ExameMedico exameMedico2 = new ExameMedico(TiposExames.ADMISSIONAL, LocalDate.now(), true);
 
 		Colaborador colaborador2 = new Colaborador("Luiza", "Da Silva", "Ana", LocalDate.of(2004, 02, 10), "Brasileira",

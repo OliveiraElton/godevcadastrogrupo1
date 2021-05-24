@@ -63,7 +63,7 @@ public class PrestadorServicoDTOTest {
 
 	@Test
 	public void testGetContatos() {
-		assertEquals("Email teste", prestadorDTO.getContatos().getEmail());
+		assertEquals("teste@teste.com.br", prestadorDTO.getContatos().getEmail());
 	}
 
 	@Test

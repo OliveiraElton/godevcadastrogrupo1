@@ -43,7 +43,7 @@ public class EmpresaControllerTest {
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		contatos = new Contatos("478889996655", "47985556633", "empresa@gmail.com", "47987456321");
+		contatos = new Contatos("47888999665", "47985556633", "empresa@gmail.com", "47987456321");
 		dao.deleteAll();
 		
 	}
@@ -51,18 +51,18 @@ public class EmpresaControllerTest {
 	@Test
 	public void testACriarEmpresa() throws Exception {
 		Empresa empresaCriada = EmpresaController.criarEmpresa("Cooper", LocalDate.of(2019, 12, 31), "78456963000115",
-				"4798888556633", "47888997852", "atendimento@cooper.com", "4788896655", "Rua XV", 78, "Pr�ximo �",
-				"89036789", "Escola Agr�cola", "Brasil", "Blumenau", "SC");
+				"47988885566", "47888997852", "atendimento@cooper.com", "4788896655", "Rua XV", 78, "Proximo a",
+				"89036789", "Escola Agricola", "Brasil", "Blumenau", "SC");
 		
 		assertEquals("Cooper", empresaCriada.getNomeEmpresa());
 		assertEquals("78456963000115", empresaCriada.getCnpj());
-		assertEquals("Escola Agr�cola", empresaCriada.getEndereco().getBairro());
+		assertEquals("Escola Agricola", empresaCriada.getEndereco().getBairro());
 	}
 
 	@Test
 	public void testEDeleteEmpresa() throws Exception {
 		Empresa empresaCriada = EmpresaController.criarEmpresa("Viacred", LocalDate.of(218, 12, 31), "78456963000115",
-				"4798888556633", "47888997852", "atendimento@cooper.com", "4788896655", "Rua XV", 78, "Pr�ximo �",
+				"47988885566", "47888997852", "atendimento@cooper.com", "4788896655", "Rua XV", 78, "Pr�ximo �",
 				"89036789", "Centro", "Brasil", "Blumenau", "SC");
 		
 		EmpresaController.deleteEmpresa(empresaCriada);
@@ -72,7 +72,7 @@ public class EmpresaControllerTest {
 	@Test
 	public void testDAtualizarEmpresa() throws Exception {
 		Empresa empresaCriada = EmpresaController.criarEmpresa("Caixa", LocalDate.of(2019, 12, 31), "78456963000115",
-				"4798888556633", "47888997852", "atendimento@caixa.com", "4788896655", "Rua XV", 78, "Pr�ximo �",
+				"47988885566", "47888997852", "atendimento@caixa.com", "4788896655", "Rua XV", 78, "Pr�ximo �",
 				"89036789", "Escola Agr�cola", "Brasil", "Blumenau", "SC");
 		
 		session.clear();
@@ -89,7 +89,7 @@ public class EmpresaControllerTest {
 	@Test
 	public void testBBuscarEmpresaPorId() throws Exception {
 		Empresa empresaCriada = EmpresaController.criarEmpresa("Selecionar", LocalDate.of(2019, 12, 31),
-				"78456963000115", "4798888556633", "47888997852", "atendimento@selecionar.com", "4788896655", "Rua XV",
+				"78456963000115", "47988885566", "47888997852", "atendimento@selecionar.com", "4788896655", "Rua XV",
 				78, "Pr�ximo �", "89036789", "Victor Konder", "Brasil", "Blumenau", "SC");
 		
 		Empresa empresaRetornada = EmpresaController.buscarEmpresaPorId(empresaCriada.getId());
@@ -105,11 +105,11 @@ public class EmpresaControllerTest {
 	@Test
 	public void testFBuscarTodasEmpresas() throws Exception {
 		Empresa empresaCriada1 = EmpresaController.criarEmpresa("Hering", LocalDate.of(2019, 12, 31), "45123987000123",
-				"4798888556633", "47888997852", "atendimento@hering.com.br", "4788896655", "Rua XV", 78, "Pr�ximo �",
+				"47988885566", "47888997852", "atendimento@hering.com.br", "4788896655", "Rua XV", 78, "Pr�ximo �",
 				"89036789", "Bom Retiro", "Brasil", "Blumenau", "SC");
 		
 		Empresa empresaCriada2 = EmpresaController.criarEmpresa("Marisa", LocalDate.of(2018, 12, 31), "78963258000178",
-				"4798888556633", "47888997852", "atendimento@marisa.com.br", "4788896655", "Rua XV", 78, "Pr�ximo �",
+				"47988885566", "47888997852", "atendimento@marisa.com.br", "4788896655", "Rua XV", 78, "Pr�ximo �",
 				"89036789", "Bom Retiro", "Brasil", "Blumenau", "SC");
 		
 		List<Empresa> listaEmpresas = EmpresaController.buscarTodasEmpresas();
@@ -119,11 +119,11 @@ public class EmpresaControllerTest {
 
 	@Test
 	public void testCBuscarEmpresaPorNome() throws Exception {
-		EmpresaController.criarEmpresa("Magalu Rua XV", LocalDate.of(2019, 12, 31), "45123987000123", "4798888556633",
+		EmpresaController.criarEmpresa("Magalu Rua XV", LocalDate.of(2019, 12, 31), "45123987000123", "47988885566",
 				"47888997852", "atendimento@magalu.com.br", "4788896655", "Rua XV", 78, "Pr�ximo �", "89036789",
 				"Bom Retiro", "Brasil", "Blumenau", "SC");
 		
-		EmpresaController.criarEmpresa("Magalu Centro", LocalDate.of(2018, 12, 31), "78963258000178", "4798888556633",
+		EmpresaController.criarEmpresa("Magalu Centro", LocalDate.of(2018, 12, 31), "78963258000178", "47988885566",
 				"47888997852", "atendimento@magalu.com.br", "4788896655", "Rua XV", 78, "Pr�ximo �", "89036789",
 				"Bom Retiro", "Brasil", "Blumenau", "SC");
 		

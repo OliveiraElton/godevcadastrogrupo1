@@ -37,10 +37,10 @@ public class ContatosControllerApiTest {
 
 	@Test
 	public void testCBuscarTodosContatos() throws Exception {
-		Contatos contato = new Contatos("47988361245", "47988663322", "junior@gmail.com", "333654894");
+		Contatos contato = new Contatos("47988361245", "47988663322", "junior@gmail.com", "3336548940");
 		ContatosDAO.getInstance(DBConnection.getSession()).create(contato);
 
-		Contatos contato2 = new Contatos("478964123", "479885566441", "amanda@gmail.com", "4734567850");
+		Contatos contato2 = new Contatos("4789641230", "479885566441", "amanda@gmail.com", "4734567850");
 		ContatosDAO.getInstance(DBConnection.getSession()).create(contato2);
 
 		List<ContatosDTO> listaContatosDTO = contatosControllerApi.buscarTodosContatos();
