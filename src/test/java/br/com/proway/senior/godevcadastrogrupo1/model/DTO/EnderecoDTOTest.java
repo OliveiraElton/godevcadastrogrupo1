@@ -40,10 +40,8 @@ public class EnderecoDTOTest {
 	@Test
 	public void testConstruirEndereco() {
 		Endereco enderecoNormal = EnderecoController.criarEndereco("Rua 7 de setembro", 458, "Casa", "896654", "Centro", "Brasil", "Blumenau", "SC");
-		System.out.println(enderecoNormal.getId());
 		EnderecoDTO enderecoDto = new EnderecoDTO(enderecoNormal);
 		
-		System.out.println(enderecoDto.getId());
 		assertEquals(enderecoNormal.getId(), enderecoDto.getId());
 		assertEquals(Integer.valueOf(458), enderecoDto.getNumero());
 		assertEquals("Rua 7 de setembro", enderecoDto.getLogradouro());
