@@ -82,7 +82,7 @@ public class DependenteControllerTest {
 				EnumDadosPessoais.TiposDependentes.CONJUGE, true, "Rua das Oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
 		List<Dependente> dependentes = dao.getAll();
-		assertEquals("Brunão", dependentes.get(dependentes.size() - 1).getNome());
+		assertEquals("Bruno", dependentes.get(dependentes.size() - 1).getNome());
 
 	}
 
@@ -128,19 +128,19 @@ public class DependenteControllerTest {
 
 	@Test
 	public void testBuscarTodosDependentesPorNome() {
-		Dependente d = DependenteController.criarDependente("Jorge", "Martins", "Nada consta", data, "Brasileira",
+		Dependente dependente1 = DependenteController.criarDependente("Jorge", "Martins", "Nada consta", data, "Brasileira",
 				"Camboriu", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
-		Dependente d2 = DependenteController.criarDependente("Carlos", "Martins", "Nada consta", data, "Brasileira",
+		Dependente dependente2 = DependenteController.criarDependente("Carlos", "Martins", "Nada consta", data, "Brasileira",
 				"Camboriu", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
-		Dependente d3 = DependenteController.criarDependente("Mateus", "Martins", "Nada consta", data, "Brasileira",
+		Dependente dependente3 = DependenteController.criarDependente("Carlos", "Martins", "Nada consta", data, "Brasileira",
 				"Camboriu", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das Oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
-		assertEquals(2, DependenteController.buscarDependentePorNome(d2.getNome()).size());
+		assertEquals(2, DependenteController.buscarDependentePorNome(dependente2.getNome()).size());
 
 	}
 
