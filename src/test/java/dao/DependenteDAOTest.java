@@ -16,6 +16,16 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
 
+/**
+ * Classe DependenteDAOTest
+ * 
+ * Testes dos métodos da classe {@link DependenteDAOT}.
+ * 
+ * @author Sprint 5
+ * @author Vitor Cesar Peres <b>vitor.peres@senior.com.br</b>
+ * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
+ *
+ */
 public class DependenteDAOTest {
 
 	Session session = DBConnection.getSession();
