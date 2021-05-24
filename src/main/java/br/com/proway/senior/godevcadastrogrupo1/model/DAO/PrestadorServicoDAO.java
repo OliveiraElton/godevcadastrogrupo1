@@ -76,23 +76,6 @@ public class PrestadorServicoDAO extends Dao<PrestadorServico> implements Interf
 			List<PrestadorServico> results = query.getResultList();
 			return new ArrayList<PrestadorServico>(results);
 		}
-	public boolean limparTabela() {
-		if (!session.getTransaction().isActive()) {
-			session.beginTransaction();
-		}
-		try {
-		
-			CriteriaBuilder builder = session.getCriteriaBuilder();
-			CriteriaDelete<PrestadorServico> criteriaDelete = builder.createCriteriaDelete(PrestadorServico.class);
-			criteriaDelete.from(PrestadorServico.class);
-			Query query = session.createQuery(criteriaDelete);
-			query.executeUpdate();
-			return true;
-		} catch (Exception e) {
-			e.getMessage();
-			return false;
-		}
-	}
 	
 	public boolean deleteAll() {
 		if (!this.session.getTransaction().isActive()) {
