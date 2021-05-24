@@ -29,6 +29,13 @@ public class EmpresaTest {
 	}
 	
 	@Test 
+	public void testSetEGetId() {
+		Empresa empresa = new Empresa();
+		empresa.setId(150);;
+		assertEquals((Integer) 150, empresa.getId());
+	}
+	
+	@Test 
 	public void testSetEGetNomeEmpresa() {
 		Empresa empresa = new Empresa();
 		empresa.setNomeEmpresa("Proway");
@@ -40,6 +47,19 @@ public class EmpresaTest {
 		Empresa empresa = new Empresa();
 		empresa.setDataInicioContrato(LocalDate.of(2021, 10, 15));
 		assertEquals(LocalDate.of(2021, 10, 15), empresa.getDataInicioContrato());
+	}
+	
+	@Test 
+	public void testSetEGetCNPJCorreto() throws Exception {
+		Empresa empresa = new Empresa();
+		empresa.setCnpj("05975585000189");
+		assertEquals("05975585000189", empresa.getCnpj());
+	}
+	
+	@Test (expected = Exception.class)
+	public void testSetEGetCNPJIncorreto() throws Exception {
+		Empresa empresa = new Empresa();
+		empresa.setCnpj("819930900001");
 	}
 	
 }

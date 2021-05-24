@@ -98,10 +98,10 @@ public class Empresa {
 	 * @throws Exception caso o CNPJ nao seja valido.
 	 */
 	public void setCnpj(String cnpj) throws Exception {
-		if (ValidacaoDocumentos.validarCNPJ(cnpj)) {
-			this.cnpj = cnpj;
+		if (!ValidacaoDocumentos.validarCNPJ(cnpj)) {
+			throw (new Exception("Por favor, insira um CNPJ válido."));
 		}
-		throw (new Exception("Por favor, insira um CNPJ válido."));
+		this.cnpj = cnpj;
 	}
 
 	public Endereco getEndereco() {
