@@ -14,8 +14,8 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 /**
  * * 
-* Classe para interação via Controller API, tem referência com {@link Colaborador}.
-* Disponibiliza todas as informações na API.
+* Classe para interaï¿½ï¿½o via Controller API, tem referï¿½ncia com {@link Colaborador}.
+* Disponibiliza todas as informaï¿½ï¿½es na API.
 * 
 * @author Elton Oliveira <elton.oliveira@senior.com.br>
  *
@@ -32,10 +32,10 @@ public class DependenteCompletoControllerApi {
 
 	public List<DependenteCompletoDTO> buscarTodosDependenteCompleto() {
 		List<DependenteCompletoDTO> listaDependenteCompletoDTO = new ArrayList<DependenteCompletoDTO>();
-		List<Dependente> listaImprime = DependenteController.buscarTodosDependente();
+		List<Dependente> listaImprime = DependenteController.buscarTodosDependentes();
 		System.out.println(listaImprime.get(0).getNome());
 		System.out.println(listaImprime.get(1).getNome());
-		for(Dependente dependente : DependenteController.buscarTodosDependente()) {
+		for(Dependente dependente : DependenteController.buscarTodosDependentes()) {
 			listaDependenteCompletoDTO.add(new DependenteCompletoDTO(dependente));
 		}
 		return listaDependenteCompletoDTO;

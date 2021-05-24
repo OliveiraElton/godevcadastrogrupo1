@@ -4,8 +4,10 @@ import static org.junit.Assert.assertEquals;
 
 import java.time.LocalDate;
 
+import org.junit.Before;
 import org.junit.Test;
 
+import br.com.proway.senior.godevcadastrogrupo1.controller.DependenteController;
 import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
@@ -14,12 +16,16 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDep
 /**
  * Classe DependenteCompletoDTOTest.
  * 
- * Testa os métodos da classe {@link DependenteCompletoDTO}.
+ * Testa os mï¿½todos da classe {@link DependenteCompletoDTO}.
  * 
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
  */
 public class DependenteCompletoDTOTest {
-
+	
+	@Before
+	public void limparTabela() {
+		DependenteController.deleteAll();
+	}
 	@Test
 	public void testDependenteCompletoDTO() {
 		Dependente original = new Dependente("Maria", "Silva", "Nada consta", LocalDate.of(2000, 12, 3), "Brasileiro", "Blumenau", true, "Feminino",

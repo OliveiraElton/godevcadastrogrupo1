@@ -28,7 +28,11 @@ public class DependenteControllerTest {
 	static Session session = DBConnection.getSession();
 	static DependenteDAO dao = DependenteDAO.getInstance(session);
 	static ColaboradorDAO daoColab = ColaboradorDAO.getInstance(session);
-	
+
+	@Before
+	public void limparTabela() {
+		DependenteController.deleteAll();
+	}
 	@Test
 	public void testCriarDependente() {
 		Dependente d = DependenteController.criarDependente("Jorge", "Maravilha", "jessica",
@@ -99,19 +103,37 @@ public class DependenteControllerTest {
 		assertEquals(1, DependenteController.buscarDependentePorIdColaborador(idColaborador).size());
 		
 	}
-	//Buscar todos funciona, mas não da pra testar pq metodo limpar nao esta funcionando
-	//devido a chave estrangeira que esta na tabela colaborador_dependente
-	// (cascade somente do registro da relacao entre colaborador e dependente(?))
-//	@Test
-//	public void testBuscarTodosDependentes() {
-//		Dependente d = DependenteController.criarDependente("Jorge", "Maravilha", "jessica",
-//				data, "Brasileiro", null, true, null,
-//				null, "256.103.800-90", "mg14388606", EnumDadosPessoais.TiposDependentes.FILHO,
-//				true, "Rua das oliveiras", 32, "casa", "89032640", "Passo Manso",
-//				"Brasil", "Blumenau", "SC");
-//		
-//		assertEquals(DependenteController.buscarTodosDependentes().size());
-//		
-//	}
+
+	@Test
+	public void testBuscarTodosDependentes() {
+		Dependente d = DependenteController.criarDependente("Jorge", "Maravilha", "jessica",
+				data, "Brasileiro", null, true, null,
+				null, "256.103.800-90", "mg14388606", EnumDadosPessoais.TiposDependentes.FILHO,
+				true, "Rua das oliveiras", 32, "casa", "89032640", "Passo Manso",
+				"Brasil", "Blumenau", "SC");
+		
+		assertEquals(1 ,DependenteController.buscarTodosDependentes().size());
+		
+	}
+	@Test
+	public void testBuscarTodosDependentesPorNome() {
+		Dependente d = DependenteController.criarDependente("Jorge", "Maravilha", "jessica",
+				data, "Brasileiro", null, true, null,
+				null, "256.103.800-90", "mg14388606", EnumDadosPessoais.TiposDependentes.FILHO,
+				true, "Rua das oliveiras", 32, "casa", "89032640", "Passo Manso",
+				"Brasil", "Blumenau", "SC");
+		Dependente d2 = DependenteController.criarDependente("Mestre dos Magos", "Maravilha", "jessica",
+				data, "Brasileiro", null, true, null,
+				null, "256.103.800-90", "mg14388606", EnumDadosPessoais.TiposDependentes.FILHO,
+				true, "Rua das oliveiras", 32, "casa", "89032640", "Passo Manso",
+				"Brasil", "Blumenau", "SC");
+		Dependente d3 = DependenteController.criarDependente("Mestre dos Magos", "Maravilha", "jessica",
+				data, "Brasileiro", null, true, null,
+				null, "256.103.800-90", "mg14388606", EnumDadosPessoais.TiposDependentes.FILHO,
+				true, "Rua das oliveiras", 32, "casa", "89032640", "Passo Manso",
+				"Brasil", "Blumenau", "SC");
+		assertEquals(2, DependenteController.buscarDependentePorNome(d2.getNome()).size());
+		
+	}
 
 }

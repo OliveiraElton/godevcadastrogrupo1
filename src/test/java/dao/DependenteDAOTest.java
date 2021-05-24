@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNull;
 import java.time.LocalDate;
 
 import org.hibernate.Session;
+import org.junit.Before;
 import org.junit.Test;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
@@ -18,6 +19,10 @@ public class DependenteDAOTest {
 	DependenteDAO dao = DependenteDAO.getInstance(session);
 	static LocalDate data = LocalDate.of(2002, 01, 28);
 
+	@Before
+	public void limparTabela() {
+		dao.deleteAll();
+	}
 	@Test
 	public void testReadById() {
 		Dependente dependente = new Dependente("Joãozinho", "Fonseca", "Jenifer", data, "Venezuelano",
@@ -65,4 +70,5 @@ public class DependenteDAOTest {
 		assertEquals("012345678", dao.update(dependente).getRg());
 
 	}
+
 }

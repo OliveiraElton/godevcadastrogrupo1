@@ -31,6 +31,11 @@ public class DependenteSimplificadoControllerApiTest{
 	static ColaboradorDAO daoColab;
 	static DependenteSimplificadoControllerApi dependenteApi;
 	
+	@Before
+	public void limparTabela(){
+		DependenteController.deleteAll();
+	}
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	data = LocalDate.of(2002, 01, 28);
@@ -39,11 +44,6 @@ public class DependenteSimplificadoControllerApiTest{
 	daoColab = ColaboradorDAO.getInstance(session);
 	dependenteApi = new DependenteSimplificadoControllerApi();
 	
-	}
-
-	@Before
-	public void limpaTabela() {
-		DependenteController.limparTabela();
 	}
 	@Test
 	public void testBuscarDependentePorId() {
