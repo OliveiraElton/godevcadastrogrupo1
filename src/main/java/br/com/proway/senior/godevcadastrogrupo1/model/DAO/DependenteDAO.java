@@ -92,6 +92,23 @@ public class DependenteDAO extends Dao<Dependente> implements InterfaceDao<Depen
 			return false;
 		}
 	}
+	
+	/**
+	 * Deletar todos os dependentes.
+	 * 
+	 * Metodo deleta todos os registros de dependentes constantes no banco de dados.
+	 * 
+	 * @return boolean false, caso nenhum registro tenha sido deletado e true caso ao menos
+	 * um registro tenha sido deletado.
+	 */
+	public boolean deleteAll() {
+		if (!this.session.getTransaction().isActive()) {
+			this.session.beginTransaction();
+		}
+		int modificados = this.session.createSQLQuery("TRUNCATE dependente CASCADE").executeUpdate();
+		this.session.getTransaction().commit();
+		return modificados > 0 ? true : false;
+	}
 }
 	
 	
