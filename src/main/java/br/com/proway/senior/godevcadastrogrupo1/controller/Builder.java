@@ -33,7 +33,7 @@ public interface Builder {
 	public void setTitulo_eleitor(String tituloElitor);
 	public void setConta(String nomeBanco, String agencia, String numeroConta, String digitoVerificador);
 	public void setContatos(String telefonePrincipal, String telefoneSecundario, String email,
-			String telefoneFamiliar);
+			String telefoneFamiliar) throws Exception;
 	public void setExameMedico(TiposExames tipoExame, LocalDate dataExame, Boolean apto);
 	public void setDependente(String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
 			String nacionalidade, String naturalidade, Boolean pcd, String genero, IdentidadeGenero identidadeGenero,

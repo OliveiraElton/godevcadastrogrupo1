@@ -34,7 +34,7 @@ public class PrestadorServicoControllerTest {
 	}
 	
 	@Test
-	public void testACriarPrestadorServico() {
+	public void testACriarPrestadorServico() throws Exception {
 		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Beatriz", "Da Massa", "Jhon",
 				data, "Brasil", "São Paulo", true, null,
 				null, "256.103.800-90", null, 
@@ -46,7 +46,7 @@ public class PrestadorServicoControllerTest {
 	}
 
 	@Test
-	public void testEDeletePrestadorServico() {
+	public void testEDeletePrestadorServico() throws Exception {
 		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Beatriz", "Da Massa", "Jhon",
 				data, "Brasil", "São Paulo", true, null,
 				null, "256.103.800-90", null, 
@@ -58,7 +58,7 @@ public class PrestadorServicoControllerTest {
 	}
 
 	@Test
-	public void testDAtualizarPrestadorServico() {
+	public void testDAtualizarPrestadorServico() throws Exception {
 		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Beatriz", "Da Massa", "Jhon",
 				data, "Brasil", "São Paulo", true, null,
 				null, "256.103.800-90", null, 
@@ -78,7 +78,7 @@ public class PrestadorServicoControllerTest {
 	}
 
 	@Test
-	public void testBBuscarPrestadorServicoPorId() {
+	public void testBBuscarPrestadorServicoPorId() throws Exception {
 		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Beatriz", "Da Massa", "Jhon",
 				data, "Brasil", "São Paulo", true, null,
 				null, "256.103.800-90", null, 
@@ -90,7 +90,7 @@ public class PrestadorServicoControllerTest {
 	}
 
 	@Test
-	public void testFBuscarTodosPrestadorServico() {
+	public void testFBuscarTodosPrestadorServico() throws Exception {
 		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Beatriz", "Da Massa", "Jhon",
 				data, "Brasil", "São Paulo", true, null,
 				null, "256.103.800-90", null, 
@@ -102,7 +102,7 @@ public class PrestadorServicoControllerTest {
 	}
 	
 	@Test
-	public void testCBuscarTodosPrestadorServicoPorNome() {
+	public void testCBuscarTodosPrestadorServicoPorNome() throws Exception {
 		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Vampeta", "Da Massa", "Jhon",
 				data, "Brasil", "São Paulo", true, null,
 				null, "256.103.800-90", null, 

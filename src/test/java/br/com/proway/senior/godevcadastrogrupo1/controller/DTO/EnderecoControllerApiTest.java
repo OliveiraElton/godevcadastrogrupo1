@@ -44,7 +44,7 @@ public class EnderecoControllerApiTest {
 	}
 
 	@Test
-	public void testBuscarEnderecoDoColaborador() {
+	public void testBuscarEnderecoDoColaborador() throws Exception {
 		Colaborador c = ColaboradorController.criarColaborador("Brian", "Santos", "Erika", data, "Venezuelano",
 				"Blumenauense", true, null, ig, "09619039610", "mg14388606", 8, null, false, false, data, false, null,
 				"brian@gmail.com", null, null, null, null, "54126547", "Teste Endereco", "Teste Endereco", "Teste Endereco", "Teste Endereco", "4521452015",
@@ -57,7 +57,7 @@ public class EnderecoControllerApiTest {
 	}
 
 	@Test
-	public void testBuscarEnderecoPorId() {
+	public void testBuscarEnderecoPorId() throws Exception {
 		Colaborador c = ColaboradorController.criarColaborador("Brian", "Santos", "Erika", data, "Venezuelano",
 				"Blumenauense", true, null, ig, "09619039610", "mg14388606", 8, null, false, false, data, false, null,
 				"brian@gmail.com", null, null, null, null, "54126547", "Teste Endereco", "Teste Endereco", "Teste Endereco", "Teste Endereco", "4521452015",
@@ -70,7 +70,7 @@ public class EnderecoControllerApiTest {
 	}
 	
 	@Test
-	public void testBuscarTodosEnderecos() {
+	public void testBuscarTodosEnderecos() throws Exception {
 		Colaborador colaborador = ColaboradorController.criarColaborador("Brian", "Santos", "Erika", data, "Venezuelano",
 				"Blumenauense", true, null, ig, "09619039610", "mg14388606", 8, null, false, false, data, false, null,
 				"brian@gmail.com", null, null, null, null, "54126547", "Teste Endereco", "Teste Endereco", "Teste Endereco", "Teste Endereco", "4521452015",

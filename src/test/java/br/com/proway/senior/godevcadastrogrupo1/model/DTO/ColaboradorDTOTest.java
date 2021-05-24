@@ -17,7 +17,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExa
 public class ColaboradorDTOTest {
 
 	@Test
-	public void testCriarColaboradorDTO() {
+	public void testCriarColaboradorDTO() throws Exception {
 		Endereco endereco = new Endereco("Rua 15 de Novembro", 1742, "Casa", "89065478", "Centro", "Brasil", "Blumenau", "SC");
 		Contatos contatos = new Contatos("47988154763", "4733259647", "jucazao@gmail.com", "4733124578");
 		ExameMedico exame = new ExameMedico(TiposExames.ADMISSIONAL, LocalDate.now(), true);

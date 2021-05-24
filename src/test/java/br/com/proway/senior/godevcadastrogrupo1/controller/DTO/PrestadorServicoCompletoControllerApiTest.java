@@ -20,7 +20,7 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 /**
  * Classe PrestadorServicoCompletoControllerApiTest.
- * Testa o métodos de busca.
+ * Testa o mï¿½todos de busca.
  * 
  * @author Elton Oliveira
  *
@@ -49,19 +49,19 @@ public class PrestadorServicoCompletoControllerApiTest {
 	}
 
 	@Test
-	public void testBuscarPrestadorServicoPorId() {
+	public void testBuscarPrestadorServicoPorId() throws Exception {
 		PrestadorServicoController.criarPrestadorServico("Vampeta", "Da Massa", "Jhon",
-				LocalDate.now(), "Brasil", "São Paulo", true, null,
+				LocalDate.now(), "Brasil", "Sï¿½o Paulo", true, null,
 				null, "256.103.800-90", null, 
 				LocalDate.of(2020, 01, 28), 1, "1543652548",
-				"1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510,
-				"Prédio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
+				"1543652548", "batriz@gmail.com", "1543652548", "Rua sï¿½o Paulo", 510,
+				"Prï¿½dio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 		PrestadorServicoController.criarPrestadorServico("Vampeta", "Fulana", "Jhon",
-				LocalDate.now(), "Brasil", "São Paulo", true, null,
+				LocalDate.now(), "Brasil", "Sï¿½o Paulo", true, null,
 				null, "256.103.800-90", null, 
 				LocalDate.of(2020, 01, 28), 1, "1543652548",
-				"1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510,
-				"Prédio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
+				"1543652548", "batriz@gmail.com", "1543652548", "Rua sï¿½o Paulo", 510,
+				"Prï¿½dio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 		
 		PrestadorServicoCompletoDTO prestadorCompletoDTO = prestadorApi.buscarPrestadorServicoCompletoPorId(prestadorApi.buscarTodosPrestadorServicoCompleto().get(0).getId());
 		assertEquals("256.103.800-90", prestadorCompletoDTO.getCpf());
@@ -69,40 +69,40 @@ public class PrestadorServicoCompletoControllerApiTest {
 	}
 
 	@Test
-	public void testBuscarTodosPrestadorServico() {
+	public void testBuscarTodosPrestadorServico() throws Exception {
 		PrestadorServicoController.criarPrestadorServico("Vampeta", "Da Massa", "Jhon",
-				LocalDate.now(), "Brasil", "São Paulo", true, null,
+				LocalDate.now(), "Brasil", "Sï¿½o Paulo", true, null,
 				null, "256.103.800-90", null, 
 				LocalDate.of(2020, 01, 28), 1, "1543652548",
-				"1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510,
-				"Prédio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
+				"1543652548", "batriz@gmail.com", "1543652548", "Rua sï¿½o Paulo", 510,
+				"Prï¿½dio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 		
 		PrestadorServicoController.criarPrestadorServico("Vampeta", "Fulana", "Jhon",
-				LocalDate.now(), "Brasil", "São Paulo", true, null,
+				LocalDate.now(), "Brasil", "Sï¿½o Paulo", true, null,
 				null, "256.103.800-90", null, 
 				LocalDate.of(2020, 01, 28), 1, "1543652548",
-				"1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510,
-				"Prédio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
+				"1543652548", "batriz@gmail.com", "1543652548", "Rua sï¿½o Paulo", 510,
+				"Prï¿½dio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 		
 		List<PrestadorServicoCompletoDTO> listaPrestadorCompletoDTO = prestadorApi.buscarTodosPrestadorServicoCompleto();
 		assertEquals(2, listaPrestadorCompletoDTO.size());
 	}
 	
 	@Test
-	public void testBuscarPrestadorServicoPorNome() {
+	public void testBuscarPrestadorServicoPorNome() throws Exception {
 		PrestadorServicoController.criarPrestadorServico("Vampeta", "Da Massa", "Jhon",
-				LocalDate.now(), "Brasil", "São Paulo", true, null,
+				LocalDate.now(), "Brasil", "Sï¿½o Paulo", true, null,
 				null, "256.103.800-90", null, 
 				LocalDate.of(2020, 01, 28), 1, "1543652548",
-				"1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510,
-				"Prédio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
+				"1543652548", "batriz@gmail.com", "1543652548", "Rua sï¿½o Paulo", 510,
+				"Prï¿½dio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 		
 		PrestadorServicoController.criarPrestadorServico("Professor Ricardo", "Fulana", "Jhon",
-				LocalDate.now(), "Brasil", "São Paulo", true, null,
+				LocalDate.now(), "Brasil", "Sï¿½o Paulo", true, null,
 				null, "256.103.800-90", null, 
 				LocalDate.of(2020, 01, 28), 1, "1543652548",
-				"1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510,
-				"Prédio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
+				"1543652548", "batriz@gmail.com", "1543652548", "Rua sï¿½o Paulo", 510,
+				"Prï¿½dio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 		
 		List<PrestadorServicoCompletoDTO> listaPrestadorCompletoDTO = PrestadorServicoCompletoControllerApi.buscarPrestadorServicoCompletoPorNome("Professor Ricardo");
 		assertEquals(1 ,listaPrestadorCompletoDTO.size());

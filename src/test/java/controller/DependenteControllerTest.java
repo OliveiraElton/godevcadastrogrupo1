@@ -96,7 +96,7 @@ public class DependenteControllerTest {
 	}
 
 	@Test
-	public void testBuscarDependentePorIdColaborador() {
+	public void testBuscarDependentePorIdColaborador() throws Exception {
 		Endereco endereco = new Endereco("Rua 1", 10, "Casa", "54215365", "Centro", "Brasil", "Blumenau", "SC");
 		Dependente dependente = new Dependente("Carla", "Fonseca", "Carla", data, "Venezuelano", "Cidade del Leste",
 				true, "Feminino", IdentidadeGenero.CIS, endereco, "09619039610", "480808408",

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import org.hibernate.Session;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
@@ -68,6 +69,11 @@ public class ColaboradorDAOTest {
 	Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Venezuelano", "Cidade del Leste",
 			true, null, null, endereco, "09619039610", null, null, true);
 
+	@BeforeClass()
+	public void setUpStaticos() throws Exception {
+		contatos = new Contatos("47988554466", "4732569874", email, "479875643");
+	
+	}
 	@Before
 	public void limparTabelas() {
 		dao.deleteAll();
@@ -122,7 +128,7 @@ public class ColaboradorDAOTest {
 
 	@Test
 	public void testGDelete() {
-		Colaborador colaborador = new Colaborador("Fernanda", "Brito", "Nada consta", data, "Brasileira", "Bagé", false,
+		Colaborador colaborador = new Colaborador("Fernanda", "Brito", "Nada consta", data, "Brasileira", "Bagï¿½", false,
 				"Feminino", ig, endereco, "21164028324", "45124563", contatos, 1, 84536112, false, false, data, false,
 				"1234555688", "fernanda@gmail.com", "554555", conta, exameMedico, dependente);
 		dao.create(colaborador);

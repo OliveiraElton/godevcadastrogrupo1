@@ -72,7 +72,7 @@ public class DependenteSimplificadoControllerApiTest{
 	}
 
 	@Test
-	public void testBuscarDependentePorIdColaborador() {
+	public void testBuscarDependentePorIdColaborador() throws Exception {
 		Endereco endereco = new Endereco("Rua 16", 5, "Casa", "54215365", "Centro", "Brasil", "Blumanau", "SC");
 		Dependente dependente = new Dependente("Joao", "Fonseca", "Nada consta", data, "Venezuelano",
 				"Cidade del Leste", true, "Masculino", IdentidadeGenero.CIS, endereco, "09619039610","123", 

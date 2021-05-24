@@ -170,6 +170,7 @@ public class PessoaBuilder implements Builder {
 	}
 
 	public void setContatos(String telefonePrincipal, String telefoneSecundario, String email,
+
 			String telefoneFamiliar) {
 		try {
 			this.contatos = new Contatos(telefonePrincipal, telefoneSecundario, email, telefoneFamiliar);

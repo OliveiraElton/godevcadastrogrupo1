@@ -43,7 +43,7 @@ public class EmpresaDAOTest {
 	}
 
 	@Test
-	public void testBReadById() {
+	public void testBReadById() throws Exception {
 		Endereco endereco = new Endereco("Rua Sete de Setembro", 123, "Taruma Office", "89010-911", "Centro", "Brasil",
 				"Blumenau", "SC");
 		Contatos contatos = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
@@ -59,7 +59,7 @@ public class EmpresaDAOTest {
 	}
 
 	@Test
-	public void testFGetAll() {
+	public void testFGetAll() throws Exception {
 		Endereco endereco = new Endereco("Rua Sete de Setembro", 123, "Taruma Office", "89010-911", "Centro", "Brasil",
 				"Blumenau", "SC");
 		Contatos contatos = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
@@ -78,7 +78,7 @@ public class EmpresaDAOTest {
 	}
 
 	@Test
-	public void testACreate() {
+	public void testACreate() throws Exception {
 		Endereco endereco = new Endereco("Rua Sete de Setembro", 123, "Taruma Office", "89010911", "Centro", "Brasil",
 				"Blumenau", "SC");
 		Contatos contatos = new Contatos("4799944899", "47988994455", "proway@proway.com", "47988553322");
@@ -89,7 +89,7 @@ public class EmpresaDAOTest {
 	}
 
 	@Test
-	public void testEDelete() {
+	public void testEDelete() throws Exception {
 		Endereco endereco = new Endereco("Rua Sete de Setembro", 123, "Taruma Office", "89010911", "Centro", "Brasil",
 				"Blumenau", "SC");
 		Contatos contatos = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
@@ -102,7 +102,7 @@ public class EmpresaDAOTest {
 	}
 
 	@Test
-	public void testCUpdate() {
+	public void testCUpdate() throws Exception {
 		Endereco endereco = new Endereco("Rua Sete de Setembro", 123, "Taruma Office", "89010-911", "Centro", "Brasil",
 				"Blumenau", "SC");
 		Contatos contatos = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
@@ -115,7 +115,7 @@ public class EmpresaDAOTest {
 	}
 
 	@Test
-	public void testGDeleteAll() {
+	public void testGDeleteAll() throws Exception {
 		Endereco endereco = new Endereco("Rua Sete de Setembro", 123, "Taruma Office", "89010-911", "Centro", "Brasil",
 				"Blumenau", "SC");
 		Contatos contatos = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
@@ -126,7 +126,7 @@ public class EmpresaDAOTest {
 	}
 	
 	@Test
-	public void testDBuscarPorNome() {
+	public void testDBuscarPorNome() throws Exception {
 		Endereco endereco = new Endereco("Rua Sete de Setembro", 123, "Taruma Office", "89010-911", "Centro", "Brasil",
 				"Blumenau", "SC");
 		Contatos contatos = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
