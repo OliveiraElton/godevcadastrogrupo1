@@ -24,6 +24,7 @@ public abstract class Dao<T>{
 		return item;
 		}catch(Exception e) {
 			session.clear();
+			e.getMessage();
 		}
 		return null;
 	}
@@ -39,17 +40,13 @@ public abstract class Dao<T>{
 	 * @return
 	 */
 	public boolean delete(T item) {
-		try {
 		session.clear();
 		if (!session.getTransaction().isActive())
 			session.beginTransaction();
 		session.delete(item);
 		session.getTransaction().commit();
 		return true;
-		}catch(Exception e) {
-			session.clear();
-		}
-		return false;
+	
 	}
 
 	/**
@@ -70,6 +67,7 @@ public abstract class Dao<T>{
 		session.getTransaction().commit();
 		return item;
 		}catch(Exception e) {
+			e.getMessage();
 			session.clear();
 		}
 		return item;

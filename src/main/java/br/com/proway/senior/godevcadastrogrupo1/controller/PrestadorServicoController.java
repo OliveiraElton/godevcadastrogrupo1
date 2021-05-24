@@ -176,10 +176,6 @@ public class PrestadorServicoController {
 		return daoPrestadorServico.buscarPorNome(nome);
 	}
 	
-	public void limpaTabela() {
-		daoPrestadorServico.limparTabela();
-	}
-	
 	public static void deleteAll() {
 		daoPrestadorServico.deleteAll();
 		

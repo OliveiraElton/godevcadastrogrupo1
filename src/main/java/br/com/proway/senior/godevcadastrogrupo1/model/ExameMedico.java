@@ -48,9 +48,9 @@ public class ExameMedico {
 	 * @param apto
 	 */
 	public ExameMedico(TiposExames tipoExame, LocalDate dataExame, boolean apto) {
-		this.tipoExame = tipoExame;
-		this.dataExame = dataExame;
-		this.apto = apto;
+		this.setTipoExame(tipoExame);
+		this.setDataExame(dataExame);
+		this.setApto(apto);
 	}
 	
 	public TiposExames getTipoExame() {

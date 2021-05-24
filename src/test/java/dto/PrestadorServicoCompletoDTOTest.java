@@ -33,6 +33,7 @@ public class PrestadorServicoCompletoDTOTest {
 	assertEquals(novo.getDataInicioContrato(), dto.getDataInicioContrato());
 	assertEquals(novo.getEmpresa(), dto.getEmpresa());
 	assertEquals(novo.getIdSetor(), dto.getIdSetor());
+	assertEquals(novo.getContatos(), dto.getContatos());
 	
 	}
 }

@@ -28,10 +28,10 @@ public class Conta {
 	 * @param digitoVerificador
 	 */
 	public Conta(String nomeBanco, String agencia, String numeroConta, String digitoVerificador) {
-		this.nomeBanco = nomeBanco;
-		this.agencia = agencia;
-		this.numeroConta = numeroConta;
-		this.digitoVerificador = digitoVerificador;
+		this.setNomeBanco(nomeBanco);
+		this.setAgencia(agencia);
+		this.setNumeroConta(numeroConta);
+		this.setDigitoVerificador(digitoVerificador);
 	}
 
 	public String getNomeBanco() {
