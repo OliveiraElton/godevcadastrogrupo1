@@ -201,4 +201,10 @@ public class ColaboradorDAOTest {
 		assertEquals(colaborador2.getConta(), listaRetorno.get(1).getConta());
 	}
 
+	@Test
+	public void testContrutor() {
+		ColaboradorDAO colabDAO = new ColaboradorDAO(DBConnection.getSession());
+		assertNotNull(colabDAO);
+	}
+	
 }
