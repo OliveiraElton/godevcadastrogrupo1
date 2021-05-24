@@ -71,6 +71,7 @@ public class DependenteSimplificadoControllerApiTest{
 		dao.create(dependente);
 		DependenteSimplificadoDTO dependenteDTO = new DependenteSimplificadoDTO(dependente);
 		Integer idColaborador = colaborador.getId();
+		System.out.println(colaborador.getId());
 		assertEquals(1, dependenteApi.buscarDependentePorIdColaborador(idColaborador).size());
 	}
 	

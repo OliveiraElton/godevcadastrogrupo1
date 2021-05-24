@@ -22,10 +22,6 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDep
  */
 public class DependenteCompletoDTOTest {
 	
-	@Before
-	public void limparTabela() {
-		DependenteController.deleteAll();
-	}
 	@Test
 	public void testDependenteCompletoDTO() {
 		Dependente original = new Dependente("Maria", "Silva", "Nada consta", LocalDate.of(2000, 12, 3), "Brasileiro", "Blumenau", true, "Feminino",
