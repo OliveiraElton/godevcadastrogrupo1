@@ -42,62 +42,53 @@ public class Contatos{
 	 * @param telefoneSecundario
 	 * @param email
 	 * @param telefoneFamiliar
+	 * @throws Exception 
 	 */
-	public Contatos(String telefonePrincipal, String telefoneSecundario, String email, String telefoneFamiliar) {
-		this.telefonePrincipal = telefonePrincipal;
-		this.telefoneSecundario = telefoneSecundario;
-		this.email = email;
-		this.telefoneFamiliar = telefoneFamiliar;
+	public Contatos(String telefonePrincipal, String telefoneSecundario, String email, String telefoneFamiliar) throws Exception {
+		this.setTelefonePrincipal(telefonePrincipal);
+		this.setTelefoneSecundario(telefoneSecundario);
+		this.setEmail(email);
+		this.setTelefoneFamiliar(telefoneFamiliar);
 	}
 
 	public String getTelefonePrincipal() {
 		return telefonePrincipal;
 	}
 
-	public void setTelefonePrincipal(String telefonePrincipal) {
-		try{
+	public void setTelefonePrincipal(String telefonePrincipal) throws Exception {
 			ValidacaoDocumentos.validarTamanhoTelefone(telefonePrincipal);
 			this.telefonePrincipal = telefonePrincipal;
-		}
-		catch(Exception e){
-			e.getMessage();
-		}
 	}
 
 	public String getTelefoneSecundario() {
 		return telefoneSecundario;
 	}
 
-	public void setTelefoneSecundario(String telefoneSecundario) {
-		try{
-			ValidacaoDocumentos.validarTamanhoTelefone(telefonePrincipal);
-			this.telefoneSecundario = telefoneSecundario;
-		}
-		catch(Exception e){
-			e.getMessage();
-		}
+	public void setTelefoneSecundario(String telefoneSecundario) throws Exception{
+			if(ValidacaoDocumentos.validarTamanhoTelefone(telefonePrincipal)) {
+				this.telefoneSecundario = telefoneSecundario;
+			}
 	}
 
 	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(String email) {
-		try {
-			ValidacaoDocumentos.validarEmail(email);
+	public void setEmail(String email) throws Exception {
+		if(ValidacaoDocumentos.validarEmail(email)) {
 			this.email = email;
 		}
-		catch(Exception e) {
-			e.getMessage();
-		}
+		
 	}
 
 	public String getTelefoneFamiliar() {
 		return telefoneFamiliar;
 	}
 
-	public void setTelefoneFamiliar(String telefoneFamiliar) {
-		this.telefoneFamiliar = telefoneFamiliar;
+	public void setTelefoneFamiliar(String telefoneFamiliar) throws Exception {
+		if(ValidacaoDocumentos.validarTamanhoTelefone(telefoneFamiliar)) {
+			this.telefoneFamiliar = telefoneFamiliar;
+		}
 	}
 
 	public int getId() {
