@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import org.hibernate.Session;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
