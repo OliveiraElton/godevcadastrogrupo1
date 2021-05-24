@@ -71,13 +71,13 @@ public class DependenteControllerTest {
 
 	@Test
 	public void testAtualizarDependente() {
-		Dependente d = DependenteController.criarDependente("Jorge", "Martins", "Jessica", data, "Brasileiro",
+		Dependente dependente = DependenteController.criarDependente("Jorge", "Martins", "Jessica", data, "Brasileiro",
 				"Cascavel", true, "Masculino", IdentidadeGenero.TRANS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
-		dao.create(d);
+		dao.create(dependente);
 		session.clear();
-		DependenteController.atualizarDependente(d.getId(), "Bruno", "Souza", "Nada consta", data, "Brasileira",
+		DependenteController.atualizarDependente(dependente.getId(), "Bruno", "Souza", "Nada consta", data, "Brasileira",
 				"Brusque", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.CONJUGE, true, "Rua das Oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
@@ -118,7 +118,7 @@ public class DependenteControllerTest {
 
 	@Test
 	public void testBuscarTodosDependentes() {
-		Dependente d = DependenteController.criarDependente("Jessia", "Martins", "Jessica", data, "Brasileiro",
+		Dependente dependente = DependenteController.criarDependente("Jessia", "Martins", "Jessica", data, "Brasileiro",
 				"Camboriu", true, "Feminino", IdentidadeGenero.CIS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das Oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");

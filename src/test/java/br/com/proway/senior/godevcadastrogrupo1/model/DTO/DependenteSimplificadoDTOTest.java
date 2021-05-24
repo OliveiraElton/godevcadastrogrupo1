@@ -16,7 +16,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDep
 /**
  * Classe DependenteDTOTest
  * 
- * Testa os m�todos da classe {@link DependenteSimplificadoDTO}.
+ * Testa os metodos da classe {@link DependenteSimplificadoDTO}.
  * 
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
  */
