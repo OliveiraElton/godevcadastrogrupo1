@@ -1,4 +1,4 @@
-package br.com.proway.senior.godevcadastrogrupo1.model.DAO;
+ package br.com.proway.senior.godevcadastrogrupo1.model.DAO;
 
 import java.util.List;
 

@@ -51,7 +51,7 @@ public class EnderecoController {
 	 * @return vai retornar true se for deletaco com sucesso ou falso caso nao for deletado
 	 */
 	public static boolean deletarEndereco(Endereco enderecoDeletar) {
-		return EnderecoDAO.getInstance(session).delete(enderecoDeletar);
+		  return enderecoDao.delete(enderecoDeletar);
 	}
 
 	/**
@@ -102,9 +102,5 @@ public class EnderecoController {
 	 */
 	public static List<Endereco> listarTodosEnderecos() {
 		return enderecoDao.getAll();
-	}
-	
-	public static void limparTabela() {
-		enderecoDao.limparTabela();
 	}
 }

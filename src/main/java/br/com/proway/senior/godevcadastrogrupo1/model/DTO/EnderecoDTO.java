@@ -18,7 +18,7 @@ public class EnderecoDTO {
 	 * @param uf
 	 */
 	
-
+	private Integer id;
 	private Integer idColaborador;
 	private String logradouro;
 	private Integer numero;
@@ -30,6 +30,7 @@ public class EnderecoDTO {
 	private String uf;
 	
 	public EnderecoDTO(Colaborador colaborador) {
+		this.id = colaborador.getEndereco().getId();
 		this.idColaborador = colaborador.getId();
 		this.logradouro = colaborador.getEndereco().getLogradouro();
 		this.numero = colaborador.getEndereco().getNumero();
@@ -40,8 +41,10 @@ public class EnderecoDTO {
 		this.cidade = colaborador.getEndereco().getCidade();
 		this.uf = colaborador.getEndereco().getUf();
 	}
+	
 	public EnderecoDTO(Endereco endereco) {
 		super();
+		this.id = endereco.getId();
 		this.logradouro = endereco.getLogradouro();
 		this.numero = endereco.getNumero();
 		this.complemento = endereco.getComplemento();
@@ -53,7 +56,7 @@ public class EnderecoDTO {
 	}
 
 	public Integer getId() {
-		return idColaborador;
+		return id;
 	}
 	public String getLogradouro() {
 		return logradouro;
