@@ -186,7 +186,6 @@ public class ColaboradorControllerTest {
 		daoContatos.deleteAll();
 		daoEndereco.deleteAll();
 		daoExameMedico.deleteAll();
-		daoExameMedico.deleteAll();
 		daoDependente.deleteAll();
 	}
 

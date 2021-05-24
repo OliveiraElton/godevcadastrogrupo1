@@ -124,7 +124,6 @@ public class ColaboradorCompletoControllerAPITest {
 		daoContatos.deleteAll();
 		daoEndereco.deleteAll();
 		daoExameMedico.deleteAll();
-		daoExameMedico.deleteAll();
 		daoDependente.deleteAll();
 	}
 }

@@ -55,12 +55,11 @@ public class ColaboradorSimplificadoControllerAPITest {
 	static DependenteDAO daoDependente = DependenteDAO.getInstance(session);
 
 	@Before
-	public void setUpBeforeClass() throws Exception {
+	public void limparTabelas() throws Exception {
 		dao.deleteAll();
 		daoConta.deleteAll();
 		daoContatos.deleteAll();
 		daoEndereco.deleteAll();
-		daoExameMedico.deleteAll();
 		daoExameMedico.deleteAll();
 		daoDependente.deleteAll();
 	}
