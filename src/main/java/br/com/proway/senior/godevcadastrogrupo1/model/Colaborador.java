@@ -76,7 +76,7 @@ public class Colaborador extends Pessoa {
 	 * @param cpf
 	 * @param rg
 	 * @param contatos
-	 * @param idCargo
+	 * @param idPostoDeTrabalho
 	 * @param nit
 	 * @param optanteVT
 	 * @param optanteVAVR
@@ -92,13 +92,13 @@ public class Colaborador extends Pessoa {
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade,
 			Boolean pcd, String genero, IdentidadeGenero identidadeGenero,
 			Endereco endereco, String cpf, String rg, Contatos contatos, 
-			Integer idCargo, Integer nit, Boolean optanteVT, Boolean optanteVAVR,
+			Integer idPostoDeTrabalho, Integer nit, Boolean optanteVT, Boolean optanteVAVR,
 			LocalDate dataAdmissao, Boolean optanteDependente, String registro_alistamento, 
 			String email_corporativo, String titulo_eleitor, Conta conta, 
 			ExameMedico exameMedico, Dependente dependente) {
 		super(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, 
 				naturalidade, pcd, genero, identidadeGenero, endereco, cpf, rg);
-		this.idPostoDeTRabalho = idCargo;
+		this.idPostoDeTRabalho = idPostoDeTrabalho;
 		this.nit = nit;
 		this.optanteVT = optanteVT;
 		this.optanteVAVR = optanteVAVR;
@@ -125,8 +125,8 @@ public class Colaborador extends Pessoa {
 		return idPostoDeTRabalho;
 	}
 
-	public void setIdCargo(Integer idCargo) {
-		this.idPostoDeTRabalho = idCargo;
+	public void setIdPostoDeTrabalho(Integer idPostoDeTrabalho) {
+		this.idPostoDeTRabalho = idPostoDeTrabalho;
 	}
 
 	public Integer getNit() {

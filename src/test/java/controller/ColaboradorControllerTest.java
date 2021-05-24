@@ -57,11 +57,11 @@ public class ColaboradorControllerTest {
 	
 	@Test
 	public void testCriarColaborador() {
-		Colaborador colaboradorCriado = ColaboradorController.criarColaborador("Brian", "Santos", "Erika", data, "Brasileiro",
+		Colaborador colaboradorCriado = ColaboradorController.criarColaborador("Brian", "Santos", "Erika", data, "Brasileira",
 				"Blumenau", true, null, ig, "09619039610", "mg14388606", 8, null, false, false, data, false, null,
 				"brian@gmail.com", null, null, null, null, "54126547", null, null, null, null, "4521452015",
 				"5421452103", "brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00", "055",
-				"438614625", "154", "Mario", "Santos", "Erika", data, "Brasileiro", "Blumenau", true, null,
+				"438614625", "154", "Mario", "Santos", "Nada consta", data, "Brasileira", "Blumenau", true, null,
 				ig, "09619039610", "mg14388606", tipoDep, true);
 		assertNotNull(colaboradorCriado);
 	}
@@ -72,7 +72,7 @@ public class ColaboradorControllerTest {
 				"Blumenau", true, null, ig, "09619039610", "mg14388606", 8, null, false, false, data, false, null,
 				"brian@gmail.com", null, null, null, null, "54126547", null, null, null, null, "4521452015",
 				"5421452103", "brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00", "055",
-				"438614625", "154", "Erika", "Santos", "Erika", data, "Brasileiro", "Blumenauense", true, null,
+				"438614625", "154", "Erika", "Santos", "Erika", data, "Brasileira", "Blumenau", true, null,
 				ig, "09619039610", "mg14388606", tipoDep, true);
 		ColaboradorController.deleteColabordor(dao.readById(colaboradorCriado.getId()));
 		assertNull(dao.readById(colaboradorCriado.getId()));
@@ -99,15 +99,15 @@ public class ColaboradorControllerTest {
 
 	@Test
 	public void testBuscarColaboradorPorId() {
-		Conta conta = new Conta(null, null, null, null);
-		Endereco endereco = new Endereco(null, null, null, "54215365", null, null, null, null);
+		Conta conta = new Conta("Santander", "0850", "0084044", "0");
+		Endereco endereco = new Endereco("Rua 10", 15, "Casa", "54215365", "Centro", "Brasil", "Blumemau", "SC");
 		Contatos contatos = new Contatos("4521456985", "4521456985", "Jenifer", "4521456985");
-		ExameMedico exameMedico = new ExameMedico(null, null, false);
+		ExameMedico exameMedico = new ExameMedico(te, LocalDate.of(2020, 10, 5), true);
 		Dependente dependente = new Dependente("Jenifer", "Fonseca", "Jenifer", data, "Brasileira",
 				"Blumenau", true, null, null, endereco, "09619039610", null, tipoDep, true);
 		Colaborador colaborador = new Colaborador("Lucas", "Nunes", "Nada consta", data, "Brasileira", "Blumenau", false,
-				"Masculino", ig, endereco, "21164028324", "45124563", contatos, null, null, false, false, data, false,
-				null, "lucas.nunes@gmail.com", "554555", conta, exameMedico, dependente);
+				"Masculino", ig, endereco, "21164028324", "45124563", contatos, 1235, 154897987, false, false, data, false,
+				"0780848080", "lucas.nunes@gmail.com", "554555", conta, exameMedico, dependente);
 		dao.create(colaborador);
 		assertEquals(colaborador, ColaboradorController.buscarColaboradorPorId(colaborador.getId()));
 
@@ -116,38 +116,37 @@ public class ColaboradorControllerTest {
 	@Test
 	public void testBuscarTodosColaborador() {
 		Integer valorAntes = ColaboradorController.buscarTodosColaboradores().size();
-		ColaboradorController.criarColaborador("Brian", "Santos", "Erika", data, "Brasileira", "Blumenau", true,
-				null, ig, "09619039610", "mg14388606", 8, null, false, false, data, false, null, "brian@gmail.com",
-				null, null, null, null, "54126547", null, null, null, null, "4521452015", "5421452103",
-				"brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00", "055", "438614625", "14",
-				"joãozinho", "Santos", "Erika", data, "Brasileiro", "Blumenauense", true, null, ig, "09619039610",
-				"mg14388606", tipoDep, true);
+		ColaboradorController.criarColaborador("Carlos", "Moraes", "Nada consta", data, "Brasileira", "Blumenau", true, "Masculino", ig, "09619039610", 
+				"mg14388606", 8, 8788881, false, false, data, false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", 
+				"54126547", "Centro", "Brasil", "Florian�polis", "SC", "4521452015", "5421452103", "joana@empresa.com.br", "1542413655", te, 
+				LocalDate.of(2020, 10, 5), true, "Caixa", "055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", 
+				true, "Feminino", ig, "09619039610", "mg14388606", tipoDep, true);
 		assertEquals(valorAntes + 1, ColaboradorController.buscarTodosColaboradores().size());
 	}
 
 	@Test
 	public void testAdicionarNovoDependente() {
-		Colaborador colaborador = ColaboradorController.criarColaborador("Camila", "Souza", "Nada consta", data,
-				"Brasileira", "Blumenau", true, null, ig, "09619039610", "mg14388606", 8, null, false, false, data,
-				false, null, "brian@gmail.com", null, null, null, null, "54126547", null, null, null, null,
-				"4521452015", "5421452103", "brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00",
-				"055", "438614625", "154", "joãozinho", "Santos", "Erika", data, "Brasileira", "Blumenau", true,
-				null, ig, "09619039610", "mg14388606", tipoDep, true);
-		ColaboradorController.adicionarDependente(colaborador, "David", "Hilderbrant", "Nada Consta", null, "Brasileira",
+		Colaborador colaborador = ColaboradorController.criarColaborador("Camila", "Moraes", "Nada consta", data,
+				"Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data,
+				false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
+				"4521452015", "5421452103", "joana@empresa.com.br", "1542413655", te, LocalDate.of(2020, 10, 5), true, "Caixa",
+				"055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", 
+				"mg14388606", tipoDep, true);
+		ColaboradorController.adicionarDependente(colaborador, "David", "Hilderbrant", "Nada consta", null, "Brasileira",
 				"Blumenau", true, null, null, "123.587.893-50", "Mg-14.388.606",
-				EnumDadosPessoais.TiposDependentes.PAI, false, "Rua sem saida", 666, "segue reto toda vida", null,
-				"Garcia", "O sul é meu país", "Brusque", "SC");
+				EnumDadosPessoais.TiposDependentes.PAI, false, "Rua 15", 666, "Casa", "89032180",
+				"Garcia", "Brasil", "Brusque", "SC");
 		assertEquals(2, colaborador.getDependente().size());
 	}
 
 	@Test
 	public void testAdicionarNovoExameMedico() {
-		Colaborador colaborador = ColaboradorController.criarColaborador("Camila", "Souza", "Nada consta", data,
-				"Venezuelano", "Blumenauense", true, null, ig, "09619039610", "mg14388606", 8, null, false, false, data,
-				false, null, "brian@gmail.com", null, null, null, null, "54126547", null, null, null, null,
-				"4521452015", "5421452103", "brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00",
-				"055", "438614625", "154", "joãozinho", "Santos", "Erika", data, "Brasileira", "Blumenau", true,
-				null, ig, "09619039610", "mg14388606", tipoDep, true);
+		Colaborador colaborador = ColaboradorController.criarColaborador("Maria", "Santos", "Nada consta", data,
+				"Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data,
+				false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
+				"4521452015", "5421452103", "joana@empresa.com.br", "1542413655", te, LocalDate.of(2020, 10, 5), true, "Caixa",
+				"055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", 
+				"mg14388606", tipoDep, true);
 		TiposExames te2 = EnumExamesMedicos.TiposExames.PERIODICO;
 		ColaboradorController.adicionarExameMedico(colaborador, te2, data, true);
 		assertEquals(2, colaborador.getExameMedico().size());
@@ -157,16 +156,16 @@ public class ColaboradorControllerTest {
 	@Test
 	public void testBuscarPorNome() {
 		Colaborador colaborador1 = ColaboradorController.criarColaborador("Joana", "Marla", "Nada consta", data,
-				"Venezuelano", "Blumenauense", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data,
+				"Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data,
 				false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
-				"4521452015", "5421452103", "joana@empresa.com.br", "1542413655", te, null, true, "banco00",
-				"055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Venezuelano", "Blumenauense", true,
+				"4521452015", "5421452103", "joana@empresa.com.br", "1542413655", te, LocalDate.of(2021, 10, 5), true, "Caixa",
+				"055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", true,
 				"Feminino", ig, "09619039610", "mg14388606", tipoDep, true);
 		Colaborador colaborador2 = ColaboradorController.criarColaborador("Joana", "Pereira", "Nada consta", data,
-				"Venezuelano", "Blumenauense", true, "Feminino", ig, "7878888878", "mg14388606", 8, 8788881, false, false, data,
+				"Brasileira", "Blumenau", true, "Feminino", ig, "7878888878", "mg14388606", 8, 8788881, false, false, data,
 				false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
-				"4521452015", "5421452103", "joana@empresa.com.br", "1542413655", te, null, true, "banco00",
-				"055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileiro", "Blumenau", true,
+				"4521452015", "5421452103", "joana@empresa.com.br", "1542413655", te, LocalDate.of(2021, 10, 5), true, "BB",
+				"055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", true,
 				"Feminino", ig, "09619039610", "mg14388606", tipoDep, true);
 		
 		ArrayList<Colaborador> listaRetorno = (ArrayList<Colaborador>) ColaboradorController.buscarColaboradorPorNome("Joana");
