@@ -91,7 +91,7 @@ public class EmpresaDAO extends Dao<Empresa> implements InterfaceDao<Empresa>{
 		if (!this.session.getTransaction().isActive()) {
 			this.session.beginTransaction();
 		}
-		int modificados = this.session.createSQLQuery("DELETE FROM empresa")
+		int modificados = this.session.createSQLQuery("TRUNCATE empresa CASCADE")
 				.executeUpdate();
 		this.session.getTransaction().commit();
 		return modificados > 0 ? true : false;
