@@ -177,4 +177,9 @@ public class PrestadorServicoController {
 	public void limpaTabela() {
 		daoPrestadorServico.limparTabela();
 	}
+	
+	public static void deleteAll() {
+		daoPrestadorServico.deleteAll();
+		
+	}
 }
