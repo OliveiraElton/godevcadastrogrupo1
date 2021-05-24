@@ -76,7 +76,16 @@ public class PrestadorServicoDAO extends Dao<PrestadorServico> implements Interf
 			List<PrestadorServico> results = query.getResultList();
 			return new ArrayList<PrestadorServico>(results);
 		}
-	
+  
+	/**
+	 * Deletar todos os prestadores de servico.
+	 * 
+	 * Metodo deleta todos os registros de prestadores de servico constantes no banco de dados.
+	 * 
+	 * @return boolean false, caso nenhum registro tenha sido deletado e true caso ao menos
+	 * um registro tenha sido deletado.
+	 */
+
 	public boolean deleteAll() {
 		if (!this.session.getTransaction().isActive()) {
 			this.session.beginTransaction();

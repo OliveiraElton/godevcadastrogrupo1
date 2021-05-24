@@ -59,8 +59,8 @@ public class Dependente extends Pessoa  {
 			Endereco endereco, String cpf, String rg, TiposDependentes tipoDependente, Boolean optanteIR) {
 		super(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero, identidadeGenero,
 				endereco, cpf, rg);
-		this.tipoDependente = tipoDependente;
-		this.optanteIR = optanteIR;
+		this.setTipoDependente(tipoDependente);
+		this.setOptanteIR(optanteIR);
 	}
 
 	public TiposDependentes getTipoDependente() {

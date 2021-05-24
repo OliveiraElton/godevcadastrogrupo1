@@ -53,12 +53,6 @@ public class DBConnection {
     		sessionFactory = buildSessionFactory();
     	return sessionFactory;
     }
-  
-    public static void shutdown() {
-    	session.close();
-        getSessionFactory().close();
-    }
-    
     public static Session getSession() {
     	getSessionFactory();    	
     	if(session == null) 

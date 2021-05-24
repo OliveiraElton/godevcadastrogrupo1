@@ -171,13 +171,9 @@ public class PessoaBuilder implements Builder {
 
 	public void setContatos(String telefonePrincipal, String telefoneSecundario, String email,
 
-			String telefoneFamiliar) {
-		try {
+			String telefoneFamiliar) throws Exception {
 			this.contatos = new Contatos(telefonePrincipal, telefoneSecundario, email, telefoneFamiliar);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		ContatosDAO.getInstance(session).create(this.contatos);
 	}
 

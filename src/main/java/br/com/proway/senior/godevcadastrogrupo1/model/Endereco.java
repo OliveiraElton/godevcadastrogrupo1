@@ -56,14 +56,14 @@ public class Endereco {
 	public Endereco(String logradouro, Integer numero, String complemento, String cep, String bairro, String pais,
 			String cidade, String uf) {
 		super();
-		this.logradouro = logradouro;
-		this.numero = numero;
-		this.complemento = complemento;
-		this.cep = cep;
-		this.bairro = bairro;
-		this.pais = pais;
-		this.cidade = cidade;
-		this.uf = uf;
+		this.setLogradouro(logradouro);
+		this.setNumero(numero);
+		this.setComplemento(complemento);
+		this.setCep(cep);
+		this.setBairro(bairro);
+		this.setPais(pais);
+		this.setCidade(cidade);
+		this.setUf(uf);
 	}
 	
 	public String getLogradouro() {
