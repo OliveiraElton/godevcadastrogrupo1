@@ -5,6 +5,8 @@ import static org.junit.Assert.assertEquals;
 import java.time.LocalDate;
 
 import org.hibernate.Session;
+import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.Test;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.ExameMedico;
@@ -21,6 +23,11 @@ public class ExameMedicoDAOTest {
 	static TiposExames exameDem = EnumExamesMedicos.TiposExames.DEMISSIONAL;
 	static LocalDate data = LocalDate.now();
 
+	@Before
+	public void limparTabela() {
+		dao.deleteAll();
+	}
+		
 	@Test
 	public void testReadById() {
 		ExameMedico exameMedico = new ExameMedico(exameAdm, data, true);
@@ -59,6 +66,7 @@ public class ExameMedicoDAOTest {
 		dao.create(exameMedico);
 		exameMedico.setTipoExame(exameDem);
 		assertEquals(exameMedico, dao.update(exameMedico));
+		dao.delete(exameMedico);
 	}
 
 }

@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.time.LocalDate;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.ExameMedico;
