@@ -35,10 +35,10 @@ public class DependenteControllerTest {
 	}
 	@Test
 	public void testCriarDependente() {
-		Dependente d = DependenteController.criarDependente("Jorge", "Maravilha", "jessica",
-				data, "Brasileiro", null, true, null,
+		Dependente d = DependenteController.criarDependente("Jorge", "Martins", "Jessica",
+				data, "Brasileira", null, true, null,
 				null, "256.103.800-90", "mg14388606", EnumDadosPessoais.TiposDependentes.FILHO,
-				true, "Rua das oliveiras", 32, "casa", "89032640", "Passo Manso",
+				true, "Rua das Oliveiras", 32, "casa", "89032640", "Passo Manso",
 				"Brasil", "Blumenau", "SC");
 		assertNotNull(d);
 		assertEquals(d, dao.readById(d.getId()));
@@ -46,8 +46,8 @@ public class DependenteControllerTest {
 
 	@Test
 	public void testDeleteDependente() {
-		Endereco endereco = new Endereco(null, null, null, "54215365", null, null, null, null);
-		Dependente dependente = new Dependente("Joãozinho", "Fonseca", "Jenifer", data, "Venezuelano",
+		Endereco endereco = new Endereco("Rua 1", 10, "Casa", "54215365", "Centro", "Brasil", "Blumenau", "SC");
+		Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Venezuelano",
 				"Cidade del Leste", true, null, null, endereco, "09619039610", null, null, true);
 		dao.create(dependente);
 		int quantidadeAnterior = dao.getAll().size();
@@ -59,14 +59,14 @@ public class DependenteControllerTest {
 
 	@Test
 	public void testAtualizarDependente() {
-		Dependente d = DependenteController.criarDependente("Jorge", "Maravilha", "jessica",
+		Dependente d = DependenteController.criarDependente("Jorge", "Martins", "Jessica",
 				data, "Brasileiro", null, true, null,
 				null, "256.103.800-90", "mg14388606", EnumDadosPessoais.TiposDependentes.FILHO,
 				true, "Rua das oliveiras", 32, "casa", "89032640", "Passo Manso",
 				"Brasil", "Blumenau", "SC");
 		dao.create(d);
 		session.clear();
-		DependenteController.atualizarDependente(d.getId(), "Brunão", "Maravilha", "jessica",
+		DependenteController.atualizarDependente(d.getId(), "Bruno", "Souza", "Nada consta",
 				data, "Brasileiro", null, true, null,
 				null, "256.103.800-90", "mg14388606", EnumDadosPessoais.TiposDependentes.CONJUGE,
 				true, "Rua das oliveiras", 32, "casa", "89032640", "Passo Manso",
@@ -79,7 +79,7 @@ public class DependenteControllerTest {
 	@Test
 	public void testBuscarDependentePorId() {
 		Endereco endereco = new Endereco(null, null, null, "54215365", null, null, null, null);
-		Dependente dependente = new Dependente("Joãozinho", "Fonseca", "Jenifer", data, "Venezuelano",
+		Dependente dependente = new Dependente("Joao", "Fonseca", "Nada consta", data, "Venezuelano",
 				"Cidade del Leste", true, null, null, endereco, "09619039610", null, null, true);
 		dao.create(dependente);
 		assertEquals(dependente, DependenteController.buscarDependentePorId(dependente.getId()));
@@ -88,13 +88,13 @@ public class DependenteControllerTest {
 	@Test
 	public void testBuscarDependentePorIdColaborador() {
 		Endereco endereco = new Endereco(null, null, null, "54215365", null, null, null, null);
-		Dependente dependente = new Dependente("Joãozinho", "Fonseca", "Jenifer", data, "Venezuelano",
+		Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Venezuelano",
 				"Cidade del Leste", true, null, null, endereco, "09619039610", null, null, true);
 		Conta conta = new Conta(null, null, null, null);
 		String email = "teste@gmail.com";
 		Contatos contatos = new Contatos(null, null, email, null);
 		ExameMedico exameMedico = new ExameMedico(null, LocalDate.now(), true);
-		Colaborador colaborador = new Colaborador("Lucas", "Nunes", "luquinha", data, "Americano", "burro", false,
+		Colaborador colaborador = new Colaborador("Lucas", "Nunes", "Nada consta", data, "Brasileiro", "Blumenau", false,
 				"Masculino", null, endereco, "21164028324", "45124563", contatos, null, null, false, false, data, false,
 				null, "lucas.nunes@senior.com.br", "554555", conta, exameMedico, dependente);
 		daoColab.create(colaborador);
@@ -106,7 +106,7 @@ public class DependenteControllerTest {
 
 	@Test
 	public void testBuscarTodosDependentes() {
-		Dependente d = DependenteController.criarDependente("Jorge", "Maravilha", "jessica",
+		Dependente d = DependenteController.criarDependente("Jorge", "Martins", "Jessica",
 				data, "Brasileiro", null, true, null,
 				null, "256.103.800-90", "mg14388606", EnumDadosPessoais.TiposDependentes.FILHO,
 				true, "Rua das oliveiras", 32, "casa", "89032640", "Passo Manso",
@@ -117,17 +117,17 @@ public class DependenteControllerTest {
 	}
 	@Test
 	public void testBuscarTodosDependentesPorNome() {
-		Dependente d = DependenteController.criarDependente("Jorge", "Maravilha", "jessica",
+		Dependente d = DependenteController.criarDependente("Jorge", "Martins", "jessica",
 				data, "Brasileiro", null, true, null,
 				null, "256.103.800-90", "mg14388606", EnumDadosPessoais.TiposDependentes.FILHO,
 				true, "Rua das oliveiras", 32, "casa", "89032640", "Passo Manso",
 				"Brasil", "Blumenau", "SC");
-		Dependente d2 = DependenteController.criarDependente("Mestre dos Magos", "Maravilha", "jessica",
+		Dependente d2 = DependenteController.criarDependente("Carlos", "Martins", "Nada consta",
 				data, "Brasileiro", null, true, null,
 				null, "256.103.800-90", "mg14388606", EnumDadosPessoais.TiposDependentes.FILHO,
 				true, "Rua das oliveiras", 32, "casa", "89032640", "Passo Manso",
 				"Brasil", "Blumenau", "SC");
-		Dependente d3 = DependenteController.criarDependente("Mestre dos Magos", "Maravilha", "jessica",
+		Dependente d3 = DependenteController.criarDependente("Mateus", "Martins", "Nada consta",
 				data, "Brasileiro", null, true, null,
 				null, "256.103.800-90", "mg14388606", EnumDadosPessoais.TiposDependentes.FILHO,
 				true, "Rua das oliveiras", 32, "casa", "89032640", "Passo Manso",
