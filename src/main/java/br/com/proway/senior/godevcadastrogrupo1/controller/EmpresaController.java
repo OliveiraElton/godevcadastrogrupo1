@@ -52,11 +52,12 @@ public class EmpresaController {
 	 * @param cidade
 	 * @param uf
 	 * @return
+	 * @throws Exception 
 	 */
 	public static Empresa criarEmpresa(String nomeEmpresa, LocalDate dataInicioContrato, String Cnpj,
 			String telefonePrincipal, String telefoneSecundario, String email, String telefoneFamiliar,
 			String logradouro, Integer numero, String complemento, String cep, String bairro, String pais,
-			String cidade, String uf) {
+			String cidade, String uf) throws Exception {
 
 		Contatos contatos = new Contatos(telefonePrincipal, telefoneSecundario, email, telefoneFamiliar);
 		daoContatos.create(contatos);
