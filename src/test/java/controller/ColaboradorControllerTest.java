@@ -32,7 +32,15 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.Identida
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDependentes;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExames;
-
+/**
+ * Classe ColaboradorControllerTest.
+ * 
+ * Teste os métodos da classe {@link ColaboradorControllerTest}.
+ * 
+ * @author Sprint 5
+ * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
+ *
+ */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ColaboradorControllerTest {
 	static Session session = DBConnection.getSession();
