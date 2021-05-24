@@ -14,14 +14,14 @@ import org.hibernate.annotations.Cascade;
 import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDocumentos;
 
 /**
- * Classe que abstrai as informações de uma Empresa contratada. Esta Classe serï¿½
- * instanciada na Classe PrestadorServico, e instanciarï¿½ as classes Endereco e
- * Contato.
+ * Classe que abstrai as informacoess de uma Empresa contratada. Esta Classe
+ * sera instanciada na Classe PrestadorServico, e instanciara as classes
+ * Endereco e Contato.
  * 
  * Deve ser instanciada utilizando o EmpresaBuilder.
  *
  * @author Lorran Pereira dos Santos, Samuel Levi, Sarah Neuburger Brito, Thiago
- *         Luiz Barbieri e Vitor Nathan Gonï¿½alves.
+ *         Luiz Barbieri e Vitor Nathan Goncalves.
  * 
  * @author Bruna <sh4323202@gmail.com>
  * @author Enzo <enzomm.bodyandmind@gmail.com>
@@ -41,13 +41,13 @@ public class Empresa {
 	private LocalDate dataInicioContrato;
 	private String cnpj;
 
-
-	@OneToOne (cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	private Endereco endereco;
-	@OneToOne (cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	private Contatos contato;
 
 	/**
+	 * Construtor padr�o da classe.
 	 * 
 	 * @param nomeEmpresa
 	 * @param dataInicioContrato
@@ -56,7 +56,6 @@ public class Empresa {
 	 * @param contato
 	 */
 	public Empresa(String nomeEmpresa, LocalDate dataInicioContrato, String cnpj, Endereco endereco, Contatos contato) {
-		super();
 		this.nomeEmpresa = nomeEmpresa;
 		this.dataInicioContrato = dataInicioContrato;
 		this.cnpj = cnpj;
@@ -88,14 +87,21 @@ public class Empresa {
 		return cnpj;
 	}
 
-	public void setCnpj(String cnpj) {
-		try {
-			ValidacaoDocumentos.validarCNPJ(cnpj);
+	/**
+	 * Metodo setCNPJ.
+	 * 
+	 * Metodo realiza a verificacao se o CNPJ eh valido,
+	 * caso seja, retorna o valor do mesmo, caso contrario, 
+	 * lanca a Exception para ajuste da informacao.
+	 * 
+	 * @param String cnpj CNPJ que sera validado.
+	 * @throws Exception
+	 */
+	public void setCnpj(String cnpj) throws Exception {
+		if (ValidacaoDocumentos.validarCNPJ(cnpj)) {
 			this.cnpj = cnpj;
-		} catch (Exception e) {
-			e.getMessage();
 		}
-
+		throw (new Exception("Por favor, insira um CNPG v�lido."));
 	}
 
 	public Endereco getEndereco() {
@@ -120,6 +126,6 @@ public class Empresa {
 
 	public void setId(Integer id) {
 		this.id = id;
-		
+
 	}
 }
