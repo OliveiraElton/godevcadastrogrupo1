@@ -43,6 +43,8 @@ public class ColaboradorController {
 	static ExameMedicoDAO daoExameMedico = ExameMedicoDAO.getInstance(session);
 	static DependenteDAO daoDependente = DependenteDAO.getInstance(session);
 
+	public ColaboradorController() {}
+	
 	/**
 	 * Criar Colaborador.
 	 * 
@@ -61,7 +63,7 @@ public class ColaboradorController {
 	 * @param identidadeGenero
 	 * @param cpf
 	 * @param rg
-	 * @param idCargo
+	 * @param idPostoDeTrabalho
 	 * @param nit
 	 * @param optanteVT
 	 * @param optanteVAVR
@@ -91,11 +93,11 @@ public class ColaboradorController {
 	 * @param digitoVerificador
 	 * 
 	 * @return Retorna o Colaborador caso tenha sido cadastrado ou null caso
-	 *         contrário
+	 *         contrario
 	 */
 	public static Colaborador criarColaborador(String nome, String sobrenome, String nomeSocial,
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, Boolean pcd, String genero,
-			IdentidadeGenero identidadeGenero, String cpf, String rg, Integer idCargo, Integer nit, Boolean optanteVT,
+			IdentidadeGenero identidadeGenero, String cpf, String rg, Integer idPostoDeTrabalho, Integer nit, Boolean optanteVT,
 			Boolean optanteVAVR, LocalDate dataAdmissao, Boolean optanteDependente, String registro_alistamento,
 			String email_corporativo, String titulo_eleitor, String logradouro, Integer numero, String complemento,
 			String cep, String bairro, String pais, String cidade, String uf, String telefonePrincipal,
@@ -110,7 +112,7 @@ public class ColaboradorController {
 		
 		Director.criarColaborador(builder, nome, sobrenome, nomeSocial,
 				dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
-				identidadeGenero, cpf, rg, idCargo, nit, optanteVT,
+				identidadeGenero, cpf, rg, idPostoDeTrabalho, nit, optanteVT,
 				optanteVAVR, dataAdmissao, optanteDependente, registro_alistamento,
 				email_corporativo, titulo_eleitor, logradouro, numero, complemento,
 				cep, bairro, pais, cidade, uf, telefonePrincipal,
@@ -186,7 +188,7 @@ public class ColaboradorController {
 	/**
 	 * Deletar Colaborador.
 	 * 
-	 * Deleta o Colaborador passado como parâmetro.
+	 * Deleta o Colaborador passado como parametro.
 	 * 
 	 * @param colaborador Colaborador a ser deletado
 	 * 
@@ -200,7 +202,7 @@ public class ColaboradorController {
 	 * Atualizar Colaborador.
 	 * 
 	 * cria um novo colaborador com os dados recebidos e os altera no colaborador
-	 * passado como parâmetro chamando o DAO do colaborador.
+	 * passado como parametro chamando o DAO do colaborador.
 	 * 
 	 * @param id Do Colaborador a ser alterado.
 	 * @param nome
@@ -216,7 +218,7 @@ public class ColaboradorController {
 	 * @param cpf
 	 * @param rg
 	 * @param contatos
-	 * @param idCargo
+	 * @param idPostoDeTrabalho
 	 * @param nit
 	 * @param optanteVT
 	 * @param optanteVAVR
@@ -232,7 +234,7 @@ public class ColaboradorController {
 	 */
 	public static Colaborador atualizarColaborador(Integer id, String nome, String sobrenome, String nomeSocial,
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, Boolean pcd, String genero,
-			IdentidadeGenero identidadeGenero, String cpf, String rg, Integer idCargo, Integer nit, Boolean optanteVT,
+			IdentidadeGenero identidadeGenero, String cpf, String rg, Integer idPostoDeTrabalho, Integer nit, Boolean optanteVT,
 			Boolean optanteVAVR, LocalDate dataAdmissao, Boolean optanteDependente, String registro_alistamento,
 			String email_corporativo, String titulo_eleitor, String logradouro, Integer numero, String complemento,
 			String cep, String bairro, String pais, String cidade, String uf, String telefonePrincipal,
@@ -247,7 +249,7 @@ public class ColaboradorController {
 		
 		Director.criarColaborador(builder, nome, sobrenome, nomeSocial,
 				dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
-				identidadeGenero, cpf, rg, idCargo, nit, optanteVT,
+				identidadeGenero, cpf, rg, idPostoDeTrabalho, nit, optanteVT,
 				optanteVAVR, dataAdmissao, optanteDependente, registro_alistamento,
 				email_corporativo, titulo_eleitor, logradouro, numero, complemento,
 				cep, bairro, pais, cidade, uf, telefonePrincipal,

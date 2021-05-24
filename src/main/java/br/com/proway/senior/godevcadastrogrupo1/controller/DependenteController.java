@@ -152,7 +152,19 @@ public class DependenteController {
 	public static Dependente buscarDependentePorId(Integer id) {
 		return daoDependente.readById(id);
 	}
-
+	
+	/**
+	 * Buscar todos os dependentes por nome.
+	 * 
+	 * Buscar todos os dependentes no banco de dados que tem nome igual ao
+	 * passado como parametro.
+	 * @param nome
+	 * @return
+	 */
+	public static List<Dependente> buscarDependentePorNome(String nome) {
+		return daoDependente.buscarPorNome(nome);
+	}
+	
 	/**
 	 * Busca Dependente por id do Colaborador.
 	 * 
@@ -163,16 +175,10 @@ public class DependenteController {
 	 * 
 	 * @return Dependente ou null caso não encontrado.
 	 */
-	public static List<Dependente> buscarTodosDependente() {
-		return daoDependente.getAll();
-	}
-	
-	public static List<Dependente> buscarDependentePorNome(String nome) {
-		return daoDependente.buscarPorNome(nome);
-	}
 	public static List<Dependente> buscarDependentePorIdColaborador(Integer id){
 		return daoDependente.readByIdColab(id);
 	}
+	
 	/**
 	 * Busca todos os dependentes do banco de dados.
 	 * 
@@ -181,12 +187,14 @@ public class DependenteController {
 	public static List<Dependente> buscarTodosDependentes(){
 		return daoDependente.getAll();
 	}
+	
 	/**
 	 * Limpa a tabela para testes.
 	 * 
 	 */
-	public static void limparTabela() {
-		daoDependente.limparTabela();
+	public static void deleteAll() {
+		daoDependente.deleteAll();
+		
 	}
 
 }
