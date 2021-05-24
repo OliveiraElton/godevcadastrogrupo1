@@ -8,7 +8,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import org.hibernate.Session;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -55,40 +54,40 @@ public class ColaboradorControllerTest {
 	static LocalDate data = LocalDate.of(2002, 01, 28);
 	static TiposExames te = EnumExamesMedicos.TiposExames.ADMISSIONAL;
 	static TiposDependentes tipoDep = EnumDadosPessoais.TiposDependentes.CONJUGE;
-
+	
 	@Test
 	public void testCriarColaborador() {
-		Colaborador c = ColaboradorController.criarColaborador("Brian", "Santos", "Erika", data, "Brasileiro",
+		Colaborador colaboradorCriado = ColaboradorController.criarColaborador("Brian", "Santos", "Erika", data, "Brasileiro",
 				"Blumenau", true, null, ig, "09619039610", "mg14388606", 8, null, false, false, data, false, null,
 				"brian@gmail.com", null, null, null, null, "54126547", null, null, null, null, "4521452015",
 				"5421452103", "brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00", "055",
 				"438614625", "154", "Mario", "Santos", "Erika", data, "Brasileiro", "Blumenau", true, null,
 				ig, "09619039610", "mg14388606", tipoDep, true);
-		assertNotNull(c);
+		assertNotNull(colaboradorCriado);
 	}
 
 	@Test
 	public void testDeleteColabordor() {
-		Colaborador c = ColaboradorController.criarColaborador("Brian", "Santos", "Erika", data, "Brasileira",
+		Colaborador colaboradorCriado = ColaboradorController.criarColaborador("Brian", "Santos", "Erika", data, "Brasileira",
 				"Blumenau", true, null, ig, "09619039610", "mg14388606", 8, null, false, false, data, false, null,
 				"brian@gmail.com", null, null, null, null, "54126547", null, null, null, null, "4521452015",
 				"5421452103", "brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00", "055",
 				"438614625", "154", "Erika", "Santos", "Erika", data, "Brasileiro", "Blumenauense", true, null,
 				ig, "09619039610", "mg14388606", tipoDep, true);
-		ColaboradorController.deleteColabordor(dao.readById(c.getId()));
-		assertNull(dao.readById(c.getId()));
+		ColaboradorController.deleteColabordor(dao.readById(colaboradorCriado.getId()));
+		assertNull(dao.readById(colaboradorCriado.getId()));
 	}
 
 	@Test
 	public void testAtualizarColaborador() {
-		Colaborador c = ColaboradorController.criarColaborador("Brian", "Santos", "Nada consta", data, "Brasileira",
+		Colaborador colaboradorCriado = ColaboradorController.criarColaborador("Brian", "Santos", "Nada consta", data, "Brasileira",
 				"Blumenau", true, null, ig, "09619039610", "mg14388606", 8, null, false, false, data, false, null,
 				"brian@gmail.com", null, null, null, null, "54126547", null, null, null, null, "4521452015",
 				"5421452103", "brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00", "055",
 				"438614625", "154", "joãozinho", "Santos", "Erika", data, "Brasileira", "Blumenau", true, null,
 				ig, "09619039610", "mg14388606", tipoDep, true);
 		session.clear();
-		Integer id = c.getId();
+		Integer id = colaboradorCriado.getId();
 		ColaboradorController.atualizarColaborador(id, "Brian", "Santos", "Nada consta", data, "Brasileira", "Blumenau",
 				true, null, ig, "09619039610", "mg14388606", 8, null, false, false, data, false, null,
 				"brian@gmail.com", null, null, null, null, "54126547", null, null, null, null, "4521452015",
@@ -172,6 +171,13 @@ public class ColaboradorControllerTest {
 		
 		ArrayList<Colaborador> listaRetorno = (ArrayList<Colaborador>) ColaboradorController.buscarColaboradorPorNome("Joana");
 		assertEquals(2, listaRetorno.size());
+		
+	}
+	
+	@Test
+	public void testConstrutor() {
+		ColaboradorController controller = new ColaboradorController();
+		assertNotNull(controller);
 		
 	}
 	

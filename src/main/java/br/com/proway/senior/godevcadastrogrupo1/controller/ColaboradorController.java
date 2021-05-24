@@ -43,6 +43,8 @@ public class ColaboradorController {
 	static ExameMedicoDAO daoExameMedico = ExameMedicoDAO.getInstance(session);
 	static DependenteDAO daoDependente = DependenteDAO.getInstance(session);
 
+	public ColaboradorController() {}
+	
 	/**
 	 * Criar Colaborador.
 	 * 
