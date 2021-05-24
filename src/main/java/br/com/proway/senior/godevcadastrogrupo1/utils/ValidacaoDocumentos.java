@@ -1,7 +1,7 @@
 package br.com.proway.senior.godevcadastrogrupo1.utils;
 
 /**
- * Classe responsï¿½vel por validar os dados dos documentos. Utilizado em conjunto
+ * Classe responsavel por validar os dados dos documentos. Utilizado em conjunto
  * com a classe FormatacaoDocumentos.
  *
  * @author Bruna <sh4323202@gmail.com>
@@ -13,27 +13,34 @@ package br.com.proway.senior.godevcadastrogrupo1.utils;
  */
 public class ValidacaoDocumentos {
 
-	
 	/**
 	 * Validar CPF.
 	 * 
-	 * Utiliza o algoritmo para verificar se o CPF contido na String ï¿½ vï¿½lido.
+	 * Utiliza o algoritmo para verificar se o CPF contido na String eh valido.
 	 * 
-	 * @param CPF
+	 * @param String CPF que sera validado.
 	 * @return boolean
 	 */
-	public static  boolean validarCPF(String CPF) {
+	public static boolean validarCPF(String CPF) {
 
 		String CPFFormatado = FormatacaoDocumentos.removerCaracteres(CPF);
 		if (CPFFormatado.length() != 11) {
-			
+
 			return false;
 		}
 
-		return validaPrimeiroDigitoCPF(CPFFormatado) &&
-				validaSegundoDigitoCPF(CPFFormatado);
+		return validaPrimeiroDigitoCPF(CPFFormatado) && validaSegundoDigitoCPF(CPFFormatado);
 	}
 
+	/**
+	 * Valida primeiro digito CPF.
+	 * 
+	 * Metodo utilizado para verificar se o CPF eh valido atraves do primeiro
+	 * digito, conforme regra do governo.
+	 * 
+	 * @param String CPFFormatado CPF que sera verificado.
+	 * @return boolean
+	 */
 	private static boolean validaPrimeiroDigitoCPF(String CPFFormatado) {
 		int soma = 0;
 		int mult = 10;
@@ -45,9 +52,17 @@ public class ValidacaoDocumentos {
 
 		return ((11 - soma % 11 == CPFFormatado.charAt(9) - 48)
 				^ (11 - soma % 11 == 10 && CPFFormatado.charAt(9) - 48 == 0));
-
 	}
 
+	/**
+	 * Valida segundo digito CPF.
+	 * 
+	 * Metodo utilizado para verificar se o CPF eh valido atraves do segundo digito,
+	 * conforme regra do governo.
+	 * 
+	 * @param String CPFFormatado CPF que sera verificado.
+	 * @return boolean
+	 */
 	private static boolean validaSegundoDigitoCPF(String CPFFormatado) {
 		int soma = 0;
 		int mult = 11;
@@ -61,15 +76,16 @@ public class ValidacaoDocumentos {
 	}
 
 	/**
-	 * ATENï¿½ï¿½O: TELEFONE Valida o tamanho do telefone
+	 * Valida o tamanho do telefone
 	 * 
-	 * Este mï¿½todo verifica se hï¿½ 11  ou 10 dï¿½gitos no telefone. Se houver ele retorna true
-	 * caso contrï¿½rio, retorna false.
+	 * Este metodo verifica se ha 11 ou 10 digitos no telefone. Se houver ele
+	 * retorna true caso contraio, retorna false.
 	 * 
-	 * @param telefone
+	 * @param String telefone que sera verificado.
 	 * @return boolean
 	 * @throws Exception 
 	 */
+
 	public static boolean validarTamanhoTelefone(String telefone) throws Exception {
 		if (telefone.length() == 11 || telefone.length() == 10 ) {
 			return true;
@@ -78,12 +94,12 @@ public class ValidacaoDocumentos {
 	}
 
 	/**
-	 * Verifica se um nï¿½mero de CNPJ ï¿½ valido.
+	 * Verifica se um numero de CNPJ eh valido.
 	 * 
-	 * Retorna true, caso o CNPJ seja vï¿½lido
+	 * Retorna true, caso o CNPJ seja valido
 	 * 
-	 * @param cnpj
-	 * @return
+	 * @param String cnpj que sera verificado.
+	 * @return boolean
 	 */
 	public static boolean validarCNPJ(String cnpj) {
 
@@ -131,23 +147,23 @@ public class ValidacaoDocumentos {
 	/**
 	 * Validar email
 	 * 
-	 * Realiza validaï¿½ï¿½o do email para verificar se possui o caracter "@".
+	 * Realiza validacao do email para verificar se possui o caracter "@".
 	 * 
-	 * @param String email
+	 * @param String email que sera verificado.
 	 * @return boolean
 	 */
 	public static boolean validarEmail(String email) throws Exception {
 		if (email.contains("@") || email.contains(".com")) {
 			return true;
 		}
-		throw new Exception("Email informado inválido");
+		throw new Exception("Email informado invÃ¡lido");
 	}
 
 	/**
-	 * Verifica se CEP contï¿½m 8 dï¿½gitos
+	 * Verifica se CEP contem 8 digitos
 	 * 
-	 * @param cep
-	 * @return
+	 * @param String cep CEP que sera verificado.
+	 * @return boolean.
 	 */
 	public static boolean validarCEP(String cep) {
 		if (FormatacaoDocumentos.removerCaracteres(cep).length() != 8) {
