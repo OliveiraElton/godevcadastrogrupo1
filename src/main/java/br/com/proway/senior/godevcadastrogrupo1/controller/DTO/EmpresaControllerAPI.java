@@ -30,11 +30,18 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 public class EmpresaControllerAPI {
 	
 	static Session session = DBConnection.getSession();
-	
 	EmpresaDAO daoEmpresa = EmpresaDAO.getInstance(session);
-
 	static EmpresaController controllerOriginal = new EmpresaController();
 
+	/**
+	 * Criar empresa.
+	 * 
+	 * Metodo cria um registro de nova empresa no banco de dados. Recebe um objeto
+	 * da {@link Empresa} que sera criada.
+	 * 
+	 * @param empresa {@link Empresa}
+	 * @return
+	 */
 	@RequestMapping(value = "/empresa", method = RequestMethod.POST)
 	public @ResponseBody Empresa criarEmpresa(@RequestBody Empresa empresa) {
 		return daoEmpresa.create(empresa);
@@ -49,27 +56,26 @@ public class EmpresaControllerAPI {
 	/**
 	 * Atualizar empresa.
 	 * 
-	 * Metodo atualiza a empresa no banco de dados, recebe a id da empresa que sera alterada e um
-	 * objeto empresa com as informacoes atualizadas.
+	 * Metodo atualiza a empresa no banco de dados, recebe o objeto da empresa que sera alterada e um
+	 * objeto empresa com as informacoes atualizadas, inclusive id referenciada. 
 	 * 
-	 * @param id identificacao da empresa que sera atualizada.
 	 * @param empresa objeto {@link Empresa}.
 	 * @return objeto {@link Empresa} atualizado.
 	 */
-	@RequestMapping(value = "/empresa/{id}", method = RequestMethod.PUT)
-	public @ResponseBody Empresa atualizarEmpresa(@PathVariable ("id") Integer id, @RequestBody Empresa empresa) {
-		empresa.setId(id);
+	@RequestMapping(value = "/empresa", method = RequestMethod.PUT)
+	public @ResponseBody Empresa atualizarEmpresa(@RequestBody Empresa empresa) {
 		return daoEmpresa.update(empresa);
 	}
+	
 	/**
 	 * Buscar empresa por Id.
 	 * 
-	 * M�todo busca as informa��es cadastradas da empresa, conforme idEmpresa
-	 * informado. Retorna um objeto EmpresaDTO que ser� visualizado pelo cliente da
+	 * Metodo busca as informacoes cadastradas da empresa, conforme idEmpresa
+	 * informado. Retorna um objeto EmpresaDTO que sera visualizado pelo cliente da
 	 * API.
 	 * 
-	 * @param idEmpresa identifica��o da empresa que ser� retornada.
-	 * @return EmpresaDTO objeto com as informa��es do banco.
+	 * @param idEmpresa identificacao da empresa que sera retornada.
+	 * @return EmpresaDTO objeto com as informacoes do banco.
 	 */
 	@RequestMapping(value = "/empresa/{id}", method = RequestMethod.GET)
 	public @ResponseBody EmpresaDTO buscarEmpresaPorId(@PathVariable ("id") Integer idEmpresa) {
@@ -80,7 +86,7 @@ public class EmpresaControllerAPI {
 	/**
 	 * Buscar todas as empresas.
 	 * 
-	 * M�todo busca as informa��es de todas as empresas cadastradas no banco de
+	 * Metodo busca as informacoes de todas as empresas cadastradas no banco de
 	 * dados. Retorna uma lista de todos os registros de empresas.
 	 * 
 	 * @return listaEmpresaDTO lista de registros localizados.
@@ -98,11 +104,11 @@ public class EmpresaControllerAPI {
 	/**
 	 * Busca empresa por nome.
 	 * 
-	 * M�todo busca as empresas no banco de dados atrav�s dos seus respectivos
-	 * nomes, � poss�vel passar um par�metro parcial para retorna todos os registros
+	 * Metodo busca as empresas no banco de dados atraves dos seus respectivos
+	 * nomes, eh possivel passar um parametro parcial para retorna todos os registros
 	 * que contenham determinado texto em seu nomeEmpresa.
 	 * 
-	 * @param nomeEmpresa nome dos registros que est�o sendo procurados.
+	 * @param nomeEmpresa nome dos registros que estao sendo procurados.
 	 * @return ArrayList Empresa lista de registros localizados.
 	 */
 	@RequestMapping(value = "/empresa/{nome}", method = RequestMethod.GET)
