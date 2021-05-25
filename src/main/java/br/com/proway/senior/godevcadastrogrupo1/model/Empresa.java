@@ -49,13 +49,14 @@ public class Empresa {
 	 * @param cnpj
 	 * @param endereco
 	 * @param contato
+	 * @throws Exception 
 	 */
-	public Empresa(String nomeEmpresa, LocalDate dataInicioContrato, String cnpj, Endereco endereco, Contatos contato) {
-		this.nomeEmpresa = nomeEmpresa;
-		this.dataInicioContrato = dataInicioContrato;
-		this.cnpj = cnpj;
-		this.endereco = endereco;
-		this.contato = contato;
+	public Empresa(String nomeEmpresa, LocalDate dataInicioContrato, String cnpj, Endereco endereco, Contatos contato) throws Exception {
+		this.setNomeEmpresa(nomeEmpresa);
+		this.setDataInicioContrato(dataInicioContrato);
+		this.setCnpj(cnpj);
+		this.setEndereco(endereco);
+		this.setContato(contato);
 	}
 
 	public Empresa() {
