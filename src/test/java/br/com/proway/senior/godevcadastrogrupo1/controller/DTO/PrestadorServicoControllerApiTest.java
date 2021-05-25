@@ -23,7 +23,7 @@ public class PrestadorServicoControllerApiTest {
 	static Session session = DBConnection.getSession();
 	static PrestadorServico prestador = new PrestadorServico();
 	PrestadorServicoController controller = new PrestadorServicoController();
-	static Empresa empresa = new Empresa("Senior", LocalDate.now(), "12345678", null, null);
+	static Empresa empresa;
 	static EmpresaDAO daoEmpresa = EmpresaDAO.getInstance(session);
 	
 	static PrestadorServicoControllerApi prestadorApi;
@@ -32,6 +32,7 @@ public class PrestadorServicoControllerApiTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		PrestadorServicoDAO.getInstance(DBConnection.getSession()).deleteAll();
+		empresa = new Empresa("Senior", LocalDate.now(), "05.975.585/0001-89", null, null);
 		prestadorApi = new PrestadorServicoControllerApi();
 		daoEmpresa.create(empresa);
 	}

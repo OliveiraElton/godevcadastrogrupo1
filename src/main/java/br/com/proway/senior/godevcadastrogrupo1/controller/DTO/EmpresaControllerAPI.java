@@ -21,8 +21,8 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
  * Classe EmpresaControllerAPI
  * 
  * Classe disponibilizada para consulta dos dados da empresa via API Rest.
- * Implementa os m�todos de visualiza��o do {@link EmpresaController} e atriutos
- * do model {@link EmpresaDTO}.
+ * Implementa os metodos do {@link EmpresaController} e atributos
+ * dos models {@link EmpresaDTO} e {@link Empresa}.
  * 
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
  */
@@ -31,7 +31,6 @@ public class EmpresaControllerAPI {
 	
 	static Session session = DBConnection.getSession();
 	EmpresaDAO daoEmpresa = EmpresaDAO.getInstance(session);
-	static EmpresaController controllerOriginal = new EmpresaController();
 
 	/**
 	 * Criar empresa.

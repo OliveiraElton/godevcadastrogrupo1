@@ -27,8 +27,8 @@ public class EmpresaTest {
 		
 	}
 	@Test
-	public void testConstrutor(){
-		Empresa empresa = new Empresa("Proway", LocalDate.of(2021, 12, 05), "99.272.968/0001-34", endereco, contatos);
+	public void testConstrutor() throws Exception{
+		Empresa empresa = new Empresa("Proway", LocalDate.of(2021, 12, 05), "05.975.585/0001-89", endereco, contatos);
 		assertNotNull(empresa);
 	}
 
