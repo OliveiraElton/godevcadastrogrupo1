@@ -62,17 +62,17 @@ public class PrestadorServicoSimplificadoControllerApi {
 	}
 	
 	/**
-	 * Atualizar empresa.
+	 * Atualizar prestador servico.
 	 * 
-	 * Metodo atualiza a empresa no banco de dados, recebe o objeto da empresa que sera alterada e um
-	 * objeto empresa com as informacoes atualizadas, inclusive id referenciada. 
+	 * Metodo atualiza o prestador de servico no banco de dados, recebe o objeto do prestador que sera alterado e um
+	 * objeto prestador com as informacoes atualizadas, inclusive com id referenciada. 
 	 * 
-	 * @param empresa objeto {@link Empresa}.
-	 * @return objeto {@link Empresa} atualizado.
+	 * @param prestador objeto {@link PrestadorServico}.
+	 * @return objeto {@link PrestadorServico} atualizado.
 	 */
-	@RequestMapping(value = "/empresa", method = RequestMethod.PUT)
-	public @ResponseBody Empresa atualizarEmpresa(@RequestBody Empresa empresa) {
-		return daoEmpresa.update(empresa);
+	@RequestMapping(value = "/prestadorSimplificado", method = RequestMethod.PUT)
+	public @ResponseBody PrestadorServico atualizarEmpresa(@RequestBody PrestadorServico prestador) {
+		return daoPrestador.update(prestador);
 	}
 	
 	/**
