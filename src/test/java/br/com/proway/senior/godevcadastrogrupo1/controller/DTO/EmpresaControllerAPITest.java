@@ -79,6 +79,15 @@ public class EmpresaControllerAPITest {
 		assertEquals(empresaCriada2.getEndereco().getLogradouro(), listaRetorno.get(1).getEndereco().getLogradouro());
 	}
 	
+	@Test
+	public void testCriarEmpresa() throws Exception {
+		Endereco endereco1 = new Endereco("Rua XV", 123, "Taruma Office", "89035193", "Centro", "Brasil", "Blumenau", "SC");
+		Contatos contatos1 = new Contatos("47999448899", "47988994455", "contato@magalu.com", "47988553322");
+		Empresa original1 = new Empresa("Magalu Rua XV", LocalDate.of(2021, 10, 13), "89123900000112", endereco1, contatos1);
+		Empresa empresaCriada1 = controllerApi.criarEmpresa(original1);
+		assertEquals(original1.getCnpj(), )
+	}
+	
 	@Before
 	public void limparTabela() {
 		dao.deleteAll();
