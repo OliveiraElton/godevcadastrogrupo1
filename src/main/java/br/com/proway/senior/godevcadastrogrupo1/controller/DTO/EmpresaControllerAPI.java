@@ -31,7 +31,6 @@ public class EmpresaControllerAPI {
 	
 	static Session session = DBConnection.getSession();
 	EmpresaDAO daoEmpresa = EmpresaDAO.getInstance(session);
-	static EmpresaController controllerOriginal = new EmpresaController();
 
 	/**
 	 * Criar empresa.
