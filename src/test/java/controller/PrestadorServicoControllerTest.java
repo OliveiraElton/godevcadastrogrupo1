@@ -24,54 +24,47 @@ public class PrestadorServicoControllerTest {
 	static Session session = DBConnection.getSession();
 	static PrestadorServicoDAO dao = PrestadorServicoDAO.getInstance(session);
 	static LocalDate data = LocalDate.of(2002, 01, 28);
-	static Empresa empresa = new Empresa("Senior", LocalDate.now(), "12345678", null, null);
+	static Empresa empresa;
 	static EmpresaDAO daoEmpresa = EmpresaDAO.getInstance(session);
-	
+
 	@BeforeClass
-	public static void limparTabela(){
+	public static void limparTabela() {
 		dao.deleteAll();
 		daoEmpresa.create(empresa);
 	}
-	
+
 	@Test
 	public void testACriarPrestadorServico() throws Exception {
-		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Beatriz", "Da Massa", "Jhon",
-				data, "Brasil", "São Paulo", true, null,
-				null, "256.103.800-90", null, 
-				LocalDate.of(2020, 01, 28), 1, "1543652548",
-				"1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510,
-				"Prédio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
+		empresa = new Empresa("Senior", LocalDate.now(), "05.975.585/0001-89", null, null);
+		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Beatriz", "Massa", "Jhon", data,
+				"Brasil", "São Paulo", true, null, null, "256.103.800-90", null, LocalDate.of(2020, 01, 28), 1,
+				"1543652548", "1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510, "Prédio",
+				"89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 		PrestadorServico prestadorServico = dao.readById(ps.getId());
 		assertNotNull(prestadorServico);
 	}
 
 	@Test
 	public void testEDeletePrestadorServico() throws Exception {
-		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Beatriz", "Da Massa", "Jhon",
-				data, "Brasil", "São Paulo", true, null,
-				null, "256.103.800-90", null, 
-				LocalDate.of(2020, 01, 28), 4, "1543652548",
-				"1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510,
-				"Prédio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
+		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Beatriz", "Massa", "Jhon", data,
+				"Brasil", "São Paulo", true, null, null, "256.103.800-90", null, LocalDate.of(2020, 01, 28), 4,
+				"1543652548", "1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510, "Prédio",
+				"89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 		PrestadorServicoController.deletePrestadorServico(ps);
 		assertNull(dao.readById(ps.getId()));
 	}
 
 	@Test
 	public void testDAtualizarPrestadorServico() throws Exception {
-		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Beatriz", "Da Massa", "Jhon",
-				data, "Brasil", "São Paulo", true, null,
-				null, "256.103.800-90", null, 
-				LocalDate.of(2020, 01, 28), 1, "1543652548",
-				"1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510,
-				"Prédio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
+		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Beatriz", "Massa", "Jhon", data,
+				"Brasil", "São Paulo", true, null, null, "256.103.800-90", null, LocalDate.of(2020, 01, 28), 1,
+				"1543652548", "1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510, "Prédio",
+				"89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 		Integer id = ps.getId();
 		PrestadorServico novoPS = PrestadorServicoController.atualizarPrestadorServico(id, "Dani", "Da Massa", "Jhon",
-				data, "Brasil", "São Paulo", true, null,
-				null, "256.103.800-90", null, 
-				LocalDate.of(2020, 01, 28), 2, "1543652548",
-				"1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510,
-				"Prédio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
+				data, "Brasil", "São Paulo", true, null, null, "256.103.800-90", null, LocalDate.of(2020, 01, 28), 2,
+				"1543652548", "1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510, "Prédio",
+				"89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 		dao.update(novoPS);
 		assertEquals("Dani", dao.readById(id).getNome());
 
@@ -79,49 +72,40 @@ public class PrestadorServicoControllerTest {
 
 	@Test
 	public void testBBuscarPrestadorServicoPorId() throws Exception {
-		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Beatriz", "Da Massa", "Jhon",
-				data, "Brasil", "São Paulo", true, null,
-				null, "256.103.800-90", null, 
-				LocalDate.of(2020, 01, 28), 1, "1543652548",
-				"1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510,
-				"Prédio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
-		assertEquals(ps,
-				PrestadorServicoController.buscarPrestadorServicoPorId(ps.getId()));
+		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Beatriz", "Massa", "Jhon", data,
+				"Brasil", "São Paulo", true, null, null, "256.103.800-90", null, LocalDate.of(2020, 01, 28), 1,
+				"1543652548", "1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510, "Prédio",
+				"89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
+		assertEquals(ps, PrestadorServicoController.buscarPrestadorServicoPorId(ps.getId()));
 	}
 
 	@Test
 	public void testFBuscarTodosPrestadorServico() throws Exception {
-		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Beatriz", "Da Massa", "Jhon",
-				data, "Brasil", "São Paulo", true, null,
-				null, "256.103.800-90", null, 
-				LocalDate.of(2020, 01, 28), 1, "1543652548",
-				"1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510,
-				"Prédio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
-		List<PrestadorServico> prestadoresServico = PrestadorServicoController.buscarTodosPrestadorServico(); 
+		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Beatriz", "Massa", "Jhon", data,
+				"Brasil", "São Paulo", true, null, null, "256.103.800-90", null, LocalDate.of(2020, 01, 28), 1,
+				"1543652548", "1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510, "Prédio",
+				"89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
+		List<PrestadorServico> prestadoresServico = PrestadorServicoController.buscarTodosPrestadorServico();
 		assertEquals("Beatriz", prestadoresServico.get(prestadoresServico.size() - 1).getNome());
 	}
-	
+
 	@Test
 	public void testCBuscarTodosPrestadorServicoPorNome() throws Exception {
-		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Vampeta", "Da Massa", "Jhon",
-				data, "Brasil", "São Paulo", true, null,
-				null, "256.103.800-90", null, 
-				LocalDate.of(2020, 01, 28), 1, "1543652548",
-				"1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510,
-				"Prédio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
-		PrestadorServico ps2 = PrestadorServicoController.criarPrestadorServico("Vampeta", "Fulana", "Jhon",
-				data, "Brasil", "São Paulo", true, null,
-				null, "256.103.800-90", null, 
-				LocalDate.of(2020, 01, 28), 1, "1543652548",
-				"1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510,
-				"Prédio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
+		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Carina", "Massa", "Jhon", data,
+				"Brasil", "São Paulo", true, null, null, "256.103.800-90", null, LocalDate.of(2020, 01, 28), 1,
+				"1543652548", "1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510, "Prédio",
+				"89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
+		PrestadorServico ps2 = PrestadorServicoController.criarPrestadorServico("Carina", "Fulana", "Jhon", data,
+				"Brasil", "São Paulo", true, null, null, "256.103.800-90", null, LocalDate.of(2020, 01, 28), 1,
+				"1543652548", "1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510, "Prédio",
+				"89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 
 		List<PrestadorServico> prestadoresServico = PrestadorServicoController.buscarPrestadorServicoPorNome("Vampeta");
 		assertEquals(2, prestadoresServico.size());
 	}
 
 	@Before
-	public void limpar(){
+	public void limpar() {
 		dao.deleteAll();
 	}
 }
