@@ -29,15 +29,15 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
  *
  */
 public class PrestadorServicoSimplificadoControllerApi {
-	
+
 	static Session session = DBConnection.getSession();
 	PrestadorServicoDAO daoPrestador = PrestadorServicoDAO.getInstance(session);
 
 	/**
 	 * Criar prestador de servico.
 	 * 
-	 * Metodo cria um registro de novo prestador de servico no banco de dados. Recebe um objeto
-	 * da {@link PrestadorServico} que sera criado.
+	 * Metodo cria um registro de novo prestador de servico no banco de dados.
+	 * Recebe um objeto da {@link PrestadorServico} que sera criado.
 	 * 
 	 * @param empresa {@link PrestadorServico}.
 	 * @return objeto do registro criado.
@@ -46,26 +46,28 @@ public class PrestadorServicoSimplificadoControllerApi {
 	public @ResponseBody PrestadorServico cadastrarPrestadorServico(@RequestBody PrestadorServico prestador) {
 		return daoPrestador.create(prestador);
 	}
-	
+
 	/**
 	 * Deletar um prestador de servico.
 	 * 
-	 * Metodo exclui um registro de prestador de servico do banco de dados, conforme id informada.
+	 * Metodo exclui um registro de prestador de servico do banco de dados, conforme
+	 * id informada.
 	 * 
 	 * @param id identificacao do prestador que sera excluido.
 	 * @return boolean
 	 */
 	@RequestMapping(value = "/prestadorSimplificado/{id}", method = RequestMethod.DELETE)
-	public @ResponseBody boolean deletePrestadorServico(@PathVariable ("id") Integer id) {
+	public @ResponseBody boolean deletePrestadorServico(@PathVariable("id") Integer id) {
 		PrestadorServico prestador = daoPrestador.readById(id);
 		return daoPrestador.delete(prestador);
 	}
-	
+
 	/**
 	 * Atualizar prestador servico.
 	 * 
-	 * Metodo atualiza o prestador de servico no banco de dados, recebe o objeto do prestador que sera alterado e um
-	 * objeto prestador com as informacoes atualizadas, inclusive com id referenciada. 
+	 * Metodo atualiza o prestador de servico no banco de dados, recebe o objeto do
+	 * prestador que sera alterado e um objeto prestador com as informacoes
+	 * atualizadas, inclusive com id referenciada.
 	 * 
 	 * @param prestador objeto {@link PrestadorServico}.
 	 * @return objeto {@link PrestadorServico} atualizado.
@@ -74,7 +76,7 @@ public class PrestadorServicoSimplificadoControllerApi {
 	public @ResponseBody PrestadorServico atualizarPrestador(@RequestBody PrestadorServico prestador) {
 		return daoPrestador.update(prestador);
 	}
-	
+
 	/**
 	 * Busca Prestador de servico.
 	 * 
@@ -85,9 +87,9 @@ public class PrestadorServicoSimplificadoControllerApi {
 	 * @param id
 	 * @return PrestadorServicoDTO
 	 */
-	public PrestadorServicoDTO buscarPrestadorServicoPorId(Integer id) {
-		PrestadorServicoDTO prestadorDTO = new PrestadorServicoDTO(
-				daoPrestador.readById(id));
+	@RequestMapping(value = "/prestadorSimplificado/{id}", method = RequestMethod.GET)
+	public @ResponseBody PrestadorServicoDTO buscarPrestadorServicoPorId(@PathVariable("id") Integer id) {
+		PrestadorServicoDTO prestadorDTO = new PrestadorServicoDTO(daoPrestador.readById(id));
 		return prestadorDTO;
 	}
 
@@ -96,27 +98,31 @@ public class PrestadorServicoSimplificadoControllerApi {
 	 * 
 	 * Busca todos os prestadores de serviço cadastrados no banco de dados,
 	 * transforma em objetos DTO e manda para a view como lista.
-	 * @author Vitor Peres <b>vitor.peres@senior.com.br</b> 
+	 * 
+	 * @author Vitor Peres <b>vitor.peres@senior.com.br</b>
 	 * @return
 	 */
-	public List<PrestadorServicoDTO> buscarTodosPrestadorServico() {
+	@RequestMapping(value = "/prestadorSimplificado", method = RequestMethod.GET)
+	public @ResponseBody List<PrestadorServicoDTO> buscarTodosPrestadorServico() {
 		List<PrestadorServicoDTO> listaPrestadorDTO = new ArrayList<PrestadorServicoDTO>();
 		for (PrestadorServico prestador : daoPrestador.getAll()) {
 			listaPrestadorDTO.add(new PrestadorServicoDTO(prestador));
 		}
 		return listaPrestadorDTO;
 	}
+
 	/**
 	 * Busca todos os prestadores de serviço pelo nome.
 	 * 
-	 * Busca todos os prestadores de serviço cadastrados no banco de dados, 
+	 * Busca todos os prestadores de serviço cadastrados no banco de dados,
 	 * transforma em objetos DTO e manda para a view.
 	 * 
 	 * @author Vitor Peres <b>vitor.peres@senior.com.br</b>
 	 * @param String nome
 	 * @return List<nome>
 	 */
-	public List<PrestadorServicoDTO> buscarPrestadorServicoPorNome(String nome) {
+	@RequestMapping(value = "/prestadorSimplificado/{nome}", method = RequestMethod.GET)
+	public List<PrestadorServicoDTO> buscarPrestadorServicoPorNome(@PathVariable("nome") String nome) {
 		List<PrestadorServicoDTO> listaPrestadorDTO = new ArrayList<PrestadorServicoDTO>();
 		for (PrestadorServico prestador : daoPrestador.buscarPorNome(nome)) {
 			listaPrestadorDTO.add(new PrestadorServicoDTO(prestador));
