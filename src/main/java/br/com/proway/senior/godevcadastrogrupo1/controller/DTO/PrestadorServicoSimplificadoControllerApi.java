@@ -48,17 +48,17 @@ public class PrestadorServicoSimplificadoControllerApi {
 	}
 	
 	/**
-	 * Deletar empresa.
+	 * Deletar um prestador de servico.
 	 * 
-	 * Metodo exclui um registro de empresa do banco de dados, conforme id informada.
+	 * Metodo exclui um registro de prestador de servico do banco de dados, conforme id informada.
 	 * 
-	 * @param id identificacao da empresa que sera excluida.
+	 * @param id identificacao do prestador que sera excluido.
 	 * @return boolean
 	 */
-	@RequestMapping(value = "/empresa/{id}", method = RequestMethod.DELETE)
-	public @ResponseBody boolean deleteEmpresa(@PathVariable ("id") Integer id) {
-		Empresa empresa = daoEmpresa.readById(id);
-		return daoEmpresa.delete(empresa);
+	@RequestMapping(value = "/prestadorSimplificado/{id}", method = RequestMethod.DELETE)
+	public @ResponseBody boolean deletePrestadorServico(@PathVariable ("id") Integer id) {
+		PrestadorServico prestador = daoPrestador.readById(id);
+		return daoPrestador.delete(prestador);
 	}
 	
 	/**
