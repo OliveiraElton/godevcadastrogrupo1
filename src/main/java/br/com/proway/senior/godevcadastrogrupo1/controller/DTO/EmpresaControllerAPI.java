@@ -47,6 +47,14 @@ public class EmpresaControllerAPI {
 		return daoEmpresa.create(empresa);
 	}
 	
+	/**
+	 * Deletar empresa.
+	 * 
+	 * Metodo exclui um registro de empresa do banco de dados, conforme id informada.
+	 * 
+	 * @param id identificacao da empresa que sera excluida.
+	 * @return boolean
+	 */
 	@RequestMapping(value = "/empresa/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody boolean deleteEmpresa(@PathVariable ("id") Integer id) {
 		Empresa empresa = daoEmpresa.readById(id);
