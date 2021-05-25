@@ -132,6 +132,22 @@ public class PrestadorServicoControllerApiTest {
 		assertTrue(prestadorApi.buscarTodosPrestadorServico().isEmpty());
 	}
 	
+	@Test
+	public void testAtualizarPrestador() throws Exception {
+		Endereco endereco = new Endereco("Rua 10", 10, "", "89123582", "Centro", "Brasil", "Blumenau", "SC");
+		Contatos contatos = new Contatos("47985415263",  "47987526341", "joaopires@gmail.com", "47985632144");
+		PrestadorServico prestador = new PrestadorServico("Joao", "Pires", "Jhon", LocalDate.now(), "Brasil", "S�o Paulo",
+				true, "Masculino", IdentidadeGenero.CIS, endereco, "256.103.800-90","1543652548", contatos, LocalDate.of(2020, 01, 28), empresa, 12);
+		PrestadorServico prestadorRetornado = prestadorApi.cadastrarPrestadorServico(prestador);
+		prestadorRetornado.setNome("Carlos");
+		prestadorRetornado.setGenero("Feminino");
+		prestadorRetornado.setRg("878787");
+		prestadorApi.atualizarPrestador(prestadorRetornado);
+		assertEquals("Carlos", prestadorRetornado.getNome());
+		assertEquals("Feminino", prestadorRetornado.getGenero());
+		assertEquals("878787", prestadorRetornado.getRg());
+	}
+	
 	
 
 }

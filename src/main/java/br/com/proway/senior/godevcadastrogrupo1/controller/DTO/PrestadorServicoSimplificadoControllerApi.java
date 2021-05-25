@@ -71,7 +71,7 @@ public class PrestadorServicoSimplificadoControllerApi {
 	 * @return objeto {@link PrestadorServico} atualizado.
 	 */
 	@RequestMapping(value = "/prestadorSimplificado", method = RequestMethod.PUT)
-	public @ResponseBody PrestadorServico atualizarEmpresa(@RequestBody PrestadorServico prestador) {
+	public @ResponseBody PrestadorServico atualizarPrestador(@RequestBody PrestadorServico prestador) {
 		return daoPrestador.update(prestador);
 	}
 	
