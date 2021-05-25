@@ -108,13 +108,9 @@ public class EmpresaControllerAPITest {
 		Contatos contatos1 = new Contatos("47999448899", "47988994455", "contato@magalu.com", "47988553322");
 		Empresa original1 = new Empresa("Magalu Rua XV", LocalDate.of(2021, 10, 13), "05.975.585/0001-89", endereco1, contatos1);
 		Empresa empresaCriada1 = controllerApi.criarEmpresa(original1);
-		Endereco endereco2 = new Endereco("Rua Sete", 789, "Nada consta", "89035193", "Centro", "Brasil", "Blumenau", "SC");
-		Contatos contatos2 = new Contatos("47999448899", "47988994455", "contato@magalu.com", "47988553322");
-		Empresa original2 = new Empresa("Magalu Centro", LocalDate.of(2019, 9, 13), "05.975.585/0001-89", endereco2, contatos2);
-		controllerApi.atualizarEmpresa(original2);
-		assertEquals(original1.getDataInicioContrato(), original2.getDataInicioContrato());
-		assertEquals(original1.getEndereco(), original2.getEndereco());
-		assertEquals(original1.getNomeEmpresa(), original2.getNomeEmpresa());
+		empresaCriada1.setNomeEmpresa("Magula Loja");
+		controllerApi.atualizarEmpresa(empresaCriada1);
+		assertEquals("Magula Loja", empresaCriada1.getNomeEmpresa());
 	}
 	
 	
