@@ -47,9 +47,9 @@ public class EmpresaControllerAPI {
 		return daoEmpresa.delete(empresa);
 	}
 	
-	@RequestMapping(value = "/empresa/{id}", method = RequestMethod.PUT)
-	public @ResponseBody Empresa atualizarEmpresa(@PathVariable ("id") Integer id, @RequestBody Empresa empresa) {
-		empresa.setId(id);
+	@RequestMapping(value = "/empresa", method = RequestMethod.PUT)
+	public @ResponseBody Empresa atualizarEmpresa(@RequestBody Empresa empresa) {
+		
 		return daoEmpresa.update(empresa);
 	}
 	/**
