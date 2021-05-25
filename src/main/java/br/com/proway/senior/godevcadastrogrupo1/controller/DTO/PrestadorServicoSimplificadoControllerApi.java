@@ -43,7 +43,7 @@ public class PrestadorServicoSimplificadoControllerApi {
 	 * @return objeto do registro criado.
 	 */
 	@RequestMapping(value = "/prestadorSimplificado", method = RequestMethod.POST)
-	public @ResponseBody PrestadorServico criarPrestadorServico(@RequestBody PrestadorServico prestador) {
+	public @ResponseBody PrestadorServico cadastrarPrestadorServico(@RequestBody PrestadorServico prestador) {
 		return daoPrestador.create(prestador);
 	}
 	
