@@ -17,6 +17,7 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.DependenteCompletoDTO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DTO.DependenteSimplificadoDTO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 /**
@@ -91,6 +92,25 @@ public class DependenteCompletoControllerApi {
 	public @ResponseBody DependenteCompletoDTO buscarDependentePorId(@PathVariable ("id") Integer id) {
 		DependenteCompletoDTO DependenteCompletoDTO = new DependenteCompletoDTO(dependenteDao.readById(id));
 		return DependenteCompletoDTO;
+	}
+	/**
+	 * Busca Dependente por id do Colaborador.
+	 * 
+	 * Busca o Dependente relacionado ao Colaborador cujo id é igual ao passado como
+	 * parâmetro.
+	 * 
+	 * @param id do Colaborador desejado.
+	 * 
+	 * @return Dependente ou null caso não encontrado.
+	 */
+	@RequestMapping(value = "/dependente/{id}", method = RequestMethod.GET)
+	public @ResponseBody List<DependenteCompletoDTO> buscarDependentePorIdColaborador(@PathVariable ("id") Integer id) {
+		List<DependenteCompletoDTO> listaDependentes = new ArrayList<DependenteCompletoDTO>();
+		
+		for(Dependente dependente : dependenteDao.readByIdColab(id)) {
+			listaDependentes.add(new DependenteCompletoDTO(dependente));
+		}
+		return listaDependentes;
 	}
 	
 	/**
