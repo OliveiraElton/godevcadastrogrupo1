@@ -53,6 +53,40 @@ public class DependenteCompletoControllerApiTest {
 	}
 
 	@Test
+	public void testCriarDependente() {
+		Endereco endereco = new Endereco("Rua 10", 10, "Casa", "54215365", "Centro", "Brasil", "Blumenau", "SC");
+		Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Venezuelano",
+				"Cidade del Leste", true, "Masculino", IdentidadeGenero.TRANS, endereco, "09619039610","123", 
+				EnumDadosPessoais.TiposDependentes.FILHO, true);
+		Dependente dependenteBanco = dependenteApi.criarDependente(dependente);
+		assertEquals(dependenteBanco, dao.readById(dependenteBanco.getId()));
+		
+	}
+	
+	@Test
+	public void testDeletaDependente() {
+		Endereco endereco = new Endereco("Rua 10", 10, "Casa", "54215365", "Centro", "Brasil", "Blumenau", "SC");
+		Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Venezuelano",
+				"Cidade del Leste", true, "Masculino", IdentidadeGenero.TRANS, endereco, "09619039610","123", 
+				EnumDadosPessoais.TiposDependentes.FILHO, true);
+		Integer idBanco = dao.create(dependente).getId();
+		dependenteApi.deleteDependente(idBanco);
+		assertEquals(0, dao.getAll().size());
+	}
+	
+	@Test
+	public void testAtualizaDependente() {
+		Endereco endereco = new Endereco("Rua 10", 10, "Casa", "54215365", "Centro", "Brasil", "Blumenau", "SC");
+		Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Venezuelano",
+				"Cidade del Leste", true, "Masculino", IdentidadeGenero.TRANS, endereco, "09619039610","123", 
+				EnumDadosPessoais.TiposDependentes.FILHO, true);
+		Dependente dependenteNovo = dao.create(dependente);
+		dependenteNovo.setNome("Nome alterado");
+		dependenteApi.atualizarDependente(dependenteNovo);
+		assertEquals("Nome alterado", dao.readById(dependenteNovo.getId()).getNome());
+	}
+	
+	@Test
 	public void testBuscarDependentePorId() {
 		Endereco endereco = new Endereco("Rua 10", 10, "Casa", "54215365", "Centro", "Brasil", "Blumenau", "SC");
 		Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Venezuelano",
