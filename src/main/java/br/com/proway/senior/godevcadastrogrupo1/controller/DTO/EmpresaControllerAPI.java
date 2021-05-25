@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,6 +46,16 @@ public class EmpresaControllerAPI {
 		return daoEmpresa.delete(empresa);
 	}
 	
+	/**
+	 * Atualizar empresa.
+	 * 
+	 * Metodo atualiza a empresa no banco de dados, recebe a id da empresa que sera alterada e um
+	 * objeto empresa com as informacoes atualizadas.
+	 * 
+	 * @param id identificacao da empresa que sera atualizada.
+	 * @param empresa objeto {@link Empresa}.
+	 * @return objeto {@link Empresa} atualizado.
+	 */
 	@RequestMapping(value = "/empresa/{id}", method = RequestMethod.PUT)
 	public @ResponseBody Empresa atualizarEmpresa(@PathVariable ("id") Integer id, @RequestBody Empresa empresa) {
 		empresa.setId(id);
