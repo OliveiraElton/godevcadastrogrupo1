@@ -1,6 +1,7 @@
 package br.com.proway.senior.godevcadastrogrupo1.controller.DTO;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -57,12 +58,12 @@ public class PrestadorServicoControllerApiTest {
 	@Test
 	public void testBuscarPrestadorServicoPorId() throws Exception {
 
-		PrestadorServicoController.criarPrestadorServico("Vampeta", "Da Massa", "Jhon", LocalDate.now(), "Brasil",
+		PrestadorServicoController.criarPrestadorServico("Joao", "Massa", "Jhon", LocalDate.now(), "Brasil",
 				"S�o Paulo", true, null, null, "256.103.800-90", null, LocalDate.of(2020, 01, 28), 1, "1543652548",
 				"1543652548", "batriz@gmail.com", "1543652548", "Rua s�o Paulo", 510, "Pr�dio", "89032640",
 				"Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 
-		PrestadorServicoController.criarPrestadorServico("Vampeta", "Fulana", "Jhon",
+		PrestadorServicoController.criarPrestadorServico("Joao", "Fulana", "Jhon",
 
 				LocalDate.now(), "Brasil", "S�o Paulo", true, null, null, "256.103.800-90", null,
 				LocalDate.of(2020, 01, 28), 1, "1543652548", "1543652548", "batriz@gmail.com", "1543652548",
@@ -76,12 +77,12 @@ public class PrestadorServicoControllerApiTest {
 
 	@Test
 	public void testBuscarTodosPrestadorServico() throws Exception {
-		PrestadorServicoController.criarPrestadorServico("Vampeta", "Da Massa", "Jhon", LocalDate.now(), "Brasil",
+		PrestadorServicoController.criarPrestadorServico("Joao", "Massa", "Jhon", LocalDate.now(), "Brasil",
 				"S�o Paulo", true, null, null, "256.103.800-90", null, LocalDate.of(2020, 01, 28), 1, "1543652548",
 				"1543652548", "batriz@gmail.com", "1543652548", "Rua s�o Paulo", 510, "Pr�dio", "89032640",
 				"Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 
-		PrestadorServicoController.criarPrestadorServico("Vampeta", "Fulana", "Jhon", LocalDate.now(), "Brasil",
+		PrestadorServicoController.criarPrestadorServico("Joao", "Fulana", "Jhon", LocalDate.now(), "Brasil",
 				"S�o Paulo", true, null, null, "256.103.800-90", null, LocalDate.of(2020, 01, 28), 1, "1543652548",
 				"1543652548", "batriz@gmail.com", "1543652548", "Rua s�o Paulo", 510, "Pr�dio", "89032640",
 				"Agua Verde", "Brasil", "Blumenau", "SP", empresa);
@@ -93,12 +94,12 @@ public class PrestadorServicoControllerApiTest {
 	@Test
 	public void testBuscarPrestadorServicoPorNome() throws Exception {
 
-		PrestadorServicoController.criarPrestadorServico("Vampeta", "Da Massa", "Jhon", LocalDate.now(), "Brasil",
+		PrestadorServicoController.criarPrestadorServico("Joao", "Massa", "Jhon", LocalDate.now(), "Brasil",
 				"S�o Paulo", true, null, null, "256.103.800-90", null, LocalDate.of(2020, 01, 28), 1, "1543652548",
 				"1543652548", "batriz@gmail.com", "1543652548", "Rua s�o Paulo", 510, "Pr�dio", "89032640",
 				"Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 
-		PrestadorServicoController.criarPrestadorServico("Professor Ricardo", "Fulana", "Jhon", LocalDate.now(),
+		PrestadorServicoController.criarPrestadorServico("Joao", "Souza", "Jhon", LocalDate.now(),
 				"Brasil", "S�o Paulo", true, null, null, "256.103.800-90", null, LocalDate.of(2020, 01, 28), 1,
 				"1543652548", "1543652548", "batriz@gmail.com", "1543652548", "Rua s�o Paulo", 510, "Pr�dio",
 				"89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
@@ -119,5 +120,18 @@ public class PrestadorServicoControllerApiTest {
 		assertEquals(prestador.getSobrenome(), prestadorRetornado.getSobrenome());
 		assertEquals(prestador.getIdentidadeGenero(), prestadorRetornado.getIdentidadeGenero());
 	}
+	
+	@Test
+	public void testDeletarPrestador() throws Exception {
+		Endereco endereco = new Endereco("Rua 10", 10, "", "89123582", "Centro", "Brasil", "Blumenau", "SC");
+		Contatos contatos = new Contatos("47985415263",  "47987526341", "joaopires@gmail.com", "47985632144");
+		PrestadorServico prestador = new PrestadorServico("Joao", "Pires", "Jhon", LocalDate.now(), "Brasil", "S�o Paulo",
+				true, "Masculino", IdentidadeGenero.CIS, endereco, "256.103.800-90","1543652548", contatos, LocalDate.of(2020, 01, 28), empresa, 12);
+		PrestadorServico prestadorRetornado = prestadorApi.cadastrarPrestadorServico(prestador);
+		prestadorApi.deletePrestadorServico(prestadorRetornado.getId());
+		assertTrue(prestadorApi.buscarTodosPrestadorServico().isEmpty());
+	}
+	
+	
 
 }
