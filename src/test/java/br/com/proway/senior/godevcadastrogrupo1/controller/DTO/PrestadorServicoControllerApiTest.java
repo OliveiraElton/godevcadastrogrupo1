@@ -26,14 +26,14 @@ public class PrestadorServicoControllerApiTest {
 	static Empresa empresa;
 	static EmpresaDAO daoEmpresa = EmpresaDAO.getInstance(session);
 	
-	static PrestadorServicoControllerApi prestadorApi;
+	static PrestadorServicoSimplificadoControllerApi prestadorApi;
 	static PrestadorServicoDAO dao = PrestadorServicoDAO.getInstance(session);
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		PrestadorServicoDAO.getInstance(DBConnection.getSession()).deleteAll();
 		empresa = new Empresa("Senior", LocalDate.now(), "05.975.585/0001-89", null, null);
-		prestadorApi = new PrestadorServicoControllerApi();
+		prestadorApi = new PrestadorServicoSimplificadoControllerApi();
 		daoEmpresa.create(empresa);
 	}
 	
@@ -102,7 +102,7 @@ public class PrestadorServicoControllerApiTest {
 				"1543652548", "batriz@gmail.com", "1543652548", "Rua s�o Paulo", 510,
 				"Pr�dio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 		
-		List<PrestadorServicoDTO> listaPrestadorDTO = PrestadorServicoControllerApi.buscarPrestadorServicoPorNome("Professor Ricardo");
+		List<PrestadorServicoDTO> listaPrestadorDTO = PrestadorServicoSimplificadoControllerApi.buscarPrestadorServicoPorNome("Professor Ricardo");
 		assertEquals(1 ,listaPrestadorDTO.size());
 
 	}

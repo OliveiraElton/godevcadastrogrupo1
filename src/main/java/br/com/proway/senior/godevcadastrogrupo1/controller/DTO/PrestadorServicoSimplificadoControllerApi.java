@@ -3,9 +3,20 @@ package br.com.proway.senior.godevcadastrogrupo1.controller.DTO;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Session;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import br.com.proway.senior.godevcadastrogrupo1.controller.PrestadorServicoController;
+import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
 import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EmpresaDAO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.PrestadorServicoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.PrestadorServicoDTO;
+import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 /**
  * Classe Controller Api para interação de dados com view (usuario).
@@ -14,9 +25,55 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DTO.PrestadorServicoDTO;
  * depois de buscar, transforma em objeto DTO para jogar na view.
  * 
  * @author Vitor Peres <b>vitor.peres@senior.com.br</b>
+ * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
  *
  */
-public class PrestadorServicoControllerApi {
+public class PrestadorServicoSimplificadoControllerApi {
+	
+	static Session session = DBConnection.getSession();
+	PrestadorServicoDAO daoPrestador = PrestadorServicoDAO.getInstance(session);
+
+	/**
+	 * Criar prestador de servico.
+	 * 
+	 * Metodo cria um registro de novo prestador de servico no banco de dados. Recebe um objeto
+	 * da {@link PrestadorServico} que sera criado.
+	 * 
+	 * @param empresa {@link PrestadorServico}.
+	 * @return objeto do registro criado.
+	 */
+	@RequestMapping(value = "/prestadorSimplificado", method = RequestMethod.POST)
+	public @ResponseBody PrestadorServico criarPrestadorServico(@RequestBody PrestadorServico prestador) {
+		return daoPrestador.create(prestador);
+	}
+	
+	/**
+	 * Deletar empresa.
+	 * 
+	 * Metodo exclui um registro de empresa do banco de dados, conforme id informada.
+	 * 
+	 * @param id identificacao da empresa que sera excluida.
+	 * @return boolean
+	 */
+	@RequestMapping(value = "/empresa/{id}", method = RequestMethod.DELETE)
+	public @ResponseBody boolean deleteEmpresa(@PathVariable ("id") Integer id) {
+		Empresa empresa = daoEmpresa.readById(id);
+		return daoEmpresa.delete(empresa);
+	}
+	
+	/**
+	 * Atualizar empresa.
+	 * 
+	 * Metodo atualiza a empresa no banco de dados, recebe o objeto da empresa que sera alterada e um
+	 * objeto empresa com as informacoes atualizadas, inclusive id referenciada. 
+	 * 
+	 * @param empresa objeto {@link Empresa}.
+	 * @return objeto {@link Empresa} atualizado.
+	 */
+	@RequestMapping(value = "/empresa", method = RequestMethod.PUT)
+	public @ResponseBody Empresa atualizarEmpresa(@RequestBody Empresa empresa) {
+		return daoEmpresa.update(empresa);
+	}
 	
 	/**
 	 * Busca Prestador de servico.
