@@ -48,7 +48,7 @@ public class EmpresaControllerAPI {
 	}
 	
 	@RequestMapping(value = "/empresa/{id}", method = RequestMethod.PUT)
-	public @ResponseBody Empresa atualizarEmpresa(@PathVariable ("id") Integer id, @RequestBody Empresa empresa) {
+	public @ResponseBody Empresa atualizarEmpresa(@PathVariable ("id")  Integer id, @RequestBody Empresa empresa) {
 		empresa.setId(id);
 		return daoEmpresa.update(empresa);
 	}

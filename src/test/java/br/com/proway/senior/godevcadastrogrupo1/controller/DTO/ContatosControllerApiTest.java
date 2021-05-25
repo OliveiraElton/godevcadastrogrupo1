@@ -1,9 +1,12 @@
 package br.com.proway.senior.godevcadastrogrupo1.controller.DTO;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -12,18 +15,33 @@ import org.junit.runners.MethodSorters;
 import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ContatosDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.ContatosDTO;
-import br.com.proway.senior.godevcadastrogrupo1.model.DTO.PrestadorServicoCompletoDTO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ContatosControllerApiTest {
 
+	static Session session = DBConnection.getSession();
 	static ContatosControllerApi contatosControllerApi;
+	ContatosDAO daoContatos = ContatosDAO.getInstance(session);
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		ContatosDAO.getInstance(DBConnection.getSession()).deleteAll();
 		contatosControllerApi = new ContatosControllerApi();
+	}
+	
+	@Test
+	public void testCriarContatos() throws Exception {
+		Contatos contato = new Contatos("47988361245", "47988663322", "elton@gmail.com", "47332544579");
+		ContatosDAO.getInstance(DBConnection.getSession()).create(contato);
+		assertNotNull(contato);
+	}
+	
+	@Test
+	public void testDeletarContatos() throws Exception {
+		Contatos contato = new Contatos("47988361245", "47988663322", "elton@gmail.com", "47332544579");
+		ContatosDAO.getInstance(DBConnection.getSession()).delete(contato);
+		assertNull(daoContatos.readById(contato.getId()));
 	}
 
 	@Test
