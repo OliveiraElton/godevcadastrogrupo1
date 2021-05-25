@@ -87,7 +87,7 @@ public class PrestadorServicoSimplificadoControllerApi {
 	 */
 	public PrestadorServicoDTO buscarPrestadorServicoPorId(Integer id) {
 		PrestadorServicoDTO prestadorDTO = new PrestadorServicoDTO(
-				PrestadorServicoController.buscarPrestadorServicoPorId(id));
+				daoPrestador.readById(id));
 		return prestadorDTO;
 	}
 
@@ -99,9 +99,9 @@ public class PrestadorServicoSimplificadoControllerApi {
 	 * @author Vitor Peres <b>vitor.peres@senior.com.br</b> 
 	 * @return
 	 */
-	public static List<PrestadorServicoDTO> buscarTodosPrestadorServico() {
+	public List<PrestadorServicoDTO> buscarTodosPrestadorServico() {
 		List<PrestadorServicoDTO> listaPrestadorDTO = new ArrayList<PrestadorServicoDTO>();
-		for (PrestadorServico prestador : PrestadorServicoController.buscarTodosPrestadorServico()) {
+		for (PrestadorServico prestador : daoPrestador.getAll()) {
 			listaPrestadorDTO.add(new PrestadorServicoDTO(prestador));
 		}
 		return listaPrestadorDTO;
@@ -116,9 +116,9 @@ public class PrestadorServicoSimplificadoControllerApi {
 	 * @param String nome
 	 * @return List<nome>
 	 */
-	public static List<PrestadorServicoDTO> buscarPrestadorServicoPorNome(String nome) {
+	public List<PrestadorServicoDTO> buscarPrestadorServicoPorNome(String nome) {
 		List<PrestadorServicoDTO> listaPrestadorDTO = new ArrayList<PrestadorServicoDTO>();
-		for (PrestadorServico prestador : PrestadorServicoController.buscarPrestadorServicoPorNome(nome)) {
+		for (PrestadorServico prestador : daoPrestador.buscarPorNome(nome)) {
 			listaPrestadorDTO.add(new PrestadorServicoDTO(prestador));
 		}
 		return listaPrestadorDTO;
