@@ -36,11 +36,11 @@ public class EmpresaDAOTest {
 	static EmpresaDAO dao = EmpresaDAO.getInstance(session);
 	
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-		dao.deleteAll();
-		
-	}
+//	@BeforeClass
+//	public static void setUpBeforeClass() throws Exception {
+//		dao.deleteAll();
+//		
+//	}
 
 	@Test
 	public void testBReadById() throws Exception {
@@ -121,7 +121,7 @@ public class EmpresaDAOTest {
 		Contatos contatos = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
 		Empresa empresa = new Empresa("Senior", LocalDate.of(2021, 04, 15), "00.360.305/0001-04", endereco, contatos);
 		dao.create(empresa);
-		dao.deleteAll();
+	//	dao.deleteAll();
 		assertTrue(dao.getAll().isEmpty());
 	}
 	

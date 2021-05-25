@@ -5,11 +5,8 @@ import java.time.LocalDate;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-
-import org.hibernate.annotations.Cascade;
 
 import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDocumentos;
 
@@ -33,9 +30,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDocumentos;
 @Entity
 public class Empresa {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private @Id @GeneratedValue int id;
 
 	private String nomeEmpresa;
 	private LocalDate dataInicioContrato;
@@ -47,7 +42,7 @@ public class Empresa {
 	private Contatos contato;
 
 	/**
-	 * Construtor padrão da classe.
+	 * Construtor padrï¿½o da classe.
 	 * 
 	 * @param nomeEmpresa
 	 * @param dataInicioContrato
@@ -64,7 +59,6 @@ public class Empresa {
 	}
 
 	public Empresa() {
-		super();
 	}
 
 	public String getNomeEmpresa() {
@@ -99,7 +93,7 @@ public class Empresa {
 	 */
 	public void setCnpj(String cnpj) throws Exception {
 		if (!ValidacaoDocumentos.validarCNPJ(cnpj)) {
-			throw (new Exception("Por favor, insira um CNPJ válido."));
+			throw (new Exception("Por favor, insira um CNPJ vï¿½lido."));
 		}
 		this.cnpj = cnpj;
 	}

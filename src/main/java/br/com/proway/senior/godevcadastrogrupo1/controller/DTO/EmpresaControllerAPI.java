@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +31,8 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 public class EmpresaControllerAPI {
 	
 	static Session session = DBConnection.getSession();
-	static EmpresaDAO daoEmpresa = EmpresaDAO.getInstance(session);
+	
+	EmpresaDAO daoEmpresa = EmpresaDAO.getInstance(session);
 
 	static EmpresaController controllerOriginal = new EmpresaController();
 

@@ -32,14 +32,15 @@ public class DBConnection {
 					.setProperty("hibernate.format_sql","false")
 					.setProperty("hibernate.hbm2ddl.auto","update")
 					.setProperty("hibernate.connection.autocommit","true")
-					.addAnnotatedClass(Colaborador.class)
-					.addAnnotatedClass(Conta.class)
-					.addAnnotatedClass(Contatos.class)
-					.addAnnotatedClass(Dependente.class)
-					.addAnnotatedClass(Empresa.class)
-					.addAnnotatedClass(Endereco.class)
-					.addAnnotatedClass(ExameMedico.class)
-					.addAnnotatedClass(PrestadorServico.class)
+					.addAnnotatedClass(br.com.proway.senior.godevcadastrogrupo1.model.Colaborador.class)
+					.addAnnotatedClass(br.com.proway.senior.godevcadastrogrupo1.model.Conta.class)
+					.addAnnotatedClass(br.com.proway.senior.godevcadastrogrupo1.model.Contatos.class)
+					.addAnnotatedClass(br.com.proway.senior.godevcadastrogrupo1.model.Dependente.class)
+					.addAnnotatedClass(br.com.proway.senior.godevcadastrogrupo1.model.Empresa.class)
+					 
+					.addAnnotatedClass(br.com.proway.senior.godevcadastrogrupo1.model.Endereco.class)
+					.addAnnotatedClass(br.com.proway.senior.godevcadastrogrupo1.model.ExameMedico.class)
+					.addAnnotatedClass(br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico.class)		
 					.buildSessionFactory();
         }
         catch (Throwable e) {
