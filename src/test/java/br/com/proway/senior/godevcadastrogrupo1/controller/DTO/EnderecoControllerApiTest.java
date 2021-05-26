@@ -52,7 +52,7 @@ public class EnderecoControllerApiTest {
 				"438614625", "154","joãozinho", "Santos","Erika", data, "Venezuelano",
 				"Blumenauense", true, null, ig, "09619039610", "mg14388606",td, true);
 		
-		EnderecoDTO enderecoDTO = enderecoApi.buscarEnderecoDoColaborador(c);
+		EnderecoDTO enderecoDTO = enderecoApi.buscarEnderecoDoColaborador(c.getId());
 		assertEquals("Teste Endereco", enderecoDTO.getCidade());
 	}
 
