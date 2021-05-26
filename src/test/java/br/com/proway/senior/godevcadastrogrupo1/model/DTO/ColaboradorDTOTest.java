@@ -14,6 +14,13 @@ import br.com.proway.senior.godevcadastrogrupo1.model.ExameMedico;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExames;
 
+/**
+ * Classe ColaboradorDTOTest.
+ * 
+ * Testa os m�todos da classe {@link ColaboradorDTO}.
+ * 
+ * @author Lucas Walim <b>lucas.walim@senior.com.br</b>
+ */
 public class ColaboradorDTOTest {
 
 	@Test

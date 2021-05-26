@@ -29,6 +29,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.Identida
  * Classe PrestadorServicoCompletoControllerApiTest. Testa o m�todos de busca.
  * 
  * @author Elton Oliveira
+ * @author Lucas Walim <lucas.walim@senior.com.br>
  *
  */
 @FixMethodOrder (MethodSorters.NAME_ASCENDING)
