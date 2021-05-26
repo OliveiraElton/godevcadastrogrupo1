@@ -42,7 +42,7 @@ public class PrestadorServicoCompletoControllerApi {
 	 * @param prestador
 	 * @return
 	 */
-	@RequestMapping(value = "/prestadorservicos", method = RequestMethod.POST)
+	@RequestMapping(value = "/prestadorservico", method = RequestMethod.POST)
 	public @ResponseBody PrestadorServico criarPrestador(@RequestBody PrestadorServico prestador) {
 		return daoPrestadorServicos.create(prestador);
 	}
@@ -56,7 +56,7 @@ public class PrestadorServicoCompletoControllerApi {
 	 * @param prestador {@link PrestadorServico}
 	 * @return prestador {@link PrestadorServico} atualizado
 	 */
-	@RequestMapping (value = "/prestadorservicos", method = RequestMethod.PUT)
+	@RequestMapping (value = "/prestadorservico", method = RequestMethod.PUT)
 	public @ResponseBody PrestadorServico atualizarPrestador(@RequestBody PrestadorServico prestador) {
 		return daoPrestadorServicos.update(prestador);
 	}
@@ -70,7 +70,7 @@ public class PrestadorServicoCompletoControllerApi {
 	 * @param id Identificacao do prestador de servico a ser excluido
 	 * @return boolean
 	 */
-	@RequestMapping(value = "/prestadorservicos/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/prestadorservico/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody boolean deletePrestador(@PathVariable("id") Integer id) {
 		PrestadorServico prestadorServico = daoPrestadorServicos.readById(id);
 		return daoPrestadorServicos.delete(prestadorServico);
@@ -86,7 +86,7 @@ public class PrestadorServicoCompletoControllerApi {
 	 * @param id
 	 * @return {@link PrestadorServicoCompletoDTO}
 	 */
-	@RequestMapping(value = "/prestadorservicos/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/prestadorservico/{id}", method = RequestMethod.GET)
 	public @ResponseBody PrestadorServicoCompletoDTO buscarPrestadorServicoCompletoPorId(@PathVariable("id") Integer id) {
 	PrestadorServicoCompletoDTO prestadorCompletoDTO = new PrestadorServicoCompletoDTO(daoPrestadorServicos.readById(id));
 		return prestadorCompletoDTO;
