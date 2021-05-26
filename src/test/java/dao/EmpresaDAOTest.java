@@ -36,11 +36,11 @@ public class EmpresaDAOTest {
 	static EmpresaDAO dao = EmpresaDAO.getInstance(session);
 	
 
-//	@BeforeClass
-//	public static void setUpBeforeClass() throws Exception {
-//		dao.deleteAll();
-//		
-//	}
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+		dao.deleteAll();
+		
+	}
 
 	@Test
 	public void testBReadById() throws Exception {
@@ -48,7 +48,7 @@ public class EmpresaDAOTest {
 				"Blumenau", "SC");
 		Contatos contatos = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
 		
-		Empresa empresa = new Empresa("Senior", LocalDate.of(2021, 04, 15), "00360305000104", endereco, contatos);
+		Empresa empresa = new Empresa("Senior", LocalDate.of(2021, 04, 15), "05.975.585/0001-89", endereco, contatos);
 		
 		Empresa empresaCriada = dao.create(empresa);
 		Empresa empresaRetornada = dao.readById(empresaCriada.getId());
@@ -66,8 +66,8 @@ public class EmpresaDAOTest {
 		
 		Integer valorAntes = dao.getAll().size();
 		
-		Empresa empresa = new Empresa("Senior", LocalDate.of(2021, 04, 15), "00.360.305/0001-04", endereco, contatos);
-		Empresa empresa2 = new Empresa("Senior", LocalDate.of(2021, 04, 15), "00.360.305/0001-04", endereco, contatos);
+		Empresa empresa = new Empresa("Senior", LocalDate.of(2021, 04, 15), "05.975.585/0001-89", endereco, contatos);
+		Empresa empresa2 = new Empresa("Senior", LocalDate.of(2021, 04, 15), "05.975.585/0001-89", endereco, contatos);
 		
 		Empresa empresaCriada1 = dao.create(empresa);
 		System.out.println(empresaCriada1.getId());
@@ -83,7 +83,7 @@ public class EmpresaDAOTest {
 				"Blumenau", "SC");
 		Contatos contatos = new Contatos("4799944899", "47988994455", "proway@proway.com", "47988553322");
 		
-		Empresa empresa = new Empresa("Senior", LocalDate.now(), "00360305000104", endereco, contatos);
+		Empresa empresa = new Empresa("Senior", LocalDate.now(), "05.975.585/0001-89", endereco, contatos);
 		Empresa empresaCriada = dao.create(empresa);
 		assertEquals("Senior", empresaCriada.getNomeEmpresa());
 	}
@@ -94,7 +94,7 @@ public class EmpresaDAOTest {
 				"Blumenau", "SC");
 		Contatos contatos = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
 		
-		Empresa empresa = new Empresa("Senior", LocalDate.of(2021, 04, 15), "00.360.305/0001-04", endereco, contatos);
+		Empresa empresa = new Empresa("Senior", LocalDate.of(2021, 04, 15), "05.975.585/0001-89", endereco, contatos);
 		
 		dao.create(empresa);
 		dao.delete(empresa);
@@ -107,7 +107,7 @@ public class EmpresaDAOTest {
 				"Blumenau", "SC");
 		Contatos contatos = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
 		
-		Empresa empresa = new Empresa("Senior", LocalDate.of(2021, 04, 15), "00.360.305/0001-04", endereco, contatos);
+		Empresa empresa = new Empresa("Senior", LocalDate.of(2021, 04, 15), "05.975.585/0001-89", endereco, contatos);
 		
 		dao.create(empresa);
 		empresa.setNomeEmpresa("Senior 2");
@@ -119,9 +119,9 @@ public class EmpresaDAOTest {
 		Endereco endereco = new Endereco("Rua Sete de Setembro", 123, "Taruma Office", "89010-911", "Centro", "Brasil",
 				"Blumenau", "SC");
 		Contatos contatos = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
-		Empresa empresa = new Empresa("Senior", LocalDate.of(2021, 04, 15), "00.360.305/0001-04", endereco, contatos);
+		Empresa empresa = new Empresa("Senior", LocalDate.of(2021, 04, 15), "05.975.585/0001-89", endereco, contatos);
 		dao.create(empresa);
-	//	dao.deleteAll();
+		dao.deleteAll();
 		assertTrue(dao.getAll().isEmpty());
 	}
 	
@@ -131,7 +131,7 @@ public class EmpresaDAOTest {
 				"Blumenau", "SC");
 		Contatos contatos = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
 		
-		Empresa empresa = new Empresa("Proway", LocalDate.of(2021, 04, 15), "00.360.305/0001-04", endereco, contatos);
+		Empresa empresa = new Empresa("Proway", LocalDate.of(2021, 04, 15), "05.975.585/0001-89", endereco, contatos);
 		dao.create(empresa);
 		
 		ArrayList<Empresa> listaRetorno = (ArrayList<Empresa>) dao.buscarPorNome("Pro");
