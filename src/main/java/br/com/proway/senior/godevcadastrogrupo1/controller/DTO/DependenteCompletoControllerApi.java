@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.proway.senior.godevcadastrogrupo1.controller.DependenteController;
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
-import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.DependenteCompletoDTO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
@@ -25,6 +23,7 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 * Disponibiliza todas as informa��es na API.
 * 
 * @author Elton Oliveira <elton.oliveira@senior.com.br>
+* @author Vitor Peres <b>vitor.peres@senior.com.br</b>
  *
  */
 @RestController
@@ -92,6 +91,25 @@ public class DependenteCompletoControllerApi {
 		DependenteCompletoDTO DependenteCompletoDTO = new DependenteCompletoDTO(dependenteDao.readById(id));
 		return DependenteCompletoDTO;
 	}
+	/**
+	 * Busca Dependente por id do Colaborador.
+	 * 
+	 * Busca o Dependente relacionado ao Colaborador cujo id é igual ao passado como
+	 * parâmetro.
+	 * 
+	 * @param id do Colaborador desejado.
+	 * 
+	 * @return Dependente ou null caso não encontrado.
+	 */
+	@RequestMapping(value = "/dependente/colab/{id}", method = RequestMethod.GET)
+	public @ResponseBody List<DependenteCompletoDTO> buscarDependentePorIdColaborador(@PathVariable ("id") Integer id) {
+		List<DependenteCompletoDTO> listaDependentes = new ArrayList<DependenteCompletoDTO>();
+		
+		for(Dependente dependente : dependenteDao.readByIdColab(id)) {
+			listaDependentes.add(new DependenteCompletoDTO(dependente));
+		}
+		return listaDependentes;
+	}
 	
 	/**
 	 * Busca todos os dependentes do banco de dados.
@@ -115,7 +133,7 @@ public class DependenteCompletoControllerApi {
 	 * @param nome
 	 * @return
 	 */
-	@RequestMapping(value = "/dependente/{nome}", method = RequestMethod.GET)
+	@RequestMapping(value = "/dependente/nome/{nome}", method = RequestMethod.GET)
 	public @ResponseBody List<DependenteCompletoDTO> buscarDependenteCompletoPorNome(@PathVariable ("nome") String nome) {
 		List<DependenteCompletoDTO> listaDependenteCompletoDTO = new ArrayList<DependenteCompletoDTO>();
 		for(Dependente dependente : dependenteDao.buscarPorNome(nome)) {
