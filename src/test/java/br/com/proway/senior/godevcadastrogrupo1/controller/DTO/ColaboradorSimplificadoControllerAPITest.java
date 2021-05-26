@@ -152,21 +152,7 @@ public class ColaboradorSimplificadoControllerAPITest{
 		assertEquals(2, lista.size());
 	}
 	
-	@Test
-	public void testCriarUmColaborador() throws Exception{
-		Conta conta = new Conta("Banco do Brasil", "444", "123123123", "2");
-		Endereco endereco = new Endereco ("Rua Shimit", 22, "Apartamento", "23423234", "Sul", "Brasil", "Gaspar", "SC");
-		Contatos contatos = new Contatos("47999665522", "4733556644", email, "47996857412");
-		ExameMedico exameMedico = new ExameMedico (TiposExames.DEMISSIONAL, LocalDate.now(), true);
-		
-		Colaborador colaborador = new Colaborador("Marcos", "Silva", "Lazarin", LocalDate.of(1999, 07, 30),
-				"Brasileira", "Gaspar", false, "Masculino", IdentidadeGenero.CIS, endereco, "21164028324",
-				"45124563", contatos, 14, 234567890, false, false, LocalDate.now(), false, "67845612389",
-				"marcos@senior.com.br", "3334444", conta, exameMedico, new Dependente());
-		dao.create(colaborador);
-		
-		assertNotNull(colaborador);
-	}
+	
 	
 
 
