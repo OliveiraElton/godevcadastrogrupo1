@@ -11,18 +11,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.proway.senior.godevcadastrogrupo1.controller.PrestadorServicoController;
-import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
 import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
-import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EmpresaDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.PrestadorServicoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.PrestadorServicoDTO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 /**
- * Classe Controller Api para interação de dados com view (usuario).
+ * Classe PrestadorServicoSimplificadoControllerApi
  * 
- * Metodos de busca no banco de dados de acordo com parametros para filtragem,
- * depois de buscar, transforma em objeto DTO para jogar na view.
+ * Classe disponibilizada para consulta dos dados de prestador de servico via API Rest.
+ * Implementa os metodos do {@link PrestadorServicoController} e atributos
+ * dos models {@link PrestadorServicoDTO} e {@link PrestadorServico}.
  * 
  * @author Vitor Peres <b>vitor.peres@senior.com.br</b>
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
@@ -73,7 +72,7 @@ public class PrestadorServicoSimplificadoControllerApi {
 	 * @return objeto {@link PrestadorServico} atualizado.
 	 */
 	@RequestMapping(value = "/prestadorSimplificado", method = RequestMethod.PUT)
-	public @ResponseBody PrestadorServico atualizarPrestador(@RequestBody PrestadorServico prestador) {
+	public @ResponseBody PrestadorServico atualizarPrestadorServico(@RequestBody PrestadorServico prestador) {
 		return daoPrestador.update(prestador);
 	}
 

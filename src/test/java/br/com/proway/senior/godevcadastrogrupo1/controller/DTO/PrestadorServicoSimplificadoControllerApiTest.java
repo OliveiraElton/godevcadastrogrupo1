@@ -156,7 +156,7 @@ public class PrestadorServicoSimplificadoControllerApiTest {
 		prestadorRetornado.setNome("Carlos");
 		prestadorRetornado.setGenero("Feminino");
 		prestadorRetornado.setRg("878787");
-		prestadorApi.atualizarPrestador(prestadorRetornado);
+		prestadorApi.atualizarPrestadorServico(prestadorRetornado);
 		assertEquals("Carlos", prestadorRetornado.getNome());
 		assertEquals("Feminino", prestadorRetornado.getGenero());
 		assertEquals("878787", prestadorRetornado.getRg());
