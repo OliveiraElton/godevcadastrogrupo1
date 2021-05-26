@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sun.xml.bind.v2.model.core.ID;
 
-import br.com.proway.senior.godevcadastrogrupo1.controller.ColaboradorController;
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ColaboradorDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.ColaboradorCompletoDTO;
@@ -77,7 +76,7 @@ public class ColaboradorCompletoControllerAPI {
 	 * @return Vai retornar um colaborador novo.
 	 */
 	@RequestMapping(value = "/colaboradorcompleto", method = RequestMethod.PUT)
-	public @ResponseBody Colaborador atualizarColaborador(Colaborador colaborador) {
+	public @ResponseBody Colaborador atualizarColaborador(@RequestBody Colaborador colaborador) {
 		return colaboradorDao.update(colaborador);
 	}
 
