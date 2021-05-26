@@ -7,12 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import br.com.proway.senior.godevcadastrogrupo1.controller.ColaboradorController;
-import br.com.proway.senior.godevcadastrogrupo1.controller.DependenteController;
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
@@ -43,9 +42,9 @@ public class DependenteSimplificadoControllerApiTest{
 	static ColaboradorDAO daoColab;
 	static DependenteSimplificadoControllerApi dependenteApi;
 	
-	@Ignore
+	@Before
 	public void limparTabela(){
-		DependenteController.deleteAll();
+		dao.deleteAll();
 	}
 	
 	@BeforeClass

@@ -23,6 +23,7 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 * Disponibiliza todas as informa��es na API.
 * 
 * @author Elton Oliveira <elton.oliveira@senior.com.br>
+* @author Vitor Peres <b>vitor.peres@senior.com.br</b>
  *
  */
 @RestController
