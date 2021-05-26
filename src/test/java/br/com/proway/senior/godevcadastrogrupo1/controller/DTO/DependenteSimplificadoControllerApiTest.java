@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import br.com.proway.senior.godevcadastrogrupo1.controller.ColaboradorController;
 import br.com.proway.senior.godevcadastrogrupo1.controller.DependenteController;
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Conta;
@@ -20,10 +21,13 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.ExameMedico;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ColaboradorDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DTO.DependenteCompletoDTO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.DependenteSimplificadoDTO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais;
+import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDependentes;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExames;
 /**
  * Classe DependenteSimplificadoControllerApiTest
@@ -63,33 +67,30 @@ public class DependenteSimplificadoControllerApiTest{
 		Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Venezuelano",
 				"Cidade del Leste", true, "Masculino", IdentidadeGenero.TRANS, endereco, "09619039610","123", 
 				EnumDadosPessoais.TiposDependentes.FILHO, true);
-		Dependente dependenteCadastrado = dao.create(dependente);
+		dao.create(dependente);
+		
 		DependenteSimplificadoDTO dependenteDTO = new DependenteSimplificadoDTO(dependente);
 		DependenteSimplificadoDTO dependenteDTORetorno = dependenteApi.buscarDependentePorId(dependenteDTO.getId());
-		assertEquals(dependenteCadastrado.getId(), (Integer) dependenteDTORetorno.getId());
-		assertEquals(dependenteCadastrado.getDataDeNascimento(), dependenteDTORetorno.getDataDeNascimento());
-		assertEquals(dependenteCadastrado.getCpf(), dependenteDTORetorno.getCpf());
+		assertEquals(dependenteDTO.getId(), dependenteDTORetorno.getId());
+		assertEquals(dependenteDTO.getDataDeNascimento(), dependenteDTORetorno.getDataDeNascimento());
+		assertEquals(dependenteDTO.getCpf(), dependenteDTORetorno.getCpf());
 	}
 
 	@Test
 	public void testBuscarDependentePorIdColaborador() throws Exception {
-		Endereco endereco = new Endereco("Rua 16", 5, "Casa", "54215365", "Centro", "Brasil", "Blumanau", "SC");
-		Dependente dependente = new Dependente("Joao", "Fonseca", "Nada consta", data, "Venezuelano",
-				"Cidade del Leste", true, "Masculino", IdentidadeGenero.CIS, endereco, "09619039610","123", 
-				EnumDadosPessoais.TiposDependentes.FILHO, true);
-		Conta conta = new Conta("Santander", "4554", "4800408", "0");
-		String email = "joao@gmail.com";
-		Contatos contatos = new Contatos("47987456321", "47987546321", email, "4798653254");
-		ExameMedico exameMedico = new ExameMedico(TiposExames.ADMISSIONAL, LocalDate.now(), true);
-		Colaborador colaborador = new Colaborador("Lucas", "Nunes", "Nada consta", data, "Brasileira", "Balneario Camboriu", false,
-				"Masculino", IdentidadeGenero.CIS, endereco, "21164028324", "45124563", contatos, 456, 98787841, true, false, data, false,
-				"844545474124", "lucas.nunes@gmail.com", "554555", conta, exameMedico, dependente);
-		daoColab.create(colaborador);
-		dao.create(dependente);
-		DependenteSimplificadoDTO dependenteDTO = new DependenteSimplificadoDTO(dependente);
-		Integer idColaborador = colaborador.getId();
-		System.out.println(colaborador.getId());
-		assertEquals(1, dependenteApi.buscarDependentePorIdColaborador(idColaborador).size());
+		IdentidadeGenero ig = EnumDadosPessoais.IdentidadeGenero.TRANS;
+		LocalDate data = LocalDate.of(2002, 01, 28);
+		TiposExames te = EnumExamesMedicos.TiposExames.ADMISSIONAL;
+		TiposDependentes td = EnumDadosPessoais.TiposDependentes.CONJUGE;
+		Colaborador colaborador = ColaboradorController.criarColaborador("Joana", "Marla", "Nada consta", data,
+				"Venezuelano", "Blumenauense", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data,
+				false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
+				"4521452015", "5421452103", "brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00",
+				"055", "438614625", "154", "joãozinho", "Santos", "Erika", data, "Venezuelano", "Blumenauense", true,
+				"Feminino", ig, "09619039610", "mg14388606", td, true);
+	
+		List<DependenteSimplificadoDTO> listaDependenteSimplificadoDTO = dependenteApi.buscarDependentePorIdColaborador(colaborador.getId());
+		assertEquals("joãozinho" ,listaDependenteSimplificadoDTO.get(0).getNome());
 	}
 	
 	@Test
@@ -108,6 +109,20 @@ public class DependenteSimplificadoControllerApiTest{
 		listaDependenteDTO.add(new DependenteSimplificadoDTO(dependente2));
 		assertEquals(listaDependenteDTO.size(), dependenteApi.buscarTodosDependentes().size());
 
+	}
+	@Test
+	public void testBuscarDependentePorNome() {
+		Endereco endereco = new Endereco("Rua 10", 10, "Casa", "54215365", "Centro", "Brasil", "Blumenau", "SC");
+		Dependente dependente = new Dependente("Carolina", "Fonseca", "Jenifer", data, "Venezuelano",
+				"Cidade del Leste", true, "Feminino", IdentidadeGenero.CIS, endereco, "09619039610", "123", 
+				EnumDadosPessoais.TiposDependentes.FILHO, true);
+		dao.create(dependente);
+		Dependente dependente2 = new Dependente("Barbara", "Fonseca", "Nada consta", data, "Venezuelano",
+				"Cidade del Leste", true, "Feminino", IdentidadeGenero.CIS, endereco, "09619039610", "123", 
+				EnumDadosPessoais.TiposDependentes.FILHO, true);
+		dao.create(dependente2);
+		List<DependenteSimplificadoDTO> listaDependenteSimplificadoDTO = dependenteApi.buscarDependenteSimplificadoPorNome("Barbara");
+		assertEquals(1 ,listaDependenteSimplificadoDTO.size());
 	}
 
 }

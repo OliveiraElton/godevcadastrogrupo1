@@ -10,7 +10,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import br.com.proway.senior.godevcadastrogrupo1.controller.ColaboradorController;
 import br.com.proway.senior.godevcadastrogrupo1.controller.DependenteController;
+import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ColaboradorDAO;
@@ -18,7 +20,10 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.DependenteCompletoDTO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais;
+import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDependentes;
+import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExames;
 
 
 /**
@@ -126,5 +131,22 @@ public class DependenteCompletoControllerApiTest {
 		dao.create(dependente2);
 		List<DependenteCompletoDTO> listaDependenteCompletoDTO = dependenteApi.buscarDependenteCompletoPorNome("Carolina");
 		assertEquals(2 ,listaDependenteCompletoDTO.size());
+	}
+	@Test
+	public void testBuscarDependentePorIdColaborador() throws Exception {
+		
+		IdentidadeGenero ig = EnumDadosPessoais.IdentidadeGenero.TRANS;
+		LocalDate data = LocalDate.of(2002, 01, 28);
+		TiposExames te = EnumExamesMedicos.TiposExames.ADMISSIONAL;
+		TiposDependentes td = EnumDadosPessoais.TiposDependentes.CONJUGE;
+		Colaborador colaborador1 = ColaboradorController.criarColaborador("Joana", "Marla", "Nada consta", data,
+				"Venezuelano", "Blumenauense", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data,
+				false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
+				"4521452015", "5421452103", "brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00",
+				"055", "438614625", "154", "joãozinho", "Santos", "Erika", data, "Venezuelano", "Blumenauense", true,
+				"Feminino", ig, "09619039610", "mg14388606", td, true);
+	
+		List<DependenteCompletoDTO> listaDependenteCompletoDTO = dependenteApi.buscarDependentePorIdColaborador(colaborador1.getId());
+		assertEquals("Feminino" ,listaDependenteCompletoDTO.get(0).getGenero());
 	}
 }
