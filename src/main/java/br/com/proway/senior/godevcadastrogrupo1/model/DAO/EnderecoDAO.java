@@ -9,6 +9,7 @@ import javax.persistence.criteria.CriteriaQuery;
 
 import org.hibernate.Session;
 
+import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 
@@ -38,7 +39,19 @@ public class EnderecoDAO extends Dao<Endereco> implements InterfaceDao<Endereco>
 	public Endereco readById(Integer id) {
 		return session.get(Endereco.class, id);
 	}
-
+	
+	/**
+	 * Buscar Endereço por Id do colaborador.
+	 * 
+	 * Busca no banco o Endereço com o id do colaborador igual ao passado como parametro.
+	 * 
+	 * @param id Do colaborador
+	 * @return Endereço desejado
+	 */
+	public Endereco readByIdColab(Integer id) {
+		Colaborador colaborador = session.get(Colaborador.class, id);
+		return colaborador.getEndereco();
+	}
 	/**
 	 * Buscar todos os Endereços.
 	 * 

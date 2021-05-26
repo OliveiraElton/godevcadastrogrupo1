@@ -3,11 +3,18 @@ package br.com.proway.senior.godevcadastrogrupo1.controller.DTO;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.proway.senior.godevcadastrogrupo1.controller.ColaboradorController;
-import br.com.proway.senior.godevcadastrogrupo1.controller.EnderecoController;
+import org.hibernate.Session;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.EnderecoDTO;
+import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 /**
  * Classe controller Api que busca enderecos para mandar na view.
@@ -19,8 +26,11 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DTO.EnderecoDTO;
  * @author Gabriel Simon <b>gabrielsimon775@gmail.com</b>
  * 
  */
+@RestController
 public class EnderecoControllerApi{
 
+	static Session session = DBConnection.getSession();
+	EnderecoDAO enderecoDao = EnderecoDAO.getInstance(session);
 	/**
 	 * Metodo que busca endereco atraves do colaborador.
 	 * 
@@ -32,8 +42,9 @@ public class EnderecoControllerApi{
 	 * @param {@link Colaborador}
 	 * @return {@link EnderecoDTO}
 	 */
-	public static EnderecoDTO buscarEnderecoDoColaborador(Colaborador colaborador){
-		return new EnderecoDTO(ColaboradorController.buscarColaboradorPorId(colaborador.getId()));
+	@RequestMapping(value = "/endereco/colab/{id}", method = RequestMethod.GET)
+	public @ResponseBody EnderecoDTO buscarEnderecoDoColaborador(@PathVariable Integer id){
+		return new EnderecoDTO(enderecoDao.readByIdColab(id));
 	}
 
 	/**
@@ -47,8 +58,9 @@ public class EnderecoControllerApi{
 	 * @param {@link Integer}
 	 * @return {@link EnderecoDTO}
 	 */
-	public static EnderecoDTO buscarEnderecoPorId(Integer id) {
-		return new EnderecoDTO(EnderecoController.buscarEnderecoPorId(id));
+	@RequestMapping(value = "/endereco/{id}", method = RequestMethod.GET)
+	public @ResponseBody EnderecoDTO buscarEnderecoPorId(@PathVariable Integer id) {
+		return new EnderecoDTO(enderecoDao.readById(id));
 	}
 	
 	/**
@@ -61,9 +73,10 @@ public class EnderecoControllerApi{
 	 * @author Gabriel Simon <b>gabrielsimon775@gmail.com</b>
 	 * @return {@link EnderecoDTO}
 	 */
-	public static List<EnderecoDTO> buscarTodosEnderecos() {
+	@RequestMapping(value = "/endereco", method = RequestMethod.GET)
+	public @ResponseBody List<EnderecoDTO> buscarTodosEnderecos() {
 		List<EnderecoDTO> listaEnderecoDTO = new ArrayList<EnderecoDTO>();
-		for(Endereco endereco :  EnderecoController.listarTodosEnderecos()) {
+		for(Endereco endereco :  enderecoDao.getAll()) {
 			listaEnderecoDTO.add(new EnderecoDTO(endereco));
 		}
 		return listaEnderecoDTO;

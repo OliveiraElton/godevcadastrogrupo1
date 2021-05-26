@@ -92,6 +92,18 @@ public class EnderecoController {
 	public static Endereco buscarEnderecoPorId(int id) {
 		return enderecoDao.readById(id);
 	}
+	
+	/**
+	 * Buscar Endereço por Id do colaborador.
+	 * 
+	 * Busca no banco o Endereço com o id do colaborador igual ao passado como parametro.
+	 * 
+	 * @param id Do colaborador
+	 * @return Endereço desejado
+	 */
+	public static Endereco buscarEnderecoPorIdColab(int id) {
+		return enderecoDao.readByIdColab(id);
+	}
 
 	/**
 	 * Lista todos os Enderecos.
