@@ -13,11 +13,14 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import br.com.proway.senior.godevcadastrogrupo1.controller.PrestadorServicoController;
+import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
+import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EmpresaDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.PrestadorServicoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
 
 public class PrestadorServicoControllerTest {
 
@@ -28,16 +31,20 @@ public class PrestadorServicoControllerTest {
 	static EmpresaDAO daoEmpresa = EmpresaDAO.getInstance(session);
 
 	@BeforeClass
-	public static void limparTabela() {
+	public static void limparTabela() throws Exception {
+		Endereco endereco = new Endereco("Rua Sete de Setembro", 123, "Taruma Office", "89010-911", "Centro", "Brasil",
+				"Blumenau", "SC");
+		Contatos contatos = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
+		empresa = new Empresa("Senior", LocalDate.now(), "05.975.585/0001-89", endereco, contatos);
 		dao.deleteAll();
 		daoEmpresa.create(empresa);
 	}
 
 	@Test
 	public void testACriarPrestadorServico() throws Exception {
-		empresa = new Empresa("Senior", LocalDate.now(), "05.975.585/0001-89", null, null);
+		
 		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Beatriz", "Massa", "Jhon", data,
-				"Brasil", "São Paulo", true, null, null, "256.103.800-90", null, LocalDate.of(2020, 01, 28), 1,
+				"Brasil", "São Paulo", true, "Feminino", IdentidadeGenero.CIS, "256.103.800-90", "4545454", LocalDate.of(2020, 01, 28), 1,
 				"1543652548", "1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510, "Prédio",
 				"89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 		PrestadorServico prestadorServico = dao.readById(ps.getId());
@@ -47,7 +54,7 @@ public class PrestadorServicoControllerTest {
 	@Test
 	public void testEDeletePrestadorServico() throws Exception {
 		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Beatriz", "Massa", "Jhon", data,
-				"Brasil", "São Paulo", true, null, null, "256.103.800-90", null, LocalDate.of(2020, 01, 28), 4,
+				"Brasil", "São Paulo", true, "Feminino", IdentidadeGenero.CIS, "256.103.800-90", "454454", LocalDate.of(2020, 01, 28), 4,
 				"1543652548", "1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510, "Prédio",
 				"89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 		PrestadorServicoController.deletePrestadorServico(ps);
@@ -57,12 +64,12 @@ public class PrestadorServicoControllerTest {
 	@Test
 	public void testDAtualizarPrestadorServico() throws Exception {
 		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Beatriz", "Massa", "Jhon", data,
-				"Brasil", "São Paulo", true, null, null, "256.103.800-90", null, LocalDate.of(2020, 01, 28), 1,
+				"Brasil", "São Paulo", true, "Feminino", IdentidadeGenero.CIS, "256.103.800-90", "454545", LocalDate.of(2020, 01, 28), 1,
 				"1543652548", "1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510, "Prédio",
 				"89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 		Integer id = ps.getId();
-		PrestadorServico novoPS = PrestadorServicoController.atualizarPrestadorServico(id, "Dani", "Da Massa", "Jhon",
-				data, "Brasil", "São Paulo", true, null, null, "256.103.800-90", null, LocalDate.of(2020, 01, 28), 2,
+		PrestadorServico novoPS = PrestadorServicoController.atualizarPrestadorServico(id, "Dani", "Massa", "Jhon",
+				data, "Brasil", "São Paulo", true, "Feminino", IdentidadeGenero.TRANS, "256.103.800-90", "45454", LocalDate.of(2020, 01, 28), 2,
 				"1543652548", "1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510, "Prédio",
 				"89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 		dao.update(novoPS);
@@ -73,16 +80,17 @@ public class PrestadorServicoControllerTest {
 	@Test
 	public void testBBuscarPrestadorServicoPorId() throws Exception {
 		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Beatriz", "Massa", "Jhon", data,
-				"Brasil", "São Paulo", true, null, null, "256.103.800-90", null, LocalDate.of(2020, 01, 28), 1,
+				"Brasil", "São Paulo", true, "Feminino", IdentidadeGenero.CIS, "256.103.800-90", "45545", LocalDate.of(2020, 01, 28), 1,
 				"1543652548", "1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510, "Prédio",
 				"89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
-		assertEquals(ps, PrestadorServicoController.buscarPrestadorServicoPorId(ps.getId()));
+		PrestadorServico prestadorRetornado = PrestadorServicoController.buscarPrestadorServicoPorId(ps.getId());
+		assertEquals(ps.getCpf(), prestadorRetornado.getCpf());
 	}
 
 	@Test
 	public void testFBuscarTodosPrestadorServico() throws Exception {
 		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Beatriz", "Massa", "Jhon", data,
-				"Brasil", "São Paulo", true, null, null, "256.103.800-90", null, LocalDate.of(2020, 01, 28), 1,
+				"Brasil", "São Paulo", true, "Feminino", IdentidadeGenero.CIS, "256.103.800-90", "65454", LocalDate.of(2020, 01, 28), 1,
 				"1543652548", "1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510, "Prédio",
 				"89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 		List<PrestadorServico> prestadoresServico = PrestadorServicoController.buscarTodosPrestadorServico();
@@ -92,15 +100,15 @@ public class PrestadorServicoControllerTest {
 	@Test
 	public void testCBuscarTodosPrestadorServicoPorNome() throws Exception {
 		PrestadorServico ps = PrestadorServicoController.criarPrestadorServico("Carina", "Massa", "Jhon", data,
-				"Brasil", "São Paulo", true, null, null, "256.103.800-90", null, LocalDate.of(2020, 01, 28), 1,
+				"Brasil", "São Paulo", true, "Feminino", IdentidadeGenero.CIS, "256.103.800-90", "565455", LocalDate.of(2020, 01, 28), 1,
 				"1543652548", "1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510, "Prédio",
 				"89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 		PrestadorServico ps2 = PrestadorServicoController.criarPrestadorServico("Carina", "Fulana", "Jhon", data,
-				"Brasil", "São Paulo", true, null, null, "256.103.800-90", null, LocalDate.of(2020, 01, 28), 1,
+				"Brasil", "São Paulo", true, "Feminino", IdentidadeGenero.CIS, "256.103.800-90", "124545", LocalDate.of(2020, 01, 28), 1,
 				"1543652548", "1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510, "Prédio",
 				"89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 
-		List<PrestadorServico> prestadoresServico = PrestadorServicoController.buscarPrestadorServicoPorNome("Vampeta");
+		List<PrestadorServico> prestadoresServico = PrestadorServicoController.buscarPrestadorServicoPorNome("Carina");
 		assertEquals(2, prestadoresServico.size());
 	}
 

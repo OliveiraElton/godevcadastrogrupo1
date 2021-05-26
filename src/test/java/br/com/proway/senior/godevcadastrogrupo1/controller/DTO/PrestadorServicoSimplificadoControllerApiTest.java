@@ -150,7 +150,7 @@ public class PrestadorServicoSimplificadoControllerApiTest {
 		Endereco endereco2 = new Endereco("Rua 10", 10, "", "89123582", "Centro", "Brasil", "Blumenau", "SC");
 		Contatos contatos2 = new Contatos("47985415263", "47987526341", "joaopires@gmail.com", "47985632144");
 		PrestadorServico prestador = new PrestadorServico("Joao", "Pires", "Jhon", LocalDate.now(), "Brasil",
-				"S�o Paulo", true, "Masculino", IdentidadeGenero.CIS, endereco2, "256.103.800-90", "1543652548",
+				"Sao Paulo", true, "Masculino", IdentidadeGenero.CIS, endereco2, "256.103.800-90", "1543652548",
 				contatos2, LocalDate.of(2020, 01, 28), empresa, 12);
 		PrestadorServico prestadorRetornado = prestadorApi.cadastrarPrestadorServico(prestador);
 		prestadorRetornado.setNome("Carlos");

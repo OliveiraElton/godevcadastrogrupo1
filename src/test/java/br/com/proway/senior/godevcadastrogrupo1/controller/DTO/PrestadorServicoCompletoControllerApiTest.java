@@ -21,6 +21,7 @@ import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EmpresaDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.PrestadorServicoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.PrestadorServicoCompletoDTO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DTO.PrestadorServicoDTO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
 
@@ -57,32 +58,40 @@ public class PrestadorServicoCompletoControllerApiTest {
 
 	@Test
 	public void testBuscarAPrestadorServicoPorId() throws Exception {
+		Endereco endereco2 = new Endereco("Rua 10", 10, "", "89123582", "Centro", "Brasil", "Blumenau", "SC");
+		Contatos contatos2 = new Contatos("47985415263", "47987526341", "joaopires@gmail.com", "47985632144");
+		Empresa empresa2 = new Empresa("Proway", LocalDate.now(), "05.975.585/0001-89", endereco2, contatos2);
+		
 		PrestadorServicoController.criarPrestadorServico("Carlos", "Da Silva", "Jhon", LocalDate.now(), "Brasil",
 				"S�o Paulo", true, null, null, "256.103.800-90", null, LocalDate.of(2020, 01, 28), 1, "1543652548",
 				"1543652548", "batriz@gmail.com", "1543652548", "Rua s�o Paulo", 510, "Pr�dio", "89032640",
 				"Agua Verde", "Brasil", "Blumenau", "SP", empresa);
+		
 		PrestadorServicoController.criarPrestadorServico("Beatriz", "Fulana", "bia", LocalDate.now(), "Brasil",
 				"S�o Paulo", true, null, null, "256.103.800-90", null, LocalDate.of(2020, 01, 28), 1, "1543652548",
 				"1543652548", "batriz@gmail.com", "1543652548", "Rua s�o Paulo", 510, "Pr�dio", "89032640",
-				"Agua Verde", "Brasil", "Blumenau", "SP", empresa);
+				"Agua Verde", "Brasil", "Blumenau", "SP", empresa2);
 
 		PrestadorServicoCompletoDTO prestadorCompletoDTO = prestadorApi
 				.buscarPrestadorServicoCompletoPorId(prestadorApi.buscarTodosPrestadorServicoCompleto().get(0).getId());
 		assertEquals("256.103.800-90", prestadorCompletoDTO.getCpf());
 
 	}
-
+	
 	@Test
-	public void testFBuscarTodosPrestadorServico() throws Exception {
-		PrestadorServicoController.criarPrestadorServico("Jurandir", "Da Massa", "Jhon", LocalDate.now(), "Brasil",
-				"S�o Paulo", true, "", IdentidadeGenero.CIS, "256.103.800-90", "", LocalDate.of(2020, 01, 28), 1, "1543652548",
-				"1543652548", "batriz@gmail.com", "1543652548", "Rua s�o Paulo", 510, "Pr�dio", "89032640",
-				"Agua Verde", "Brasil", "Blumenau", "SP", empresa);
+	public void testBuscarTodosPrestadorServico() throws Exception {
+		Endereco endereco2 = new Endereco("Rua 15", 10, "", "89123582", "Centro", "Brasil", "Blumenau", "SC");
+		Contatos contatos2 = new Contatos("47985236587", "47987526341", "joaopires@gmail.com", "47985632144");
+		Empresa empresa2 = new Empresa("Proway", LocalDate.now(), "05.975.585/0001-89", endereco2, contatos2);
+		PrestadorServicoController.criarPrestadorServico("Joao", "Massa", "Jhon", LocalDate.now(), "Brasil",
+				"Sao Paulo", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "547878",
+				LocalDate.of(2020, 01, 28), 1, "1543652548", "1543652548", "batriz@gmail.com", "1543652548",
+				"Rua Sao Paulo", 510, "Predio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 
-		PrestadorServicoController.criarPrestadorServico("Daniela", "Fulana", "Jhon", LocalDate.now(), "Brasil",
-				"S�o Paulo", true, "", IdentidadeGenero.TRANS, "256.103.800-90", "", LocalDate.of(2020, 01, 28), 1, "1543652548",
-				"1543652548", "batriz@gmail.com", "1543652548", "Rua s�o Paulo", 510, "Pr�dio", "89032640",
-				"Agua Verde", "Brasil", "Blumenau", "SP", empresa);
+		PrestadorServicoController.criarPrestadorServico("Joao", "Fulana", "Jhon", LocalDate.now(), "Brasil",
+				"Sao Paulo", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "78744",
+				LocalDate.of(2020, 01, 28), 1, "1543652548", "1543652548", "batriz@gmail.com", "1543652548",
+				"Rua s�o Paulo", 510, "Predio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa2);
 
 		List<PrestadorServicoCompletoDTO> listaPrestadorCompletoDTO = prestadorApi.buscarTodosPrestadorServicoCompleto();
 		assertEquals(2, listaPrestadorCompletoDTO.size());
@@ -90,6 +99,10 @@ public class PrestadorServicoCompletoControllerApiTest {
 
 	@Test
 	public void testBBuscarPrestadorServicoPorNome() throws Exception {
+		Endereco endereco2 = new Endereco("Rua 10", 10, "", "89123582", "Centro", "Brasil", "Blumenau", "SC");
+		Contatos contatos2 = new Contatos("47985415263", "47987526341", "joaopires@gmail.com", "47985632144");
+		Empresa empresa2 = new Empresa("Proway", LocalDate.now(), "05.975.585/0001-89", endereco2, contatos2);
+
 		PrestadorServicoController.criarPrestadorServico("Junior", "Da Massa", "Jhon", LocalDate.now(), "Brasil",
 				"S�o Paulo", true, null, null, "256.103.800-90", null, LocalDate.of(2020, 01, 28), 1, "1543652548",
 				"1543652548", "batriz@gmail.com", "1543652548", "Rua s�o Paulo", 510, "Pr�dio", "89032640",
@@ -98,7 +111,7 @@ public class PrestadorServicoCompletoControllerApiTest {
 		PrestadorServicoController.criarPrestadorServico("Professor Ricardo", "Fulana", "Jhon", LocalDate.now(),
 				"Brasil", "S�o Paulo", true, null, null, "256.103.800-90", null, LocalDate.of(2020, 01, 28), 1,
 				"1543652548", "1543652548", "batriz@gmail.com", "1543652548", "Rua s�o Paulo", 510, "Pr�dio",
-				"89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
+				"89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa2);
 
 		List<PrestadorServicoCompletoDTO> listaPrestadorCompletoDTO = prestadorApi
 				.buscarPrestadorServicoCompletoPorNome("Professor Ricardo");

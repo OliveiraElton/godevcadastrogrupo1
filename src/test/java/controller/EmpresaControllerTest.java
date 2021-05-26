@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -45,6 +46,12 @@ public class EmpresaControllerTest {
 	public static void setUpBeforeClass() throws Exception {
 		empresa = new Empresa("Senior", LocalDate.now(), "05.975.585/0001-89", null, null);
 		contatos = new Contatos("47888999665", "47985556633", "empresa@gmail.com", "47987456321");
+		dao.deleteAll();
+		
+	}
+	
+	@Before
+	public void limparTabela() throws Exception {
 		dao.deleteAll();
 		
 	}
@@ -113,7 +120,7 @@ public class EmpresaControllerTest {
 		
 		List<Empresa> listaEmpresas = EmpresaController.buscarTodasEmpresas();
 		
-		assertEquals(7, listaEmpresas.size());
+		assertEquals(2, listaEmpresas.size());
 	}
 
 	@Test
