@@ -39,7 +39,7 @@ public class ColaboradorSimplificadoControllerApi {
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping(value = "/colaboradorSimplificado/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/colaboradorsimplificado/{id}", method = RequestMethod.GET)
 	public @ResponseBody ColaboradorSimplificadoDTO buscarColaboradorPorId(@PathVariable Integer id) {
 		Colaborador colaborador = ColaboradorController.buscarColaboradorPorId(id);
 		ColaboradorSimplificadoDTO colaboradorDto = new ColaboradorSimplificadoDTO(colaborador);
@@ -52,7 +52,7 @@ public class ColaboradorSimplificadoControllerApi {
 	 * @return
 	 */
 	
-	@RequestMapping(value = "/colaboradorSimplificado", method = RequestMethod.GET)
+	@RequestMapping(value = "/colaboradorsimplificado", method = RequestMethod.GET)
 	public @ResponseBody List<ColaboradorSimplificadoDTO> buscarTodos() {
 		List<ColaboradorSimplificadoDTO> listaColaboradorDto = new ArrayList<ColaboradorSimplificadoDTO>();
 		List<Colaborador> listaColaborador = ColaboradorController.buscarTodosColaboradores();
@@ -72,7 +72,7 @@ public class ColaboradorSimplificadoControllerApi {
 	 * @return
 	 */
 	
-	@RequestMapping(value = "/colaboradorSimplificado/nome/{nome}", method = RequestMethod.GET)
+	@RequestMapping(value = "/colaboradorsimplificado/nome/{nome}", method = RequestMethod.GET)
 	public @ResponseBody List<ColaboradorSimplificadoDTO> buscarColaboradorPorNome(@PathVariable ("nome") String nome) {
 		List<Colaborador> listaColaborador = ColaboradorController.buscarColaboradorPorNome(nome);
 		List<ColaboradorSimplificadoDTO> listaColaboradorDto = new ArrayList<ColaboradorSimplificadoDTO>();
