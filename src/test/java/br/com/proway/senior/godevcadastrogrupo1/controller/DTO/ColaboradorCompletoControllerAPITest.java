@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import org.hibernate.Session;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -50,6 +51,10 @@ public class ColaboradorCompletoControllerAPITest {
 	static TiposExames te = EnumExamesMedicos.TiposExames.ADMISSIONAL;
 	static TiposDependentes td = EnumDadosPessoais.TiposDependentes.CONJUGE;
 
+	@Before
+	public void limparTabela() {
+		dao.deleteAll();
+	}
 	@Test
 	public void testCriarUmColaborador() throws Exception {
 		Colaborador colaborador1 = ColaboradorController.criarColaborador("Lucas", "Walim", "Nada consta", data,
@@ -163,15 +168,5 @@ public class ColaboradorCompletoControllerAPITest {
 		assertEquals(colaborador2.getEndereco(), listaRetorno.get(1).getEndereco());
 		assertEquals(colaborador2.getEndereco(), listaRetorno.get(1).getEndereco());
 		assertEquals(colaborador2.getEndereco(), listaRetorno.get(1).getEndereco());
-	}
-
-	@Ignore
-	public void limparTabela() {
-		dao.deleteAll();
-		daoConta.deleteAll();
-		daoContatos.deleteAll();
-		daoEndereco.deleteAll();
-		daoExameMedico.deleteAll();
-		daoDependente.deleteAll();
 	}
 }

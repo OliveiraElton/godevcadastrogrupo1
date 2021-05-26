@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.sun.xml.bind.v2.model.core.ID;
 
@@ -28,10 +29,11 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
  * 
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
  */
+
+@RestController
 public class ColaboradorCompletoControllerAPI {
 
 	static Session session = DBConnection.getSession();
-	static ColaboradorController controllerOriginal = new ColaboradorController();
 	static ColaboradorDAO colaboradorDao = ColaboradorDAO.getInstance(session);
 
 	/**
@@ -45,10 +47,10 @@ public class ColaboradorCompletoControllerAPI {
 	 * @return ColaboradorCompletoDTO objeto com as informa��es do banco.
 	 */
 
-	@RequestMapping(value = "/colaboradorCompleto/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/colaboradorcompleto/{id}", method = RequestMethod.GET)
 	public @ResponseBody ColaboradorCompletoDTO buscarColaboradorPorId(@PathVariable("id") Integer idColaborador) {
 		ColaboradorCompletoDTO colaboradorDTO = new ColaboradorCompletoDTO(
-				controllerOriginal.buscarColaboradorPorId(idColaborador));
+				colaboradorDao.readById(idColaborador));
 		return colaboradorDTO;
 	}
 
@@ -60,7 +62,7 @@ public class ColaboradorCompletoControllerAPI {
 	 * @param colaborador
 	 * @return Retorna um colaborador 
 	 */
-	@RequestMapping(value = "/colaboradorCompleto", method = RequestMethod.POST)
+	@RequestMapping(value = "/colaboradorcompleto", method = RequestMethod.POST)
 	public @ResponseBody Colaborador criarColaborador(@RequestBody Colaborador colaborador) {
 		return colaboradorDao.create(colaborador);
 	}
@@ -74,7 +76,7 @@ public class ColaboradorCompletoControllerAPI {
 	 * @param colaborador
 	 * @return Vai retornar um colaborador novo.
 	 */
-	@RequestMapping(value = "/colaboradorCompleto", method = RequestMethod.PUT)
+	@RequestMapping(value = "/colaboradorcompleto", method = RequestMethod.PUT)
 	public @ResponseBody Colaborador atualizarColaborador(Colaborador colaborador) {
 		return colaboradorDao.update(colaborador);
 	}
@@ -87,7 +89,7 @@ public class ColaboradorCompletoControllerAPI {
 	 * @param id
 	 * @return Vai retornar verdadeiro se for deletado e false caso contrario.
 	 */
-	@RequestMapping(value = "/colaboradorCompleto/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/colaboradorcompleto/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody boolean deletarColaborador(@PathVariable("id") Integer id) {
 		Colaborador colaborador = colaboradorDao.readById(id);
 		return colaboradorDao.delete(colaborador);
@@ -102,10 +104,10 @@ public class ColaboradorCompletoControllerAPI {
 	 * @return listaColaboradorDTO lista de registros localizados.
 	 */
 
-	@RequestMapping(value = "/colaboradorCompleto", method = RequestMethod.GET)
+	@RequestMapping(value = "/colaboradorcompleto", method = RequestMethod.GET)
 	public static @ResponseBody List<ColaboradorCompletoDTO> buscarTodosColaboradores() {
 		List<ColaboradorCompletoDTO> listaColaboradorDTO = new ArrayList<ColaboradorCompletoDTO>();
-		List<Colaborador> listaImprime = controllerOriginal.buscarTodosColaboradores();
+		List<Colaborador> listaImprime = colaboradorDao.getAll();
 		for (Colaborador colaborador : listaImprime) {
 			listaColaboradorDTO.add(new ColaboradorCompletoDTO(colaborador));
 		}
@@ -123,11 +125,11 @@ public class ColaboradorCompletoControllerAPI {
 	 * @return ArrayList Empresa lista de registros localizados.
 	 */
 
-	@RequestMapping(value = "/colaboradorCompleto/nome/{nomeColaborador}", method = RequestMethod.GET)
+	@RequestMapping(value = "/colaboradorcompleto/nome/{nome}", method = RequestMethod.GET)
 	public static @ResponseBody List<ColaboradorCompletoDTO> buscarColaboradorPorNome(
-			@PathVariable("nomeColaborador") String nomeColaborador) {
+			@PathVariable("nome") String nome) {
 		List<ColaboradorCompletoDTO> listaColaboradorDTO = new ArrayList<ColaboradorCompletoDTO>();
-		for (Colaborador colaborador : controllerOriginal.buscarColaboradorPorNome(nomeColaborador)) {
+		for (Colaborador colaborador : colaboradorDao.buscarPorNome(nome)) {
 			listaColaboradorDTO.add(new ColaboradorCompletoDTO(colaborador));
 		}
 		return listaColaboradorDTO;
