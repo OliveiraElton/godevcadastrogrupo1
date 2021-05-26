@@ -8,11 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import br.com.proway.senior.godevcadastrogrupo1.controller.DependenteController;
 import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
-import br.com.proway.senior.godevcadastrogrupo1.model.DTO.DependenteCompletoDTO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.DependenteSimplificadoDTO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
@@ -24,6 +23,7 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
  * @author Vitor Peres <b>vitor.peres@senior.com.br</b>
  *
  */
+@RestController
 public class DependenteSimplificadoControllerApi {
 
 	static Session session = DBConnection.getSession();
@@ -52,11 +52,11 @@ public class DependenteSimplificadoControllerApi {
 	 * 
 	 * @return Dependente ou null caso não encontrado.
 	 */
-	@RequestMapping(value = "/dependentesimplificado/{id}", method = RequestMethod.GET)
-	public @ResponseBody List<DependenteSimplificadoDTO> buscarDependentePorIdColaborador(@PathVariable ("id") Integer id) {
+	@RequestMapping(value = "/dependentesimplificado/{idcolab}", method = RequestMethod.GET)
+	public @ResponseBody List<DependenteSimplificadoDTO> buscarDependentePorIdColaborador(@PathVariable ("idcolab") Integer idcolab) {
 		List<DependenteSimplificadoDTO> listaDependentes = new ArrayList<DependenteSimplificadoDTO>();
 		
-		for(Dependente dependente : dependenteDao.readByIdColab(id)) {
+		for(Dependente dependente : dependenteDao.readByIdColab(idcolab)) {
 			listaDependentes.add(new DependenteSimplificadoDTO(dependente));
 		}
 		return listaDependentes;
@@ -75,7 +75,6 @@ public class DependenteSimplificadoControllerApi {
 		for(Dependente dependente : dependenteDao.getAll()) {
 			listaDependentes.add(new DependenteSimplificadoDTO(dependente));
 		}
-		
 		return listaDependentes;
 	}
 	/**

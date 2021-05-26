@@ -11,13 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.proway.senior.godevcadastrogrupo1.controller.DependenteController;
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
-import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.DependenteCompletoDTO;
-import br.com.proway.senior.godevcadastrogrupo1.model.DTO.DependenteSimplificadoDTO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 /**
@@ -103,11 +100,11 @@ public class DependenteCompletoControllerApi {
 	 * 
 	 * @return Dependente ou null caso não encontrado.
 	 */
-	@RequestMapping(value = "/dependente/{id}", method = RequestMethod.GET)
-	public @ResponseBody List<DependenteCompletoDTO> buscarDependentePorIdColaborador(@PathVariable ("id") Integer id) {
+	@RequestMapping(value = "/dependente/{idcolab}", method = RequestMethod.GET)
+	public @ResponseBody List<DependenteCompletoDTO> buscarDependentePorIdColaborador(@PathVariable ("idcolab") Integer idcolab) {
 		List<DependenteCompletoDTO> listaDependentes = new ArrayList<DependenteCompletoDTO>();
 		
-		for(Dependente dependente : dependenteDao.readByIdColab(id)) {
+		for(Dependente dependente : dependenteDao.readByIdColab(idcolab)) {
 			listaDependentes.add(new DependenteCompletoDTO(dependente));
 		}
 		return listaDependentes;
