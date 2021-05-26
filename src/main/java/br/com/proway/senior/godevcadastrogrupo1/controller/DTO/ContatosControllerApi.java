@@ -23,7 +23,7 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
  * {@link Colaborador} e {@link PrestadorServico}. Disponibiliza todas as
  * informa��es na API.
  * 
- * @author Elton Oliveira <elton.oliveira@senior.com.br>
+ * @author Elton Oliveira <b>elton.oliveira@senior.com.br</b>
  *
  */
 
@@ -41,7 +41,7 @@ public class ContatosControllerApi {
 	 * Salva as informações no banco.
 	 * 
 	 * @param contatos
-	 * @author Elton Oliveira.
+	 * @author Elton Oliveira <b>elton.oliveira@senior.com.br</b>
 	 */
 	@RequestMapping(value = "/contatos", method = RequestMethod.POST)
 	public @ResponseBody Contatos criarContato(@RequestBody Contatos contatos) {
@@ -56,7 +56,7 @@ public class ContatosControllerApi {
 	 * Deleta as informações no banco.
 	 * 
 	 * @param contatos
-	 * @author Elton Oliveira.
+	 * @author Elton Oliveira <b>elton.oliveira@senior.com.br</b>
 	 */
 	@RequestMapping(value = "/contatos/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody boolean deleteContatos(@PathVariable ("id") Integer id) {
@@ -72,7 +72,7 @@ public class ContatosControllerApi {
 	 * Atualiza as informações no banco.
 	 * 
 	 * @param contatos
-	 * @author Elton Oliveira.
+	 * @author Elton Oliveira <b>elton.oliveira@senior.com.br</b>
 	 */
 	@RequestMapping(value = "/contatos/{id}", method = RequestMethod.PUT)
 	public @ResponseBody Contatos atualizarContatos(@PathVariable ("id")  Integer id, @RequestBody Contatos contatos) {
@@ -89,7 +89,7 @@ public class ContatosControllerApi {
 	 * Retorna o conteudo informado no parametro id referente ao contato.
 	 * 
 	 * @return listaEmpresaDTO lista de registros localizados.
-	 * @author Elton Oliveira.
+	 * @author Elton Oliveira <b>elton.oliveira@senior.com.br</b>
 	 */
 	@RequestMapping(value = "/contatos/{id}", method = RequestMethod.GET)
 	public @ResponseBody ContatosDTO buscarContatosPorId(@PathVariable ("id") Integer id) {
@@ -105,7 +105,7 @@ public class ContatosControllerApi {
 	 * dados. Retorna uma lista de todos os registros do contatos.
 	 * 
 	 * @return listaEmpresaDTO lista de registros localizados.
-	 * @author Elton Oliveira.
+	 * @author Elton Oliveira <b>elton.oliveira@senior.com.br</b>
 	 */
 	@RequestMapping(value = "/contatos", method = RequestMethod.GET)
 	public @ResponseBody List<ContatosDTO> buscarTodosContatos() {
@@ -127,7 +127,7 @@ public class ContatosControllerApi {
 	 * Retorna o conteudo informado no parametro email referente ao contato.
 	 * 
 	 * @return listaEmpresaDTO lista de registros localizados.
-	 * @author Elton Oliveira.
+	 * @author Elton Oliveira <b>elton.oliveira@senior.com.br</b>
 	 */
 	@RequestMapping(value = "/empresa/{email}", method = RequestMethod.GET)
 	public @ResponseBody List<ContatosDTO> buscarPrestadorServicoPorEmail(@PathVariable ("email") String email) {
