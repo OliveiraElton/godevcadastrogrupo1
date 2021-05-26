@@ -3,47 +3,107 @@ package br.com.proway.senior.godevcadastrogrupo1.controller.DTO;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Session;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.sun.xml.bind.v2.model.core.ID;
+
 import br.com.proway.senior.godevcadastrogrupo1.controller.ColaboradorController;
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ColaboradorDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.ColaboradorCompletoDTO;
+import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 /**
  * Classe ColaboradorCompletoControllerAPI
  * 
  * Classe disponibilizada para consulta dos dados da empresa via API Rest.
- * Implementa os métodos de visualização do {@link ColaboradorCompletoController} e atriutos
- * do model {@link ColaboradorCompletoDTO}.
+ * Implementa os mï¿½todos de visualizaï¿½ï¿½o do
+ * {@link ColaboradorCompletoController} e atriutos do model
+ * {@link ColaboradorCompletoDTO}.
  * 
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
  */
 public class ColaboradorCompletoControllerAPI {
-	
+
+	static Session session = DBConnection.getSession();
 	static ColaboradorController controllerOriginal = new ColaboradorController();
+	static ColaboradorDAO colaboradorDao = ColaboradorDAO.getInstance(session);
 
 	/**
 	 * Buscar colaborador por Id.
 	 * 
-	 * Método busca as informações cadastradas do colaborador, conforme idColaborador
-	 * informado. Retorna um objeto ColaboradorCompletoDTO que será visualizado pelo 
-	 * cliente da API.
+	 * Mï¿½todo busca as informaï¿½ï¿½es cadastradas do colaborador, conforme
+	 * idColaborador informado. Retorna um objeto ColaboradorCompletoDTO que serï¿½
+	 * visualizado pelo cliente da API.
 	 * 
-	 * @param idColaborador identificação do colaborador que será retornado.
-	 * @return ColaboradorCompletoDTO objeto com as informações do banco.
+	 * @param idColaborador identificaï¿½ï¿½o do colaborador que serï¿½ retornado.
+	 * @return ColaboradorCompletoDTO objeto com as informaï¿½ï¿½es do banco.
 	 */
-	public ColaboradorCompletoDTO buscarColaboradorPorId(Integer idColaborador) {
-		ColaboradorCompletoDTO colaboradorDTO = new ColaboradorCompletoDTO(controllerOriginal.buscarColaboradorPorId(idColaborador));
+
+	@RequestMapping(value = "/colaboradorCompleto/{id}", method = RequestMethod.GET)
+	public @ResponseBody ColaboradorCompletoDTO buscarColaboradorPorId(@PathVariable("id") Integer idColaborador) {
+		ColaboradorCompletoDTO colaboradorDTO = new ColaboradorCompletoDTO(
+				controllerOriginal.buscarColaboradorPorId(idColaborador));
 		return colaboradorDTO;
+	}
+
+	/**
+	 * Criar Colaborador.
+	 * 
+	 * Vai receber os dados necessarios para criar um colaborador. Depois chama o dao e salva no banco de dados.
+	 * 
+	 * @param colaborador
+	 * @return Retorna um colaborador 
+	 */
+	@RequestMapping(value = "/colaboradorCompleto", method = RequestMethod.POST)
+	public @ResponseBody Colaborador criarColaborador(@RequestBody Colaborador colaborador) {
+		return colaboradorDao.create(colaborador);
+	}
+
+	/**
+	 * Atualiza Colaborador.
+	 * 
+	 * Cria um novo Colaborador que vai sobrepor as informacoes do antigo registro do Colaborador pelo parametro
+	 * passado.
+	 * 
+	 * @param colaborador
+	 * @return Vai retornar um colaborador novo.
+	 */
+	@RequestMapping(value = "/colaboradorCompleto", method = RequestMethod.PUT)
+	public @ResponseBody Colaborador atualizarColaborador(Colaborador colaborador) {
+		return colaboradorDao.update(colaborador);
+	}
+
+	/**
+	 * * Excluir um Colaborador.
+	 * 
+	 * Vai excluir um {@link Colaborador} pelo {@link ID} passado no parametro.
+	 * 
+	 * @param id
+	 * @return Vai retornar verdadeiro se for deletado e false caso contrario.
+	 */
+	@RequestMapping(value = "/colaboradorCompleto/{id}", method = RequestMethod.DELETE)
+	public @ResponseBody boolean deletarColaborador(@PathVariable("id") Integer id) {
+		Colaborador colaborador = colaboradorDao.readById(id);
+		return colaboradorDao.delete(colaborador);
 	}
 
 	/**
 	 * Buscar todos os colaboradores.
 	 * 
-	 * Método busca as informações de todos os colaboradores cadastrados no banco de
+	 * Mï¿½todo busca as informaï¿½ï¿½es de todos os colaboradores cadastrados no banco de
 	 * dados. Retorna uma lista de todos os registros de colaboradores.
 	 * 
 	 * @return listaColaboradorDTO lista de registros localizados.
 	 */
-	public static List<ColaboradorCompletoDTO> buscarTodosColaboradores() {
+
+	@RequestMapping(value = "/colaboradorCompleto", method = RequestMethod.GET)
+	public static @ResponseBody List<ColaboradorCompletoDTO> buscarTodosColaboradores() {
 		List<ColaboradorCompletoDTO> listaColaboradorDTO = new ArrayList<ColaboradorCompletoDTO>();
 		List<Colaborador> listaImprime = controllerOriginal.buscarTodosColaboradores();
 		for (Colaborador colaborador : listaImprime) {
@@ -55,14 +115,17 @@ public class ColaboradorCompletoControllerAPI {
 	/**
 	 * Busca colaborador por nome.
 	 * 
-	 * Método busca os colaboradores no banco de dados através dos seus respectivos
-	 * nomes, é possível passar um parâmetro parcial para retorna todos os registros
+	 * Mï¿½todo busca os colaboradores no banco de dados atravï¿½s dos seus respectivos
+	 * nomes, ï¿½ possï¿½vel passar um parï¿½metro parcial para retorna todos os registros
 	 * que contenham determinado texto em seu nomeColaborador.
 	 * 
-	 * @param nomeColaborador nome dos registros que estão sendo procurados.
+	 * @param nomeColaborador nome dos registros que estï¿½o sendo procurados.
 	 * @return ArrayList Empresa lista de registros localizados.
 	 */
-	public static List<ColaboradorCompletoDTO> buscarColaboradorPorNome(String nomeColaborador) {
+
+	@RequestMapping(value = "/colaboradorCompleto/nome/{nomeColaborador}", method = RequestMethod.GET)
+	public static @ResponseBody List<ColaboradorCompletoDTO> buscarColaboradorPorNome(
+			@PathVariable("nomeColaborador") String nomeColaborador) {
 		List<ColaboradorCompletoDTO> listaColaboradorDTO = new ArrayList<ColaboradorCompletoDTO>();
 		for (Colaborador colaborador : controllerOriginal.buscarColaboradorPorNome(nomeColaborador)) {
 			listaColaboradorDTO.add(new ColaboradorCompletoDTO(colaborador));
