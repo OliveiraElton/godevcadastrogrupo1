@@ -1,6 +1,7 @@
 package br.com.proway.senior.godevcadastrogrupo1.controller.DTO;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -150,5 +151,9 @@ public class ColaboradorSimplificadoControllerAPITest{
 		List<ColaboradorSimplificadoDTO> lista = colaboradorControllerApi.buscarColaboradorPorNome("Luiza");
 		assertEquals(2, lista.size());
 	}
+	
+	
+	
+
 
 }

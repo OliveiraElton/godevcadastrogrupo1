@@ -96,9 +96,10 @@ public class EmpresaController {
 	 * @param contatos
 	 * @param endereco
 	 * @return
+	 * @throws Exception 
 	 */
 	public static Empresa atualizarEmpresa(Integer id, String nomeEmpresa, LocalDate dataInicioContrato, String cnpj,
-			Contatos contatos, Endereco endereco) {
+			Contatos contatos, Endereco endereco) throws Exception {
 
 		Empresa empresa = new Empresa(nomeEmpresa, dataInicioContrato, cnpj, endereco, contatos);
 		
