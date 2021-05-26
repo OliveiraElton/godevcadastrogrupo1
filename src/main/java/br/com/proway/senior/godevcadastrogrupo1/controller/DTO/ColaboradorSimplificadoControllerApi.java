@@ -39,7 +39,8 @@ public class ColaboradorSimplificadoControllerApi {
 	 * @param id
 	 * @return
 	 */
-	public ColaboradorSimplificadoDTO buscarColaboradorPorId(int id) {
+	@RequestMapping(value = "/colaboradorSimplificado/{id}", method = RequestMethod.GET)
+	public @ResponseBody ColaboradorSimplificadoDTO buscarColaboradorPorId(@PathVariable Integer id) {
 		Colaborador colaborador = ColaboradorController.buscarColaboradorPorId(id);
 		ColaboradorSimplificadoDTO colaboradorDto = new ColaboradorSimplificadoDTO(colaborador);
 		return colaboradorDto;
@@ -50,7 +51,9 @@ public class ColaboradorSimplificadoControllerApi {
 	 * 
 	 * @return
 	 */
-	public List<ColaboradorSimplificadoDTO> buscarTodos() {
+	
+	@RequestMapping(value = "/colaboradorSimplificado", method = RequestMethod.GET)
+	public @ResponseBody List<ColaboradorSimplificadoDTO> buscarTodos() {
 		List<ColaboradorSimplificadoDTO> listaColaboradorDto = new ArrayList<ColaboradorSimplificadoDTO>();
 		List<Colaborador> listaColaborador = ColaboradorController.buscarTodosColaboradores();
 
@@ -59,48 +62,7 @@ public class ColaboradorSimplificadoControllerApi {
 		}
 		return listaColaboradorDto;
 	}
-	
-	/**
-	 * Cria colaborador.
-	 * 
-	 * Metodo responsavel por criar um registro de um novo colaborador no banco de dados. Recebe um 
-	 *  objeto da {@link Colaborador} que sera criada. 
-	 * 
-	 * @param colaborador {@link Colaborador}
-	 * @return 
-	 */
-	@RequestMapping(value = "/colaboradorSimplificado", method = RequestMethod.POST)
-	public @ResponseBody Colaborador criarColadorador(@RequestBody Colaborador colaborador) {
-		return daoColaborador.create(colaborador);
-	}
 
-	/**
-	 * Exclui Colaborador.
-	 * 
-	 * Metodo responsavel por excluir um colaborador do banco de dados. Recebe como
-	 * parametro um {@link Integer id}.
-	 * @param id
-	 * @return
-	 */
-	@RequestMapping (value = "colaborador/{id}", method = RequestMethod.DELETE)
-	public @ResponseBody boolean deletarColaborador (@PathVariable ("id") Integer id) {
-		Colaborador colaborador = daoColaborador.readById(id);
-		return daoColaborador.delete(colaborador);
-	}
-	
-	/**
-	 * Altera Colaborador
-	 * 
-	 * Metodo responsavel por alterar um colaborador do banco de dados. Recebendo como
-	 * parametro um objeto {@link Colaborador}.
-	 * 
-	 * @param colaborador
-	 * @return
-	 */
-	@RequestMapping(value = "/colaborador", method = RequestMethod.PUT)
-	public @ResponseBody Colaborador atualizarColaborador (@RequestBody Colaborador colaborador) {
-		return daoColaborador.update(colaborador);
-	}
 	
 	/**
 	 * Retorna uma Lista de todos {@link ColaboradorSimplificadoDTO} onde o nome
@@ -109,7 +71,9 @@ public class ColaboradorSimplificadoControllerApi {
 	 * @param nome
 	 * @return
 	 */
-	public List<ColaboradorSimplificadoDTO> buscarColaboradorPorNome(String nome) {
+	
+	@RequestMapping(value = "/colaboradorSimplificado/{nome}", method = RequestMethod.GET)
+	public @ResponseBody List<ColaboradorSimplificadoDTO> buscarColaboradorPorNome(@PathVariable ("nome") String nome) {
 		List<Colaborador> listaColaborador = ColaboradorController.buscarColaboradorPorNome(nome);
 		List<ColaboradorSimplificadoDTO> listaColaboradorDto = new ArrayList<ColaboradorSimplificadoDTO>();
 		for (Colaborador colaborador : listaColaborador) {
