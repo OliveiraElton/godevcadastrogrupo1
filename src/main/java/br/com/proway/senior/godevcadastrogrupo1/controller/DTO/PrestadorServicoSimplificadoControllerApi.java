@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import br.com.proway.senior.godevcadastrogrupo1.controller.PrestadorServicoController;
 import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
@@ -27,6 +28,7 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
  *
  */
+@RestController 
 public class PrestadorServicoSimplificadoControllerApi {
 
 	static Session session = DBConnection.getSession();
