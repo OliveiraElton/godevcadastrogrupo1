@@ -100,11 +100,11 @@ public class DependenteCompletoControllerApi {
 	 * 
 	 * @return Dependente ou null caso não encontrado.
 	 */
-	@RequestMapping(value = "/dependente/{idcolab}", method = RequestMethod.GET)
-	public @ResponseBody List<DependenteCompletoDTO> buscarDependentePorIdColaborador(@PathVariable ("idcolab") Integer idcolab) {
+	@RequestMapping(value = "/dependente/colab/{id}", method = RequestMethod.GET)
+	public @ResponseBody List<DependenteCompletoDTO> buscarDependentePorIdColaborador(@PathVariable ("id") Integer id) {
 		List<DependenteCompletoDTO> listaDependentes = new ArrayList<DependenteCompletoDTO>();
 		
-		for(Dependente dependente : dependenteDao.readByIdColab(idcolab)) {
+		for(Dependente dependente : dependenteDao.readByIdColab(id)) {
 			listaDependentes.add(new DependenteCompletoDTO(dependente));
 		}
 		return listaDependentes;
@@ -132,7 +132,7 @@ public class DependenteCompletoControllerApi {
 	 * @param nome
 	 * @return
 	 */
-	@RequestMapping(value = "/dependente/{nome}", method = RequestMethod.GET)
+	@RequestMapping(value = "/dependente/nome/{nome}", method = RequestMethod.GET)
 	public @ResponseBody List<DependenteCompletoDTO> buscarDependenteCompletoPorNome(@PathVariable ("nome") String nome) {
 		List<DependenteCompletoDTO> listaDependenteCompletoDTO = new ArrayList<DependenteCompletoDTO>();
 		for(Dependente dependente : dependenteDao.buscarPorNome(nome)) {
