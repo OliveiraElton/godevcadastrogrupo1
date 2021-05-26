@@ -118,7 +118,7 @@ public class EmpresaControllerAPI {
 	 * @param nomeEmpresa nome dos registros que estao sendo procurados.
 	 * @return ArrayList Empresa lista de registros localizados.
 	 */
-	@RequestMapping(value = "/empresa/{nome}", method = RequestMethod.GET)
+	@RequestMapping(value = "/empresa/nome/{nome}", method = RequestMethod.GET)
 	public @ResponseBody List<EmpresaDTO> buscarEmpresaPorNome(@PathVariable ("nome") 
 			String nome) {
 		List<EmpresaDTO> listaEmpresaDTO = new ArrayList<EmpresaDTO>();

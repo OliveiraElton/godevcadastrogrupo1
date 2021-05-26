@@ -133,25 +133,25 @@ public class PrestadorServicoCompletoControllerApiTest {
 		assertEquals(quantidade + 1, prestadorApi.buscarTodosPrestadorServicoCompleto().size());
 	}
 
-//	@Test
-//	public void testDUpdate() {
-//		Endereco endereco = new Endereco("Rua cinco", 45, "Casa", "89665522", "Centro", "Brasil", "Itajai", "SC");
-//
-//		PrestadorServico prestador = new PrestadorServico("Jorge", "Pereira", "Jorge", LocalDate.now(), "Brasileiro",
-//				"Itajai", true, "Masculino", IdentidadeGenero.CIS, endereco, "09532665411", "96655221", null, null,
-//				empresa, null);
-//		
-//		prestadorApi.criarPrestador(prestador);
-//		session.clear();
-//		
-//		PrestadorServico prestadorBuscado = PrestadorServicoController.buscarPrestadorServicoPorId(prestador.getId());
-//		prestadorBuscado.setGenero("Feminino");
-//		prestadorBuscado.setIdentidadeGenero(IdentidadeGenero.TRANS);
-//		prestadorApi.atualizarPrestador(prestadorBuscado);
-//		
-//		assertNotEquals(prestador.getGenero(), prestadorBuscado.getGenero());
-//		assertNotEquals(prestador.getIdentidadeGenero(), prestadorBuscado.getIdentidadeGenero());
-//	}
+	@Test
+	public void testDUpdate() {
+		Endereco endereco = new Endereco("Rua cinco", 45, "Casa", "89665522", "Centro", "Brasil", "Itajai", "SC");
+
+		PrestadorServico prestador = new PrestadorServico("Jorge", "Pereira", "Jorge", LocalDate.now(), "Brasileiro",
+				"Itajai", true, "Masculino", IdentidadeGenero.CIS, endereco, "09532665411", "96655221", null, null,
+				empresa, null);
+		
+		prestadorApi.criarPrestador(prestador);
+		session.clear();
+		
+		PrestadorServico prestadorBuscado = PrestadorServicoController.buscarPrestadorServicoPorId(prestador.getId());
+		prestadorBuscado.setGenero("Feminino");
+		prestadorBuscado.setIdentidadeGenero(IdentidadeGenero.TRANS);
+		prestadorApi.atualizarPrestador(prestadorBuscado);
+		
+		assertNotEquals(prestador.getGenero(), prestadorBuscado.getGenero());
+		assertNotEquals(prestador.getIdentidadeGenero(), prestadorBuscado.getIdentidadeGenero());
+	}
 	
 	@Test
 	public void testEDelete() throws Exception {

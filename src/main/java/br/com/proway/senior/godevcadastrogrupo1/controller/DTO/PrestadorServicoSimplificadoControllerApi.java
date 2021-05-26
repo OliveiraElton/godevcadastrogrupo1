@@ -120,7 +120,7 @@ public class PrestadorServicoSimplificadoControllerApi {
 	 * @param String nome
 	 * @return List<nome>
 	 */
-	@RequestMapping(value = "/prestadorSimplificado/{nome}", method = RequestMethod.GET)
+	@RequestMapping(value = "/prestadorSimplificado/nome/{nome}", method = RequestMethod.GET)
 	public List<PrestadorServicoDTO> buscarPrestadorServicoPorNome(@PathVariable("nome") String nome) {
 		List<PrestadorServicoDTO> listaPrestadorDTO = new ArrayList<PrestadorServicoDTO>();
 		for (PrestadorServico prestador : daoPrestador.buscarPorNome(nome)) {

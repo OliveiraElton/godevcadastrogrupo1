@@ -72,7 +72,7 @@ public class ColaboradorSimplificadoControllerApi {
 	 * @return
 	 */
 	
-	@RequestMapping(value = "/colaboradorSimplificado/{nome}", method = RequestMethod.GET)
+	@RequestMapping(value = "/colaboradorSimplificado/nome/{nome}", method = RequestMethod.GET)
 	public @ResponseBody List<ColaboradorSimplificadoDTO> buscarColaboradorPorNome(@PathVariable ("nome") String nome) {
 		List<Colaborador> listaColaborador = ColaboradorController.buscarColaboradorPorNome(nome);
 		List<ColaboradorSimplificadoDTO> listaColaboradorDto = new ArrayList<ColaboradorSimplificadoDTO>();
