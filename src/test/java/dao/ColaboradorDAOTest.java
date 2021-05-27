@@ -103,7 +103,7 @@ public class ColaboradorDAOTest {
 
 	@Test
 	public void testACreate() {
-		int antes = colabControllerApi.buscarTodos().size();
+		int antes = colabControllerApi.buscarTodosColaboradores().size();
 		Colaborador colaborador = new Colaborador("Mario", "Pinheiro", "Nada consta", LocalDate.of(2000, 01, 02),
 				"Brasileiro", "Blumenau", false, "Masculino", ig, endereco, "21164028324", "45124563", contatos, 12,
 				123456789, false, false, LocalDate.now(), false, "12345687552", "lucas.nunes@senior.com.br", "5544555",
@@ -119,7 +119,7 @@ public class ColaboradorDAOTest {
 		dao.create(colaborador);
 		dao.create(colaborador2);
 		dao.create(colaborador3);
-		assertEquals(antes + 3, colabControllerApi.buscarTodos().size());
+		assertEquals(antes + 3, colabControllerApi.buscarTodosColaboradores().size());
 	}
 
 	@Test

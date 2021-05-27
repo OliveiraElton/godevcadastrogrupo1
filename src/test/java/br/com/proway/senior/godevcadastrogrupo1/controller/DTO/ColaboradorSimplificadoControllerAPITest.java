@@ -105,7 +105,7 @@ public class ColaboradorSimplificadoControllerAPITest{
 				12, 123456789, false, false, LocalDate.now(), false, "12345687552", "ana@senior.com.br", "5544555",
 				conta2, exameMedico2, new Dependente());
 		ColaboradorDAO.getInstance(DBConnection.getSession()).create(colaborador2);
-		List<ColaboradorSimplificadoDTO> listaColaboradorDto = colaboradorControllerApi.buscarTodos();
+		List<ColaboradorSimplificadoDTO> listaColaboradorDto = colaboradorControllerApi.buscarTodosColaboradores();
 		assertEquals(2, listaColaboradorDto.size());
 	}
 
