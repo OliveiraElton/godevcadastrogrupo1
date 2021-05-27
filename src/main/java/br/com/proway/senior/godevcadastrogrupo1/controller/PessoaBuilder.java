@@ -121,7 +121,7 @@ public class PessoaBuilder implements Builder {
 	public void setEndereco(String logradouro, Integer numero, String complemento, String cep, String bairro,
 			String pais, String cidade, String uf) {
 		this.endereco = new Endereco(logradouro, numero, complemento, cep, bairro, pais, cidade, uf);
-		EnderecoDAO.getInstance(session).create(this.endereco);
+		EnderecoDAO.getInstance(session).cadastrar(this.endereco);
 	}
 
 	public void setCpf(String cpf) {
@@ -174,7 +174,7 @@ public class PessoaBuilder implements Builder {
 
 	public void setConta(String nomeBanco, String agencia, String numeroConta, String digitoVerificador) {
 		this.conta = new Conta(nomeBanco, agencia, numeroConta, digitoVerificador);
-		ContaDAO.getInstance(session).create(this.conta);
+		ContaDAO.getInstance(session).cadastrar(this.conta);
 	}
 
 	public void setContatos(String telefonePrincipal, String telefoneSecundario, String email,
@@ -182,12 +182,12 @@ public class PessoaBuilder implements Builder {
 			String telefoneFamiliar) throws Exception {
 			this.contatos = new Contatos(telefonePrincipal, telefoneSecundario, email, telefoneFamiliar);
 		
-		ContatosDAO.getInstance(session).create(this.contatos);
+		ContatosDAO.getInstance(session).cadastrar(this.contatos);
 	}
 
 	public void setExameMedico(TiposExames tipoExame, LocalDate dataExame, Boolean apto) {
 		this.exameMedico = new ExameMedico(tipoExame, dataExame, apto);
-		ExameMedicoDAO.getInstance(session).create(exameMedico);
+		ExameMedicoDAO.getInstance(session).cadastrar(exameMedico);
 	}
 
 	public void setDependente(String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
@@ -195,7 +195,7 @@ public class PessoaBuilder implements Builder {
 			String cpf, String rg, TiposDependentes tipoDependente, Boolean optanteIR) {
 		this.dependente = new Dependente(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade,
 				pcd, genero, identidadeGenero, endereco, cpf, rg, tipoDependente, optanteIR);
-		DependenteDAO.getInstance(session).create(this.dependente);
+		DependenteDAO.getInstance(session).cadastrar(this.dependente);
 	}
 
 	public Pessoa build() {

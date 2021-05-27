@@ -79,7 +79,7 @@ public class PrestadoresServicoController {
 				telefoneSecundario, email, telefoneFamiliar, logradouro, numero,
 				complemento, cep, bairro, pais, cidade, uf, empresa);
 		PrestadorServico prestadorServico = (PrestadorServico) builder.build();
-		return daoPrestadorServico.create(prestadorServico);
+		return daoPrestadorServico.cadastrar(prestadorServico);
 	}
 
 	/**
@@ -91,7 +91,7 @@ public class PrestadoresServicoController {
 	 * @return boolean 
 	 */
 	public static boolean deletarPrestadorServico(PrestadorServico prestadorServico) {
-		return daoPrestadorServico.delete(prestadorServico);
+		return daoPrestadorServico.deletar(prestadorServico);
 	}
 
 	/**
@@ -150,7 +150,7 @@ public class PrestadoresServicoController {
 		prestadorServico.setId(id);
 		session.clear();
 		prestadorServico.setId(id);
-		return daoPrestadorServico.update(prestadorServico);
+		return daoPrestadorServico.atualizar(prestadorServico);
 	}
 
 	/**
@@ -162,7 +162,7 @@ public class PrestadoresServicoController {
 	 * @return objeto do Prestador de Servico localizado.
 	 */
 	public static PrestadorServico buscarPrestadorServicoPorId(Integer id) {
-		return daoPrestadorServico.readById(id);
+		return daoPrestadorServico.consultarPorId(PrestadorServico.class, id);
 	}
 
 	/**
@@ -174,7 +174,7 @@ public class PrestadoresServicoController {
 	 * @return lista de regsitros localizados.
 	 */
 	public static List<PrestadorServico> buscarTodosPrestadoresServico() {
-		return daoPrestadorServico.getAll();
+		return daoPrestadorServico.consultarTodos(PrestadorServico.class);
 	}
 	
 	/**
@@ -187,7 +187,7 @@ public class PrestadoresServicoController {
 	 * @return lista de regsitros localizados.
 	 */
 	public static List<PrestadorServico> buscarPrestadorServicoPorNome(String nome) {
-		return daoPrestadorServico.buscarPorNome(nome);
+		return daoPrestadorServico.consultarPorNome(PrestadorServico.class, nome);
 	}
 	
 	
@@ -198,6 +198,6 @@ public class PrestadoresServicoController {
 	 * no banco. Utilizado para testes.
 	 */
 	public static void deletarTodosPrestadoresServico() {
-		daoPrestadorServico.deleteAll();
+		daoPrestadorServico.deletarTodos("prestadorservico");
 	}
 }
