@@ -12,14 +12,14 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDocumentos;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
 
 /**
- * Classe pessoa, abstrai os atributos de uma pessoa.
+ * Classe Pessoa.
  * 
- * � instanciada em Colaborador, PrestadorServico e Dependente.
- * 
+ * Abstrai os atributos de uma pessoa. Servira de heranca para as classes
+ * {@link Colaborador}, {@link PrestadorServico} e {@link Dependente}.
  * Deve ser instanciada utilizando o PessoaBuilder.
  * 
  * @author Lorran Pereira dos Santos, Samuel Levi, Sarah Neuburger
- *         Brito, Thiago Luiz Barbieri e Vitor Nathan Gon�alves.
+ *         Brito, Thiago Luiz Barbieri e Vitor Nathan Goncalves.
  *         
  * @author Bruna <sh4323202@gmail.com>
  * @author Enzo <enzomm.bodyandmind@gmail.com> 
@@ -49,6 +49,8 @@ public class Pessoa{
 		
 	}
 	/**
+	 * Construtor padrao da classe.
+	 * 
 	 * @param id
 	 * @param nome
 	 * @param sobrenome
@@ -85,6 +87,13 @@ public class Pessoa{
 	public String getNome() {
 		return nome;
 	}
+	
+	/**
+	 * Metodo remove os caracteres desnecessarios ao cadastrar
+	 * um nome. Utiliza a classe {@link FormatacaoDocumentos}.
+	 * 
+	 * @param nome Nome que sera que sera atribuido a Pessoa.
+	 */
 	public void setNome(String nome) {
 		try{
 			FormatacaoDocumentos.removerCaracteres(nome);
@@ -94,9 +103,17 @@ public class Pessoa{
 			e.getMessage();
 		}
 	}
+	
 	public String getSobrenome() {
 		return sobrenome;
 	}
+	
+	/**
+	 * Metodo remove os caracteres desnecessarios ao cadastrar
+	 * um sobremnome. Utiliza a classe {@link FormatacaoDocumentos}.
+	 * 
+	 * @param sobrenome Sobrenome que sera que sera atribuido a Pessoa.
+	 */
 	public void setSobrenome(String sobrenome) {
 		try{
 			FormatacaoDocumentos.removerCaracteres(sobrenome);
@@ -106,15 +123,26 @@ public class Pessoa{
 			e.getMessage();
 		}
 	}
+	
 	public String getNomeSocial() {
 		return nomeSocial;
 	}
+	
 	public void setNomeSocial(String nomeSocial) {
 		this.nomeSocial = nomeSocial;
 	}
+	
 	public LocalDate getDataDeNascimento() {
 		return dataDeNascimento;
 	}
+	
+	/**
+	 * Para cadastrar uma data de nascimento eh necessario que a mesma seja 
+	 * valida, este metodo chama a classe {@link ValidacaoDeDatas} e realiza 
+	 * a verificacao.
+	 * 
+	 * @param dataDeNascimento Data de nascimento que sera atribuida a Pessoa.
+	 */
 	public void setDataDeNascimento(LocalDate dataDeNascimento) {
 		try {
 			if(ValidacaoDeDatas.validaDataDeNascimento(dataDeNascimento)) {
@@ -125,6 +153,7 @@ public class Pessoa{
 			e.getMessage();
 		}
 	}
+	
 	public String getNacionalidade() {
 		return nacionalidade;
 	}
@@ -177,6 +206,13 @@ public class Pessoa{
 		return cpf;
 	}
 	
+	/**
+	 * Para cadastrar um CPF eh necessario que o mesmo seja valido,
+	 * este metodo chama a classe {@link ValidacaoDocumentos}
+	 * e realiza a verificacao.
+	 * 
+	 * @param cpf CPF que sera atribuido a Pessoa.
+	 */
 	public void setCpf(String cpf) {
 		try{
 			if(ValidacaoDocumentos.validarCPF(cpf)) {
