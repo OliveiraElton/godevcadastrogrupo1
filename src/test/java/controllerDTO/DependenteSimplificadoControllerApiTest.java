@@ -45,7 +45,7 @@ public class DependenteSimplificadoControllerApiTest{
 	
 	@Before
 	public void limparTabela(){
-		dao.deleteAll();
+		dao.deletarTodos("dependente");
 	}
 	
 	@BeforeClass
@@ -63,7 +63,7 @@ public class DependenteSimplificadoControllerApiTest{
 		Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Venezuelano",
 				"Cidade del Leste", true, "Masculino", IdentidadeGenero.TRANS, endereco, "09619039610","123", 
 				EnumDadosPessoais.TiposDependentes.FILHO, true);
-		dao.create(dependente);
+		dao.cadastrar(dependente);
 		
 		DependenteSimplificadoDTO dependenteDTO = new DependenteSimplificadoDTO(dependente);
 		DependenteSimplificadoDTO dependenteDTORetorno = dependenteApi.buscarDependentePorId(dependenteDTO.getId());
@@ -95,11 +95,11 @@ public class DependenteSimplificadoControllerApiTest{
 		Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Brasileira",
 				"Blumenau", true, "Masculino", IdentidadeGenero.TRANS, endereco, "09619039610","123", 
 				EnumDadosPessoais.TiposDependentes.FILHO, true);
-		dao.create(dependente);
+		dao.cadastrar(dependente);
 		Dependente dependente2 = new Dependente("Carla", "Fonseca", "Nada consta", data, "Brasileira",
 				"Blumenau", true, "Feminino", IdentidadeGenero.CIS, endereco, "09619039610","123", 
 				EnumDadosPessoais.TiposDependentes.FILHO, true);
-		dao.create(dependente2);
+		dao.cadastrar(dependente2);
 		List<DependenteSimplificadoDTO> listaDependenteDTO = new ArrayList<DependenteSimplificadoDTO>();
 		listaDependenteDTO.add(new DependenteSimplificadoDTO(dependente));
 		listaDependenteDTO.add(new DependenteSimplificadoDTO(dependente2));
@@ -112,11 +112,11 @@ public class DependenteSimplificadoControllerApiTest{
 		Dependente dependente = new Dependente("Carolina", "Fonseca", "Jenifer", data, "Venezuelano",
 				"Cidade del Leste", true, "Feminino", IdentidadeGenero.CIS, endereco, "09619039610", "123", 
 				EnumDadosPessoais.TiposDependentes.FILHO, true);
-		dao.create(dependente);
+		dao.cadastrar(dependente);
 		Dependente dependente2 = new Dependente("Barbara", "Fonseca", "Nada consta", data, "Venezuelano",
 				"Cidade del Leste", true, "Feminino", IdentidadeGenero.CIS, endereco, "09619039610", "123", 
 				EnumDadosPessoais.TiposDependentes.FILHO, true);
-		dao.create(dependente2);
+		dao.cadastrar(dependente2);
 		List<DependenteSimplificadoDTO> listaDependenteSimplificadoDTO = dependenteApi.buscarDependentePorNome("Barbara");
 		assertEquals(1 ,listaDependenteSimplificadoDTO.size());
 	}

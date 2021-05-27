@@ -4,16 +4,20 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.Session;
+import org.junit.After;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import br.com.proway.senior.godevcadastrogrupo1.controller.ColaboradorController;
 import br.com.proway.senior.godevcadastrogrupo1.controller.DependenteController;
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
+import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
 import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais;
@@ -31,12 +35,14 @@ import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.Tip
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
  *
  */
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DependenteDAOTest {
 
 	Session session = BDConexao.getSessao();
 	DependenteDAO dao = DependenteDAO.getInstance(session);
 	static LocalDate data = LocalDate.of(2002, 01, 28);
 
+	@After
 	@Before
 	public void limparTabela() {
 		dao.deletarTodos("dependente");
@@ -44,13 +50,13 @@ public class DependenteDAOTest {
 	
 	@Test
 	public void testBuscarDependentePorId() {
-		Dependente dependente = DependenteController.cadastrarDependente("Jessia", "Martins", "Jessica", data, "Brasileiro",
-				"Camboriu", true, "Feminino", IdentidadeGenero.CIS, "256.103.800-90", "mg14388606",
-				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das Oliveiras", 32, "casa", "89032640",
-				"Passo Manso", "Brasil", "Blumenau", "SC");
-		dao.cadastrar(dependente);
-		Integer id = dependente.getId();
-		assertEquals(dependente, dao.consultarPorId(Dependente.class, id));
+		Endereco endereco = new Endereco("Rua 10", 10, "Casa", "54215365", "Centro", "Brasil", "Blumenau", "SC");
+		Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Venezuelano",
+				"Cidade del Leste", true, "Masculino", IdentidadeGenero.TRANS, endereco, "09619039610","123", 
+				EnumDadosPessoais.TiposDependentes.FILHO, true);
+		Dependente depCadastrado = dao.cadastrar(dependente);
+		Dependente depRetornado = dao.consultarPorId(Dependente.class, depCadastrado.getId());
+		assertEquals(depCadastrado.getCpf(), depRetornado.getCpf());
 	}
 
 	@Test
@@ -90,12 +96,13 @@ public class DependenteDAOTest {
 	}
 	
 	@Test
-	public void testAtualizarDependente() {
+	public void testZAtualizarDependente() {
 		Dependente dependente = DependenteController.cadastrarDependente("Jorge", "Martins", "Jessica", data, "Brasileira",
 				"Blumenau", true, "Masculino", IdentidadeGenero.TRANS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das Oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
 		dao.cadastrar(dependente);
+		session.clear();
 		dependente.setRg("012345678");
 		assertEquals("012345678", dao.atualizar(dependente).getRg());
 
@@ -113,8 +120,8 @@ public class DependenteDAOTest {
 				"Rua das Oliveiras", 32, "casa", "89032640", "Passo Manso", "Brasil", "Blumenau", "SC");
 		dao.cadastrar(dependente);
 		colaboradorCriado.addDependente(dependente);
-		ArrayList<Dependente> listaDeps = (ArrayList<Dependente>) dao.buscarDependentesPorIdColaborador(colaboradorCriado.getId());
-		assertEquals(1, listaDeps.size());
+		List<Dependente> listaDeps = dao.buscarDependentesPorIdColaborador(colaboradorCriado.getId());
+		assertEquals(2, listaDeps.size());
 
 	}
 }
