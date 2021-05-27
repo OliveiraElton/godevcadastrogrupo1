@@ -49,7 +49,7 @@ public class ColaboradorCompletoControllerAPI {
 
 	@RequestMapping(value = "/colaboradorcompleto/{id}", method = RequestMethod.GET)
 	public @ResponseBody ColaboradorCompletoDTO buscarColaboradorPorId(@PathVariable("id") Integer idColaborador) {
-		ColaboradorCompletoDTO colaboradorDTO = new ColaboradorCompletoDTO(colaboradorDao.readById(idColaborador));
+		ColaboradorCompletoDTO colaboradorDTO = new ColaboradorCompletoDTO(colaboradorDao.consultarPorId(Colaborador.class, idColaborador));
 		return colaboradorDTO;
 	}
 
@@ -64,7 +64,7 @@ public class ColaboradorCompletoControllerAPI {
 	 */
 	@RequestMapping(value = "/colaboradorcompleto", method = RequestMethod.POST)
 	public @ResponseBody Colaborador cadastrarColaborador(@RequestBody Colaborador colaborador) {
-		return colaboradorDao.create(colaborador);
+		return colaboradorDao.cadastrar(colaborador);
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class ColaboradorCompletoControllerAPI {
 	 */
 	@RequestMapping(value = "/colaboradorcompleto", method = RequestMethod.PUT)
 	public @ResponseBody Colaborador atualizarColaborador(@RequestBody Colaborador colaborador) {
-		return colaboradorDao.update(colaborador);
+		return colaboradorDao.atualizar(colaborador);
 	}
 
 	/**
@@ -91,8 +91,8 @@ public class ColaboradorCompletoControllerAPI {
 	 */
 	@RequestMapping(value = "/colaboradorcompleto/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody boolean deletarColaborador(@PathVariable("id") Integer id) {
-		Colaborador colaborador = colaboradorDao.readById(id);
-		return colaboradorDao.delete(colaborador);
+		Colaborador colaborador = colaboradorDao.consultarPorId(Colaborador.class, id);
+		return colaboradorDao.deletar(colaborador);
 	}
 
 	/**
@@ -107,7 +107,7 @@ public class ColaboradorCompletoControllerAPI {
 	@RequestMapping(value = "/colaboradorcompleto", method = RequestMethod.GET)
 	public static @ResponseBody List<ColaboradorCompletoDTO> buscarTodosColaboradores() {
 		List<ColaboradorCompletoDTO> listaColaboradorDTO = new ArrayList<ColaboradorCompletoDTO>();
-		List<Colaborador> listaImprime = colaboradorDao.getAll();
+		List<Colaborador> listaImprime = colaboradorDao.consultarTodos(Colaborador.class);
 		for (Colaborador colaborador : listaImprime) {
 			listaColaboradorDTO.add(new ColaboradorCompletoDTO(colaborador));
 		}
@@ -129,7 +129,7 @@ public class ColaboradorCompletoControllerAPI {
 	public static @ResponseBody List<ColaboradorCompletoDTO> buscarColaboradorPorNome(
 			@PathVariable("nome") String nome) {
 		List<ColaboradorCompletoDTO> listaColaboradorDTO = new ArrayList<ColaboradorCompletoDTO>();
-		for (Colaborador colaborador : colaboradorDao.buscarPorNome(nome)) {
+		for (Colaborador colaborador : colaboradorDao.consultarPorNome(Colaborador.class, nome)) {
 			listaColaboradorDTO.add(new ColaboradorCompletoDTO(colaborador));
 		}
 		return listaColaboradorDTO;

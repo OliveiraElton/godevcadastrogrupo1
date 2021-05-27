@@ -1,5 +1,13 @@
 package br.com.proway.senior.godevcadastrogrupo1.model.DAO;
 
+import java.util.List;
+
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
+import javax.persistence.criteria.Root;
+
 import org.hibernate.Session;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
@@ -39,6 +47,18 @@ public class ColaboradorDAO extends Dao<Colaborador>{
 	 */
 	public ColaboradorDAO(Session session) {
 		this.session = session;
+	}
+	
+	public List<Colaborador> readByEmail(String email) {
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Colaborador> criteria = builder.createQuery(Colaborador.class);
+		Root<Colaborador> root = criteria.from(Colaborador.class);
+		CriteriaQuery<Colaborador> rootQuery = criteria.select(root);
+		Expression emailBuscado = (Expression) root.get("email_corporativo");
+		criteria.select(root).where(builder.equal(emailBuscado, email));
+		Query query = session.createQuery(criteria);
+		List<Colaborador> colaborador = query.getResultList();
+		return colaborador;
 	}
 
 
