@@ -66,7 +66,7 @@ public class PrestadorServicoController {
 			String telefoneSecundario, String email, String telefoneFamiliar, String logradouro, Integer numero,
 			String complemento, String cep, String bairro, String pais, String cidade, String uf, Empresa empresa) throws Exception {
 		PessoaBuilder builder = new PessoaBuilder();
-		Director.criarPrestadorServico(builder, nome, sobrenome, nomeSocial,
+		Director.cadastrarPrestadorServico(builder, nome, sobrenome, nomeSocial,
 				dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
 				identidadeGenero, cpf, rg,
 				dataInicioContrato, idSetor, telefonePrincipal,
@@ -134,7 +134,7 @@ public class PrestadorServicoController {
 			String telefoneSecundario, String email, String telefoneFamiliar, String logradouro, Integer numero,
 			String complemento, String cep, String bairro, String pais, String cidade, String uf, Empresa empresa) throws Exception {
 		PessoaBuilder builder = new PessoaBuilder();
-		Director.criarPrestadorServico(builder, nome, sobrenome, nomeSocial,
+		Director.cadastrarPrestadorServico(builder, nome, sobrenome, nomeSocial,
 				dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
 				identidadeGenero, cpf, rg,
 				dataInicioContrato, idSetor, telefonePrincipal,

@@ -131,7 +131,7 @@ public class ColaboradorController {
 
 		PessoaBuilder builder = new PessoaBuilder();
 
-		Director.criarColaborador(builder, nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade,
+		Director.cadastrarColaborador(builder, nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade,
 				pcd, genero, identidadeGenero, cpf, rg, idPostoDeTrabalho, nit, optanteVT, optanteVAVR, dataAdmissao,
 				optanteDependente, registro_alistamento, email_corporativo, titulo_eleitor, logradouro, numero,
 				complemento, cep, bairro, pais, cidade, uf, telefonePrincipal, telefoneSecundario, email,
@@ -272,7 +272,7 @@ public class ColaboradorController {
 
 		PessoaBuilder builder = new PessoaBuilder();
 
-		Director.criarColaborador(builder, nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade,
+		Director.cadastrarColaborador(builder, nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade,
 				pcd, genero, identidadeGenero, cpf, rg, idPostoDeTrabalho, nit, optanteVT, optanteVAVR, dataAdmissao,
 				optanteDependente, registro_alistamento, email_corporativo, titulo_eleitor, logradouro, numero,
 				complemento, cep, bairro, pais, cidade, uf, telefonePrincipal, telefoneSecundario, email,
