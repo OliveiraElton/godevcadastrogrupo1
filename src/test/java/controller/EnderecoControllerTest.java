@@ -19,7 +19,8 @@ public class EnderecoControllerTest {
 
 	@BeforeClass
 	public static void Before() {
-		enderecoDao.deleteAll();
+		
+		enderecoDao.deletarTodos("endereco");
 	}
 	
 	@Test

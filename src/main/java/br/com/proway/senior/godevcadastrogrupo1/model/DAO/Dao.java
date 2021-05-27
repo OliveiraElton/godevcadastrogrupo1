@@ -11,7 +11,8 @@ import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 
-import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
+import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
+import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 
 public class Dao<T> implements InterfaceDao<T>{
@@ -145,7 +146,5 @@ public class Dao<T> implements InterfaceDao<T>{
 			Query query = session.createQuery(criteria);
 			List<T> results = query.getResultList();
 			return new ArrayList<T>(results);
-	
 	}
-	
 }
