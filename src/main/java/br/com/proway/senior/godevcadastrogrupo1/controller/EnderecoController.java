@@ -38,7 +38,7 @@ public class EnderecoController {
 
 		Endereco endereco = new Endereco(logradouro, numero, complemento, cep, bairro, pais, cidade, uf);
 
-		return enderecoDao.create(endereco);
+		return enderecoDao.cadastrar(endereco);
 	}
 
 	/**
@@ -50,7 +50,7 @@ public class EnderecoController {
 	 * @return vai retornar true se for deletaco com sucesso ou falso caso nao for deletado
 	 */
 	public static boolean deletarEndereco(Endereco enderecoDeletar) {
-		  return enderecoDao.delete(enderecoDeletar);
+		  return enderecoDao.deletar(enderecoDeletar);
 	}
 
 	/**
@@ -77,7 +77,7 @@ public class EnderecoController {
 		session.clear();
 		enderecoAtualizar.setNumero(numero);
 		enderecoAtualizar.setId(id);
-		return enderecoDao.update(enderecoAtualizar);
+		return enderecoDao.atualizar(enderecoAtualizar);
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class EnderecoController {
 	 * @return retorna o objeto um {@link Endereco} localizado no banco.
 	 */
 	public static Endereco buscarEnderecoPorId(int id) {
-		return enderecoDao.readById(id);
+		return enderecoDao.consultarPorId(Endereco.class, id);
 	}
 	
 	/**
@@ -101,7 +101,7 @@ public class EnderecoController {
 	 * @return retorna o objeto um {@link Endereco} desejado.
 	 */
 	public static Endereco buscarEnderecoPorIdColab(int id) {
-		return enderecoDao.readByIdColab(id);
+		return enderecoDao.consultarEnderecoPorIdColaborador(id);
 	}
 
 	/**
@@ -112,6 +112,6 @@ public class EnderecoController {
 	 * @return List Endereco Lista de enderecos localizados.
 	 */
 	public static List<Endereco> listarTodosEnderecos() {
-		return enderecoDao.getAll();
+		return enderecoDao.consultarTodos(Endereco.class);
 	}
 }

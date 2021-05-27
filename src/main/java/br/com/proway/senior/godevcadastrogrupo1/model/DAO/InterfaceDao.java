@@ -30,5 +30,5 @@ public interface InterfaceDao<T> {
 	public boolean deletarTodos(String tabela);
 	
 	public T atualizar(T item);
-	
+		
 }
