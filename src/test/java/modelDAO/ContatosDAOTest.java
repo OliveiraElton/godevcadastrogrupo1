@@ -2,7 +2,6 @@ package modelDAO;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
@@ -22,11 +21,12 @@ public class ContatosDAOTest {
 	ContatosDAO dao = ContatosDAO.getInstance(session);
 	
 	@Test
-	public void testBReadById() throws Exception {
+	public void testBConsultarPorId() throws Exception {
 		Contatos contato = new Contatos("4735222215","4798484962","amaral@gmail.com","4799991111");
-		dao.create(contato);
+		dao.cadastrar(contato);
 		
-		Contatos contatoBuscado = dao.readById(contato.getId());
+		Integer id = contato.getId();
+		Contatos contatoBuscado = dao.consultarPorId(Contatos.class, id);
 		
 		assertEquals(contato.getEmail(), contatoBuscado.getEmail());
 		assertEquals(contato.getTelefoneFamiliar(), contatoBuscado.getTelefoneFamiliar());
@@ -36,26 +36,26 @@ public class ContatosDAOTest {
 	}
 
 	@Test
-	public void testCGetAll() throws Exception {
+	public void testCConsultarTodos() throws Exception {
 		Contatos contato = new Contatos("4735222215","4798484962","joao@gmail.com","4799991111");
 		Contatos contato2 = new Contatos("4735339999","4712345678","amanda@gmail.com","4711119999");
 		Contatos contato3 = new Contatos("4735339999","4712345678","pedro@gmail.com","4711119999");
 		
-		Integer valorAntes = dao.getAll().size();
-		dao.create(contato);
-		dao.create(contato2);
-		dao.create(contato3);
-		assertEquals(valorAntes + 3, dao.getAll().size());
+		Integer valorAntes = dao.consultarTodos(Contatos.class).size();
+		dao.cadastrar(contato);
+		dao.cadastrar(contato2);
+		dao.cadastrar(contato3);
+		assertEquals(valorAntes + 3, dao.consultarTodos(Contatos.class).size());
 	}
 	
 	@Test
-	public void testDGetByEmail() throws Exception {
+	public void testDConsultarPorEmail() throws Exception {
 		Contatos contato = new Contatos();
 		contato.setEmail("lucas@gmail.com");
 		contato.setTelefonePrincipal("47988657898");
 		contato.setTelefoneFamiliar("4733277896");
 		contato.setTelefoneSecundario("47988996633");
-		dao.create(contato);
+		dao.cadastrar(contato);
 		
 		List buscados = dao.buscarPorEmail("lucas@gmail.com");
 		
@@ -77,9 +77,9 @@ public class ContatosDAOTest {
 	}
 	
 	@Test
-	public void testFDeleteAll() {
-		dao.deleteAll();
-		assertFalse(dao.getAll().size() > 0);
+	public void testFDeletarTodos() {
+		dao.deletarTodos("contatos");
+		assertFalse(dao.consultarTodos(Contatos.class).size() > 0);
 	}
 
 }
