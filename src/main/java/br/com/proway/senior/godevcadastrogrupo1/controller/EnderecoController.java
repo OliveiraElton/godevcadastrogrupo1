@@ -18,23 +18,22 @@ public class EnderecoController {
 	static EnderecoDAO enderecoDao = EnderecoDAO.getInstance(session);
 
 	/**
-	 * Cria o Endereco.
+	 * Cadastrar um Endereco.
 	 * 
-	 * Recebe os dados do endereco, cria os dados e chama o DAO, cria e salva no banco de dados
-	 * um endereco.
+	 * Recebe os dados do endereco e salva no banco de dados, atraves da interacao
+	 * com o DAO.
 	 * 
-	 * @param idEndereco
-	 * @param logradouro
-	 * @param numero
-	 * @param complemento
-	 * @param cep
-	 * @param bairro
-	 * @param pais
-	 * @param cidade
-	 * @param uf
-	 * @return enderecoDao
+	 * @param String logradouro Tipo e nome do logradouro (Exemplo: Rua 10, AV Central).
+	 * @param String numero Numero da residencia.
+	 * @param String complemento Complemento para facilitar a localizacao do endereco.
+	 * @param String cep CEP do logradouro.
+	 * @param String bairro Bairro do endereco.
+	 * @param String pais Pais do endereco.
+	 * @param String cidade Cidade do endereco.
+	 * @param String uf Unidade Federativa do endereco.
+	 * @return o objeto do {@link Endereco} cadastrado no banco de dados.
 	 */
-	public static Endereco criarEndereco(String logradouro, Integer numero, String complemento,
+	public static Endereco cadastrarEndereco(String logradouro, Integer numero, String complemento,
 			String cep, String bairro, String pais, String cidade, String uf) {
 
 		Endereco endereco = new Endereco(logradouro, numero, complemento, cep, bairro, pais, cidade, uf);
@@ -43,11 +42,11 @@ public class EnderecoController {
 	}
 
 	/**
-	 * Deleta o Endereco.
+	 * Deletar um Endereco.
 	 * 
 	 * Vai deletar o Endereco passado como parametro.
 	 * 
-	 * @param enderecoDeletar
+	 * @param enderecoDeletar Objeto do endereco que sera delerado.
 	 * @return vai retornar true se for deletaco com sucesso ou falso caso nao for deletado
 	 */
 	public static boolean deletarEndereco(Endereco enderecoDeletar) {
@@ -55,19 +54,19 @@ public class EnderecoController {
 	}
 
 	/**
-	 * Atualiza o Endereco.
+	 * Atualizar um Endereco.
 	 * 
 	 * Cria um novo Endereco com base nos parametros passados.
 	 *  
-	 * @param idEndereco
-	 * @param logradouro
-	 * @param numero
-	 * @param complemento
-	 * @param cep
-	 * @param bairro
-	 * @param pais
-	 * @param cidade
-	 * @param uf
+	 * @param Integer idEndereco identificacao do endereco que sera atualizado.
+	 * @param String logradouro Logradouro atualizado.
+	 * @param int numero Numero atualizado.
+	 * @param String complemento Complemento atualizado.
+	 * @param String cep CEP atualizado.
+	 * @param String bairro Bairro atualizado.
+	 * @param String pais Pais atualizado.
+	 * @param String cidade Cidade atualizada.
+	 * @param String uf Unidade Federativa atualizada.
 	 * @return vai retornar um id do endereco caso o endereco for atualizado ou false caso contrario
 	 */
 	public static Endereco atualizarEndereco(Integer id, String logradouro, Integer numero, String complemento,
@@ -82,12 +81,12 @@ public class EnderecoController {
 	}
 
 	/**
-	 * Busca o Endereco pelo ID.
+	 * Buscae um Endereco pelo ID.
 	 * 
-	 * Vai no banco de dados e procura o respectivo endereco pelo ID informado como parametro.
+	 * Busca no banco de dados o endereco, conforme informada ID como parametro.
 	 * 
-	 * @param id
-	 * @return retorna um endereco informado pelo ID
+	 * @param id Identificacao do endereco procurado.
+	 * @return retorna o objeto um {@link Endereco} localizado no banco.
 	 */
 	public static Endereco buscarEnderecoPorId(int id) {
 		return enderecoDao.readById(id);
@@ -98,19 +97,19 @@ public class EnderecoController {
 	 * 
 	 * Busca no banco o Endereço com o id do colaborador igual ao passado como parametro.
 	 * 
-	 * @param id Do colaborador
-	 * @return Endereço desejado
+	 * @param id Identificacao do colaborador procurado.
+	 * @return retorna o objeto um {@link Endereco} desejado.
 	 */
 	public static Endereco buscarEnderecoPorIdColab(int id) {
 		return enderecoDao.readByIdColab(id);
 	}
 
 	/**
-	 * Lista todos os Enderecos.
+	 * Listar todos os Enderecos.
 	 * 
-	 * Vai no banco de dados e retorna todos os enderecos inseridos no banco.
+	 * Retorna todos registros de enderecos inseridos no banco.
 	 * 
-	 * @return List<Endereco>
+	 * @return List Endereco Lista de enderecos localizados.
 	 */
 	public static List<Endereco> listarTodosEnderecos() {
 		return enderecoDao.getAll();

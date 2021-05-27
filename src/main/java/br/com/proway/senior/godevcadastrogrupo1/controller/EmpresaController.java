@@ -36,21 +36,21 @@ public class EmpresaController {
 	 * para a criacaoo da empresa e por ultimo chama o DAO da empresa para salvar no
 	 * banco de dados.
 	 * 
-	 * @param nomeEmpresa Nome da empresa que sera cadastrada.
-	 * @param dataInicioContrato data de inicio do contrato da empresa terceirizada.
-	 * @param Cnpj CNPJ (Cadastro Nacional de Pessoas Juridicas).
-	 * @param telefonePrincipal Telefone principal.
-	 * @param telefoneSecundario Telefone secundario.
-	 * @param email Email.
-	 * @param telefoneFamiliar Contato de emergencia.
-	 * @param logradouro Logradouro da empresa de onde a empresa esta situada.
-	 * @param numero Numero do local onde a empresa esta situada.
-	 * @param complemento Complemento do endereco.
-	 * @param cep CEP do endereco.
-	 * @param bairro Bairro do endereco.
-	 * @param pais Pais do endereco.
-	 * @param cidade Cidade do endereco.
-	 * @param uf UF federativa do endereco.
+	 * @param String nomeEmpresa Nome da empresa que sera cadastrada.
+	 * @param LocalDate dataInicioContrato data de inicio do contrato da empresa terceirizada.
+	 * @param String Cnpj CNPJ (Cadastro Nacional de Pessoas Juridicas).
+	 * @param String telefonePrincipal Telefone principal.
+	 * @param String telefoneSecundario Telefone secundario.
+	 * @param String email Email.
+	 * @param String telefoneFamiliar Contato de emergencia.
+	 * @param String logradouro Logradouro da empresa de onde a empresa esta situada.
+	 * @param int numero Numero do local onde a empresa esta situada.
+	 * @param String complemento Complemento do endereco.
+	 * @param String cep CEP do endereco.
+	 * @param String bairro Bairro do endereco.
+	 * @param String pais Pais do endereco.
+	 * @param String cidade Cidade do endereco.
+	 * @param String uf UF federativa do endereco.
 	 * @return o objeto do registro de Empresa criado.
 	 * @throws Exception 
 	 */
@@ -88,10 +88,10 @@ public class EmpresaController {
 	 * Cria um novo objeto com os dados recebidos e os atualiza a {@link Empresa} informada via 
 	 * parametro.
 	 * 
-	 * @param id Identificacao da empresa que sera atualizada.
-	 * @param nomeEmpresa Nome atualizado.
-	 * @param dataInicioContrato Data de inicio do contrato atualizada.
-	 * @param cnpj CNPJ alterado.
+	 * @param Integer id Identificacao da empresa que sera atualizada.
+	 * @param String nomeEmpresa Nome atualizado.
+	 * @param LocalDate dataInicioContrato Data de inicio do contrato atualizada.
+	 * @param String cnpj CNPJ alterado.
 	 * @param contatos Objeto {@link Contatos} com dados atualizados.
 	 * @param endereco Objeto {@link Endereco} com dados atualizados.
 	 * @return objeto da {@link Empresa} atualizada.
