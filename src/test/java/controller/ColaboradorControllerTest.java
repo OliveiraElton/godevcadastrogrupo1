@@ -179,14 +179,14 @@ public class ColaboradorControllerTest {
 		
 	}
 	
-	@Before
-	public void limparTabelas() {
-		dao.deleteAll();
-		daoConta.deleteAll();
-		daoContatos.deleteAll();
-		daoEndereco.deleteAll();
-		daoExameMedico.deleteAll();
-		daoDependente.deleteAll();
-	}
+//	@Before
+//	public void limparTabelas() {
+//		dao.deleteAll();
+//		daoConta.deleteAll();
+//		daoContatos.deleteAll();
+//		daoEndereco.deleteAll();
+//		daoExameMedico.deleteAll();
+//		daoDependente.deleteAll();
+//	}
 
 }

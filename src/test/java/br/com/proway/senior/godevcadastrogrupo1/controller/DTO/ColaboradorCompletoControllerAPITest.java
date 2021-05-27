@@ -65,7 +65,7 @@ public class ColaboradorCompletoControllerAPITest {
 				"joãozinho", "Santos", "Erika", data, "brasileiro", "Blumenauense", true, "Masculino", ig,
 				"09619039610", "mn24588606", td, true);
 
-		Colaborador colaboradorCriado1 = controllerAPI.criarColaborador(colaborador1);
+		Colaborador colaboradorCriado1 = controllerAPI.cadastrarColaborador(colaborador1);
 
 		assertEquals(colaboradorCriado1, dao.readById(colaboradorCriado1.getId()));
 	}
@@ -80,7 +80,7 @@ public class ColaboradorCompletoControllerAPITest {
 				"Lucia", "Santos", "Erika", data, "brasileiro", "Blumenauense", true, "Feminino", ig, "09619039610",
 				"mn24588606", td, true);
 
-		Integer colaboradorCriado2 = controllerAPI.criarColaborador(colaborador2).getId();
+		Integer colaboradorCriado2 = controllerAPI.cadastrarColaborador(colaborador2).getId();
 		controllerAPI.deletarColaborador(colaboradorCriado2);
 		assertEquals(0, dao.getAll().size());
 	}
@@ -95,7 +95,7 @@ public class ColaboradorCompletoControllerAPITest {
 				"Lucia", "Santos", "Erika", data, "brasileiro", "Blumenauense", true, "Feminino", ig, "09619039610",
 				"mn24588606", td, true);
 		
-		Colaborador colaboradorCriado3 = controllerAPI.criarColaborador(colaborador3);
+		Colaborador colaboradorCriado3 = controllerAPI.cadastrarColaborador(colaborador3);
 		colaboradorCriado3.setNome("Joao");
 		colaboradorCriado3.setNaturalidade("Rio de Janeiro");
 
