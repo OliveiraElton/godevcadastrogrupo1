@@ -128,7 +128,7 @@ public class PrestadorServicoSimplificadoControllerApiTest {
 				"Sao Paulo", true, "Masculino", IdentidadeGenero.CIS, endereco1, "256.103.800-90", "1543652548",
 				contatos1, LocalDate.of(2020, 01, 28), empresa, 12);
 		PrestadorServico prestadorRetornado = prestadorApi.cadastrarPrestadorServico(prestador);
-		assertEquals(prestador.getContatos(), prestadorRetornado.getDataDeNascimento());
+		assertEquals(prestador.getDataDeNascimento(), prestadorRetornado.getDataDeNascimento());
 		assertEquals(prestador.getSobrenome(), prestadorRetornado.getSobrenome());
 		assertEquals(prestador.getIdentidadeGenero(), prestadorRetornado.getIdentidadeGenero());
 	}

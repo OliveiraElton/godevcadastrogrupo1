@@ -24,7 +24,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.Identida
  * Deve ser instanciado utilizando o ColaboradorBuilder.
  * 
  * @author Lorran Pereira dos Santos, Samuel Levi, Sarah Neuburger Brito, Thiago
- *         Luiz Barbieri e Vitor Nathan Gon�alves.
+ *         Luiz Barbieri e Vitor Nathan Goncalves.
  * 
  * @author Bruna <sh4323202@gmail.com>
  * @author Enzo <enzomm.bodyandmind@gmail.com>

@@ -1,9 +1,10 @@
 package br.com.proway.senior.godevcadastrogrupo1.utils;
 
 /**
- * Contem metodos de formatacao de dados.
+ * Classe FormatacaoDocumentos.
+ * 
  * Classe responsavel por conter todos os metodos de formatacao de dados. 
- * Eh usada em conjunto com a classe {@link ValidacaoDocumentos}.
+ * Eh utilizada em conjunto com a classe {@link ValidacaoDocumentos}.
  * 
  * @author Bruna <sh4323202@gmail.com>
  * @author Enzo <enzomm.bodyandmind@gmail.com> 
