@@ -3,20 +3,15 @@ package br.com.proway.senior.godevcadastrogrupo1.model.DTO;
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 
+/**
+ * Classe EnderecoDTO.
+ * 
+ * Classe para interacao via Controller API, referencia a {@link Endereco}.
+ * 
+ * @author Gabriel Simon <b>gabriel.simon@senior.com.br</b> 
+ *
+ */
 public class EnderecoDTO {
-	
-
-	/**
-	 * @param idColaborador
-	 * @param logradouro
-	 * @param numero
-	 * @param complemento
-	 * @param cep
-	 * @param bairro
-	 * @param pais
-	 * @param cidade
-	 * @param uf
-	 */
 	
 	private Integer id;
 	private Integer idColaborador;
@@ -29,6 +24,12 @@ public class EnderecoDTO {
 	private String cidade;
 	private String uf;
 	
+	/**
+	 * Construtor que ira interagir com o Controller da API, disponibilizando as informacoes
+	 * de {@link Endereco} atraves do cadastro de um {@link Colaborador}.
+	 * 
+	 * @param Colaborador colaborador
+	 */
 	public EnderecoDTO(Colaborador colaborador) {
 		this.id = colaborador.getEndereco().getId();
 		this.idColaborador = colaborador.getId();
@@ -42,6 +43,12 @@ public class EnderecoDTO {
 		this.uf = colaborador.getEndereco().getUf();
 	}
 	
+	/**
+	 * Construtor que ira interagir com o Controller da API, disponibilizando as informacoes
+	 * de {@link Endereco}.
+	 * 
+	 * @param Endereco endereco
+	 */
 	public EnderecoDTO(Endereco endereco) {
 		super();
 		this.id = endereco.getId();
