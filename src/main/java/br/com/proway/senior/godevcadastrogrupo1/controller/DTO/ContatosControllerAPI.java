@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
-import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ContatosDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.ContatosDTO;
 import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
@@ -44,7 +43,7 @@ public class ContatosControllerAPI {
 	 */
 	@RequestMapping(value = "/contatos", method = RequestMethod.POST)
 	public @ResponseBody Contatos cadastrarContatos(@RequestBody Contatos contatos) {
-		return daoContatos.create(contatos);
+		return daoContatos.cadastrar(contatos);
 	}
 	
 	/**
@@ -60,8 +59,8 @@ public class ContatosControllerAPI {
 	 */
 	@RequestMapping(value = "/contatos/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody boolean deletarContatos(@PathVariable ("id") Integer id) {
-		Contatos contatos = daoContatos.readById(id);
-		return daoContatos.delete(contatos);
+		Contatos contatos = daoContatos.consultarPorId(Contatos.class, id);
+		return daoContatos.deletar(contatos);
 	}
 	
 	/**
@@ -78,7 +77,7 @@ public class ContatosControllerAPI {
 	@RequestMapping(value = "/contatos/{id}", method = RequestMethod.PUT)
 	public @ResponseBody Contatos atualizarContatos(@PathVariable ("id")  Integer id, @RequestBody Contatos contatos) {
 		contatos.setId(id);
-		return daoContatos.update(contatos);
+		return daoContatos.atualizar(contatos);
 	}
 	
 	
@@ -95,7 +94,7 @@ public class ContatosControllerAPI {
 	 */
 	@RequestMapping(value = "/contatos/{id}", method = RequestMethod.GET)
 	public @ResponseBody ContatosDTO buscarContatosPorId(@PathVariable ("id") Integer id) {
-		ContatosDTO contatosDTO = new ContatosDTO(ContatosDAO.getInstance(session).readById(id));
+		ContatosDTO contatosDTO = new ContatosDTO(ContatosDAO.getInstance(session).consultarPorId(Contatos.class, id));
 		System.out.println(contatosDTO.getEmail());
 		return contatosDTO;
 	}
@@ -112,10 +111,10 @@ public class ContatosControllerAPI {
 	@RequestMapping(value = "/contatos", method = RequestMethod.GET)
 	public @ResponseBody List<ContatosDTO> buscarTodosContatos() {
 		List<ContatosDTO> listaContatosDTO = new ArrayList<ContatosDTO>();
-		List<Contatos> listaImprime = ContatosDAO.getInstance(session).getAll();
+		List<Contatos> listaImprime = ContatosDAO.getInstance(session).consultarTodos(Contatos.class);
 		System.out.println(listaImprime.get(0).getEmail());
 		System.out.println(listaImprime.get(1).getEmail());
-		for (Contatos contatos : ContatosDAO.getInstance(session).getAll()) {
+		for (Contatos contatos : ContatosDAO.getInstance(session).consultarTodos(Contatos.class)) {
 			listaContatosDTO.add(new ContatosDTO(contatos));
 		}
 		return listaContatosDTO;
