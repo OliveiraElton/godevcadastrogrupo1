@@ -6,11 +6,11 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDependentes;
 
 /**
- * Classe DependenteDTO.
+ * Classe DependenteSimplificadoDTO.
  * 
- * Classe para interação via Controller API, referencia a {@link Dependente}. 
- * Os dados são simplicados, proporcionando somente as informações necessárias
- * para os demais módulos do sistema.
+ * Classe para interacao via Controller API, referencia a {@link Dependente}. 
+ * Os dados sao simplicados, proporcionando somente as informacoes necessarias
+ * para os demais modulos do sistema.
  * 
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b> - Sprint 6
  *
@@ -27,7 +27,7 @@ public class DependenteSimplificadoDTO {
 	private String cpf;
 	
 	/**
-	 * Construtor que irá interagir com o Controller da API, disponibilizando as informações
+	 * Construtor que ira interagir com o Controller da API, disponibilizando as informacoes
 	 * de {@link Dependente}.
 	 * 
 	 * @param Dependente modelOriginal
