@@ -71,12 +71,7 @@ public class ColaboradorDAOTest {
 
 	@Before
 	public void limparTabelas() throws Exception {
-		dao.deleteAll();
-		daoConta.deleteAll();
-		daoContatos.deleteAll();
-		daoEndereco.deleteAll();
-		daoExameMedico.deleteAll();
-		daoDependente.deleteAll();
+		dao.deletarTodos("colaborador");
 		contatos = new Contatos("47988554466", "47325698740", "teste@teste.com", "47988554466");
 	}
 
@@ -85,20 +80,20 @@ public class ColaboradorDAOTest {
 		Colaborador colaborador = new Colaborador("Carla", "Nunes", "Nada consta", data, "Americana", "Los Angeles",
 				false, "Feminino", ig, endereco, "21164028324", "45124563", contatos, null, null, false, false, data,
 				false, null, "maria.nunes@gmail.com", "554555", conta, exameMedico, dependente);
-		dao.create(colaborador);
+		dao.cadastrar(colaborador);
 		Integer id = colaborador.getId();
-		assertEquals(colaborador, dao.readById(id));
+		assertEquals(colaborador, dao.consultarPorId(Colaborador.class, id));
 
 	}
 
 	@Test
 	public void testCGetAll() {
-		int tamanhoAntes = dao.getAll().size();
+		int tamanhoAntes = dao.consultarTodos(Colaborador.class).size();
 		Colaborador colaborador = new Colaborador("Maria", "Souza", "Maria Souza", data, "Brasileira", "Blumenau",
 				false, "Masculino", ig, endereco, "21164028324", "45124563", contatos, null, null, false, false, data,
 				false, null, "maria.souza@outlook.com.br", "554555", conta, exameMedico, dependente);
-		dao.create(colaborador);
-		assertEquals(tamanhoAntes + 1, dao.getAll().size());
+		dao.cadastrar(colaborador);
+		assertEquals(tamanhoAntes + 1, dao.consultarTodos(Colaborador.class).size());
 	}
 
 	@Test
@@ -116,9 +111,9 @@ public class ColaboradorDAOTest {
 				"Brasileira", "Blumenau", false, "Feminino", IdentidadeGenero.TRANS, endereco, "555412354", "98794455",
 				contatos, 12, 1234587, false, false, LocalDate.now(), false, "123111444", "junior@senior.com.br",
 				"3124551", conta, exameMedico3, new Dependente());
-		dao.create(colaborador);
-		dao.create(colaborador2);
-		dao.create(colaborador3);
+		dao.cadastrar(colaborador);
+		dao.cadastrar(colaborador2);
+		dao.cadastrar(colaborador3);
 		assertEquals(antes + 3, colabControllerApi.buscarTodosColaboradores().size());
 	}
 
@@ -127,10 +122,10 @@ public class ColaboradorDAOTest {
 		Colaborador colaborador = new Colaborador("Fernanda", "Brito", "Nada consta", data, "Brasileira", "Bag�", false,
 				"Feminino", ig, endereco, "21164028324", "45124563", contatos, 1, 84536112, false, false, data, false,
 				"1234555688", "fernanda@gmail.com", "554555", conta, exameMedico, dependente);
-		dao.create(colaborador);
+		dao.cadastrar(colaborador);
 		Integer id = colaborador.getId();
-		assertEquals(true, dao.delete(colaborador));
-		assertNull(dao.readById(id));
+		assertEquals(true, dao.deletar(colaborador));
+		assertNull(dao.consultarPorId(Colaborador.class, id));
 	}
 
 	@Test
@@ -139,14 +134,14 @@ public class ColaboradorDAOTest {
 				false, "Masculino", ig, endereco, "21164028324", "45124563", contatos, 2, 65448896, false, false,
 				LocalDate.of(2021, 01, 25), false, "989555633", "pedro@senior.com.br", "322321555", conta, exameMedico,
 				dependente);
-		dao.create(colaborador);
+		dao.cadastrar(colaborador);
 
 		colaborador.setCpf("99999999999");
 		colaborador.setNome("Mariana");
 		colaborador.setIdentidadeGenero(IdentidadeGenero.TRANS);
 		colaborador.setNacionalidade("Brasil");
 		colaborador.setDataDeNascimento(LocalDate.of(1985, 8, 23));
-		dao.update(colaborador);
+		dao.atualizar(colaborador);
 		assertEquals("Mariana", colaborador.getNome());
 	}
 
@@ -156,7 +151,7 @@ public class ColaboradorDAOTest {
 				"Masculino", ig, endereco, "15553232", "6566522354", contatos, 5, 555112324, false, false,
 				LocalDate.of(2020, 4, 17), false, "65123478", "daniela.goncalves@gmail.com", "554555", conta,
 				exameMedico, dependente);
-		dao.create(colaborador);
+		dao.cadastrar(colaborador);
 		assertNotNull(dao.readByEmail("daniela.goncalves@gmail.com"));
 	}
 
@@ -166,10 +161,10 @@ public class ColaboradorDAOTest {
 				false, "Masculino", ig, endereco, "15553232", "6566522354", contatos, 5, 555112324, false, false,
 				LocalDate.of(2020, 4, 17), false, "65123478", "maria@gmail.com", "554555", conta, exameMedico,
 				dependente);
-		dao.create(colaborador);
-		dao.deleteAll();
-		assertEquals(0, dao.getAll().size());
-		assertFalse(dao.deleteAll());
+		dao.cadastrar(colaborador);
+		dao.deletarTodos("colaborador");
+		assertEquals(0, dao.consultarTodos(Colaborador.class).size());
+		assertFalse(dao.deletarTodos("colaborador"));
 	}
 
 	@Test
@@ -181,7 +176,7 @@ public class ColaboradorDAOTest {
 				LocalDate.of(2020, 4, 17), false, "65123478", "joana@gmail.com", "554555",
 				new Conta("Santander", "0506", "05050505", "1"),
 				new ExameMedico(TiposExames.ADMISSIONAL, LocalDate.of(2021, 8, 7), true), dependente1);
-		dao.create(colaborador1);
+		dao.cadastrar(colaborador1);
 		Dependente dependente2 = new Dependente("Clementina", "Fonseca", "Clementina", data, "Venezuelano",
 				"Cidade del Leste", true, "Feminino", ig, endereco, "09619039610", "808080", TiposDependentes.MAE,
 				true);
@@ -190,8 +185,8 @@ public class ColaboradorDAOTest {
 				LocalDate.of(2020, 4, 17), false, "65123478", "joana@gmail.com", "554555",
 				new Conta("Caixa", "0506", "05050505", "1"),
 				new ExameMedico(TiposExames.ADMISSIONAL, LocalDate.of(2020, 8, 7), false), dependente2);
-		dao.create(colaborador2);
-		ArrayList<Colaborador> listaRetorno = (ArrayList<Colaborador>) dao.buscarPorNome("Joana");
+		dao.cadastrar(colaborador2);
+		ArrayList<Colaborador> listaRetorno = (ArrayList<Colaborador>) dao.consultarPorNome(Colaborador.class, "Joana");
 		assertEquals(colaborador1.getNome(), listaRetorno.get(0).getNome());
 		assertEquals(colaborador1.getCpf(), listaRetorno.get(0).getCpf());
 		assertEquals(colaborador1.getConta(), listaRetorno.get(0).getConta());
