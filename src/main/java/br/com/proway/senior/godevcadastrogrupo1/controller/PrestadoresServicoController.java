@@ -21,7 +21,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.Ide
  * @author Sprint 5
  *
  */
-public class buscarTodosPrestadoresServico {
+public class PrestadoresServicoController {
 
 	static Session session = BDConexao.getSessao();
 	static PrestadorServicoDAO daoPrestadorServico = PrestadorServicoDAO.getInstance(session);

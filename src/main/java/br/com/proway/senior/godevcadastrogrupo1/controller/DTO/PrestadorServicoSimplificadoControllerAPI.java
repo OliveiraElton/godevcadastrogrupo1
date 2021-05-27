@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.proway.senior.godevcadastrogrupo1.controller.buscarTodosPrestadoresServico;
+import br.com.proway.senior.godevcadastrogrupo1.controller.PrestadoresServicoController;
 import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.PrestadorServicoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.PrestadorServicoSimplificadoDTO;
@@ -21,7 +21,7 @@ import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
  * Classe PrestadorServicoSimplificadoControllerAPI
  * 
  * Classe disponibilizada para consulta dos dados de prestador de servico via API Rest.
- * Implementa os metodos do {@link buscarTodosPrestadoresServico} e atributos
+ * Implementa os metodos do {@link PrestadoresServicoController} e atributos
  * dos models {@link PrestadorServicoSimplificadoDTO} e {@link PrestadorServico}.
  * 
  * @author Vitor Peres <b>vitor.peres@senior.com.br</b>
