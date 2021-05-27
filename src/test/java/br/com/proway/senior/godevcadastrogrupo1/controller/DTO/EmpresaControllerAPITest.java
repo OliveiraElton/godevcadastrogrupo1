@@ -86,7 +86,7 @@ public class EmpresaControllerAPITest {
 		Endereco endereco1 = new Endereco("Rua XV", 123, "Taruma Office", "89035193", "Centro", "Brasil", "Blumenau", "SC");
 		Contatos contatos1 = new Contatos("47999448899", "47988994455", "contato@magalu.com", "47988553322");
 		Empresa original1 = new Empresa("Magalu Rua XV", LocalDate.of(2021, 10, 13), "05.975.585/0001-89", endereco1, contatos1);
-		Empresa empresaCriada1 = controllerApi.criarEmpresa(original1);
+		Empresa empresaCriada1 = controllerApi.cadastrarEmpresa(original1);
 		assertEquals(original1.getDataInicioContrato(), empresaCriada1.getDataInicioContrato());
 		assertEquals(original1.getEndereco(), empresaCriada1.getEndereco());
 		assertEquals(original1.getNomeEmpresa(), empresaCriada1.getNomeEmpresa());
@@ -97,8 +97,8 @@ public class EmpresaControllerAPITest {
 		Endereco endereco1 = new Endereco("Rua XV", 123, "Taruma Office", "89035193", "Centro", "Brasil", "Blumenau", "SC");
 		Contatos contatos1 = new Contatos("47999448899", "47988994455", "contato@magalu.com", "47988553322");
 		Empresa original1 = new Empresa("Magalu Rua XV", LocalDate.of(2021, 10, 13), "05.975.585/0001-89", endereco1, contatos1);
-		Empresa empresaCriada1 = controllerApi.criarEmpresa(original1);
-		controllerApi.deleteEmpresa(empresaCriada1.getId());
+		Empresa empresaCriada1 = controllerApi.cadastrarEmpresa(original1);
+		controllerApi.deletarEmpresa(empresaCriada1.getId());
 		assertTrue(controllerApi.buscarTodasEmpresas().isEmpty());
 	}
 	
@@ -107,7 +107,7 @@ public class EmpresaControllerAPITest {
 		Endereco endereco1 = new Endereco("Rua XV", 123, "Taruma Office", "89035193", "Centro", "Brasil", "Blumenau", "SC");
 		Contatos contatos1 = new Contatos("47999448899", "47988994455", "contato@magalu.com", "47988553322");
 		Empresa original1 = new Empresa("Magalu Rua XV", LocalDate.of(2021, 10, 13), "05.975.585/0001-89", endereco1, contatos1);
-		Empresa empresaCriada1 = controllerApi.criarEmpresa(original1);
+		Empresa empresaCriada1 = controllerApi.cadastrarEmpresa(original1);
 		empresaCriada1.setNomeEmpresa("Magula Loja");
 		controllerApi.atualizarEmpresa(empresaCriada1);
 		assertEquals("Magula Loja", empresaCriada1.getNomeEmpresa());
