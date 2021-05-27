@@ -48,7 +48,7 @@ public class DependenteControllerTest {
 
 	@Test
 	public void testCriarDependente() {
-		Dependente dependente = DependenteController.criarDependente("Jorge", "Martins", "Jessica", data, "Brasileira",
+		Dependente dependente = DependenteController.cadastrarDependente("Jorge", "Martins", "Jessica", data, "Brasileira",
 				"Blumenau", true, "Masculino", IdentidadeGenero.TRANS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das Oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
@@ -71,7 +71,7 @@ public class DependenteControllerTest {
 
 	@Test
 	public void testAtualizarDependente() {
-		Dependente dependente = DependenteController.criarDependente("Jorge", "Martins", "Jessica", data, "Brasileiro",
+		Dependente dependente = DependenteController.cadastrarDependente("Jorge", "Martins", "Jessica", data, "Brasileiro",
 				"Cascavel", true, "Masculino", IdentidadeGenero.TRANS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
@@ -116,7 +116,7 @@ public class DependenteControllerTest {
 
 	@Test
 	public void testBuscarTodosDependentes() {
-		Dependente dependente = DependenteController.criarDependente("Jessia", "Martins", "Jessica", data, "Brasileiro",
+		Dependente dependente = DependenteController.cadastrarDependente("Jessia", "Martins", "Jessica", data, "Brasileiro",
 				"Camboriu", true, "Feminino", IdentidadeGenero.CIS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das Oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
@@ -125,15 +125,15 @@ public class DependenteControllerTest {
 
 	@Test
 	public void testBuscarTodosDependentesPorNome() {
-		Dependente dependente1 = DependenteController.criarDependente("Jorge", "Martins", "Nada consta", data, "Brasileira",
+		Dependente dependente1 = DependenteController.cadastrarDependente("Jorge", "Martins", "Nada consta", data, "Brasileira",
 				"Camboriu", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
-		Dependente dependente2 = DependenteController.criarDependente("Carlos", "Martins", "Nada consta", data, "Brasileira",
+		Dependente dependente2 = DependenteController.cadastrarDependente("Carlos", "Martins", "Nada consta", data, "Brasileira",
 				"Camboriu", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
-		Dependente dependente3 = DependenteController.criarDependente("Carlos", "Martins", "Nada consta", data, "Brasileira",
+		Dependente dependente3 = DependenteController.cadastrarDependente("Carlos", "Martins", "Nada consta", data, "Brasileira",
 				"Camboriu", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das Oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");

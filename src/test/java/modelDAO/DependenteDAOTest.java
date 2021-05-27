@@ -38,7 +38,7 @@ public class DependenteDAOTest {
 	}
 	@Test
 	public void testReadById() {
-		Dependente dependente = DependenteController.criarDependente("Jessia", "Martins", "Jessica", data, "Brasileiro",
+		Dependente dependente = DependenteController.cadastrarDependente("Jessia", "Martins", "Jessica", data, "Brasileiro",
 				"Camboriu", true, "Feminino", IdentidadeGenero.CIS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das Oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
@@ -50,11 +50,11 @@ public class DependenteDAOTest {
 	@Test
 	public void testGetAll() {
 		int tamanhoAnterior = dao.getAll().size();
-		Dependente dependente = DependenteController.criarDependente("Jorge", "Martins", "Jessica", data, "Brasileira",
+		Dependente dependente = DependenteController.cadastrarDependente("Jorge", "Martins", "Jessica", data, "Brasileira",
 				"Blumenau", true, "Masculino", IdentidadeGenero.TRANS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das Oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
-		Dependente dependente2 = DependenteController.criarDependente("Jessia", "Martins", "Jessica", data, "Brasileiro",
+		Dependente dependente2 = DependenteController.cadastrarDependente("Jessia", "Martins", "Jessica", data, "Brasileiro",
 				"Camboriu", true, "Feminino", IdentidadeGenero.CIS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das Oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
@@ -66,7 +66,7 @@ public class DependenteDAOTest {
 
 	@Test
 	public void testCreate() {
-		Dependente dependente = DependenteController.criarDependente("Jorge", "Martins", "Jessica", data, "Brasileira",
+		Dependente dependente = DependenteController.cadastrarDependente("Jorge", "Martins", "Jessica", data, "Brasileira",
 				"Blumenau", true, "Masculino", IdentidadeGenero.TRANS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das Oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
@@ -75,7 +75,7 @@ public class DependenteDAOTest {
 
 	@Test
 	public void testDelete() {
-		Dependente dependente = DependenteController.criarDependente("Jorge", "Martins", "Jessica", data, "Brasileira",
+		Dependente dependente = DependenteController.cadastrarDependente("Jorge", "Martins", "Jessica", data, "Brasileira",
 				"Blumenau", true, "Masculino", IdentidadeGenero.TRANS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das Oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
@@ -86,7 +86,7 @@ public class DependenteDAOTest {
 	
 	@Test
 	public void testUpdate() {
-		Dependente dependente = DependenteController.criarDependente("Jorge", "Martins", "Jessica", data, "Brasileira",
+		Dependente dependente = DependenteController.cadastrarDependente("Jorge", "Martins", "Jessica", data, "Brasileira",
 				"Blumenau", true, "Masculino", IdentidadeGenero.TRANS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das Oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
