@@ -78,7 +78,7 @@ public class DependenteSimplificadoControllerApiTest{
 		LocalDate data = LocalDate.of(2002, 01, 28);
 		TiposExames te = EnumExamesMedicos.TiposExames.ADMISSIONAL;
 		TiposDependentes td = EnumDadosPessoais.TiposDependentes.CONJUGE;
-		Colaborador colaborador = ColaboradorController.criarColaborador("Joana", "Marla", "Nada consta", data,
+		Colaborador colaborador = ColaboradorController.cadastrarColaborador("Joana", "Marla", "Nada consta", data,
 				"Venezuelano", "Blumenauense", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data,
 				false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
 				"4521452015", "5421452103", "brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00",

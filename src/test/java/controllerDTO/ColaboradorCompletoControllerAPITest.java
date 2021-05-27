@@ -58,7 +58,7 @@ public class ColaboradorCompletoControllerAPITest {
 	}
 	@Test
 	public void testCriarUmColaborador() throws Exception {
-		Colaborador colaborador1 = ColaboradorController.criarColaborador("Lucas", "Walim", "Nada consta", data,
+		Colaborador colaborador1 = ColaboradorController.cadastrarColaborador("Lucas", "Walim", "Nada consta", data,
 				"Venezuelano", "Blumenauense", true, "Masculino", ig, "09619039610", "mn24588606", 8, 8788881, false,
 				false, data, false, "88080888708", "lucas.walim@gmail.com", "04040505050", "Rua 1", 9, "Casa",
 				"54126547", "Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103",
@@ -73,7 +73,7 @@ public class ColaboradorCompletoControllerAPITest {
 
 	@Test
 	public void testDeletarUmColaborador() throws Exception {
-		Colaborador colaborador2 = ColaboradorController.criarColaborador("gabriel", "simon", "Nada consta", data,
+		Colaborador colaborador2 = ColaboradorController.cadastrarColaborador("gabriel", "simon", "Nada consta", data,
 				"Venezuelano", "Blumenauense", true, "Masculino", ig, "09619039610", "mn24588606", 8, 8788881, false,
 				false, data, false, "88080888708", "gabriel.simon@gmail.com", "04040505050", "Rua 1", 9, "Casa",
 				"54126547", "Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103",
@@ -88,7 +88,7 @@ public class ColaboradorCompletoControllerAPITest {
 
 	@Test
 	public void testAtualizarUmColaborador() throws Exception{
-		Colaborador colaborador3 = ColaboradorController.criarColaborador("gabriel", "simon", "Nada consta", data,
+		Colaborador colaborador3 = ColaboradorController.cadastrarColaborador("gabriel", "simon", "Nada consta", data,
 				"Venezuelano", "Blumenauense", true, "Masculino", ig, "09619039610", "mn24588606", 8, 8788881, false,
 				false, data, false, "88080888708", "gabriel.simon@gmail.com", "04040505050", "Rua 1", 9, "Casa",
 				"54126547", "Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103",
@@ -105,7 +105,7 @@ public class ColaboradorCompletoControllerAPITest {
 	}
 	@Test
 	public void testBuscarColaboradorPorId() throws Exception {
-		Colaborador colaborador = ColaboradorController.criarColaborador("Joana", "Marla", "Nada consta", data,
+		Colaborador colaborador = ColaboradorController.cadastrarColaborador("Joana", "Marla", "Nada consta", data,
 				"Venezuelano", "Blumenauense", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false,
 				false, data, false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547",
 				"Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103", "brian.santos@empresa.com.br",
@@ -123,13 +123,13 @@ public class ColaboradorCompletoControllerAPITest {
 
 	@Test
 	public void testBuscarTodosColaboradores() throws Exception {
-		Colaborador colaborador1 = ColaboradorController.criarColaborador("Joana", "Marla", "Nada consta", data,
+		Colaborador colaborador1 = ColaboradorController.cadastrarColaborador("Joana", "Marla", "Nada consta", data,
 				"Venezuelano", "Blumenauense", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false,
 				false, data, false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547",
 				"Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103", "brian.santos@empresa.com.br",
 				"1542413655", te, null, true, "banco00", "055", "438614625", "154", "joãozinho", "Santos", "Erika",
 				data, "Venezuelano", "Blumenauense", true, "Feminino", ig, "09619039610", "mg14388606", td, true);
-		Colaborador colaborador2 = ColaboradorController.criarColaborador("Joana", "Pereira", "Nada consta", data,
+		Colaborador colaborador2 = ColaboradorController.cadastrarColaborador("Joana", "Pereira", "Nada consta", data,
 				"Venezuelano", "Blumenauense", true, "Feminino", ig, "7878888878", "mg14388606", 8, 8788881, false,
 				false, data, false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547",
 				"Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103", "brian.santos@empresa.com.br",
@@ -148,13 +148,13 @@ public class ColaboradorCompletoControllerAPITest {
 
 	@Test
 	public void testBuscarColaboradorPorNome() throws Exception {
-		Colaborador colaborador1 = ColaboradorController.criarColaborador("Joana", "Marla", "Nada consta", data,
+		Colaborador colaborador1 = ColaboradorController.cadastrarColaborador("Joana", "Marla", "Nada consta", data,
 				"Venezuelano", "Blumenauense", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false,
 				false, data, false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547",
 				"Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103", "brian.santos@empresa.com.br",
 				"1542413655", te, null, true, "banco00", "055", "438614625", "154", "joãozinho", "Santos", "Erika",
 				data, "Venezuelano", "Blumenauense", true, "Feminino", ig, "09619039610", "mg14388606", td, true);
-		Colaborador colaborador2 = ColaboradorController.criarColaborador("Joana", "Pereira", "Nada consta", data,
+		Colaborador colaborador2 = ColaboradorController.cadastrarColaborador("Joana", "Pereira", "Nada consta", data,
 				"Venezuelano", "Blumenauense", true, "Feminino", ig, "7878888878", "mg14388606", 8, 8788881, false,
 				false, data, false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547",
 				"Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103", "brian.santos@empresa.com.br",

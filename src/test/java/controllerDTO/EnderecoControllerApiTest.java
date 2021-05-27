@@ -46,7 +46,7 @@ public class EnderecoControllerApiTest {
 
 	@Test
 	public void testBuscarEnderecoDoColaborador() throws Exception {
-		Colaborador c = ColaboradorController.criarColaborador("Brian", "Santos", "Erika", data, "Venezuelano",
+		Colaborador c = ColaboradorController.cadastrarColaborador("Brian", "Santos", "Erika", data, "Venezuelano",
 				"Blumenauense", true, null, ig, "09619039610", "mg14388606", 8, null, false, false, data, false, null,
 				"brian@gmail.com", null, null, null, null, "54126547", "Teste Endereco", "Teste Endereco", "Teste Endereco", "Teste Endereco", "4521452015",
 				"5421452103", "brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00", "055",
@@ -59,7 +59,7 @@ public class EnderecoControllerApiTest {
 
 	@Test
 	public void testBuscarEnderecoPorId() throws Exception {
-		Colaborador c = ColaboradorController.criarColaborador("Brian", "Santos", "Erika", data, "Venezuelano",
+		Colaborador c = ColaboradorController.cadastrarColaborador("Brian", "Santos", "Erika", data, "Venezuelano",
 				"Blumenauense", true, null, ig, "09619039610", "mg14388606", 8, null, false, false, data, false, null,
 				"brian@gmail.com", null, null, null, null, "54126547", "Teste Endereco", "Teste Endereco", "Teste Endereco", "Teste Endereco", "4521452015",
 				"5421452103", "brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00", "055",
@@ -72,13 +72,13 @@ public class EnderecoControllerApiTest {
 	
 	@Test
 	public void testBuscarTodosEnderecos() throws Exception {
-		Colaborador colaborador = ColaboradorController.criarColaborador("Brian", "Santos", "Erika", data, "Venezuelano",
+		Colaborador colaborador = ColaboradorController.cadastrarColaborador("Brian", "Santos", "Erika", data, "Venezuelano",
 				"Blumenauense", true, null, ig, "09619039610", "mg14388606", 8, null, false, false, data, false, null,
 				"brian@gmail.com", null, null, null, null, "54126547", "Teste Endereco", "Teste Endereco", "Teste Endereco", "Teste Endereco", "4521452015",
 				"5421452103", "brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00", "055",
 				"438614625", "154","joãozinho", "Santos","Erika", data, "Venezuelano",
 				"Blumenauense", true, null, ig, "09619039610", "mg14388606",td, true);
-		Colaborador colaborador2 = ColaboradorController.criarColaborador("Brian", "Santos", "Erika", data, "Venezuelano",
+		Colaborador colaborador2 = ColaboradorController.cadastrarColaborador("Brian", "Santos", "Erika", data, "Venezuelano",
 				"Blumenauense", true, null, ig, "09619039610", "mg14388606", 8, null, false, false, data, false, null,
 				"brian@gmail.com", null, null, null, null, "54126547", "Teste Endereco", "Teste Endereco", "Teste Endereco", "Teste Endereco", "4521452015",
 				"5421452103", "brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00", "055",

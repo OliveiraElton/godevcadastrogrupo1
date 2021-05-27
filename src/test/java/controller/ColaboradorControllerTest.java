@@ -57,7 +57,7 @@ public class ColaboradorControllerTest {
 	
 	@Test
 	public void testCriarColaborador() throws Exception {
-		Colaborador colaboradorCriado = ColaboradorController.criarColaborador("Rodrigo", "Moraes", "Nada consta", data, "Brasileira", "Blumenau", true, 
+		Colaborador colaboradorCriado = ColaboradorController.cadastrarColaborador("Rodrigo", "Moraes", "Nada consta", data, "Brasileira", "Blumenau", true, 
 				"Masculino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data, false, "88080888708", "rodrigo@gmail.com", "04040505050", 
 				"Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Florian�polis", "SC", "4521452015", "5421452103", "rodrigo@empresa.com.br", "1542413655", 
 				te, LocalDate.of(2020, 10, 5), true, "Caixa", "055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", 
@@ -67,7 +67,7 @@ public class ColaboradorControllerTest {
 
 	@Test
 	public void testDeleteColabordor() throws Exception {
-		Colaborador colaboradorCriado = ColaboradorController.criarColaborador("Carlos", "Moraes", "Nada consta", data, "Brasileira", "Blumenau", true, 
+		Colaborador colaboradorCriado = ColaboradorController.cadastrarColaborador("Carlos", "Moraes", "Nada consta", data, "Brasileira", "Blumenau", true, 
 				"Masculino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data, false, "88080888708", "carlos@gmail.com", "04040505050", 
 				"Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Florian�polis", "SC", "4521452015", "5421452103", "carlos@empresa.com.br", "1542413655", 
 				te, LocalDate.of(2020, 10, 5), true, "Caixa", "055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", 
@@ -78,7 +78,7 @@ public class ColaboradorControllerTest {
 
 	@Test
 	public void testAtualizarColaborador() throws Exception {
-		Colaborador colaboradorCriado = ColaboradorController.criarColaborador("Camila", "Moraes", "Nada consta", data,
+		Colaborador colaboradorCriado = ColaboradorController.cadastrarColaborador("Camila", "Moraes", "Nada consta", data,
 				"Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data,
 				false, "88080888708", "camila@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
 				"4521452015", "5421452103", "camila@empresa.com.br", "1542413655", te, LocalDate.of(2020, 10, 5), true, "Caixa",
@@ -115,7 +115,7 @@ public class ColaboradorControllerTest {
 	@Test
 	public void testBuscarTodosColaborador() throws Exception {
 		Integer valorAntes = ColaboradorController.buscarTodosColaboradores().size();
-		ColaboradorController.criarColaborador("Carlos", "Moraes", "Nada consta", data, "Brasileira", "Blumenau", true, "Masculino", ig, "09619039610", 
+		ColaboradorController.cadastrarColaborador("Carlos", "Moraes", "Nada consta", data, "Brasileira", "Blumenau", true, "Masculino", ig, "09619039610", 
 				"mg14388606", 8, 8788881, false, false, data, false, "88080888708", "carlos@gmail.com", "04040505050", "Rua 1", 9, "Casa", 
 				"54126547", "Centro", "Brasil", "Florian�polis", "SC", "4521452015", "5421452103", "carlos@empresa.com.br", "1542413655", te, 
 				LocalDate.of(2020, 10, 5), true, "Caixa", "055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", 
@@ -125,7 +125,7 @@ public class ColaboradorControllerTest {
 
 	@Test
 	public void testAdicionarNovoDependente() throws Exception {
-		Colaborador colaborador = ColaboradorController.criarColaborador("Camila", "Moraes", "Nada consta", data,
+		Colaborador colaborador = ColaboradorController.cadastrarColaborador("Camila", "Moraes", "Nada consta", data,
 				"Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data,
 				false, "88080888708", "camila@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
 				"4521452015", "5421452103", "camila@empresa.com.br", "1542413655", te, LocalDate.of(2020, 10, 5), true, "Caixa",
@@ -140,7 +140,7 @@ public class ColaboradorControllerTest {
 
 	@Test
 	public void testAdicionarNovoExameMedico() throws Exception {
-		Colaborador colaborador = ColaboradorController.criarColaborador("Maria", "Santos", "Nada consta", data,
+		Colaborador colaborador = ColaboradorController.cadastrarColaborador("Maria", "Santos", "Nada consta", data,
 				"Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data,
 				false, "88080888708", "maria@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
 				"4521452015", "5421452103", "maria@empresa.com.br", "1542413655", te, LocalDate.of(2020, 10, 5), true, "Caixa",
@@ -154,13 +154,13 @@ public class ColaboradorControllerTest {
 
 	@Test
 	public void testBuscarPorNome() throws Exception {
-		Colaborador colaborador1 = ColaboradorController.criarColaborador("Joana", "Marla", "Nada consta", data,
+		Colaborador colaborador1 = ColaboradorController.cadastrarColaborador("Joana", "Marla", "Nada consta", data,
 				"Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data,
 				false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
 				"4521452015", "5421452103", "joana@empresa.com.br", "1542413655", te, LocalDate.of(2021, 10, 5), true, "Caixa",
 				"055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", true,
 				"Feminino", ig, "09619039610", "mg14388606", tipoDep, true);
-		Colaborador colaborador2 = ColaboradorController.criarColaborador("Joana", "Pereira", "Nada consta", data,
+		Colaborador colaborador2 = ColaboradorController.cadastrarColaborador("Joana", "Pereira", "Nada consta", data,
 				"Brasileira", "Blumenau", true, "Feminino", ig, "7878888878", "mg14388606", 8, 8788881, false, false, data,
 				false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
 				"4521452015", "5421452103", "joana@empresa.com.br", "1542413655", te, LocalDate.of(2021, 10, 5), true, "BB",
