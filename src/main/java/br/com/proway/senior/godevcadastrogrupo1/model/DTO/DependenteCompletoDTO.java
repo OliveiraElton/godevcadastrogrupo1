@@ -7,7 +7,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.Identida
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDependentes;
 
 /**
- * Classe EmpresaDTO.
+ * Classe DependenteCompletoDTO.
  * 
  * Classe para interacao via Controller API, referencia a {@link Dependente}.
  * Oferece as informacoes completas do dependente, podendo ser utilizada para 
