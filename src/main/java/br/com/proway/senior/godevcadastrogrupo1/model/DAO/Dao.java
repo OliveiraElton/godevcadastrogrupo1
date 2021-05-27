@@ -11,7 +11,6 @@ import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 
-import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
 import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 
 public class Dao<T> implements InterfaceDao<T>{
