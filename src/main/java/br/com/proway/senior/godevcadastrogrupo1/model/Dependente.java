@@ -11,10 +11,15 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.Identida
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDependentes;
 
 /**
- * Classe Dependente Esta classe instancia a classe Pessoa para o cadastro de
- * Dependente. Deve ser instancianda usando DependenteBuilder.
+ * Classe Dependente.
  * 
+ * Esta classe instancia a classe {@link Pessoa} para o cadastro de
+ * Dependente. Deve ser instancianda usando DependenteBuilder. Um
+ * dependente sempre sera atrelado a um {@link Colaborador}. 
  *
+ * @author Lorran Pereira dos Santos, Samuel Levi, Sarah Neuburger Brito, Thiago
+ *         Luiz Barbieri e Vitor Nathan Goncalves.
+ * 
  * @author Bruno Marques <brunoliveira.marques@gmail.com
  * @author Daniella Lira <dev.danilira@gmail.com>
  * @author David Hildebrnadt <davihildebran@gmail.com>
@@ -37,6 +42,8 @@ public class Dependente extends Pessoa  {
 	}
 
 	/**
+	 * Construtor padrao da classe.
+	 * 
 	 * @param nome
 	 * @param sobrenome
 	 * @param nomeSocial
