@@ -27,7 +27,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExa
 /**
  * Classe DependenteSimplificadoControllerApiTest
  * 
- * Testes dos metodos da classe {@link DependenteSimplificadoControllerApi}.
+ * Testes dos metodos da classe {@link DependenteSimplificadoControllerAPI}.
  * 
  * @author Sprint 5
  * @author Vitor Cesar Peres <b>vitor.peres@senior.com.br</b>
@@ -40,7 +40,7 @@ public class DependenteSimplificadoControllerApiTest{
 	static Session session;
 	static DependenteDAO dao;
 	static ColaboradorDAO daoColab;
-	static DependenteSimplificadoControllerApi dependenteApi;
+	static DependenteSimplificadoControllerAPI dependenteApi;
 	
 	@Before
 	public void limparTabela(){
@@ -53,7 +53,7 @@ public class DependenteSimplificadoControllerApiTest{
 	session = DBConnection.getSession();
 	dao = DependenteDAO.getInstance(session);
 	daoColab = ColaboradorDAO.getInstance(session);
-	dependenteApi = new DependenteSimplificadoControllerApi();
+	dependenteApi = new DependenteSimplificadoControllerAPI();
 	
 	}
 	@Test
@@ -116,7 +116,7 @@ public class DependenteSimplificadoControllerApiTest{
 				"Cidade del Leste", true, "Feminino", IdentidadeGenero.CIS, endereco, "09619039610", "123", 
 				EnumDadosPessoais.TiposDependentes.FILHO, true);
 		dao.create(dependente2);
-		List<DependenteSimplificadoDTO> listaDependenteSimplificadoDTO = dependenteApi.buscarDependenteSimplificadoPorNome("Barbara");
+		List<DependenteSimplificadoDTO> listaDependenteSimplificadoDTO = dependenteApi.buscarDependentePorNome("Barbara");
 		assertEquals(1 ,listaDependenteSimplificadoDTO.size());
 	}
 

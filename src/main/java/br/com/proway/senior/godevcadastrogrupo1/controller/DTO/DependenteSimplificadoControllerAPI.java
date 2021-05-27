@@ -16,26 +16,27 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DTO.DependenteSimplificado
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 /**
- * Classe controller Api de Dependente Simplificado.
+ * Classe controller API de {@link DependenteSimplificadoDTO}.
  * 
  * Metodos de buscar objetos do banco de dados por
- * diferentes tipos de parâmetro.
+ * diferentes tipos de parametro.
+ * 
  * @author Vitor Peres <b>vitor.peres@senior.com.br</b>
  *
  */
 @RestController
-public class DependenteSimplificadoControllerApi {
+public class DependenteSimplificadoControllerAPI {
 
 	static Session session = DBConnection.getSession();
 	static DependenteDAO dependenteDao = DependenteDAO.getInstance(session);
+	
 	/**
 	 * Busca Dependente por id.
 	 * 
-	 * Busca o Dependente cujo id é igual ao passado como parâmetro.
+	 * Busca o Dependente cujo id eh igual ao passado como parametro.
 	 * 
 	 * @param id Do dependente desejado.
-	 * 
-	 * @return Dependente ou null caso não encontrado.
+	 * @return Dependente ou null caso nao encontrado.
 	 */
 	@RequestMapping(value = "/dependentesimplificado/{id}", method = RequestMethod.GET)
 	public @ResponseBody DependenteSimplificadoDTO buscarDependentePorId(@PathVariable ("id") Integer id) {
@@ -45,12 +46,12 @@ public class DependenteSimplificadoControllerApi {
 	/**
 	 * Busca Dependente por id do Colaborador.
 	 * 
-	 * Busca o Dependente relacionado ao Colaborador cujo id é igual ao passado como
-	 * parâmetro.
+	 * Busca o Dependente relacionado ao Colaborador cujo id eh igual ao passado como
+	 * parametro.
 	 * 
 	 * @param id do Colaborador desejado.
 	 * 
-	 * @return Dependente ou null caso não encontrado.
+	 * @return Dependente ou null caso nao encontrado.
 	 */
 	@RequestMapping(value = "/dependentesimplificado/colab/{id}", method = RequestMethod.GET)
 	public @ResponseBody List<DependenteSimplificadoDTO> buscarDependentePorIdColaborador(@PathVariable ("id") Integer id) {
@@ -67,7 +68,7 @@ public class DependenteSimplificadoControllerApi {
 	 * 
 	 * Busca todos os dependentes do banco de dados.
 	 * 
-	 * @return List de {@link DependenteSimplificadoDTO}
+	 * @return Lista de {@link DependenteSimplificadoDTO}
 	 */
 	@RequestMapping(value = "/dependentesimplificado", method = RequestMethod.GET)
 	public @ResponseBody List<DependenteSimplificadoDTO> buscarTodosDependentes(){
@@ -82,11 +83,12 @@ public class DependenteSimplificadoControllerApi {
 	 * 
 	 * Buscar todos os dependentes no banco de dados que tem nome igual ao
 	 * passado como parametro.
-	 * @param nome
-	 * @return
+	 * 
+	 * @param nome do dependente procurado.
+	 * @return listaDependenteCompletoDTO
 	 */
 	@RequestMapping(value = "/dependentesimplificado/nome/{nome}", method = RequestMethod.GET)
-	public @ResponseBody List<DependenteSimplificadoDTO> buscarDependenteSimplificadoPorNome(@PathVariable ("nome") String nome) {
+	public @ResponseBody List<DependenteSimplificadoDTO> buscarDependentePorNome(@PathVariable ("nome") String nome) {
 		List<DependenteSimplificadoDTO> listaDependenteCompletoDTO = new ArrayList<DependenteSimplificadoDTO>();
 		for(Dependente dependente : dependenteDao.buscarPorNome(nome)) {
 			listaDependenteCompletoDTO.add(new DependenteSimplificadoDTO(dependente));

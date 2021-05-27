@@ -118,7 +118,7 @@ public class DependenteCompletoControllerAPI {
 	 * @return listaDependenteCompletoDTO Lista de {@link DependenteDTO}
 	 */
 	@RequestMapping(value = "/dependente", method = RequestMethod.GET)
-	public @ResponseBody List<DependenteCompletoDTO> buscarTodosDependentesCompletos() {
+	public @ResponseBody List<DependenteCompletoDTO> buscarTodosDependentes() {
 		List<DependenteCompletoDTO> listaDependenteCompletoDTO = new ArrayList<DependenteCompletoDTO>();
 		for(Dependente dependente : dependenteDao.getAll()) {
 			listaDependenteCompletoDTO.add(new DependenteCompletoDTO(dependente));
@@ -136,7 +136,7 @@ public class DependenteCompletoControllerAPI {
 	 * @return listaDependenteCompletoDTO
 	 */
 	@RequestMapping(value = "/dependente/nome/{nome}", method = RequestMethod.GET)
-	public @ResponseBody List<DependenteCompletoDTO> buscarDependenteCompletoPorNome(@PathVariable ("nome") String nome) {
+	public @ResponseBody List<DependenteCompletoDTO> buscarDependentePorNome(@PathVariable ("nome") String nome) {
 		List<DependenteCompletoDTO> listaDependenteCompletoDTO = new ArrayList<DependenteCompletoDTO>();
 		for(Dependente dependente : dependenteDao.buscarPorNome(nome)) {
 			listaDependenteCompletoDTO.add(new DependenteCompletoDTO(dependente));

@@ -114,7 +114,7 @@ public class DependenteCompletoControllerApiTest {
 				"Cidade del Leste", true, "Feminino", IdentidadeGenero.CIS, endereco2, "09619039610", "123", 
 				EnumDadosPessoais.TiposDependentes.FILHO, true);
 		dao.create(dependente2);
-		List<DependenteCompletoDTO> listaDependenteCompletoDTO = dependenteApi.buscarTodosDependentesCompletos();
+		List<DependenteCompletoDTO> listaDependenteCompletoDTO = dependenteApi.buscarTodosDependentes();
 		assertEquals(2, listaDependenteCompletoDTO.size());
 	}
 	
@@ -129,7 +129,7 @@ public class DependenteCompletoControllerApiTest {
 				"Cidade del Leste", true, "Feminino", IdentidadeGenero.CIS, endereco, "09619039610", "123", 
 				EnumDadosPessoais.TiposDependentes.FILHO, true);
 		dao.create(dependente2);
-		List<DependenteCompletoDTO> listaDependenteCompletoDTO = dependenteApi.buscarDependenteCompletoPorNome("Carolina");
+		List<DependenteCompletoDTO> listaDependenteCompletoDTO = dependenteApi.buscarDependentePorNome("Carolina");
 		assertEquals(2 ,listaDependenteCompletoDTO.size());
 	}
 	@Test
