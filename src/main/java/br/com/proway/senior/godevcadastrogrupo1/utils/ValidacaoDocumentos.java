@@ -1,5 +1,7 @@
 package br.com.proway.senior.godevcadastrogrupo1.utils;
 
+import com.sun.jdi.IntegerValue;
+
 /**
  * Classe responsavel por validar os dados dos documentos. Utilizado em conjunto
  * com a classe FormatacaoDocumentos.
@@ -83,11 +85,11 @@ public class ValidacaoDocumentos {
 	 * 
 	 * @param String telefone que sera verificado.
 	 * @return boolean
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 
 	public static boolean validarTamanhoTelefone(String telefone) throws Exception {
-		if (telefone.length() == 11 || telefone.length() == 10 ) {
+		if (telefone.length() == 11 || telefone.length() == 10) {
 			return true;
 		}
 		throw new Exception("Numero de digitos incorretos");
@@ -169,6 +171,73 @@ public class ValidacaoDocumentos {
 		if (FormatacaoDocumentos.removerCaracteres(cep).length() != 8) {
 			return false;
 		}
+		return true;
+	}
+
+	public static boolean validarCnpj2(String cnpj) {
+		String cnpjFormatado = FormatacaoDocumentos.removerCaracteresEspeciais(cnpj);
+		if (cnpjFormatado.length() == 14) {
+
+			int primeiroDigito;
+			int soma = 0;
+			int resultado = 0;
+			for (int i = 0, j = 5; i < 12; i++, j--) {
+				if (j != 2) {
+					soma += (cnpjFormatado.charAt(i) - 48) * j;
+				} else {
+					soma += (cnpjFormatado.charAt(i) - 48) * j;
+					j = 9;
+				}
+
+			}
+			System.out.println("Soma" + soma);
+			resultado = soma % 11;
+			System.out.println(resultado);
+			System.out.println(resultado);
+			if (resultado < 2) {
+				primeiroDigito = 0;
+				// System.out.println(cnpjFormatado.charAt(12));
+				if (cnpjFormatado.charAt(12) != primeiroDigito) {
+					return false;
+				}
+			} else {
+				primeiroDigito = 11 - resultado;
+				// System.out.println(cnpjFormatado.charAt(12));
+				if (cnpjFormatado.charAt(12) != primeiroDigito) {
+					return false;
+				}
+			}
+
+			// segundo digito
+			int segundoDigito;
+			int soma2 = 0;
+			int resultado2 = 0;
+			for (int i = 0, j = 6; i <= 12; i++, j--) {
+				if (j == 2) {
+					soma2 += (cnpjFormatado.charAt(i) - 48) * j;
+					j = 9;
+				} else {
+					soma2 += (cnpjFormatado.charAt(i) - 48) * j;
+				}
+			}
+
+			resultado2 = soma2 % 11;
+
+			if (resultado2 < 2) {
+				segundoDigito = 0;
+				// System.out.println(cnpjFormatado.charAt(13));
+				if (cnpjFormatado.charAt(13) != segundoDigito) {
+					return false;
+				}
+			} else {
+				segundoDigito = 11 - resultado2;
+				// System.out.println(cnpjFormatado.charAt(13));
+				if (cnpjFormatado.charAt(13) != segundoDigito) {
+					return false;
+				}
+			}
+		}
+
 		return true;
 	}
 

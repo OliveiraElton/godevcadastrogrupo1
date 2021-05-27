@@ -30,5 +30,11 @@ public class FormatacaoDocumentos {
 			}
 		}
 		return output;
-	}	
+	}
+	
+	public static String removerCaracteresEspeciais(String entrada) {
+		String formatada = entrada.replaceAll("[^0-9]", "");
+		return formatada;
+		
+	}
 }
