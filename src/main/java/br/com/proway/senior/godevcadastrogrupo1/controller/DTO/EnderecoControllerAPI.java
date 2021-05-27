@@ -17,20 +17,22 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DTO.EnderecoDTO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 /**
- * Classe controller Api que busca enderecos para mandar na view.
+ * Classe controller API que busca enderecos para mandar na view.
  * 
- * Classe com metodos que busca no banco de dados, transforma em objeto DTO
- * e manda para a view de acordo com os criterios de busca passados no parametro.
+ * Classe com metodos que busca no banco de dados, transforma em objeto 
+ * {@link EnderecoDTO} e manda para a view de acordo com os criterios de 
+ * busca passados no parametro.
  * 
  * @author Vitor Peres <b>vitor.peres@senior.com.br</b>
  * @author Gabriel Simon <b>gabrielsimon775@gmail.com</b>
  * 
  */
 @RestController
-public class EnderecoControllerApi{
+public class EnderecoControllerAPI{
 
 	static Session session = DBConnection.getSession();
 	EnderecoDAO enderecoDao = EnderecoDAO.getInstance(session);
+	
 	/**
 	 * Metodo que busca endereco atraves do colaborador.
 	 * 
@@ -43,7 +45,7 @@ public class EnderecoControllerApi{
 	 * @return {@link EnderecoDTO}
 	 */
 	@RequestMapping(value = "/endereco/colab/{id}", method = RequestMethod.GET)
-	public @ResponseBody EnderecoDTO buscarEnderecoDoColaborador(@PathVariable Integer id){
+	public @ResponseBody EnderecoDTO buscarEnderecoPorColaborador(@PathVariable Integer id){
 		return new EnderecoDTO(enderecoDao.readByIdColab(id));
 	}
 

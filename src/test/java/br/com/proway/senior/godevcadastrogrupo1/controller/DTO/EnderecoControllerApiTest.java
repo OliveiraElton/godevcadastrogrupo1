@@ -23,7 +23,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExa
 
 public class EnderecoControllerApiTest {
 
-	static EnderecoControllerApi enderecoApi;
+	static EnderecoControllerAPI enderecoApi;
 	static IdentidadeGenero ig;
 	static LocalDate data;
 	static TiposExames te;
@@ -31,7 +31,7 @@ public class EnderecoControllerApiTest {
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		enderecoApi = new EnderecoControllerApi();
+		enderecoApi = new EnderecoControllerAPI();
 		ig = EnumDadosPessoais.IdentidadeGenero.TRANS;
 		data = LocalDate.of(2002, 01, 28);
 		te = EnumExamesMedicos.TiposExames.ADMISSIONAL;
@@ -52,7 +52,7 @@ public class EnderecoControllerApiTest {
 				"438614625", "154","joãozinho", "Santos","Erika", data, "Venezuelano",
 				"Blumenauense", true, null, ig, "09619039610", "mg14388606",td, true);
 		
-		EnderecoDTO enderecoDTO = enderecoApi.buscarEnderecoDoColaborador(c.getId());
+		EnderecoDTO enderecoDTO = enderecoApi.buscarEnderecoPorColaborador(c.getId());
 		assertEquals("Teste Endereco", enderecoDTO.getCidade());
 	}
 
