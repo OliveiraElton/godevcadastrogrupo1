@@ -18,6 +18,8 @@ import java.util.List;
 public interface InterfaceDao<T> {
 	
 	public T cadastrar(T item);
+	
+	public List<T> consultarPorNome(Class <T> item, String nome);
 
 	public T consultarPorId(Class <T> item, Integer id);
 

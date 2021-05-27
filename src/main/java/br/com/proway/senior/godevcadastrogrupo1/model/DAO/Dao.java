@@ -6,9 +6,12 @@ import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
+import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 
+import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
 import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 
 public class Dao<T> implements InterfaceDao<T>{
@@ -124,7 +127,25 @@ public class Dao<T> implements InterfaceDao<T>{
 		int modificados = this.session.createSQLQuery("TRUNCATE "+tabela+" CASCADE").executeUpdate();
 		this.session.getTransaction().commit();
 		return modificados > 0 ? true : false;
+	}
 
+	@Override
+	public List<T> consultarPorNome(Class<T> item, String nome) {
+			Session session = BDConexao.getSessao();
+			CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+			CriteriaQuery<T> criteria = criteriaBuilder.createQuery(item);
+			
+			Root<T> root = criteria.from(item);
+			Expression<String> selectedColumn = root.get("nome");
+			
+			String filter = "%" + nome + "%";
+			criteria.select(root)
+				.where(criteriaBuilder.like(selectedColumn, filter));
+				
+			Query query = session.createQuery(criteria);
+			List<T> results = query.getResultList();
+			return new ArrayList<T>(results);
+	
 	}
 	
 }
