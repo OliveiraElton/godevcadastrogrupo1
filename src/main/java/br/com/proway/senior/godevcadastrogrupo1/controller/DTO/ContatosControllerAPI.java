@@ -19,59 +19,61 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DTO.ContatosDTO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 /**
- * * Classe para intera��o via Controller API, tem refer�ncia com
+ * Classe para intercao via Controller API, tem referencia com
  * {@link Colaborador} e {@link PrestadorServico}. Disponibiliza todas as
- * informa��es na API.
+ * informacoes na API.
  * 
  * @author Elton Oliveira <b>elton.oliveira@senior.com.br</b>
- *
  */
 
 @RestController
-public class ContatosControllerApi {
+public class ContatosControllerAPI {
 
 	static Session session = DBConnection.getSession();
 	ContatosDAO daoContatos = ContatosDAO.getInstance(session);
 	
 	/**
-	 * Método criar contato
+	 * Metodo cadastrar contato.
 	 * 
-	 * Ao criar irá registrar as informações no banco de dados com os parametros informados.
+	 * Ao criar ire registrar as informacoes no banco de dados com os parametros informados.
 	 * 
-	 * Salva as informações no banco.
+	 * Salva as informacoes no banco.
 	 * 
-	 * @param contatos
+	 * @param contatos que sera cadastrado.
+	 * @param o objeto cadastrado de fato, com a respectiva ID.
 	 * @author Elton Oliveira <b>elton.oliveira@senior.com.br</b>
 	 */
 	@RequestMapping(value = "/contatos", method = RequestMethod.POST)
-	public @ResponseBody Contatos criarContato(@RequestBody Contatos contatos) {
+	public @ResponseBody Contatos cadastrarContatos(@RequestBody Contatos contatos) {
 		return daoContatos.create(contatos);
 	}
 	
 	/**
-	 * Método deletar contato
+	 * Metodo deletar contato.
 	 * 
-	 * Ao deletar irá remover as informações no banco de dados, com parametro id informado..
+	 * Ao deletar ira remover as informacoes no banco de dados, com parametro id informado..
 	 * 
-	 * Deleta as informações no banco.
+	 * Deleta as informacoes no banco.
 	 * 
-	 * @param contatos
+	 * @param id Identificacao do contato que sera deletado.
+	 * @return boolean
 	 * @author Elton Oliveira <b>elton.oliveira@senior.com.br</b>
 	 */
 	@RequestMapping(value = "/contatos/{id}", method = RequestMethod.DELETE)
-	public @ResponseBody boolean deleteContatos(@PathVariable ("id") Integer id) {
+	public @ResponseBody boolean deletarContatos(@PathVariable ("id") Integer id) {
 		Contatos contatos = daoContatos.readById(id);
 		return daoContatos.delete(contatos);
 	}
 	
 	/**
-	 * Método atualiza contato
+	 * Metodo atualiza contato
 	 * 
-	 * Irá atualizar as informações no banco de dados com os parametros id informado.
+	 * Ira atualizar as informacoes no banco de dados com os parametros id informado.
 	 * 
-	 * Atualiza as informações no banco.
+	 * Atualiza as informacoes no banco.
 	 * 
-	 * @param contatos
+	 * @param contatos objeto com os dados atualizados.
+	 * @return objeto do banco de dados com os dados atualizados.
 	 * @author Elton Oliveira <b>elton.oliveira@senior.com.br</b>
 	 */
 	@RequestMapping(value = "/contatos/{id}", method = RequestMethod.PUT)
@@ -84,10 +86,11 @@ public class ContatosControllerApi {
 	/**
 	 * Buscar contatos por Id.
 	 * 
-	 * Método busca as informações dos contatos informando parametro id.
+	 * Metodo busca as informacoes dos contatos informando parametro id.
 	 * 
 	 * Retorna o conteudo informado no parametro id referente ao contato.
 	 * 
+	 * @param id Identificacao do contato
 	 * @return listaEmpresaDTO lista de registros localizados.
 	 * @author Elton Oliveira <b>elton.oliveira@senior.com.br</b>
 	 */
@@ -101,7 +104,7 @@ public class ContatosControllerApi {
 	/**
 	 * Buscar todos os contatos.
 	 * 
-	 * Método busca as informações de todos os contatos cadastrados no banco de
+	 * Metodo busca as informacoes de todos os contatos cadastrados no banco de
 	 * dados. Retorna uma lista de todos os registros do contatos.
 	 * 
 	 * @return listaEmpresaDTO lista de registros localizados.
@@ -122,15 +125,16 @@ public class ContatosControllerApi {
 	/**
 	 * Buscar contatos por email.
 	 * 
-	 * Método busca as informações dos contatos informando parametro email.
+	 * Metodo busca as informacoes dos contatos informando parametro email.
 	 * 
 	 * Retorna o conteudo informado no parametro email referente ao contato.
 	 * 
+	 * @param String email informacao a ser procurado no banco.
 	 * @return listaEmpresaDTO lista de registros localizados.
 	 * @author Elton Oliveira <b>elton.oliveira@senior.com.br</b>
 	 */
-	@RequestMapping(value = "/empresa/{email}", method = RequestMethod.GET)
-	public @ResponseBody List<ContatosDTO> buscarPrestadorServicoPorEmail(@PathVariable ("email") String email) {
+	@RequestMapping(value = "/contatos/{email}", method = RequestMethod.GET)
+	public @ResponseBody List<ContatosDTO> buscarContatosPorEmail(@PathVariable ("email") String email) {
 		List<ContatosDTO> listaContatosDTO = new ArrayList<ContatosDTO>();
 		for (Contatos contatos : ContatosDAO.getInstance(session).buscarPorEmail(email)) {
 			listaContatosDTO.add(new ContatosDTO(contatos));

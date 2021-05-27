@@ -22,7 +22,7 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 /**
  * Classe ContatosControllerApiTest.
  * 
- * Testa os métodos da classe {@link ContatosControllerApi}.
+ * Testa os métodos da classe {@link ContatosControllerAPI}.
  * 
  * @author Elton F Oliveira <b>elton.oliveira@senior.com.br</b>
  *
@@ -31,13 +31,13 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 public class ContatosControllerApiTest {
 
 	static Session session = DBConnection.getSession();
-	static ContatosControllerApi contatosControllerApi;
+	static ContatosControllerAPI contatosControllerApi;
 	ContatosDAO daoContatos = ContatosDAO.getInstance(session);
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		ContatosDAO.getInstance(DBConnection.getSession()).deleteAll();
-		contatosControllerApi = new ContatosControllerApi();
+		contatosControllerApi = new ContatosControllerAPI();
 	}
 	
 	@Before
@@ -92,7 +92,7 @@ public class ContatosControllerApiTest {
 		ContatosDAO.getInstance(DBConnection.getSession()).create(contato);
 
 		List<ContatosDTO> listaContatosDTO = contatosControllerApi
-				.buscarPrestadorServicoPorEmail("ricardinho@gmail.com");
+				.buscarContatosPorEmail("ricardinho@gmail.com");
 		assertEquals(1, listaContatosDTO.size());
 	}
 }

@@ -54,7 +54,7 @@ public class ColaboradorCompletoControllerAPI {
 	}
 
 	/**
-	 * Criar Colaborador.
+	 * Cadastrar Colaborador.
 	 * 
 	 * Recebe os dados necessarios para criar um colaborador. Depois chama o
 	 * DAO e salva no banco de dados.
