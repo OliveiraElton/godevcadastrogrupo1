@@ -7,11 +7,12 @@ import org.hibernate.Session;
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
 import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
+
 /**
  * DependenteDAO.
  * 
- * Classe de interacao com o banco de dados atraves do Hibernate.
- * Extende a classe {@link Dao} que possui os metodos CRUD.
+ * Classe de interacao com o banco de dados atraves do Hibernate. Extende a
+ * classe {@link Dao} que possui os metodos CRUD.
  * 
  * @author Sprint 5
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b> - Sprint 6
@@ -20,8 +21,7 @@ import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 public class DependenteDAO extends Dao<Dependente> {
 
 	protected static DependenteDAO instancia;
-	
-	
+
 	public static DependenteDAO getInstance(Session session) {
 		if (instancia == null)
 			instancia = new DependenteDAO(session);
@@ -29,7 +29,7 @@ public class DependenteDAO extends Dao<Dependente> {
 	}
 
 	/**
-	 * Contrutor da classe que recebe uma Session como parametro para conexao com o 
+	 * Contrutor da classe que recebe uma Session como parametro para conexao com o
 	 * Hibernate.
 	 * 
 	 * @param Seseion session
@@ -52,10 +52,5 @@ public class DependenteDAO extends Dao<Dependente> {
 		Colaborador colabRetornado = colabDAO.consultarPorId(Colaborador.class, id);
 		return colabRetornado.getDependente();
 	}
-	
-	
-	
+
 }
-	
-	
-		
