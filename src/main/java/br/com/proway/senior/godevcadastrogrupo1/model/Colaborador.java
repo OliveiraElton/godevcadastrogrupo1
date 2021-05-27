@@ -15,26 +15,26 @@ import javax.persistence.OneToOne;
 import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDeDatas;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
 
+/**
+ * Classe Colaborador.
+ * 
+ * A classe Colaborador instancia as classes Pessoa, Documentos, Enderecos,
+ * Contatos e ExameMedico para concluir o cadastro do colaborador.
+ * 
+ * Deve ser instanciado utilizando o ColaboradorBuilder.
+ * 
+ * @author Lorran Pereira dos Santos, Samuel Levi, Sarah Neuburger Brito, Thiago
+ *         Luiz Barbieri e Vitor Nathan Gon�alves.
+ * 
+ * @author Bruna <sh4323202@gmail.com>
+ * @author Enzo <enzomm.bodyandmind@gmail.com>
+ * @author Sabrina <sabrinaschmidt335@gmail.com>
+ * @author Vanderlei <vanderleik@yahoo.com.br>
+ * @author Vitor <vitornathang@gmail.com>
+ */
 @Entity
 public class Colaborador extends Pessoa {
 
-	/**
-	 * Classe Colaborador.
-	 * 
-	 * A classe Colaborador instancia as classes Pessoa, Documentos, Enderecos,
-	 * Contatos e ExameMedico para concluir o cadastro do colaborador.
-	 * 
-	 * Deve ser instanciado utilizando o ColaboradorBuilder.
-	 * 
-	 * @author Lorran Pereira dos Santos, Samuel Levi, Sarah Neuburger Brito, Thiago
-	 *         Luiz Barbieri e Vitor Nathan Gon�alves.
-	 * 
-	 * @author Bruna <sh4323202@gmail.com>
-	 * @author Enzo <enzomm.bodyandmind@gmail.com>
-	 * @author Sabrina <sabrinaschmidt335@gmail.com>
-	 * @author Vanderlei <vanderleik@yahoo.com.br>
-	 * @author Vitor <vitornathang@gmail.com>
-	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -63,6 +63,8 @@ public class Colaborador extends Pessoa {
 	}
 	
 	/**
+	 * Construtor padrao da classe.
+	 * 
 	 * @param nome
 	 * @param sobrenome
 	 * @param nomeSocial
