@@ -17,7 +17,8 @@ package br.com.proway.senior.godevcadastrogrupo1.utils;
 public class EnumDadosPessoais {
 	
 	public enum IdentidadeGenero {
-		TRANS, CIS
+		TRANS, 
+		CIS;
 	}
 
 	/**

@@ -3,6 +3,8 @@ package br.com.proway.senior.godevcadastrogrupo1.model;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,6 +36,7 @@ public class ExameMedico {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@Enumerated(EnumType.STRING)
 	TiposExames tipoExame;
 	private LocalDate dataExame;
 	private boolean apto;
