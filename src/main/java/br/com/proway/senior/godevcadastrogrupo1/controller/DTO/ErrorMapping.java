@@ -19,20 +19,20 @@ public class ErrorMapping implements ErrorController{
 	
 	@RequestMapping(value = "/error", method = RequestMethod.GET)
 	public @ResponseBody String imprimeErroGet() {
-		return "Erro de parâmetro, endereço na url ou objeto não existe no banco para retornar.";
+		return "<h1>Erro de parâmetro, endereço na url ou objeto não existe no banco para retornar.</h1>";
 	}
 
 	@RequestMapping(value = "/error", method = RequestMethod.PUT)
 	public @ResponseBody String imprimeErroPut() {
-		return "Erro de parâmetro, endereço na url ou objeto não existe para atualizar.";
+		return "<h1>Erro de parâmetro, endereço na url ou objeto não existe para atualizar.</h1>";
 	}
 	@RequestMapping(value = "/error", method = RequestMethod.DELETE)
 	public @ResponseBody String imprimeErroDelete() {
-		return "Erro de parâmetro, endereço na url ou objeto não existe para deletar. ";
+		return "<h1>Erro de parâmetro, endereço na url ou objeto não existe para deletar.</h1>";
 	}
 	@RequestMapping(value = "/error", method = RequestMethod.POST)
 	public @ResponseBody String imprimeErroPost() {
-		return "Erro de parâmetro, endereço na url ou objeto não pode ser criado (null etc).  ";
+		return "<h1>Erro de parâmetro, endereço na url ou objeto não pode ser criado (null etc).</h1>";
 	}
 
 }

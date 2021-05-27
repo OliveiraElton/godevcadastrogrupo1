@@ -3,6 +3,8 @@ package br.com.proway.senior.godevcadastrogrupo1.model;
 import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 
@@ -10,7 +12,6 @@ import br.com.proway.senior.godevcadastrogrupo1.utilidades.FormatacaoDocumentos;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.ValidacaoDeDatas;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.ValidacaoDocumentos;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
-
 /**
  * Classe Pessoa.
  * 
@@ -39,6 +40,7 @@ public class Pessoa{
 	private String naturalidade;
 	private Boolean pcd = false;
 	private String genero;
+	@Enumerated(EnumType.STRING)	
 	private IdentidadeGenero identidadeGenero;
 	@OneToOne(cascade = CascadeType.ALL)
 	private Endereco endereco;
@@ -186,9 +188,11 @@ public class Pessoa{
 		this.genero = genero;
 	}
 	
+	
 	public IdentidadeGenero getIdentidadeGenero() {
 		return identidadeGenero;
 	}
+	
 	
 	public void setIdentidadeGenero(IdentidadeGenero identidadeGenero) {
 		this.identidadeGenero = identidadeGenero;
