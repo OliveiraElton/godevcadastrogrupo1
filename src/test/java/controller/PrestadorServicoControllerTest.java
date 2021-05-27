@@ -114,6 +114,6 @@ public class PrestadorServicoControllerTest {
 
 	@Before
 	public void limpar() {
-		dao.deletarTodos("p");
+		dao.deletarTodos("prestadorservico");
 	}
 }
