@@ -12,9 +12,8 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExa
 /**
  * Classe ExameMedico.
  * 
- * Classe recebe informa��es para cadastro dos exames m�dicos que ser�o
- * instanciados na classe Colaborador para o cadastramento do mesmo.
- * 
+ * Classe recebe informacoes para cadastro dos exames medicos que serao
+ * instanciados na classe {@link Colaborador} para o cadastramento do mesmo.
  * Deve ser instanciada utilizando o ExameMedicoBuilder.
  * 
  * @author Lorran Pereira dos Santos, Samuel Levi, Sarah Neuburger Brito, Thiago
@@ -43,6 +42,8 @@ public class ExameMedico {
 	}
 	
 	/**
+	 * Construtor padrao da classe.
+	 * 
 	 * @param tipoExame
 	 * @param dataExame
 	 * @param apto
