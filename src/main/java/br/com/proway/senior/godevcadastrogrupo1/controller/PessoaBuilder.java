@@ -22,7 +22,15 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDependentes;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExames;
-
+/**
+ * Classe PessoaBuilder.
+ * 
+ * Implementa os atributos e metodos para o Builder de {@link Pessoa}
+ * implementando a interface {@link Builder}.
+ * 
+ * @author Sprint5.
+ *
+ */
 public class PessoaBuilder implements Builder {
 
 	Session session = DBConnection.getSession();
