@@ -1,15 +1,16 @@
 package br.com.proway.senior.godevcadastrogrupo1.utils;
 
 /**
+ * Classe ValidacaoDocumentos.
+ * 
  * Classe responsavel por validar os dados dos documentos. Utilizado em conjunto
- * com a classe FormatacaoDocumentos.
+ * com a classe {@link FormatacaoDocumentos}.
  *
  * @author Bruna <sh4323202@gmail.com>
  * @author Enzo <enzomm.bodyandmind@gmail.com>
  * @author Sabrina <sabrinaschmidt335@gmail.com>
  * @author Vanderlei <vanderleik@yahoo.com.br>
  * @author Vitor <vitornathang@gmail.com>
- *
  */
 public class ValidacaoDocumentos {
 
@@ -61,7 +62,7 @@ public class ValidacaoDocumentos {
 	 * conforme regra do governo.
 	 * 
 	 * @param String CPFFormatado CPF que sera verificado.
-	 * @return boolean
+	 * @return boolean.
 	 */
 	private static boolean validaSegundoDigitoCPF(String CPFFormatado) {
 		int soma = 0;
@@ -82,7 +83,7 @@ public class ValidacaoDocumentos {
 	 * retorna true caso contraio, retorna false.
 	 * 
 	 * @param String telefone que sera verificado.
-	 * @return boolean
+	 * @return boolean.
 	 * @throws Exception 
 	 */
 
@@ -145,12 +146,12 @@ public class ValidacaoDocumentos {
 	}
 
 	/**
-	 * Validar email
+	 * Validar email.
 	 * 
 	 * Realiza validacao do email para verificar se possui o caracter "@".
 	 * 
 	 * @param String email que sera verificado.
-	 * @return boolean
+	 * @return boolean.
 	 */
 	public static boolean validarEmail(String email) throws Exception {
 		if (email.contains("@") && email.contains(".com")) {
@@ -160,7 +161,9 @@ public class ValidacaoDocumentos {
 	}
 
 	/**
-	 * Verifica se CEP contem 8 digitos
+	 * Validar CEP.
+	 * 
+	 * Metodo verifica se CEP contem 8 digitos
 	 * 
 	 * @param String cep CEP que sera verificado.
 	 * @return boolean.
