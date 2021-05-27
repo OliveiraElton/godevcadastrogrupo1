@@ -30,13 +30,13 @@ public class ColaboradorSimplificadoControllerApi {
 	static Session session = DBConnection.getSession();
 	ColaboradorDAO daoColaborador = ColaboradorDAO.getInstance(session);
 	static ColaboradorController controllerOriginal = new ColaboradorController();
-	
+
 	/**
 	 * Retorna um registro de {@link ColaboradorSimplificadoDTO} atraves do id
 	 * repassado no parametro.
 	 * 
 	 * @param id
-	 * @return
+	 * @return ColaboradorSimplificadoDTO
 	 */
 	@RequestMapping(value = "/colaboradorsimplificado/{id}", method = RequestMethod.GET)
 	public @ResponseBody ColaboradorSimplificadoDTO buscarColaboradorPorId(@PathVariable Integer id) {
@@ -48,11 +48,11 @@ public class ColaboradorSimplificadoControllerApi {
 	/**
 	 * Retorna uma Lista de todos os {@link ColaboradorSimplificadoDTO}.
 	 * 
-	 * @return
+	 * @return listaColaboradorDto
 	 */
-	
+
 	@RequestMapping(value = "/colaboradorsimplificado", method = RequestMethod.GET)
-	public @ResponseBody List<ColaboradorSimplificadoDTO> buscarTodos() {
+	public @ResponseBody List<ColaboradorSimplificadoDTO> buscarTodosColaboradores() {
 		List<ColaboradorSimplificadoDTO> listaColaboradorDto = new ArrayList<ColaboradorSimplificadoDTO>();
 		List<Colaborador> listaColaborador = ColaboradorController.buscarTodosColaboradores();
 
@@ -62,17 +62,16 @@ public class ColaboradorSimplificadoControllerApi {
 		return listaColaboradorDto;
 	}
 
-	
 	/**
 	 * Retorna uma Lista de todos {@link ColaboradorSimplificadoDTO} onde o nome
 	 * seja igual ao repassado por parametro.
 	 * 
 	 * @param nome
-	 * @return
+	 * @return listaColaboradorDto
 	 */
-	
+
 	@RequestMapping(value = "/colaboradorsimplificado/nome/{nome}", method = RequestMethod.GET)
-	public @ResponseBody List<ColaboradorSimplificadoDTO> buscarColaboradorPorNome(@PathVariable ("nome") String nome) {
+	public @ResponseBody List<ColaboradorSimplificadoDTO> buscarColaboradorPorNome(@PathVariable("nome") String nome) {
 		List<Colaborador> listaColaborador = ColaboradorController.buscarColaboradorPorNome(nome);
 		List<ColaboradorSimplificadoDTO> listaColaboradorDto = new ArrayList<ColaboradorSimplificadoDTO>();
 		for (Colaborador colaborador : listaColaborador) {

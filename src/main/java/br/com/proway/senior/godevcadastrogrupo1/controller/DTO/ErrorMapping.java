@@ -5,7 +5,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
+/**
+ * Classe ErrorMapping.
+ * 
+ * Implementa e personaliza as respostas que serao retornadas
+ * ao utilizar as APIs do sistema.
+ * 
+ * @author Vitor Cesar Peres <b>vitor.peres@senior.com.br</b>
+ *
+ */
 @RestController
 public class ErrorMapping implements ErrorController{
 	

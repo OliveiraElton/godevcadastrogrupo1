@@ -21,12 +21,13 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 /**
  * Classe ColaboradorCompletoControllerAPI
  * 
- * Classe disponibilizada para consulta dos dados da empresa via API Rest.
- * Implementa os m�todos de visualiza��o do
- * {@link ColaboradorCompletoController} e atriutos do model
+ * Classe disponibilizada para consulta dos dados da empresa via 
+ * API Rest. Implementa os metodos de interacao com o banco do
+ * {@link ColaboradorCompletoController} e atributos do model
  * {@link ColaboradorCompletoDTO}.
  * 
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
+ * @author Gabriel Simon <b>gabriel.simon@senior.com.br</b>
  */
 
 @RestController
@@ -38,42 +39,42 @@ public class ColaboradorCompletoControllerAPI {
 	/**
 	 * Buscar colaborador por Id.
 	 * 
-	 * M�todo busca as informa��es cadastradas do colaborador, conforme
-	 * idColaborador informado. Retorna um objeto ColaboradorCompletoDTO que ser�
+	 * Metodo busca as informacoes cadastradas do colaborador, conforme
+	 * idColaborador informado. Retorna um objeto ColaboradorCompletoDTO que sera
 	 * visualizado pelo cliente da API.
 	 * 
-	 * @param idColaborador identifica��o do colaborador que ser� retornado.
-	 * @return ColaboradorCompletoDTO objeto com as informa��es do banco.
+	 * @param idColaborador identificacao do colaborador que sera retornado.
+	 * @return ColaboradorCompletoDTO objeto com as informacoes do banco.
 	 */
 
 	@RequestMapping(value = "/colaboradorcompleto/{id}", method = RequestMethod.GET)
 	public @ResponseBody ColaboradorCompletoDTO buscarColaboradorPorId(@PathVariable("id") Integer idColaborador) {
-		ColaboradorCompletoDTO colaboradorDTO = new ColaboradorCompletoDTO(
-				colaboradorDao.readById(idColaborador));
+		ColaboradorCompletoDTO colaboradorDTO = new ColaboradorCompletoDTO(colaboradorDao.readById(idColaborador));
 		return colaboradorDTO;
 	}
 
 	/**
-	 * Criar Colaborador.
+	 * Cadastrar Colaborador.
 	 * 
-	 * Vai receber os dados necessarios para criar um colaborador. Depois chama o dao e salva no banco de dados.
+	 * Recebe os dados necessarios para criar um colaborador. Depois chama o
+	 * DAO e salva no banco de dados.
 	 * 
-	 * @param colaborador
-	 * @return Retorna um colaborador 
+	 * @param colaborador Objeto do registro que sera criado.
+	 * @return Retorna o colaborador criado no banco.
 	 */
 	@RequestMapping(value = "/colaboradorcompleto", method = RequestMethod.POST)
-	public @ResponseBody Colaborador criarColaborador(@RequestBody Colaborador colaborador) {
+	public @ResponseBody Colaborador cadastrarColaborador(@RequestBody Colaborador colaborador) {
 		return colaboradorDao.create(colaborador);
 	}
 
 	/**
 	 * Atualiza Colaborador.
 	 * 
-	 * Cria um novo Colaborador que vai sobrepor as informacoes do antigo registro do Colaborador pelo parametro
-	 * passado.
+	 * Cria um novo Colaborador que vai sobrepor as informacoes do antigo registro
+	 * do Colaborador pelo parametro passado.
 	 * 
-	 * @param colaborador
-	 * @return Vai retornar um colaborador novo.
+	 * @param colaborador Objeto com dados atualizados.
+	 * @return Retorna o colaborador atualizado.
 	 */
 	@RequestMapping(value = "/colaboradorcompleto", method = RequestMethod.PUT)
 	public @ResponseBody Colaborador atualizarColaborador(@RequestBody Colaborador colaborador) {
@@ -81,11 +82,11 @@ public class ColaboradorCompletoControllerAPI {
 	}
 
 	/**
-	 * * Excluir um Colaborador.
+	 * Deleta um Colaborador.
 	 * 
-	 * Vai excluir um {@link Colaborador} pelo {@link ID} passado no parametro.
+	 * Realiza a exclusao de um {@link Colaborador} conforme ID passado no parametro.
 	 * 
-	 * @param id
+	 * @param id Identificacao do colaborador que sera excluido.
 	 * @return Vai retornar verdadeiro se for deletado e false caso contrario.
 	 */
 	@RequestMapping(value = "/colaboradorcompleto/{id}", method = RequestMethod.DELETE)
@@ -97,7 +98,7 @@ public class ColaboradorCompletoControllerAPI {
 	/**
 	 * Buscar todos os colaboradores.
 	 * 
-	 * M�todo busca as informa��es de todos os colaboradores cadastrados no banco de
+	 * Metodo busca as informacoes de todos os colaboradores cadastrados no banco de
 	 * dados. Retorna uma lista de todos os registros de colaboradores.
 	 * 
 	 * @return listaColaboradorDTO lista de registros localizados.
@@ -116,11 +117,11 @@ public class ColaboradorCompletoControllerAPI {
 	/**
 	 * Busca colaborador por nome.
 	 * 
-	 * M�todo busca os colaboradores no banco de dados atrav�s dos seus respectivos
-	 * nomes, � poss�vel passar um par�metro parcial para retorna todos os registros
+	 * Metodo busca os colaboradores no banco de dados atraves dos seus respectivos
+	 * nomes, eh possivel passar um parametro parcial para retorna todos os registros
 	 * que contenham determinado texto em seu nomeColaborador.
 	 * 
-	 * @param nomeColaborador nome dos registros que est�o sendo procurados.
+	 * @param nomeColaborador nome dos registros que estao sendo procurados.
 	 * @return ArrayList Empresa lista de registros localizados.
 	 */
 

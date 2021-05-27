@@ -33,16 +33,16 @@ public class EmpresaControllerAPI {
 	EmpresaDAO daoEmpresa = EmpresaDAO.getInstance(session);
 
 	/**
-	 * Criar empresa.
+	 * Cadastrar empresa.
 	 * 
 	 * Metodo cria um registro de nova empresa no banco de dados. Recebe um objeto
 	 * da {@link Empresa} que sera criada.
 	 * 
-	 * @param empresa {@link Empresa}
-	 * @return
+	 * @param empresa {@link Empresa} que sera criada.
+	 * @return o objeto {@link Empresa} cadastrado no banco de dados.
 	 */
 	@RequestMapping(value = "/empresa", method = RequestMethod.POST)
-	public @ResponseBody Empresa criarEmpresa(@RequestBody Empresa empresa) {
+	public @ResponseBody Empresa cadastrarEmpresa(@RequestBody Empresa empresa) {
 		return daoEmpresa.create(empresa);
 	}
 	
@@ -55,7 +55,7 @@ public class EmpresaControllerAPI {
 	 * @return boolean
 	 */
 	@RequestMapping(value = "/empresa/{id}", method = RequestMethod.DELETE)
-	public @ResponseBody boolean deleteEmpresa(@PathVariable ("id") Integer id) {
+	public @ResponseBody boolean deletarEmpresa(@PathVariable ("id") Integer id) {
 		Empresa empresa = daoEmpresa.readById(id);
 		return daoEmpresa.delete(empresa);
 	}
