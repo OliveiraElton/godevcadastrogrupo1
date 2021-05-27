@@ -41,13 +41,13 @@ public class PrestadorServicoCompletoControllerApiTest {
 	static Empresa empresa;
 	static EmpresaDAO daoEmpresa = EmpresaDAO.getInstance(session);
 
-	static PrestadorServicoCompletoControllerApi prestadorApi;
+	static PrestadorServicoCompletoControllerAPI prestadorApi;
 	static PrestadorServicoDAO dao = PrestadorServicoDAO.getInstance(session);
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		PrestadorServicoDAO.getInstance(DBConnection.getSession()).deleteAll();
-		prestadorApi = new PrestadorServicoCompletoControllerApi();
+		prestadorApi = new PrestadorServicoCompletoControllerAPI();
 		empresa = new Empresa("Senior", LocalDate.now(), "05.975.585/0001-89", null, null);
 		daoEmpresa.create(empresa);
 	}
@@ -74,7 +74,7 @@ public class PrestadorServicoCompletoControllerApiTest {
 				"Agua Verde", "Brasil", "Blumenau", "SP", empresa2);
 
 		PrestadorServicoCompletoDTO prestadorCompletoDTO = prestadorApi
-				.buscarPrestadorServicoCompletoPorId(prestadorApi.buscarTodosPrestadorServicoCompleto().get(0).getId());
+				.buscarPrestadorServicoPorId(prestadorApi.buscarTodosPrestadoresServico().get(0).getId());
 		assertEquals("256.103.800-90", prestadorCompletoDTO.getCpf());
 
 	}
@@ -94,7 +94,7 @@ public class PrestadorServicoCompletoControllerApiTest {
 				LocalDate.of(2020, 01, 28), 1, "1543652548", "1543652548", "batriz@gmail.com", "1543652548",
 				"Rua s�o Paulo", 510, "Predio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa2);
 
-		List<PrestadorServicoCompletoDTO> listaPrestadorCompletoDTO = prestadorApi.buscarTodosPrestadorServicoCompleto();
+		List<PrestadorServicoCompletoDTO> listaPrestadorCompletoDTO = prestadorApi.buscarTodosPrestadoresServico();
 		assertEquals(2, listaPrestadorCompletoDTO.size());
 	}
 
@@ -115,13 +115,13 @@ public class PrestadorServicoCompletoControllerApiTest {
 				"89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa2);
 
 		List<PrestadorServicoCompletoDTO> listaPrestadorCompletoDTO = prestadorApi
-				.buscarPrestadorServicoCompletoPorNome("Professor Ricardo");
+				.buscarPrestadorServicoPorNome("Professor Ricardo");
 		assertEquals(1, listaPrestadorCompletoDTO.size());
 	}
 
 	@Test
 	public void testCCriarPrestador() throws Exception {
-		int quantidade = prestadorApi.buscarTodosPrestadorServicoCompleto().size();
+		int quantidade = prestadorApi.buscarTodosPrestadoresServico().size();
 
 		Endereco endereco = new Endereco("Rua cinco", 45, "Casa", "89665522", "Centro", "Brasil", "Itajai", "SC");
 
@@ -129,9 +129,9 @@ public class PrestadorServicoCompletoControllerApiTest {
 				"Itajai", true, "Masculino", IdentidadeGenero.CIS, endereco, "09532665411", "96655221", null, null,
 				empresa, null);
 
-		prestadorApi.criarPrestador(prestador);
+		prestadorApi.cadastrarPrestador(prestador);
 
-		assertEquals(quantidade + 1, prestadorApi.buscarTodosPrestadorServicoCompleto().size());
+		assertEquals(quantidade + 1, prestadorApi.buscarTodosPrestadoresServico().size());
 	}
 
 	@Test
@@ -142,7 +142,7 @@ public class PrestadorServicoCompletoControllerApiTest {
 				"Itajai", true, "Masculino", IdentidadeGenero.CIS, endereco, "09532665411", "96655221", null, null,
 				empresa, null);
 		
-		prestadorApi.criarPrestador(prestador);
+		prestadorApi.cadastrarPrestador(prestador);
 		session.clear();
 		
 		PrestadorServico prestadorBuscado = PrestadorServicoController.buscarPrestadorServicoPorId(prestador.getId());
@@ -165,11 +165,11 @@ public class PrestadorServicoCompletoControllerApiTest {
 				"Itajai", true, "Masculino", IdentidadeGenero.CIS, endereco, "09532665411", "96655221", contato, LocalDate.now(),
 				empresa, 8);
 		
-		PrestadorServico prest = prestadorApi.criarPrestador(prestador);
-		int quantidade = prestadorApi.buscarTodosPrestadorServicoCompleto().size();
-		prestadorApi.deletePrestador(prest.getId());
+		PrestadorServico prest = prestadorApi.cadastrarPrestador(prestador);
+		int quantidade = prestadorApi.buscarTodosPrestadoresServico().size();
+		prestadorApi.deletarPrestador(prest.getId());
 		
-		assertEquals(quantidade - 1, prestadorApi.buscarTodosPrestadorServicoCompleto().size());
+		assertEquals(quantidade - 1, prestadorApi.buscarTodosPrestadoresServico().size());
 	}
 
 }

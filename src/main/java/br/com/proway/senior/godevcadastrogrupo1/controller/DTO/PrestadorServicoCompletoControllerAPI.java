@@ -20,30 +20,31 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 /**
  * * 
-* Classe para intera��o via Controller API, tem refer�ncia com {@link Pessoa}.
-* Disponibiliza todas as informa��es na API.
+* Classe para interacao via Controller API, tem referencia com {@link Pessoa},
+* {@link PrestadorServicoDTO} e {@link PrestadorServico}.
+* Disponibiliza todas as informacoes na API.
 * 
 * @author Elton Oliveira <elton.oliveira@senior.com.br>
 * @author Lucas Walim <lucas.walim@senior.com.br>
  *
  */
 @RestController
-public class PrestadorServicoCompletoControllerApi {
+public class PrestadorServicoCompletoControllerAPI {
 	
 	static Session session = DBConnection.getSession();
 	PrestadorServicoDAO daoPrestadorServicos = PrestadorServicoDAO.getInstance(session);
 	
 	/**
-	 * Criar {@link PrestadorServico}
+	 * Cadastrar {@link PrestadorServico}
 	 * 
 	 * Metodo cria um registro de novo prestador de servicos no banco de dados.
 	 * Recebe um objeto de {@link PrestadorServico} a ser criado.
 	 * 
 	 * @param prestador
-	 * @return
+	 * @return o objeto do registro criado no banco dedados.
 	 */
 	@RequestMapping(value = "/prestadorservico", method = RequestMethod.POST)
-	public @ResponseBody PrestadorServico criarPrestador(@RequestBody PrestadorServico prestador) {
+	public @ResponseBody PrestadorServico cadastrarPrestador(@RequestBody PrestadorServico prestador) {
 		return daoPrestadorServicos.create(prestador);
 	}
 	
@@ -65,13 +66,13 @@ public class PrestadorServicoCompletoControllerApi {
 	 * Deletar {@link PrestadorServico}.
 	 * 
 	 * Metodo exclui um registro de prestador de servicos do banco de dados,
-	 * conforme id informao.
+	 * conforme id informado.
 	 * 
 	 * @param id Identificacao do prestador de servico a ser excluido
 	 * @return boolean
 	 */
 	@RequestMapping(value = "/prestadorservico/{id}", method = RequestMethod.DELETE)
-	public @ResponseBody boolean deletePrestador(@PathVariable("id") Integer id) {
+	public @ResponseBody boolean deletarPrestador(@PathVariable("id") Integer id) {
 		PrestadorServico prestadorServico = daoPrestadorServicos.readById(id);
 		return daoPrestadorServicos.delete(prestadorServico);
 	}
@@ -83,11 +84,11 @@ public class PrestadorServicoCompletoControllerApi {
 	 * IdPrestadorServicos informado. Retorna um objeto PrestadorServicosDTO que sera
 	 * visualizado pelo cliente da API.
 	 * 
-	 * @param id
+	 * @param id identificacao do prestador procurado.
 	 * @return {@link PrestadorServicoCompletoDTO}
 	 */
 	@RequestMapping(value = "/prestadorservico/{id}", method = RequestMethod.GET)
-	public @ResponseBody PrestadorServicoCompletoDTO buscarPrestadorServicoCompletoPorId(@PathVariable("id") Integer id) {
+	public @ResponseBody PrestadorServicoCompletoDTO buscarPrestadorServicoPorId(@PathVariable("id") Integer id) {
 	PrestadorServicoCompletoDTO prestadorCompletoDTO = new PrestadorServicoCompletoDTO(daoPrestadorServicos.readById(id));
 		return prestadorCompletoDTO;
 	}
@@ -101,7 +102,7 @@ public class PrestadorServicoCompletoControllerApi {
 	 * @return listaPrestadorCompletoDTO lista de registros localizados.
 	 */
 	@RequestMapping(value = "/prestadorservico", method = RequestMethod.GET)
-	public @ResponseBody List<PrestadorServicoCompletoDTO> buscarTodosPrestadorServicoCompleto() {
+	public @ResponseBody List<PrestadorServicoCompletoDTO> buscarTodosPrestadoresServico() {
 		List<PrestadorServicoCompletoDTO> listaPrestadorCompletoDTO = new ArrayList<PrestadorServicoCompletoDTO>();
 		for(PrestadorServico prestador : daoPrestadorServicos.getAll()) {
 			listaPrestadorCompletoDTO.add(new PrestadorServicoCompletoDTO(prestador));
@@ -120,7 +121,7 @@ public class PrestadorServicoCompletoControllerApi {
 	 * @return ArrayList {@link PrestadorServico} lista de registros localizados.
 	 */
 	@RequestMapping(value = "/prestadorservico/nome/{nome}", method = RequestMethod.GET)
-	public @ResponseBody List<PrestadorServicoCompletoDTO> buscarPrestadorServicoCompletoPorNome(@PathVariable("nome") String nome){
+	public @ResponseBody List<PrestadorServicoCompletoDTO> buscarPrestadorServicoPorNome(@PathVariable("nome") String nome){
 		List<PrestadorServicoCompletoDTO> listaPrestadorCompletoDTO = new ArrayList<PrestadorServicoCompletoDTO>();
 		for(PrestadorServico prestador : daoPrestadorServicos.buscarPorNome(nome)) {
 			listaPrestadorCompletoDTO.add(new PrestadorServicoCompletoDTO(prestador));
