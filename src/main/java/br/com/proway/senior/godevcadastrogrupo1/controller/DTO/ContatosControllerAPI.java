@@ -19,9 +19,8 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DTO.ContatosDTO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 /**
- * Classe para intercao via Controller API, tem referencia com
- * {@link Colaborador} e {@link PrestadorServico}. Disponibiliza todas as
- * informacoes na API.
+ * Classe para interacao via Controller API, tem referencia com
+ * {@link Colaborador}. Disponibiliza todas as informacoes na API.
  * 
  * @author Elton Oliveira <b>elton.oliveira@senior.com.br</b>
  */

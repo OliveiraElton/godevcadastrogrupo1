@@ -41,7 +41,7 @@ public class DependenteCompletoControllerApiTest {
 	static Session session;
 	static DependenteDAO dao;
 	static ColaboradorDAO daoColab;
-	static DependenteCompletoControllerApi  dependenteApi;
+	static DependenteCompletoControllerAPI  dependenteApi;
 	
 	@Before
 	public void limparTabela() {
@@ -54,7 +54,7 @@ public class DependenteCompletoControllerApiTest {
 		session = DBConnection.getSession();
 		dao = DependenteDAO.getInstance(session);
 		daoColab = ColaboradorDAO.getInstance(session);
-		dependenteApi = new DependenteCompletoControllerApi();
+		dependenteApi = new DependenteCompletoControllerAPI();
 	}
 
 	@Test
@@ -63,7 +63,7 @@ public class DependenteCompletoControllerApiTest {
 		Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Venezuelano",
 				"Cidade del Leste", true, "Masculino", IdentidadeGenero.TRANS, endereco, "09619039610","123", 
 				EnumDadosPessoais.TiposDependentes.FILHO, true);
-		Dependente dependenteBanco = dependenteApi.criarDependente(dependente);
+		Dependente dependenteBanco = dependenteApi.cadastrarDependente(dependente);
 		assertEquals(dependenteBanco, dao.readById(dependenteBanco.getId()));
 		
 	}
@@ -75,7 +75,7 @@ public class DependenteCompletoControllerApiTest {
 				"Cidade del Leste", true, "Masculino", IdentidadeGenero.TRANS, endereco, "09619039610","123", 
 				EnumDadosPessoais.TiposDependentes.FILHO, true);
 		Integer idBanco = dao.create(dependente).getId();
-		dependenteApi.deleteDependente(idBanco);
+		dependenteApi.deletarDependente(idBanco);
 		assertEquals(0, dao.getAll().size());
 	}
 	
@@ -114,7 +114,7 @@ public class DependenteCompletoControllerApiTest {
 				"Cidade del Leste", true, "Feminino", IdentidadeGenero.CIS, endereco2, "09619039610", "123", 
 				EnumDadosPessoais.TiposDependentes.FILHO, true);
 		dao.create(dependente2);
-		List<DependenteCompletoDTO> listaDependenteCompletoDTO = dependenteApi.buscarTodosDependenteCompleto();
+		List<DependenteCompletoDTO> listaDependenteCompletoDTO = dependenteApi.buscarTodosDependentesCompletos();
 		assertEquals(2, listaDependenteCompletoDTO.size());
 	}
 	

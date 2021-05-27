@@ -19,24 +19,24 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 /**
  * * 
-* Classe para intera��o via Controller API, tem refer�ncia com {@link Colaborador}.
-* Disponibiliza todas as informa��es na API.
+* Classe para interacao via Controller API, tem referencia com 
+* {@link Colaborador}. Disponibiliza todas as informacoes na API.
 * 
 * @author Elton Oliveira <elton.oliveira@senior.com.br>
 * @author Vitor Peres <b>vitor.peres@senior.com.br</b>
  *
  */
 @RestController
-public class DependenteCompletoControllerApi {
+public class DependenteCompletoControllerAPI {
 	
 	static Session session = DBConnection.getSession();
 	static DependenteDAO dependenteDao = DependenteDAO.getInstance(session);
 	
 	/**
-	 * Criar Dependente.
+	 * Cadastrar Dependente.
 	 * 
 	 * Recebe os dados do dependente separados, cria todos os dados e chama os DAO
-	 * necessários para a criação do dependente, por fim chama o DAO do dependente
+	 * necessários para a criacao do dependente, por fim chama o DAO do dependente
 	 * para salvar no banco.
 	 * 
 	 * @param Dependente dependente
@@ -44,32 +44,33 @@ public class DependenteCompletoControllerApi {
 	 * @return Retorna o Dependente caso tenha sido cadastrado ou null caso contrário
 	 */
 	@RequestMapping(value = "/dependente", method = RequestMethod.POST)
-	public @ResponseBody Dependente criarDependente(@RequestBody Dependente dependente) {
+	public @ResponseBody Dependente cadastrarDependente(@RequestBody Dependente dependente) {
 		return dependenteDao.create(dependente);
 	}
 	
 	/**
 	 * Deleta Dependente.
 	 * 
-	 * Deleta o Dependente passado como parâmetro.
+	 * Deleta o Dependente passado como parametro.
 	 * 
-	 * @param dependente DEpendente a ser deletado
+	 * @param id dependente a ser deletado
 	 * 
-	 * @return true caso seja deletado ou false caso contrário
+	 * @return true caso seja deletado ou false caso contrario
 	 */
 	@RequestMapping(value = "/dependente/{id}", method = RequestMethod.DELETE)
-	public @ResponseBody boolean deleteDependente(@PathVariable ("id") Integer id) {
+	public @ResponseBody boolean deletarDependente(@PathVariable ("id") Integer id) {
 		Dependente dependente = dependenteDao.readById(id);
 		return dependenteDao.delete(dependente);
 	}
+	
 	/**
 	 * Atualizar Dependente.
 	 * 
 	 * Cria um novo dependente com os dados recebidos e os altera no dependente
-	 * passado como parâmetro chamando o DAO do dependente.
+	 * passado como parametro chamando o DAO do dependente.
 	 * 
 	 * @param Dependente dependente
-	 * @return Objeto dependente caso seja atualizado ou false caso contrário.
+	 * @return Objeto dependente caso seja atualizado ou false caso contrario.
 	 */
 	@RequestMapping(value = "/dependente", method = RequestMethod.PUT)
 	public @ResponseBody Dependente atualizarDependente(@RequestBody Dependente dependente) {
@@ -80,11 +81,11 @@ public class DependenteCompletoControllerApi {
 	/**
 	 * Busca Dependente por id.
 	 * 
-	 * Busca o Dependente cujo id é igual ao passado como parâmetro.
+	 * Busca o Dependente cujo id eh igual ao passado como parametro.
 	 * 
 	 * @param id Do dependente desejado.
 	 * 
-	 * @return Dependente ou null caso não encontrado.
+	 * @return Dependente ou null caso nao encontrado.
 	 */
 	@RequestMapping(value = "/dependente/{id}", method = RequestMethod.GET)
 	public @ResponseBody DependenteCompletoDTO buscarDependentePorId(@PathVariable ("id") Integer id) {
@@ -94,12 +95,12 @@ public class DependenteCompletoControllerApi {
 	/**
 	 * Busca Dependente por id do Colaborador.
 	 * 
-	 * Busca o Dependente relacionado ao Colaborador cujo id é igual ao passado como
-	 * parâmetro.
+	 * Busca o Dependente relacionado ao Colaborador cujo id eh igual ao passado como
+	 * parametro.
 	 * 
 	 * @param id do Colaborador desejado.
 	 * 
-	 * @return Dependente ou null caso não encontrado.
+	 * @return Dependente ou null caso nao encontrado.
 	 */
 	@RequestMapping(value = "/dependente/colab/{id}", method = RequestMethod.GET)
 	public @ResponseBody List<DependenteCompletoDTO> buscarDependentePorIdColaborador(@PathVariable ("id") Integer id) {
@@ -114,10 +115,10 @@ public class DependenteCompletoControllerApi {
 	/**
 	 * Busca todos os dependentes do banco de dados.
 	 * 
-	 * @return List de {@link Dependente}
+	 * @return listaDependenteCompletoDTO Lista de {@link DependenteDTO}
 	 */
 	@RequestMapping(value = "/dependente", method = RequestMethod.GET)
-	public @ResponseBody List<DependenteCompletoDTO> buscarTodosDependenteCompleto() {
+	public @ResponseBody List<DependenteCompletoDTO> buscarTodosDependentesCompletos() {
 		List<DependenteCompletoDTO> listaDependenteCompletoDTO = new ArrayList<DependenteCompletoDTO>();
 		for(Dependente dependente : dependenteDao.getAll()) {
 			listaDependenteCompletoDTO.add(new DependenteCompletoDTO(dependente));
@@ -130,8 +131,9 @@ public class DependenteCompletoControllerApi {
 	 * 
 	 * Buscar todos os dependentes no banco de dados que tem nome igual ao
 	 * passado como parametro.
-	 * @param nome
-	 * @return
+	 * 
+	 * @param nome do registro procurado.
+	 * @return listaDependenteCompletoDTO
 	 */
 	@RequestMapping(value = "/dependente/nome/{nome}", method = RequestMethod.GET)
 	public @ResponseBody List<DependenteCompletoDTO> buscarDependenteCompletoPorNome(@PathVariable ("nome") String nome) {
