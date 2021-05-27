@@ -4,11 +4,15 @@ import org.hibernate.Session;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 
 public class EnderecoDAO extends Dao<Endereco>{
 
 	protected static EnderecoDAO instance;
-	
+	static Session session = BDConexao.getSessao();
+	static EnderecoDAO daoEndereco = EnderecoDAO.getInstance(session);
+	static ColaboradorDAO daoColaborador = ColaboradorDAO.getInstance(session);
+
 
 	public static EnderecoDAO getInstance(Session session) {
 		if (instance == null)
@@ -19,7 +23,7 @@ public class EnderecoDAO extends Dao<Endereco>{
 	private EnderecoDAO(Session session) {
 		this.session = session;
 	}
-}
+
 	
 	/**
 	 * Buscar Endereço por Id do colaborador.
@@ -29,7 +33,12 @@ public class EnderecoDAO extends Dao<Endereco>{
 	 * @param id Do colaborador
 	 * @return Endereço desejado
 	 */
-//	public Endereco consultarEnderecoPorIdColaborador(Integer idColaborador) {
+		public Endereco consultarEnderecoPorIdColaborador(Integer idColaborador) {
+			Colaborador colaborador = session.get(Colaborador.class, idColaborador);
+			return colaborador.getEndereco();
+		}
+}
+
 //		buscar colab
 //		a partir do colab pegar objeto Endereco
 //	}
