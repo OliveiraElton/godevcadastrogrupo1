@@ -25,47 +25,47 @@ public class ExameMedicoDAOTest {
 
 	@Before
 	public void limparTabela() {
-		dao.deleteAll();
+		dao.deletarTodos("examemedico");
 	}
 		
 	@Test
-	public void testReadById() {
+	public void testconsultarPorId() {
 		ExameMedico exameMedico = new ExameMedico(exameAdm, data, true);
-		dao.create(exameMedico);
-		assertEquals(exameMedico.getId(), dao.readById(exameMedico.getId()).getId());
+		dao.cadastrar(exameMedico);
+		assertEquals(exameMedico.getId(), dao.consultarPorId(exameMedico.getId()).getId());
 	}
 
 	@Test
-	public void testGetAll() {
+	public void testConsultarTodos() {
 		ExameMedico exameMedico = new ExameMedico(exameAdm, LocalDate.of(2021, 7, 13), false);
 		ExameMedico exameMedico2 = new ExameMedico(exameDem, data, true);
-		dao.create(exameMedico);
-		dao.create(exameMedico2);
-		assertEquals(2, dao.getAll().size());
+		dao.cadastrar(exameMedico);
+		dao.cadastrar(exameMedico2);
+		assertEquals(2, dao.ConsultarTodos().size());
 	}
 
 	@Test
-	public void testCreate() {
+	public void testcadastrar() {
 		ExameMedico exameMedico = new ExameMedico(exameAdm, data, true);
-		dao.create(exameMedico);
-		assertEquals(exameMedico.getTipoExame(), dao.readById(exameMedico.getId()).getTipoExame());
+		dao.cadastrar(exameMedico);
+		assertEquals(exameMedico.getTipoExame(), dao.consultarPorId(exameMedico.getId()).getTipoExame());
 	}
 
 	@Test
-	public void testDelete() {
+	public void testdeletar() {
 		ExameMedico exameMedico = new ExameMedico(exameAdm, data, true);
-		dao.create(exameMedico);
-		dao.delete(exameMedico);
-		assertEquals(0, dao.getAll().size());
+		dao.cadastrar(exameMedico);
+		dao.deletar(exameMedico);
+		assertEquals(0, dao.ConsultarTodos().size());
 	}
 
 	@Test
 	public void testUpdate() {
 		ExameMedico exameMedico = new ExameMedico(exameAdm, data, true);
-		dao.create(exameMedico);
+		dao.cadastrar(exameMedico);
 		exameMedico.setTipoExame(exameDem);
 		assertEquals(exameMedico, dao.update(exameMedico));
-		dao.delete(exameMedico);
+		dao.deletar(exameMedico);
 	}
 
 }

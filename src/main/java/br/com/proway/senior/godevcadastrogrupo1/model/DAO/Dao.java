@@ -12,7 +12,7 @@ import org.hibernate.Session;
 
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
-public abstract class Dao<T>{
+public class Dao<T> implements InterfaceDao<T>{
 
 	protected Session session;	
 
@@ -23,7 +23,7 @@ public abstract class Dao<T>{
 	 * generica de acordo com a classe DAO que vai herdar esta classe.
 	 * 
 	 * @param item
-	 * @return Item criado
+	 * @return Item criado	
 	 */
 	public T cadastrar(T item) {
 		try {
@@ -94,8 +94,8 @@ public abstract class Dao<T>{
 	 * @param id
 	 * @return
 	 */
-	public T consultarPorId (Class<T> nomeClasse, int id) {
-		return session.get(nomeClasse, id);
+	public T consultarPorId (Class<T> item, Integer id) {
+		return session.get(item, id);
 	}
 	
 	/**
@@ -107,14 +107,25 @@ public abstract class Dao<T>{
 	 * @return
 	 * 
 	 */
-	public List<T> consultarTodos (Class<T> nomeClasse) {
+	public List<T> consultarTodos(Class<T> item) {
 		session = DBConnection.getSession();
 		CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
-		CriteriaQuery<T> criteria = criteriaBuilder.createQuery(nomeClasse);
-		criteria.from(nomeClasse);
+		CriteriaQuery<T> criteria = criteriaBuilder.createQuery(item);
+		criteria.from(item);
 		Query query = session.createQuery(criteria);
 		List<T> result = query.getResultList();
 		return new ArrayList<T>(result);	
+	}
+
+	@Override
+	public boolean deletarTodos(String tabela) {
+		if (!this.session.getTransaction().isActive()) {
+			this.session.beginTransaction();
+		}
+		int modificados = this.session.createSQLQuery("TRUNCATE "+tabela+" CASCADE").executeUpdate();
+		this.session.getTransaction().commit();
+		return modificados > 0 ? true : false;
+
 	}
 	
 }
