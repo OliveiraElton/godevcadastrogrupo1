@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ColaboradorDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.ColaboradorCompletoDTO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 
 /**
  * Classe ColaboradorCompletoControllerAPI
@@ -33,7 +33,7 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 @RestController
 public class ColaboradorCompletoControllerAPI {
 
-	static Session session = DBConnection.getSession();
+	static Session session = BDConexao.getSessao();
 	static ColaboradorDAO colaboradorDao = ColaboradorDAO.getInstance(session);
 
 	/**

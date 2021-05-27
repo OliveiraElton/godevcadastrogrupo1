@@ -20,7 +20,7 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EmpresaDAO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 
 /**
  * Classe EmpresaControllerTest.
@@ -34,7 +34,7 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 @FixMethodOrder (MethodSorters.NAME_ASCENDING)
 public class EmpresaControllerTest {
 
-	static Session session = DBConnection.getSession();
+	static Session session = BDConexao.getSessao();
 	static EmpresaDAO dao = EmpresaDAO.getInstance(session);
 	static Contatos contatos;
 	static Endereco endereco = new Endereco("Rua Principal", 15, "Nada consta", "Centro", "89789456", "Brasil",
@@ -58,7 +58,7 @@ public class EmpresaControllerTest {
 	
 	@Test
 	public void testACriarEmpresa() throws Exception {
-		Empresa empresaCriada = EmpresaController.criarEmpresa("Cooper", LocalDate.of(2019, 12, 31), "05.975.585/0001-89",
+		Empresa empresaCriada = EmpresaController.cadastrarEmpresa("Cooper", LocalDate.of(2019, 12, 31), "05.975.585/0001-89",
 				"47988885566", "47888997852", "atendimento@cooper.com", "4788896655", "Rua XV", 78, "Proximo a",
 				"89036789", "Escola Agricola", "Brasil", "Blumenau", "SC");
 		
@@ -69,17 +69,17 @@ public class EmpresaControllerTest {
 
 	@Test
 	public void testEDeleteEmpresa() throws Exception {
-		Empresa empresaCriada = EmpresaController.criarEmpresa("Viacred", LocalDate.of(218, 12, 31), "05.975.585/0001-89",
+		Empresa empresaCriada = EmpresaController.cadastrarEmpresa("Viacred", LocalDate.of(218, 12, 31), "05.975.585/0001-89",
 				"47988885566", "47888997852", "atendimento@cooper.com", "4788896655", "Rua XV", 78, "Pr�ximo �",
 				"89036789", "Centro", "Brasil", "Blumenau", "SC");
 		
-		EmpresaController.deleteEmpresa(empresaCriada);
+		EmpresaController.deletarEmpresa(empresaCriada);
 		assertNull(EmpresaController.buscarEmpresaPorId(empresaCriada.getId()));
 	}
 
 	@Test
 	public void testDAtualizarEmpresa() throws Exception {
-		Empresa empresaCriada = EmpresaController.criarEmpresa("Caixa", LocalDate.of(2021, 12, 31), "05.975.585/0001-89",
+		Empresa empresaCriada = EmpresaController.cadastrarEmpresa("Caixa", LocalDate.of(2021, 12, 31), "05.975.585/0001-89",
 				"47988885566", "47888997852", "atendimento@caixa.com", "4788896655", "Rua XV", 78, "Pr�ximo �",
 				"89036789", "Escola Agr�cola", "Brasil", "Blumenau", "SC");
 		
@@ -94,7 +94,7 @@ public class EmpresaControllerTest {
 
 	@Test
 	public void testBBuscarEmpresaPorId() throws Exception {
-		Empresa empresaCriada = EmpresaController.criarEmpresa("Selecionar", LocalDate.of(2019, 12, 31),
+		Empresa empresaCriada = EmpresaController.cadastrarEmpresa("Selecionar", LocalDate.of(2019, 12, 31),
 				"05.975.585/0001-89", "47988885566", "47888997852", "atendimento@selecionar.com", "4788896655", "Rua XV",
 				78, "Pr�ximo �", "89036789", "Victor Konder", "Brasil", "Blumenau", "SC");
 		
@@ -110,11 +110,11 @@ public class EmpresaControllerTest {
 
 	@Test
 	public void testFBuscarTodasEmpresas() throws Exception {
-		Empresa empresaCriada1 = EmpresaController.criarEmpresa("Hering", LocalDate.of(2019, 12, 31), "05.975.585/0001-89",
+		Empresa empresaCriada1 = EmpresaController.cadastrarEmpresa("Hering", LocalDate.of(2019, 12, 31), "05.975.585/0001-89",
 				"47988885566", "47888997852", "atendimento@hering.com.br", "4788896655", "Rua XV", 78, "Pr�ximo �",
 				"89036789", "Bom Retiro", "Brasil", "Blumenau", "SC");
 		
-		Empresa empresaCriada2 = EmpresaController.criarEmpresa("Marisa", LocalDate.of(2018, 12, 31), "05.975.585/0001-89",
+		Empresa empresaCriada2 = EmpresaController.cadastrarEmpresa("Marisa", LocalDate.of(2018, 12, 31), "05.975.585/0001-89",
 				"47988885566", "47888997852", "atendimento@marisa.com.br", "4788896655", "Rua XV", 78, "Pr�ximo �",
 				"89036789", "Bom Retiro", "Brasil", "Blumenau", "SC");
 		
@@ -125,11 +125,11 @@ public class EmpresaControllerTest {
 
 	@Test
 	public void testCBuscarEmpresaPorNome() throws Exception {
-		EmpresaController.criarEmpresa("Magalu Rua XV", LocalDate.of(2019, 12, 31), "05.975.585/0001-89", "47988885566",
+		EmpresaController.cadastrarEmpresa("Magalu Rua XV", LocalDate.of(2019, 12, 31), "05.975.585/0001-89", "47988885566",
 				"47888997852", "atendimento@magalu.com.br", "4788896655", "Rua XV", 78, "Pr�ximo �", "89036789",
 				"Bom Retiro", "Brasil", "Blumenau", "SC");
 		
-		EmpresaController.criarEmpresa("Magalu Centro", LocalDate.of(2018, 12, 31), "05.975.585/0001-89", "47988885566",
+		EmpresaController.cadastrarEmpresa("Magalu Centro", LocalDate.of(2018, 12, 31), "05.975.585/0001-89", "47988885566",
 				"47888997852", "atendimento@magalu.com.br", "4788896655", "Rua XV", 78, "Pr�ximo �", "89036789",
 				"Bom Retiro", "Brasil", "Blumenau", "SC");
 		

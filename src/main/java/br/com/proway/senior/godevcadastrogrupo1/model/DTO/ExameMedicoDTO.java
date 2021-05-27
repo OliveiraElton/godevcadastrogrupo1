@@ -3,12 +3,13 @@ package br.com.proway.senior.godevcadastrogrupo1.model.DTO;
 import java.time.LocalDate;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.ExameMedico;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExames;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
 
 /**
 * Classe ExameMedicoDTO.
 * 
-* Classe para interação via Controller API, tem referência com {@link Colaborador}.
+* Classe para interacao via Controller API, tem referencia com {@link ExameMedico},
+* disponiliza todos os dados do model original.
 * 
 * @author Elton Oliveira <elton.oliveira@senior.com.br>
  */
@@ -19,6 +20,12 @@ public class ExameMedicoDTO {
 	private LocalDate dataExame;
 	private boolean apto;
 	
+	/**
+	 * Construtor que ira interagir com o Controller da API, disponibilizando as informacoes
+	 * de {@link ExameMedico}.
+	 * 
+	 * @param ExameMedico exameMedico
+	 */
 	public ExameMedicoDTO(ExameMedico exameMedico) {
 		this.id = exameMedico.getId();
 		this.tipoExame = exameMedico.getTipoExame();
@@ -41,8 +48,4 @@ public class ExameMedicoDTO {
 	public boolean isApto() {
 		return apto;
 	}
-
-
-	
-
 }

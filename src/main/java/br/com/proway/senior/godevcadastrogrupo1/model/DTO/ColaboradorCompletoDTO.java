@@ -1,7 +1,6 @@
 package br.com.proway.senior.godevcadastrogrupo1.model.DTO;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
@@ -10,15 +9,15 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
 import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.ExameMedico;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 
 /**
  * Classe ColaboradorCompletoDTO.
  * 
- * Classe para interação via Controller API, referencia a {@link Colaborador}.
- * Oferece as informações completas do colaborador, podendo ser utilizada para 
- * relatórios. As informações simplificadas para os demais módulos do sistema,
- * estão disponíveis em {@link ColaboradorSimplificadoDTO}.
+ * Classe para interacao via Controller API, referencia a {@link Colaborador}.
+ * Oferece as informacoes completas do colaborador, podendo ser utilizada para 
+ * relatorios. As informacoes simplificadas para os demais modulos do sistema,
+ * estao disponiveis em {@link ColaboradorSimplificadoDTO}.
  * 
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
  */
@@ -52,7 +51,7 @@ public class ColaboradorCompletoDTO {
 	private List<Dependente> dependente;
 	
 	/**
-	 * Construtor que irá interagir com o Controller da API, disponibilizando as informações
+	 * Construtor que ira interagir com o Controller da API, disponibilizando as informacoes
 	 * de {@link Colaborador}.
 	 * 
 	 * @param Colaborador modelOriginal

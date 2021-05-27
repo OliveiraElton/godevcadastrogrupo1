@@ -31,7 +31,7 @@ public class EnderecoDTOTest {
 	
 	@Test
 	public void testDeletarEndereco() {
-		Endereco endereco = EnderecoController.criarEndereco("Rua faustao", 12, "Lado direito da rua", "85967412", 
+		Endereco endereco = EnderecoController.cadastrarEndereco("Rua faustao", 12, "Lado direito da rua", "85967412", 
 				"Velha pequena", "Argentina", "Buenos Aires", "PR");
 		EnderecoController.deletarEndereco(endereco);
 		
@@ -40,7 +40,7 @@ public class EnderecoDTOTest {
 	
 	@Test
 	public void testConstruirEndereco() {
-		Endereco enderecoNormal = EnderecoController.criarEndereco("Rua 7 de setembro", 458, "Casa", "896654", "Centro", "Brasil", "Blumenau", "SC");
+		Endereco enderecoNormal = EnderecoController.cadastrarEndereco("Rua 7 de setembro", 458, "Casa", "896654", "Centro", "Brasil", "Blumenau", "SC");
 		EnderecoDTO enderecoDto = new EnderecoDTO(enderecoNormal);
 		
 		assertEquals(enderecoNormal.getId(), enderecoDto.getId());

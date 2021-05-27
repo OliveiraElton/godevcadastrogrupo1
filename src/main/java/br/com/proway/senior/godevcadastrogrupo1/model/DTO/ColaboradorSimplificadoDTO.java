@@ -4,7 +4,15 @@ import java.time.LocalDate;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Conta;
-
+/**
+ * Classe ColaboradorSimplificadoDTO.
+ * 
+ * Classe para interacao via Controller API, referencia a {@link Colaborador}. Oferece as 
+ * informacoes simplificadas do colaborador, podendo ser utilizada pelos demais modulos do 
+ * sistema. Dados completos disponiveis em {@link ColaboradorCompletoDTO}.
+ * 
+ * @author Lucas Walim <b>lucas.walim@senior.com.br</b>
+ */
 public class ColaboradorSimplificadoDTO {
 
 	private int id;
@@ -21,6 +29,12 @@ public class ColaboradorSimplificadoDTO {
 	private String email_corporativo;
 	private Conta conta;
 
+	/**
+	 * Construtor que ira interagir com o Controller da API, disponibilizando as informacoes
+	 * de {@link Colaborador}.
+	 * 
+	 * @param Colaborador colaborador
+	 */
 	public ColaboradorSimplificadoDTO(Colaborador colaborador) {
 		this.id = colaborador.getId();
 		this.nome = colaborador.getNome();

@@ -9,14 +9,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDeDatas;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.ValidacaoDeDatas;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 
 /**
- * Classe que abstrai as informa��es do prestador de servi�o contratado.
+ * Classe PrestadorServico.
  * 
- * Possui inst�ncia de Pessoa e Contatos.
- * 
+ * Classe que abstrai as informacoes do Prestador de Servico contratado.
+ * Herda de {@link Pessoa} e instancia {@link Contatos}.
  * Deve ser instanciada utilizando o PrestadorServicoBuilder.
  * 
  * @author Lorran Pereira dos Santos, Samuel Levi, Sarah Neuburger Brito, Thiago
@@ -50,6 +50,8 @@ public class PrestadorServico extends Pessoa {
 	}
 
 	/**
+	 * Construtor padrao da classe.
+	 * 
 	 * @param id
 	 * @param nome
 	 * @param sobrenome
@@ -84,6 +86,13 @@ public class PrestadorServico extends Pessoa {
 		return dataInicioContrato;
 	}
 
+	/**
+	 * Para cadastrar uma data de inicio eh necessario que a mesma seja 
+	 * valida, este metodo chama a classe {@link ValidacaoDeDatas} e realiza 
+	 * a verificacao.
+	 * 
+	 * @param dataInicioContrato Data que o prestador iniciara os servicos.
+	 */
 	public void setDataInicioContrato(LocalDate dataInicioContrato) {
 		try {
 			ValidacaoDeDatas.validaDataInicioContrato(dataInicioContrato);

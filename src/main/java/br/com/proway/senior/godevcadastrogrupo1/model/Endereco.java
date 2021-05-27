@@ -5,16 +5,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDocumentos;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.ValidacaoDocumentos;
 
 /**
+ * Classe Endereco.
+ * 
  * Classe que engloba e abstrai as informacoes de endereco de um
- * Colaborador/Empresa. Esta classe sera instanciada nas classes Colaborador e
- * Empresa.
+ * Colaborador/Empresa. Esta classe sera instanciada nas classes 
+ * {@link Colaborador} e {@link Empresa}. Deve ser instanciada 
+ * utilizando o EnderecoBuilder.
  * 
- * Deve ser instanciada utilizando o EnderecoBuilder.
- * 
- * @author Lorran Pereira dos Santos, Samuel Levi, Sarah Neuburger Brito, Thiago Luiz Barbieri e Vitor Nathan Gon�alves.
+ * @author Lorran Pereira dos Santos, Samuel Levi, Sarah Neuburger Brito, 
+ * Thiago Luiz Barbieri e Vitor Nathan Gon�alves.
  * 
  * @author Bruna <sh4323202@gmail.com>
  * @author Enzo <enzomm.bodyandmind@gmail.com> 
@@ -44,6 +46,8 @@ public class Endereco {
 	}
 	
 	/**
+	 * Construtor padrao da classe.
+	 * 
 	 * @param logradouro
 	 * @param numero
 	 * @param complemento
@@ -87,6 +91,13 @@ public class Endereco {
 	public String getCep() {
 		return cep;
 	}
+	
+	/**
+	 * Para cadastrar um CEP, eh necessario que o mesmoa seja valido,
+	 * este metodo realiza a verificacao.
+	 * 
+	 * @param cep CEP que sera cadastrado.
+	 */
 	public void setCep(String cep) {
 		try{
 			ValidacaoDocumentos.validarCEP(cep);

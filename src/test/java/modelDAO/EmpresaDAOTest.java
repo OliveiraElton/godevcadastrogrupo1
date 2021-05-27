@@ -18,7 +18,7 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EmpresaDAO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 /**
  * Classe EmpresaDAOTest.
  * 
@@ -32,7 +32,7 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 @FixMethodOrder (MethodSorters.NAME_ASCENDING)
 public class EmpresaDAOTest {
 
-	static Session session = DBConnection.getSession();
+	static Session session = BDConexao.getSessao();
 	static EmpresaDAO dao = EmpresaDAO.getInstance(session);
 	
 

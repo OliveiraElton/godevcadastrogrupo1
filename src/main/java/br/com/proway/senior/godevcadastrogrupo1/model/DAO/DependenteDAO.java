@@ -14,8 +14,8 @@ import org.hibernate.Session;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 
 public class DependenteDAO extends Dao<Dependente> implements InterfaceDao<Dependente>{
 
@@ -64,7 +64,7 @@ public class DependenteDAO extends Dao<Dependente> implements InterfaceDao<Depen
 	}
 	
 	public List<Dependente> buscarPorNome(String valorColuna){
-		Session session = DBConnection.getSession();
+		Session session = BDConexao.getSessao();
 		CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
 		CriteriaQuery<Dependente> criteria = criteriaBuilder.createQuery(Dependente.class);
 		

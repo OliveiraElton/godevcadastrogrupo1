@@ -14,7 +14,7 @@ import br.com.proway.senior.godevcadastrogrupo1.controller.ColaboradorController
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ColaboradorDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.ColaboradorSimplificadoDTO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 
 /**
  * Classe ColaboradorSimplificadoControllerApi
@@ -27,7 +27,7 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 @RestController
 public class ColaboradorSimplificadoControllerApi {
 
-	static Session session = DBConnection.getSession();
+	static Session session = BDConexao.getSessao();
 	ColaboradorDAO daoColaborador = ColaboradorDAO.getInstance(session);
 	static ColaboradorController controllerOriginal = new ColaboradorController();
 

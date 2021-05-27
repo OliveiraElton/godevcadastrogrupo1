@@ -14,7 +14,7 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.EnderecoDTO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 
 /**
  * Classe controller API que busca enderecos para mandar na view.
@@ -30,7 +30,7 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 @RestController
 public class EnderecoControllerAPI{
 
-	static Session session = DBConnection.getSession();
+	static Session session = BDConexao.getSessao();
 	EnderecoDAO enderecoDao = EnderecoDAO.getInstance(session);
 	
 	/**

@@ -8,14 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDocumentos;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.ValidacaoDocumentos;
 
 /**
  * Classe que abstrai as informacoess de uma Empresa contratada. Esta Classe
- * sera instanciada na Classe PrestadorServico, e instanciara as classes
- * Endereco e Contato.
- * 
- * Deve ser instanciada utilizando o EmpresaBuilder.
+ * sera instanciada na Classe {@link PrestadorServico}, e instanciara as classes
+ * {@link Endereco} e {@link Contato}. Deve ser instanciada utilizando o EmpresaBuilder.
  *
  * @author Lorran Pereira dos Santos, Samuel Levi, Sarah Neuburger Brito, Thiago
  *         Luiz Barbieri e Vitor Nathan Goncalves.
@@ -42,7 +40,7 @@ public class Empresa {
 	private Contatos contato;
 
 	/**
-	 * Construtor padr�o da classe.
+	 * Construtor padrao da classe.
 	 * 
 	 * @param nomeEmpresa
 	 * @param dataInicioContrato

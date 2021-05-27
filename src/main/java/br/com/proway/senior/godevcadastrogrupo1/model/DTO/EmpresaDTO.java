@@ -9,7 +9,8 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 /**
  * Classe EmpresaDTO.
  * 
- * Classe para interação via Controller API, referencia a {@link Empresa}.
+ * Classe para interacao via Controller API, referencia a {@link Empresa},
+ * disponibilizando todos os dados do model original.
  * 
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
  *
@@ -24,7 +25,7 @@ public class EmpresaDTO {
 	private Contatos contato;
 	
 	/**
-	 * Construtor que irá interagir com o Controller da API, disponibilizando as informações
+	 * Construtor que ira interagir com o Controller da API, disponibilizando as informacoes
 	 * de {@link Empresa}.
 	 * 
 	 * @param Empresa modelOriginal

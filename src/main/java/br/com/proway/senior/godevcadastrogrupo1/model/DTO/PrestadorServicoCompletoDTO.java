@@ -6,14 +6,16 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 
 /**
-* Classe PrestadorServico.
-* 
-* Classe para interação via Controller API, tem referência com {@link Pessoa}.
-* 
-* 
+ * Classe PrestadorServicoCompletoDTO.
+ * 
+ * Classe para interacao via Controller API, referencia a {@link PrestadorServico}.
+ * Oferece as informacoes completas do Prestador de Servico, podendo ser utilizada 
+ * para relatorios. As informacoes simplificadas para os demais modulos do sistema,
+ * estao disponiveis em {@link PrestadorServicoSimplificadoDTO}.
+ * 
 * @author Elton Oliveira <elton.oliveira@senior.com.br>
  */
 public class PrestadorServicoCompletoDTO {
@@ -36,7 +38,12 @@ public class PrestadorServicoCompletoDTO {
 	private String cpf;
 	private String rg;
 	
-
+	/**
+	 * Construtor que ira interagir com o Controller da API, disponibilizando as informacoes
+	 * de {@link PrestadorServico}.
+	 * 
+	 * @param PrestadorServico prestadorServico
+	 */
 	public PrestadorServicoCompletoDTO(PrestadorServico prestadorServico) {
 		this.id = prestadorServico.getId();
 		this.dataInicioContrato = prestadorServico.getDataInicioContrato();
@@ -141,7 +148,5 @@ public class PrestadorServicoCompletoDTO {
 	public String getRg() {
 		return rg;
 	}
-	
-	
 	
 }

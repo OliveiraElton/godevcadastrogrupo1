@@ -19,10 +19,10 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.ExameMedico;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ColaboradorDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExames;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
 
 /**
  * Classe DependenteControllerTest
@@ -37,18 +37,18 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExa
 public class DependenteControllerTest {
 
 	static LocalDate data = LocalDate.of(2002, 01, 28);
-	static Session session = DBConnection.getSession();
+	static Session session = BDConexao.getSessao();
 	static DependenteDAO dao = DependenteDAO.getInstance(session);
 	static ColaboradorDAO daoColab = ColaboradorDAO.getInstance(session);
 
 	@Before
 	public void limparTabela() {
-		DependenteController.deleteAll();
+		DependenteController.deletarTodosRegistros();
 	}
 
 	@Test
 	public void testCriarDependente() {
-		Dependente dependente = DependenteController.criarDependente("Jorge", "Martins", "Jessica", data, "Brasileira",
+		Dependente dependente = DependenteController.cadastrarDependente("Jorge", "Martins", "Jessica", data, "Brasileira",
 				"Blumenau", true, "Masculino", IdentidadeGenero.TRANS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das Oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
@@ -65,13 +65,13 @@ public class DependenteControllerTest {
 		dao.create(dependente);
 		int quantidadeAnterior = dao.getAll().size();
 		session.clear();
-		DependenteController.deleteDependente(dependente);
+		DependenteController.deletarDependente(dependente);
 		assertEquals(quantidadeAnterior - 1, dao.getAll().size());
 	}
 
 	@Test
 	public void testAtualizarDependente() {
-		Dependente dependente = DependenteController.criarDependente("Jorge", "Martins", "Jessica", data, "Brasileiro",
+		Dependente dependente = DependenteController.cadastrarDependente("Jorge", "Martins", "Jessica", data, "Brasileiro",
 				"Cascavel", true, "Masculino", IdentidadeGenero.TRANS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
@@ -116,7 +116,7 @@ public class DependenteControllerTest {
 
 	@Test
 	public void testBuscarTodosDependentes() {
-		Dependente dependente = DependenteController.criarDependente("Jessia", "Martins", "Jessica", data, "Brasileiro",
+		Dependente dependente = DependenteController.cadastrarDependente("Jessia", "Martins", "Jessica", data, "Brasileiro",
 				"Camboriu", true, "Feminino", IdentidadeGenero.CIS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das Oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
@@ -125,15 +125,15 @@ public class DependenteControllerTest {
 
 	@Test
 	public void testBuscarTodosDependentesPorNome() {
-		Dependente dependente1 = DependenteController.criarDependente("Jorge", "Martins", "Nada consta", data, "Brasileira",
+		Dependente dependente1 = DependenteController.cadastrarDependente("Jorge", "Martins", "Nada consta", data, "Brasileira",
 				"Camboriu", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
-		Dependente dependente2 = DependenteController.criarDependente("Carlos", "Martins", "Nada consta", data, "Brasileira",
+		Dependente dependente2 = DependenteController.cadastrarDependente("Carlos", "Martins", "Nada consta", data, "Brasileira",
 				"Camboriu", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
-		Dependente dependente3 = DependenteController.criarDependente("Carlos", "Martins", "Nada consta", data, "Brasileira",
+		Dependente dependente3 = DependenteController.cadastrarDependente("Carlos", "Martins", "Nada consta", data, "Brasileira",
 				"Camboriu", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das Oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");

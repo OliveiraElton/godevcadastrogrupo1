@@ -3,10 +3,18 @@ package br.com.proway.senior.godevcadastrogrupo1.controller;
 import java.time.LocalDate;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDependentes;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExames;
-
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.TiposDependentes;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
+/**
+ * Classe Builder.
+ * 
+ * Utilizada no {@link Director} para criacao de objetos {@link Colaborador}, {@link PrestadorServico}
+ * e {@link Dependente}.
+ * 
+ * @author Sprint5
+ *
+ */
 public interface Builder {
 	
 	public void setNome(String nome);

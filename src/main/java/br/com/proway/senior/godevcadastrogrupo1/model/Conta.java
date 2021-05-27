@@ -4,7 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+/**
+ * Classe Conta.
+ * 
+ * Classe complementar utilizada no {@link Colaborador} para
+ * armazenar dados bancarios.
+ */
 @Entity
 public class Conta {
 	
@@ -22,6 +27,8 @@ public class Conta {
 	}
 	
 	/**
+	 * Construtor padrao da classe.
+	 * 
 	 * @param nomeBanco
 	 * @param agencia
 	 * @param numeroConta

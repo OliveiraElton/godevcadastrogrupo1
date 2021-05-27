@@ -3,17 +3,16 @@ package br.com.proway.senior.godevcadastrogrupo1.model.DTO;
 import java.time.LocalDate;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
-import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDependentes;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.TiposDependentes;
 
 /**
- * Classe EmpresaDTO.
+ * Classe DependenteCompletoDTO.
  * 
- * Classe para interação via Controller API, referencia a {@link Empresa}.
- * Oferece as informações completas do dependente, podendo ser utilizada para 
- * relatórios. As informações simplificadas para os demais módulos do sistema,
- * estão disponíveis em {@link DependenteSimplificadoDTO}.
+ * Classe para interacao via Controller API, referencia a {@link Dependente}.
+ * Oferece as informacoes completas do dependente, podendo ser utilizada para 
+ * relatorios. As informacoes simplificadas para os demais modulos do sistema,
+ * estao disponiveis em {@link DependenteSimplificadoDTO}.
  * 
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
  */
@@ -35,7 +34,7 @@ public class DependenteCompletoDTO {
 	private Boolean optanteIR;
 	
 	/**
-	 * Construtor que irá interagir com o Controller da API, disponibilizando as informações
+	 * Construtor que ira interagir com o Controller da API, disponibilizando as informacoes
 	 * de {@link Dependente}.
 	 * 
 	 * @param Dependente modelOriginal

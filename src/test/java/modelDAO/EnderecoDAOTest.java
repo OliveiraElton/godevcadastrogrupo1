@@ -8,11 +8,11 @@ import org.junit.Test;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 
 public class EnderecoDAOTest {
 
-	Session session = DBConnection.getSession();
+	Session session = BDConexao.getSessao();
 	EnderecoDAO dao = EnderecoDAO.getInstance(session);
 
 

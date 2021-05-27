@@ -12,7 +12,7 @@ import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 
 /**
  * EmpresaDAO.
@@ -110,7 +110,7 @@ public class EmpresaDAO extends Dao<Empresa> implements InterfaceDao<Empresa>{
 	 * @return resultados lista de registros localizados.
 	 */
 	public List<Empresa> buscarPorNome(String nomeEmpresa){
-		Session session = DBConnection.getSession();
+		Session session = BDConexao.getSessao();
 		CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
 		CriteriaQuery<Empresa> criteria = criteriaBuilder.createQuery(Empresa.class);	
 		Root<Empresa> root = criteria.from(Empresa.class);

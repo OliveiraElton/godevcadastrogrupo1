@@ -8,11 +8,11 @@ import org.junit.Test;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Conta;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ContaDAO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 
 public class ContaDAOTest {
 	
-	static Session session = DBConnection.getSession();
+	static Session session = BDConexao.getSessao();
 	static ContaDAO dao = ContaDAO.getInstance(session);
 	
 	@BeforeClass

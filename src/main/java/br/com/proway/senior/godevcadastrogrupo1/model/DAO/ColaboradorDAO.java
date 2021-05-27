@@ -13,12 +13,12 @@ import org.hibernate.Session;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 
 /**
  * Classe ColaboradorDAO.
  * 
- * Classe de interação com o banco de dados via hibernate. Extende a {@link Dao} e
+ * Classe de interaï¿½ï¿½o com o banco de dados via hibernate. Extende a {@link Dao} e
  * implementa a interface {@link InterfaceDao}.
  * 
  * @author Sprint 5
@@ -43,7 +43,7 @@ public class ColaboradorDAO extends Dao<Colaborador> implements InterfaceDao<Col
 	}
 
 	/**
-	 * Contrutor da classe, será utilizado para iniciar a sessao,
+	 * Contrutor da classe, serï¿½ utilizado para iniciar a sessao,
 	 * quando chamado em outras classes.
 	 * 
 	 * @param Session session
@@ -89,7 +89,7 @@ public class ColaboradorDAO extends Dao<Colaborador> implements InterfaceDao<Col
 	/**
 	 * Buscar todos os colaboradores.
 	 * 
-	 * Método busca todos os registros de colaboradores constantes no banco
+	 * Mï¿½todo busca todos os registros de colaboradores constantes no banco
 	 * e retorna em uma lista.
 	 * 
 	 * @return List colaborador lista de colaboradores cadastrados.
@@ -131,7 +131,7 @@ public class ColaboradorDAO extends Dao<Colaborador> implements InterfaceDao<Col
 	 * @return resultados lista de registros localizados.
 	 */
 	public List<Colaborador> buscarPorNome(String nomeColaborador){
-		Session session = DBConnection.getSession();
+		Session session = BDConexao.getSessao();
 		CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
 		CriteriaQuery<Colaborador> criteria = criteriaBuilder.createQuery(Colaborador.class);	
 		Root<Colaborador> root = criteria.from(Colaborador.class);

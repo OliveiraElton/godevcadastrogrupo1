@@ -3,10 +3,18 @@ package br.com.proway.senior.godevcadastrogrupo1.controller;
 import java.time.LocalDate;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDependentes;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExames;
-
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.TiposDependentes;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
+/**
+ * Classe Director.
+ * 
+ * Classe utilizada para criar objetos {@link Colaborador}, {@link PrestadorServico}
+ * e {@link Dependente} atraves do {@link Builder}.
+ * 
+ * @author Sprint5
+ *
+ */
 public class Director {
 	
 	private static void criarPessoa(Builder builder, String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
@@ -28,7 +36,9 @@ public class Director {
 	}
 
 	/**
-	 * Criar Colaborador
+	 * Cadastrar Colaborador.
+	 * 
+	 * Metodo cadastra um prestador de servico atraves dos parametros passados e do {@link Builder}.
 	 * 
 	 * @param nome
 	 * @param sobrenome
@@ -84,7 +94,7 @@ public class Director {
 	 * @param optanteIR
 	 * @throws Exception 
 	 */
-	public static void criarColaborador(Builder builder, String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
+	public static void cadastrarColaborador(Builder builder, String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
 			String nacionalidade, String naturalidade, boolean pcd, String genero, IdentidadeGenero identidadeGenero,
 			String cpf, String rg, Integer idCargo, Integer nit, boolean optanteVT, boolean optanteVAVR,
 			LocalDate dataAdmissao, boolean optanteDependente, String registro_alistamento, String email_corporativo,
@@ -121,7 +131,9 @@ public class Director {
 	}
 
 	/**
-	 * Prestador de serviço completo
+	 * Cadastrar Prestador de Servico.
+	 * 
+	 * Metodo cadastra um prestador de servico atraves dos parametros passados e do {@link Builder}.
 	 * 
 	 * @param builder
 	 * @param nome
@@ -156,7 +168,7 @@ public class Director {
 	 * @param cnpj
 	 * @throws Exception 
 	 */
-	public static void criarPrestadorServico(Builder builder, String nome, String sobrenome, String nomeSocial,
+	public static void cadastrarPrestadorServico(Builder builder, String nome, String sobrenome, String nomeSocial,
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd, String genero,
 			IdentidadeGenero identidadeGenero, String cpf, String rg,
 			LocalDate dataInicioContrato, Integer idSetor, String telefonePrincipal,
@@ -171,7 +183,9 @@ public class Director {
 	}
 
 	/**
-	 * Criar Dependente
+	 * Cadastrar Dependente.
+	 * 
+	 * Metodo cadastra um dependente atraves dos parametros passados e do {@link Builder}.
 	 * 
 	 * @param nome
 	 * @param sobrenome
@@ -189,7 +203,7 @@ public class Director {
 	 * @param tipoDependente
 	 * @param optanteIR
 	 */
-	public static void criarDependente(Builder builder, String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
+	public static void cadastrarDependente(Builder builder, String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
 			String nacionalidade, String naturalidade, boolean pcd, String genero, IdentidadeGenero identidadeGenero,
 			String cpf, String rg, String logradouro, Integer numero, String complemento, String cep,
 			String bairro, String pais, String cidade, String uf, TiposDependentes tipoDependente, boolean optanteIR) {
