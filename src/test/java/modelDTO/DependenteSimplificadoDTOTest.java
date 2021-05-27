@@ -25,7 +25,7 @@ public class DependenteSimplificadoDTOTest {
 	
 	@Before
 	public void limparTabela() {
-		DependenteController.deleteAll();
+		DependenteController.deletarTodosRegistros();
 	}
 
 	@Test

@@ -92,7 +92,7 @@ public class DependenteController {
 	 * @param dependente DEpendente a ser deletado
 	 * @return true caso seja deletado ou false caso contrário
 	 */
-	public static boolean deleteDependente(Dependente dependente) {
+	public static boolean deletarDependente(Dependente dependente) {
 		return daoDependente.delete(dependente);
 	}
 
@@ -195,7 +195,7 @@ public class DependenteController {
 	 * Limpa a tabela para testes.
 	 * 
 	 */
-	public static void deleteAll() {
+	public static void deletarTodosRegistros() {
 		daoDependente.deleteAll();
 		
 	}

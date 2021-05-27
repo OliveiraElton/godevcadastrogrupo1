@@ -72,7 +72,7 @@ public class ColaboradorControllerTest {
 				"Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Florian�polis", "SC", "4521452015", "5421452103", "carlos@empresa.com.br", "1542413655", 
 				te, LocalDate.of(2020, 10, 5), true, "Caixa", "055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", 
 				true, "Feminino", ig, "09619039610", "mg14388606", tipoDep, true);
-		ColaboradorController.deleteColabordor(dao.readById(colaboradorCriado.getId()));
+		ColaboradorController.deletarColabordor(dao.readById(colaboradorCriado.getId()));
 		assertNull(dao.readById(colaboradorCriado.getId()));
 	}
 

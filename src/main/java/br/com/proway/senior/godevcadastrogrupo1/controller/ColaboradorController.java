@@ -216,7 +216,7 @@ public class ColaboradorController {
 	 * 
 	 * @return true caso seja deletado ou false caso contrário
 	 */
-	public static Boolean deleteColabordor(Colaborador colaborador) {
+	public static Boolean deletarColabordor(Colaborador colaborador) {
 		return daoColaborador.delete(colaborador);
 	}
 

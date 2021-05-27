@@ -25,7 +25,7 @@ public class DependenteCompletoDTOTest {
 	
 	@Before
 	public void limparTabela() {
-		DependenteController.deleteAll();
+		DependenteController.deletarTodosRegistros();
 	}
   
 	@Test

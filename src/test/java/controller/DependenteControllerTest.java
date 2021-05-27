@@ -43,7 +43,7 @@ public class DependenteControllerTest {
 
 	@Before
 	public void limparTabela() {
-		DependenteController.deleteAll();
+		DependenteController.deletarTodosRegistros();
 	}
 
 	@Test
@@ -65,7 +65,7 @@ public class DependenteControllerTest {
 		dao.create(dependente);
 		int quantidadeAnterior = dao.getAll().size();
 		session.clear();
-		DependenteController.deleteDependente(dependente);
+		DependenteController.deletarDependente(dependente);
 		assertEquals(quantidadeAnterior - 1, dao.getAll().size());
 	}
 
