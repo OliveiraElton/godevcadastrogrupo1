@@ -47,15 +47,15 @@ public class PrestadorServicoCompletoControllerApiTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		PrestadorServicoDAO.getInstance(BDConexao.getSessao()).deleteAll();
+		dao.deletarTodos("prestadorservico");
 		prestadorApi = new PrestadorServicoCompletoControllerAPI();
 		empresa = new Empresa("Senior", LocalDate.now(), "05.975.585/0001-89", null, null);
-		daoEmpresa.create(empresa);
+		daoEmpresa.cadastrar(empresa);
 	}
 
 	@Before
 	public void limparBanco() {
-		dao.deleteAll();
+		dao.deletarTodos("prestadorservico");
 	}
 
 	@Test

@@ -48,15 +48,15 @@ public class PrestadorServicoSimplificadoControllerApiTest {
 	public static void setUpBeforeClass() throws Exception {
 		endereco = new Endereco("Rua 10", 10, "", "89123582", "Centro", "Brasil", "Blumenau", "SC");
 		contatos = new Contatos("47985415263", "47987526341", "joaopires@gmail.com", "47985632144");
-		PrestadorServicoDAO.getInstance(BDConexao.getSessao()).deleteAll();
+		dao.deletarTodos("prestadorservico");
 		empresa = new Empresa("Senior", LocalDate.now(), "05.975.585/0001-89", endereco, contatos);
 		prestadorApi = new PrestadorServicoSimplificadoControllerAPI();
-		daoEmpresa.create(empresa);
+		daoEmpresa.cadastrar(empresa);
 	}
 
 	@Before
 	public void limparBanco() {
-		dao.deleteAll();
+		dao.deletarTodos("prestadorservico");
 	}
 
 	@Test

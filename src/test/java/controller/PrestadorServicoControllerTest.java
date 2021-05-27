@@ -36,8 +36,8 @@ public class PrestadorServicoControllerTest {
 				"Blumenau", "SC");
 		Contatos contatos = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
 		empresa = new Empresa("Senior", LocalDate.now(), "05.975.585/0001-89", endereco, contatos);
-		dao.deleteAll();
-		daoEmpresa.create(empresa);
+		dao.deletarTodos("prestadorservico");
+		daoEmpresa.cadastrar(empresa);
 	}
 
 	@Test
@@ -47,7 +47,7 @@ public class PrestadorServicoControllerTest {
 				"Brasil", "São Paulo", true, "Feminino", IdentidadeGenero.CIS, "256.103.800-90", "4545454", LocalDate.of(2020, 01, 28), 1,
 				"1543652548", "1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510, "Prédio",
 				"89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
-		PrestadorServico prestadorServico = dao.readById(ps.getId());
+		PrestadorServico prestadorServico = dao.consultarPorId(PrestadorServico.class, ps.getId());
 		assertNotNull(prestadorServico);
 	}
 
@@ -58,7 +58,7 @@ public class PrestadorServicoControllerTest {
 				"1543652548", "1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510, "Prédio",
 				"89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 		PrestadoresServicoController.deletarPrestadorServico(ps);
-		assertNull(dao.readById(ps.getId()));
+		assertNull(dao.consultarPorId(PrestadorServico.class, ps.getId()));
 	}
 
 	@Test
@@ -72,8 +72,8 @@ public class PrestadorServicoControllerTest {
 				data, "Brasil", "São Paulo", true, "Feminino", IdentidadeGenero.TRANS, "256.103.800-90", "45454", LocalDate.of(2020, 01, 28), 2,
 				"1543652548", "1543652548", "batriz@gmail.com", "1543652548", "Rua são Paulo", 510, "Prédio",
 				"89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
-		dao.update(novoPS);
-		assertEquals("Dani", dao.readById(id).getNome());
+		dao.atualizar(novoPS);
+		assertEquals("Dani", dao.consultarPorId(PrestadorServico.class, id).getNome());
 
 	}
 
@@ -114,6 +114,6 @@ public class PrestadorServicoControllerTest {
 
 	@Before
 	public void limpar() {
-		dao.deleteAll();
+		dao.deletarTodos("p");
 	}
 }
