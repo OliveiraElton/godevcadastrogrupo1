@@ -40,7 +40,7 @@ public class DependenteSimplificadoControllerAPI {
 	 */
 	@RequestMapping(value = "/dependentesimplificado/{id}", method = RequestMethod.GET)
 	public @ResponseBody DependenteSimplificadoDTO buscarDependentePorId(@PathVariable ("id") Integer id) {
-		return new DependenteSimplificadoDTO(dependenteDao.readById(id));
+		return new DependenteSimplificadoDTO(dependenteDao.consultarPorId(Dependente.class ,id));
 	}
 
 	/**
@@ -57,7 +57,7 @@ public class DependenteSimplificadoControllerAPI {
 	public @ResponseBody List<DependenteSimplificadoDTO> buscarDependentePorIdColaborador(@PathVariable ("id") Integer id) {
 		List<DependenteSimplificadoDTO> listaDependentes = new ArrayList<DependenteSimplificadoDTO>();
 		
-		for(Dependente dependente : dependenteDao.readByIdColab(id)) {
+		for(Dependente dependente : dependenteDao.buscarDependentesPorIdColaborador(id)) {
 			listaDependentes.add(new DependenteSimplificadoDTO(dependente));
 		}
 		return listaDependentes;
@@ -73,7 +73,7 @@ public class DependenteSimplificadoControllerAPI {
 	@RequestMapping(value = "/dependentesimplificado", method = RequestMethod.GET)
 	public @ResponseBody List<DependenteSimplificadoDTO> buscarTodosDependentes(){
 		List<DependenteSimplificadoDTO> listaDependentes = new ArrayList<DependenteSimplificadoDTO>();
-		for(Dependente dependente : dependenteDao.getAll()) {
+		for(Dependente dependente : dependenteDao.consultarTodos(Dependente.class)) {
 			listaDependentes.add(new DependenteSimplificadoDTO(dependente));
 		}
 		return listaDependentes;
@@ -90,7 +90,7 @@ public class DependenteSimplificadoControllerAPI {
 	@RequestMapping(value = "/dependentesimplificado/nome/{nome}", method = RequestMethod.GET)
 	public @ResponseBody List<DependenteSimplificadoDTO> buscarDependentePorNome(@PathVariable ("nome") String nome) {
 		List<DependenteSimplificadoDTO> listaDependenteCompletoDTO = new ArrayList<DependenteSimplificadoDTO>();
-		for(Dependente dependente : dependenteDao.buscarPorNome(nome)) {
+		for(Dependente dependente : dependenteDao.consultarPorNome(Dependente.class, nome)) {
 			listaDependenteCompletoDTO.add(new DependenteSimplificadoDTO(dependente));
 		}
 		return listaDependenteCompletoDTO;

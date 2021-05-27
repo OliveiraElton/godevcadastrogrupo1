@@ -40,6 +40,7 @@ public class DependenteControllerTest {
 	static Session session = BDConexao.getSessao();
 	static DependenteDAO dao = DependenteDAO.getInstance(session);
 	static ColaboradorDAO daoColab = ColaboradorDAO.getInstance(session);
+	static DependenteController controller = new DependenteController();
 
 	@Before
 	public void limparTabela() {
@@ -53,7 +54,7 @@ public class DependenteControllerTest {
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das Oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
 		assertNotNull(dependente);
-		assertEquals(dependente, dao.readById(dependente.getId()));
+		assertEquals(dependente, controller.buscarDependentePorId(dependente.getId()));
 	}
 
 	@Test
@@ -62,11 +63,11 @@ public class DependenteControllerTest {
 		Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Venezuelano", "Cidade del Leste",
 				false, "Masculino", IdentidadeGenero.TRANS, endereco, "09619039610", "",
 				EnumDadosPessoais.TiposDependentes.FILHO, true);
-		dao.create(dependente);
-		int quantidadeAnterior = dao.getAll().size();
+		dao.cadastrar(dependente);
+		int quantidadeAnterior = controller.buscarTodosDependentes().size();
 		session.clear();
 		DependenteController.deletarDependente(dependente);
-		assertEquals(quantidadeAnterior - 1, dao.getAll().size());
+		assertEquals(quantidadeAnterior - 1, controller.buscarTodosDependentes().size());
 	}
 
 	@Test
@@ -75,13 +76,13 @@ public class DependenteControllerTest {
 				"Cascavel", true, "Masculino", IdentidadeGenero.TRANS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
-		dao.create(dependente);
+		dao.cadastrar(dependente);
 		session.clear();
 		DependenteController.atualizarDependente(dependente.getId(), "Bruno", "Souza", "Nada consta", data, "Brasileira",
 				"Brusque", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.CONJUGE, true, "Rua das Oliveiras", 32, "casa", "89032640",
 				"Passo Manso", "Brasil", "Blumenau", "SC");
-		List<Dependente> dependentes = dao.getAll();
+		List<Dependente> dependentes =  controller.buscarTodosDependentes();
 		assertEquals("Bruno", dependentes.get(dependentes.size() - 1).getNome());
 	}
 
@@ -91,7 +92,7 @@ public class DependenteControllerTest {
 		Dependente dependente = new Dependente("Joao", "Fonseca", "Nada consta", data, "Venezuelano",
 				"Cidade del Leste", true, "Masculino", IdentidadeGenero.CIS, endereco, "09619039610", "480808408",
 				EnumDadosPessoais.TiposDependentes.CONJUGE, true);
-		dao.create(dependente);
+		dao.cadastrar(dependente);
 		assertEquals(dependente, DependenteController.buscarDependentePorId(dependente.getId()));
 	}
 
@@ -108,10 +109,10 @@ public class DependenteControllerTest {
 		Colaborador colaborador = new Colaborador("Lucas", "Nunes", "Nada consta", data, "Brasileiro", "Blumenau",
 				false, "Masculino", null, endereco, "21164028324", "45124563", contatos, 54545, 454545454, false, false,
 				data, false, "", "carla@empresa.com.br", "554555", conta, exameMedico, dependente);
-		daoColab.create(colaborador);
-		dao.create(dependente);
+		daoColab.cadastrar(colaborador);
+		dao.cadastrar(dependente);
 		Integer idColaborador = colaborador.getId();
-		assertEquals(1, DependenteController.buscarDependentePorIdColaborador(idColaborador).size());
+		assertEquals(1, controller.buscarDependentePorIdColaborador(idColaborador).size());
 	}
 
 	@Test

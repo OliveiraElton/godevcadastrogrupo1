@@ -17,7 +17,7 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
 
 public class EmpresaDAO extends Dao<Empresa> {
 
-	protected static EmpresaDAO instance;
+	protected static EmpresaDAO instancia;
 	
 	/**
 	 * Método getInstance.
@@ -28,9 +28,9 @@ public class EmpresaDAO extends Dao<Empresa> {
 	 * @return instance retorna a instância da conexão.
 	 */
 	public static EmpresaDAO getInstance(Session session) {
-		if (instance == null)
-			instance = new EmpresaDAO(session);
-		return instance;
+		if (instancia == null)
+			instancia = new EmpresaDAO(session);
+		return instancia;
 	}
 
 	/**
