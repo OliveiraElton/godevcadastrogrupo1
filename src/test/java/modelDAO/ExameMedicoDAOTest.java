@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.time.LocalDate;
 
 import org.hibernate.Session;
-import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,47 +24,56 @@ public class ExameMedicoDAOTest {
 
 	@Before
 	public void limparTabela() {
-		dao.deleteAll();
+		dao.deletarTodos("examemedico");
 	}
 		
 	@Test
 	public void testReadById() {
 		ExameMedico exameMedico = new ExameMedico(exameAdm, data, true);
-		dao.create(exameMedico);
-		assertEquals(exameMedico.getId(), dao.readById(exameMedico.getId()).getId());
+		dao.cadastrar(exameMedico);
+		assertEquals(exameMedico.getId(), dao.consultarPorId(ExameMedico.class, exameMedico.getId()).getId());
 	}
 
 	@Test
 	public void testGetAll() {
 		ExameMedico exameMedico = new ExameMedico(exameAdm, LocalDate.of(2021, 7, 13), false);
 		ExameMedico exameMedico2 = new ExameMedico(exameDem, data, true);
-		dao.create(exameMedico);
-		dao.create(exameMedico2);
-		assertEquals(2, dao.getAll().size());
+		dao.cadastrar(exameMedico);
+		dao.cadastrar(exameMedico2);
+		assertEquals(2, dao.consultarTodos(ExameMedico.class).size());
 	}
 
 	@Test
 	public void testCreate() {
 		ExameMedico exameMedico = new ExameMedico(exameAdm, data, true);
-		dao.create(exameMedico);
-		assertEquals(exameMedico.getTipoExame(), dao.readById(exameMedico.getId()).getTipoExame());
+		dao.cadastrar(exameMedico);
+		assertEquals(exameMedico.getTipoExame(), dao.consultarPorId(ExameMedico.class, exameMedico.getId()).getTipoExame());
 	}
 
 	@Test
 	public void testDelete() {
 		ExameMedico exameMedico = new ExameMedico(exameAdm, data, true);
-		dao.create(exameMedico);
-		dao.delete(exameMedico);
-		assertEquals(0, dao.getAll().size());
+		dao.cadastrar(exameMedico);
+		dao.deletar(exameMedico);
+		assertEquals(0, dao.consultarTodos(ExameMedico.class).size());
 	}
 
 	@Test
 	public void testUpdate() {
 		ExameMedico exameMedico = new ExameMedico(exameAdm, data, true);
-		dao.create(exameMedico);
+		dao.cadastrar(exameMedico);
 		exameMedico.setTipoExame(exameDem);
-		assertEquals(exameMedico, dao.update(exameMedico));
-		dao.delete(exameMedico);
+		assertEquals(exameMedico, dao.atualizar(exameMedico));
+		dao.deletar(exameMedico);
+	}
+	
+	@Test
+	public void testApto() {
+		ExameMedico exameMedico = new ExameMedico(exameAdm, data, true);
+		LocalDate hoje = LocalDate.now();
+		assertEquals(true , exameMedico.isApto());
+		assertEquals(hoje , exameMedico.getDataExame());
+		
 	}
 
 }

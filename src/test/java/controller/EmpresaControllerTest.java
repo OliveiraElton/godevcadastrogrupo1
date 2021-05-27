@@ -46,13 +46,13 @@ public class EmpresaControllerTest {
 	public static void setUpBeforeClass() throws Exception {
 		empresa = new Empresa("Senior", LocalDate.now(), "05.975.585/0001-89", null, null);
 		contatos = new Contatos("47888999665", "47985556633", "empresa@gmail.com", "47987456321");
-		dao.deleteAll();
+		dao.deletarTodos("empresa");
 		
 	}
 	
 	@Before
 	public void limparTabela() throws Exception {
-		dao.deleteAll();
+		dao.deletarTodos("empresa");
 		
 	}
 	
