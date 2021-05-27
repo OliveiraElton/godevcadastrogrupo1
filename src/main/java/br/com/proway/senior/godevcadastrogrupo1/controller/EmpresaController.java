@@ -60,14 +60,11 @@ public class EmpresaController {
 			String cidade, String uf) throws Exception {
 
 		Contatos contatos = new Contatos(telefonePrincipal, telefoneSecundario, email, telefoneFamiliar);
-		daoContatos.create(contatos);
 
 		Endereco endereco = new Endereco(logradouro, numero, complemento, cep, bairro, pais, cidade, uf);
-		daoEndereco.create(endereco);
 
 		Empresa empresa = new Empresa(nomeEmpresa, dataInicioContrato, Cnpj, endereco, contatos);
-
-		return daoEmpresa.create(empresa);
+		return daoEmpresa.cadastrar(empresa);
 	}
 
 	/**
@@ -79,7 +76,7 @@ public class EmpresaController {
 	 * @return true caso seja deletado ou false caso contrario.
 	 */
 	public static boolean deletarEmpresa(Empresa empresa) {
-		return daoEmpresa.delete(empresa);
+		return daoEmpresa.deletar(empresa);
 	}
 
 	/**
@@ -103,7 +100,7 @@ public class EmpresaController {
 		Empresa empresa = new Empresa(nomeEmpresa, dataInicioContrato, cnpj, endereco, contatos);
 		
 		empresa.setId(id);
-		return daoEmpresa.update(empresa);
+		return daoEmpresa.atualizar(empresa);
 	}
 
 	/**
@@ -115,7 +112,7 @@ public class EmpresaController {
 	 * @return Colaborador ou null caso nao encontrado.
 	 */
 	public static Empresa buscarEmpresaPorId(Integer id) {
-		return daoEmpresa.readById(id);
+		return daoEmpresa.consultarPorId(Empresa.class, id);
 	}
 
 	/**
@@ -124,7 +121,7 @@ public class EmpresaController {
 	 * @return lista com todos os registros de {@link Empresa} constantes no banco de dados.
 	 */
 	public static List<Empresa> buscarTodasEmpresas() {
-		return daoEmpresa.getAll();
+		return daoEmpresa.consultarTodos(Empresa.class);
 	}
 	
 	/**
@@ -138,7 +135,7 @@ public class EmpresaController {
 	 * @return ArrayList Empresa lista de registros localizados.
 	 */
 	public static ArrayList<Empresa> buscarEmpresaPorNome(String nomeEmpresa) {
-		return (ArrayList<Empresa>) daoEmpresa.buscarPorNome(nomeEmpresa);
+		return (ArrayList<Empresa>) daoEmpresa.consultarPorNome(Empresa.class, nomeEmpresa);
 	}
 
 }

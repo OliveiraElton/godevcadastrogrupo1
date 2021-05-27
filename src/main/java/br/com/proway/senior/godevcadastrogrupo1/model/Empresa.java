@@ -30,7 +30,7 @@ public class Empresa {
 
 	private @Id @GeneratedValue int id;
 
-	private String nomeEmpresa;
+	private String nome;
 	private LocalDate dataInicioContrato;
 	private String cnpj;
 
@@ -61,11 +61,11 @@ public class Empresa {
 	}
 
 	public String getNomeEmpresa() {
-		return nomeEmpresa;
+		return nome;
 	}
 
 	public void setNomeEmpresa(String nomeEmpresa) {
-		this.nomeEmpresa = nomeEmpresa;
+		this.nome = nomeEmpresa;
 	}
 
 	public LocalDate getDataInicioContrato() {
