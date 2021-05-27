@@ -5,13 +5,13 @@ import static org.junit.Assert.assertNotNull;
 import org.hibernate.Session;
 import org.junit.Test;
 
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 
 public class DBConnectionTest {
 
 	@Test
 	public void testConnection() {
-		Session session = DBConnection.getSession();
+		Session session = BDConexao.getSessao();
 		assertNotNull(session);
 
 		// String url =

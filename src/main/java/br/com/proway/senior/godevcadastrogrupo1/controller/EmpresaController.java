@@ -12,7 +12,7 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ContatosDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EmpresaDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 /**
  * Classe EmpresaController
  * 
@@ -24,7 +24,7 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
  *
  */
 public class EmpresaController {
-	static Session session = DBConnection.getSession();
+	static Session session = BDConexao.getSessao();
 	static EmpresaDAO daoEmpresa = EmpresaDAO.getInstance(session);
 	static ContatosDAO daoContatos = ContatosDAO.getInstance(session);
 	static EnderecoDAO daoEndereco = EnderecoDAO.getInstance(session);

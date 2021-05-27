@@ -11,13 +11,13 @@ import org.junit.Test;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.ExameMedico;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ExameMedicoDAO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExames;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
 
 public class ExameMedicoDAOTest {
 
-	Session session = DBConnection.getSession();
+	Session session = BDConexao.getSessao();
 	ExameMedicoDAO dao = ExameMedicoDAO.getInstance(session);
 	static TiposExames exameAdm = EnumExamesMedicos.TiposExames.ADMISSIONAL;
 	static TiposExames exameDem = EnumExamesMedicos.TiposExames.DEMISSIONAL;

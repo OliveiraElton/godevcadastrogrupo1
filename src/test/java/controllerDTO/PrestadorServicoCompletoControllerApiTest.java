@@ -23,8 +23,8 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EmpresaDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.PrestadorServicoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.PrestadorServicoCompletoDTO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.PrestadorServicoSimplificadoDTO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 
 /**
  * Classe PrestadorServicoCompletoControllerApiTest. Testa o m�todos de busca.
@@ -36,7 +36,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.Identida
 @FixMethodOrder (MethodSorters.NAME_ASCENDING)
 public class PrestadorServicoCompletoControllerApiTest {
 
-	static Session session = DBConnection.getSession();
+	static Session session = BDConexao.getSessao();
 	static PrestadorServico prestador = new PrestadorServico();
 	buscarTodosPrestadoresServico controller = new buscarTodosPrestadoresServico();
 	static Empresa empresa;
@@ -47,7 +47,7 @@ public class PrestadorServicoCompletoControllerApiTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		PrestadorServicoDAO.getInstance(DBConnection.getSession()).deleteAll();
+		PrestadorServicoDAO.getInstance(BDConexao.getSessao()).deleteAll();
 		prestadorApi = new PrestadorServicoCompletoControllerAPI();
 		empresa = new Empresa("Senior", LocalDate.now(), "05.975.585/0001-89", null, null);
 		daoEmpresa.create(empresa);

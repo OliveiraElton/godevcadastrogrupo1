@@ -3,7 +3,7 @@ package br.com.proway.senior.godevcadastrogrupo1.model.DTO;
 import java.time.LocalDate;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDependentes;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.TiposDependentes;
 
 /**
  * Classe DependenteSimplificadoDTO.

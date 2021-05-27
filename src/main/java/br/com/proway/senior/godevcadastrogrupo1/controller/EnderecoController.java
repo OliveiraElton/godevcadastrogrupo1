@@ -4,7 +4,7 @@ import java.util.List;
 import org.hibernate.Session;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 
 /**
  * Controller do Endereco.
@@ -14,7 +14,7 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
  * @author Gabriel Simon <gabrielsimon775@gmail.com>
  */
 public class EnderecoController {
-	static Session session = DBConnection.getSession();
+	static Session session = BDConexao.getSessao();
 	static EnderecoDAO enderecoDao = EnderecoDAO.getInstance(session);
 
 	/**

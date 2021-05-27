@@ -14,8 +14,8 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EmpresaDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.PrestadorServicoDAO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 
 public class PrestadorServicoDAOTest {
 
@@ -24,7 +24,7 @@ public class PrestadorServicoDAOTest {
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		session = DBConnection.getSession();
+		session = BDConexao.getSessao();
 		dao = PrestadorServicoDAO.getInstance(session);
 	}
 	
@@ -40,7 +40,7 @@ public class PrestadorServicoDAOTest {
 				"SC");
 		Contatos contatos = new Contatos("47988554466", "47325698740", "adriana@gmail.com", "4798756430");
 
-		Empresa empresa = EmpresaDAO.getInstance(DBConnection.getSession()).readById(1);
+		Empresa empresa = EmpresaDAO.getInstance(BDConexao.getSessao()).readById(1);
 
 		PrestadorServico prestadorServico = new PrestadorServico("Adriana", "Pereira", "pereira",
 				LocalDate.of(1978, 3, 21), "Brasileira", "Itajai", false, "Feminino", IdentidadeGenero.CIS, endereco,
@@ -57,7 +57,7 @@ public class PrestadorServicoDAOTest {
 				"SC");
 		Contatos contatos = new Contatos("47988554466", "4732569874", "adriana@gmail.com", "4798756430");
 
-		Empresa empresa = EmpresaDAO.getInstance(DBConnection.getSession()).readById(1);
+		Empresa empresa = EmpresaDAO.getInstance(BDConexao.getSessao()).readById(1);
 
 		PrestadorServico prestadorServico = new PrestadorServico("Adriana", "Pereira", "pereira",
 				LocalDate.of(1978, 3, 21), "Brasileira", "Itajai", false, "Feminino", IdentidadeGenero.CIS, endereco,
@@ -79,7 +79,7 @@ public class PrestadorServicoDAOTest {
 				"SC");
 		Contatos contatos = new Contatos("4788552145", "4733256984", "Ricardo@gmail.com", "4798531150");
 
-		Empresa empresa = EmpresaDAO.getInstance(DBConnection.getSession()).readById(11);
+		Empresa empresa = EmpresaDAO.getInstance(BDConexao.getSessao()).readById(11);
 
 		PrestadorServico prestadorServico = new PrestadorServico("Ricardo", "Junior", "juninho",
 				LocalDate.of(1972, 4, 12), "Brasileiro", "Blumenau", false, "Masculino", IdentidadeGenero.CIS, endereco,
@@ -105,7 +105,7 @@ public class PrestadorServicoDAOTest {
 	public void testUpdate() throws Exception {
 		Contatos contatos = new Contatos("4788552145", "4733256984", "Ricardo@gmail.com", "4798531150");
 
-		Empresa empresa = EmpresaDAO.getInstance(DBConnection.getSession()).readById(11);
+		Empresa empresa = EmpresaDAO.getInstance(BDConexao.getSessao()).readById(11);
 		Endereco endereco = new Endereco("Rua Casarao", 33, "Casa", "8975665", "Escola Agricola", "Brasil", "Blumenau",
 				"SC");
 		PrestadorServico prestadorServico = new PrestadorServico("Ricardo", "Junior", "juninho",

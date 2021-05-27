@@ -9,10 +9,9 @@ import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
 /**
  * Classe PrestadorServicoSimplificadoDTO.
  * 
- * Classe para interacao via Controller API, referencia a
- * {@link PrestadorServico}. Os dados sao simplificados, proporcionando somente
- * as informacoes necessarias para os demais modulos do sistema. Dados completos
- * disponiveis em {@link PrestadorServicoCompletoDTO}.
+ * Classe para interacao via Controller API, referencia a {@link PrestadorServico}. 
+ * Os dados sao simplificados, proporcionando somente as informacoes necessarias para 
+ * os demais modulos do sistema. Dados completos disponiveis em {@link PrestadorServicoCompletoDTO}.
  * 
  * @author Vitor Cesar Peres <b>vitor.peres@senior.com.br</b>
  *

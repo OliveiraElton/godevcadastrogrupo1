@@ -20,8 +20,8 @@ import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EmpresaDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.PrestadorServicoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.PrestadorServicoSimplificadoDTO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 
 /**
  * Classe PrestadorServicoControllerApiTest.
@@ -34,7 +34,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.Identida
  */
 public class PrestadorServicoSimplificadoControllerApiTest {
 
-	static Session session = DBConnection.getSession();
+	static Session session = BDConexao.getSessao();
 	static PrestadorServico prestador = new PrestadorServico();
 	buscarTodosPrestadoresServico controller = new buscarTodosPrestadoresServico();
 	static Empresa empresa;
@@ -48,7 +48,7 @@ public class PrestadorServicoSimplificadoControllerApiTest {
 	public static void setUpBeforeClass() throws Exception {
 		endereco = new Endereco("Rua 10", 10, "", "89123582", "Centro", "Brasil", "Blumenau", "SC");
 		contatos = new Contatos("47985415263", "47987526341", "joaopires@gmail.com", "47985632144");
-		PrestadorServicoDAO.getInstance(DBConnection.getSession()).deleteAll();
+		PrestadorServicoDAO.getInstance(BDConexao.getSessao()).deleteAll();
 		empresa = new Empresa("Senior", LocalDate.now(), "05.975.585/0001-89", endereco, contatos);
 		prestadorApi = new PrestadorServicoSimplificadoControllerAPI();
 		daoEmpresa.create(empresa);

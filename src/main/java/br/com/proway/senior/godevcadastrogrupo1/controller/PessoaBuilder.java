@@ -18,10 +18,10 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ContatosDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ExameMedicoDAO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDependentes;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExames;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.TiposDependentes;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
 /**
  * Classe PessoaBuilder.
  * 
@@ -33,7 +33,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExa
  */
 public class PessoaBuilder implements Builder {
 
-	Session session = DBConnection.getSession();
+	Session session = BDConexao.getSessao();
 	private String nome;
 	private String sobrenome;
 	private String nomeSocial;

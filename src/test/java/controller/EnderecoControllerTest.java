@@ -10,11 +10,11 @@ import org.junit.Test;
 import br.com.proway.senior.godevcadastrogrupo1.controller.EnderecoController;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 
 public class EnderecoControllerTest {
 
-	static Session session = DBConnection.getSession();
+	static Session session = BDConexao.getSessao();
 	static EnderecoDAO enderecoDao = EnderecoDAO.getInstance(session);
 
 	@BeforeClass

@@ -11,8 +11,8 @@ import br.com.proway.senior.godevcadastrogrupo1.controller.DependenteController;
 import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.DependenteSimplificadoDTO;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDependentes;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.TiposDependentes;
 
 /**
  * Classe DependenteDTOTest

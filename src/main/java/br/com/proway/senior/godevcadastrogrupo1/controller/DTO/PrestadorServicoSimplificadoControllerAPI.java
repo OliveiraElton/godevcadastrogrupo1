@@ -15,7 +15,7 @@ import br.com.proway.senior.godevcadastrogrupo1.controller.buscarTodosPrestadore
 import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.PrestadorServicoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.PrestadorServicoSimplificadoDTO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 
 /**
  * Classe PrestadorServicoSimplificadoControllerAPI
@@ -31,7 +31,7 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 @RestController 
 public class PrestadorServicoSimplificadoControllerAPI {
 
-	static Session session = DBConnection.getSession();
+	static Session session = BDConexao.getSessao();
 	PrestadorServicoDAO daoPrestador = PrestadorServicoDAO.getInstance(session);
 
 	/**

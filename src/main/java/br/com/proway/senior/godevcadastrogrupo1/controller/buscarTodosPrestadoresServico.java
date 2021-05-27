@@ -10,8 +10,8 @@ import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ContatosDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EmpresaDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.PrestadorServicoDAO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 /**
  * Classe PrestadorServicoController
  * 
@@ -23,7 +23,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.Identida
  */
 public class buscarTodosPrestadoresServico {
 
-	static Session session = DBConnection.getSession();
+	static Session session = BDConexao.getSessao();
 	static PrestadorServicoDAO daoPrestadorServico = PrestadorServicoDAO.getInstance(session);
 	static ContatosDAO daoContatos = ContatosDAO.getInstance(session);
 	static EmpresaDAO daoEmpresa = EmpresaDAO.getInstance(session);

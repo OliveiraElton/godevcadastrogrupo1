@@ -18,7 +18,7 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EmpresaDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.EmpresaDTO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 /**
  * Classe EmpresaControllerAPITest.
  * 
@@ -31,7 +31,7 @@ public class EmpresaControllerAPITest {
 	
 	EmpresaController controllerOriginal = new EmpresaController();
 	EmpresaControllerAPI controllerApi = new EmpresaControllerAPI();
-	EmpresaDAO dao = new EmpresaDAO(DBConnection.getSession());
+	EmpresaDAO dao = new EmpresaDAO(BDConexao.getSessao());
 	
 	
 	@Test

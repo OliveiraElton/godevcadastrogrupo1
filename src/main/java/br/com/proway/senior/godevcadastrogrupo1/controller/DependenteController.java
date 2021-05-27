@@ -10,9 +10,9 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ContatosDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ExameMedicoDAO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDependentes;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.TiposDependentes;
 
 /**
  * Controller do dependente.
@@ -25,7 +25,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDep
  */
 public class DependenteController {
 
-	static Session session = DBConnection.getSession();
+	static Session session = BDConexao.getSessao();
 	static DependenteDAO daoDependente = DependenteDAO.getInstance(session);
 	static ContatosDAO daoContatos = ContatosDAO.getInstance(session);
 	static EnderecoDAO daoEndereco = EnderecoDAO.getInstance(session);

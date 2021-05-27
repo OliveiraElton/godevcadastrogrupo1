@@ -14,10 +14,10 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ContatosDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ExameMedicoDAO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDependentes;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExames;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.TiposDependentes;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
 
 /**
  * Controller do colaborador.
@@ -35,7 +35,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExa
  */
 public class ColaboradorController {
 
-	static Session session = DBConnection.getSession();
+	static Session session = BDConexao.getSessao();
 	static ColaboradorDAO daoColaborador = ColaboradorDAO.getInstance(session);
 	static ContaDAO daoConta = ContaDAO.getInstance(session);
 	static ContatosDAO daoContatos = ContatosDAO.getInstance(session);

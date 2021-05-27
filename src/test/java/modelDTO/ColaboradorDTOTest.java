@@ -12,8 +12,8 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.ExameMedico;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.ColaboradorSimplificadoDTO;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExames;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
 
 /**
  * Classe ColaboradorDTOTest.

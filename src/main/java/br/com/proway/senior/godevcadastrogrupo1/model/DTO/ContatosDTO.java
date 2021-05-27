@@ -5,7 +5,7 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
 /*
  * Classe ContatosDTO.
  * 
- * Classe de envio de dados do objeto para outros modulos
+ * Classe de envio de dados do objeto para outros modulos.
  * 
  * @author Vitor Peres <b>vitor.peres@senior.com.br</b>
  */

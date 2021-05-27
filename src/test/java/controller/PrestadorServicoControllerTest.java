@@ -19,12 +19,12 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EmpresaDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.PrestadorServicoDAO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 
 public class PrestadorServicoControllerTest {
 
-	static Session session = DBConnection.getSession();
+	static Session session = BDConexao.getSessao();
 	static PrestadorServicoDAO dao = PrestadorServicoDAO.getInstance(session);
 	static LocalDate data = LocalDate.of(2002, 01, 28);
 	static Empresa empresa;

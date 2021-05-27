@@ -12,9 +12,9 @@ import org.junit.Test;
 import br.com.proway.senior.godevcadastrogrupo1.controller.DependenteController;
 import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 
 /**
  * Classe DependenteDAOTest
@@ -28,7 +28,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.Identida
  */
 public class DependenteDAOTest {
 
-	Session session = DBConnection.getSession();
+	Session session = BDConexao.getSessao();
 	DependenteDAO dao = DependenteDAO.getInstance(session);
 	static LocalDate data = LocalDate.of(2002, 01, 28);
 

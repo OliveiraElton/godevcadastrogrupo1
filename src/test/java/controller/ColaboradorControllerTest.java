@@ -26,12 +26,12 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ContatosDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ExameMedicoDAO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDependentes;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExames;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.TiposDependentes;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
 /**
  * Classe ColaboradorControllerTest.
  * 
@@ -43,7 +43,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExa
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ColaboradorControllerTest {
-	static Session session = DBConnection.getSession();
+	static Session session = BDConexao.getSessao();
 	static ColaboradorDAO dao = ColaboradorDAO.getInstance(session);
 	static ContaDAO daoConta = ContaDAO.getInstance(session);
 	static ContatosDAO daoContatos = ContatosDAO.getInstance(session);

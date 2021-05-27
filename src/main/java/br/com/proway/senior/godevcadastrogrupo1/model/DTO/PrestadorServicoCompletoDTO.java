@@ -6,7 +6,7 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 
 /**
  * Classe PrestadorServicoCompletoDTO.

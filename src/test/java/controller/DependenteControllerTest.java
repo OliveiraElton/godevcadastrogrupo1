@@ -19,10 +19,10 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.ExameMedico;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ColaboradorDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExames;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
 
 /**
  * Classe DependenteControllerTest
@@ -37,7 +37,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExa
 public class DependenteControllerTest {
 
 	static LocalDate data = LocalDate.of(2002, 01, 28);
-	static Session session = DBConnection.getSession();
+	static Session session = BDConexao.getSessao();
 	static DependenteDAO dao = DependenteDAO.getInstance(session);
 	static ColaboradorDAO daoColab = ColaboradorDAO.getInstance(session);
 

@@ -15,7 +15,7 @@ import br.com.proway.senior.godevcadastrogrupo1.controller.EmpresaController;
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EmpresaDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.EmpresaDTO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 
 /**
  * Classe EmpresaControllerAPI
@@ -29,7 +29,7 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 @RestController
 public class EmpresaControllerAPI {
 	
-	static Session session = DBConnection.getSession();
+	static Session session = BDConexao.getSessao();
 	EmpresaDAO daoEmpresa = EmpresaDAO.getInstance(session);
 
 	/**

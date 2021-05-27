@@ -6,7 +6,8 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 /**
  * Classe EnderecoDTO.
  * 
- * Classe para interacao via Controller API, referencia a {@link Endereco}.
+ * Classe para interacao via Controller API, referencia a {@link Endereco},
+ * disponibilizando todos os dados do model original.
  * 
  * @author Gabriel Simon <b>gabriel.simon@senior.com.br</b> 
  *

@@ -3,8 +3,8 @@ package br.com.proway.senior.godevcadastrogrupo1.model.DTO;
 import java.time.LocalDate;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDependentes;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.TiposDependentes;
 
 /**
  * Classe DependenteCompletoDTO.
@@ -34,7 +34,7 @@ public class DependenteCompletoDTO {
 	private Boolean optanteIR;
 	
 	/**
-	 * Construtor que ir� interagir com o Controller da API, disponibilizando as informacoes
+	 * Construtor que ira interagir com o Controller da API, disponibilizando as informacoes
 	 * de {@link Dependente}.
 	 * 
 	 * @param Dependente modelOriginal

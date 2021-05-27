@@ -13,7 +13,7 @@ import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 
 public class PrestadorServicoDAO extends Dao<PrestadorServico> implements InterfaceDao<PrestadorServico>{
 
@@ -61,7 +61,7 @@ public class PrestadorServicoDAO extends Dao<PrestadorServico> implements Interf
 	 * @return List<PrestadorServico>
 	 */
 	public List<PrestadorServico> buscarPorNome(String nome){
-			Session session = DBConnection.getSession();
+			Session session = BDConexao.getSessao();
 			CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
 			CriteriaQuery<PrestadorServico> criteria = criteriaBuilder.createQuery(PrestadorServico.class);
 			

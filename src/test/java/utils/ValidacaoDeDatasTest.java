@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 import org.junit.Test;
 
-import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDeDatas;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.ValidacaoDeDatas;
 
 public class ValidacaoDeDatasTest {
 	

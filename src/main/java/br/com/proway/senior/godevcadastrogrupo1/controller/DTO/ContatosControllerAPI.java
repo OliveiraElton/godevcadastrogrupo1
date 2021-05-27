@@ -16,7 +16,7 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
 import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ContatosDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.ContatosDTO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 
 /**
  * Classe para interacao via Controller API, tem referencia com
@@ -28,7 +28,7 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 @RestController
 public class ContatosControllerAPI {
 
-	static Session session = DBConnection.getSession();
+	static Session session = BDConexao.getSessao();
 	ContatosDAO daoContatos = ContatosDAO.getInstance(session);
 	
 	/**

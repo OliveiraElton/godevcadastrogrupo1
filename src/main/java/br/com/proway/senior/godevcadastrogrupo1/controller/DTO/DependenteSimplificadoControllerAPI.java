@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.DependenteSimplificadoDTO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 
 /**
  * Classe controller API de {@link DependenteSimplificadoDTO}.
@@ -27,7 +27,7 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 @RestController
 public class DependenteSimplificadoControllerAPI {
 
-	static Session session = DBConnection.getSession();
+	static Session session = BDConexao.getSessao();
 	static DependenteDAO dependenteDao = DependenteDAO.getInstance(session);
 	
 	/**

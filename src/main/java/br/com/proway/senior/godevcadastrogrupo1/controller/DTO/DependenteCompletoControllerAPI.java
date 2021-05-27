@@ -15,7 +15,7 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.DependenteCompletoDTO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 
 /**
  * * 
@@ -29,7 +29,7 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 @RestController
 public class DependenteCompletoControllerAPI {
 	
-	static Session session = DBConnection.getSession();
+	static Session session = BDConexao.getSessao();
 	static DependenteDAO dependenteDao = DependenteDAO.getInstance(session);
 	
 	/**

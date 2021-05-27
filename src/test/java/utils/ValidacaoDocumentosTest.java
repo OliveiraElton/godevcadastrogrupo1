@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDocumentos;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.ValidacaoDocumentos;
 
 public class ValidacaoDocumentosTest {
 	

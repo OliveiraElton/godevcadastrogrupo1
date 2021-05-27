@@ -13,12 +13,12 @@ import org.junit.runners.MethodSorters;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ContatosDAO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 
 @FixMethodOrder (MethodSorters.NAME_ASCENDING)
 public class ContatosDAOTest {
 
-	Session session = DBConnection.getSession();
+	Session session = BDConexao.getSessao();
 	ContatosDAO dao = ContatosDAO.getInstance(session);
 	
 	@Test

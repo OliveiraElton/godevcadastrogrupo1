@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import br.com.proway.senior.godevcadastrogrupo1.utils.FormatacaoDocumentos;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.FormatacaoDocumentos;
 
 public class TesteFormatacaoDocumentos {
 	

@@ -1,4 +1,4 @@
-package br.com.proway.senior.godevcadastrogrupo1.utils;
+package br.com.proway.senior.godevcadastrogrupo1.utilidades;
 
 /**
  * Classe de apoio para ser utilizada em {@link Pessoa} para setar a

@@ -19,12 +19,12 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ColaboradorDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.DependenteSimplificadoDTO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDependentes;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExames;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.TiposDependentes;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
 /**
  * Classe DependenteSimplificadoControllerApiTest
  * 
@@ -51,7 +51,7 @@ public class DependenteSimplificadoControllerApiTest{
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	data = LocalDate.of(2002, 01, 28);
-	session = DBConnection.getSession();
+	session = BDConexao.getSessao();
 	dao = DependenteDAO.getInstance(session);
 	daoColab = ColaboradorDAO.getInstance(session);
 	dependenteApi = new DependenteSimplificadoControllerAPI();

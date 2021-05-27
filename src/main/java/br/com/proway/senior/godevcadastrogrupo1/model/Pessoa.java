@@ -6,10 +6,10 @@ import javax.persistence.CascadeType;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 
-import br.com.proway.senior.godevcadastrogrupo1.utils.FormatacaoDocumentos;
-import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDeDatas;
-import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDocumentos;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.FormatacaoDocumentos;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.ValidacaoDeDatas;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.ValidacaoDocumentos;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 
 /**
  * Classe Pessoa.

@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import br.com.proway.senior.godevcadastrogrupo1.utils.ValidacaoDocumentos;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.ValidacaoDocumentos;
 
 /**
  * Classe que abstrai as informacoess de uma Empresa contratada. Esta Classe

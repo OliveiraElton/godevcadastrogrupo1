@@ -3,12 +3,13 @@ package br.com.proway.senior.godevcadastrogrupo1.model.DTO;
 import java.time.LocalDate;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.ExameMedico;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExames;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
 
 /**
 * Classe ExameMedicoDTO.
 * 
-* Classe para interacao via Controller API, tem referencia com {@link ExameMedico}.
+* Classe para interacao via Controller API, tem referencia com {@link ExameMedico},
+* disponiliza todos os dados do model original.
 * 
 * @author Elton Oliveira <elton.oliveira@senior.com.br>
  */

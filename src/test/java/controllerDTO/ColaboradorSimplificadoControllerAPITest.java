@@ -28,9 +28,9 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ExameMedicoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.ColaboradorSimplificadoDTO;
-import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
-import br.com.proway.senior.godevcadastrogrupo1.utils.EnumExamesMedicos.TiposExames;
+import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
 
 /**
  * Classe ColaboradorSimplificadoControllerAPITest.
@@ -50,7 +50,7 @@ public class ColaboradorSimplificadoControllerAPITest{
 	static String email = "teste@gmail.com";
 	static Contatos contatos;
 	static ExameMedico exameMedico = new ExameMedico(TiposExames.ADMISSIONAL, LocalDate.now(), true);
-	static Session session = DBConnection.getSession();
+	static Session session = BDConexao.getSessao();
 	static ColaboradorDAO dao = ColaboradorDAO.getInstance(session);
 	static ContaDAO daoConta = ContaDAO.getInstance(session);
 	static ContatosDAO daoContatos = ContatosDAO.getInstance(session);
@@ -95,7 +95,7 @@ public class ColaboradorSimplificadoControllerAPITest{
 				"Brasileira", "Blumenau", false, "Feminino", IdentidadeGenero.TRANS, endereco3, "21164028324",
 				"45124563", contatos3, 12, 123456789, false, false, LocalDate.now(), false, "12345687552",
 				"luiza@senior.com.br", "5544555", conta3, exameMedico3, new Dependente());
-		ColaboradorDAO.getInstance(DBConnection.getSession()).create(colaborador);
+		ColaboradorDAO.getInstance(BDConexao.getSessao()).create(colaborador);
 		Conta conta2 = new Conta("Viacredi", "333", "1231551", "3");
 		Endereco endereco2 = new Endereco("Rua 2 de Setembro", 44, "Casa", "89665422", "Itoupava Norte", "Brasil",
 				"Blumenau", "SC");
@@ -106,7 +106,7 @@ public class ColaboradorSimplificadoControllerAPITest{
 				"Blumenau", false, "Feminino", IdentidadeGenero.CIS, endereco2, "21164028324", "45124563", contatos2,
 				12, 123456789, false, false, LocalDate.now(), false, "12345687552", "ana@senior.com.br", "5544555",
 				conta2, exameMedico2, new Dependente());
-		ColaboradorDAO.getInstance(DBConnection.getSession()).create(colaborador2);
+		ColaboradorDAO.getInstance(BDConexao.getSessao()).create(colaborador2);
 		List<ColaboradorSimplificadoDTO> listaColaboradorDto = colaboradorControllerApi.buscarTodosColaboradores();
 		assertEquals(2, listaColaboradorDto.size());
 	}
