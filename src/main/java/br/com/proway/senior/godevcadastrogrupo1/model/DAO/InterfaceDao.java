@@ -17,14 +17,16 @@ import java.util.List;
  */
 public interface InterfaceDao<T> {
 	
-	public T create(T item);
+	public T cadastrar(T item);
 
-	public T readById(Integer id);
+	public T consultarPorId(Class <T> item, Integer id);
 
-	public List<T> getAll();
+	public List<T> consultarTodos(Class <T> item);
 
-	public boolean delete(T item);
+	public boolean deletar(T item);
 	
-	public T update(T item);
+	public boolean deletarTodos(String tabela);
+	
+	public T atualizar(T item);
 	
 }
