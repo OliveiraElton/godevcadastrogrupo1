@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.com.proway.senior.godevcadastrogrupo1.controller.PrestadorServicoController;
+import br.com.proway.senior.godevcadastrogrupo1.controller.buscarTodosPrestadoresServico;
 import br.com.proway.senior.godevcadastrogrupo1.controller.DTO.PrestadorServicoSimplificadoControllerAPI;
 import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
@@ -36,7 +36,7 @@ public class PrestadorServicoSimplificadoControllerApiTest {
 
 	static Session session = DBConnection.getSession();
 	static PrestadorServico prestador = new PrestadorServico();
-	PrestadorServicoController controller = new PrestadorServicoController();
+	buscarTodosPrestadoresServico controller = new buscarTodosPrestadoresServico();
 	static Empresa empresa;
 	static EmpresaDAO daoEmpresa = EmpresaDAO.getInstance(session);
 	static Endereco endereco;
@@ -64,12 +64,12 @@ public class PrestadorServicoSimplificadoControllerApiTest {
 		Endereco endereco2 = new Endereco("Rua 15", 10, "", "89123582", "Centro", "Brasil", "Blumenau", "SC");
 		Contatos contatos2 = new Contatos("47985236587", "47987526341", "joaopires@gmail.com", "47985632144");
 		Empresa empresa2 = new Empresa("Proway", LocalDate.now(), "05.975.585/0001-89", endereco2, contatos2);
-		PrestadorServicoController.criarPrestadorServico("Joao", "Massa", "Jhon", LocalDate.now(), "Brasil",
+		buscarTodosPrestadoresServico.cadastrarPrestadorServico("Joao", "Massa", "Jhon", LocalDate.now(), "Brasil",
 				"Sao Paulo", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "84454",
 				LocalDate.of(2020, 01, 28), 1, "1543652548", "1543652548", "beatriz@gmail.com", "1543652548",
 				"Rua Sao Paulo", 510, "Predio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 
-		PrestadorServicoController.criarPrestadorServico("Joao", "Fulana", "Jhon",
+		buscarTodosPrestadoresServico.cadastrarPrestadorServico("Joao", "Fulana", "Jhon",
 
 				LocalDate.now(), "Brasil", "Sao Paulo", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90",
 				"879898", LocalDate.of(2020, 01, 28), 1, "1543652548", "1543652548", "batriz@gmail.com", "1543652548",
@@ -86,12 +86,12 @@ public class PrestadorServicoSimplificadoControllerApiTest {
 		Endereco endereco2 = new Endereco("Rua 15", 10, "", "89123582", "Centro", "Brasil", "Blumenau", "SC");
 		Contatos contatos2 = new Contatos("47985236587", "47987526341", "joaopires@gmail.com", "47985632144");
 		Empresa empresa2 = new Empresa("Proway", LocalDate.now(), "05.975.585/0001-89", endereco2, contatos2);
-		PrestadorServicoController.criarPrestadorServico("Joao", "Massa", "Jhon", LocalDate.now(), "Brasil",
+		buscarTodosPrestadoresServico.cadastrarPrestadorServico("Joao", "Massa", "Jhon", LocalDate.now(), "Brasil",
 				"Sao Paulo", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "547878",
 				LocalDate.of(2020, 01, 28), 1, "1543652548", "1543652548", "batriz@gmail.com", "1543652548",
 				"Rua Sao Paulo", 510, "Predio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 
-		PrestadorServicoController.criarPrestadorServico("Joao", "Fulana", "Jhon", LocalDate.now(), "Brasil",
+		buscarTodosPrestadoresServico.cadastrarPrestadorServico("Joao", "Fulana", "Jhon", LocalDate.now(), "Brasil",
 				"Sao Paulo", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "78744",
 				LocalDate.of(2020, 01, 28), 1, "1543652548", "1543652548", "batriz@gmail.com", "1543652548",
 				"Rua s�o Paulo", 510, "Predio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa2);
@@ -105,12 +105,12 @@ public class PrestadorServicoSimplificadoControllerApiTest {
 		Endereco endereco2 = new Endereco("Rua 15", 10, "", "89123582", "Centro", "Brasil", "Blumenau", "SC");
 		Contatos contatos2 = new Contatos("47985236587", "47987526341", "joaopires@gmail.com", "47985632144");
 		Empresa empresa2 = new Empresa("Proway", LocalDate.now(), "05.975.585/0001-89", endereco2, contatos2);
-		PrestadorServicoController.criarPrestadorServico("Joao", "Massa", "Jhon", LocalDate.now(), "Brasil",
+		buscarTodosPrestadoresServico.cadastrarPrestadorServico("Joao", "Massa", "Jhon", LocalDate.now(), "Brasil",
 				"Sao Paulo", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "45544",
 				LocalDate.of(2020, 01, 28), 1, "1543652548", "1543652548", "batriz@gmail.com", "1543652548",
 				"Rua Sao Paulo", 510, "Predio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
 
-		PrestadorServicoController.criarPrestadorServico("Joao", "Souza", "Jhon", LocalDate.now(), "Brasil",
+		buscarTodosPrestadoresServico.cadastrarPrestadorServico("Joao", "Souza", "Jhon", LocalDate.now(), "Brasil",
 				"S�o Paulo", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "4445454",
 				LocalDate.of(2020, 01, 28), 1, "1543652548", "1543652548", "batriz@gmail.com", "1543652548",
 				"Rua s�o Paulo", 510, "Predio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa2);

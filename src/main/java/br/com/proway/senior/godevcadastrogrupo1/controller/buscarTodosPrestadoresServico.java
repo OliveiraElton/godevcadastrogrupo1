@@ -12,8 +12,16 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EmpresaDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.PrestadorServicoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
-
-public class PrestadorServicoController {
+/**
+ * Classe PrestadorServicoController
+ * 
+ * Classe de interacao com o DAO {@link PrestadorServicoDAO}, realiza as tratativas
+ * necessarias para envio do objeto {@link PrestadorServico} para o banco de dados.
+ * 
+ * @author Sprint 5
+ *
+ */
+public class buscarTodosPrestadoresServico {
 
 	static Session session = DBConnection.getSession();
 	static PrestadorServicoDAO daoPrestadorServico = PrestadorServicoDAO.getInstance(session);
@@ -21,11 +29,10 @@ public class PrestadorServicoController {
 	static EmpresaDAO daoEmpresa = EmpresaDAO.getInstance(session);
 
 	/**
-	 * Criar Prestador de Serviço.
+	 * Cadastrar Prestador de Servico.
 	 * 
-	 * Recebe os dados do prestador de serviço e cria todos os dados, chama os DAO
-	 * necessários para a criação do prestador de serviço e por último chama o DAO
-	 * do prestador para salvar no banco.
+	 * Recebe os dados do prestador de servico e interage com o DAO
+	 * para salvar o registro no banco de dados.
 	 * 
 	 * @param nome
 	 * @param sobrenome
@@ -55,11 +62,10 @@ public class PrestadorServicoController {
 	 * @param pais
 	 * @param cidade
 	 * @param uf
-	 * @return
+	 * @return o objeto do registro salvo no banco de dados.
 	 * @throws Exception 
-	 *
 	 */
-	public static PrestadorServico criarPrestadorServico(String nome, String sobrenome, String nomeSocial,
+	public static PrestadorServico cadastrarPrestadorServico(String nome, String sobrenome, String nomeSocial,
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd, String genero,
 			IdentidadeGenero identidadeGenero, String cpf, String rg,
 			LocalDate dataInicioContrato, Integer idSetor, String telefonePrincipal,
@@ -77,24 +83,24 @@ public class PrestadorServicoController {
 	}
 
 	/**
-	 * Deletar Prestador de servico.
+	 * Deletar Prestador de Servico.
 	 * 
-	 * Deleta o Prestador de servico passado como parâmetro.
+	 * Deleta o Prestador de servico conforme objeto informado como parametro.
 	 * 
-	 * @param prestadorServico a ser deletado.
-	 * @return
-	 * 
+	 * @param prestadorServico objeto que sera deletado.
+	 * @return boolean 
 	 */
-	public static boolean deletePrestadorServico(PrestadorServico prestadorServico) {
+	public static boolean deletarPrestadorServico(PrestadorServico prestadorServico) {
 		return daoPrestadorServico.delete(prestadorServico);
 	}
 
 	/**
-	 * Busca Prestador de servico.
+	 * Atualizar Prestador de Servico.
 	 * 
-	 * Busca o Prestador de servico cujo id é igual ao passado como parâmetro.
+	 * Atualiza um registro de Prestador de Servico ja existente no banco de dados
+	 * conforme parametros informados.
 	 * 
-	 * @param id
+	 * @param id Identificacao do Prestador de Servico que sera alterado.
 	 * @param nome
 	 * @param sobrenome
 	 * @param nomeSocial
@@ -123,7 +129,7 @@ public class PrestadorServicoController {
 	 * @param pais
 	 * @param cidade
 	 * @param uf
-	 * @return
+	 * @return o objeto do Prestador de Servico atualizado.
 	 * @throws Exception 
 	 * 
 	 */
@@ -148,36 +154,50 @@ public class PrestadorServicoController {
 	}
 
 	/**
-	 * Busca Prestador de servico.
+	 * Buscar Prestador de Servico.
 	 * 
-	 * Busca o Prestador de Servico cujo id é igual ao passado como parâmetro.
+	 * Busca o Prestador de Servico cujo id eh igual ao passado como parametro.
 	 * 
-	 * @param id
-	 * @return
+	 * @param id Identificacao do Prestador de Servico procurado. 
+	 * @return objeto do Prestador de Servico localizado.
 	 */
 	public static PrestadorServico buscarPrestadorServicoPorId(Integer id) {
 		return daoPrestadorServico.readById(id);
 	}
 
 	/**
-	 * Busca todos os Prestadores de servico.
+	 * Buscar todos os Prestadores de Servico.
 	 * 
-	 * @return
+	 * Realiza a busca no banco de todos os registros de Prestadores de Servico
+	 * constantes no banco de dados.
+	 * 
+	 * @return lista de regsitros localizados.
 	 */
-	public static List<PrestadorServico> buscarTodosPrestadorServico() {
+	public static List<PrestadorServico> buscarTodosPrestadoresServico() {
 		return daoPrestadorServico.getAll();
 	}
+	
 	/**
-	 * Busca todos os prestadores de serviço pelo nome.
-	 * @param String nome
-	 * @return List<nome>
+	 * Buscar Prestadores de Servico pelo nome.
+	 * 
+	 * Realiza a busca no banco de todos os registros de Prestadores de Servico
+	 * conforme parametro de nome informado.
+	 * 
+	 * @param String nome Nome do Prestador de Servico procurado.
+	 * @return lista de regsitros localizados.
 	 */
 	public static List<PrestadorServico> buscarPrestadorServicoPorNome(String nome) {
 		return daoPrestadorServico.buscarPorNome(nome);
 	}
 	
-	public static void deleteAll() {
+	
+	/**
+	 * Deletar todos os registros.
+	 * 
+	 * Metodo deletar todos os registros de Prestadores de Servico constantes
+	 * no banco. Utilizado para testes.
+	 */
+	public static void deletarTodosPrestadoresServico() {
 		daoPrestadorServico.deleteAll();
-		
 	}
 }
