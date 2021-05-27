@@ -159,6 +159,12 @@ public class Colaborador extends Pessoa {
 		return dataAdmissao;
 	}
 
+	/**
+	 * Para cadastrar uma data de admissao, a mesma passara por uma
+	 * validacao para verificar se eh data futura.
+	 * 
+	 * @param dataAdmissao Data de inicio do colaborador.
+	 */
 	public void setDataAdmissao(LocalDate dataAdmissao) {
 		try {
 			ValidacaoDeDatas.validaDataAdmissao(dataAdmissao);
