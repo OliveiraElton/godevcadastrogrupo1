@@ -18,6 +18,7 @@ import br.com.proway.senior.godevcadastrogrupo1.controller.DependenteController;
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ColaboradorDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
 import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais;
@@ -115,11 +116,11 @@ public class DependenteDAOTest {
 				"Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Florianopolis", "SC", "4521452015", "5421452103", "rodrigo@empresa.com.br", "1542413655", 
 				TiposExames.ADMISSIONAL, LocalDate.of(2020, 10, 5), true, "Caixa", "055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", 
 				true, "Feminino", IdentidadeGenero.CIS, "09619039610", "mg14388606", TiposDependentes.FILHO, true);
-		Dependente dependente = DependenteController.cadastrarDependente("Jorge", "Martins", "Jessica", data, "Brasileira",
+
+		ColaboradorController.adicionarDependente(colaboradorCriado,  "Jorge", "Martins", "Jessica", data, "Brasileira",
 				"Blumenau", true, "Masculino", IdentidadeGenero.TRANS, "256.103.800-90", "mg14388606", EnumDadosPessoais.TiposDependentes.FILHO, true, 
 				"Rua das Oliveiras", 32, "casa", "89032640", "Passo Manso", "Brasil", "Blumenau", "SC");
-		dao.cadastrar(dependente);
-		colaboradorCriado.addDependente(dependente);
+	
 		List<Dependente> listaDeps = dao.buscarDependentesPorIdColaborador(colaboradorCriado.getId());
 		assertEquals(2, listaDeps.size());
 

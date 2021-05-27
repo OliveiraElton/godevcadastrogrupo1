@@ -152,7 +152,7 @@ public class ColaboradorDAOTest {
 				LocalDate.of(2020, 4, 17), false, "65123478", "daniela.goncalves@gmail.com", "554555", conta,
 				exameMedico, dependente);
 		dao.cadastrar(colaborador);
-		assertNotNull(dao.readByEmail("daniela.goncalves@gmail.com"));
+		assertNotNull(dao.consultarPorEmail("daniela.goncalves@gmail.com"));
 	}
 
 	@Test

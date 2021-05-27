@@ -49,7 +49,7 @@ public class ColaboradorDAO extends Dao<Colaborador>{
 		this.session = session;
 	}
 	
-	public List<Colaborador> readByEmail(String email) {
+	public List<Colaborador> consultarPorEmail(String email) {
 		CriteriaBuilder builder = session.getCriteriaBuilder();
 		CriteriaQuery<Colaborador> criteria = builder.createQuery(Colaborador.class);
 		Root<Colaborador> root = criteria.from(Colaborador.class);
