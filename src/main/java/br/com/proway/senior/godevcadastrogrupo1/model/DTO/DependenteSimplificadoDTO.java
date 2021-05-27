@@ -8,9 +8,9 @@ import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.TiposDep
 /**
  * Classe DependenteSimplificadoDTO.
  * 
- * Classe para interacao via Controller API, referencia a {@link Dependente}. 
- * Os dados sao simplicados, proporcionando somente as informacoes necessarias
- * para os demais modulos do sistema.
+ * Classe para interacao via Controller API, referencia a {@link Dependente}. Os dados sao 
+ * simplificados, proporcionando somente as informacoes necessarias para os demais modulos 
+ * do sistema. Dados completos disponiveis em {@link DependenteCompletoDTO}.
  * 
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b> - Sprint 6
  *

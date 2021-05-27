@@ -3,7 +3,6 @@ package br.com.proway.senior.godevcadastrogrupo1.model.DTO;
 import java.time.LocalDate;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
-import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;

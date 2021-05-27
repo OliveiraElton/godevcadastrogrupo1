@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.proway.senior.godevcadastrogrupo1.controller.buscarTodosPrestadoresServico;
 import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.PrestadorServicoDAO;
-import br.com.proway.senior.godevcadastrogrupo1.model.DTO.PrestadorServicoDTO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DTO.PrestadorServicoSimplificadoDTO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 /**
@@ -22,7 +22,7 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
  * 
  * Classe disponibilizada para consulta dos dados de prestador de servico via API Rest.
  * Implementa os metodos do {@link buscarTodosPrestadoresServico} e atributos
- * dos models {@link PrestadorServicoDTO} e {@link PrestadorServico}.
+ * dos models {@link PrestadorServicoSimplificadoDTO} e {@link PrestadorServico}.
  * 
  * @author Vitor Peres <b>vitor.peres@senior.com.br</b>
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
@@ -89,8 +89,8 @@ public class PrestadorServicoSimplificadoControllerAPI {
 	 * @return PrestadorServicoDTO
 	 */
 	@RequestMapping(value = "/prestadorsimplificado/{id}", method = RequestMethod.GET)
-	public @ResponseBody PrestadorServicoDTO buscarPrestadorServicoPorId(@PathVariable("id") Integer id) {
-		PrestadorServicoDTO prestadorDTO = new PrestadorServicoDTO(daoPrestador.readById(id));
+	public @ResponseBody PrestadorServicoSimplificadoDTO buscarPrestadorServicoPorId(@PathVariable("id") Integer id) {
+		PrestadorServicoSimplificadoDTO prestadorDTO = new PrestadorServicoSimplificadoDTO(daoPrestador.readById(id));
 		return prestadorDTO;
 	}
 
@@ -104,10 +104,10 @@ public class PrestadorServicoSimplificadoControllerAPI {
 	 * @return listaPrestadorDTO
 	 */
 	@RequestMapping(value = "/prestadorsimplificado", method = RequestMethod.GET)
-	public @ResponseBody List<PrestadorServicoDTO> buscarTodosPrestadoresServico() {
-		List<PrestadorServicoDTO> listaPrestadorDTO = new ArrayList<PrestadorServicoDTO>();
+	public @ResponseBody List<PrestadorServicoSimplificadoDTO> buscarTodosPrestadoresServico() {
+		List<PrestadorServicoSimplificadoDTO> listaPrestadorDTO = new ArrayList<PrestadorServicoSimplificadoDTO>();
 		for (PrestadorServico prestador : daoPrestador.getAll()) {
-			listaPrestadorDTO.add(new PrestadorServicoDTO(prestador));
+			listaPrestadorDTO.add(new PrestadorServicoSimplificadoDTO(prestador));
 		}
 		return listaPrestadorDTO;
 	}
@@ -123,10 +123,10 @@ public class PrestadorServicoSimplificadoControllerAPI {
 	 * @return lista listaPrestadorDTO
 	 */
 	@RequestMapping(value = "/prestadorsimplificado/nome/{nome}", method = RequestMethod.GET)
-	public List<PrestadorServicoDTO> buscarPrestadorServicoPorNome(@PathVariable("nome") String nome) {
-		List<PrestadorServicoDTO> listaPrestadorDTO = new ArrayList<PrestadorServicoDTO>();
+	public List<PrestadorServicoSimplificadoDTO> buscarPrestadorServicoPorNome(@PathVariable("nome") String nome) {
+		List<PrestadorServicoSimplificadoDTO> listaPrestadorDTO = new ArrayList<PrestadorServicoSimplificadoDTO>();
 		for (PrestadorServico prestador : daoPrestador.buscarPorNome(nome)) {
-			listaPrestadorDTO.add(new PrestadorServicoDTO(prestador));
+			listaPrestadorDTO.add(new PrestadorServicoSimplificadoDTO(prestador));
 		}
 		return listaPrestadorDTO;
 	}

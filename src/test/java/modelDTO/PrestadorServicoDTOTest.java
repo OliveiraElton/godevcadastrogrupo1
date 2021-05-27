@@ -12,12 +12,12 @@ import org.junit.Test;
 import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
 import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
-import br.com.proway.senior.godevcadastrogrupo1.model.DTO.PrestadorServicoDTO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DTO.PrestadorServicoSimplificadoDTO;
 
 public class PrestadorServicoDTOTest {
 
 	static PrestadorServico prestador = new PrestadorServico();
-	static PrestadorServicoDTO prestadorDTO;
+	static PrestadorServicoSimplificadoDTO prestadorDTO;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -34,7 +34,7 @@ public class PrestadorServicoDTOTest {
 		prestador.setSobrenome("Sobrenome");
 		prestador.setCpf("100.280.329-26");
 		
-		prestadorDTO = new PrestadorServicoDTO(prestador);
+		prestadorDTO = new PrestadorServicoSimplificadoDTO(prestador);
 	}
 
 	@Test

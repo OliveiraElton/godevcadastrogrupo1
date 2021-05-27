@@ -1,7 +1,6 @@
 package br.com.proway.senior.godevcadastrogrupo1.model.DTO;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;

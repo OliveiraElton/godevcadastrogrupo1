@@ -19,7 +19,7 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EmpresaDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.PrestadorServicoDAO;
-import br.com.proway.senior.godevcadastrogrupo1.model.DTO.PrestadorServicoDTO;
+import br.com.proway.senior.godevcadastrogrupo1.model.DTO.PrestadorServicoSimplificadoDTO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 import br.com.proway.senior.godevcadastrogrupo1.utils.EnumDadosPessoais.IdentidadeGenero;
 
@@ -75,7 +75,7 @@ public class PrestadorServicoSimplificadoControllerApiTest {
 				"879898", LocalDate.of(2020, 01, 28), 1, "1543652548", "1543652548", "batriz@gmail.com", "1543652548",
 				"Rua Sao Paulo", 510, "Predio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa2);
 
-		PrestadorServicoDTO prestadorDTO = prestadorApi
+		PrestadorServicoSimplificadoDTO prestadorDTO = prestadorApi
 				.buscarPrestadorServicoPorId(prestadorApi.buscarTodosPrestadoresServico().get(0).getId());
 		assertEquals("256.103.800-90", prestadorDTO.getCpf());
 
@@ -96,7 +96,7 @@ public class PrestadorServicoSimplificadoControllerApiTest {
 				LocalDate.of(2020, 01, 28), 1, "1543652548", "1543652548", "batriz@gmail.com", "1543652548",
 				"Rua s�o Paulo", 510, "Predio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa2);
 
-		List<PrestadorServicoDTO> listaPrestadorDTO = prestadorApi.buscarTodosPrestadoresServico();
+		List<PrestadorServicoSimplificadoDTO> listaPrestadorDTO = prestadorApi.buscarTodosPrestadoresServico();
 		assertEquals(2, listaPrestadorDTO.size());
 	}
 
@@ -115,7 +115,7 @@ public class PrestadorServicoSimplificadoControllerApiTest {
 				LocalDate.of(2020, 01, 28), 1, "1543652548", "1543652548", "batriz@gmail.com", "1543652548",
 				"Rua s�o Paulo", 510, "Predio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa2);
 
-		List<PrestadorServicoDTO> listaPrestadorDTO = prestadorApi.buscarPrestadorServicoPorNome("Joao");
+		List<PrestadorServicoSimplificadoDTO> listaPrestadorDTO = prestadorApi.buscarPrestadorServicoPorNome("Joao");
 		assertEquals(2, listaPrestadorDTO.size());
 
 	}
