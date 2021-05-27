@@ -40,7 +40,7 @@ public class PrestadorServicoSimplificadoControllerApiTest {
 	static EmpresaDAO daoEmpresa = EmpresaDAO.getInstance(session);
 	static Endereco endereco;
 	static Contatos contatos;
-	static PrestadorServicoSimplificadoControllerApi prestadorApi;
+	static PrestadorServicoSimplificadoControllerAPI prestadorApi;
 	static PrestadorServicoDAO dao = PrestadorServicoDAO.getInstance(session);
 
 	@BeforeClass
@@ -49,7 +49,7 @@ public class PrestadorServicoSimplificadoControllerApiTest {
 		contatos = new Contatos("47985415263", "47987526341", "joaopires@gmail.com", "47985632144");
 		PrestadorServicoDAO.getInstance(DBConnection.getSession()).deleteAll();
 		empresa = new Empresa("Senior", LocalDate.now(), "05.975.585/0001-89", endereco, contatos);
-		prestadorApi = new PrestadorServicoSimplificadoControllerApi();
+		prestadorApi = new PrestadorServicoSimplificadoControllerAPI();
 		daoEmpresa.create(empresa);
 	}
 
@@ -75,7 +75,7 @@ public class PrestadorServicoSimplificadoControllerApiTest {
 				"Rua Sao Paulo", 510, "Predio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa2);
 
 		PrestadorServicoDTO prestadorDTO = prestadorApi
-				.buscarPrestadorServicoPorId(prestadorApi.buscarTodosPrestadorServico().get(0).getId());
+				.buscarPrestadorServicoPorId(prestadorApi.buscarTodosPrestadoresServico().get(0).getId());
 		assertEquals("256.103.800-90", prestadorDTO.getCpf());
 
 	}
@@ -95,7 +95,7 @@ public class PrestadorServicoSimplificadoControllerApiTest {
 				LocalDate.of(2020, 01, 28), 1, "1543652548", "1543652548", "batriz@gmail.com", "1543652548",
 				"Rua s�o Paulo", 510, "Predio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa2);
 
-		List<PrestadorServicoDTO> listaPrestadorDTO = prestadorApi.buscarTodosPrestadorServico();
+		List<PrestadorServicoDTO> listaPrestadorDTO = prestadorApi.buscarTodosPrestadoresServico();
 		assertEquals(2, listaPrestadorDTO.size());
 	}
 
@@ -142,7 +142,7 @@ public class PrestadorServicoSimplificadoControllerApiTest {
 				contatos2, LocalDate.of(2020, 01, 28), empresa2, 12);
 		PrestadorServico prestadorRetornado = prestadorApi.cadastrarPrestadorServico(prestador);
 		prestadorApi.deletePrestadorServico(prestadorRetornado.getId());
-		assertTrue(prestadorApi.buscarTodosPrestadorServico().isEmpty());
+		assertTrue(prestadorApi.buscarTodosPrestadoresServico().isEmpty());
 	}
 
 	@Test

@@ -18,7 +18,7 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DTO.PrestadorServicoDTO;
 import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
 
 /**
- * Classe PrestadorServicoSimplificadoControllerApi
+ * Classe PrestadorServicoSimplificadoControllerAPI
  * 
  * Classe disponibilizada para consulta dos dados de prestador de servico via API Rest.
  * Implementa os metodos do {@link PrestadorServicoController} e atributos
@@ -29,13 +29,13 @@ import br.com.proway.senior.godevcadastrogrupo1.persistence.DBConnection;
  *
  */
 @RestController 
-public class PrestadorServicoSimplificadoControllerApi {
+public class PrestadorServicoSimplificadoControllerAPI {
 
 	static Session session = DBConnection.getSession();
 	PrestadorServicoDAO daoPrestador = PrestadorServicoDAO.getInstance(session);
 
 	/**
-	 * Criar prestador de servico.
+	 * Cadastrar prestador de servico.
 	 * 
 	 * Metodo cria um registro de novo prestador de servico no banco de dados.
 	 * Recebe um objeto da {@link PrestadorServico} que sera criado.
@@ -101,10 +101,10 @@ public class PrestadorServicoSimplificadoControllerApi {
 	 * transforma em objetos DTO e manda para a view como lista.
 	 * 
 	 * @author Vitor Peres <b>vitor.peres@senior.com.br</b>
-	 * @return
+	 * @return listaPrestadorDTO
 	 */
 	@RequestMapping(value = "/prestadorsimplificado", method = RequestMethod.GET)
-	public @ResponseBody List<PrestadorServicoDTO> buscarTodosPrestadorServico() {
+	public @ResponseBody List<PrestadorServicoDTO> buscarTodosPrestadoresServico() {
 		List<PrestadorServicoDTO> listaPrestadorDTO = new ArrayList<PrestadorServicoDTO>();
 		for (PrestadorServico prestador : daoPrestador.getAll()) {
 			listaPrestadorDTO.add(new PrestadorServicoDTO(prestador));
@@ -119,8 +119,8 @@ public class PrestadorServicoSimplificadoControllerApi {
 	 * transforma em objetos DTO e manda para a view.
 	 * 
 	 * @author Vitor Peres <b>vitor.peres@senior.com.br</b>
-	 * @param String nome
-	 * @return List<nome>
+	 * @param String nome procurado
+	 * @return lista listaPrestadorDTO
 	 */
 	@RequestMapping(value = "/prestadorsimplificado/nome/{nome}", method = RequestMethod.GET)
 	public List<PrestadorServicoDTO> buscarPrestadorServicoPorNome(@PathVariable("nome") String nome) {
