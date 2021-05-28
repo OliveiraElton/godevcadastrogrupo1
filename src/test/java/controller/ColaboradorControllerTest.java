@@ -32,6 +32,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.Ide
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.TiposDependentes;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
+
 /**
  * Classe ColaboradorControllerTest.
  * 
@@ -54,59 +55,72 @@ public class ColaboradorControllerTest {
 	static LocalDate data = LocalDate.of(2002, 01, 28);
 	static TiposExames te = EnumExamesMedicos.TiposExames.ADMISSIONAL;
 	static TiposDependentes tipoDep = EnumDadosPessoais.TiposDependentes.CONJUGE;
-	
+
 	@Test
 	public void testCriarColaborador() throws Exception {
-		Colaborador colaboradorCriado = ColaboradorController.cadastrarColaborador("Rodrigo", "Moraes", "Nada consta", data, "Brasileira", "Blumenau", true, 
-				"Masculino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data, false, "88080888708", "rodrigo@gmail.com", "04040505050", 
-				"Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Florian�polis", "SC", "4521452015", "5421452103", "rodrigo@empresa.com.br", "1542413655", 
-				te, LocalDate.of(2020, 10, 5), true, "Caixa", "055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", 
-				true, "Feminino", ig, "09619039610", "mg14388606", tipoDep, true);
+		Colaborador colaboradorCriado = ColaboradorController.cadastrarColaborador("Rodrigo", "Moraes", "Nada consta",
+				data, "Brasileira", "Blumenau", true, "Masculino", ig, "09619039610", "mg14388606", 8, 8788881, false,
+				false, data, false, "88080888708", "rodrigo@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547",
+				"Centro", "Brasil", "Florian�polis", "SC", "4521452015", "5421452103", "rodrigo@empresa.com.br",
+				"1542413655", te, LocalDate.of(2020, 10, 5), true, "Caixa", "055", "438614625", "154", "Carlos",
+				"Santos", "Erika", data, "Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", "mg14388606",
+				tipoDep, true);
 		assertNotNull(colaboradorCriado);
 	}
 
 	@Test
 	public void testDeleteColabordor() throws Exception {
-		Colaborador colaboradorCriado = ColaboradorController.cadastrarColaborador("Carlos", "Moraes", "Nada consta", data, "Brasileira", "Blumenau", true, 
-				"Masculino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data, false, "88080888708", "carlos@gmail.com", "04040505050", 
-				"Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Florian�polis", "SC", "4521452015", "5421452103", "carlos@empresa.com.br", "1542413655", 
-				te, LocalDate.of(2020, 10, 5), true, "Caixa", "055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", 
-				true, "Feminino", ig, "09619039610", "mg14388606", tipoDep, true);
+		Colaborador colaboradorCriado = ColaboradorController.cadastrarColaborador("Carlos", "Moraes", "Nada consta",
+				data, "Brasileira", "Blumenau", true, "Masculino", ig, "09619039610", "mg14388606", 8, 8788881, false,
+				false, data, false, "88080888708", "carlos@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547",
+				"Centro", "Brasil", "Florian�polis", "SC", "4521452015", "5421452103", "carlos@empresa.com.br",
+				"1542413655", te, LocalDate.of(2020, 10, 5), true, "Caixa", "055", "438614625", "154", "Carlos",
+				"Santos", "Erika", data, "Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", "mg14388606",
+				tipoDep, true);
 		ColaboradorController.deletarColaborador(dao.buscarPorId(Colaborador.class, colaboradorCriado.getId()));
 		assertNull(dao.buscarPorId(Colaborador.class, colaboradorCriado.getId()));
 	}
 
 	@Test
 	public void testAtualizarColaborador() throws Exception {
-		Colaborador colaboradorCriado = ColaboradorController.cadastrarColaborador("Camila", "Moraes", "Nada consta", data,
-				"Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data,
-				false, "88080888708", "camila@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
-				"4521452015", "5421452103", "camila@empresa.com.br", "1542413655", te, LocalDate.of(2020, 10, 5), true, "Caixa",
-				"055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", 
-				"mg14388606", tipoDep, true);
+		Colaborador colaboradorCriado = ColaboradorController.cadastrarColaborador("Camila", "Moraes", "Nada consta",
+				data, "Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false,
+				false, data, false, "88080888708", "camila@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547",
+				"Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103", "camila@empresa.com.br", "1542413655",
+				te, LocalDate.of(2020, 10, 5), true, "Caixa", "055", "438614625", "154", "Carlos", "Santos", "Erika",
+				data, "Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", "mg14388606", tipoDep, true);
+
 		session.clear();
 		Integer id = colaboradorCriado.getId();
-		ColaboradorController.atualizarColaborador(id, "Camila", "Moraes", "Nada consta", data, "Brasileira", "Blumenau", true, "Feminino", ig, 
-				"09619039610", "mg14388606", 8, 8788881, false, false, data, false, "88080888708", "camila@gmail.com", "04040505050", "Rua XV", 17, 
-				"Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103", "joana@empresa.com.br", "1542413655", te, 
-				LocalDate.of(2020, 10, 5), true, "Caixa", "055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", 
-				true, "Feminino", ig, "09619039610", "mg14388606", tipoDep, true);
-		assertEquals("Camila", dao.buscarPorId(Colaborador.class,id).getNome());
-		assertEquals("Rua XV", dao.buscarPorId(Colaborador.class,id).getEndereco().getLogradouro());
+
+		ColaboradorController.atualizarColaborador(id, "Camila", "Moraes", "Nada consta", data, "Brasileira",
+				"Blumenau", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data, false,
+				"88080888708", "camila@gmail.com", "04040505050", "Rua XV", 17, "Casa", "54126547", "Centro", "Brasil",
+				"Blumenau", "SC", "4521452015", "5421452103", "joana@empresa.com.br", "1542413655", te,
+				LocalDate.of(2020, 10, 5), true, "Caixa", "055", "438614625", "154", "Carlos", "Santos", "Erika", data,
+				"Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", "mg14388606", tipoDep, true);
+
+		assertEquals("Camila", dao.buscarPorId(Colaborador.class, id).getNome());
+		assertEquals("Rua XV", dao.buscarPorId(Colaborador.class, id).getEndereco().getLogradouro());
 		assertEquals((Integer) 17, dao.buscarPorId(Colaborador.class, id).getEndereco().getNumero());
 	}
 
 	@Test
 	public void testBuscarColaboradorPorId() throws Exception {
 		Conta conta = new Conta("Santander", "0850", "0084044", "0");
+
 		Endereco endereco = new Endereco("Rua 10", 15, "Casa", "54215365", "Centro", "Brasil", "Blumemau", "SC");
+
 		Contatos contatos = new Contatos("4521456985", "4521456985", "teste@teste.com", "4521456985");
+
 		ExameMedico exameMedico = new ExameMedico(te, LocalDate.of(2020, 10, 5), true);
-		Dependente dependente = new Dependente("Jenifer", "Fonseca", "Jenifer", data, "Brasileira",
-				"Blumenau", true, null, null, endereco, "09619039610", null, tipoDep, true);
-		Colaborador colaborador = new Colaborador("Lucas", "Nunes", "Nada consta", data, "Brasileira", "Blumenau", false,
-				"Masculino", ig, endereco, "21164028324", "45124563", contatos, 1235, 154897987, false, false, data, false,
-				"0780848080", "lucas.nunes@gmail.com", "554555", conta, exameMedico, dependente);
+
+		Dependente dependente = new Dependente("Jenifer", "Fonseca", data, "Brasileira", true, null, null,
+				"09619039610", tipoDep, true);
+
+		Colaborador colaborador = new Colaborador("Lucas", "Nunes", "Nada consta", data, "Brasileira", "Blumenau",
+				false, "Masculino", ig, endereco, "21164028324", "45124563", contatos, 1235, 154897987, false, false,
+				data, false, "0780848080", "lucas.nunes@gmail.com", "554555", conta, exameMedico, dependente);
 		dao.cadastrar(colaborador);
 		assertEquals(colaborador, ColaboradorController.buscarColaboradorPorId(colaborador.getId()));
 
@@ -115,37 +129,39 @@ public class ColaboradorControllerTest {
 	@Test
 	public void testBuscarTodosColaborador() throws Exception {
 		Integer valorAntes = ColaboradorController.buscarTodosColaboradores().size();
-		ColaboradorController.cadastrarColaborador("Carlos", "Moraes", "Nada consta", data, "Brasileira", "Blumenau", true, "Masculino", ig, "09619039610", 
-				"mg14388606", 8, 8788881, false, false, data, false, "88080888708", "carlos@gmail.com", "04040505050", "Rua 1", 9, "Casa", 
-				"54126547", "Centro", "Brasil", "Florian�polis", "SC", "4521452015", "5421452103", "carlos@empresa.com.br", "1542413655", te, 
-				LocalDate.of(2020, 10, 5), true, "Caixa", "055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", 
-				true, "Feminino", ig, "09619039610", "mg14388606", tipoDep, true);
+
+		ColaboradorController.cadastrarColaborador("Carlos", "Moraes", "Nada consta", data, "Brasileira", "Blumenau",
+				true, "Masculino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data, false,
+				"88080888708", "carlos@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil",
+				"Florian�polis", "SC", "4521452015", "5421452103", "carlos@empresa.com.br", "1542413655", te,
+				LocalDate.of(2020, 10, 5), true, "Caixa", "055", "438614625", "154", "Carlos", "Santos", "Erika", data,
+				"Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", "mg14388606", tipoDep, true);
+
 		assertEquals(valorAntes + 1, ColaboradorController.buscarTodosColaboradores().size());
 	}
 
 	@Test
 	public void testAdicionarNovoDependente() throws Exception {
 		Colaborador colaborador = ColaboradorController.cadastrarColaborador("Camila", "Moraes", "Nada consta", data,
-				"Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data,
-				false, "88080888708", "camila@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
-				"4521452015", "5421452103", "camila@empresa.com.br", "1542413655", te, LocalDate.of(2020, 10, 5), true, "Caixa",
-				"055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", 
-				"mg14388606", tipoDep, true);
-		ColaboradorController.adicionarDependente(colaborador, "David", "Hilderbrant", "Nada consta", null, "Brasileira",
-				"Blumenau", true, "Rua 1", null, "123.587.893-50", "Mg-14.388.606",
-				EnumDadosPessoais.TiposDependentes.PAI, false, "Rua 15", 666, "Casa", "89032180",
-				"Garcia", "Brasil", "Brusque", "SC");
+				"Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false,
+				data, false, "88080888708", "camila@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro",
+				"Brasil", "Blumenau", "SC", "4521452015", "5421452103", "camila@empresa.com.br", "1542413655", te,
+				LocalDate.of(2020, 10, 5), true, "Caixa", "055", "438614625", "154", "Carlos", "Santos", "Erika", data,
+				"Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", "mg14388606", tipoDep, true);
+
+		ColaboradorController.adicionarDependente(colaborador, "David", "Hilderbrant", null, "Brasileira", true,
+				"Rua 1", null, "123.587.893-50", EnumDadosPessoais.TiposDependentes.PAI, false);
 		assertEquals(2, colaborador.getDependente().size());
 	}
 
 	@Test
 	public void testAdicionarNovoExameMedico() throws Exception {
 		Colaborador colaborador = ColaboradorController.cadastrarColaborador("Maria", "Santos", "Nada consta", data,
-				"Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data,
-				false, "88080888708", "maria@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
-				"4521452015", "5421452103", "maria@empresa.com.br", "1542413655", te, LocalDate.of(2020, 10, 5), true, "Caixa",
-				"055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", 
-				"mg14388606", tipoDep, true);
+				"Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false,
+				data, false, "88080888708", "maria@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro",
+				"Brasil", "Blumenau", "SC", "4521452015", "5421452103", "maria@empresa.com.br", "1542413655", te,
+				LocalDate.of(2020, 10, 5), true, "Caixa", "055", "438614625", "154", "Carlos", "Santos", "Erika", data,
+				"Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", "mg14388606", tipoDep, true);
 		TiposExames te2 = EnumExamesMedicos.TiposExames.PERIODICO;
 		ColaboradorController.adicionarExameMedico(colaborador, te2, data, true);
 		assertEquals(2, colaborador.getExameMedico().size());
@@ -154,31 +170,33 @@ public class ColaboradorControllerTest {
 
 	@Test
 	public void testBuscarPorNome() throws Exception {
-		ColaboradorController.cadastrarColaborador("Joana", "Marla", "Nada consta", data,
-				"Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data,
-				false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
-				"4521452015", "5421452103", "joana@empresa.com.br", "1542413655", te, LocalDate.of(2021, 10, 5), true, "Caixa",
-				"055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", true,
-				"Feminino", ig, "09619039610", "mg14388606", tipoDep, true);
-		ColaboradorController.cadastrarColaborador("Joana", "Pereira", "Nada consta", data,
-				"Brasileira", "Blumenau", true, "Feminino", ig, "7878888878", "mg14388606", 8, 8788881, false, false, data,
-				false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
-				"4521452015", "5421452103", "joana@empresa.com.br", "1542413655", te, LocalDate.of(2021, 10, 5), true, "BB",
-				"055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", true,
+		ColaboradorController.cadastrarColaborador("Joana", "Marla", "Nada consta", data, "Brasileira", "Blumenau",
+				true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data, false, "88080888708",
+				"joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
+				"4521452015", "5421452103", "joana@empresa.com.br", "1542413655", te, LocalDate.of(2021, 10, 5), true,
+				"Caixa", "055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", true,
 				"Feminino", ig, "09619039610", "mg14388606", tipoDep, true);
 		
-		ArrayList<Colaborador> listaRetorno = (ArrayList<Colaborador>) ColaboradorController.buscarColaboradorPorNome("Joana");
+		ColaboradorController.cadastrarColaborador("Joana", "Pereira", "Nada consta", data, "Brasileira", "Blumenau",
+				true, "Feminino", ig, "7878888878", "mg14388606", 8, 8788881, false, false, data, false, "88080888708",
+				"joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
+				"4521452015", "5421452103", "joana@empresa.com.br", "1542413655", te, LocalDate.of(2021, 10, 5), true,
+				"BB", "055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", true,
+				"Feminino", ig, "09619039610", "mg14388606", tipoDep, true);
+
+		ArrayList<Colaborador> listaRetorno = (ArrayList<Colaborador>) ColaboradorController
+				.buscarColaboradorPorNome("Joana");
 		assertEquals(2, listaRetorno.size());
-		
+
 	}
-	
+
 	@Test
 	public void testConstrutor() {
 		ColaboradorController controller = new ColaboradorController();
 		assertNotNull(controller);
-		
+
 	}
-	
+
 	@Before
 	public void limparTabelas() {
 		dao.deletarTodos("colaborador");

@@ -49,10 +49,8 @@ public class DependenteControllerTest {
 
 	@Test
 	public void testCriarDependente() {
-		Dependente dependente = DependenteController.cadastrarDependente("Jorge", "Martins", "Jessica", data, "Brasileira",
-				"Blumenau", true, "Masculino", IdentidadeGenero.TRANS, "256.103.800-90", "mg14388606",
-				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das Oliveiras", 32, "casa", "89032640",
-				"Passo Manso", "Brasil", "Blumenau", "SC");
+		Dependente dependente = DependenteController.cadastrarDependente("Jorge", "Martins", data, "Brasileira", true,
+				"Masculino", IdentidadeGenero.TRANS, "256.103.800-90", EnumDadosPessoais.TiposDependentes.FILHO, true);
 		assertNotNull(dependente);
 		assertEquals(dependente, controller.buscarDependentePorId(dependente.getId()));
 	}
@@ -60,9 +58,9 @@ public class DependenteControllerTest {
 	@Test
 	public void testDeleteDependente() {
 		Endereco endereco = new Endereco("Rua 1", 10, "Casa", "54215365", "Centro", "Brasil", "Blumenau", "SC");
-		Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Venezuelano", "Cidade del Leste",
-				false, "Masculino", IdentidadeGenero.TRANS, endereco, "09619039610", "",
-				EnumDadosPessoais.TiposDependentes.FILHO, true);
+		Dependente dependente = new Dependente("Joao", "Fonseca", data, "Venezuelano", false, "Masculino",
+				IdentidadeGenero.TRANS, "09619039610", EnumDadosPessoais.TiposDependentes.FILHO, true);
+
 		dao.cadastrar(dependente);
 		int quantidadeAnterior = controller.buscarTodosDependentes().size();
 		session.clear();
@@ -72,26 +70,20 @@ public class DependenteControllerTest {
 
 	@Test
 	public void testAtualizarDependente() {
-		Dependente dependente = DependenteController.cadastrarDependente("Jorge", "Martins", "Jessica", data, "Brasileiro",
-				"Cascavel", true, "Masculino", IdentidadeGenero.TRANS, "256.103.800-90", "mg14388606",
-				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das oliveiras", 32, "casa", "89032640",
-				"Passo Manso", "Brasil", "Blumenau", "SC");
+		Dependente dependente = DependenteController.cadastrarDependente("Jorge", "Martins", data, "Brasileiro", true,
+				"Masculino", IdentidadeGenero.TRANS, "256.103.800-90", EnumDadosPessoais.TiposDependentes.FILHO, true);
 		dao.cadastrar(dependente);
 		session.clear();
-		DependenteController.atualizarDependente(dependente.getId(), "Bruno", "Souza", "Nada consta", data, "Brasileira",
-				"Brusque", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "mg14388606",
-				EnumDadosPessoais.TiposDependentes.CONJUGE, true, "Rua das Oliveiras", 32, "casa", "89032640",
-				"Passo Manso", "Brasil", "Blumenau", "SC");
-		List<Dependente> dependentes =  controller.buscarTodosDependentes();
+		DependenteController.atualizarDependente(dependente.getId(), "Bruno", "Souza", data, "Brasileira", true,
+				"Masculino", IdentidadeGenero.CIS, "256.103.800-90", EnumDadosPessoais.TiposDependentes.CONJUGE, true);
+		List<Dependente> dependentes = controller.buscarTodosDependentes();
 		assertEquals("Bruno", dependentes.get(dependentes.size() - 1).getNome());
 	}
 
 	@Test
 	public void testBuscarDependentePorId() {
-		Endereco endereco = new Endereco("Rua 1", 10, "Casa", "54215365", "Centro", "Brasil", "Blumenau", "SC");
-		Dependente dependente = new Dependente("Joao", "Fonseca", "Nada consta", data, "Venezuelano",
-				"Cidade del Leste", true, "Masculino", IdentidadeGenero.CIS, endereco, "09619039610", "480808408",
-				EnumDadosPessoais.TiposDependentes.CONJUGE, true);
+		Dependente dependente = new Dependente("Joao", "Fonseca", data, "Venezuelano", true, "Masculino",
+				IdentidadeGenero.CIS, "09619039610", EnumDadosPessoais.TiposDependentes.CONJUGE, true);
 		dao.cadastrar(dependente);
 		assertEquals(dependente, DependenteController.buscarDependentePorId(dependente.getId()));
 	}
@@ -99,11 +91,12 @@ public class DependenteControllerTest {
 	@Test
 	public void testBuscarDependentePorIdColaborador() throws Exception {
 		Endereco endereco = new Endereco("Rua 1", 10, "Casa", "54215365", "Centro", "Brasil", "Blumenau", "SC");
-		Dependente dependente = new Dependente("Carla", "Fonseca", "Carla", data, "Venezuelano", "Cidade del Leste",
-				true, "Feminino", IdentidadeGenero.CIS, endereco, "09619039610", "480808408",
-				EnumDadosPessoais.TiposDependentes.CONJUGE, true);
+		Dependente dependente = new Dependente("Carla", "Fonseca", data, "Venezuelano", true, "Feminino",
+				IdentidadeGenero.CIS, "09619039610", EnumDadosPessoais.TiposDependentes.CONJUGE, true);
+		
 		Conta conta = new Conta("Caixa", "0505", "0808080", "0");
 		String email = "teste@gmail.com";
+		
 		Contatos contatos = new Contatos("47984556633", "4789568948", email, "4798989898");
 		ExameMedico exameMedico = new ExameMedico(TiposExames.PERIODICO, LocalDate.now(), true);
 		Colaborador colaborador = new Colaborador("Lucas", "Nunes", "Nada consta", data, "Brasileiro", "Blumenau",
@@ -117,27 +110,26 @@ public class DependenteControllerTest {
 
 	@Test
 	public void testBuscarTodosDependentes() {
-		Dependente dependente = DependenteController.cadastrarDependente("Jessia", "Martins", "Jessica", data, "Brasileiro",
-				"Camboriu", true, "Feminino", IdentidadeGenero.CIS, "256.103.800-90", "mg14388606",
-				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das Oliveiras", 32, "casa", "89032640",
-				"Passo Manso", "Brasil", "Blumenau", "SC");
+		Dependente dependente = DependenteController.cadastrarDependente("Jessia", "Martins", data,
+				"Brasileiro", true, "Feminino", IdentidadeGenero.CIS, "256.103.800-90",
+				EnumDadosPessoais.TiposDependentes.FILHO, true);
 		assertEquals(1, DependenteController.buscarTodosDependentes().size());
 	}
 
 	@Test
 	public void testBuscarTodosDependentesPorNome() {
-		Dependente dependente1 = DependenteController.cadastrarDependente("Jorge", "Martins", "Nada consta", data, "Brasileira",
-				"Camboriu", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "mg14388606",
-				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das oliveiras", 32, "casa", "89032640",
-				"Passo Manso", "Brasil", "Blumenau", "SC");
-		Dependente dependente2 = DependenteController.cadastrarDependente("Carlos", "Martins", "Nada consta", data, "Brasileira",
-				"Camboriu", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "mg14388606",
-				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das oliveiras", 32, "casa", "89032640",
-				"Passo Manso", "Brasil", "Blumenau", "SC");
-		Dependente dependente3 = DependenteController.cadastrarDependente("Carlos", "Martins", "Nada consta", data, "Brasileira",
-				"Camboriu", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "mg14388606",
-				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das Oliveiras", 32, "casa", "89032640",
-				"Passo Manso", "Brasil", "Blumenau", "SC");
+		Dependente dependente1 = DependenteController.cadastrarDependente("Jorge", "Martins", data,
+				"Brasileira", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90",
+				EnumDadosPessoais.TiposDependentes.FILHO, true);
+		
+		Dependente dependente2 = DependenteController.cadastrarDependente("Carlos", "Martins", data,
+				"Brasileira", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90",
+				EnumDadosPessoais.TiposDependentes.FILHO, true);
+		
+		Dependente dependente3 = DependenteController.cadastrarDependente("Carlos", "Martins", data,
+				"Brasileira", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90",
+				EnumDadosPessoais.TiposDependentes.FILHO, true);
+		
 		assertEquals(2, DependenteController.buscarDependentePorNome(dependente2.getNome()).size());
 	}
 
