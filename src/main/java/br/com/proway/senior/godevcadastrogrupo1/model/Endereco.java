@@ -32,13 +32,13 @@ public class Endereco {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	private String logradouro;
-	private Integer numero;
-	private String complemento;
 	private String cep;
+	private String logradouro;
+	private String complemento;
 	private String bairro;
-	private String pais;
 	private String cidade;
+	private Integer numero;
+	private String pais;
 	private String uf;
 	
 	public Endereco() {

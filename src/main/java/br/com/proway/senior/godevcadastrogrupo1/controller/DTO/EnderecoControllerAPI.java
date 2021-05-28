@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.proway.senior.godevcadastrogrupo1.model.CepService;
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
@@ -32,6 +36,9 @@ public class EnderecoControllerAPI{
 
 	static Session session = BDConexao.getSessao();
 	EnderecoDAO enderecoDao = EnderecoDAO.getInstance(session);
+	
+	@Autowired
+	private CepService cepService;
 	
 	/**
 	 * Metodo que busca endereco atraves do colaborador.
@@ -83,6 +90,12 @@ public class EnderecoControllerAPI{
 		}
 		return listaEnderecoDTO;
 	}
+	
+	@GetMapping("/{cep}")
+    public ResponseEntity<Endereco> getCep(@PathVariable String cep) {
+        Endereco endereco = cepService.buscarEnderecoPorCep(cep);
+        return endereco != null ? ResponseEntity.ok().body(endereco) : ResponseEntity.notFound().build(); 
+    }
 
 }
 
