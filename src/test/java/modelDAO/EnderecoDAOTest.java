@@ -76,13 +76,13 @@ public class EnderecoDAOTest {
 	@Test
 	public void testDeleteAll() {
 		EnderecoDAO dao = EnderecoDAO.getInstance(session);
-		dao.deletarTodos("empresa");
+		dao.deletarTodos("endereco");
 		assertFalse(dao.buscarTodos(Endereco.class).size() > 0);
 	}
 	
 	@Before
 	public void limparTabelas() {
-		dao.deletarTodos("empresa");
+		dao.deletarTodos("endereco");
 	}
 	
 }
