@@ -54,6 +54,6 @@ public class ValidacaoDocumentosTest {
 	
 	@Test
 	public void testNovoCNPJ() {
-		System.out.println(ValidacaoDocumentos.validarCnpj2("97.366.213/0001-72"));
+		System.out.println(ValidacaoDocumentos.validarCnpj2("29.945.724/0001-90"));
 	}
 }
