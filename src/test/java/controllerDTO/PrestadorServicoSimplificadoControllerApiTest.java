@@ -67,7 +67,7 @@ public class PrestadorServicoSimplificadoControllerApiTest {
 		PrestadoresServicoController.cadastrarPrestadorServico("Joao", "Massa", "Jhon", LocalDate.now(), "Brasil",
 				"Sao Paulo", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "84454",
 				LocalDate.of(2020, 01, 28), 1, "1543652548", "1543652548", "beatriz@gmail.com", "1543652548",
-				"Rua Sao Paulo", 510, "Predio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
+				empresa);
 
 		PrestadoresServicoController.cadastrarPrestadorServico("Joao", "Fulana", "Jhon",
 

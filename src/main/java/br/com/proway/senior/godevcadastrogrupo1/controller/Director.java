@@ -2,7 +2,10 @@ package br.com.proway.senior.godevcadastrogrupo1.controller;
 
 import java.time.LocalDate;
 
+import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
+import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
+import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.TiposDependentes;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
@@ -18,6 +21,30 @@ import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.Tip
  */
 public class Director {
 
+	/**
+	 * Pessoa completa, utilizado para {@link Colaborador}.
+	 * 
+	 * @param builder
+	 * @param nome
+	 * @param sobrenome
+	 * @param nomeSocial
+	 * @param dataDeNascimento
+	 * @param nacionalidade
+	 * @param naturalidade
+	 * @param pcd
+	 * @param genero
+	 * @param identidadeGenero
+	 * @param cpf
+	 * @param rg
+	 * @param logradouro
+	 * @param numero
+	 * @param complemento
+	 * @param cep
+	 * @param bairro
+	 * @param pais
+	 * @param cidade
+	 * @param uf
+	 */
 	private static void criarPessoa(Builder builder, String nome, String sobrenome, String nomeSocial,
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd, String genero,
 			IdentidadeGenero identidadeGenero, String cpf, String rg, String logradouro, Integer numero,
@@ -35,7 +62,52 @@ public class Director {
 		builder.setCpf(cpf);
 		builder.setRg(rg);
 	}
+	
+	/**
+	 * Pessoa sem dados de endereco, utilizado para {@link PrestadorServico}.
+	 * 
+	 * @param builder
+	 * @param nome
+	 * @param sobrenome
+	 * @param nomeSocial
+	 * @param dataDeNascimento
+	 * @param nacionalidade
+	 * @param naturalidade
+	 * @param pcd
+	 * @param genero
+	 * @param identidadeGenero
+	 * @param cpf
+	 * @param rg
+	 */
+	private static void criarPessoa(Builder builder, String nome, String sobrenome, String nomeSocial,
+			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd, String genero,
+			IdentidadeGenero identidadeGenero, String cpf, String rg) {
+		builder.setNome(nome);
+		builder.setSobrenome(sobrenome);
+		builder.setNomeSocial(nomeSocial);
+		builder.setDataDeNascimento(dataDeNascimento);
+		builder.setNacionalidade(nacionalidade);
+		builder.setNaturalidade(naturalidade);
+		builder.setPcd(pcd);
+		builder.setGenero(genero);
+		builder.setIdentidadeGenero(identidadeGenero);
+		builder.setCpf(cpf);
+		builder.setRg(rg);
+	}
 
+	/**
+	 * Pessoa simplificado, utilizada para {@link Dependente}.
+	 * 
+	 * @param builder
+	 * @param nome
+	 * @param sobrenome
+	 * @param dataDeNascimento
+	 * @param nacionalidade
+	 * @param pcd
+	 * @param genero
+	 * @param identidadeGenero
+	 * @param cpf
+	 */
 	private static void criarPessoa(Builder builder, String nome, String sobrenome, LocalDate dataDeNascimento,
 			String nacionalidade, boolean pcd, String genero, IdentidadeGenero identidadeGenero, String cpf) {
 		builder.setNome(nome);
@@ -168,14 +240,6 @@ public class Director {
 	 * @param telefoneSecundario
 	 * @param email
 	 * @param telefoneFamiliar
-	 * @param logradouro
-	 * @param numero
-	 * @param complemento
-	 * @param cep
-	 * @param bairro
-	 * @param pais
-	 * @param cidade
-	 * @param uf
 	 * @param nomeEmpresa
 	 * @param cnpj
 	 * @throws Exception
@@ -184,10 +248,9 @@ public class Director {
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd, String genero,
 			IdentidadeGenero identidadeGenero, String cpf, String rg, LocalDate dataInicioContrato, Integer idSetor,
 			String telefonePrincipal, String telefoneSecundario, String email, String telefoneFamiliar,
-			String logradouro, Integer numero, String complemento, String cep, String bairro, String pais,
-			String cidade, String uf, Empresa empresa) throws Exception {
+			Empresa empresa) throws Exception {
 		criarPessoa(builder, nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
-				identidadeGenero, cpf, rg, logradouro, numero, complemento, cep, bairro, pais, cidade, uf);
+				identidadeGenero, cpf, rg);
 		builder.setContatos(telefonePrincipal, telefoneSecundario, email, telefoneFamiliar);
 		builder.setEmpresa(empresa);
 		builder.setIdSetor(idSetor);

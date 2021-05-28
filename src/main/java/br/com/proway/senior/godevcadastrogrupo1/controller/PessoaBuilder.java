@@ -22,6 +22,7 @@ import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.TiposDependentes;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
+
 /**
  * Classe PessoaBuilder.
  * 
@@ -180,8 +181,8 @@ public class PessoaBuilder implements Builder {
 	public void setContatos(String telefonePrincipal, String telefoneSecundario, String email,
 
 			String telefoneFamiliar) throws Exception {
-			this.contatos = new Contatos(telefonePrincipal, telefoneSecundario, email, telefoneFamiliar);
-		
+		this.contatos = new Contatos(telefonePrincipal, telefoneSecundario, email, telefoneFamiliar);
+
 		ContatosDAO.getInstance(session).cadastrar(this.contatos);
 	}
 
@@ -190,18 +191,18 @@ public class PessoaBuilder implements Builder {
 		ExameMedicoDAO.getInstance(session).cadastrar(exameMedico);
 	}
 
-	public void setDependente(String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
-			String nacionalidade, String naturalidade, Boolean pcd, String genero, IdentidadeGenero identidadeGenero,
-			String cpf, String rg, TiposDependentes tipoDependente, Boolean optanteIR) {
-		this.dependente = new Dependente(nome, sobrenome, dataDeNascimento, nacionalidade,
-				pcd, genero, identidadeGenero, cpf, tipoDependente, optanteIR);
+	public void setDependente(String nome, String sobrenome, LocalDate dataDeNascimento, String nacionalidade,
+			Boolean pcd, String genero, IdentidadeGenero identidadeGenero, String cpf, TiposDependentes tipoDependente,
+			Boolean optanteIR) {
+		this.dependente = new Dependente(nome, sobrenome, dataDeNascimento, nacionalidade, pcd, genero,
+				identidadeGenero, cpf, tipoDependente, optanteIR);
 		DependenteDAO.getInstance(session).cadastrar(this.dependente);
 	}
 
 	public Pessoa build() {
 		if (tipoDependente != null) {
-			return new Dependente(nome, sobrenome,dataDeNascimento, nacionalidade, pcd, genero,
-					identidadeGenero,cpf, tipoDependente, optanteIR);
+			return new Dependente(nome, sobrenome, dataDeNascimento, nacionalidade, pcd, genero, identidadeGenero, cpf,
+					tipoDependente, optanteIR);
 		} else if (empresa != null) {
 			return new PrestadorServico(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd,
 					genero, identidadeGenero, cpf, rg, contatos, dataInicioContrato, empresa, idSetor);

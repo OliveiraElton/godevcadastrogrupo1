@@ -28,7 +28,7 @@ public class EnderecoControllerApiTest {
 	static LocalDate data;
 	static TiposExames te;
 	static TiposDependentes td;
-	
+
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		enderecoApi = new EnderecoControllerAPI();
@@ -38,7 +38,7 @@ public class EnderecoControllerApiTest {
 		td = EnumDadosPessoais.TiposDependentes.CONJUGE;
 		EnderecoDAO dao = EnderecoDAO.getInstance(BDConexao.getSessao());
 	}
-	
+
 	@Before
 	public void limparTabela() {
 		EnderecoDAO.getInstance(BDConexao.getSessao()).deletarTodos("endereco");
@@ -48,11 +48,11 @@ public class EnderecoControllerApiTest {
 	public void testBuscarEnderecoDoColaborador() throws Exception {
 		Colaborador c = ColaboradorController.cadastrarColaborador("Brian", "Santos", "Erika", data, "Venezuelano",
 				"Blumenauense", true, null, ig, "09619039610", "mg14388606", 8, null, false, false, data, false, null,
-				"brian@gmail.com", null, null, null, null, "54126547", "Teste Endereco", "Teste Endereco", "Teste Endereco", "Teste Endereco", "4521452015",
-				"5421452103", "brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00", "055",
-				"438614625", "154","joãozinho", "Santos","Erika", data, "Venezuelano",
-				"Blumenauense", true, null, ig, "09619039610", "mg14388606",td, true);
-		
+				"brian@gmail.com", null, null, null, null, "54126547", "Teste Endereco", "Teste Endereco",
+				"Teste Endereco", "Teste Endereco", "4521452015", "5421452103", "brian.santos@empresa.com.br",
+				"1542413655", te, null, true, "banco00", "055", "438614625", "154", "Joãozinho", "Santos",
+				data, "Venezuelano", true, null, ig, "09619039610", td, true);
+
 		EnderecoDTO enderecoDTO = enderecoApi.buscarEnderecoPorColaborador(c.getId());
 		assertEquals("Teste Endereco", enderecoDTO.getCidade());
 	}
@@ -61,32 +61,32 @@ public class EnderecoControllerApiTest {
 	public void testBuscarEnderecoPorId() throws Exception {
 		Colaborador c = ColaboradorController.cadastrarColaborador("Brian", "Santos", "Erika", data, "Venezuelano",
 				"Blumenauense", true, null, ig, "09619039610", "mg14388606", 8, null, false, false, data, false, null,
-				"brian@gmail.com", null, null, null, null, "54126547", "Teste Endereco", "Teste Endereco", "Teste Endereco", "Teste Endereco", "4521452015",
-				"5421452103", "brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00", "055",
-				"438614625", "154","joãozinho", "Santos","Erika", data, "Venezuelano",
-				"Blumenauense", true, null, ig, "09619039610", "mg14388606",td, true);
-		
+				"brian@gmail.com", null, null, null, null, "54126547", "Teste Endereco", "Teste Endereco",
+				"Teste Endereco", "Teste Endereco", "4521452015", "5421452103", "brian.santos@empresa.com.br",
+				"1542413655", te, null, true, "banco00", "055", "438614625", "154", "joãozinho", "Santos",
+				data, "Venezuelano", true, null, ig, "09619039610", td, true);
+
 		Endereco endereco = c.getEndereco();
 		EnderecoDTO enderecoDTO = enderecoApi.buscarEnderecoPorId(endereco.getId());
 		assertEquals("Teste Endereco", enderecoDTO.getCidade());
 	}
-	
+
 	@Test
 	public void testBuscarTodosEnderecos() throws Exception {
-		Colaborador colaborador = ColaboradorController.cadastrarColaborador("Brian", "Santos", "Erika", data, "Venezuelano",
-				"Blumenauense", true, null, ig, "09619039610", "mg14388606", 8, null, false, false, data, false, null,
-				"brian@gmail.com", null, null, null, null, "54126547", "Teste Endereco", "Teste Endereco", "Teste Endereco", "Teste Endereco", "4521452015",
-				"5421452103", "brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00", "055",
-				"438614625", "154","joãozinho", "Santos","Erika", data, "Venezuelano",
-				"Blumenauense", true, null, ig, "09619039610", "mg14388606",td, true);
-		
-		Colaborador colaborador2 = ColaboradorController.cadastrarColaborador("Brian", "Santos", "Erika", data, "Venezuelano",
-				"Blumenauense", true, null, ig, "09619039610", "mg14388606", 8, null, false, false, data, false, null,
-				"brian@gmail.com", null, null, null, null, "54126547", "Teste Endereco", "Teste Endereco", "Teste Endereco", "Teste Endereco", "4521452015",
-				"5421452103", "brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00", "055",
-				"438614625", "154","joãozinho", "Santos","Erika", data, "Venezuelano",
-				"Blumenauense", true, null, ig, "09619039610", "mg14388606",td, true);
+		Colaborador colaborador = ColaboradorController.cadastrarColaborador("Brian", "Santos", "Erika", data,
+				"Venezuelano", "Blumenauense", true, null, ig, "09619039610", "mg14388606", 8, null, false, false, data,
+				false, null, "brian@gmail.com", null, null, null, null, "54126547", "Teste Endereco", "Teste Endereco",
+				"Teste Endereco", "Teste Endereco", "4521452015", "5421452103", "brian.santos@empresa.com.br",
+				"1542413655", te, null, true, "banco00", "055", "438614625", "154", "Joãozinho", "Santos",
+				data, "Venezuelano", true, null, ig, "09619039610", td, true);
+
+		Colaborador colaborador2 = ColaboradorController.cadastrarColaborador("Brian", "Santos", "Erika", data,
+				"Venezuelano", "Blumenauense", true, null, ig, "09619039610", "mg14388606", 8, null, false, false, data,
+				false, null, "brian@gmail.com", null, null, null, null, "54126547", "Teste Endereco", "Teste Endereco",
+				"Teste Endereco", "Teste Endereco", "4521452015", "5421452103", "brian.santos@empresa.com.br",
+				"1542413655", te, null, true, "banco00", "055", "438614625", "154", "Joãozinho", "Santos",
+				data, "Venezuelano", true, null, ig, "09619039610", td, true);
 		assertEquals(2, enderecoApi.buscarTodosEnderecos().size());
-	
+
 	}
 }

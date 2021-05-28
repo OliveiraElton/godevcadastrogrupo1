@@ -54,14 +54,6 @@ public class PrestadoresServicoController {
 	 * @param telefoneSecundario
 	 * @param email
 	 * @param telefoneFamiliar
-	 * @param logradouro
-	 * @param numero
-	 * @param complemento
-	 * @param cep
-	 * @param bairro
-	 * @param pais
-	 * @param cidade
-	 * @param uf
 	 * @return o objeto do registro salvo no banco de dados.
 	 * @throws Exception 
 	 */
@@ -69,15 +61,13 @@ public class PrestadoresServicoController {
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd, String genero,
 			IdentidadeGenero identidadeGenero, String cpf, String rg,
 			LocalDate dataInicioContrato, Integer idSetor, String telefonePrincipal,
-			String telefoneSecundario, String email, String telefoneFamiliar, String logradouro, Integer numero,
-			String complemento, String cep, String bairro, String pais, String cidade, String uf, Empresa empresa) throws Exception {
+			String telefoneSecundario, String email, String telefoneFamiliar, Empresa empresa) throws Exception {
 		PessoaBuilder builder = new PessoaBuilder();
 		Director.cadastrarPrestadorServico(builder, nome, sobrenome, nomeSocial,
 				dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
 				identidadeGenero, cpf, rg,
 				dataInicioContrato, idSetor, telefonePrincipal,
-				telefoneSecundario, email, telefoneFamiliar, logradouro, numero,
-				complemento, cep, bairro, pais, cidade, uf, empresa);
+				telefoneSecundario, email, telefoneFamiliar, empresa);
 		PrestadorServico prestadorServico = (PrestadorServico) builder.build();
 		return daoPrestadorServico.cadastrar(prestadorServico);
 	}
@@ -121,14 +111,6 @@ public class PrestadoresServicoController {
 	 * @param telefoneSecundario
 	 * @param email
 	 * @param telefoneFamiliar
-	 * @param logradouro
-	 * @param numero
-	 * @param complemento
-	 * @param cep
-	 * @param bairro
-	 * @param pais
-	 * @param cidade
-	 * @param uf
 	 * @return o objeto do Prestador de Servico atualizado.
 	 * @throws Exception 
 	 * 
@@ -137,15 +119,13 @@ public class PrestadoresServicoController {
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd, String genero,
 			IdentidadeGenero identidadeGenero, String cpf, String rg,
 			LocalDate dataInicioContrato, Integer idSetor, String telefonePrincipal,
-			String telefoneSecundario, String email, String telefoneFamiliar, String logradouro, Integer numero,
-			String complemento, String cep, String bairro, String pais, String cidade, String uf, Empresa empresa) throws Exception {
+			String telefoneSecundario, String email, String telefoneFamiliar, Empresa empresa) throws Exception {
 		PessoaBuilder builder = new PessoaBuilder();
 		Director.cadastrarPrestadorServico(builder, nome, sobrenome, nomeSocial,
 				dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
 				identidadeGenero, cpf, rg,
 				dataInicioContrato, idSetor, telefonePrincipal,
-				telefoneSecundario, email, telefoneFamiliar, logradouro, numero,
-				complemento, cep, bairro, pais, cidade, uf, empresa);
+				telefoneSecundario, email, telefoneFamiliar, empresa);
 		PrestadorServico prestadorServico = (PrestadorServico) builder.build();
 		prestadorServico.setId(id);
 		session.clear();
