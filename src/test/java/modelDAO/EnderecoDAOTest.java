@@ -118,6 +118,7 @@ public class EnderecoDAOTest {
 		assertEquals(enderecoCadastrado.getId(), colaboradorCadastrado.getId());
 		assertNotNull(enderecoCadastrado);
 		assertNotNull(colaboradorCadastrado);
+		//assertNull(enderecoCadastrado);
 	}
 	
 	@Before
