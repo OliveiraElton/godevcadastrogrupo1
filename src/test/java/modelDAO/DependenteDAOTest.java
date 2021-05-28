@@ -56,13 +56,13 @@ public class DependenteDAOTest {
 				"Cidade del Leste", true, "Masculino", IdentidadeGenero.TRANS, endereco, "09619039610","123", 
 				EnumDadosPessoais.TiposDependentes.FILHO, true);
 		Dependente depCadastrado = dao.cadastrar(dependente);
-		Dependente depRetornado = dao.consultarPorId(Dependente.class, depCadastrado.getId());
+		Dependente depRetornado = dao.buscarPorId(Dependente.class, depCadastrado.getId());
 		assertEquals(depCadastrado.getCpf(), depRetornado.getCpf());
 	}
 
 	@Test
 	public void testBuscarTodosDependentes() {
-		int tamanhoAnterior = dao.consultarTodos(Dependente.class).size();
+		int tamanhoAnterior = dao.buscarTodos(Dependente.class).size();
 		Dependente dependente = DependenteController.cadastrarDependente("Jorge", "Martins", "Jessica", data, "Brasileira",
 				"Blumenau", true, "Masculino", IdentidadeGenero.TRANS, "256.103.800-90", "mg14388606",
 				EnumDadosPessoais.TiposDependentes.FILHO, true, "Rua das Oliveiras", 32, "casa", "89032640",
@@ -73,7 +73,7 @@ public class DependenteDAOTest {
 				"Passo Manso", "Brasil", "Blumenau", "SC");
 		dao.cadastrar(dependente);
 		dao.cadastrar(dependente2);
-		assertEquals(tamanhoAnterior + 2, dao.consultarTodos(Dependente.class).size());
+		assertEquals(tamanhoAnterior + 2, dao.buscarTodos(Dependente.class).size());
 	}
 
 	@Test
@@ -93,7 +93,7 @@ public class DependenteDAOTest {
 				"Passo Manso", "Brasil", "Blumenau", "SC");
 		dao.cadastrar(dependente);
 		assertEquals(true, dao.deletar(dependente));
-		assertNull(dao.consultarPorId(Dependente.class, dependente.getId()));
+		assertNull(dao.buscarPorId(Dependente.class, dependente.getId()));
 	}
 	
 	@Test

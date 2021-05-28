@@ -49,7 +49,7 @@ public class ColaboradorCompletoControllerAPI {
 
 	@RequestMapping(value = "/colaboradorcompleto/{id}", method = RequestMethod.GET)
 	public @ResponseBody ColaboradorCompletoDTO buscarColaboradorPorId(@PathVariable("id") Integer idColaborador) {
-		ColaboradorCompletoDTO colaboradorDTO = new ColaboradorCompletoDTO(colaboradorDao.consultarPorId(Colaborador.class, idColaborador));
+		ColaboradorCompletoDTO colaboradorDTO = new ColaboradorCompletoDTO(colaboradorDao.buscarPorId(Colaborador.class, idColaborador));
 		return colaboradorDTO;
 	}
 
@@ -91,7 +91,7 @@ public class ColaboradorCompletoControllerAPI {
 	 */
 	@RequestMapping(value = "/colaboradorcompleto/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody boolean deletarColaborador(@PathVariable("id") Integer id) {
-		Colaborador colaborador = colaboradorDao.consultarPorId(Colaborador.class, id);
+		Colaborador colaborador = colaboradorDao.buscarPorId(Colaborador.class, id);
 		return colaboradorDao.deletar(colaborador);
 	}
 
@@ -107,7 +107,7 @@ public class ColaboradorCompletoControllerAPI {
 	@RequestMapping(value = "/colaboradorcompleto", method = RequestMethod.GET)
 	public static @ResponseBody List<ColaboradorCompletoDTO> buscarTodosColaboradores() {
 		List<ColaboradorCompletoDTO> listaColaboradorDTO = new ArrayList<ColaboradorCompletoDTO>();
-		List<Colaborador> listaImprime = colaboradorDao.consultarTodos(Colaborador.class);
+		List<Colaborador> listaImprime = colaboradorDao.buscarTodos(Colaborador.class);
 		for (Colaborador colaborador : listaImprime) {
 			listaColaboradorDTO.add(new ColaboradorCompletoDTO(colaborador));
 		}
@@ -129,7 +129,7 @@ public class ColaboradorCompletoControllerAPI {
 	public static @ResponseBody List<ColaboradorCompletoDTO> buscarColaboradorPorNome(
 			@PathVariable("nome") String nome) {
 		List<ColaboradorCompletoDTO> listaColaboradorDTO = new ArrayList<ColaboradorCompletoDTO>();
-		for (Colaborador colaborador : colaboradorDao.consultarPorNome(Colaborador.class, nome)) {
+		for (Colaborador colaborador : colaboradorDao.buscarPorNome(Colaborador.class, nome)) {
 			listaColaboradorDTO.add(new ColaboradorCompletoDTO(colaborador));
 		}
 		return listaColaboradorDTO;

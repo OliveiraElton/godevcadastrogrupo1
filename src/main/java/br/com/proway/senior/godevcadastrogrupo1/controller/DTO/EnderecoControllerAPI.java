@@ -46,7 +46,7 @@ public class EnderecoControllerAPI{
 	 */
 	@RequestMapping(value = "/endereco/colab/{id}", method = RequestMethod.GET)
 	public @ResponseBody EnderecoDTO buscarEnderecoPorColaborador(@PathVariable Integer id){
-		return new EnderecoDTO(enderecoDao.consultarEnderecoPorIdColaborador(id));
+		return new EnderecoDTO(enderecoDao.buscarEnderecoPorIdColaborador(id));
 	}
 
 	/**
@@ -62,7 +62,7 @@ public class EnderecoControllerAPI{
 	 */
 	@RequestMapping(value = "/endereco/{id}", method = RequestMethod.GET)
 	public @ResponseBody EnderecoDTO buscarEnderecoPorId(@PathVariable Integer id) {
-		return new EnderecoDTO(enderecoDao.consultarPorId(Endereco.class, id ));
+		return new EnderecoDTO(enderecoDao.buscarPorId(Endereco.class, id ));
 	}
 	
 	/**
@@ -78,7 +78,7 @@ public class EnderecoControllerAPI{
 	@RequestMapping(value = "/endereco", method = RequestMethod.GET)
 	public @ResponseBody List<EnderecoDTO> buscarTodosEnderecos() {
 		List<EnderecoDTO> listaEnderecoDTO = new ArrayList<EnderecoDTO>();
-		for(Endereco endereco :  enderecoDao.consultarTodos(Endereco.class)) {
+		for(Endereco endereco :  enderecoDao.buscarTodos(Endereco.class)) {
 			listaEnderecoDTO.add(new EnderecoDTO(endereco));
 		}
 		return listaEnderecoDTO;

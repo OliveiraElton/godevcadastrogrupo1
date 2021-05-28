@@ -33,7 +33,7 @@ protected static ContaDAO instance;
 	 * @return Conta desejado
 	 * @author Elton F Oliveira
 	 */
-	public Conta consultarPorId(Integer id) {
+	public Conta buscarPorId(Integer id) {
 		return session.get(Conta.class, id);
 		
 	}
@@ -44,7 +44,7 @@ protected static ContaDAO instance;
 	 *
 	 * @author Elton F Oliveira
 	 */
-	public List<Conta> consultarTodos() {
+	public List<Conta> buscarTodos() {
 		CriteriaBuilder builder = session.getCriteriaBuilder();
 		CriteriaQuery<Conta> criteria = builder.createQuery(Conta.class);
 		criteria.from(Conta.class);

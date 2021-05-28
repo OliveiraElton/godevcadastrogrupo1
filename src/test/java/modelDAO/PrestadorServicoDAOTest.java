@@ -40,7 +40,7 @@ public class PrestadorServicoDAOTest {
 				"SC");
 		Contatos contatos = new Contatos("47988554466", "47325698740", "adriana@gmail.com", "4798756430");
 
-		Empresa empresa = EmpresaDAO.getInstance(BDConexao.getSessao()).consultarPorId(Empresa.class, 1);
+		Empresa empresa = EmpresaDAO.getInstance(BDConexao.getSessao()).buscarPorId(Empresa.class, 1);
 
 		PrestadorServico prestadorServico = new PrestadorServico("Adriana", "Pereira", "pereira",
 				LocalDate.of(1978, 3, 21), "Brasileira", "Itajai", false, "Feminino", IdentidadeGenero.CIS, endereco,
@@ -48,7 +48,7 @@ public class PrestadorServicoDAOTest {
 
 		dao.cadastrar(prestadorServico);
 		Integer id = prestadorServico.getId();
-		assertEquals(prestadorServico, dao.consultarPorId(PrestadorServico.class, id));
+		assertEquals(prestadorServico, dao.buscarPorId(PrestadorServico.class, id));
 	}
 
 	@Test
@@ -57,7 +57,7 @@ public class PrestadorServicoDAOTest {
 				"SC");
 		Contatos contatos = new Contatos("47988554466", "4732569874", "adriana@gmail.com", "4798756430");
 
-		Empresa empresa = EmpresaDAO.getInstance(BDConexao.getSessao()).consultarPorId(Empresa.class, 1);
+		Empresa empresa = EmpresaDAO.getInstance(BDConexao.getSessao()).buscarPorId(Empresa.class, 1);
 
 		PrestadorServico prestadorServico = new PrestadorServico("Adriana", "Pereira", "pereira",
 				LocalDate.of(1978, 3, 21), "Brasileira", "Itajai", false, "Feminino", IdentidadeGenero.CIS, endereco,
@@ -66,11 +66,11 @@ public class PrestadorServicoDAOTest {
 		PrestadorServico prestadorServico2 = new PrestadorServico("Joao", "Pereira", "Joao", LocalDate.of(1985, 5, 2),
 				"Brasileira", "Itajai", false, "Masculino", IdentidadeGenero.CIS, endereco, "13125566", "1231256",
 				contatos, LocalDate.now(), empresa, 4);
-		Integer valorAntes = dao.consultarTodos(PrestadorServico.class).size();
+		Integer valorAntes = dao.buscarTodos(PrestadorServico.class).size();
 
 		dao.cadastrar(prestadorServico);
 		dao.cadastrar(prestadorServico2);
-		assertEquals(valorAntes + 2, dao.consultarTodos(PrestadorServico.class).size());
+		assertEquals(valorAntes + 2, dao.buscarTodos(PrestadorServico.class).size());
 	}
 
 	@Test
@@ -79,7 +79,7 @@ public class PrestadorServicoDAOTest {
 				"SC");
 		Contatos contatos = new Contatos("4788552145", "4733256984", "Ricardo@gmail.com", "4798531150");
 
-		Empresa empresa = EmpresaDAO.getInstance(BDConexao.getSessao()).consultarPorId(Empresa.class, 11);
+		Empresa empresa = EmpresaDAO.getInstance(BDConexao.getSessao()).buscarPorId(Empresa.class, 11);
 
 		PrestadorServico prestadorServico = new PrestadorServico("Ricardo", "Junior", "juninho",
 				LocalDate.of(1972, 4, 12), "Brasileiro", "Blumenau", false, "Masculino", IdentidadeGenero.CIS, endereco,
@@ -87,7 +87,7 @@ public class PrestadorServicoDAOTest {
 
 		dao.cadastrar(prestadorServico);
 
-		assertEquals("Ricardo", dao.consultarPorId(PrestadorServico.class, prestadorServico.getId()).getNome());
+		assertEquals("Ricardo", dao.buscarPorId(PrestadorServico.class, prestadorServico.getId()).getNome());
 
 	}
 
@@ -96,16 +96,16 @@ public class PrestadorServicoDAOTest {
 		PrestadorServico prestadorServico = new PrestadorServico(null, null, null, LocalDate.now(), "testDelete", null,
 				false, null, null, null, null, null, null, null, null, null);
 		dao.cadastrar(prestadorServico);
-		Integer valorAntes = dao.consultarTodos(PrestadorServico.class).size();
+		Integer valorAntes = dao.buscarTodos(PrestadorServico.class).size();
 		dao.deletar(prestadorServico);
-		assertEquals(valorAntes - 1, dao.consultarTodos(PrestadorServico.class).size());
+		assertEquals(valorAntes - 1, dao.buscarTodos(PrestadorServico.class).size());
 	}
 
 	@Test
 	public void testUpdate() throws Exception {
 		Contatos contatos = new Contatos("4788552145", "4733256984", "Ricardo@gmail.com", "4798531150");
 
-		Empresa empresa = EmpresaDAO.getInstance(BDConexao.getSessao()).consultarPorId(Empresa.class, 11);
+		Empresa empresa = EmpresaDAO.getInstance(BDConexao.getSessao()).buscarPorId(Empresa.class, 11);
 		Endereco endereco = new Endereco("Rua Casarao", 33, "Casa", "8975665", "Escola Agricola", "Brasil", "Blumenau",
 				"SC");
 		PrestadorServico prestadorServico = new PrestadorServico("Ricardo", "Junior", "juninho",

@@ -82,18 +82,18 @@ public class ColaboradorDAOTest {
 				false, null, "maria.nunes@gmail.com", "554555", conta, exameMedico, dependente);
 		dao.cadastrar(colaborador);
 		Integer id = colaborador.getId();
-		assertEquals(colaborador, dao.consultarPorId(Colaborador.class, id));
+		assertEquals(colaborador, dao.buscarPorId(Colaborador.class, id));
 
 	}
 
 	@Test
 	public void testCGetAll() {
-		int tamanhoAntes = dao.consultarTodos(Colaborador.class).size();
+		int tamanhoAntes = dao.buscarTodos(Colaborador.class).size();
 		Colaborador colaborador = new Colaborador("Maria", "Souza", "Maria Souza", data, "Brasileira", "Blumenau",
 				false, "Masculino", ig, endereco, "21164028324", "45124563", contatos, null, null, false, false, data,
 				false, null, "maria.souza@outlook.com.br", "554555", conta, exameMedico, dependente);
 		dao.cadastrar(colaborador);
-		assertEquals(tamanhoAntes + 1, dao.consultarTodos(Colaborador.class).size());
+		assertEquals(tamanhoAntes + 1, dao.buscarTodos(Colaborador.class).size());
 	}
 
 	@Test
@@ -125,7 +125,7 @@ public class ColaboradorDAOTest {
 		dao.cadastrar(colaborador);
 		Integer id = colaborador.getId();
 		assertEquals(true, dao.deletar(colaborador));
-		assertNull(dao.consultarPorId(Colaborador.class, id));
+		assertNull(dao.buscarPorId(Colaborador.class, id));
 	}
 
 	@Test
@@ -152,7 +152,7 @@ public class ColaboradorDAOTest {
 				LocalDate.of(2020, 4, 17), false, "65123478", "daniela.goncalves@gmail.com", "554555", conta,
 				exameMedico, dependente);
 		dao.cadastrar(colaborador);
-		assertNotNull(dao.consultarPorEmail("daniela.goncalves@gmail.com"));
+		assertNotNull(dao.buscarPorEmail("daniela.goncalves@gmail.com"));
 	}
 
 	@Test
@@ -163,7 +163,7 @@ public class ColaboradorDAOTest {
 				dependente);
 		dao.cadastrar(colaborador);
 		dao.deletarTodos("colaborador");
-		assertEquals(0, dao.consultarTodos(Colaborador.class).size());
+		assertEquals(0, dao.buscarTodos(Colaborador.class).size());
 		assertFalse(dao.deletarTodos("colaborador"));
 	}
 
@@ -186,7 +186,7 @@ public class ColaboradorDAOTest {
 				new Conta("Caixa", "0506", "05050505", "1"),
 				new ExameMedico(TiposExames.ADMISSIONAL, LocalDate.of(2020, 8, 7), false), dependente2);
 		dao.cadastrar(colaborador2);
-		ArrayList<Colaborador> listaRetorno = (ArrayList<Colaborador>) dao.consultarPorNome(Colaborador.class, "Joana");
+		ArrayList<Colaborador> listaRetorno = (ArrayList<Colaborador>) dao.buscarPorNome(Colaborador.class, "Joana");
 		assertEquals(colaborador1.getNome(), listaRetorno.get(0).getNome());
 		assertEquals(colaborador1.getCpf(), listaRetorno.get(0).getCpf());
 		assertEquals(colaborador1.getConta(), listaRetorno.get(0).getConta());

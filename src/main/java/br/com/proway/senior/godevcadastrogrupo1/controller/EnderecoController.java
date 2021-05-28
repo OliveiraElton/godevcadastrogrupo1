@@ -89,7 +89,7 @@ public class EnderecoController {
 	 * @return retorna o objeto um {@link Endereco} localizado no banco.
 	 */
 	public static Endereco buscarEnderecoPorId(int id) {
-		return enderecoDao.consultarPorId(Endereco.class, id);
+		return enderecoDao.buscarPorId(Endereco.class, id);
 	}
 	
 	/**
@@ -101,7 +101,7 @@ public class EnderecoController {
 	 * @return retorna o objeto um {@link Endereco} desejado.
 	 */
 	public static Endereco buscarEnderecoPorIdColab(int id) {
-		return enderecoDao.consultarEnderecoPorIdColaborador(id);
+		return enderecoDao.buscarEnderecoPorIdColaborador(id);
 	}
 
 	/**
@@ -112,6 +112,6 @@ public class EnderecoController {
 	 * @return List Endereco Lista de enderecos localizados.
 	 */
 	public static List<Endereco> listarTodosEnderecos() {
-		return enderecoDao.consultarTodos(Endereco.class);
+		return enderecoDao.buscarTodos(Endereco.class);
 	}
 }

@@ -155,7 +155,7 @@ public class DependenteController {
 	 * @return Dependente ou null caso nao encontrado.
 	 */
 	public static Dependente buscarDependentePorId(Integer id) {
-		return daoDependente.consultarPorId(Dependente.class, id);
+		return daoDependente.buscarPorId(Dependente.class, id);
 	}
 	
 	/**
@@ -167,7 +167,7 @@ public class DependenteController {
 	 * @return
 	 */
 	public static List<Dependente> buscarDependentePorNome(String nome) {
-		return daoDependente.consultarPorNome(Dependente.class ,nome);
+		return daoDependente.buscarPorNome(Dependente.class ,nome);
 	}
 	
 	/**
@@ -188,7 +188,7 @@ public class DependenteController {
 	 * @return List de {@link Dependente}
 	 */
 	public static List<Dependente> buscarTodosDependentes(){
-		return daoDependente.consultarTodos(Dependente.class);
+		return daoDependente.buscarTodos(Dependente.class);
 	}
 	
 	/**

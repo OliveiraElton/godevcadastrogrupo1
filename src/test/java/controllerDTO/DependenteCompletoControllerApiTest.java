@@ -65,7 +65,7 @@ public class DependenteCompletoControllerApiTest {
 				"Cidade del Leste", true, "Masculino", IdentidadeGenero.TRANS, endereco, "09619039610","123", 
 				EnumDadosPessoais.TiposDependentes.FILHO, true);
 		Dependente dependenteBanco = dependenteApi.cadastrarDependente(dependente);
-		assertEquals(dependenteBanco, dao.consultarPorId(Dependente.class ,dependenteBanco.getId()));
+		assertEquals(dependenteBanco, dao.buscarPorId(Dependente.class ,dependenteBanco.getId()));
 		
 	}
 	
@@ -77,7 +77,7 @@ public class DependenteCompletoControllerApiTest {
 				EnumDadosPessoais.TiposDependentes.FILHO, true);
 		Integer idBanco = dao.cadastrar(dependente).getId();
 		dependenteApi.deletarDependente(idBanco);
-		assertEquals(0, dao.consultarTodos(Dependente.class).size());
+		assertEquals(0, dao.buscarTodos(Dependente.class).size());
 	}
 	
 	@Test
@@ -89,7 +89,7 @@ public class DependenteCompletoControllerApiTest {
 		Dependente dependenteNovo = dao.cadastrar(dependente);
 		dependenteNovo.setNome("Nome alterado");
 		dependenteApi.atualizarDependente(dependenteNovo);
-		assertEquals("Nome alterado", dao.consultarPorId(Dependente.class ,dependenteNovo.getId()).getNome());
+		assertEquals("Nome alterado", dao.buscarPorId(Dependente.class ,dependenteNovo.getId()).getNome());
 	}
 	
 	@Test

@@ -26,7 +26,7 @@ public class ContatosDAOTest {
 		dao.cadastrar(contato);
 		
 		Integer id = contato.getId();
-		Contatos contatoBuscado = dao.consultarPorId(Contatos.class, id);
+		Contatos contatoBuscado = dao.buscarPorId(Contatos.class, id);
 		
 		assertEquals(contato.getEmail(), contatoBuscado.getEmail());
 		assertEquals(contato.getTelefoneFamiliar(), contatoBuscado.getTelefoneFamiliar());
@@ -41,11 +41,11 @@ public class ContatosDAOTest {
 		Contatos contato2 = new Contatos("4735339999","4712345678","amanda@gmail.com","4711119999");
 		Contatos contato3 = new Contatos("4735339999","4712345678","pedro@gmail.com","4711119999");
 		
-		Integer valorAntes = dao.consultarTodos(Contatos.class).size();
+		Integer valorAntes = dao.buscarTodos(Contatos.class).size();
 		dao.cadastrar(contato);
 		dao.cadastrar(contato2);
 		dao.cadastrar(contato3);
-		assertEquals(valorAntes + 3, dao.consultarTodos(Contatos.class).size());
+		assertEquals(valorAntes + 3, dao.buscarTodos(Contatos.class).size());
 	}
 	
 	@Test
@@ -79,7 +79,7 @@ public class ContatosDAOTest {
 	@Test
 	public void testFDeletarTodos() {
 		dao.deletarTodos("contatos");
-		assertFalse(dao.consultarTodos(Contatos.class).size() > 0);
+		assertFalse(dao.buscarTodos(Contatos.class).size() > 0);
 	}
 
 }

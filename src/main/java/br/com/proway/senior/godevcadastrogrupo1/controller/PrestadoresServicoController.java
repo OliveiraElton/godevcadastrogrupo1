@@ -162,7 +162,7 @@ public class PrestadoresServicoController {
 	 * @return objeto do Prestador de Servico localizado.
 	 */
 	public static PrestadorServico buscarPrestadorServicoPorId(Integer id) {
-		return daoPrestadorServico.consultarPorId(PrestadorServico.class, id);
+		return daoPrestadorServico.buscarPorId(PrestadorServico.class, id);
 	}
 
 	/**
@@ -174,7 +174,7 @@ public class PrestadoresServicoController {
 	 * @return lista de regsitros localizados.
 	 */
 	public static List<PrestadorServico> buscarTodosPrestadoresServico() {
-		return daoPrestadorServico.consultarTodos(PrestadorServico.class);
+		return daoPrestadorServico.buscarTodos(PrestadorServico.class);
 	}
 	
 	/**
@@ -187,7 +187,7 @@ public class PrestadoresServicoController {
 	 * @return lista de regsitros localizados.
 	 */
 	public static List<PrestadorServico> buscarPrestadorServicoPorNome(String nome) {
-		return daoPrestadorServico.consultarPorNome(PrestadorServico.class, nome);
+		return daoPrestadorServico.buscarPorNome(PrestadorServico.class, nome);
 	}
 	
 	

@@ -19,11 +19,11 @@ public interface InterfaceDao<T> {
 	
 	public T cadastrar(T item);
 	
-	public List<T> consultarPorNome(Class <T> item, String nome);
+	public List<T> buscarPorNome(Class <T> item, String nome);
 
-	public T consultarPorId(Class <T> item, Integer id);
+	public T buscarPorId(Class <T> item, Integer id);
 
-	public List<T> consultarTodos(Class <T> item);
+	public List<T> buscarTodos(Class <T> item);
 
 	public boolean deletar(T item);
 	

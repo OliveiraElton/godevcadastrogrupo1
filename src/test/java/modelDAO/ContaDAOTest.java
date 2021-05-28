@@ -26,32 +26,32 @@ public class ContaDAOTest {
 		Conta conta = new Conta("Viacredi", "932", "125687", "7");
 		dao.cadastrar(conta);
 		Integer id = conta.getId();
-		assertEquals(conta, dao.consultarPorId(id));
+		assertEquals(conta, dao.buscarPorId(id));
 	}
 
 	@Test
 	public void testConsultarTodos() {
 		Conta conta = new Conta("Caixa", "932", "55661", "13");
-		Integer valorAntes = dao.consultarTodos().size();
+		Integer valorAntes = dao.buscarTodos().size();
 		dao.cadastrar(conta);
-		assertEquals(valorAntes + 1, dao.consultarTodos().size());
+		assertEquals(valorAntes + 1, dao.buscarTodos().size());
 	}
 
 	@Test
 	public void testCadastrar() {
 		Conta conta = new Conta("Banco do Brasil", "4125", "3366914", "3");
-		int quantidade = dao.consultarTodos().size();
+		int quantidade = dao.buscarTodos().size();
 		dao.cadastrar(conta);
-		assertEquals(quantidade + 1, dao.consultarTodos().size());
+		assertEquals(quantidade + 1, dao.buscarTodos().size());
 	}
 
 	@Test
 	public void testDeletar() {
 		Conta conta = new Conta("15623", null, null, null);
 		dao.cadastrar(conta);
-		Integer valorAntes = dao.consultarTodos().size();
+		Integer valorAntes = dao.buscarTodos().size();
 		dao.deletar(conta);
-		assertEquals(valorAntes -1, dao.consultarTodos().size());
+		assertEquals(valorAntes -1, dao.buscarTodos().size());
 	}
 
 	@Test

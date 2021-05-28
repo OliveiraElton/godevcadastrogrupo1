@@ -56,7 +56,7 @@ public class EmpresaControllerAPI {
 	 */
 	@RequestMapping(value = "/empresa/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody boolean deletarEmpresa(@PathVariable ("id") Integer id) {
-		Empresa empresa = daoEmpresa.consultarPorId(Empresa.class, id);
+		Empresa empresa = daoEmpresa.buscarPorId(Empresa.class, id);
 		return daoEmpresa.deletar(empresa);
 	}
 	
@@ -86,7 +86,7 @@ public class EmpresaControllerAPI {
 	 */
 	@RequestMapping(value = "/empresa/{id}", method = RequestMethod.GET)
 	public @ResponseBody EmpresaDTO buscarEmpresaPorId(@PathVariable ("id") Integer idEmpresa) {
-		EmpresaDTO empresaDTO = new EmpresaDTO(daoEmpresa.consultarPorId(Empresa.class, idEmpresa));
+		EmpresaDTO empresaDTO = new EmpresaDTO(daoEmpresa.buscarPorId(Empresa.class, idEmpresa));
 		return empresaDTO;
 	}
 
@@ -101,7 +101,7 @@ public class EmpresaControllerAPI {
 	@RequestMapping(value = "/empresa", method = RequestMethod.GET)
 	public @ResponseBody List<EmpresaDTO> buscarTodasEmpresas() {
 		List<EmpresaDTO> listaEmpresaDTO = new ArrayList<EmpresaDTO>();
-		List<Empresa> listaImprime = daoEmpresa.consultarTodos(Empresa.class);
+		List<Empresa> listaImprime = daoEmpresa.buscarTodos(Empresa.class);
 		for (Empresa empresa : listaImprime) {
 			listaEmpresaDTO.add(new EmpresaDTO(empresa));
 		}
@@ -122,7 +122,7 @@ public class EmpresaControllerAPI {
 	public @ResponseBody List<EmpresaDTO> buscarEmpresaPorNome(@PathVariable ("nome") 
 			String nome) {
 		List<EmpresaDTO> listaEmpresaDTO = new ArrayList<EmpresaDTO>();
-		for (Empresa empresa : daoEmpresa.consultarPorNome(Empresa.class, nome)) {
+		for (Empresa empresa : daoEmpresa.buscarPorNome(Empresa.class, nome)) {
 			listaEmpresaDTO.add(new EmpresaDTO(empresa));
 		}
 		return listaEmpresaDTO;

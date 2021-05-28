@@ -73,7 +73,7 @@ public class PrestadorServicoCompletoControllerAPI {
 	 */
 	@RequestMapping(value = "/prestadorservico/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody boolean deletarPrestador(@PathVariable("id") Integer id) {
-		PrestadorServico prestadorServico = daoPrestadorServicos.consultarPorId(PrestadorServico.class, id);
+		PrestadorServico prestadorServico = daoPrestadorServicos.buscarPorId(PrestadorServico.class, id);
 		return daoPrestadorServicos.deletar(prestadorServico);
 	}
 	
@@ -89,7 +89,7 @@ public class PrestadorServicoCompletoControllerAPI {
 	 */
 	@RequestMapping(value = "/prestadorservico/{id}", method = RequestMethod.GET)
 	public @ResponseBody PrestadorServicoCompletoDTO buscarPrestadorServicoPorId(@PathVariable("id") Integer id) {
-	PrestadorServicoCompletoDTO prestadorCompletoDTO = new PrestadorServicoCompletoDTO(daoPrestadorServicos.consultarPorId(PrestadorServico.class, id));
+	PrestadorServicoCompletoDTO prestadorCompletoDTO = new PrestadorServicoCompletoDTO(daoPrestadorServicos.buscarPorId(PrestadorServico.class, id));
 		return prestadorCompletoDTO;
 	}
 	
@@ -104,7 +104,7 @@ public class PrestadorServicoCompletoControllerAPI {
 	@RequestMapping(value = "/prestadorservico", method = RequestMethod.GET)
 	public @ResponseBody List<PrestadorServicoCompletoDTO> buscarTodosPrestadoresServico() {
 		List<PrestadorServicoCompletoDTO> listaPrestadorCompletoDTO = new ArrayList<PrestadorServicoCompletoDTO>();
-		for(PrestadorServico prestador : daoPrestadorServicos.consultarTodos(PrestadorServico.class)) {
+		for(PrestadorServico prestador : daoPrestadorServicos.buscarTodos(PrestadorServico.class)) {
 			listaPrestadorCompletoDTO.add(new PrestadorServicoCompletoDTO(prestador));
 		}
 		return listaPrestadorCompletoDTO;
@@ -123,7 +123,7 @@ public class PrestadorServicoCompletoControllerAPI {
 	@RequestMapping(value = "/prestadorservico/nome/{nome}", method = RequestMethod.GET)
 	public @ResponseBody List<PrestadorServicoCompletoDTO> buscarPrestadorServicoPorNome(@PathVariable("nome") String nome){
 		List<PrestadorServicoCompletoDTO> listaPrestadorCompletoDTO = new ArrayList<PrestadorServicoCompletoDTO>();
-		for(PrestadorServico prestador : daoPrestadorServicos.consultarPorNome(PrestadorServico.class, nome)) {
+		for(PrestadorServico prestador : daoPrestadorServicos.buscarPorNome(PrestadorServico.class, nome)) {
 			listaPrestadorCompletoDTO.add(new PrestadorServicoCompletoDTO(prestador));
 		}
 		return listaPrestadorCompletoDTO;

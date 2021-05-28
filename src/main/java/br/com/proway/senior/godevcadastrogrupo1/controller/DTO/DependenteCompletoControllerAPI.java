@@ -59,7 +59,7 @@ public class DependenteCompletoControllerAPI {
 	 */
 	@RequestMapping(value = "/dependente/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody boolean deletarDependente(@PathVariable ("id") Integer id) {
-		Dependente dependente = dependenteDao.consultarPorId(Dependente.class, id);
+		Dependente dependente = dependenteDao.buscarPorId(Dependente.class, id);
 		return dependenteDao.deletar(dependente);
 	}
 	
@@ -89,7 +89,7 @@ public class DependenteCompletoControllerAPI {
 	 */
 	@RequestMapping(value = "/dependente/{id}", method = RequestMethod.GET)
 	public @ResponseBody DependenteCompletoDTO buscarDependentePorId(@PathVariable ("id") Integer id) {
-		DependenteCompletoDTO DependenteCompletoDTO = new DependenteCompletoDTO(dependenteDao.consultarPorId(Dependente.class, id));
+		DependenteCompletoDTO DependenteCompletoDTO = new DependenteCompletoDTO(dependenteDao.buscarPorId(Dependente.class, id));
 		return DependenteCompletoDTO;
 	}
 	/**
@@ -120,7 +120,7 @@ public class DependenteCompletoControllerAPI {
 	@RequestMapping(value = "/dependente", method = RequestMethod.GET)
 	public @ResponseBody List<DependenteCompletoDTO> buscarTodosDependentes() {
 		List<DependenteCompletoDTO> listaDependenteCompletoDTO = new ArrayList<DependenteCompletoDTO>();
-		for(Dependente dependente : dependenteDao.consultarTodos(Dependente.class)) {
+		for(Dependente dependente : dependenteDao.buscarTodos(Dependente.class)) {
 			listaDependenteCompletoDTO.add(new DependenteCompletoDTO(dependente));
 		}
 		return listaDependenteCompletoDTO;
@@ -138,7 +138,7 @@ public class DependenteCompletoControllerAPI {
 	@RequestMapping(value = "/dependente/nome/{nome}", method = RequestMethod.GET)
 	public @ResponseBody List<DependenteCompletoDTO> buscarDependentePorNome(@PathVariable ("nome") String nome) {
 		List<DependenteCompletoDTO> listaDependenteCompletoDTO = new ArrayList<DependenteCompletoDTO>();
-		for(Dependente dependente : dependenteDao.consultarPorNome(Dependente.class, nome)) {
+		for(Dependente dependente : dependenteDao.buscarPorNome(Dependente.class, nome)) {
 			listaDependenteCompletoDTO.add(new DependenteCompletoDTO(dependente));
 		}
 		return listaDependenteCompletoDTO;

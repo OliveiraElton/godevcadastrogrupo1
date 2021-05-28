@@ -65,7 +65,7 @@ public class ContatosControllerApiTest {
 		Contatos contato = new Contatos("47988361245", "47988663322", "elton@gmail.com", "47332544579");
 		ContatosDAO.getInstance(BDConexao.getSessao()).deletar(contato);
 		Integer id = contato.getId();
-		assertNull(daoContatos.consultarPorId(Contatos.class, id));
+		assertNull(daoContatos.buscarPorId(Contatos.class, id));
 	}
 
 	@Test

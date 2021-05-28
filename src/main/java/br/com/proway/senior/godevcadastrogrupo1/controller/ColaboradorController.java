@@ -296,7 +296,7 @@ public class ColaboradorController {
 	 * @return objeto colaborador ou objeto vazio caso nao encontrado.
 	 */
 	public static Colaborador buscarColaboradorPorId(Integer id) {
-		return daoColaborador.consultarPorId(Colaborador.class, id);
+		return daoColaborador.buscarPorId(Colaborador.class, id);
 	}
 
 	/**
@@ -310,7 +310,7 @@ public class ColaboradorController {
 	 * @return List Colaborador lista de colaborador localizados.
 	 */
 	public static List<Colaborador> buscarColaboradorPorNome(String nomeColaborador) {
-		return daoColaborador.consultarPorNome(Colaborador.class, nomeColaborador);
+		return daoColaborador.buscarPorNome(Colaborador.class, nomeColaborador);
 	}
 
 	/**
@@ -322,7 +322,7 @@ public class ColaboradorController {
 	 * @return lista com todos os colaboradores cadastrados.
 	 */
 	public static List<Colaborador> buscarTodosColaboradores() {
-		return daoColaborador.consultarTodos(Colaborador.class);
+		return daoColaborador.buscarTodos(Colaborador.class);
 	}
 
 }

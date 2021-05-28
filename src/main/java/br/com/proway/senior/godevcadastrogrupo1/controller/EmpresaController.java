@@ -112,7 +112,7 @@ public class EmpresaController {
 	 * @return Colaborador ou null caso nao encontrado.
 	 */
 	public static Empresa buscarEmpresaPorId(Integer id) {
-		return daoEmpresa.consultarPorId(Empresa.class, id);
+		return daoEmpresa.buscarPorId(Empresa.class, id);
 	}
 
 	/**
@@ -121,7 +121,7 @@ public class EmpresaController {
 	 * @return lista com todos os registros de {@link Empresa} constantes no banco de dados.
 	 */
 	public static List<Empresa> buscarTodasEmpresas() {
-		return daoEmpresa.consultarTodos(Empresa.class);
+		return daoEmpresa.buscarTodos(Empresa.class);
 	}
 	
 	/**
@@ -135,7 +135,7 @@ public class EmpresaController {
 	 * @return ArrayList Empresa lista de registros localizados.
 	 */
 	public static ArrayList<Empresa> buscarEmpresaPorNome(String nomeEmpresa) {
-		return (ArrayList<Empresa>) daoEmpresa.consultarPorNome(Empresa.class, nomeEmpresa);
+		return (ArrayList<Empresa>) daoEmpresa.buscarPorNome(Empresa.class, nomeEmpresa);
 	}
 
 }

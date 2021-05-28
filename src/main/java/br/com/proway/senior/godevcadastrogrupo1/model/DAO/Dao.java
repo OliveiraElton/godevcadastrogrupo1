@@ -97,7 +97,7 @@ public class Dao<T> implements InterfaceDao<T>{
 	 * @param id
 	 * @return
 	 */
-	public T consultarPorId (Class<T> item, Integer id) {
+	public T buscarPorId (Class<T> item, Integer id) {
 		return session.get(item, id);
 	}
 	
@@ -110,7 +110,7 @@ public class Dao<T> implements InterfaceDao<T>{
 	 * @return
 	 * 
 	 */
-	public List<T> consultarTodos(Class<T> item) {
+	public List<T> buscarTodos(Class<T> item) {
 		session = BDConexao.getSessao();
 		CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
 		CriteriaQuery<T> criteria = criteriaBuilder.createQuery(item);
@@ -131,7 +131,7 @@ public class Dao<T> implements InterfaceDao<T>{
 	}
 
 	@Override
-	public List<T> consultarPorNome(Class<T> item, String nome) {
+	public List<T> buscarPorNome(Class<T> item, String nome) {
 			Session session = BDConexao.getSessao();
 			CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
 			CriteriaQuery<T> criteria = criteriaBuilder.createQuery(item);

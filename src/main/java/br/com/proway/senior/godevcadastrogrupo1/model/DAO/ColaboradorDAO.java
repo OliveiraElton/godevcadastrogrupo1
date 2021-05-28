@@ -15,7 +15,7 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 /**
  * Classe ColaboradorDAO.
  * 
- * Classe de intera��o com o banco de dados via hibernate. Extende a {@link Dao} e
+ * Classe de interacao com o banco de dados via hibernate. Extende a {@link Dao} e
  * implementa a interface {@link InterfaceDao}.
  * 
  * @author Sprint 5
@@ -26,13 +26,6 @@ public class ColaboradorDAO extends Dao<Colaborador>{
 
 	protected static ColaboradorDAO instance;
 
-	/**
-	 * Method responsible for instantiating the CollaboratorDAO class.
-	 * 
-	 * @param session the database session.
-	 * 
-	 * @return instance
-	 */
 	public static ColaboradorDAO getInstance(Session session) {
 		if (instance == null)
 			instance = new ColaboradorDAO(session);
@@ -40,7 +33,7 @@ public class ColaboradorDAO extends Dao<Colaborador>{
 	}
 	
 	/**
-	 * Contrutor da classe, ser� utilizado para iniciar a sessao,
+	 * Contrutor da classe, sera utilizado para iniciar a sessao,
 	 * quando chamado em outras classes.
 	 * 
 	 * @param Session session
@@ -49,7 +42,7 @@ public class ColaboradorDAO extends Dao<Colaborador>{
 		this.session = session;
 	}
 	
-	public List<Colaborador> consultarPorEmail(String email) {
+	public List<Colaborador> buscarPorEmail(String email) {
 		CriteriaBuilder builder = session.getCriteriaBuilder();
 		CriteriaQuery<Colaborador> criteria = builder.createQuery(Colaborador.class);
 		Root<Colaborador> root = criteria.from(Colaborador.class);

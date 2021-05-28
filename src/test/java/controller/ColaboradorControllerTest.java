@@ -72,8 +72,8 @@ public class ColaboradorControllerTest {
 				"Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Florian�polis", "SC", "4521452015", "5421452103", "carlos@empresa.com.br", "1542413655", 
 				te, LocalDate.of(2020, 10, 5), true, "Caixa", "055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", 
 				true, "Feminino", ig, "09619039610", "mg14388606", tipoDep, true);
-		ColaboradorController.deletarColaborador(dao.consultarPorId(Colaborador.class, colaboradorCriado.getId()));
-		assertNull(dao.consultarPorId(Colaborador.class, colaboradorCriado.getId()));
+		ColaboradorController.deletarColaborador(dao.buscarPorId(Colaborador.class, colaboradorCriado.getId()));
+		assertNull(dao.buscarPorId(Colaborador.class, colaboradorCriado.getId()));
 	}
 
 	@Test
@@ -91,9 +91,9 @@ public class ColaboradorControllerTest {
 				"Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103", "joana@empresa.com.br", "1542413655", te, 
 				LocalDate.of(2020, 10, 5), true, "Caixa", "055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", 
 				true, "Feminino", ig, "09619039610", "mg14388606", tipoDep, true);
-		assertEquals("Camila", dao.consultarPorId(Colaborador.class,id).getNome());
-		assertEquals("Rua XV", dao.consultarPorId(Colaborador.class,id).getEndereco().getLogradouro());
-		assertEquals((Integer) 17, dao.consultarPorId(Colaborador.class, id).getEndereco().getNumero());
+		assertEquals("Camila", dao.buscarPorId(Colaborador.class,id).getNome());
+		assertEquals("Rua XV", dao.buscarPorId(Colaborador.class,id).getEndereco().getLogradouro());
+		assertEquals((Integer) 17, dao.buscarPorId(Colaborador.class, id).getEndereco().getNumero());
 	}
 
 	@Test

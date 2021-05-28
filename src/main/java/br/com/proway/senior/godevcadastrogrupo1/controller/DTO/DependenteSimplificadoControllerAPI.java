@@ -40,7 +40,7 @@ public class DependenteSimplificadoControllerAPI {
 	 */
 	@RequestMapping(value = "/dependentesimplificado/{id}", method = RequestMethod.GET)
 	public @ResponseBody DependenteSimplificadoDTO buscarDependentePorId(@PathVariable ("id") Integer id) {
-		return new DependenteSimplificadoDTO(dependenteDao.consultarPorId(Dependente.class ,id));
+		return new DependenteSimplificadoDTO(dependenteDao.buscarPorId(Dependente.class ,id));
 	}
 
 	/**
@@ -73,7 +73,7 @@ public class DependenteSimplificadoControllerAPI {
 	@RequestMapping(value = "/dependentesimplificado", method = RequestMethod.GET)
 	public @ResponseBody List<DependenteSimplificadoDTO> buscarTodosDependentes(){
 		List<DependenteSimplificadoDTO> listaDependentes = new ArrayList<DependenteSimplificadoDTO>();
-		for(Dependente dependente : dependenteDao.consultarTodos(Dependente.class)) {
+		for(Dependente dependente : dependenteDao.buscarTodos(Dependente.class)) {
 			listaDependentes.add(new DependenteSimplificadoDTO(dependente));
 		}
 		return listaDependentes;
@@ -90,7 +90,7 @@ public class DependenteSimplificadoControllerAPI {
 	@RequestMapping(value = "/dependentesimplificado/nome/{nome}", method = RequestMethod.GET)
 	public @ResponseBody List<DependenteSimplificadoDTO> buscarDependentePorNome(@PathVariable ("nome") String nome) {
 		List<DependenteSimplificadoDTO> listaDependenteCompletoDTO = new ArrayList<DependenteSimplificadoDTO>();
-		for(Dependente dependente : dependenteDao.consultarPorNome(Dependente.class, nome)) {
+		for(Dependente dependente : dependenteDao.buscarPorNome(Dependente.class, nome)) {
 			listaDependenteCompletoDTO.add(new DependenteSimplificadoDTO(dependente));
 		}
 		return listaDependenteCompletoDTO;

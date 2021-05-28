@@ -59,7 +59,7 @@ public class ContatosControllerAPI {
 	 */
 	@RequestMapping(value = "/contatos/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody boolean deletarContatos(@PathVariable ("id") Integer id) {
-		Contatos contatos = daoContatos.consultarPorId(Contatos.class, id);
+		Contatos contatos = daoContatos.buscarPorId(Contatos.class, id);
 		return daoContatos.deletar(contatos);
 	}
 	
@@ -94,7 +94,7 @@ public class ContatosControllerAPI {
 	 */
 	@RequestMapping(value = "/contatos/{id}", method = RequestMethod.GET)
 	public @ResponseBody ContatosDTO buscarContatosPorId(@PathVariable ("id") Integer id) {
-		ContatosDTO contatosDTO = new ContatosDTO(ContatosDAO.getInstance(session).consultarPorId(Contatos.class, id));
+		ContatosDTO contatosDTO = new ContatosDTO(ContatosDAO.getInstance(session).buscarPorId(Contatos.class, id));
 		System.out.println(contatosDTO.getEmail());
 		return contatosDTO;
 	}
@@ -111,10 +111,10 @@ public class ContatosControllerAPI {
 	@RequestMapping(value = "/contatos", method = RequestMethod.GET)
 	public @ResponseBody List<ContatosDTO> buscarTodosContatos() {
 		List<ContatosDTO> listaContatosDTO = new ArrayList<ContatosDTO>();
-		List<Contatos> listaImprime = ContatosDAO.getInstance(session).consultarTodos(Contatos.class);
+		List<Contatos> listaImprime = ContatosDAO.getInstance(session).buscarTodos(Contatos.class);
 		System.out.println(listaImprime.get(0).getEmail());
 		System.out.println(listaImprime.get(1).getEmail());
-		for (Contatos contatos : ContatosDAO.getInstance(session).consultarTodos(Contatos.class)) {
+		for (Contatos contatos : ContatosDAO.getInstance(session).buscarTodos(Contatos.class)) {
 			listaContatosDTO.add(new ContatosDTO(contatos));
 		}
 		return listaContatosDTO;

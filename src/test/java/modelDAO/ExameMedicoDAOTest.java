@@ -31,7 +31,7 @@ public class ExameMedicoDAOTest {
 	public void testReadById() {
 		ExameMedico exameMedico = new ExameMedico(exameAdm, data, true);
 		dao.cadastrar(exameMedico);
-		assertEquals(exameMedico.getId(), dao.consultarPorId(ExameMedico.class, exameMedico.getId()).getId());
+		assertEquals(exameMedico.getId(), dao.buscarPorId(ExameMedico.class, exameMedico.getId()).getId());
 	}
 
 	@Test
@@ -40,14 +40,14 @@ public class ExameMedicoDAOTest {
 		ExameMedico exameMedico2 = new ExameMedico(exameDem, data, true);
 		dao.cadastrar(exameMedico);
 		dao.cadastrar(exameMedico2);
-		assertEquals(2, dao.consultarTodos(ExameMedico.class).size());
+		assertEquals(2, dao.buscarTodos(ExameMedico.class).size());
 	}
 
 	@Test
 	public void testCreate() {
 		ExameMedico exameMedico = new ExameMedico(exameAdm, data, true);
 		dao.cadastrar(exameMedico);
-		assertEquals(exameMedico.getTipoExame(), dao.consultarPorId(ExameMedico.class, exameMedico.getId()).getTipoExame());
+		assertEquals(exameMedico.getTipoExame(), dao.buscarPorId(ExameMedico.class, exameMedico.getId()).getTipoExame());
 	}
 
 	@Test
@@ -55,7 +55,7 @@ public class ExameMedicoDAOTest {
 		ExameMedico exameMedico = new ExameMedico(exameAdm, data, true);
 		dao.cadastrar(exameMedico);
 		dao.deletar(exameMedico);
-		assertEquals(0, dao.consultarTodos(ExameMedico.class).size());
+		assertEquals(0, dao.buscarTodos(ExameMedico.class).size());
 	}
 
 	@Test

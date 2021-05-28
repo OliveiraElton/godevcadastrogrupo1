@@ -49,7 +49,7 @@ public class DependenteDAO extends Dao<Dependente> {
 	 */
 	public List<Dependente> buscarDependentesPorIdColaborador(Integer id) {
 		ColaboradorDAO colabDAO = new ColaboradorDAO(BDConexao.getSessao());
-		Colaborador colabRetornado = colabDAO.consultarPorId(Colaborador.class, id);
+		Colaborador colabRetornado = colabDAO.buscarPorId(Colaborador.class, id);
 		return colabRetornado.getDependente();
 	}
 

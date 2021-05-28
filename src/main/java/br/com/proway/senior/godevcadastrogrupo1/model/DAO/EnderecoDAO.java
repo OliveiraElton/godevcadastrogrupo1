@@ -33,7 +33,7 @@ public class EnderecoDAO extends Dao<Endereco>{
 	 * @param id Do colaborador
 	 * @return Endereço desejado
 	 */
-		public Endereco consultarEnderecoPorIdColaborador(Integer idColaborador) {
+		public Endereco buscarEnderecoPorIdColaborador(Integer idColaborador) {
 			Colaborador colaborador = session.get(Colaborador.class, idColaborador);
 			return colaborador.getEndereco();
 		}
