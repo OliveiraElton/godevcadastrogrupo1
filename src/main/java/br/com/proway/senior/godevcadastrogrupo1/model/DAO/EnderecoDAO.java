@@ -30,7 +30,8 @@ public class EnderecoDAO extends Dao<Endereco>{
 	 * @return Endereço desejado
 	 */
 		public Endereco buscarEnderecoPorIdColaborador(Integer idColaborador) {
-			Colaborador colaborador = session.get(Colaborador.class, idColaborador);
-			return colaborador.getEndereco();
+			ColaboradorDAO colaboradorDao = new ColaboradorDAO(BDConexao.getSessao());
+			Colaborador colaboradorEncontrado = colaboradorDao.buscarPorId(Colaborador.class, idColaborador);
+			return colaboradorEncontrado.getEndereco();
 		}
 }
