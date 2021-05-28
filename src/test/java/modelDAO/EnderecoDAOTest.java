@@ -64,7 +64,7 @@ public class EnderecoDAOTest {
 	
 	@Test
 	public void testDelete() {
-		Endereco endereco = new Endereco("Rua joao pessoa", null, null, null, null, null, null, null);
+		Endereco endereco = new Endereco("Rua 7 de Setembro", 45, "", "8974335", "Centro", "Brasil", "Blumenau", "SC");
 		dao.cadastrar(endereco);
 		
 		Integer valorAntes = dao.buscarTodos(Endereco.class).size();

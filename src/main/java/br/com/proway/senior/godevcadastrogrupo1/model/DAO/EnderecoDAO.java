@@ -9,9 +9,6 @@ import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 public class EnderecoDAO extends Dao<Endereco>{
 
 	protected static EnderecoDAO instance;
-	static Session session = BDConexao.getSessao();
-	static EnderecoDAO daoEndereco = EnderecoDAO.getInstance(session);
-	static ColaboradorDAO daoColaborador = ColaboradorDAO.getInstance(session);
 
 
 	public static EnderecoDAO getInstance(Session session) {
@@ -38,8 +35,3 @@ public class EnderecoDAO extends Dao<Endereco>{
 			return colaborador.getEndereco();
 		}
 }
-
-//		buscar colab
-//		a partir do colab pegar objeto Endereco
-//	}
-//}
