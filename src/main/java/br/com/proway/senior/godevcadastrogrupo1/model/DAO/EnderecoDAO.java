@@ -21,7 +21,6 @@ public class EnderecoDAO extends Dao<Endereco>{
 		this.session = session;
 	}
 
-	
 	/**
 	 * Buscar Endereço por Id do colaborador.
 	 * 
