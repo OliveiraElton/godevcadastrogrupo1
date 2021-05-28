@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
 import org.hibernate.Session;
+import org.junit.Before;
 import org.junit.Test;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
@@ -20,8 +21,8 @@ public class EnderecoDAOTest {
 	public void testReadById() {
 		Endereco endereco = new Endereco("Rua joao pessoa", 985, "lado esquerdo da rua", "8965123", 
 				"Centro", "Brasil", "Blumenau", "SC");
-		dao.create(endereco);
-		assertEquals(endereco, dao.readById(endereco.getId()));
+		dao.cadastrar(endereco);
+		assertEquals(endereco, dao.buscarPorId(Endereco.class, endereco.getId()));
 	}
 
 	@Test
@@ -29,10 +30,10 @@ public class EnderecoDAOTest {
 		Endereco endereco = new Endereco("Rua xv de Novembro", 1234, "", "8977445", "Centro", "Brasil", "Blumenau",
 				"SC");
 		Endereco endereco2 = new Endereco("Rua 7 de Setembro", 45, "", "8974335", "Centro", "Brasil", "Blumenau", "SC");
-		Integer valorAntes = dao.getAll().size();
-		dao.create(endereco);
-		dao.create(endereco2);
-		assertEquals(valorAntes + 2, dao.getAll().size());
+		Integer valorAntes = dao.buscarTodos(Endereco.class).size();
+		dao.cadastrar(endereco);
+		dao.cadastrar(endereco2);
+		assertEquals(valorAntes + 2, dao.buscarTodos(Endereco.class).size());
 
 	}
 
@@ -48,7 +49,7 @@ public class EnderecoDAOTest {
 		endereco.setPais("Brasil");
 		endereco.setCidade("Blumenau");
 		endereco.setUf("SC");
-		dao.create(endereco);
+		dao.cadastrar(endereco);
 		
 		assertEquals("Perto do posto de saude", endereco.getComplemento());
 		assertEquals("Rua 7", endereco.getLogradouro());
@@ -64,19 +65,24 @@ public class EnderecoDAOTest {
 	@Test
 	public void testDelete() {
 		Endereco endereco = new Endereco("Rua joao pessoa", null, null, null, null, null, null, null);
-		dao.create(endereco);
+		dao.cadastrar(endereco);
 		
-		Integer valorAntes = dao.getAll().size();
+		Integer valorAntes = dao.buscarTodos(Endereco.class).size();
 		
-		dao.delete(endereco);
-		assertEquals(valorAntes - 1, dao.getAll().size());
+		dao.deletar(endereco);
+		assertEquals(valorAntes - 1, dao.buscarTodos(Endereco.class).size());
 	}
 
 	@Test
 	public void testDeleteAll() {
 		EnderecoDAO dao = EnderecoDAO.getInstance(session);
-		dao.deleteAll();
-		assertFalse(dao.getAll().size() > 0);
+		dao.deletarTodos("empresa");
+		assertFalse(dao.buscarTodos(Endereco.class).size() > 0);
+	}
+	
+	@Before
+	public void limparTabelas() {
+		dao.deletarTodos("empresa");
 	}
 	
 }
