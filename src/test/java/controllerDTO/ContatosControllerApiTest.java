@@ -48,23 +48,24 @@ public class ContatosControllerApiTest {
 	@Test
 	public void testCriarContatos() throws Exception {
 		Contatos contato = new Contatos("47988361245", "47988663322", "elton@gmail.com", "47332544579");
-		ContatosDAO.getInstance(BDConexao.getSessao()).cadastrar(contato);
+		contatosControllerApi.cadastrarContatos(contato);
 		assertNotNull(contato);
 	}
 	
 	@Test
 	public void testAtualizarContatos() throws Exception {
 		Contatos contato = new Contatos("47988361245", "47988663322", "elton@gmail.com", "47332544579");
-		ContatosDAO.getInstance(BDConexao.getSessao()).cadastrar(contato);
-		contato.setEmail("joao@gmail.com");
-		assertEquals("joao@gmail.com", daoContatos.atualizar(contato).getEmail());
+		Contatos contatoBanco = daoContatos.cadastrar(contato);
+		contatoBanco.setEmail("joao@gmail.com");
+		assertEquals("joao@gmail.com", contatosControllerApi.atualizarContatos(contatoBanco.getId(), contatoBanco).getEmail());
 	}
 	
 	@Test
 	public void testDeletarContatos() throws Exception {
 		Contatos contato = new Contatos("47988361245", "47988663322", "elton@gmail.com", "47332544579");
-		ContatosDAO.getInstance(BDConexao.getSessao()).deletar(contato);
-		Integer id = contato.getId();
+		Contatos contatoBanco = daoContatos.cadastrar(contato);
+		Integer id = contatoBanco.getId();
+		contatosControllerApi.deletarContatos(id);
 		assertNull(daoContatos.buscarPorId(Contatos.class, id));
 	}
 

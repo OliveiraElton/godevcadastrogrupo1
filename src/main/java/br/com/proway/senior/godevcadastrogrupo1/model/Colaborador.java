@@ -6,14 +6,18 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import br.com.proway.senior.godevcadastrogrupo1.utilidades.ValidacaoDeDatas;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.Escolaridade;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.EstadoCivil;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.ValidacaoDeDatas;
 
 /**
  * Classe Colaborador.
@@ -48,6 +52,11 @@ public class Colaborador extends Pessoa {
 	private String registro_alistamento;
 	private String email_corporativo;
 	private String titulo_eleitor;
+	
+	@Enumerated(EnumType.STRING)
+	private Escolaridade escolaridade;
+	@Enumerated(EnumType.STRING)
+	private EstadoCivil estadoCivil;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Conta conta;

@@ -1,5 +1,8 @@
 package br.com.proway.senior.godevcadastrogrupo1.utilidades;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
 /**
  * Classe de apoio para ser utilizada em {@link Pessoa} para setar a
  * identidade de genero e em {@link Dependente} para setar o tipos de 
@@ -22,5 +25,13 @@ public class EnumDadosPessoais {
 	public enum TiposDependentes {
 		FILHO, CONJUGE, MAE, PAI
 	}
-
+	
+	public enum Escolaridade{
+		ANALFABETO, ATE_QUARTA_SERIE, FUNDAMENTAL_COMPLETO, MEDIO_INCOMPLETO,
+		MEDIO_COMPLETO, SUPERIOR_INCOMPLETO, SUPERIOR_COMPLETO, POS_GRADUACAO, MESTRADO, DOUTORADO
+	}
+	
+	public enum EstadoCivil{
+		SOLTEIRO, CASADO, UNIAO_ESTAVEL, VIUVO, DIVORCIADO, SEPARADO
+	}
 }

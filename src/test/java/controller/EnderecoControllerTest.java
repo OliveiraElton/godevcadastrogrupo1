@@ -3,22 +3,35 @@ package controller;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.time.LocalDate;
+
 import org.hibernate.Session;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
+import br.com.proway.senior.godevcadastrogrupo1.controller.ColaboradorController;
 import br.com.proway.senior.godevcadastrogrupo1.controller.EnderecoController;
+import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
+import br.com.proway.senior.godevcadastrogrupo1.model.Conta;
+import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
+import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
+import br.com.proway.senior.godevcadastrogrupo1.model.ExameMedico;
+import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ColaboradorDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
 
 public class EnderecoControllerTest {
 
 	static Session session = BDConexao.getSessao();
 	static EnderecoDAO enderecoDao = EnderecoDAO.getInstance(session);
 
-	@BeforeClass
-	public static void Before() {
+	@Before
+	public void Before() {
 		
 		enderecoDao.deletarTodos("endereco");
 	}
@@ -59,6 +72,26 @@ public class EnderecoControllerTest {
 		assertEquals(endereco.getBairro(), enderecoBuscado.getBairro());
 	}
 	
+	@Test
+	public void testBuscarEnderecoPorIdColab() {
+		ColaboradorDAO daoColaborador = ColaboradorDAO.getInstance(session);
+		LocalDate data = LocalDate.of(2002, 01, 28);
+		Contatos contatos;
+		IdentidadeGenero ig = EnumDadosPessoais.IdentidadeGenero.TRANS;
+		Conta conta = new Conta("Caixa", "105", "2569874", "15");
+		TiposExames em = EnumExamesMedicos.TiposExames.ADMISSIONAL;
+		ExameMedico exameMedico = new ExameMedico(em, LocalDate.now(), true);
+		Endereco endereco = new Endereco("Rua 7 de Setembro", 45, "", "8974335", "Centro", "Brasil", "Blumenau", "SC");
+		Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Venezuelano", "Cidade del Leste",
+				true, null, null, endereco, "09619039610", null, null, true);
+		Colaborador colaborador = new Colaborador("Carla", "Nunes", "Nada consta", data, "Americana", "Los Angeles",
+				false, "Feminino", ig, endereco, "21164028324", "45124563", null, null, null, false, false, data,
+				false, null, "maria.nunes@gmail.com", "554555", conta, exameMedico, dependente);
+		ColaboradorDAO colabDao = ColaboradorDAO.getInstance(session);
+		Colaborador colabBanco = colabDao.cadastrar(colaborador);
+		Endereco colaboradorCadastrado = EnderecoController.buscarEnderecoPorIdColab(colabBanco.getId());
+		assertEquals(endereco.getLogradouro(), colaboradorCadastrado.getLogradouro());
+	}
 	@Test
 	public void testListarTodosOsEnderecos() {
 		int quantidadeAnterior = EnderecoController.listarTodosEnderecos().size();
