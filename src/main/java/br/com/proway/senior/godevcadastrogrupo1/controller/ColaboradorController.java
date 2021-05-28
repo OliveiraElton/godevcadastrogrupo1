@@ -124,9 +124,8 @@ public class ColaboradorController {
 			String telefonePrincipal, String telefoneSecundario, String email, String telefoneFamiliar,
 			TiposExames tipoExame, LocalDate dataExame, Boolean apto, String nomeBanco, String agencia,
 			String numeroConta, String digitoVerificador, String nomeDependente, String sobrenomeDependente,
-			String nomeSocialDependente, LocalDate dataDeNascimentoDependente, String nacionalidadeDependente,
-			String naturalidadeDependente, Boolean pcdDependente, String generoDependente,
-			IdentidadeGenero identidadeGeneroDependente, String cpfDependente, String rgDependente,
+			LocalDate dataDeNascimentoDependente, String nacionalidadeDependente, Boolean pcdDependente,
+			String generoDependente, IdentidadeGenero identidadeGeneroDependente, String cpfDependente,
 			TiposDependentes tipoDependente, Boolean optanteIR) throws Exception {
 
 		PessoaBuilder builder = new PessoaBuilder();
@@ -136,9 +135,8 @@ public class ColaboradorController {
 				dataAdmissao, optanteDependente, registro_alistamento, email_corporativo, titulo_eleitor, logradouro,
 				numero, complemento, cep, bairro, pais, cidade, uf, telefonePrincipal, telefoneSecundario, email,
 				telefoneFamiliar, tipoExame, dataExame, apto, nomeBanco, agencia, numeroConta, digitoVerificador,
-				nomeDependente, sobrenomeDependente, nomeSocialDependente, dataDeNascimentoDependente,
-				nacionalidadeDependente, naturalidadeDependente, pcdDependente, generoDependente,
-				identidadeGeneroDependente, cpfDependente, rgDependente, tipoDependente, optanteIR);
+				nomeDependente, sobrenomeDependente, dataDeNascimentoDependente, nacionalidadeDependente, pcdDependente,
+				generoDependente, identidadeGeneroDependente, cpfDependente, tipoDependente, optanteIR);
 		Colaborador colaborador = (Colaborador) builder.build();
 		return daoColaborador.cadastrar(colaborador);
 	}
@@ -262,9 +260,8 @@ public class ColaboradorController {
 			String telefonePrincipal, String telefoneSecundario, String email, String telefoneFamiliar,
 			TiposExames tipoExame, LocalDate dataExame, Boolean apto, String nomeBanco, String agencia,
 			String numeroConta, String digitoVerificador, String nomeDependente, String sobrenomeDependente,
-			String nomeSocialDependente, LocalDate dataDeNascimentoDependente, String nacionalidadeDependente,
-			String naturalidadeDependente, Boolean pcdDependente, String generoDependente,
-			IdentidadeGenero identidadeGeneroDependente, String cpfDependente, String rgDependente,
+			LocalDate dataDeNascimentoDependente, String nacionalidadeDependente, Boolean pcdDependente,
+			String generoDependente, IdentidadeGenero identidadeGeneroDependente, String cpfDependente,
 			TiposDependentes tipoDependente, Boolean optanteIR) throws Exception {
 
 		PessoaBuilder builder = new PessoaBuilder();
@@ -274,9 +271,8 @@ public class ColaboradorController {
 				dataAdmissao, optanteDependente, registro_alistamento, email_corporativo, titulo_eleitor, logradouro,
 				numero, complemento, cep, bairro, pais, cidade, uf, telefonePrincipal, telefoneSecundario, email,
 				telefoneFamiliar, tipoExame, dataExame, apto, nomeBanco, agencia, numeroConta, digitoVerificador,
-				nomeDependente, sobrenomeDependente, nomeSocialDependente, dataDeNascimentoDependente,
-				nacionalidadeDependente, naturalidadeDependente, pcdDependente, generoDependente,
-				identidadeGeneroDependente, cpfDependente, rgDependente, tipoDependente, optanteIR);
+				nomeDependente, sobrenomeDependente, dataDeNascimentoDependente, nacionalidadeDependente, pcdDependente,
+				generoDependente, identidadeGeneroDependente, cpfDependente, tipoDependente, optanteIR);
 		Colaborador colaborador = (Colaborador) builder.build();
 		session.clear();
 		colaborador.setId(id);

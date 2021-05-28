@@ -17,8 +17,6 @@ import br.com.proway.senior.godevcadastrogrupo1.controller.ColaboradorController
 import br.com.proway.senior.godevcadastrogrupo1.controller.DependenteController;
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
-import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
-import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ColaboradorDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
 import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais;
@@ -51,7 +49,6 @@ public class DependenteDAOTest {
 
 	@Test
 	public void testBuscarDependentePorId() {
-		Endereco endereco = new Endereco("Rua 10", 10, "Casa", "54215365", "Centro", "Brasil", "Blumenau", "SC");
 		Dependente dependente = new Dependente("Joao", "Fonseca", data, "Venezuelano", true, "Masculino",
 				IdentidadeGenero.TRANS, "09619039610", EnumDadosPessoais.TiposDependentes.FILHO, true);
 
@@ -112,8 +109,8 @@ public class DependenteDAOTest {
 				8788881, false, false, data, false, "88080888708", "rodrigo@gmail.com", "04040505050", "Rua 1", 9,
 				"Casa", "54126547", "Centro", "Brasil", "Florianopolis", "SC", "4521452015", "5421452103",
 				"rodrigo@empresa.com.br", "1542413655", TiposExames.ADMISSIONAL, LocalDate.of(2020, 10, 5), true,
-				"Caixa", "055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", true,
-				"Feminino", IdentidadeGenero.CIS, "09619039610", "mg14388606", TiposDependentes.FILHO, true);
+				"Caixa", "055", "438614625", "154", "Carlos", "Santos", data, "Brasileira", true,
+				"Feminino", IdentidadeGenero.CIS, "09619039610", TiposDependentes.FILHO, true);
 
 		ColaboradorController.adicionarDependente(colaboradorCriado, "Jorge", "Martins", data, "Brasileira",
 				 true, "Masculino", IdentidadeGenero.TRANS, "256.103.800-90",

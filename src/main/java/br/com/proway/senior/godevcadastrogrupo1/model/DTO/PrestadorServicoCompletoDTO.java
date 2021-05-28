@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
-import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 
@@ -34,7 +33,6 @@ public class PrestadorServicoCompletoDTO {
 	private Boolean pcd = false;
 	private String genero;
 	private IdentidadeGenero identidadeGenero;
-	private Endereco endereco;
 	private String cpf;
 	private String rg;
 	
@@ -59,7 +57,6 @@ public class PrestadorServicoCompletoDTO {
 		this.pcd = prestadorServico.isPcd();
 		this.genero = prestadorServico.getGenero();
 		this.identidadeGenero = prestadorServico.getIdentidadeGenero();
-		this.endereco = prestadorServico.getEndereco();
 		this.cpf = prestadorServico.getCpf();
 		this.rg = prestadorServico.getRg();
 	}
@@ -133,12 +130,6 @@ public class PrestadorServicoCompletoDTO {
 	public IdentidadeGenero getIdentidadeGenero() {
 		return identidadeGenero;
 	}
-
-
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
 
 	public String getCpf() {
 		return cpf;

@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 import org.hibernate.Session;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import br.com.proway.senior.godevcadastrogrupo1.controller.ColaboradorController;
@@ -22,9 +21,9 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ExameMedicoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.ColaboradorCompletoDTO;
 import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais;
-import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.TiposDependentes;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
 
 /**
@@ -56,6 +55,7 @@ public class ColaboradorCompletoControllerAPITest {
 	public void limparTabela() {
 		dao.deletarTodos("colaborador");
 	}
+
 	@Test
 	public void testCriarUmColaborador() throws Exception {
 		Colaborador colaborador1 = ColaboradorController.cadastrarColaborador("Lucas", "Walim", "Nada consta", data,
@@ -63,8 +63,7 @@ public class ColaboradorCompletoControllerAPITest {
 				false, data, false, "88080888708", "lucas.walim@gmail.com", "04040505050", "Rua 1", 9, "Casa",
 				"54126547", "Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103",
 				"lucas.walim@empresa.com.br", "1542413655", te, null, true, "banco00", "055", "438614625", "154",
-				"joãozinho", "Santos", "Erika", data, "brasileiro", "Blumenauense", true, "Masculino", ig,
-				"09619039610", "mn24588606", td, true);
+				"joãozinho", "Santos", data, "brasileiro", true, "Masculino", ig, "09619039610", td, true);
 
 		Colaborador colaboradorCriado1 = controllerAPI.cadastrarColaborador(colaborador1);
 
@@ -78,8 +77,7 @@ public class ColaboradorCompletoControllerAPITest {
 				false, data, false, "88080888708", "gabriel.simon@gmail.com", "04040505050", "Rua 1", 9, "Casa",
 				"54126547", "Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103",
 				"gabriel.simon@empresa.com.br", "1542413655", te, null, true, "banco00", "055", "438614625", "154",
-				"Lucia", "Santos", "Erika", data, "brasileiro", "Blumenauense", true, "Feminino", ig, "09619039610",
-				"mn24588606", td, true);
+				"Lucia", "Santos", data, "brasileiro", true, "Feminino", ig, "09619039610", td, true);
 
 		Integer colaboradorCriado2 = controllerAPI.cadastrarColaborador(colaborador2).getId();
 		controllerAPI.deletarColaborador(colaboradorCriado2);
@@ -87,15 +85,14 @@ public class ColaboradorCompletoControllerAPITest {
 	}
 
 	@Test
-	public void testAtualizarUmColaborador() throws Exception{
+	public void testAtualizarUmColaborador() throws Exception {
 		Colaborador colaborador3 = ColaboradorController.cadastrarColaborador("gabriel", "simon", "Nada consta", data,
 				"Venezuelano", "Blumenauense", true, "Masculino", ig, "09619039610", "mn24588606", 8, 8788881, false,
 				false, data, false, "88080888708", "gabriel.simon@gmail.com", "04040505050", "Rua 1", 9, "Casa",
 				"54126547", "Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103",
 				"gabriel.simon@empresa.com.br", "1542413655", te, null, true, "banco00", "055", "438614625", "154",
-				"Lucia", "Santos", "Erika", data, "brasileiro", "Blumenauense", true, "Feminino", ig, "09619039610",
-				"mn24588606", td, true);
-		
+				"Lucia", "Santos", data, "brasileiro", true, "Feminino", ig, "09619039610", td, true);
+
 		Colaborador colaboradorCriado3 = controllerAPI.cadastrarColaborador(colaborador3);
 		colaboradorCriado3.setNome("Joao");
 		colaboradorCriado3.setNaturalidade("Rio de Janeiro");
@@ -103,14 +100,15 @@ public class ColaboradorCompletoControllerAPITest {
 		controllerAPI.atualizarColaborador(colaboradorCriado3);
 		assertEquals("Joao", dao.buscarPorId(Colaborador.class, colaboradorCriado3.getId()).getNome());
 	}
+
 	@Test
 	public void testBuscarColaboradorPorId() throws Exception {
 		Colaborador colaborador = ColaboradorController.cadastrarColaborador("Joana", "Marla", "Nada consta", data,
 				"Venezuelano", "Blumenauense", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false,
 				false, data, false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547",
 				"Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103", "brian.santos@empresa.com.br",
-				"1542413655", te, null, true, "banco00", "055", "438614625", "154", "joãozinho", "Santos", "Erika",
-				data, "Venezuelano", "Blumenauense", true, "Feminino", ig, "09619039610", "mg14388606", td, true);
+				"1542413655", te, null, true, "banco00", "055", "438614625", "154", "Joãozinho", "Santos", data,
+				"Venezuelano", true, "Feminino", ig, "09619039610", td, true);
 		ColaboradorCompletoDTO retornoDTO = controllerAPI.buscarColaboradorPorId(colaborador.getId());
 		assertEquals(colaborador.getNome(), retornoDTO.getNome());
 		assertEquals(colaborador.getConta(), retornoDTO.getConta());
@@ -127,14 +125,14 @@ public class ColaboradorCompletoControllerAPITest {
 				"Venezuelano", "Blumenauense", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false,
 				false, data, false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547",
 				"Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103", "brian.santos@empresa.com.br",
-				"1542413655", te, null, true, "banco00", "055", "438614625", "154", "joãozinho", "Santos", "Erika",
-				data, "Venezuelano", "Blumenauense", true, "Feminino", ig, "09619039610", "mg14388606", td, true);
+				"1542413655", te, null, true, "banco00", "055", "438614625", "154", "Joãozinho", "Santos", data,
+				"Venezuelano", true, "Feminino", ig, "09619039610", td, true);
 		Colaborador colaborador2 = ColaboradorController.cadastrarColaborador("Joana", "Pereira", "Nada consta", data,
 				"Venezuelano", "Blumenauense", true, "Feminino", ig, "7878888878", "mg14388606", 8, 8788881, false,
 				false, data, false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547",
 				"Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103", "brian.santos@empresa.com.br",
-				"1542413655", te, null, true, "banco00", "055", "438614625", "154", "joãozinho", "Santos", "Erika",
-				data, "Venezuelano", "Blumenauense", true, "Feminino", ig, "09619039610", "mg14388606", td, true);
+				"1542413655", te, null, true, "banco00", "055", "438614625", "154", "Joãozinho", "Santos", data,
+				"Venezuelano", true, "Feminino", ig, "09619039610", td, true);
 		ArrayList<ColaboradorCompletoDTO> listaRetorno = (ArrayList<ColaboradorCompletoDTO>) controllerAPI
 				.buscarTodosColaboradores();
 		assertEquals(2, listaRetorno.size());
@@ -152,14 +150,14 @@ public class ColaboradorCompletoControllerAPITest {
 				"Venezuelano", "Blumenauense", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false,
 				false, data, false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547",
 				"Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103", "brian.santos@empresa.com.br",
-				"1542413655", te, null, true, "banco00", "055", "438614625", "154", "joãozinho", "Santos", "Erika",
-				data, "Venezuelano", "Blumenauense", true, "Feminino", ig, "09619039610", "mg14388606", td, true);
+				"1542413655", te, null, true, "banco00", "055", "438614625", "154", "Joãozinho", "Santos", data,
+				"Venezuelano", true, "Feminino", ig, "09619039610", td, true);
 		Colaborador colaborador2 = ColaboradorController.cadastrarColaborador("Joana", "Pereira", "Nada consta", data,
 				"Venezuelano", "Blumenauense", true, "Feminino", ig, "7878888878", "mg14388606", 8, 8788881, false,
 				false, data, false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547",
 				"Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103", "brian.santos@empresa.com.br",
-				"1542413655", te, null, true, "banco00", "055", "438614625", "154", "joãozinho", "Santos", "Erika",
-				data, "Venezuelano", "Blumenauense", true, "Feminino", ig, "09619039610", "mg14388606", td, true);
+				"1542413655", te, null, true, "banco00", "055", "438614625", "154", "Carlos", "Santos", data,
+				"Venezuelano", true, "Feminino", ig, "09619039610", td, true);
 		ArrayList<ColaboradorCompletoDTO> listaRetorno = (ArrayList<ColaboradorCompletoDTO>) controllerAPI
 				.buscarColaboradorPorNome("Joana");
 		assertEquals(2, listaRetorno.size());

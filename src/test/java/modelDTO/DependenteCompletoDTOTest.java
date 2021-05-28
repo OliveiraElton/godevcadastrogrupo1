@@ -30,8 +30,8 @@ public class DependenteCompletoDTOTest {
   
 	@Test
 	public void testDependenteCompletoDTO() {
-		Dependente original = new Dependente("Maria", "Silva", "Nada consta", LocalDate.of(2000, 12, 3), "Brasileiro", "Blumenau", true, "Feminino",
-				IdentidadeGenero.TRANS, new Endereco(), "03209507832", "545454", TiposDependentes.FILHO, false);
+		Dependente original = new Dependente("Maria", "Silva", LocalDate.of(2000, 12, 3), "Brasileiro", true, "Feminino",
+				IdentidadeGenero.TRANS, "03209507832", TiposDependentes.FILHO, false);
 		DependenteCompletoDTO dto = new DependenteCompletoDTO(original);
 		assertEquals(0, dto.getId());
 		assertEquals(dto.getNome(), original.getNome());
@@ -41,12 +41,9 @@ public class DependenteCompletoDTOTest {
 		assertEquals(dto.isPcd(), original.isPcd());
 		assertEquals(dto.getTipoDependente(), original.getTipoDependente());
 		assertEquals(dto.getCpf(), original.getCpf());
-		assertEquals(dto.getNomeSocial(), original.getNomeSocial());
 		assertEquals(dto.getNacionalidade(), original.getNacionalidade());
-		assertEquals(dto.getNaturalidade(), original.getNaturalidade());
 		assertEquals(dto.getGenero(), original.getGenero());
 		assertEquals(dto.getIdentidadeGenero(), original.getIdentidadeGenero());
-		assertEquals(dto.getRg(), original.getRg());
 		
 	}
 
