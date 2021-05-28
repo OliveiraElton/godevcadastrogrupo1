@@ -15,9 +15,9 @@ import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.Tip
 /**
  * Classe Dependente.
  * 
- * Esta classe instancia a classe {@link Pessoa} para o cadastro de
- * Dependente. Deve ser instancianda usando DependenteBuilder. Um
- * dependente sempre sera atrelado a um {@link Colaborador}. 
+ * Esta classe instancia a classe {@link Pessoa} para o cadastro de Dependente.
+ * Deve ser instancianda usando DependenteBuilder. Um dependente sempre sera
+ * atrelado a um {@link Colaborador}.
  *
  * @author Lorran Pereira dos Santos, Samuel Levi, Sarah Neuburger Brito, Thiago
  *         Luiz Barbieri e Vitor Nathan Goncalves.
@@ -30,7 +30,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.Tip
  */
 
 @Entity
-public class Dependente extends Pessoa  {
+public class Dependente extends Pessoa {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,7 +39,7 @@ public class Dependente extends Pessoa  {
 	@Enumerated(EnumType.STRING)
 	private TiposDependentes tipoDependente;
 	private Boolean optanteIR;
-	
+
 	public Dependente() {
 		super();
 	}
@@ -49,26 +49,21 @@ public class Dependente extends Pessoa  {
 	 * 
 	 * @param nome
 	 * @param sobrenome
-	 * @param nomeSocial
 	 * @param dataDeNascimento
 	 * @param nacionalidade
-	 * @param naturalidade
 	 * @param pcd
 	 * @param genero
 	 * @param identidadeGenero
-	 * @param endereco
 	 * @param cpf
-	 * @param rg
 	 * @param idDependente
 	 * @param idColaborador
 	 * @param tipoDependente
 	 * @param optanteIR
 	 */
-	public Dependente(String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
-			String nacionalidade, String naturalidade, Boolean pcd, String genero, IdentidadeGenero identidadeGenero,
-			Endereco endereco, String cpf, String rg, TiposDependentes tipoDependente, Boolean optanteIR) {
-		super(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero, identidadeGenero,
-				endereco, cpf, rg);
+	public Dependente(String nome, String sobrenome, LocalDate dataDeNascimento, String nacionalidade, Boolean pcd,
+			String genero, IdentidadeGenero identidadeGenero, String cpf, TiposDependentes tipoDependente,
+			Boolean optanteIR) {
+		super(nome, sobrenome, dataDeNascimento, nacionalidade, pcd, genero, identidadeGenero, cpf);
 		this.setTipoDependente(tipoDependente);
 		this.setOptanteIR(optanteIR);
 	}
@@ -96,7 +91,5 @@ public class Dependente extends Pessoa  {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-
 
 }
