@@ -43,7 +43,7 @@ public class EmpresaControllerAPI {
 	 */
 	@RequestMapping(value = "/empresa", method = RequestMethod.POST)
 	public @ResponseBody Empresa cadastrarEmpresa(@RequestBody Empresa empresa) {
-		return daoEmpresa.create(empresa);
+		return daoEmpresa.cadastrar(empresa);
 	}
 	
 	/**
@@ -56,8 +56,8 @@ public class EmpresaControllerAPI {
 	 */
 	@RequestMapping(value = "/empresa/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody boolean deletarEmpresa(@PathVariable ("id") Integer id) {
-		Empresa empresa = daoEmpresa.readById(id);
-		return daoEmpresa.delete(empresa);
+		Empresa empresa = daoEmpresa.buscarPorId(Empresa.class, id);
+		return daoEmpresa.deletar(empresa);
 	}
 	
 	/**
@@ -71,7 +71,7 @@ public class EmpresaControllerAPI {
 	 */
 	@RequestMapping(value = "/empresa", method = RequestMethod.PUT)
 	public @ResponseBody Empresa atualizarEmpresa(@RequestBody Empresa empresa) {
-		return daoEmpresa.update(empresa);
+		return daoEmpresa.atualizar(empresa);
 	}
 	
 	/**
@@ -86,7 +86,7 @@ public class EmpresaControllerAPI {
 	 */
 	@RequestMapping(value = "/empresa/{id}", method = RequestMethod.GET)
 	public @ResponseBody EmpresaDTO buscarEmpresaPorId(@PathVariable ("id") Integer idEmpresa) {
-		EmpresaDTO empresaDTO = new EmpresaDTO(daoEmpresa.readById(idEmpresa));
+		EmpresaDTO empresaDTO = new EmpresaDTO(daoEmpresa.buscarPorId(Empresa.class, idEmpresa));
 		return empresaDTO;
 	}
 
@@ -101,7 +101,7 @@ public class EmpresaControllerAPI {
 	@RequestMapping(value = "/empresa", method = RequestMethod.GET)
 	public @ResponseBody List<EmpresaDTO> buscarTodasEmpresas() {
 		List<EmpresaDTO> listaEmpresaDTO = new ArrayList<EmpresaDTO>();
-		List<Empresa> listaImprime = daoEmpresa.getAll();
+		List<Empresa> listaImprime = daoEmpresa.buscarTodos(Empresa.class);
 		for (Empresa empresa : listaImprime) {
 			listaEmpresaDTO.add(new EmpresaDTO(empresa));
 		}
@@ -122,7 +122,7 @@ public class EmpresaControllerAPI {
 	public @ResponseBody List<EmpresaDTO> buscarEmpresaPorNome(@PathVariable ("nome") 
 			String nome) {
 		List<EmpresaDTO> listaEmpresaDTO = new ArrayList<EmpresaDTO>();
-		for (Empresa empresa : daoEmpresa.buscarPorNome(nome)) {
+		for (Empresa empresa : daoEmpresa.buscarPorNome(Empresa.class, nome)) {
 			listaEmpresaDTO.add(new EmpresaDTO(empresa));
 		}
 		return listaEmpresaDTO;

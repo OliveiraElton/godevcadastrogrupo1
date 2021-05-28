@@ -38,20 +38,20 @@ public class EmpresaDAOTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		dao.deleteAll();
+		dao.deletarTodos("empresa");
 		
 	}
 
 	@Test
-	public void testBReadById() throws Exception {
+	public void testBBuscarPorID() throws Exception {
 		Endereco endereco = new Endereco("Rua Sete de Setembro", 123, "Taruma Office", "89010-911", "Centro", "Brasil",
 				"Blumenau", "SC");
 		Contatos contatos = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
 		
 		Empresa empresa = new Empresa("Senior", LocalDate.of(2021, 04, 15), "05.975.585/0001-89", endereco, contatos);
 		
-		Empresa empresaCriada = dao.create(empresa);
-		Empresa empresaRetornada = dao.readById(empresaCriada.getId());
+		Empresa empresaCriada = dao.cadastrar(empresa);
+		Empresa empresaRetornada = dao.buscarPorId(Empresa.class, empresaCriada.getId());
 		assertEquals(empresaCriada.getNomeEmpresa(), empresaRetornada.getNomeEmpresa());
 		assertEquals(empresaCriada.getEndereco(), empresaRetornada.getEndereco());
 		assertEquals(empresaCriada.getContato(), empresaRetornada.getContato());
@@ -59,82 +59,82 @@ public class EmpresaDAOTest {
 	}
 
 	@Test
-	public void testFGetAll() throws Exception {
+	public void testFBuscarTodasEmpresas() throws Exception {
 		Endereco endereco = new Endereco("Rua Sete de Setembro", 123, "Taruma Office", "89010-911", "Centro", "Brasil",
 				"Blumenau", "SC");
 		Contatos contatos = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
 		
-		Integer valorAntes = dao.getAll().size();
+		Integer valorAntes = dao.buscarTodos(Empresa.class).size();
 		
 		Empresa empresa = new Empresa("Senior", LocalDate.of(2021, 04, 15), "05.975.585/0001-89", endereco, contatos);
 		Empresa empresa2 = new Empresa("Senior", LocalDate.of(2021, 04, 15), "05.975.585/0001-89", endereco, contatos);
 		
-		Empresa empresaCriada1 = dao.create(empresa);
+		Empresa empresaCriada1 = dao.cadastrar(empresa);
 		System.out.println(empresaCriada1.getId());
 		
-		Empresa empresaCriada2 = dao.create(empresa2);
-		assertEquals(valorAntes + 2, dao.getAll().size());
+		Empresa empresaCriada2 = dao.cadastrar(empresa2);
+		assertEquals(valorAntes + 2, dao.buscarTodos(Empresa.class).size());
 
 	}
 
 	@Test
-	public void testACreate() throws Exception {
+	public void testACadastrarEmpresa() throws Exception {
 		Endereco endereco = new Endereco("Rua Sete de Setembro", 123, "Taruma Office", "89010911", "Centro", "Brasil",
 				"Blumenau", "SC");
 		Contatos contatos = new Contatos("4799944899", "47988994455", "proway@proway.com", "47988553322");
 		
 		Empresa empresa = new Empresa("Senior", LocalDate.now(), "05.975.585/0001-89", endereco, contatos);
-		Empresa empresaCriada = dao.create(empresa);
+		Empresa empresaCriada = dao.cadastrar(empresa);
 		assertEquals("Senior", empresaCriada.getNomeEmpresa());
 	}
 
 	@Test
-	public void testEDelete() throws Exception {
+	public void testEDeletarEmpresa() throws Exception {
 		Endereco endereco = new Endereco("Rua Sete de Setembro", 123, "Taruma Office", "89010911", "Centro", "Brasil",
 				"Blumenau", "SC");
 		Contatos contatos = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
 		
 		Empresa empresa = new Empresa("Senior", LocalDate.of(2021, 04, 15), "05.975.585/0001-89", endereco, contatos);
 		
-		dao.create(empresa);
-		dao.delete(empresa);
-		assertNull(dao.readById(empresa.getId()));
+		dao.cadastrar(empresa);
+		dao.deletar(empresa);
+		assertNull(dao.buscarPorId(Empresa.class, empresa.getId()));
 	}
 
 	@Test
-	public void testCUpdate() throws Exception {
+	public void testCAtualizarEmpresa() throws Exception {
 		Endereco endereco = new Endereco("Rua Sete de Setembro", 123, "Taruma Office", "89010-911", "Centro", "Brasil",
 				"Blumenau", "SC");
 		Contatos contatos = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
 		
 		Empresa empresa = new Empresa("Senior", LocalDate.of(2021, 04, 15), "05.975.585/0001-89", endereco, contatos);
 		
-		dao.create(empresa);
+		dao.cadastrar(empresa);
 		empresa.setNomeEmpresa("Senior 2");
-		assertEquals("Senior 2", dao.update(empresa).getNomeEmpresa());
+		assertEquals("Senior 2", dao.atualizar(empresa).getNomeEmpresa());
 	}
 
 	@Test
-	public void testGDeleteAll() throws Exception {
+	public void testGDeletarTodasEmpresas() throws Exception {
 		Endereco endereco = new Endereco("Rua Sete de Setembro", 123, "Taruma Office", "89010-911", "Centro", "Brasil",
 				"Blumenau", "SC");
 		Contatos contatos = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
 		Empresa empresa = new Empresa("Senior", LocalDate.of(2021, 04, 15), "05.975.585/0001-89", endereco, contatos);
-		dao.create(empresa);
-		dao.deleteAll();
-		assertTrue(dao.getAll().isEmpty());
+		dao.cadastrar(empresa);
+		dao.deletarTodos("empresa");
+		assertTrue(dao.buscarTodos(Empresa.class).isEmpty());
 	}
 	
 	@Test
-	public void testDBuscarPorNome() throws Exception {
+	public void testDBuscarEmpresaPorNome() throws Exception {
 		Endereco endereco = new Endereco("Rua Sete de Setembro", 123, "Taruma Office", "89010-911", "Centro", "Brasil",
 				"Blumenau", "SC");
 		Contatos contatos = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
 		
 		Empresa empresa = new Empresa("Proway", LocalDate.of(2021, 04, 15), "05.975.585/0001-89", endereco, contatos);
-		dao.create(empresa);
+		dao.cadastrar(empresa);
 		
-		ArrayList<Empresa> listaRetorno = (ArrayList<Empresa>) dao.buscarPorNome("Pro");
+		ArrayList<Empresa> listaRetorno = (ArrayList<Empresa>) dao.buscarPorNome(Empresa.class, "Pro");
 		System.out.println(listaRetorno.get(0).getNomeEmpresa());
 		assertTrue(listaRetorno.size() == 1);		
 	}

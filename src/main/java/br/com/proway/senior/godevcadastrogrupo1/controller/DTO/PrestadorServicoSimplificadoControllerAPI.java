@@ -45,7 +45,7 @@ public class PrestadorServicoSimplificadoControllerAPI {
 	 */
 	@RequestMapping(value = "/prestadorsimplificado", method = RequestMethod.POST)
 	public @ResponseBody PrestadorServico cadastrarPrestadorServico(@RequestBody PrestadorServico prestador) {
-		return daoPrestador.create(prestador);
+		return daoPrestador.cadastrar(prestador);
 	}
 
 	/**
@@ -59,8 +59,8 @@ public class PrestadorServicoSimplificadoControllerAPI {
 	 */
 	@RequestMapping(value = "/prestadorsimplificado/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody boolean deletePrestadorServico(@PathVariable("id") Integer id) {
-		PrestadorServico prestador = daoPrestador.readById(id);
-		return daoPrestador.delete(prestador);
+		PrestadorServico prestador = daoPrestador.buscarPorId(PrestadorServico.class, id);
+		return daoPrestador.deletar(prestador);
 	}
 
 	/**
@@ -75,7 +75,7 @@ public class PrestadorServicoSimplificadoControllerAPI {
 	 */
 	@RequestMapping(value = "/prestadorsimplificado", method = RequestMethod.PUT)
 	public @ResponseBody PrestadorServico atualizarPrestadorServico(@RequestBody PrestadorServico prestador) {
-		return daoPrestador.update(prestador);
+		return daoPrestador.atualizar(prestador);
 	}
 
 	/**
@@ -90,7 +90,7 @@ public class PrestadorServicoSimplificadoControllerAPI {
 	 */
 	@RequestMapping(value = "/prestadorsimplificado/{id}", method = RequestMethod.GET)
 	public @ResponseBody PrestadorServicoSimplificadoDTO buscarPrestadorServicoPorId(@PathVariable("id") Integer id) {
-		PrestadorServicoSimplificadoDTO prestadorDTO = new PrestadorServicoSimplificadoDTO(daoPrestador.readById(id));
+		PrestadorServicoSimplificadoDTO prestadorDTO = new PrestadorServicoSimplificadoDTO(daoPrestador.buscarPorId(PrestadorServico.class, id));
 		return prestadorDTO;
 	}
 
@@ -106,7 +106,7 @@ public class PrestadorServicoSimplificadoControllerAPI {
 	@RequestMapping(value = "/prestadorsimplificado", method = RequestMethod.GET)
 	public @ResponseBody List<PrestadorServicoSimplificadoDTO> buscarTodosPrestadoresServico() {
 		List<PrestadorServicoSimplificadoDTO> listaPrestadorDTO = new ArrayList<PrestadorServicoSimplificadoDTO>();
-		for (PrestadorServico prestador : daoPrestador.getAll()) {
+		for (PrestadorServico prestador : daoPrestador.buscarTodos(PrestadorServico.class)) {
 			listaPrestadorDTO.add(new PrestadorServicoSimplificadoDTO(prestador));
 		}
 		return listaPrestadorDTO;
@@ -125,7 +125,7 @@ public class PrestadorServicoSimplificadoControllerAPI {
 	@RequestMapping(value = "/prestadorsimplificado/nome/{nome}", method = RequestMethod.GET)
 	public List<PrestadorServicoSimplificadoDTO> buscarPrestadorServicoPorNome(@PathVariable("nome") String nome) {
 		List<PrestadorServicoSimplificadoDTO> listaPrestadorDTO = new ArrayList<PrestadorServicoSimplificadoDTO>();
-		for (PrestadorServico prestador : daoPrestador.buscarPorNome(nome)) {
+		for (PrestadorServico prestador : daoPrestador.buscarPorNome(PrestadorServico.class, nome)) {
 			listaPrestadorDTO.add(new PrestadorServicoSimplificadoDTO(prestador));
 		}
 		return listaPrestadorDTO;

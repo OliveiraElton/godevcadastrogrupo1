@@ -81,7 +81,7 @@ public class DependenteController {
 				tipoDependente, optanteIR);
 		Dependente dependente = (Dependente) builder.build();
 		
-		return daoDependente.create(dependente);
+		return daoDependente.cadastrar(dependente);
 	}
 
 	/**
@@ -93,7 +93,7 @@ public class DependenteController {
 	 * @return true caso seja deletado ou false caso contrário
 	 */
 	public static boolean deletarDependente(Dependente dependente) {
-		return daoDependente.delete(dependente);
+		return daoDependente.deletar(dependente);
 	}
 
 
@@ -142,7 +142,7 @@ public class DependenteController {
 				tipoDependente, optanteIR);
 		Dependente dependente = (Dependente) builder.build();
 		dependente.setId(id);
-		return daoDependente.update(dependente);
+		return daoDependente.atualizar(dependente);
 	}
 
 	/**
@@ -155,7 +155,7 @@ public class DependenteController {
 	 * @return Dependente ou null caso nao encontrado.
 	 */
 	public static Dependente buscarDependentePorId(Integer id) {
-		return daoDependente.readById(id);
+		return daoDependente.buscarPorId(Dependente.class, id);
 	}
 	
 	/**
@@ -167,7 +167,7 @@ public class DependenteController {
 	 * @return
 	 */
 	public static List<Dependente> buscarDependentePorNome(String nome) {
-		return daoDependente.buscarPorNome(nome);
+		return daoDependente.buscarPorNome(Dependente.class ,nome);
 	}
 	
 	/**
@@ -180,7 +180,7 @@ public class DependenteController {
 	 * @return Dependente ou null caso nao encontrado.
 	 */
 	public static List<Dependente> buscarDependentePorIdColaborador(Integer id){
-		return daoDependente.readByIdColab(id);
+		return daoDependente.buscarDependentesPorIdColaborador(id);
 	}
 	
 	/**
@@ -188,7 +188,7 @@ public class DependenteController {
 	 * @return List de {@link Dependente}
 	 */
 	public static List<Dependente> buscarTodosDependentes(){
-		return daoDependente.getAll();
+		return daoDependente.buscarTodos(Dependente.class);
 	}
 	
 	/**
@@ -196,7 +196,7 @@ public class DependenteController {
 	 * 
 	 */
 	public static void deletarTodosRegistros() {
-		daoDependente.deleteAll();
+		daoDependente.deletarTodos("dependente");
 		
 	}
 

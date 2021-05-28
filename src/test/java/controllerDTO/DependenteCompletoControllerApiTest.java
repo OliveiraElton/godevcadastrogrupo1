@@ -30,7 +30,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.Tip
 /**
  * Classe DependenteDAOTest
  * 
- * Testes dos m�todos da classe {@link DependenteDAOT}.
+ * Testes dos metodos da classe {@link DependenteDAOT}.
  *
  * @author Elton Oliveira
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
@@ -65,7 +65,7 @@ public class DependenteCompletoControllerApiTest {
 				"Cidade del Leste", true, "Masculino", IdentidadeGenero.TRANS, endereco, "09619039610","123", 
 				EnumDadosPessoais.TiposDependentes.FILHO, true);
 		Dependente dependenteBanco = dependenteApi.cadastrarDependente(dependente);
-		assertEquals(dependenteBanco, dao.readById(dependenteBanco.getId()));
+		assertEquals(dependenteBanco, dao.buscarPorId(Dependente.class ,dependenteBanco.getId()));
 		
 	}
 	
@@ -75,9 +75,9 @@ public class DependenteCompletoControllerApiTest {
 		Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Venezuelano",
 				"Cidade del Leste", true, "Masculino", IdentidadeGenero.TRANS, endereco, "09619039610","123", 
 				EnumDadosPessoais.TiposDependentes.FILHO, true);
-		Integer idBanco = dao.create(dependente).getId();
+		Integer idBanco = dao.cadastrar(dependente).getId();
 		dependenteApi.deletarDependente(idBanco);
-		assertEquals(0, dao.getAll().size());
+		assertEquals(0, dao.buscarTodos(Dependente.class).size());
 	}
 	
 	@Test
@@ -86,10 +86,10 @@ public class DependenteCompletoControllerApiTest {
 		Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Venezuelano",
 				"Cidade del Leste", true, "Masculino", IdentidadeGenero.TRANS, endereco, "09619039610","123", 
 				EnumDadosPessoais.TiposDependentes.FILHO, true);
-		Dependente dependenteNovo = dao.create(dependente);
+		Dependente dependenteNovo = dao.cadastrar(dependente);
 		dependenteNovo.setNome("Nome alterado");
 		dependenteApi.atualizarDependente(dependenteNovo);
-		assertEquals("Nome alterado", dao.readById(dependenteNovo.getId()).getNome());
+		assertEquals("Nome alterado", dao.buscarPorId(Dependente.class ,dependenteNovo.getId()).getNome());
 	}
 	
 	@Test
@@ -98,7 +98,7 @@ public class DependenteCompletoControllerApiTest {
 		Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Venezuelano",
 				"Cidade del Leste", true, "Masculino", IdentidadeGenero.TRANS, endereco, "09619039610","123", 
 				EnumDadosPessoais.TiposDependentes.FILHO, true);
-		dao.create(dependente);
+		dao.cadastrar(dependente);
 		DependenteCompletoDTO dependenteCompletoDTO = new DependenteCompletoDTO(dependente);
 		assertEquals(dependenteCompletoDTO.getId(), dependenteApi.buscarDependentePorId(dependenteCompletoDTO.getId()).getId());
 	}
@@ -109,12 +109,12 @@ public class DependenteCompletoControllerApiTest {
 		Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Venezuelano",
 				"Cidade del Leste", true, "Feminino", IdentidadeGenero.CIS, endereco, "09619039610", "123", 
 				EnumDadosPessoais.TiposDependentes.FILHO, true);
-		dao.create(dependente);
+		dao.cadastrar(dependente);
 		Endereco endereco2 = new Endereco("Rua 15", 10, "Casa", "54215365", "Centro", "Brasil", "Blumenau", "SC");
 		Dependente dependente2 = new Dependente("Marta", "Fonseca", "Jenifer", data, "Venezuelano",
 				"Cidade del Leste", true, "Feminino", IdentidadeGenero.CIS, endereco2, "09619039610", "123", 
 				EnumDadosPessoais.TiposDependentes.FILHO, true);
-		dao.create(dependente2);
+		dao.cadastrar(dependente2);
 		List<DependenteCompletoDTO> listaDependenteCompletoDTO = dependenteApi.buscarTodosDependentes();
 		assertEquals(2, listaDependenteCompletoDTO.size());
 	}
@@ -125,11 +125,11 @@ public class DependenteCompletoControllerApiTest {
 		Dependente dependente = new Dependente("Carolina", "Fonseca", "Jenifer", data, "Venezuelano",
 				"Cidade del Leste", true, "Feminino", IdentidadeGenero.CIS, endereco, "09619039610", "123", 
 				EnumDadosPessoais.TiposDependentes.FILHO, true);
-		dao.create(dependente);
+		dao.cadastrar(dependente);
 		Dependente dependente2 = new Dependente("Carolina", "Fonseca", "Nada consta", data, "Venezuelano",
 				"Cidade del Leste", true, "Feminino", IdentidadeGenero.CIS, endereco, "09619039610", "123", 
 				EnumDadosPessoais.TiposDependentes.FILHO, true);
-		dao.create(dependente2);
+		dao.cadastrar(dependente2);
 		List<DependenteCompletoDTO> listaDependenteCompletoDTO = dependenteApi.buscarDependentePorNome("Carolina");
 		assertEquals(2 ,listaDependenteCompletoDTO.size());
 	}

@@ -16,7 +16,6 @@ import org.junit.runners.MethodSorters;
 import br.com.proway.senior.godevcadastrogrupo1.controller.DTO.ContatosControllerAPI;
 import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ContatosDAO;
-import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.ContatosDTO;
 import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 
@@ -37,41 +36,42 @@ public class ContatosControllerApiTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		ContatosDAO.getInstance(BDConexao.getSessao()).deleteAll();
+		ContatosDAO.getInstance(BDConexao.getSessao()).deletarTodos("contatos");
 		contatosControllerApi = new ContatosControllerAPI();
 	}
 	
 	@Before
 	public void limparTabela() {
-		ContatosDAO.getInstance(BDConexao.getSessao()).deleteAll();
+		ContatosDAO.getInstance(BDConexao.getSessao()).deletarTodos("contatos");
 	}
 	
 	@Test
 	public void testCriarContatos() throws Exception {
 		Contatos contato = new Contatos("47988361245", "47988663322", "elton@gmail.com", "47332544579");
-		ContatosDAO.getInstance(BDConexao.getSessao()).create(contato);
+		ContatosDAO.getInstance(BDConexao.getSessao()).cadastrar(contato);
 		assertNotNull(contato);
 	}
 	
 	@Test
 	public void testAtualizarContatos() throws Exception {
 		Contatos contato = new Contatos("47988361245", "47988663322", "elton@gmail.com", "47332544579");
-		ContatosDAO.getInstance(BDConexao.getSessao()).create(contato);
+		ContatosDAO.getInstance(BDConexao.getSessao()).cadastrar(contato);
 		contato.setEmail("joao@gmail.com");
-		assertEquals("joao@gmail.com", daoContatos.update(contato).getEmail());
+		assertEquals("joao@gmail.com", daoContatos.atualizar(contato).getEmail());
 	}
 	
 	@Test
 	public void testDeletarContatos() throws Exception {
 		Contatos contato = new Contatos("47988361245", "47988663322", "elton@gmail.com", "47332544579");
-		ContatosDAO.getInstance(BDConexao.getSessao()).delete(contato);
-		assertNull(daoContatos.readById(contato.getId()));
+		ContatosDAO.getInstance(BDConexao.getSessao()).deletar(contato);
+		Integer id = contato.getId();
+		assertNull(daoContatos.buscarPorId(Contatos.class, id));
 	}
 
 	@Test
 	public void testABuscarContatosPorId() throws Exception {
 		Contatos contato = new Contatos("47988361245", "47988663322", "elton@gmail.com", "47332544579");
-		ContatosDAO.getInstance(BDConexao.getSessao()).create(contato);
+		ContatosDAO.getInstance(BDConexao.getSessao()).cadastrar(contato);
 
 		ContatosDTO contatosDTO = contatosControllerApi.buscarContatosPorId(contato.getId());
 		assertEquals("elton@gmail.com", contatosDTO.getEmail());
@@ -80,9 +80,9 @@ public class ContatosControllerApiTest {
 	@Test
 	public void testCBuscarTodosContatos() throws Exception {
 		Contatos contato = new Contatos("47988361245", "47988663322", "junior@gmail.com", "3336548940");
-		ContatosDAO.getInstance(BDConexao.getSessao()).create(contato);
+		ContatosDAO.getInstance(BDConexao.getSessao()).cadastrar(contato);
 		Contatos contato2 = new Contatos("4789641230", "479885566441", "amanda@gmail.com", "4734567850");
-		ContatosDAO.getInstance(BDConexao.getSessao()).create(contato2);
+		ContatosDAO.getInstance(BDConexao.getSessao()).cadastrar(contato2);
 		List<ContatosDTO> listaContatosDTO = contatosControllerApi.buscarTodosContatos();
 		assertEquals(2 , listaContatosDTO.size());
 	}
@@ -90,7 +90,7 @@ public class ContatosControllerApiTest {
 	@Test
 	public void testBBuscarContatosPorEmail() throws Exception {
 		Contatos contato = new Contatos("4788556644", "4789654120", "ricardinho@gmail.com", "47336515945");
-		ContatosDAO.getInstance(BDConexao.getSessao()).create(contato);
+		ContatosDAO.getInstance(BDConexao.getSessao()).cadastrar(contato);
 
 		List<ContatosDTO> listaContatosDTO = contatosControllerApi
 				.buscarContatosPorEmail("ricardinho@gmail.com");

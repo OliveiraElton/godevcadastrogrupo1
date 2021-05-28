@@ -45,7 +45,7 @@ public class DependenteCompletoControllerAPI {
 	 */
 	@RequestMapping(value = "/dependente", method = RequestMethod.POST)
 	public @ResponseBody Dependente cadastrarDependente(@RequestBody Dependente dependente) {
-		return dependenteDao.create(dependente);
+		return dependenteDao.cadastrar(dependente);
 	}
 	
 	/**
@@ -59,8 +59,8 @@ public class DependenteCompletoControllerAPI {
 	 */
 	@RequestMapping(value = "/dependente/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody boolean deletarDependente(@PathVariable ("id") Integer id) {
-		Dependente dependente = dependenteDao.readById(id);
-		return dependenteDao.delete(dependente);
+		Dependente dependente = dependenteDao.buscarPorId(Dependente.class, id);
+		return dependenteDao.deletar(dependente);
 	}
 	
 	/**
@@ -75,7 +75,7 @@ public class DependenteCompletoControllerAPI {
 	@RequestMapping(value = "/dependente", method = RequestMethod.PUT)
 	public @ResponseBody Dependente atualizarDependente(@RequestBody Dependente dependente) {
 		
-		return dependenteDao.update(dependente);
+		return dependenteDao.atualizar(dependente);
 	}
 	
 	/**
@@ -89,7 +89,7 @@ public class DependenteCompletoControllerAPI {
 	 */
 	@RequestMapping(value = "/dependente/{id}", method = RequestMethod.GET)
 	public @ResponseBody DependenteCompletoDTO buscarDependentePorId(@PathVariable ("id") Integer id) {
-		DependenteCompletoDTO DependenteCompletoDTO = new DependenteCompletoDTO(dependenteDao.readById(id));
+		DependenteCompletoDTO DependenteCompletoDTO = new DependenteCompletoDTO(dependenteDao.buscarPorId(Dependente.class, id));
 		return DependenteCompletoDTO;
 	}
 	/**
@@ -106,7 +106,7 @@ public class DependenteCompletoControllerAPI {
 	public @ResponseBody List<DependenteCompletoDTO> buscarDependentePorIdColaborador(@PathVariable ("id") Integer id) {
 		List<DependenteCompletoDTO> listaDependentes = new ArrayList<DependenteCompletoDTO>();
 		
-		for(Dependente dependente : dependenteDao.readByIdColab(id)) {
+		for(Dependente dependente : dependenteDao.buscarDependentesPorIdColaborador(id)) {
 			listaDependentes.add(new DependenteCompletoDTO(dependente));
 		}
 		return listaDependentes;
@@ -120,7 +120,7 @@ public class DependenteCompletoControllerAPI {
 	@RequestMapping(value = "/dependente", method = RequestMethod.GET)
 	public @ResponseBody List<DependenteCompletoDTO> buscarTodosDependentes() {
 		List<DependenteCompletoDTO> listaDependenteCompletoDTO = new ArrayList<DependenteCompletoDTO>();
-		for(Dependente dependente : dependenteDao.getAll()) {
+		for(Dependente dependente : dependenteDao.buscarTodos(Dependente.class)) {
 			listaDependenteCompletoDTO.add(new DependenteCompletoDTO(dependente));
 		}
 		return listaDependenteCompletoDTO;
@@ -138,7 +138,7 @@ public class DependenteCompletoControllerAPI {
 	@RequestMapping(value = "/dependente/nome/{nome}", method = RequestMethod.GET)
 	public @ResponseBody List<DependenteCompletoDTO> buscarDependentePorNome(@PathVariable ("nome") String nome) {
 		List<DependenteCompletoDTO> listaDependenteCompletoDTO = new ArrayList<DependenteCompletoDTO>();
-		for(Dependente dependente : dependenteDao.buscarPorNome(nome)) {
+		for(Dependente dependente : dependenteDao.buscarPorNome(Dependente.class, nome)) {
 			listaDependenteCompletoDTO.add(new DependenteCompletoDTO(dependente));
 		}
 		return listaDependenteCompletoDTO;

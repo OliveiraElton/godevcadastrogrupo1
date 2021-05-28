@@ -140,7 +140,7 @@ public class ColaboradorController {
 				nacionalidadeDependente, naturalidadeDependente, pcdDependente, generoDependente,
 				identidadeGeneroDependente, cpfDependente, rgDependente, tipoDependente, optanteIR);
 		Colaborador colaborador = (Colaborador) builder.build();
-		return daoColaborador.create(colaborador);
+		return daoColaborador.cadastrar(colaborador);
 	}
 
 	/**
@@ -187,7 +187,7 @@ public class ColaboradorController {
 				logradouro, numero, complemento, cep, bairro, pais, cidade, uf);
 
 		colaborador.addDependente(novoDependente);
-		daoColaborador.update(colaborador);
+		daoColaborador.atualizar(colaborador);
 	}
 
 	/**
@@ -204,7 +204,7 @@ public class ColaboradorController {
 			boolean apto) {
 		ExameMedico novoExame = new ExameMedico(tipoExame, dataExame, apto);
 		colaborador.addExameMedico(novoExame);
-		daoColaborador.update(colaborador);
+		daoColaborador.atualizar(colaborador);
 	}
 
 	/**
@@ -216,8 +216,8 @@ public class ColaboradorController {
 	 * 
 	 * @return true caso seja deletado ou false caso contrário
 	 */
-	public static Boolean deletarColabordor(Colaborador colaborador) {
-		return daoColaborador.delete(colaborador);
+	public static Boolean deletarColaborador(Colaborador colaborador) {
+		return daoColaborador.deletar(colaborador);
 	}
 
 	/**
@@ -283,7 +283,7 @@ public class ColaboradorController {
 		Colaborador colaborador = (Colaborador) builder.build();
 		session.clear();
 		colaborador.setId(id);
-		return daoColaborador.update(colaborador);
+		return daoColaborador.atualizar(colaborador);
 	}
 
 	/**
@@ -296,7 +296,7 @@ public class ColaboradorController {
 	 * @return objeto colaborador ou objeto vazio caso nao encontrado.
 	 */
 	public static Colaborador buscarColaboradorPorId(Integer id) {
-		return daoColaborador.readById(id);
+		return daoColaborador.buscarPorId(Colaborador.class, id);
 	}
 
 	/**
@@ -310,7 +310,7 @@ public class ColaboradorController {
 	 * @return List Colaborador lista de colaborador localizados.
 	 */
 	public static List<Colaborador> buscarColaboradorPorNome(String nomeColaborador) {
-		return daoColaborador.buscarPorNome(nomeColaborador);
+		return daoColaborador.buscarPorNome(Colaborador.class, nomeColaborador);
 	}
 
 	/**
@@ -322,7 +322,7 @@ public class ColaboradorController {
 	 * @return lista com todos os colaboradores cadastrados.
 	 */
 	public static List<Colaborador> buscarTodosColaboradores() {
-		return daoColaborador.getAll();
+		return daoColaborador.buscarTodos(Colaborador.class);
 	}
 
 }

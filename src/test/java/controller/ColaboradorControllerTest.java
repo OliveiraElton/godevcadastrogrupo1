@@ -28,9 +28,9 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ExameMedicoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais;
-import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.TiposDependentes;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
 /**
  * Classe ColaboradorControllerTest.
@@ -72,8 +72,8 @@ public class ColaboradorControllerTest {
 				"Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Florian�polis", "SC", "4521452015", "5421452103", "carlos@empresa.com.br", "1542413655", 
 				te, LocalDate.of(2020, 10, 5), true, "Caixa", "055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", 
 				true, "Feminino", ig, "09619039610", "mg14388606", tipoDep, true);
-		ColaboradorController.deletarColabordor(dao.readById(colaboradorCriado.getId()));
-		assertNull(dao.readById(colaboradorCriado.getId()));
+		ColaboradorController.deletarColaborador(dao.buscarPorId(Colaborador.class, colaboradorCriado.getId()));
+		assertNull(dao.buscarPorId(Colaborador.class, colaboradorCriado.getId()));
 	}
 
 	@Test
@@ -91,9 +91,9 @@ public class ColaboradorControllerTest {
 				"Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103", "joana@empresa.com.br", "1542413655", te, 
 				LocalDate.of(2020, 10, 5), true, "Caixa", "055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", 
 				true, "Feminino", ig, "09619039610", "mg14388606", tipoDep, true);
-		assertEquals("Camila", dao.readById(id).getNome());
-		assertEquals("Rua XV", dao.readById(id).getEndereco().getLogradouro());
-		assertEquals((Integer) 17, dao.readById(id).getEndereco().getNumero());
+		assertEquals("Camila", dao.buscarPorId(Colaborador.class,id).getNome());
+		assertEquals("Rua XV", dao.buscarPorId(Colaborador.class,id).getEndereco().getLogradouro());
+		assertEquals((Integer) 17, dao.buscarPorId(Colaborador.class, id).getEndereco().getNumero());
 	}
 
 	@Test
@@ -107,7 +107,7 @@ public class ColaboradorControllerTest {
 		Colaborador colaborador = new Colaborador("Lucas", "Nunes", "Nada consta", data, "Brasileira", "Blumenau", false,
 				"Masculino", ig, endereco, "21164028324", "45124563", contatos, 1235, 154897987, false, false, data, false,
 				"0780848080", "lucas.nunes@gmail.com", "554555", conta, exameMedico, dependente);
-		dao.create(colaborador);
+		dao.cadastrar(colaborador);
 		assertEquals(colaborador, ColaboradorController.buscarColaboradorPorId(colaborador.getId()));
 
 	}
@@ -154,13 +154,13 @@ public class ColaboradorControllerTest {
 
 	@Test
 	public void testBuscarPorNome() throws Exception {
-		Colaborador colaborador1 = ColaboradorController.cadastrarColaborador("Joana", "Marla", "Nada consta", data,
+		ColaboradorController.cadastrarColaborador("Joana", "Marla", "Nada consta", data,
 				"Brasileira", "Blumenau", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false, false, data,
 				false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
 				"4521452015", "5421452103", "joana@empresa.com.br", "1542413655", te, LocalDate.of(2021, 10, 5), true, "Caixa",
 				"055", "438614625", "154", "Carlos", "Santos", "Erika", data, "Brasileira", "Blumenau", true,
 				"Feminino", ig, "09619039610", "mg14388606", tipoDep, true);
-		Colaborador colaborador2 = ColaboradorController.cadastrarColaborador("Joana", "Pereira", "Nada consta", data,
+		ColaboradorController.cadastrarColaborador("Joana", "Pereira", "Nada consta", data,
 				"Brasileira", "Blumenau", true, "Feminino", ig, "7878888878", "mg14388606", 8, 8788881, false, false, data,
 				false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547", "Centro", "Brasil", "Blumenau", "SC",
 				"4521452015", "5421452103", "joana@empresa.com.br", "1542413655", te, LocalDate.of(2021, 10, 5), true, "BB",
@@ -181,12 +181,8 @@ public class ColaboradorControllerTest {
 	
 	@Before
 	public void limparTabelas() {
-		dao.deleteAll();
-		daoConta.deleteAll();
-		daoContatos.deleteAll();
-		daoEndereco.deleteAll();
-		daoExameMedico.deleteAll();
-		daoDependente.deleteAll();
+		dao.deletarTodos("colaborador");
+
 	}
 
 }

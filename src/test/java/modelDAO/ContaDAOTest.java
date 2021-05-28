@@ -17,49 +17,49 @@ public class ContaDAOTest {
 	
 	@BeforeClass
 	public static void limparTabela() {
-		dao.deleteAll();
+		dao.deletarTodos();
 		
 	}
 	
 	@Test
-	public void testReadById() {
+	public void testConsultarPorId() {
 		Conta conta = new Conta("Viacredi", "932", "125687", "7");
-		dao.create(conta);
+		dao.cadastrar(conta);
 		Integer id = conta.getId();
-		assertEquals(conta, dao.readById(id));
+		assertEquals(conta, dao.buscarPorId(id));
 	}
 
 	@Test
-	public void testGetAll() {
+	public void testConsultarTodos() {
 		Conta conta = new Conta("Caixa", "932", "55661", "13");
-		Integer valorAntes = dao.getAll().size();
-		dao.create(conta);
-		assertEquals(valorAntes + 1, dao.getAll().size());
+		Integer valorAntes = dao.buscarTodos().size();
+		dao.cadastrar(conta);
+		assertEquals(valorAntes + 1, dao.buscarTodos().size());
 	}
 
 	@Test
-	public void testCreate() {
+	public void testCadastrar() {
 		Conta conta = new Conta("Banco do Brasil", "4125", "3366914", "3");
-		int quantidade = dao.getAll().size();
-		dao.create(conta);
-		assertEquals(quantidade + 1, dao.getAll().size());
+		int quantidade = dao.buscarTodos().size();
+		dao.cadastrar(conta);
+		assertEquals(quantidade + 1, dao.buscarTodos().size());
 	}
 
 	@Test
-	public void testDelete() {
+	public void testDeletar() {
 		Conta conta = new Conta("15623", null, null, null);
-		dao.create(conta);
-		Integer valorAntes = dao.getAll().size();
-		dao.delete(conta);
-		assertEquals(valorAntes -1, dao.getAll().size());
+		dao.cadastrar(conta);
+		Integer valorAntes = dao.buscarTodos().size();
+		dao.deletar(conta);
+		assertEquals(valorAntes -1, dao.buscarTodos().size());
 	}
 
 	@Test
 	public void testUpdate() {
 		Conta conta = new Conta("Santander", "2222", "987635", "96");
-		dao.create(conta);
+		dao.cadastrar(conta);
 		conta.setAgencia("9852");
-		assertEquals("9852", dao.update(conta).getAgencia());
+		assertEquals("9852", dao.atualizar(conta).getAgencia());
 	}
 	
 }

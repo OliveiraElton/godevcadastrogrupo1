@@ -54,7 +54,7 @@ public class ColaboradorCompletoControllerAPITest {
 
 	@Before
 	public void limparTabela() {
-		dao.deleteAll();
+		dao.deletarTodos("colaborador");
 	}
 	@Test
 	public void testCriarUmColaborador() throws Exception {
@@ -68,7 +68,7 @@ public class ColaboradorCompletoControllerAPITest {
 
 		Colaborador colaboradorCriado1 = controllerAPI.cadastrarColaborador(colaborador1);
 
-		assertEquals(colaboradorCriado1, dao.readById(colaboradorCriado1.getId()));
+		assertEquals(colaboradorCriado1, dao.buscarPorId(Colaborador.class, colaboradorCriado1.getId()));
 	}
 
 	@Test
@@ -83,7 +83,7 @@ public class ColaboradorCompletoControllerAPITest {
 
 		Integer colaboradorCriado2 = controllerAPI.cadastrarColaborador(colaborador2).getId();
 		controllerAPI.deletarColaborador(colaboradorCriado2);
-		assertEquals(0, dao.getAll().size());
+		assertEquals(0, dao.buscarTodos(Colaborador.class).size());
 	}
 
 	@Test
@@ -101,7 +101,7 @@ public class ColaboradorCompletoControllerAPITest {
 		colaboradorCriado3.setNaturalidade("Rio de Janeiro");
 
 		controllerAPI.atualizarColaborador(colaboradorCriado3);
-		assertEquals("Joao", dao.readById(colaboradorCriado3.getId()).getNome());
+		assertEquals("Joao", dao.buscarPorId(Colaborador.class, colaboradorCriado3.getId()).getNome());
 	}
 	@Test
 	public void testBuscarColaboradorPorId() throws Exception {
