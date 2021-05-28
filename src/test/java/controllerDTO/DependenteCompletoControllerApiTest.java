@@ -108,11 +108,11 @@ public class DependenteCompletoControllerApiTest {
 
 	@Test
 	public void testBuscarDependentePorNome() {
-		Dependente dependente = new Dependente("Carolina", "Fonseca", data, "Venezuelano", true, "Feminino", IdentidadeGenero.CIS, "09619039610",
-				EnumDadosPessoais.TiposDependentes.FILHO, true);
+		Dependente dependente = new Dependente("Carolina", "Fonseca", data, "Venezuelano", true, "Feminino",
+				IdentidadeGenero.CIS, "09619039610", EnumDadosPessoais.TiposDependentes.FILHO, true);
 		dao.cadastrar(dependente);
-		Dependente dependente2 = new Dependente("Carolina", "Fonseca", data, "Venezuelano", true, "Feminino", IdentidadeGenero.CIS, "09619039610",
-				EnumDadosPessoais.TiposDependentes.FILHO, true);
+		Dependente dependente2 = new Dependente("Carolina", "Fonseca", data, "Venezuelano", true, "Feminino",
+				IdentidadeGenero.CIS, "09619039610", EnumDadosPessoais.TiposDependentes.FILHO, true);
 		dao.cadastrar(dependente2);
 		List<DependenteCompletoDTO> listaDependenteCompletoDTO = dependenteApi.buscarDependentePorNome("Carolina");
 		assertEquals(2, listaDependenteCompletoDTO.size());
@@ -129,8 +129,8 @@ public class DependenteCompletoControllerApiTest {
 				"Venezuelano", "Blumenauense", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false,
 				false, data, false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547",
 				"Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103", "brian.santos@empresa.com.br",
-				"1542413655", te, null, true, "banco00", "055", "438614625", "154", "joãozinho", "Santos",
-				data, "Venezuelano", true, "Feminino", ig, "09619039610", td, true);
+				"1542413655", te, null, true, "banco00", "055", "438614625", "154", "joãozinho", "Santos", data,
+				"Venezuelano", true, "Feminino", ig, "09619039610", td, true);
 
 		List<DependenteCompletoDTO> listaDependenteCompletoDTO = dependenteApi
 				.buscarDependentePorIdColaborador(colaborador1.getId());
