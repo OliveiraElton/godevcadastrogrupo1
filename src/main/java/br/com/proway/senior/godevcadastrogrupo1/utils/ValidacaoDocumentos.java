@@ -176,65 +176,67 @@ public class ValidacaoDocumentos {
 
 	public static boolean validarCnpj2(String cnpj) {
 		String cnpjFormatado = FormatacaoDocumentos.removerCaracteresEspeciais(cnpj);
-		if (cnpjFormatado.length() == 14) {
 
-			int primeiroDigito;
-			int soma = 0;
-			int resultado = 0;
-			for (int i = 0, j = 5; i < 12; i++, j--) {
-				if (j == 1) {
-					j = 9;
-					soma += (cnpjFormatado.charAt(i) - 48) * j;
-				}else {
-					soma += (cnpjFormatado.charAt(i) - 48) * j;
-				}
-			}
-			
-			System.out.println("Soma" + soma);
-			resultado = soma % 11;
-			System.out.println(resultado);
-			System.out.println(resultado);
-			if (resultado < 2) {
-				primeiroDigito = 0;
-				System.out.println(cnpjFormatado.charAt(12));
-				if ((cnpjFormatado.charAt(12) - 48) != primeiroDigito) {
-					return false;
-				}
+		if (cnpjFormatado.length() != 14) {
+			return false;
+		}
+
+		int primeiroDigito;
+		int soma = 0;
+		int resultado = 0;
+		for (int i = 0, j = 5; i < 12; i++, j--) {
+			if (j == 1) {
+				j = 9;
+				soma += (cnpjFormatado.charAt(i) - 48) * j;
 			} else {
-				primeiroDigito = 11 - resultado;
-				System.out.println(cnpjFormatado.charAt(12));
-				if ((cnpjFormatado.charAt(12) - 48) != primeiroDigito) {
-					return false;
-				}
+				soma += (cnpjFormatado.charAt(i) - 48) * j;
 			}
+		}
 
-			// segundo digito
-			int segundoDigito;
-			int soma2 = 0;
-			int resultado2 = 0;
-			for (int i = 0, j = 6; i <= 12; i++, j--) {
-				if (j == 1) {
-					j = 9;
-					soma2 += (cnpjFormatado.charAt(i) - 48) * j;
-				}else {
-					soma2 += (cnpjFormatado.charAt(i) - 48) * j;
-				}
+		System.out.println("Soma" + soma);
+		resultado = soma % 11;
+		System.out.println(resultado);
+		System.out.println(resultado);
+		if (resultado < 2) {
+			primeiroDigito = 0;
+			System.out.println(cnpjFormatado.charAt(12));
+			if ((cnpjFormatado.charAt(12) - 48) != primeiroDigito) {
+				return false;
 			}
-			System.out.println(soma2);
-			resultado2 = soma2 % 11;
+		} else {
+			primeiroDigito = 11 - resultado;
+			System.out.println(cnpjFormatado.charAt(12));
+			if ((cnpjFormatado.charAt(12) - 48) != primeiroDigito) {
+				return false;
+			}
+		}
 
-			if (resultado2 < 2) {
-				segundoDigito = 0;
-				System.out.println(cnpjFormatado.charAt(13));
-				if ((cnpjFormatado.charAt(13) - 48 ) != segundoDigito) {
-					return false;
-				}
+		// segundo digito
+		int segundoDigito;
+		int soma2 = 0;
+		int resultado2 = 0;
+		for (int i = 0, j = 6; i <= 12; i++, j--) {
+			if (j == 1) {
+				j = 9;
+				soma2 += (cnpjFormatado.charAt(i) - 48) * j;
 			} else {
-				segundoDigito = 11 - resultado2;
-				System.out.println(cnpjFormatado.charAt(13));
-				if ((cnpjFormatado.charAt(13) -48) != segundoDigito) {
-					return false;
-				}
+				soma2 += (cnpjFormatado.charAt(i) - 48) * j;
+			}
+		}
+		System.out.println(soma2);
+		resultado2 = soma2 % 11;
+
+		if (resultado2 < 2) {
+			segundoDigito = 0;
+			System.out.println(cnpjFormatado.charAt(13));
+			if ((cnpjFormatado.charAt(13) - 48) != segundoDigito) {
+				return false;
+			}
+		} else {
+			segundoDigito = 11 - resultado2;
+			System.out.println(cnpjFormatado.charAt(13));
+			if ((cnpjFormatado.charAt(13) - 48) != segundoDigito) {
+				return false;
 			}
 		}
 
