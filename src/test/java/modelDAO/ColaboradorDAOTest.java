@@ -66,8 +66,8 @@ public class ColaboradorDAOTest {
 	ExameMedico exameMedico = new ExameMedico(em, LocalDate.now(), true);
 	ExameMedico exameMedico2 = new ExameMedico(em, LocalDate.now(), false);
 	ExameMedico exameMedico3 = new ExameMedico(em, LocalDate.now(), true);
-	Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Venezuelano", "Cidade del Leste",
-			true, null, null, endereco, "09619039610", null, null, true);
+	Dependente dependente = new Dependente("Joao", "Fonseca", data, "Venezuelano", true, null, null, "09619039610",
+			null, true);
 
 	@Before
 	public void limparTabelas() throws Exception {
@@ -169,23 +169,26 @@ public class ColaboradorDAOTest {
 
 	@Test
 	public void testDBuscarPorNome() {
-		Dependente dependente1 = new Dependente("Marta", "Fonseca", "Marta", data, "Venezuelano", "Cidade del Leste",
-				true, "Feminino", ig, endereco, "09619039610", "8808080", TiposDependentes.FILHO, true);
+		Dependente dependente1 = new Dependente("Marta", "Fonseca", data, "Venezuelano", true, "Feminino", ig,
+				"09619039610", TiposDependentes.FILHO, true);
+
 		Colaborador colaborador1 = new Colaborador("Joana", "Silva", "Nada consta", data, "Americano", "Blumenau",
 				false, "Feminino", ig, endereco, "15553232", "6566522354", contatos, 5, 555112324, false, false,
 				LocalDate.of(2020, 4, 17), false, "65123478", "joana@gmail.com", "554555",
 				new Conta("Santander", "0506", "05050505", "1"),
 				new ExameMedico(TiposExames.ADMISSIONAL, LocalDate.of(2021, 8, 7), true), dependente1);
 		dao.cadastrar(colaborador1);
-		Dependente dependente2 = new Dependente("Clementina", "Fonseca", "Clementina", data, "Venezuelano",
-				"Cidade del Leste", true, "Feminino", ig, endereco, "09619039610", "808080", TiposDependentes.MAE,
-				true);
+
+		Dependente dependente2 = new Dependente("Clementina", "Fonseca", data, "Venezuelano", true, "Feminino", ig,
+				"09619039610", TiposDependentes.MAE, true);
+		
 		Colaborador colaborador2 = new Colaborador("Joana", "Pinheiro", "Nada consta", data, "Americano", "Blumenau",
 				false, "Masculino", ig, endereco, "15553232", "6566522354", contatos, 5, 555112324, false, false,
 				LocalDate.of(2020, 4, 17), false, "65123478", "joana@gmail.com", "554555",
 				new Conta("Caixa", "0506", "05050505", "1"),
 				new ExameMedico(TiposExames.ADMISSIONAL, LocalDate.of(2020, 8, 7), false), dependente2);
 		dao.cadastrar(colaborador2);
+		
 		ArrayList<Colaborador> listaRetorno = (ArrayList<Colaborador>) dao.buscarPorNome(Colaborador.class, "Joana");
 		assertEquals(colaborador1.getNome(), listaRetorno.get(0).getNome());
 		assertEquals(colaborador1.getCpf(), listaRetorno.get(0).getCpf());
@@ -200,5 +203,5 @@ public class ColaboradorDAOTest {
 		ColaboradorDAO colabDAO = new ColaboradorDAO(BDConexao.getSessao());
 		assertNotNull(colabDAO);
 	}
-	
+
 }

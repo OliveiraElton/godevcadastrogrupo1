@@ -21,17 +21,17 @@ public class PrestadorServicoDAOTest {
 
 	static Session session;
 	static PrestadorServicoDAO dao;
-	
+
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		session = BDConexao.getSessao();
 		dao = PrestadorServicoDAO.getInstance(session);
 	}
-	
+
 	@BeforeClass
 	public static void limparTabela() {
 		dao.deletarTodos("prestadorservico");
-		
+
 	}
 
 	@Test
@@ -43,7 +43,7 @@ public class PrestadorServicoDAOTest {
 		Empresa empresa = EmpresaDAO.getInstance(BDConexao.getSessao()).buscarPorId(Empresa.class, 1);
 
 		PrestadorServico prestadorServico = new PrestadorServico("Adriana", "Pereira", "pereira",
-				LocalDate.of(1978, 3, 21), "Brasileira", "Itajai", false, "Feminino", IdentidadeGenero.CIS, endereco,
+				LocalDate.of(1978, 3, 21), "Brasileira", "Itajai", false, "Feminino", IdentidadeGenero.CIS,
 				"1234567891", "965412", contatos, LocalDate.now(), empresa, 8);
 
 		dao.cadastrar(prestadorServico);
@@ -58,13 +58,14 @@ public class PrestadorServicoDAOTest {
 		Contatos contatos = new Contatos("47988554466", "4732569874", "adriana@gmail.com", "4798756430");
 
 		Empresa empresa = EmpresaDAO.getInstance(BDConexao.getSessao()).buscarPorId(Empresa.class, 1);
-
+		
 		PrestadorServico prestadorServico = new PrestadorServico("Adriana", "Pereira", "pereira",
-				LocalDate.of(1978, 3, 21), "Brasileira", "Itajai", false, "Feminino", IdentidadeGenero.CIS, endereco,
+				LocalDate.of(1978, 3, 21), "Brasileira", "Itajai", false, "Feminino", IdentidadeGenero.CIS,
+				
 				"1234567891", "965412", contatos, LocalDate.now(), empresa, 8);
 
 		PrestadorServico prestadorServico2 = new PrestadorServico("Joao", "Pereira", "Joao", LocalDate.of(1985, 5, 2),
-				"Brasileira", "Itajai", false, "Masculino", IdentidadeGenero.CIS, endereco, "13125566", "1231256",
+				"Brasileira", "Itajai", false, "Masculino", IdentidadeGenero.CIS, "13125566", "1231256",
 				contatos, LocalDate.now(), empresa, 4);
 		Integer valorAntes = dao.buscarTodos(PrestadorServico.class).size();
 
@@ -82,7 +83,7 @@ public class PrestadorServicoDAOTest {
 		Empresa empresa = EmpresaDAO.getInstance(BDConexao.getSessao()).buscarPorId(Empresa.class, 11);
 
 		PrestadorServico prestadorServico = new PrestadorServico("Ricardo", "Junior", "juninho",
-				LocalDate.of(1972, 4, 12), "Brasileiro", "Blumenau", false, "Masculino", IdentidadeGenero.CIS, endereco,
+				LocalDate.of(1972, 4, 12), "Brasileiro", "Blumenau", false, "Masculino", IdentidadeGenero.CIS,
 				"1234567891", "965412", contatos, LocalDate.now(), empresa, 8);
 
 		dao.cadastrar(prestadorServico);
@@ -94,7 +95,7 @@ public class PrestadorServicoDAOTest {
 	@Test
 	public void testDelete() {
 		PrestadorServico prestadorServico = new PrestadorServico(null, null, null, LocalDate.now(), "testDelete", null,
-				false, null, null, null, null, null, null, null, null, null);
+				false, null, null, null, null, null, null, null, null);
 		dao.cadastrar(prestadorServico);
 		Integer valorAntes = dao.buscarTodos(PrestadorServico.class).size();
 		dao.deletar(prestadorServico);
@@ -109,7 +110,7 @@ public class PrestadorServicoDAOTest {
 		Endereco endereco = new Endereco("Rua Casarao", 33, "Casa", "8975665", "Escola Agricola", "Brasil", "Blumenau",
 				"SC");
 		PrestadorServico prestadorServico = new PrestadorServico("Ricardo", "Junior", "juninho",
-				LocalDate.of(1972, 4, 12), "Brasileiro", "Blumenau", false, "Masculino", IdentidadeGenero.CIS, endereco,
+				LocalDate.of(1972, 4, 12), "Brasileiro", "Blumenau", false, "Masculino", IdentidadeGenero.CIS,
 				"1234567891", "965412", contatos, LocalDate.now(), empresa, 8);
 
 		dao.cadastrar(prestadorServico);

@@ -34,6 +34,19 @@ public class Director {
 		builder.setCpf(cpf);
 		builder.setRg(rg);
 	}
+	
+	private static void criarPessoa(Builder builder, String nome, String sobrenome, LocalDate dataDeNascimento,
+			String nacionalidade, boolean pcd, String genero, IdentidadeGenero identidadeGenero,
+			String cpf) {
+		builder.setNome(nome);
+		builder.setSobrenome(sobrenome);
+		builder.setDataDeNascimento(dataDeNascimento);
+		builder.setNacionalidade(nacionalidade);
+		builder.setPcd(pcd);
+		builder.setGenero(genero);
+		builder.setIdentidadeGenero(identidadeGenero);
+		builder.setCpf(cpf);
+	}
 
 	/**
 	 * Cadastrar Colaborador.
@@ -203,12 +216,11 @@ public class Director {
 	 * @param tipoDependente
 	 * @param optanteIR
 	 */
-	public static void cadastrarDependente(Builder builder, String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
-			String nacionalidade, String naturalidade, boolean pcd, String genero, IdentidadeGenero identidadeGenero,
-			String cpf, String rg, String logradouro, Integer numero, String complemento, String cep,
-			String bairro, String pais, String cidade, String uf, TiposDependentes tipoDependente, boolean optanteIR) {
-		criarPessoa(builder, nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
-				identidadeGenero, cpf, rg, logradouro, numero, complemento, cep, bairro, pais, cidade, uf);
+	public static void cadastrarDependente(Builder builder, String nome, String sobrenome, LocalDate dataDeNascimento,
+			String nacionalidade, boolean pcd, String genero, IdentidadeGenero identidadeGenero,
+			String cpf, TiposDependentes tipoDependente, boolean optanteIR) {
+		criarPessoa(builder, nome, sobrenome, dataDeNascimento, nacionalidade, pcd, genero,
+				identidadeGenero, cpf);
 		builder.setTipoDependente(tipoDependente);
 		builder.setOptanteIR(optanteIR);
 	}

@@ -193,18 +193,18 @@ public class PessoaBuilder implements Builder {
 	public void setDependente(String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
 			String nacionalidade, String naturalidade, Boolean pcd, String genero, IdentidadeGenero identidadeGenero,
 			String cpf, String rg, TiposDependentes tipoDependente, Boolean optanteIR) {
-		this.dependente = new Dependente(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade,
-				pcd, genero, identidadeGenero, endereco, cpf, rg, tipoDependente, optanteIR);
+		this.dependente = new Dependente(nome, sobrenome, dataDeNascimento, nacionalidade,
+				pcd, genero, identidadeGenero, cpf, tipoDependente, optanteIR);
 		DependenteDAO.getInstance(session).cadastrar(this.dependente);
 	}
 
 	public Pessoa build() {
 		if (tipoDependente != null) {
-			return new Dependente(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
-					identidadeGenero, endereco, cpf, rg, tipoDependente, optanteIR);
+			return new Dependente(nome, sobrenome,dataDeNascimento, nacionalidade, pcd, genero,
+					identidadeGenero,cpf, tipoDependente, optanteIR);
 		} else if (empresa != null) {
 			return new PrestadorServico(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd,
-					genero, identidadeGenero, endereco, cpf, rg, contatos, dataInicioContrato, empresa, idSetor);
+					genero, identidadeGenero, cpf, rg, contatos, dataInicioContrato, empresa, idSetor);
 		} else {
 			return new Colaborador(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd,
 					genero, identidadeGenero, endereco, cpf, rg, contatos, idCargo, nit, optanteVT, optanteVAVR,

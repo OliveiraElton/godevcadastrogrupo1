@@ -62,21 +62,19 @@ public class PrestadorServico extends Pessoa {
 	 * @param pcd
 	 * @param genero
 	 * @param identidadeGenero
-	 * @param endereco
 	 * @param cpf
 	 * @param rg
 	 * @param contatos
 	 * @param dataInicioContrato
 	 * @param empresa
 	 * @param idSetor
-	 * @param contatos2
 	 */
 	public PrestadorServico(String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
 			String nacionalidade, String naturalidade, Boolean pcd, String genero, IdentidadeGenero identidadeGenero,
-			Endereco endereco, String cpf, String rg, Contatos contatos, LocalDate dataInicioContrato, Empresa empresa,
+			String cpf, String rg, Contatos contatos, LocalDate dataInicioContrato, Empresa empresa,
 			Integer idSetor) {
 		super(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero, identidadeGenero,
-				endereco, cpf, rg);
+				cpf, rg);
 		this.dataInicioContrato = dataInicioContrato;
 		this.empresa = empresa;
 		this.idSetor = idSetor;
