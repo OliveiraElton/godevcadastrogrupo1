@@ -24,5 +24,11 @@ public class ValidacaoDeDatasTest {
 		assertFalse(ValidacaoDeDatas.validaDataAdmissao(LocalDate.of(1500, 01, 28)));
 		assertFalse(ValidacaoDeDatas.validaDataAdmissao(LocalDate.of(2010, 01, 28)));
 	}
+	
+	@Test
+	public void testValidaDataPassada() {
+		assertTrue(ValidacaoDeDatas.validaDataPassada(LocalDate.of(2010, 5, 10)));
+		assertFalse(ValidacaoDeDatas.validaDataPassada(LocalDate.of(2025, 5, 10)));
+	}
 
 }

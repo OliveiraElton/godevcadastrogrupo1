@@ -8,6 +8,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.FormatacaoDocumentos;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.ValidacaoDeDatas;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.ValidacaoDocumentos;
@@ -29,7 +30,6 @@ import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.Ide
  * @author Vanderlei <vanderleik@yahoo.com.br>
  * @author Vitor <vitornathang@gmail.com>
  */
-
 @MappedSuperclass
 public class Pessoa {
 
