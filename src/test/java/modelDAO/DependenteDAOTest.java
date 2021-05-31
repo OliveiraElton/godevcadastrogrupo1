@@ -20,6 +20,8 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
 import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.Escolaridade;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.EstadoCivil;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.TiposDependentes;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
@@ -83,7 +85,7 @@ public class DependenteDAOTest {
 	public void testDeletarDependente() {
 		Dependente dependente = DependenteController.cadastrarDependente("Jorge", "Martins", data, "Brasileira", true,
 				"Masculino", IdentidadeGenero.TRANS, "256.103.800-90", EnumDadosPessoais.TiposDependentes.FILHO, true);
-		
+
 		dao.cadastrar(dependente);
 		assertEquals(true, dao.deletar(dependente));
 		assertNull(dao.buscarPorId(Dependente.class, dependente.getId()));
@@ -91,10 +93,9 @@ public class DependenteDAOTest {
 
 	@Test
 	public void testZAtualizarDependente() {
-		Dependente dependente = DependenteController.cadastrarDependente("Jorge", "Martins", data,
-				"Brasileira", true, "Masculino", IdentidadeGenero.TRANS, "256.103.800-90", 
-				EnumDadosPessoais.TiposDependentes.FILHO, true);
-		
+		Dependente dependente = DependenteController.cadastrarDependente("Jorge", "Martins", data, "Brasileira", true,
+				"Masculino", IdentidadeGenero.TRANS, "256.103.800-90", EnumDadosPessoais.TiposDependentes.FILHO, true);
+
 		dao.cadastrar(dependente);
 		session.clear();
 		dependente.setRg("012345678");
@@ -105,16 +106,16 @@ public class DependenteDAOTest {
 	@Test
 	public void testBuscarDependentePeloColab() throws Exception {
 		Colaborador colaboradorCriado = ColaboradorController.cadastrarColaborador("Rodrigo", "Moraes", "Nada consta",
-				data, "Brasileira", "Blumenau", true, "Masculino", IdentidadeGenero.CIS, "09619039610", "mg14388606", 8,
-				8788881, false, false, data, false, "88080888708", "rodrigo@gmail.com", "04040505050", "Rua 1", 9,
-				"Casa", "54126547", "Centro", "Brasil", "Florianopolis", "SC", "4521452015", "5421452103",
+				data, "Brasileira", "Blumenau", true, "Masculino", IdentidadeGenero.CIS, Escolaridade.DOUTORADO,
+				EstadoCivil.UNIAO_ESTAVEL, "Jussara Pires", "Boris Pinheiro", "09619039610", "mg14388606", 8, 8788881,
+				false, false, data, false, "88080888708", "rodrigo@gmail.com", "04040505050", "Rua 1", 9, "Casa",
+				"54126547", "Centro", "Brasil", "Florianopolis", "SC", "4521452015", "5421452103",
 				"rodrigo@empresa.com.br", "1542413655", TiposExames.ADMISSIONAL, LocalDate.of(2020, 10, 5), true,
-				"Caixa", "055", "438614625", "154", "Carlos", "Santos", data, "Brasileira", true,
-				"Feminino", IdentidadeGenero.CIS, "09619039610", TiposDependentes.FILHO, true);
+				"Caixa", "055", "438614625", "154", "Carlos", "Santos", data, "Brasileira", true, "Feminino",
+				IdentidadeGenero.CIS, "09619039610", TiposDependentes.FILHO, true);
 
-		ColaboradorController.adicionarDependente(colaboradorCriado, "Jorge", "Martins", data, "Brasileira",
-				 true, "Masculino", IdentidadeGenero.TRANS, "256.103.800-90",
-				EnumDadosPessoais.TiposDependentes.FILHO, true);
+		ColaboradorController.adicionarDependente(colaboradorCriado, "Jorge", "Martins", data, "Brasileira", true,
+				"Masculino", IdentidadeGenero.TRANS, "256.103.800-90", EnumDadosPessoais.TiposDependentes.FILHO, true);
 
 		List<Dependente> listaDeps = dao.buscarDependentesPorIdColaborador(colaboradorCriado.getId());
 		assertEquals(2, listaDeps.size());
