@@ -19,6 +19,8 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ExameMedicoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.Escolaridade;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.EstadoCivil;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.TiposDependentes;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
@@ -47,8 +49,12 @@ public class PessoaBuilder implements Builder {
 	private Endereco endereco = null;
 	private String cpf;
 	private String rg;
-	private Integer idCargo = null;
+	private Integer idPostoTrabalho = null;
 	private Integer nit = null;
+	private String nomeMae;
+	private String nomePai;
+	private Escolaridade escolaridade;
+	private EstadoCivil estadoCivil;
 	private Boolean optanteVT = null;
 	private Boolean optanteVAVR = null;
 	private LocalDate dataAdmissao = null;
@@ -119,6 +125,50 @@ public class PessoaBuilder implements Builder {
 		this.identidadeGenero = identidadeGenero;
 	}
 
+	public void setSession(Session session) {
+		this.session = session;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+	public void setIdPostoTrabalho(Integer idPostoTrabalho) {
+		this.idPostoTrabalho = idPostoTrabalho;
+	}
+
+	public void setNomeMae(String nomeMae) {
+		this.nomeMae = nomeMae;
+	}
+
+	public void setNomePai(String nomePai) {
+		this.nomePai = nomePai;
+	}
+
+	public void setEscolaridade(Escolaridade escolaridade) {
+		this.escolaridade = escolaridade;
+	}
+
+	public void setEstadoCivil(EstadoCivil estadoCivil) {
+		this.estadoCivil = estadoCivil;
+	}
+
+	public void setConta(Conta conta) {
+		this.conta = conta;
+	}
+
+	public void setContatos(Contatos contatos) {
+		this.contatos = contatos;
+	}
+
+	public void setExameMedico(ExameMedico exameMedico) {
+		this.exameMedico = exameMedico;
+	}
+
+	public void setDependente(Dependente dependente) {
+		this.dependente = dependente;
+	}
+
 	public void setEndereco(String logradouro, Integer numero, String complemento, String cep, String bairro,
 			String pais, String cidade, String uf) {
 		this.endereco = new Endereco(logradouro, numero, complemento, cep, bairro, pais, cidade, uf);
@@ -131,10 +181,6 @@ public class PessoaBuilder implements Builder {
 
 	public void setRg(String rg) {
 		this.rg = rg;
-	}
-
-	public void setIdCargo(Integer idCargo) {
-		this.idCargo = idCargo;
 	}
 
 	public void setNit(Integer nit) {
@@ -208,9 +254,9 @@ public class PessoaBuilder implements Builder {
 					genero, identidadeGenero, cpf, rg, contatos, dataInicioContrato, empresa, idSetor);
 		} else {
 			return new Colaborador(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd,
-					genero, identidadeGenero, endereco, cpf, rg, contatos, idCargo, nit, optanteVT, optanteVAVR,
-					dataAdmissao, optanteDependente, registro_alistamento, email_corporativo, titulo_eleitor, conta,
-					exameMedico, dependente);
+					genero, identidadeGenero, escolaridade, estadoCivil,nomeMae, nomePai,  endereco, cpf, rg, contatos,
+					idPostoTrabalho, nit, optanteVT, optanteVAVR, dataAdmissao, optanteDependente, registro_alistamento,
+					email_corporativo, titulo_eleitor, conta, exameMedico, dependente);
 		}
 	}
 

@@ -194,7 +194,7 @@ public class Director {
 				identidadeGenero, cpf, rg, logradouro, numero, complemento, cep, bairro, pais, cidade, uf);
 
 		builder.setContatos(telefonePrincipal, telefoneSecundario, email, telefoneFamiliar);
-		builder.setIdCargo(idCargo);
+		builder.setIdPostoTrabalho(idCargo);
 		builder.setNit(nit);
 		builder.setOptanteVT(optanteVT);
 		builder.setOptanteVAVR(optanteVAVR);

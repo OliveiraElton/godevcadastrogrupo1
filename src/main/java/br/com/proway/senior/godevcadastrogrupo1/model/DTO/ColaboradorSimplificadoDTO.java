@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Conta;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.Escolaridade;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.EstadoCivil;
 /**
  * Classe ColaboradorSimplificadoDTO.
  * 
@@ -22,6 +24,8 @@ public class ColaboradorSimplificadoDTO {
 	private String cpf;
 	private Integer idPostoDeTRabalho;
 	private Integer nit;
+	private Escolaridade escolaridade;
+	private EstadoCivil estadoCivil;
 	private Boolean optanteVT;
 	private Boolean optanteVAVR;
 	private LocalDate dataAdmissao;
@@ -43,6 +47,8 @@ public class ColaboradorSimplificadoDTO {
 		this.cpf = colaborador.getCpf();
 		this.idPostoDeTRabalho = colaborador.getIdPostoDeTrabalho();
 		this.nit = colaborador.getNit();
+		this.escolaridade = colaborador.getEscolaridade();
+		this.estadoCivil = colaborador.getEstadoCivil();
 		this.optanteVT = colaborador.isOptanteVT();
 		this.optanteVAVR = colaborador.isOptanteVAVR();
 		this.dataAdmissao = colaborador.getDataAdmissao();
@@ -101,6 +107,14 @@ public class ColaboradorSimplificadoDTO {
 
 	public Conta getConta() {
 		return conta;
+	}
+
+	public Escolaridade getEscolaridade() {
+		return escolaridade;
+	}
+
+	public EstadoCivil getEstadoCivil() {
+		return estadoCivil;
 	}
 
 }
