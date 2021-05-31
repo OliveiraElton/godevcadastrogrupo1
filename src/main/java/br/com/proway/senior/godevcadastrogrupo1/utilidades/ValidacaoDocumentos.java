@@ -88,65 +88,14 @@ public class ValidacaoDocumentos {
 	 */
 
 	public static boolean validarTamanhoTelefone(String telefone) throws Exception {
-		if (telefone.length() == 11 || telefone.length() == 10 ) {
+		if (telefone.length() == 11 || telefone.length() == 10) {
 			return true;
 		}
 		throw new Exception("Numero de digitos incorretos");
 	}
 
 	/**
-	 * Verifica se um numero de CNPJ eh valido.
-	 * 
-	 * Retorna true, caso o CNPJ seja valido
-	 * 
-	 * @param String cnpj que sera verificado.
-	 * @return boolean
-	 */
-	public static boolean validarCNPJ(String cnpj) {
-
-		String cnpjFormatado = FormatacaoDocumentos.removerCaracteres(cnpj);
-		if (cnpjFormatado.length() == 14) {
-			String cnpjInvertido = "";
-
-			for (int i = 13; i >= 0; i--) {
-				cnpjInvertido += cnpjFormatado.charAt(i);
-			}
-			int mult = 2;
-			int soma = 0;
-			for (int i = 2; i < 14; i++) {
-				soma += mult * (cnpjInvertido.charAt(i) - 48);
-				if (mult == 9) {
-					mult = 2;
-				} else {
-					mult++;
-				}
-			}
-			if (cnpjInvertido.charAt(1) - 48 != 11 - (soma % 11)) {
-				return false;
-			}
-
-			// pt2
-			mult = 2;
-			soma = 0;
-			for (int i = 1; i < 14; i++) {
-				soma += mult * (cnpjInvertido.charAt(i) - 48);
-				if (mult == 9) {
-					mult = 2;
-				} else {
-					mult++;
-				}
-			}
-			if (cnpjInvertido.charAt(0) - 48 != 11 - (soma % 11)) {
-				return false;
-			}
-			return true;
-
-		}
-		return false;
-	}
-
-	/**
-	 * Validar email.
+	 * Validar email
 	 * 
 	 * Realiza validacao do email para verificar se possui o caracter "@".
 	 * 
@@ -172,6 +121,76 @@ public class ValidacaoDocumentos {
 		if (FormatacaoDocumentos.removerCaracteres(cep).length() != 8) {
 			return false;
 		}
+		return true;
+	}
+
+	/**
+	 * Verifica se um numero de CNPJ eh valido.
+	 * 
+	 * Retorna true, caso o CNPJ seja valido
+	 * 
+	 * @param String cnpj que sera verificado.
+	 * @return boolean
+	 */
+	public static boolean validarCNPJ(String cnpj) {
+		String cnpjFormatado = FormatacaoDocumentos.removerCaracteresCnpj(cnpj);
+
+		if (cnpjFormatado.length() != 14) {
+			return false;
+		}
+
+		int primeiroDigito;
+		int soma = 0;
+		int resultado = 0;
+		for (int i = 0, j = 5; i < 12; i++, j--) {
+			if (j == 1) {
+				j = 9;
+				soma += (cnpjFormatado.charAt(i) - 48) * j;
+			} else {
+				soma += (cnpjFormatado.charAt(i) - 48) * j;
+			}
+		}
+
+		resultado = soma % 11;
+		if (resultado < 2) {
+			primeiroDigito = 0;
+			if ((cnpjFormatado.charAt(12) - 48) != primeiroDigito) {
+				return false;
+			}
+		} else {
+			primeiroDigito = 11 - resultado;
+			if ((cnpjFormatado.charAt(12) - 48) != primeiroDigito) {
+				return false;
+			}
+		}
+
+		// Etapa do Segundo Digito
+		int segundoDigito;
+		int soma2 = 0;
+		int resultado2 = 0;
+		for (int i = 0, j = 6; i <= 12; i++, j--) {
+			if (j == 1) {
+				j = 9;
+				soma2 += (cnpjFormatado.charAt(i) - 48) * j;
+			} else {
+				soma2 += (cnpjFormatado.charAt(i) - 48) * j;
+			}
+		}
+		
+		resultado2 = soma2 % 11;
+
+		if (resultado2 < 2) {
+			segundoDigito = 0;
+			if ((cnpjFormatado.charAt(13) - 48) != segundoDigito) {
+				return false;
+			}
+		} else {
+			segundoDigito = 11 - resultado2;
+			if ((cnpjFormatado.charAt(13) - 48) != segundoDigito) {
+				return false;
+			}
+		}
+
 		return true;
 	}
 

@@ -5,7 +5,9 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.FormatacaoDocumentos;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.ValidacaoDocumentos;
+
 
 public class ValidacaoDocumentosTest {
 	
@@ -29,7 +31,7 @@ public class ValidacaoDocumentosTest {
 	
 	@Test
 	public void testValidaCEP() {
-		assertTrue(ValidacaoDocumentos.validarCEP("78541256"));
+		assertTrue(ValidacaoDocumentos.validarCEP("89065891"));
 		assertFalse(ValidacaoDocumentos.validarCEP("7854156"));
 	}
 	
@@ -44,5 +46,15 @@ public class ValidacaoDocumentosTest {
 	public void testExceptions() throws Exception{
 		assertFalse(ValidacaoDocumentos.validarEmail("emailtest.com.br"));
 		assertFalse(ValidacaoDocumentos.validarTamanhoTelefone("5246324896555"));
+	}
+	
+	@Test
+	public void testLimpa() {
+		System.out.println(FormatacaoDocumentos.removerCaracteresEspeciais("3-2.56dsijdijsadji5//6.3232."));
+	}
+	
+	@Test
+	public void testNovoCNPJ() {
+		System.out.println(ValidacaoDocumentos.validarCnpj2("29.945.724/0001-90"));
 	}
 }
