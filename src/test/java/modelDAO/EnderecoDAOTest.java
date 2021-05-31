@@ -20,6 +20,8 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ColaboradorDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.Escolaridade;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.EstadoCivil;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
@@ -107,8 +109,9 @@ public class EnderecoDAOTest {
 		Endereco endereco = new Endereco("Rua 7 de Setembro", 45, "", "8974335", "Centro", "Brasil", "Blumenau", "SC");
 
 		Colaborador colaborador = new Colaborador("Carla", "Nunes", "Nada consta", data, "Americana", "Los Angeles",
-				false, "Feminino", ig, endereco, "21164028324", "45124563", contatos, null, null, false, false, data,
-				false, null, "maria.nunes@gmail.com", "554555", conta, exameMedico, dependente);
+				false, "Feminino", ig, Escolaridade.SUPERIOR_COMPLETO, EstadoCivil.SOLTEIRO, "Marta Pereira",
+				"Joao Gomes", endereco, "21164028324", "45124563", contatos, null, null, false, false, data, false,
+				null, "maria.nunes@gmail.com", "554555", conta, exameMedico, dependente);
 
 		Endereco enderecoCadastrado = dao.cadastrar(endereco);
 		Endereco colaboradorCadastrado = dao.buscarPorId(Endereco.class, enderecoCadastrado.getId());
