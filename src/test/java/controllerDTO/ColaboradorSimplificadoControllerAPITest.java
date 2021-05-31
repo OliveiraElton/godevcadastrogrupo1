@@ -1,7 +1,6 @@
 package controllerDTO;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -29,6 +28,8 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ExameMedicoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.ColaboradorSimplificadoDTO;
 import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.Escolaridade;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.EstadoCivil;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
 
@@ -41,7 +42,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.Tip
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class ColaboradorSimplificadoControllerAPITest{
+public class ColaboradorSimplificadoControllerAPITest {
 
 	static ColaboradorSimplificadoControllerApi colaboradorControllerApi = new ColaboradorSimplificadoControllerApi();
 	static Conta conta = new Conta("Caixa", "105", "2569874", "15");
@@ -62,16 +63,18 @@ public class ColaboradorSimplificadoControllerAPITest{
 	public static void setUpStaticos() throws Exception {
 		contatos = new Contatos("47988554466", "4732569874", email, "4798756430");
 	}
+
 	@Before
 	public void limparTabelas() throws Exception {
 		dao.deletarTodos("colaborador");
-		
+
 	}
 
 	@Test
 	public void testAReadById() {
 		Colaborador colaborador = new Colaborador("Luiza", "Antunes", "Luiza", LocalDate.of(2000, 07, 30), "Brasileira",
-				"Blumenau", false, "Masculino", IdentidadeGenero.TRANS, endereco, "21164028324", "45124563", contatos,
+				"Blumenau", false, "Masculino", IdentidadeGenero.TRANS, Escolaridade.MESTRADO,
+				EstadoCivil.UNIAO_ESTAVEL, "Marta Pereira", "Joao Gomes", endereco, "21164028324", "45124563", contatos,
 				12, 123456789, false, false, LocalDate.now(), false, "12345687552", "luiza@senior.com.br", "5544555",
 				conta, exameMedico, new Dependente());
 		dao.cadastrar(colaborador);
@@ -88,9 +91,10 @@ public class ColaboradorSimplificadoControllerAPITest{
 		Contatos contatos3 = new Contatos("47988554466", "4732569874", email, "4798756430");
 		ExameMedico exameMedico3 = new ExameMedico(TiposExames.ADMISSIONAL, LocalDate.now(), true);
 		Colaborador colaborador = new Colaborador("Luiza", "Fernanda", "Luiza", LocalDate.of(2000, 07, 30),
-				"Brasileira", "Blumenau", false, "Feminino", IdentidadeGenero.TRANS, endereco3, "21164028324",
-				"45124563", contatos3, 12, 123456789, false, false, LocalDate.now(), false, "12345687552",
-				"luiza@senior.com.br", "5544555", conta3, exameMedico3, new Dependente());
+				"Brasileira", "Blumenau", false, "Feminino", IdentidadeGenero.TRANS, Escolaridade.MESTRADO,
+				EstadoCivil.UNIAO_ESTAVEL, "Marta Pereira", "Joao Gomes", endereco3, "21164028324", "45124563",
+				contatos3, 12, 123456789, false, false, LocalDate.now(), false, "12345687552", "luiza@senior.com.br",
+				"5544555", conta3, exameMedico3, new Dependente());
 		ColaboradorDAO.getInstance(BDConexao.getSessao()).cadastrar(colaborador);
 		Conta conta2 = new Conta("Viacredi", "333", "1231551", "3");
 		Endereco endereco2 = new Endereco("Rua 2 de Setembro", 44, "Casa", "89665422", "Itoupava Norte", "Brasil",
@@ -99,9 +103,10 @@ public class ColaboradorSimplificadoControllerAPITest{
 		ExameMedico exameMedico2 = new ExameMedico(TiposExames.ADMISSIONAL, LocalDate.now(), true);
 
 		Colaborador colaborador2 = new Colaborador("Ana", "Da Silva", "Ana", LocalDate.of(2004, 02, 10), "Brasileira",
-				"Blumenau", false, "Feminino", IdentidadeGenero.CIS, endereco2, "21164028324", "45124563", contatos2,
-				12, 123456789, false, false, LocalDate.now(), false, "12345687552", "ana@senior.com.br", "5544555",
-				conta2, exameMedico2, new Dependente());
+				"Blumenau", false, "Feminino", IdentidadeGenero.CIS, Escolaridade.MESTRADO, EstadoCivil.UNIAO_ESTAVEL,
+				"Marta Pereira", "Joao Gomes", endereco2, "21164028324", "45124563", contatos2, 12, 123456789, false,
+				false, LocalDate.now(), false, "12345687552", "ana@senior.com.br", "5544555", conta2, exameMedico2,
+				new Dependente());
 		ColaboradorDAO.getInstance(BDConexao.getSessao()).cadastrar(colaborador2);
 		List<ColaboradorSimplificadoDTO> listaColaboradorDto = colaboradorControllerApi.buscarTodosColaboradores();
 		assertEquals(2, listaColaboradorDto.size());
@@ -115,9 +120,10 @@ public class ColaboradorSimplificadoControllerAPITest{
 		ExameMedico exameMedico3 = new ExameMedico(TiposExames.ADMISSIONAL, LocalDate.now(), true);
 
 		Colaborador colaborador = new Colaborador("Luiza", "Fernanda", "Luiza", LocalDate.of(2000, 07, 30),
-				"Brasileira", "Blumenau", false, "Feminino", IdentidadeGenero.TRANS, endereco3, "21164028324",
-				"45124563", contatos3, 12, 123456789, false, false, LocalDate.now(), false, "12345687552",
-				"luiza@senior.com.br", "5544555", conta3, exameMedico3, new Dependente());
+				"Brasileira", "Blumenau", false, "Feminino", IdentidadeGenero.TRANS, Escolaridade.MESTRADO,
+				EstadoCivil.UNIAO_ESTAVEL, "Marta Pereira", "Joao Gomes", endereco3, "21164028324", "45124563",
+				contatos3, 12, 123456789, false, false, LocalDate.now(), false, "12345687552", "luiza@senior.com.br",
+				"5544555", conta3, exameMedico3, new Dependente());
 		dao.cadastrar(colaborador);
 		List<ColaboradorSimplificadoDTO> lista = colaboradorControllerApi.buscarColaboradorPorNome("Luiza");
 		assertEquals(1, lista.size());
@@ -131,9 +137,10 @@ public class ColaboradorSimplificadoControllerAPITest{
 		ExameMedico exameMedico3 = new ExameMedico(TiposExames.ADMISSIONAL, LocalDate.now(), true);
 
 		Colaborador colaborador = new Colaborador("Luiza", "Fernanda", "Luiza", LocalDate.of(2000, 07, 30),
-				"Brasileira", "Blumenau", false, "Feminino", IdentidadeGenero.TRANS, endereco3, "21164028324",
-				"45124563", contatos3, 12, 123456789, false, false, LocalDate.now(), false, "12345687552",
-				"luiza@senior.com.br", "5544555", conta3, exameMedico3, new Dependente());
+				"Brasileira", "Blumenau", false, "Feminino", IdentidadeGenero.TRANS, Escolaridade.MESTRADO,
+				EstadoCivil.UNIAO_ESTAVEL, "Marta Pereira", "Joao Gomes", endereco3, "21164028324", "45124563",
+				contatos3, 12, 123456789, false, false, LocalDate.now(), false, "12345687552", "luiza@senior.com.br",
+				"5544555", conta3, exameMedico3, new Dependente());
 		dao.cadastrar(colaborador);
 		Conta conta2 = new Conta("Viacredi", "333", "1231551", "3");
 		Endereco endereco2 = new Endereco("Rua 2 de Setembro", 44, "Casa", "89665422", "Itoupava Norte", "Brasil",
@@ -142,16 +149,13 @@ public class ColaboradorSimplificadoControllerAPITest{
 		ExameMedico exameMedico2 = new ExameMedico(TiposExames.ADMISSIONAL, LocalDate.now(), true);
 
 		Colaborador colaborador2 = new Colaborador("Luiza", "Da Silva", "Ana", LocalDate.of(2004, 02, 10), "Brasileira",
-				"Blumenau", false, "Feminino", IdentidadeGenero.CIS, endereco2, "21164028324", "45124563", contatos2,
-				12, 123456789, false, false, LocalDate.now(), false, "12345687552", "ana@senior.com.br", "5544555",
-				conta2, exameMedico2, new Dependente());
+				"Blumenau", false, "Feminino", IdentidadeGenero.CIS, Escolaridade.MESTRADO, EstadoCivil.UNIAO_ESTAVEL,
+				"Marta Pereira", "Joao Gomes", endereco2, "21164028324", "45124563", contatos2, 12, 123456789, false,
+				false, LocalDate.now(), false, "12345687552", "ana@senior.com.br", "5544555", conta2, exameMedico2,
+				new Dependente());
 		dao.cadastrar(colaborador2);
 		List<ColaboradorSimplificadoDTO> lista = colaboradorControllerApi.buscarColaboradorPorNome("Luiza");
 		assertEquals(2, lista.size());
 	}
-	
-	
-	
-
 
 }

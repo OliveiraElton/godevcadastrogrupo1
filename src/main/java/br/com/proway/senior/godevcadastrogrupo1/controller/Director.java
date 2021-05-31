@@ -6,6 +6,8 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
 import br.com.proway.senior.godevcadastrogrupo1.model.PrestadorServico;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.Escolaridade;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.EstadoCivil;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.TiposDependentes;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
@@ -33,7 +35,7 @@ public class Director {
 	 * @param naturalidade
 	 * @param pcd
 	 * @param genero
-	 * @param identidadeGenero
+	 * @param identidadeGeneroF
 	 * @param cpf
 	 * @param rg
 	 * @param logradouro
@@ -62,7 +64,7 @@ public class Director {
 		builder.setCpf(cpf);
 		builder.setRg(rg);
 	}
-	
+
 	/**
 	 * Pessoa sem dados de endereco, utilizado para {@link PrestadorServico}.
 	 * 
@@ -135,9 +137,13 @@ public class Director {
 	 * @param pcd
 	 * @param genero
 	 * @param identidadeGenero
+	 * @param escolaridade
+	 * @param estadoCivil
+	 * @param nomeMae
+	 * @param nomePai
 	 * @param cpf
 	 * @param rg
-	 * @param idCargo
+	 * @param idPostoTrabalho
 	 * @param nit
 	 * @param optanteVT
 	 * @param optanteVAVR
@@ -179,22 +185,26 @@ public class Director {
 	 */
 	public static void cadastrarColaborador(Builder builder, String nome, String sobrenome, String nomeSocial,
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd, String genero,
-			IdentidadeGenero identidadeGenero, String cpf, String rg, Integer idCargo, Integer nit, boolean optanteVT,
-			boolean optanteVAVR, LocalDate dataAdmissao, boolean optanteDependente, String registro_alistamento,
-			String email_corporativo, String titulo_eleitor, String logradouro, Integer numero, String complemento,
-			String cep, String bairro, String pais, String cidade, String uf, String telefonePrincipal,
-			String telefoneSecundario, String email, String telefoneFamiliar, TiposExames tipoExame,
-			LocalDate dataExame, boolean apto, String nomeBanco, String agencia, String numeroConta,
-			String digitoVerificador, String nomeDependente, String sobrenomeDependente,
-			LocalDate dataDeNascimentoDependente, String nacionalidadeDependente, boolean pcdDependente,
-			String generoDependente, IdentidadeGenero identidadeGeneroDependente, String cpfDependente,
-			TiposDependentes tipoDependente, boolean optanteIR) throws Exception {
+			IdentidadeGenero identidadeGenero, Escolaridade escolaridade, EstadoCivil estadoCivil, String nomeMae,
+			String nomePai, String cpf, String rg, Integer idPostoTrabalho, Integer nit, boolean optanteVT, boolean optanteVAVR,
+			LocalDate dataAdmissao, boolean optanteDependente, String registro_alistamento, String email_corporativo,
+			String titulo_eleitor, String logradouro, Integer numero, String complemento, String cep, String bairro,
+			String pais, String cidade, String uf, String telefonePrincipal, String telefoneSecundario, String email,
+			String telefoneFamiliar, TiposExames tipoExame, LocalDate dataExame, boolean apto, String nomeBanco,
+			String agencia, String numeroConta, String digitoVerificador, String nomeDependente,
+			String sobrenomeDependente, LocalDate dataDeNascimentoDependente, String nacionalidadeDependente,
+			boolean pcdDependente, String generoDependente, IdentidadeGenero identidadeGeneroDependente,
+			String cpfDependente, TiposDependentes tipoDependente, boolean optanteIR) throws Exception {
 
 		criarPessoa(builder, nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
 				identidadeGenero, cpf, rg, logradouro, numero, complemento, cep, bairro, pais, cidade, uf);
 
 		builder.setContatos(telefonePrincipal, telefoneSecundario, email, telefoneFamiliar);
-		builder.setIdCargo(idCargo);
+		builder.setIdPostoTrabalho(idPostoTrabalho);
+		builder.setEscolaridade(escolaridade);
+		builder.setEstadoCivil(estadoCivil);
+		builder.setNomeMae(nomeMae);
+		builder.setNomePai(nomePai);
 		builder.setNit(nit);
 		builder.setOptanteVT(optanteVT);
 		builder.setOptanteVAVR(optanteVAVR);
@@ -247,8 +257,8 @@ public class Director {
 	public static void cadastrarPrestadorServico(Builder builder, String nome, String sobrenome, String nomeSocial,
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, boolean pcd, String genero,
 			IdentidadeGenero identidadeGenero, String cpf, String rg, LocalDate dataInicioContrato, Integer idSetor,
-			String telefonePrincipal, String telefoneSecundario, String email, String telefoneFamiliar,
-			Empresa empresa) throws Exception {
+			String telefonePrincipal, String telefoneSecundario, String email, String telefoneFamiliar, Empresa empresa)
+			throws Exception {
 		criarPessoa(builder, nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero,
 				identidadeGenero, cpf, rg);
 		builder.setContatos(telefonePrincipal, telefoneSecundario, email, telefoneFamiliar);

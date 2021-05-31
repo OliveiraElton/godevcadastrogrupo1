@@ -3,6 +3,8 @@ package br.com.proway.senior.godevcadastrogrupo1.controller;
 import java.time.LocalDate;
 
 import br.com.proway.senior.godevcadastrogrupo1.model.Empresa;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.Escolaridade;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.EstadoCivil;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.TiposDependentes;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
@@ -43,7 +45,7 @@ public interface Builder {
 
 	public void setRg(String rg);
 
-	public void setIdCargo(Integer idCargo);
+	public void setIdPostoTrabalho(Integer idPostoTrabalho);
 
 	public void setNit(Integer nit);
 
@@ -81,5 +83,13 @@ public interface Builder {
 	public void setEmpresa(Empresa empresa);
 
 	public void setIdSetor(Integer setor);
+	
+	public void setNomeMae(String nomeMae);
+
+	public void setNomePai(String nomePai);
+
+	public void setEscolaridade(Escolaridade escolaridade);
+
+	public void setEstadoCivil(EstadoCivil estadoCivil);
 
 }

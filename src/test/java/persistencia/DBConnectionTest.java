@@ -1,4 +1,4 @@
-package persistence;
+package persistencia;
 
 import static org.junit.Assert.assertNotNull;
 
