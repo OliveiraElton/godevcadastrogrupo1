@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <fieldset>
+        <section>
+        <center>
+            <p><h1> Cadastro de Empresa  </h1></p>
+         </center>
+    </fieldset>
+    <fieldset>
+           <form action="mailto:gabrielsimon775@gmail.com">
+           <b><h2>Dados Específicos</h2></b>
+           <br>
+           <b>Razão Social :</b> 
+           <input type="text" name="razaoSocial" max="100" min="1" required><br><br>
+           <b>Data de início do contrato :</b>
+           <input type="date" name="dataContrato" max="2021" min="1960" required><br><br>  
+            <b>CNPJ :</b>
+            <input type="text" name="cnpj" max="14" min="14" required><br><br>
+        </section>
+        <section>
+            <b><h2>Contatos</h2></b>
+            <br>
+            <b>Telefone Principal :</b>
+            <input type="text" name="telefonePrincipal" max="11" min="1" required><br><br>
+            <b>Telefone Secundário :</b>
+            <input type="text" name="telefoneSecundario" max="11" min="1" required><br><br>
+            <b>Email :</b>
+            <input type="text" name="email" max="40" min="1" required><br><br>
+            <b>Telefone de Emergência :</b>
+            <input type="text" name="telefoneEmergencia" max="11" min="1" required><br><br>  
+            <b>Rua :</b>
+            <input type="text" name="logradouro" max="40" min="1" required><br><br>  
+            <b>Número :</b>
+            <input type="number" name="numeroCasa" max="10000000" min="1" required><br><br>  
+            <b>Bairro :</b>
+            <input type="text" name="bairro" max="40" min="1" required><br><br>  
+            <b>Complemento :</b>
+            <input type="text" name="complemento" max="50" min="1" required><br><br>  
+            <b>País :</b>
+            <select name="pais" required> <br>
+                <option value="nada"> </option>
+                <option value="Brasil">Brasil</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Venezuela">Venezuela</option>
+                <option value="Estados Unidos">Estados Unidos</option>
+                </select><br><br>
+                <b>Estado :</b>
+                <select name="estado" required> <br>
+                    <option value="nada"> </option>
+                    <option value="SC">SC</option>
+                    <option value="PR">PR</option>
+                    <option value="SC">SC</option>
+                    <option value="MG">MG</option>
+                    </select><br><br>
+            <button type="reset">Cancelar</button>
+            <button type="submit" style="width:90;height:10">Concluir Cadastro</button> 
+            </section>
+        </form>
+    </fieldset>
+</body>
+</html>
