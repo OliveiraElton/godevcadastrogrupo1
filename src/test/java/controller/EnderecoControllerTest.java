@@ -82,8 +82,8 @@ public class EnderecoControllerTest {
 		TiposExames em = EnumExamesMedicos.TiposExames.ADMISSIONAL;
 		ExameMedico exameMedico = new ExameMedico(em, LocalDate.now(), true);
 		Endereco endereco = new Endereco("Rua 7 de Setembro", 45, "", "8974335", "Centro", "Brasil", "Blumenau", "SC");
-		Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Venezuelano", "Cidade del Leste",
-				true, null, null, endereco, "09619039610", null, null, true);
+		Dependente dependente = new Dependente("Joao", "Fonseca", data, "Venezuelano",
+				true, "Masculino", IdentidadeGenero.CIS, "09619039610", null, true);
 		Colaborador colaborador = new Colaborador("Carla", "Nunes", "Nada consta", data, "Americana", "Los Angeles",
 				false, "Feminino", ig, endereco, "21164028324", "45124563", null, null, null, false, false, data,
 				false, null, "maria.nunes@gmail.com", "554555", conta, exameMedico, dependente);

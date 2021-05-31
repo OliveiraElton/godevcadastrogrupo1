@@ -87,7 +87,7 @@ public class DependenteSimplificadoControllerApiTest {
 
 		List<DependenteSimplificadoDTO> listaDependenteSimplificadoDTO = dependenteApi
 				.buscarDependentePorIdColaborador(colaborador.getId());
-		assertEquals("joãozinho", listaDependenteSimplificadoDTO.get(0).getNome());
+		assertEquals("Joãozinho", listaDependenteSimplificadoDTO.get(0).getNome());
 	}
 
 	@Test
