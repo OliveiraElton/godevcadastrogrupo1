@@ -62,9 +62,8 @@ public class DependenteSimplificadoControllerApiTest {
 
 	@Test
 	public void testBuscarDependentePorId() {
-		Dependente dependente = new Dependente("Joao", "Fonseca", data, "Venezuelano",
-				true, "Masculino", IdentidadeGenero.TRANS, "09619039610",
-				EnumDadosPessoais.TiposDependentes.FILHO, true);
+		Dependente dependente = new Dependente("Joao", "Fonseca", data, "Venezuelano", true, "Masculino",
+				IdentidadeGenero.TRANS, "09619039610", EnumDadosPessoais.TiposDependentes.FILHO, true);
 		dao.cadastrar(dependente);
 
 		DependenteSimplificadoDTO dependenteDTO = new DependenteSimplificadoDTO(dependente);
