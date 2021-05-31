@@ -21,6 +21,8 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ColaboradorDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
 import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.Escolaridade;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.EstadoCivil;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
 
@@ -100,7 +102,8 @@ public class DependenteControllerTest {
 		Contatos contatos = new Contatos("47984556633", "4789568948", email, "4798989898");
 		ExameMedico exameMedico = new ExameMedico(TiposExames.PERIODICO, LocalDate.now(), true);
 		Colaborador colaborador = new Colaborador("Lucas", "Nunes", "Nada consta", data, "Brasileiro", "Blumenau",
-				false, "Masculino", null, endereco, "21164028324", "45124563", contatos, 54545, 454545454, false, false,
+				false, "Masculino", IdentidadeGenero.CIS, Escolaridade.MEDIO_COMPLETO, EstadoCivil.UNIAO_ESTAVEL,
+				"Carla Nunes", "Joao Nunes", endereco, "21164028324", "45124563", contatos, 54545, 454545454, false, false,
 				data, false, "", "carla@empresa.com.br", "554555", conta, exameMedico, dependente);
 		daoColab.cadastrar(colaborador);
 		dao.cadastrar(dependente);
