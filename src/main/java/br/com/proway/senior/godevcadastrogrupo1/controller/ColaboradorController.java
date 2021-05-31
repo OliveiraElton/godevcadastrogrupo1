@@ -15,6 +15,8 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ExameMedicoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.Escolaridade;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.EstadoCivil;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.TiposDependentes;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
@@ -64,6 +66,11 @@ public class ColaboradorController {
 	 *                         (false).
 	 * @param String           genero Genero do colaborador
 	 * @param IdentidadeGenero identidadeGenero Identidade de genero colaborador.
+	 * @param Escolaridade     escolaridade nível de instrucao do colaborador.
+	 * @param EstadoCivil      estadoCivil Estado civil do colaborador, conforme
+	 *                         opcoes legais.
+	 * @param String           nomeMae Nome da mae do colaborador.
+	 * @param String           nomePai Nome do pai do colaborador.
 	 * @param String           cpf CPF valido do colaborador (Cadastro de Pessoa
 	 *                         Fisica).
 	 * @param String           rg RG do colaborador (Registro Geral).
@@ -117,13 +124,14 @@ public class ColaboradorController {
 	 */
 	public static Colaborador cadastrarColaborador(String nome, String sobrenome, String nomeSocial,
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, Boolean pcd, String genero,
-			IdentidadeGenero identidadeGenero, String cpf, String rg, Integer idPostoDeTrabalho, Integer nit,
-			Boolean optanteVT, Boolean optanteVAVR, LocalDate dataAdmissao, Boolean optanteDependente,
-			String registro_alistamento, String email_corporativo, String titulo_eleitor, String logradouro,
-			Integer numero, String complemento, String cep, String bairro, String pais, String cidade, String uf,
-			String telefonePrincipal, String telefoneSecundario, String email, String telefoneFamiliar,
-			TiposExames tipoExame, LocalDate dataExame, Boolean apto, String nomeBanco, String agencia,
-			String numeroConta, String digitoVerificador, String nomeDependente, String sobrenomeDependente,
+			IdentidadeGenero identidadeGenero, Escolaridade escolaridade, EstadoCivil estadoCivil, String nomeMae,
+			String nomePai, String cpf, String rg, Integer idPostoDeTrabalho, Integer nit, Boolean optanteVT,
+			Boolean optanteVAVR, LocalDate dataAdmissao, Boolean optanteDependente, String registro_alistamento,
+			String email_corporativo, String titulo_eleitor, String logradouro, Integer numero, String complemento,
+			String cep, String bairro, String pais, String cidade, String uf, String telefonePrincipal,
+			String telefoneSecundario, String email, String telefoneFamiliar, TiposExames tipoExame,
+			LocalDate dataExame, Boolean apto, String nomeBanco, String agencia, String numeroConta,
+			String digitoVerificador, String nomeDependente, String sobrenomeDependente,
 			LocalDate dataDeNascimentoDependente, String nacionalidadeDependente, Boolean pcdDependente,
 			String generoDependente, IdentidadeGenero identidadeGeneroDependente, String cpfDependente,
 			TiposDependentes tipoDependente, Boolean optanteIR) throws Exception {
@@ -131,12 +139,13 @@ public class ColaboradorController {
 		PessoaBuilder builder = new PessoaBuilder();
 
 		Director.cadastrarColaborador(builder, nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade,
-				naturalidade, pcd, genero, identidadeGenero, cpf, rg, idPostoDeTrabalho, nit, optanteVT, optanteVAVR,
-				dataAdmissao, optanteDependente, registro_alistamento, email_corporativo, titulo_eleitor, logradouro,
-				numero, complemento, cep, bairro, pais, cidade, uf, telefonePrincipal, telefoneSecundario, email,
-				telefoneFamiliar, tipoExame, dataExame, apto, nomeBanco, agencia, numeroConta, digitoVerificador,
-				nomeDependente, sobrenomeDependente, dataDeNascimentoDependente, nacionalidadeDependente, pcdDependente,
-				generoDependente, identidadeGeneroDependente, cpfDependente, tipoDependente, optanteIR);
+				naturalidade, pcd, genero, identidadeGenero, escolaridade, estadoCivil, nomeMae, nomePai, cpf, rg,
+				idPostoDeTrabalho, nit, optanteVT, optanteVAVR, dataAdmissao, optanteDependente, registro_alistamento,
+				email_corporativo, titulo_eleitor, logradouro, numero, complemento, cep, bairro, pais, cidade, uf,
+				telefonePrincipal, telefoneSecundario, email, telefoneFamiliar, tipoExame, dataExame, apto, nomeBanco,
+				agencia, numeroConta, digitoVerificador, nomeDependente, sobrenomeDependente,
+				dataDeNascimentoDependente, nacionalidadeDependente, pcdDependente, generoDependente,
+				identidadeGeneroDependente, cpfDependente, tipoDependente, optanteIR);
 		Colaborador colaborador = (Colaborador) builder.build();
 		return daoColaborador.cadastrar(colaborador);
 	}
@@ -164,15 +173,6 @@ public class ColaboradorController {
 	 *                         filho, conjuge, etc.
 	 * @param optanteIR        Informa se o dependente sera considerado para IR sim
 	 *                         (true) ou nao (false).
-	 * @param String           logradouro Nome do logradouro onde o dependente
-	 *                         reside.
-	 * @param int              numero Numero da residencia do dependente.
-	 * @param String           complemento Complemento do endereco do dependente.
-	 * @param String           cep CEP da residencia do dependente.
-	 * @param String           bairro Bairro onde o dependente reside.
-	 * @param String           pais Pais onde o dependente reside.
-	 * @param String           cidade Cidade onde o dependente reside.
-	 * @param String           uf Unidade Federativa onde o dependente reside.
 	 */
 	public static void adicionarDependente(Colaborador colaborador, String nome, String sobrenome,
 			LocalDate dataDeNascimento, String nacionalidade, boolean pcd, String genero,
@@ -231,6 +231,10 @@ public class ColaboradorController {
 	 * @param Boolean           pcd Informacao se eh PCD sim ou nao.
 	 * @param String            genero genero alterado
 	 * @param IdentidadeGenero  identidadeGenero Identidade de Genero alterada.
+	 * @param Escolaridade      escolaridade nivel de instrucao alterado.
+	 * @param EstadoCivil       estadoCivil Estado civil alterado.
+	 * @param String            nomeMae Nome da mae do colaborador alterado.
+	 * @param String            nomePai Nome do pai do colaborador alterado.
 	 * @param Endereco          endereco objeto do endereco alterado.
 	 * @param String            cpf CPF alterado.
 	 * @param String            rg RG alterado.
@@ -253,13 +257,14 @@ public class ColaboradorController {
 	 */
 	public static Colaborador atualizarColaborador(Integer id, String nome, String sobrenome, String nomeSocial,
 			LocalDate dataDeNascimento, String nacionalidade, String naturalidade, Boolean pcd, String genero,
-			IdentidadeGenero identidadeGenero, String cpf, String rg, Integer idPostoDeTrabalho, Integer nit,
-			Boolean optanteVT, Boolean optanteVAVR, LocalDate dataAdmissao, Boolean optanteDependente,
-			String registro_alistamento, String email_corporativo, String titulo_eleitor, String logradouro,
-			Integer numero, String complemento, String cep, String bairro, String pais, String cidade, String uf,
-			String telefonePrincipal, String telefoneSecundario, String email, String telefoneFamiliar,
-			TiposExames tipoExame, LocalDate dataExame, Boolean apto, String nomeBanco, String agencia,
-			String numeroConta, String digitoVerificador, String nomeDependente, String sobrenomeDependente,
+			IdentidadeGenero identidadeGenero, Escolaridade escolaridade, EstadoCivil estadoCivil, String nomeMae,
+			String nomePai, String cpf, String rg, Integer idPostoDeTrabalho, Integer nit, Boolean optanteVT,
+			Boolean optanteVAVR, LocalDate dataAdmissao, Boolean optanteDependente, String registro_alistamento,
+			String email_corporativo, String titulo_eleitor, String logradouro, Integer numero, String complemento,
+			String cep, String bairro, String pais, String cidade, String uf, String telefonePrincipal,
+			String telefoneSecundario, String email, String telefoneFamiliar, TiposExames tipoExame,
+			LocalDate dataExame, Boolean apto, String nomeBanco, String agencia, String numeroConta,
+			String digitoVerificador, String nomeDependente, String sobrenomeDependente,
 			LocalDate dataDeNascimentoDependente, String nacionalidadeDependente, Boolean pcdDependente,
 			String generoDependente, IdentidadeGenero identidadeGeneroDependente, String cpfDependente,
 			TiposDependentes tipoDependente, Boolean optanteIR) throws Exception {
@@ -267,12 +272,13 @@ public class ColaboradorController {
 		PessoaBuilder builder = new PessoaBuilder();
 
 		Director.cadastrarColaborador(builder, nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade,
-				naturalidade, pcd, genero, identidadeGenero, cpf, rg, idPostoDeTrabalho, nit, optanteVT, optanteVAVR,
-				dataAdmissao, optanteDependente, registro_alistamento, email_corporativo, titulo_eleitor, logradouro,
-				numero, complemento, cep, bairro, pais, cidade, uf, telefonePrincipal, telefoneSecundario, email,
-				telefoneFamiliar, tipoExame, dataExame, apto, nomeBanco, agencia, numeroConta, digitoVerificador,
-				nomeDependente, sobrenomeDependente, dataDeNascimentoDependente, nacionalidadeDependente, pcdDependente,
-				generoDependente, identidadeGeneroDependente, cpfDependente, tipoDependente, optanteIR);
+				naturalidade, pcd, genero, identidadeGenero, escolaridade, estadoCivil, nomeMae, nomePai, cpf, rg,
+				idPostoDeTrabalho, nit, optanteVT, optanteVAVR, dataAdmissao, optanteDependente, registro_alistamento,
+				email_corporativo, titulo_eleitor, logradouro, numero, complemento, cep, bairro, pais, cidade, uf,
+				telefonePrincipal, telefoneSecundario, email, telefoneFamiliar, tipoExame, dataExame, apto, nomeBanco,
+				agencia, numeroConta, digitoVerificador, nomeDependente, sobrenomeDependente,
+				dataDeNascimentoDependente, nacionalidadeDependente, pcdDependente, generoDependente,
+				identidadeGeneroDependente, cpfDependente, tipoDependente, optanteIR);
 		Colaborador colaborador = (Colaborador) builder.build();
 		session.clear();
 		colaborador.setId(id);
