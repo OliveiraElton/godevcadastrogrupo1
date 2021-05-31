@@ -15,15 +15,14 @@ import br.com.proway.senior.godevcadastrogrupo1.controller.ColaboradorController
 import br.com.proway.senior.godevcadastrogrupo1.controller.DTO.DependenteSimplificadoControllerAPI;
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
-import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ColaboradorDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.DependenteDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.DependenteSimplificadoDTO;
 import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais;
-import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.TiposDependentes;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
 
 /**
@@ -61,9 +60,8 @@ public class DependenteSimplificadoControllerApiTest {
 
 	@Test
 	public void testBuscarDependentePorId() {
-		Endereco endereco = new Endereco("Rua 10", 5, "Casa", "54215365", "Centro", "Brasil", "Blumenau", "SC");
-		Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Venezuelano", "Cidade del Leste",
-				true, "Masculino", IdentidadeGenero.TRANS, endereco, "09619039610", "123",
+		Dependente dependente = new Dependente("Joao", "Fonseca", data, "Venezuelano",
+				true, "Masculino", IdentidadeGenero.TRANS, "09619039610",
 				EnumDadosPessoais.TiposDependentes.FILHO, true);
 		dao.cadastrar(dependente);
 
@@ -84,8 +82,8 @@ public class DependenteSimplificadoControllerApiTest {
 				"Venezuelano", "Blumenauense", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false,
 				false, data, false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547",
 				"Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103", "brian.santos@empresa.com.br",
-				"1542413655", te, null, true, "banco00", "055", "438614625", "154", "joãozinho", "Santos", "Erika",
-				data, "Venezuelano", "Blumenauense", true, "Feminino", ig, "09619039610", "mg14388606", td, true);
+				"1542413655", te, null, true, "banco00", "055", "438614625", "154", "Joãozinho", "Santos", data,
+				"Venezuelano", true, "Feminino", ig, "09619039610", td, true);
 
 		List<DependenteSimplificadoDTO> listaDependenteSimplificadoDTO = dependenteApi
 				.buscarDependentePorIdColaborador(colaborador.getId());
@@ -94,14 +92,11 @@ public class DependenteSimplificadoControllerApiTest {
 
 	@Test
 	public void testBuscarTodosDependentes() {
-		Endereco endereco = new Endereco("Rua Brasil", 5, "Casa", "54215365", "Centro", "Brasil", "Blumanau", "SC");
-		Dependente dependente = new Dependente("Joao", "Fonseca", "Jenifer", data, "Brasileira", "Blumenau", true,
-				"Masculino", IdentidadeGenero.TRANS, endereco, "09619039610", "123",
-				EnumDadosPessoais.TiposDependentes.FILHO, true);
+		Dependente dependente = new Dependente("Joao", "Fonseca", data, "Brasileira", true, "Masculino",
+				IdentidadeGenero.TRANS, "09619039610", EnumDadosPessoais.TiposDependentes.FILHO, true);
 		dao.cadastrar(dependente);
-		Dependente dependente2 = new Dependente("Carla", "Fonseca", "Nada consta", data, "Brasileira", "Blumenau", true,
-				"Feminino", IdentidadeGenero.CIS, endereco, "09619039610", "123",
-				EnumDadosPessoais.TiposDependentes.FILHO, true);
+		Dependente dependente2 = new Dependente("Carla", "Fonseca", data, "Brasileira", true, "Feminino",
+				IdentidadeGenero.CIS, "09619039610", EnumDadosPessoais.TiposDependentes.FILHO, true);
 		dao.cadastrar(dependente2);
 		List<DependenteSimplificadoDTO> listaDependenteDTO = new ArrayList<DependenteSimplificadoDTO>();
 		listaDependenteDTO.add(new DependenteSimplificadoDTO(dependente));
@@ -112,14 +107,11 @@ public class DependenteSimplificadoControllerApiTest {
 
 	@Test
 	public void testBuscarDependentePorNome() {
-		Endereco endereco = new Endereco("Rua 10", 10, "Casa", "54215365", "Centro", "Brasil", "Blumenau", "SC");
-		Dependente dependente = new Dependente("Carolina", "Fonseca", "Jenifer", data, "Venezuelano",
-				"Cidade del Leste", true, "Feminino", IdentidadeGenero.CIS, endereco, "09619039610", "123",
-				EnumDadosPessoais.TiposDependentes.FILHO, true);
+		Dependente dependente = new Dependente("Carolina", "Fonseca", data, "Venezuelano", true, "Feminino",
+				IdentidadeGenero.CIS, "09619039610", EnumDadosPessoais.TiposDependentes.FILHO, true);
 		dao.cadastrar(dependente);
-		Dependente dependente2 = new Dependente("Barbara", "Fonseca", "Nada consta", data, "Venezuelano",
-				"Cidade del Leste", true, "Feminino", IdentidadeGenero.CIS, endereco, "09619039610", "123",
-				EnumDadosPessoais.TiposDependentes.FILHO, true);
+		Dependente dependente2 = new Dependente("Barbara", "Fonseca", data, "Venezuelano", true, "Feminino",
+				IdentidadeGenero.CIS, "09619039610", EnumDadosPessoais.TiposDependentes.FILHO, true);
 		dao.cadastrar(dependente2);
 		List<DependenteSimplificadoDTO> listaDependenteSimplificadoDTO = dependenteApi
 				.buscarDependentePorNome("Barbara");

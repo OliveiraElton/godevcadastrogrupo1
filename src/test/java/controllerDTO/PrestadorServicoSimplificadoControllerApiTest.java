@@ -66,14 +66,11 @@ public class PrestadorServicoSimplificadoControllerApiTest {
 		Empresa empresa2 = new Empresa("Proway", LocalDate.now(), "05.975.585/0001-89", endereco2, contatos2);
 		PrestadoresServicoController.cadastrarPrestadorServico("Joao", "Massa", "Jhon", LocalDate.now(), "Brasil",
 				"Sao Paulo", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "84454",
-				LocalDate.of(2020, 01, 28), 1, "1543652548", "1543652548", "beatriz@gmail.com", "1543652548",
-				"Rua Sao Paulo", 510, "Predio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
+				LocalDate.of(2020, 01, 28), 1, "1543652548", "1543652548", "beatriz@gmail.com", "1543652548", empresa);
 
-		PrestadoresServicoController.cadastrarPrestadorServico("Joao", "Fulana", "Jhon",
-
-				LocalDate.now(), "Brasil", "Sao Paulo", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90",
-				"879898", LocalDate.of(2020, 01, 28), 1, "1543652548", "1543652548", "batriz@gmail.com", "1543652548",
-				"Rua Sao Paulo", 510, "Predio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa2);
+		PrestadoresServicoController.cadastrarPrestadorServico("Joao", "Fulana", "Jhon", LocalDate.now(), "Brasil",
+				"Sao Paulo", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "879898",
+				LocalDate.of(2020, 01, 28), 1, "1543652548", "1543652548", "batriz@gmail.com", "1543652548", empresa2);
 
 		PrestadorServicoSimplificadoDTO prestadorDTO = prestadorApi
 				.buscarPrestadorServicoPorId(prestadorApi.buscarTodosPrestadoresServico().get(0).getId());
@@ -88,13 +85,11 @@ public class PrestadorServicoSimplificadoControllerApiTest {
 		Empresa empresa2 = new Empresa("Proway", LocalDate.now(), "05.975.585/0001-89", endereco2, contatos2);
 		PrestadoresServicoController.cadastrarPrestadorServico("Joao", "Massa", "Jhon", LocalDate.now(), "Brasil",
 				"Sao Paulo", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "547878",
-				LocalDate.of(2020, 01, 28), 1, "1543652548", "1543652548", "batriz@gmail.com", "1543652548",
-				"Rua Sao Paulo", 510, "Predio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
+				LocalDate.of(2020, 01, 28), 1, "1543652548", "1543652548", "batriz@gmail.com", "1543652548", empresa);
 
 		PrestadoresServicoController.cadastrarPrestadorServico("Joao", "Fulana", "Jhon", LocalDate.now(), "Brasil",
 				"Sao Paulo", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "78744",
-				LocalDate.of(2020, 01, 28), 1, "1543652548", "1543652548", "batriz@gmail.com", "1543652548",
-				"Rua s�o Paulo", 510, "Predio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa2);
+				LocalDate.of(2020, 01, 28), 1, "1543652548", "1543652548", "batriz@gmail.com", "1543652548", empresa2);
 
 		List<PrestadorServicoSimplificadoDTO> listaPrestadorDTO = prestadorApi.buscarTodosPrestadoresServico();
 		assertEquals(2, listaPrestadorDTO.size());
@@ -107,13 +102,11 @@ public class PrestadorServicoSimplificadoControllerApiTest {
 		Empresa empresa2 = new Empresa("Proway", LocalDate.now(), "05.975.585/0001-89", endereco2, contatos2);
 		PrestadoresServicoController.cadastrarPrestadorServico("Joao", "Massa", "Jhon", LocalDate.now(), "Brasil",
 				"Sao Paulo", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "45544",
-				LocalDate.of(2020, 01, 28), 1, "1543652548", "1543652548", "batriz@gmail.com", "1543652548",
-				"Rua Sao Paulo", 510, "Predio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa);
+				LocalDate.of(2020, 01, 28), 1, "1543652548", "1543652548", "batriz@gmail.com", "1543652548", empresa);
 
 		PrestadoresServicoController.cadastrarPrestadorServico("Joao", "Souza", "Jhon", LocalDate.now(), "Brasil",
 				"S�o Paulo", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "4445454",
-				LocalDate.of(2020, 01, 28), 1, "1543652548", "1543652548", "batriz@gmail.com", "1543652548",
-				"Rua s�o Paulo", 510, "Predio", "89032640", "Agua Verde", "Brasil", "Blumenau", "SP", empresa2);
+				LocalDate.of(2020, 01, 28), 1, "1543652548", "1543652548", "batriz@gmail.com", "1543652548", empresa2);
 
 		List<PrestadorServicoSimplificadoDTO> listaPrestadorDTO = prestadorApi.buscarPrestadorServicoPorNome("Joao");
 		assertEquals(2, listaPrestadorDTO.size());
@@ -122,11 +115,10 @@ public class PrestadorServicoSimplificadoControllerApiTest {
 
 	@Test
 	public void testCriarPrestador() throws Exception {
-		Endereco endereco1 = new Endereco("Rua 15", 10, "", "89123582", "Centro", "Brasil", "Blumenau", "SC");
 		Contatos contatos1 = new Contatos("47985236587", "47987526341", "joaopires@gmail.com", "47985632144");
 		PrestadorServico prestador = new PrestadorServico("Joao", "Pires", "Jhon", LocalDate.now(), "Brasil",
-				"Sao Paulo", true, "Masculino", IdentidadeGenero.CIS, endereco1, "256.103.800-90", "1543652548",
-				contatos1, LocalDate.of(2020, 01, 28), empresa, 12);
+				"Sao Paulo", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "1543652548", contatos1,
+				LocalDate.of(2020, 01, 28), empresa, 12);
 		PrestadorServico prestadorRetornado = prestadorApi.cadastrarPrestadorServico(prestador);
 		assertEquals(prestador.getDataDeNascimento(), prestadorRetornado.getDataDeNascimento());
 		assertEquals(prestador.getSobrenome(), prestadorRetornado.getSobrenome());
@@ -139,8 +131,8 @@ public class PrestadorServicoSimplificadoControllerApiTest {
 		Contatos contatos2 = new Contatos("47985415263", "47987526341", "joaopires@gmail.com", "47985632144");
 		Empresa empresa2 = new Empresa("Proway", LocalDate.now(), "05.975.585/0001-89", endereco2, contatos2);
 		PrestadorServico prestador = new PrestadorServico("Joao", "Pires", "Jhon", LocalDate.now(), "Brasil",
-				"S�o Paulo", true, "Masculino", IdentidadeGenero.CIS, endereco2, "256.103.800-90", "1543652548",
-				contatos2, LocalDate.of(2020, 01, 28), empresa2, 12);
+				"S�o Paulo", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "1543652548", contatos2,
+				LocalDate.of(2020, 01, 28), empresa2, 12);
 		PrestadorServico prestadorRetornado = prestadorApi.cadastrarPrestadorServico(prestador);
 		prestadorApi.deletePrestadorServico(prestadorRetornado.getId());
 		assertTrue(prestadorApi.buscarTodosPrestadoresServico().isEmpty());
@@ -148,11 +140,10 @@ public class PrestadorServicoSimplificadoControllerApiTest {
 
 	@Test
 	public void testAtualizarPrestador() throws Exception {
-		Endereco endereco2 = new Endereco("Rua 10", 10, "", "89123582", "Centro", "Brasil", "Blumenau", "SC");
 		Contatos contatos2 = new Contatos("47985415263", "47987526341", "joaopires@gmail.com", "47985632144");
 		PrestadorServico prestador = new PrestadorServico("Joao", "Pires", "Jhon", LocalDate.now(), "Brasil",
-				"Sao Paulo", true, "Masculino", IdentidadeGenero.CIS, endereco2, "256.103.800-90", "1543652548",
-				contatos2, LocalDate.of(2020, 01, 28), empresa, 12);
+				"Sao Paulo", true, "Masculino", IdentidadeGenero.CIS, "256.103.800-90", "1543652548", contatos2,
+				LocalDate.of(2020, 01, 28), empresa, 12);
 		PrestadorServico prestadorRetornado = prestadorApi.cadastrarPrestadorServico(prestador);
 		prestadorRetornado.setNome("Carlos");
 		prestadorRetornado.setGenero("Feminino");

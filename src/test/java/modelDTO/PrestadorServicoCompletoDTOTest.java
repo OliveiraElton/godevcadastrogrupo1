@@ -15,7 +15,7 @@ public class PrestadorServicoCompletoDTOTest {
 	@Test
 	public void testPrestadorServicoDTO() {
 		PrestadorServico novo = new PrestadorServico("Joao", "Costa", null, LocalDate.of(1990, 02, 03), "xxx", "yyy",
-				false, "Masculino", IdentidadeGenero.CIS, null, null, null, null, null, null, null);
+				false, "Masculino", IdentidadeGenero.CIS, null, null, null, null, null, null);
 	PrestadorServicoCompletoDTO dto = new PrestadorServicoCompletoDTO(novo);
 	assertEquals(0, dto.getId());
 	assertEquals(novo.getNome(), dto.getNome());
@@ -27,7 +27,6 @@ public class PrestadorServicoCompletoDTOTest {
 	assertEquals(novo.isPcd(), dto.isPcd());
 	assertEquals(novo.getGenero(), dto.getGenero());
 	assertEquals(novo.getIdentidadeGenero(), dto.getIdentidadeGenero());
-	assertEquals(novo.getEndereco(), dto.getEndereco());
 	assertEquals(novo.getCpf(), dto.getCpf());
 	assertEquals(novo.getRg(), dto.getRg());
 	assertEquals(novo.getDataInicioContrato(), dto.getDataInicioContrato());

@@ -9,7 +9,6 @@ import org.junit.Test;
 
 import br.com.proway.senior.godevcadastrogrupo1.controller.DependenteController;
 import br.com.proway.senior.godevcadastrogrupo1.model.Dependente;
-import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.DependenteSimplificadoDTO;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.TiposDependentes;
@@ -22,7 +21,7 @@ import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.Tip
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
  */
 public class DependenteSimplificadoDTOTest {
-	
+
 	@Before
 	public void limparTabela() {
 		DependenteController.deletarTodosRegistros();
@@ -30,8 +29,8 @@ public class DependenteSimplificadoDTOTest {
 
 	@Test
 	public void testDependenteDTO() {
-		Dependente original = new Dependente("Maria", "Silva", "Nada consta", LocalDate.of(2000, 12, 3), "Brasileiro", "Blumenau", true, "Feminino",
-				IdentidadeGenero.TRANS, new Endereco(), "03209507832", "545454", TiposDependentes.FILHO, false);
+		Dependente original = new Dependente("Maria", "Silva", LocalDate.of(2000, 12, 3), "Brasileiro", true,
+				"Feminino", IdentidadeGenero.TRANS, "03209507832", TiposDependentes.FILHO, false);
 		DependenteSimplificadoDTO dto = new DependenteSimplificadoDTO(original);
 		assertEquals(0, dto.getId());
 		assertEquals(dto.getNome(), original.getNome());

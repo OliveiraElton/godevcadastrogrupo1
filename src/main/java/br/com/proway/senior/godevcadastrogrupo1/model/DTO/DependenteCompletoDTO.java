@@ -21,15 +21,12 @@ public class DependenteCompletoDTO {
 	private int id;
 	private String nome;
 	private String sobrenome;
-	private String nomeSocial;
 	private LocalDate dataDeNascimento;
 	private String nacionalidade;
-	private String naturalidade;
 	private Boolean pcd;
 	private String genero;
 	private IdentidadeGenero identidadeGenero;
 	private String cpf; 
-	private String rg;
 	private TiposDependentes tipoDependente;
 	private Boolean optanteIR;
 	
@@ -43,15 +40,12 @@ public class DependenteCompletoDTO {
 		this.id = modelOriginal.getId();
 		this.nome = modelOriginal.getNome();
 		this.sobrenome = modelOriginal.getSobrenome();
-		this.nomeSocial = modelOriginal.getNomeSocial();
 		this.dataDeNascimento = modelOriginal.getDataDeNascimento();
 		this.nacionalidade = modelOriginal.getNacionalidade();
-		this.naturalidade = modelOriginal.getNaturalidade();
 		this.pcd = modelOriginal.isPcd();
 		this.genero = modelOriginal.getGenero();
 		this.identidadeGenero = modelOriginal.getIdentidadeGenero();
 		this.cpf = modelOriginal.getCpf(); 
-		this.rg = modelOriginal.getRg();
 		this.tipoDependente = modelOriginal.getTipoDependente();
 		this.optanteIR = modelOriginal.isOptanteIR();
 	}
@@ -68,20 +62,12 @@ public class DependenteCompletoDTO {
 		return sobrenome;
 	}
 
-	public String getNomeSocial() {
-		return nomeSocial;
-	}
-
 	public LocalDate getDataDeNascimento() {
 		return dataDeNascimento;
 	}
 
 	public String getNacionalidade() {
 		return nacionalidade;
-	}
-
-	public String getNaturalidade() {
-		return naturalidade;
 	}
 
 	public Boolean isPcd() {
@@ -98,10 +84,6 @@ public class DependenteCompletoDTO {
 
 	public String getCpf() {
 		return cpf;
-	}
-
-	public String getRg() {
-		return rg;
 	}
 
 	public TiposDependentes getTipoDependente() {
