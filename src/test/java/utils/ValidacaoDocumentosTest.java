@@ -1,5 +1,6 @@
 package utils;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -50,11 +51,11 @@ public class ValidacaoDocumentosTest {
 	
 	@Test
 	public void testLimpa() {
-		System.out.println(FormatacaoDocumentos.removerCaracteresEspeciais("3-2.56dsijdijsadji5//6.3232."));
+		assertEquals("29971480000110",FormatacaoDocumentos.removerCaracteresCnpj("a2d9.9f71.g48fdffsj0/j0l0sjh0ig1-1diu0"));
 	}
 	
 	@Test
 	public void testNovoCNPJ() {
-		System.out.println(ValidacaoDocumentos.validarCnpj2("29.945.724/0001-90"));
+		assertTrue(ValidacaoDocumentos.validarCNPJ("13.741.128/0001-58"));
 	}
 }
