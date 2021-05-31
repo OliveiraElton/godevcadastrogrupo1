@@ -10,30 +10,75 @@
     <section id="dadosPessoais">
         <h2>Dados Pessoais</h2>
         <form action="">
-            <input type="text" placeholder="Nome">
+            <label>Nome</label>
             <br>
-            <input type="text" placeholder="Sobrenome">
+            <input type="text" id="nomePrest">
             <br>
-            <input type="text" placeholder="CPF">
+            <label>Sobrenome</label>
             <br>
-            <input type="text" placeholder="Nome Social">
+            <input type="text" id="sobrenomePrest">
             <br>
-            <input type="text" placeholder="Gênero">
+            <label>CPF</label>
             <br>
-            <legend>Identidade de Gênero</legend>
-            <input type="radio" name="identGenero">
+            <input type="text" placeholder="   .   .   -  " id="CPFPrest">
+            <br>
+            <label>Nome Social</label>
+            <br>
+            <input type="text" id="nomeSociaPrest">
+            <br>
+            <label>Gênero</label>
+            <br>
+            <select id="generoPrest">
+                <option>Selecione</option>
+                <option>Feminino</option>
+                <option>Masculino</option>
+            </select>
+            <br>
+            <label>Identidade de Gênero</label>
+            <br>
+            <input type="radio" name="identGenero" id="igTrans">
             <label>Trans</label>
-            <input type="radio" name="identGenero">
+            <input type="radio" name="identGenero" id="igCis">
             <label>Cis</label>
             <br>
-
+            <label>Data de Nascimento</label>
+            <br>
+            <input type="date" id="dataNascPrest">
+            <br>
+            <label>Nacionalidade</label>
+            <br>
+            <input type="text" id="nacioPrest">
+            <br>
+            <label>Naturalidade</label>
+            <br>
+            <input type="text" id="natuPrest">
+            <br>
+            <label>RG</label>
+            <br>
+            <input type="text" id="RGPrest">
         </form>
 
     </section>
 
     <section id="dadosEmpresa">
         <h2>Dados da Empresa</h2>
+        <form action="">
+            <label>Empresa</label>
+            <input type="number" id="idEmpresa">
+            <label>Nome</label>
+            <input type="text" id="nomeEmpresa">
+            <br>
+            <label>Setor</label>
+            <input type="number" id="idSetor">
+            <label>Nome</label>
+            <input type="text" id="nomeSetor">
+            <br>
+            <label>Data de Início</label>
+            <br>
+            <input type="date" id="dataInicioPrest">
+            <br>
 
+        </form>
 
     </section>
 
