@@ -12,12 +12,14 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Contatos;
 import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 import br.com.proway.senior.godevcadastrogrupo1.model.ExameMedico;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.ColaboradorCompletoDTO;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.Escolaridade;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.EstadoCivil;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 
 /**
  * Classe ColaboradorCompletoDTOTest.
  * 
- * Testa os m�todos da classe {@link ColaboradorCompletoDTO}.
+ * Testa os metodos da classe {@link ColaboradorCompletoDTO}.
  * 
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
  */
@@ -25,9 +27,11 @@ public class ColaboradorCompletoDTOTest {
 
 	@Test
 	public void testColaboradorCompletoDTO() {
-		Colaborador original = new Colaborador("Clara", "Souza", "Claudio Souza", LocalDate.of(1985, 11, 2), "Argentina", "Buenos Aires", false, "Feminino", 
-				IdentidadeGenero.TRANS, new Endereco(), "03208509736", "78878", new Contatos(), 12, 1111144477, true, true, LocalDate.of(2021, 05, 11), false,
-				null, "claudio@empresa.com", "1111444888333", new Conta(), new ExameMedico(), null);
+		Colaborador original = new Colaborador("Clara", "Souza", "Claudio Souza", LocalDate.of(1985, 11, 2),
+				"Argentina", "Buenos Aires", false, "Feminino", IdentidadeGenero.TRANS, Escolaridade.MEDIO_COMPLETO,
+				EstadoCivil.DIVORCIADO, "Marta Pereira", "Joao Gomes", new Endereco(), "03208509736", "78878",
+				new Contatos(), 12, 1111144477, true, true, LocalDate.of(2021, 05, 11), false, null,
+				"claudio@empresa.com", "1111444888333", new Conta(), new ExameMedico(), null);
 		ColaboradorCompletoDTO dto = new ColaboradorCompletoDTO(original);
 		assertEquals((Integer) 0, dto.getId());
 		assertEquals(original.getNome(), dto.getNome());
@@ -39,6 +43,10 @@ public class ColaboradorCompletoDTOTest {
 		assertEquals(original.isPcd(), dto.getPcd());
 		assertEquals(original.getGenero(), dto.getGenero());
 		assertEquals(original.getIdentidadeGenero(), dto.getIdentidadeGenero());
+		assertEquals(original.getEscolaridade(), dto.getEscolaridade());
+		assertEquals(original.getEstadoCivil(), dto.getEstadoCivil());
+		assertEquals(original.getNomeMae(), dto.getNomeMae());
+		assertEquals(original.getNomePai(), dto.getNomePai());
 		assertEquals(original.getEndereco(), dto.getEndereco());
 		assertEquals(original.getCpf(), dto.getCpf());
 		assertEquals(original.getRg(), dto.getRg());

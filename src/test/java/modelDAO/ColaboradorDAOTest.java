@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 import org.hibernate.Session;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
@@ -30,9 +29,11 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ExameMedicoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais;
-import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.Escolaridade;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.EstadoCivil;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.TiposDependentes;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
 
 /**
@@ -78,8 +79,9 @@ public class ColaboradorDAOTest {
 	@Test
 	public void testBReadById() {
 		Colaborador colaborador = new Colaborador("Carla", "Nunes", "Nada consta", data, "Americana", "Los Angeles",
-				false, "Feminino", ig, endereco, "21164028324", "45124563", contatos, null, null, false, false, data,
-				false, null, "maria.nunes@gmail.com", "554555", conta, exameMedico, dependente);
+				false, "Feminino", ig, Escolaridade.FUNDAMENTAL_COMPLETO, EstadoCivil.SOLTEIRO, "Marta Pereira",
+				"Joao Nunes", endereco, "21164028324", "45124563", contatos, null, null, false, false, data, false,
+				null, "maria.nunes@gmail.com", "554555", conta, exameMedico, dependente);
 		dao.cadastrar(colaborador);
 		Integer id = colaborador.getId();
 		assertEquals(colaborador, dao.buscarPorId(Colaborador.class, id));
@@ -90,8 +92,9 @@ public class ColaboradorDAOTest {
 	public void testCGetAll() {
 		int tamanhoAntes = dao.buscarTodos(Colaborador.class).size();
 		Colaborador colaborador = new Colaborador("Maria", "Souza", "Maria Souza", data, "Brasileira", "Blumenau",
-				false, "Masculino", ig, endereco, "21164028324", "45124563", contatos, null, null, false, false, data,
-				false, null, "maria.souza@outlook.com.br", "554555", conta, exameMedico, dependente);
+				false, "Masculino", ig, Escolaridade.MESTRADO, EstadoCivil.DIVORCIADO, "Marta Souza",
+				"Joao Souza", endereco, "21164028324", "45124563", contatos, null, null, false, false, data, false,
+				null, "maria.souza@outlook.com.br", "554555", conta, exameMedico, dependente);
 		dao.cadastrar(colaborador);
 		assertEquals(tamanhoAntes + 1, dao.buscarTodos(Colaborador.class).size());
 	}
@@ -100,17 +103,20 @@ public class ColaboradorDAOTest {
 	public void testACreate() {
 		int antes = colabControllerApi.buscarTodosColaboradores().size();
 		Colaborador colaborador = new Colaborador("Mario", "Pinheiro", "Nada consta", LocalDate.of(2000, 01, 02),
-				"Brasileiro", "Blumenau", false, "Masculino", ig, endereco, "21164028324", "45124563", contatos, 12,
-				123456789, false, false, LocalDate.now(), false, "12345687552", "lucas.nunes@senior.com.br", "5544555",
-				conta, exameMedico, dependente);
+				"Brasileiro", "Blumenau", false, "Masculino", ig, Escolaridade.MEDIO_INCOMPLETO, EstadoCivil.DIVORCIADO,
+				"Marta Pereira", "Joao Gomes", endereco, "21164028324", "45124563", contatos, 12, 123456789, false,
+				false, LocalDate.now(), false, "12345687552", "lucas.nunes@senior.com.br", "5544555", conta,
+				exameMedico, dependente);
 		Colaborador colaborador2 = new Colaborador("Maria", "Silva", "Maria", LocalDate.of(1998, 07, 11), "Brasileira",
-				"Joinville", false, "Feminino", IdentidadeGenero.CIS, endereco, "87872123445", "3322584", contatos, 12,
+				"Joinville", false, "Feminino", IdentidadeGenero.CIS, Escolaridade.ATE_QUARTA_SERIE,
+				EstadoCivil.VIUVO, "Marta Silva", "Joao Silva", endereco, "87872123445", "3322584", contatos, 12,
 				98851456, false, false, LocalDate.now(), false, "123111444", "maria@senior.com.br", "6564645", conta,
 				exameMedico2, new Dependente());
 		Colaborador colaborador3 = new Colaborador("Junior", "Santos", "Juninho", LocalDate.of(1980, 4, 12),
-				"Brasileira", "Blumenau", false, "Feminino", IdentidadeGenero.TRANS, endereco, "555412354", "98794455",
-				contatos, 12, 1234587, false, false, LocalDate.now(), false, "123111444", "junior@senior.com.br",
-				"3124551", conta, exameMedico3, new Dependente());
+				"Brasileira", "Blumenau", false, "Feminino", IdentidadeGenero.TRANS, Escolaridade.MEDIO_INCOMPLETO,
+				EstadoCivil.DIVORCIADO, "Marta Pereira", "Joao Gomes", endereco, "555412354", "98794455", contatos, 12,
+				1234587, false, false, LocalDate.now(), false, "123111444", "junior@senior.com.br", "3124551", conta,
+				exameMedico3, new Dependente());
 		dao.cadastrar(colaborador);
 		dao.cadastrar(colaborador2);
 		dao.cadastrar(colaborador3);
@@ -120,8 +126,9 @@ public class ColaboradorDAOTest {
 	@Test
 	public void testGDelete() {
 		Colaborador colaborador = new Colaborador("Fernanda", "Brito", "Nada consta", data, "Brasileira", "Bag�", false,
-				"Feminino", ig, endereco, "21164028324", "45124563", contatos, 1, 84536112, false, false, data, false,
-				"1234555688", "fernanda@gmail.com", "554555", conta, exameMedico, dependente);
+				"Feminino", ig, Escolaridade.MEDIO_COMPLETO, EstadoCivil.DIVORCIADO, "Marta Pereira", "Joao Gomes",
+				endereco, "21164028324", "45124563", contatos, 1, 84536112, false, false, data, false, "1234555688",
+				"fernanda@gmail.com", "554555", conta, exameMedico, dependente);
 		dao.cadastrar(colaborador);
 		Integer id = colaborador.getId();
 		assertEquals(true, dao.deletar(colaborador));
@@ -131,7 +138,8 @@ public class ColaboradorDAOTest {
 	@Test
 	public void testFUpdate() {
 		Colaborador colaborador = new Colaborador("Pedro", "dos Anjos", "Pedro", data, "Brasileira", "Rio do Sul",
-				false, "Masculino", ig, endereco, "21164028324", "45124563", contatos, 2, 65448896, false, false,
+				false, "Masculino", ig, Escolaridade.MEDIO_INCOMPLETO, EstadoCivil.DIVORCIADO, "Marta Pereira",
+				"Joao Gomes", endereco, "21164028324", "45124563", contatos, 2, 65448896, false, false,
 				LocalDate.of(2021, 01, 25), false, "989555633", "pedro@senior.com.br", "322321555", conta, exameMedico,
 				dependente);
 		dao.cadastrar(colaborador);
@@ -148,9 +156,9 @@ public class ColaboradorDAOTest {
 	@Test
 	public void testEReadByEmail() {
 		Colaborador colaborador = new Colaborador("Daniela", "Goncalves", "Dani", data, "Brasileira", "Blumenau", false,
-				"Masculino", ig, endereco, "15553232", "6566522354", contatos, 5, 555112324, false, false,
-				LocalDate.of(2020, 4, 17), false, "65123478", "daniela.goncalves@gmail.com", "554555", conta,
-				exameMedico, dependente);
+				"Masculino", ig, Escolaridade.DOUTORADO, EstadoCivil.DIVORCIADO, "Marta Pereira", "Joao Gomes",
+				endereco, "15553232", "6566522354", contatos, 5, 555112324, false, false, LocalDate.of(2020, 4, 17),
+				false, "65123478", "daniela.goncalves@gmail.com", "554555", conta, exameMedico, dependente);
 		dao.cadastrar(colaborador);
 		assertNotNull(dao.buscarPorEmail("daniela.goncalves@gmail.com"));
 	}
@@ -158,7 +166,8 @@ public class ColaboradorDAOTest {
 	@Test
 	public void testHDeletarTodosColaboradores() {
 		Colaborador colaborador = new Colaborador("Maria", "Silva", "Nada consta", data, "Brasileira", "Blumenau",
-				false, "Masculino", ig, endereco, "15553232", "6566522354", contatos, 5, 555112324, false, false,
+				false, "Masculino", ig, Escolaridade.MEDIO_INCOMPLETO, EstadoCivil.DIVORCIADO, "Marta Pereira",
+				"Joao Gomes", endereco, "15553232", "6566522354", contatos, 5, 555112324, false, false,
 				LocalDate.of(2020, 4, 17), false, "65123478", "maria@gmail.com", "554555", conta, exameMedico,
 				dependente);
 		dao.cadastrar(colaborador);
@@ -173,7 +182,8 @@ public class ColaboradorDAOTest {
 				"09619039610", TiposDependentes.FILHO, true);
 
 		Colaborador colaborador1 = new Colaborador("Joana", "Silva", "Nada consta", data, "Americano", "Blumenau",
-				false, "Feminino", ig, endereco, "15553232", "6566522354", contatos, 5, 555112324, false, false,
+				false, "Feminino", ig, Escolaridade.MEDIO_COMPLETO, EstadoCivil.UNIAO_ESTAVEL, "Marta Pereira",
+				"Joao Gomes", endereco, "15553232", "6566522354", contatos, 5, 555112324, false, false,
 				LocalDate.of(2020, 4, 17), false, "65123478", "joana@gmail.com", "554555",
 				new Conta("Santander", "0506", "05050505", "1"),
 				new ExameMedico(TiposExames.ADMISSIONAL, LocalDate.of(2021, 8, 7), true), dependente1);
@@ -181,14 +191,15 @@ public class ColaboradorDAOTest {
 
 		Dependente dependente2 = new Dependente("Clementina", "Fonseca", data, "Venezuelano", true, "Feminino", ig,
 				"09619039610", TiposDependentes.MAE, true);
-		
+
 		Colaborador colaborador2 = new Colaborador("Joana", "Pinheiro", "Nada consta", data, "Americano", "Blumenau",
-				false, "Masculino", ig, endereco, "15553232", "6566522354", contatos, 5, 555112324, false, false,
+				false, "Masculino", ig, Escolaridade.MEDIO_INCOMPLETO, EstadoCivil.DIVORCIADO, "Marta Pereira",
+				"Joao Gomes", endereco, "15553232", "6566522354", contatos, 5, 555112324, false, false,
 				LocalDate.of(2020, 4, 17), false, "65123478", "joana@gmail.com", "554555",
 				new Conta("Caixa", "0506", "05050505", "1"),
 				new ExameMedico(TiposExames.ADMISSIONAL, LocalDate.of(2020, 8, 7), false), dependente2);
 		dao.cadastrar(colaborador2);
-		
+
 		ArrayList<Colaborador> listaRetorno = (ArrayList<Colaborador>) dao.buscarPorNome(Colaborador.class, "Joana");
 		assertEquals(colaborador1.getNome(), listaRetorno.get(0).getNome());
 		assertEquals(colaborador1.getCpf(), listaRetorno.get(0).getCpf());

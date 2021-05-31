@@ -42,7 +42,7 @@ public class Colaborador extends Pessoa {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private Integer idPostoDeTRabalho;
 	private Integer nit;
 	private Boolean optanteVT;
@@ -52,12 +52,14 @@ public class Colaborador extends Pessoa {
 	private String registro_alistamento;
 	private String email_corporativo;
 	private String titulo_eleitor;
-	
+	private String nomeMae;
+	private String nomePai;
+
 	@Enumerated(EnumType.STRING)
 	private Escolaridade escolaridade;
 	@Enumerated(EnumType.STRING)
 	private EstadoCivil estadoCivil;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	private Conta conta;
 	@OneToOne(cascade = CascadeType.ALL)
@@ -70,7 +72,7 @@ public class Colaborador extends Pessoa {
 	public Colaborador() {
 		super();
 	}
-	
+
 	/**
 	 * Construtor padrao da classe.
 	 * 
@@ -83,6 +85,10 @@ public class Colaborador extends Pessoa {
 	 * @param pcd
 	 * @param genero
 	 * @param identidadeGenero
+	 * @param escolaridade
+	 * @param estadoCivil
+	 * @param nomeMae
+	 * @param nomePai
 	 * @param endereco
 	 * @param cpf
 	 * @param rg
@@ -99,16 +105,19 @@ public class Colaborador extends Pessoa {
 	 * @param conta
 	 * @param exameMedico
 	 */
-	public Colaborador(String nome, String sobrenome, String nomeSocial, 
-			LocalDate dataDeNascimento, String nacionalidade, String naturalidade,
-			Boolean pcd, String genero, IdentidadeGenero identidadeGenero,
-			Endereco endereco, String cpf, String rg, Contatos contatos, 
-			Integer idPostoDeTrabalho, Integer nit, Boolean optanteVT, Boolean optanteVAVR,
-			LocalDate dataAdmissao, Boolean optanteDependente, String registro_alistamento, 
-			String email_corporativo, String titulo_eleitor, Conta conta, 
-			ExameMedico exameMedico, Dependente dependente) {
-		super(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, 
-				naturalidade, pcd, genero, identidadeGenero, endereco, cpf, rg);
+	public Colaborador(String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
+			String nacionalidade, String naturalidade, Boolean pcd, String genero, IdentidadeGenero identidadeGenero,
+			Escolaridade escolaridade, EstadoCivil estadoCivil, String nomeMae, String nomePai, Endereco endereco,
+			String cpf, String rg, Contatos contatos, Integer idPostoDeTrabalho, Integer nit, Boolean optanteVT,
+			Boolean optanteVAVR, LocalDate dataAdmissao, Boolean optanteDependente, String registro_alistamento,
+			String email_corporativo, String titulo_eleitor, Conta conta, ExameMedico exameMedico,
+			Dependente dependente) {
+		super(nome, sobrenome, nomeSocial, dataDeNascimento, nacionalidade, naturalidade, pcd, genero, identidadeGenero,
+				endereco, cpf, rg);
+		this.setEscolaridade(escolaridade);
+		this.setEstadoCivil(estadoCivil);
+		this.setNomeMae(nomeMae);
+		this.setNomePai(nomePai);
 		this.setIdPostoDeTrabalho(idPostoDeTrabalho);
 		this.setNit(nit);
 		this.setOptanteVT(optanteVT);
@@ -169,8 +178,8 @@ public class Colaborador extends Pessoa {
 	}
 
 	/**
-	 * Para cadastrar uma data de admissao, a mesma passara por uma
-	 * validacao para verificar se eh data futura.
+	 * Para cadastrar uma data de admissao, a mesma passara por uma validacao para
+	 * verificar se eh data futura.
 	 * 
 	 * @param dataAdmissao Data de inicio do colaborador.
 	 */
@@ -178,8 +187,7 @@ public class Colaborador extends Pessoa {
 		try {
 			ValidacaoDeDatas.validaDataAdmissao(dataAdmissao);
 			this.dataAdmissao = dataAdmissao;
-		}
-		catch (Exception e){
+		} catch (Exception e) {
 			e.getMessage();
 		}
 	}
@@ -248,4 +256,36 @@ public class Colaborador extends Pessoa {
 		this.dependente.add(dependente);
 	}
 
+	public String getNomeMae() {
+		return nomeMae;
+	}
+
+	public void setNomeMae(String nomeMae) {
+		this.nomeMae = nomeMae;
+	}
+
+	public String getNomePai() {
+		return nomePai;
+	}
+
+	public void setNomePai(String nomePai) {
+		this.nomePai = nomePai;
+	}
+
+	public Escolaridade getEscolaridade() {
+		return escolaridade;
+	}
+
+	public void setEscolaridade(Escolaridade escolaridade) {
+		this.escolaridade = escolaridade;
+	}
+
+	public EstadoCivil getEstadoCivil() {
+		return estadoCivil;
+	}
+
+	public void setEstadoCivil(EstadoCivil estadoCivil) {
+		this.estadoCivil = estadoCivil;
+	}
+	
 }

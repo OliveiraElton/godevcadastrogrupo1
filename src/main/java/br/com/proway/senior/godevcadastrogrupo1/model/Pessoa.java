@@ -12,7 +12,6 @@ import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.Ide
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.FormatacaoDocumentos;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.ValidacaoDeDatas;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.ValidacaoDocumentos;
-import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 
 /**
  * Classe Pessoa.

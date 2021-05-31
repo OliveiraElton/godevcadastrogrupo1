@@ -107,7 +107,7 @@ public class EmpresaDAOTest {
 				"Blumenau", "SC");
 		Contatos contatos = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
 		
-		Empresa empresa = new Empresa("Senior", LocalDate.of(2021, 04, 15), "05.975.585/0001-89", endereco, contatos);
+		Empresa empresa = new Empresa("Senior", LocalDate.of(2021, 04, 15), "80.680.093/0001-81", endereco, contatos);
 		
 		dao.cadastrar(empresa);
 		empresa.setNomeEmpresa("Senior 2");
@@ -131,12 +131,22 @@ public class EmpresaDAOTest {
 				"Blumenau", "SC");
 		Contatos contatos = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
 		
-		Empresa empresa = new Empresa("Proway", LocalDate.of(2021, 04, 15), "05.975.585/0001-89", endereco, contatos);
+		Empresa empresa = new Empresa("Proway", LocalDate.of(2021, 04, 15), "80.680.093/0001-81", endereco, contatos);
 		dao.cadastrar(empresa);
 		
 		ArrayList<Empresa> listaRetorno = (ArrayList<Empresa>) dao.buscarPorNome(Empresa.class, "Pro");
 		System.out.println(listaRetorno.get(0).getNomeEmpresa());
 		assertTrue(listaRetorno.size() == 1);		
+	}
+	
+	@Test(expected = Exception.class)
+	public void testEmpresaComCnpjInvalido() throws Exception {
+		Endereco endereco = new Endereco("Rua Sete de Setembro", 123, "Taruma Office", "89010-911", "Centro", "Brasil",
+				"Blumenau", "SC");
+		Contatos contatos = new Contatos("47999448899", "47988994455", "proway@proway.com", "47988553322");
+		
+		Empresa empresa = new Empresa("Proway", LocalDate.of(2021, 04, 15), "05.975.585/0001-90", endereco, contatos);
+		dao.cadastrar(empresa);
 	}
 	
 	@Test

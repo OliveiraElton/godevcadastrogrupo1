@@ -9,7 +9,6 @@ import org.hibernate.Session;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.proway.senior.godevcadastrogrupo1.controller.ColaboradorController;
 import br.com.proway.senior.godevcadastrogrupo1.controller.EnderecoController;
 import br.com.proway.senior.godevcadastrogrupo1.model.Colaborador;
 import br.com.proway.senior.godevcadastrogrupo1.model.Conta;
@@ -21,6 +20,8 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ColaboradorDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DAO.EnderecoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.Escolaridade;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.EstadoCivil;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos.TiposExames;
@@ -85,7 +86,8 @@ public class EnderecoControllerTest {
 		Dependente dependente = new Dependente("Joao", "Fonseca", data, "Venezuelano",
 				true, "Masculino", IdentidadeGenero.CIS, "09619039610", null, true);
 		Colaborador colaborador = new Colaborador("Carla", "Nunes", "Nada consta", data, "Americana", "Los Angeles",
-				false, "Feminino", ig, endereco, "21164028324", "45124563", null, null, null, false, false, data,
+				false, "Feminino", ig, Escolaridade.DOUTORADO, EstadoCivil.UNIAO_ESTAVEL, "Marta Pereira",
+				"Joao Gomes", endereco, "21164028324", "45124563", null, null, null, false, false, data,
 				false, null, "maria.nunes@gmail.com", "554555", conta, exameMedico, dependente);
 		ColaboradorDAO colabDao = ColaboradorDAO.getInstance(session);
 		Colaborador colabBanco = colabDao.cadastrar(colaborador);

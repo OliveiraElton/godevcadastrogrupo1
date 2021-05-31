@@ -1,11 +1,14 @@
-package utils;
+package utilidades;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.FormatacaoDocumentos;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.ValidacaoDocumentos;
+
 
 public class ValidacaoDocumentosTest {
 	
@@ -29,7 +32,7 @@ public class ValidacaoDocumentosTest {
 	
 	@Test
 	public void testValidaCEP() {
-		assertTrue(ValidacaoDocumentos.validarCEP("78541256"));
+		assertTrue(ValidacaoDocumentos.validarCEP("89065891"));
 		assertFalse(ValidacaoDocumentos.validarCEP("7854156"));
 	}
 	
@@ -44,5 +47,15 @@ public class ValidacaoDocumentosTest {
 	public void testExceptions() throws Exception{
 		assertFalse(ValidacaoDocumentos.validarEmail("emailtest.com.br"));
 		assertFalse(ValidacaoDocumentos.validarTamanhoTelefone("5246324896555"));
+	}
+	
+	@Test
+	public void testLimpa() {
+		assertEquals("29971480000110",FormatacaoDocumentos.removerCaracteresCnpj("a2d9.9f71.g48fdffsj0/j0l0sjh0ig1-1diu0"));
+	}
+	
+	@Test
+	public void testNovoCNPJ() {
+		assertTrue(ValidacaoDocumentos.validarCNPJ("13.741.128/0001-58"));
 	}
 }

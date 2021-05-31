@@ -21,6 +21,8 @@ import br.com.proway.senior.godevcadastrogrupo1.model.DAO.ExameMedicoDAO;
 import br.com.proway.senior.godevcadastrogrupo1.model.DTO.ColaboradorCompletoDTO;
 import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.Escolaridade;
+import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.EstadoCivil;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.IdentidadeGenero;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumDadosPessoais.TiposDependentes;
 import br.com.proway.senior.godevcadastrogrupo1.utilidades.EnumExamesMedicos;
@@ -59,8 +61,9 @@ public class ColaboradorCompletoControllerAPITest {
 	@Test
 	public void testCriarUmColaborador() throws Exception {
 		Colaborador colaborador1 = ColaboradorController.cadastrarColaborador("Lucas", "Walim", "Nada consta", data,
-				"Venezuelano", "Blumenauense", true, "Masculino", ig, "09619039610", "mn24588606", 8, 8788881, false,
-				false, data, false, "88080888708", "lucas.walim@gmail.com", "04040505050", "Rua 1", 9, "Casa",
+				"Venezuelano", "Blumenauense", true, "Masculino", ig, Escolaridade.FUNDAMENTAL_COMPLETO,
+				EstadoCivil.CASADO, "Marta Walim", "Joao Walim", "09619039610", "mn24588606", 8, 8788881,
+				false, false, data, false, "88080888708", "lucas.walim@gmail.com", "04040505050", "Rua 1", 9, "Casa",
 				"54126547", "Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103",
 				"lucas.walim@empresa.com.br", "1542413655", te, null, true, "banco00", "055", "438614625", "154",
 				"joãozinho", "Santos", data, "brasileiro", true, "Masculino", ig, "09619039610", td, true);
@@ -72,9 +75,10 @@ public class ColaboradorCompletoControllerAPITest {
 
 	@Test
 	public void testDeletarUmColaborador() throws Exception {
-		Colaborador colaborador2 = ColaboradorController.cadastrarColaborador("gabriel", "simon", "Nada consta", data,
-				"Venezuelano", "Blumenauense", true, "Masculino", ig, "09619039610", "mn24588606", 8, 8788881, false,
-				false, data, false, "88080888708", "gabriel.simon@gmail.com", "04040505050", "Rua 1", 9, "Casa",
+		Colaborador colaborador2 = ColaboradorController.cadastrarColaborador("Gabriel", "Simon", "Nada consta", data,
+				"Venezuelano", "Blumenauense", true, "Masculino", ig, Escolaridade.MESTRADO,
+				EstadoCivil.UNIAO_ESTAVEL, "Marta Pereira", "Joao Gomes", "09619039610", "mn24588606", 8, 8788881,
+				false, false, data, false, "88080888708", "gabriel.simon@gmail.com", "04040505050", "Rua 1", 9, "Casa",
 				"54126547", "Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103",
 				"gabriel.simon@empresa.com.br", "1542413655", te, null, true, "banco00", "055", "438614625", "154",
 				"Lucia", "Santos", data, "brasileiro", true, "Feminino", ig, "09619039610", td, true);
@@ -87,8 +91,9 @@ public class ColaboradorCompletoControllerAPITest {
 	@Test
 	public void testAtualizarUmColaborador() throws Exception {
 		Colaborador colaborador3 = ColaboradorController.cadastrarColaborador("gabriel", "simon", "Nada consta", data,
-				"Venezuelano", "Blumenauense", true, "Masculino", ig, "09619039610", "mn24588606", 8, 8788881, false,
-				false, data, false, "88080888708", "gabriel.simon@gmail.com", "04040505050", "Rua 1", 9, "Casa",
+				"Venezuelano", "Blumenauense", true, "Masculino", ig, Escolaridade.MEDIO_COMPLETO,
+				EstadoCivil.UNIAO_ESTAVEL, "Marta Pereira", "Joao Gomes", "09619039610", "mn24588606", 8, 8788881,
+				false, false, data, false, "88080888708", "gabriel.simon@gmail.com", "04040505050", "Rua 1", 9, "Casa",
 				"54126547", "Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103",
 				"gabriel.simon@empresa.com.br", "1542413655", te, null, true, "banco00", "055", "438614625", "154",
 				"Lucia", "Santos", data, "brasileiro", true, "Feminino", ig, "09619039610", td, true);
@@ -104,11 +109,12 @@ public class ColaboradorCompletoControllerAPITest {
 	@Test
 	public void testBuscarColaboradorPorId() throws Exception {
 		Colaborador colaborador = ColaboradorController.cadastrarColaborador("Joana", "Marla", "Nada consta", data,
-				"Venezuelano", "Blumenauense", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false,
-				false, data, false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547",
-				"Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103", "brian.santos@empresa.com.br",
-				"1542413655", te, null, true, "banco00", "055", "438614625", "154", "Joãozinho", "Santos", data,
-				"Venezuelano", true, "Feminino", ig, "09619039610", td, true);
+				"Venezuelano", "Blumenauense", true, "Feminino", ig, Escolaridade.MEDIO_COMPLETO,
+				EstadoCivil.UNIAO_ESTAVEL, "Marta Pereira", "Joao Gomes", "09619039610", "mg14388606", 8, 8788881,
+				false, false, data, false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa",
+				"54126547", "Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103",
+				"brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00", "055", "438614625", "154",
+				"Joãozinho", "Santos", data, "Venezuelano", true, "Feminino", ig, "09619039610", td, true);
 		ColaboradorCompletoDTO retornoDTO = controllerAPI.buscarColaboradorPorId(colaborador.getId());
 		assertEquals(colaborador.getNome(), retornoDTO.getNome());
 		assertEquals(colaborador.getConta(), retornoDTO.getConta());
@@ -122,13 +128,15 @@ public class ColaboradorCompletoControllerAPITest {
 	@Test
 	public void testBuscarTodosColaboradores() throws Exception {
 		Colaborador colaborador1 = ColaboradorController.cadastrarColaborador("Joana", "Marla", "Nada consta", data,
-				"Venezuelano", "Blumenauense", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false,
-				false, data, false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547",
-				"Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103", "brian.santos@empresa.com.br",
-				"1542413655", te, null, true, "banco00", "055", "438614625", "154", "Joãozinho", "Santos", data,
-				"Venezuelano", true, "Feminino", ig, "09619039610", td, true);
+				"Venezuelano", "Blumenauense", true, "Feminino", ig, Escolaridade.DOUTORADO,
+				EstadoCivil.UNIAO_ESTAVEL, "Marta Pereira", "Joao Gomes", "09619039610", "mg14388606", 8, 8788881,
+				false, false, data, false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa",
+				"54126547", "Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103",
+				"brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00", "055", "438614625", "154",
+				"Joãozinho", "Santos", data, "Venezuelano", true, "Feminino", ig, "09619039610", td, true);
 		Colaborador colaborador2 = ColaboradorController.cadastrarColaborador("Joana", "Pereira", "Nada consta", data,
-				"Venezuelano", "Blumenauense", true, "Feminino", ig, "7878888878", "mg14388606", 8, 8788881, false,
+				"Venezuelano", "Blumenauense", true, "Feminino", ig, Escolaridade.MEDIO_COMPLETO,
+				EstadoCivil.UNIAO_ESTAVEL, "Marta Pereira", "Joao Gomes", "7878888878", "mg14388606", 8, 8788881, false,
 				false, data, false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547",
 				"Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103", "brian.santos@empresa.com.br",
 				"1542413655", te, null, true, "banco00", "055", "438614625", "154", "Joãozinho", "Santos", data,
@@ -147,13 +155,15 @@ public class ColaboradorCompletoControllerAPITest {
 	@Test
 	public void testBuscarColaboradorPorNome() throws Exception {
 		Colaborador colaborador1 = ColaboradorController.cadastrarColaborador("Joana", "Marla", "Nada consta", data,
-				"Venezuelano", "Blumenauense", true, "Feminino", ig, "09619039610", "mg14388606", 8, 8788881, false,
-				false, data, false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547",
-				"Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103", "brian.santos@empresa.com.br",
-				"1542413655", te, null, true, "banco00", "055", "438614625", "154", "Joãozinho", "Santos", data,
-				"Venezuelano", true, "Feminino", ig, "09619039610", td, true);
+				"Venezuelano", "Blumenauense", true, "Feminino", ig, Escolaridade.MEDIO_COMPLETO,
+				EstadoCivil.DIVORCIADO, "Marta Pereira", "Joao Gomes", "09619039610", "mg14388606", 8, 8788881,
+				false, false, data, false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa",
+				"54126547", "Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103",
+				"brian.santos@empresa.com.br", "1542413655", te, null, true, "banco00", "055", "438614625", "154",
+				"Joãozinho", "Santos", data, "Venezuelano", true, "Feminino", ig, "09619039610", td, true);
 		Colaborador colaborador2 = ColaboradorController.cadastrarColaborador("Joana", "Pereira", "Nada consta", data,
-				"Venezuelano", "Blumenauense", true, "Feminino", ig, "7878888878", "mg14388606", 8, 8788881, false,
+				"Venezuelano", "Blumenauense", true, "Feminino", ig, Escolaridade.MEDIO_COMPLETO,
+				EstadoCivil.UNIAO_ESTAVEL, "Marta Pereira", "Joao Gomes", "7878888878", "mg14388606", 8, 8788881, false,
 				false, data, false, "88080888708", "joana@gmail.com", "04040505050", "Rua 1", 9, "Casa", "54126547",
 				"Centro", "Brasil", "Blumenau", "SC", "4521452015", "5421452103", "brian.santos@empresa.com.br",
 				"1542413655", te, null, true, "banco00", "055", "438614625", "154", "Carlos", "Santos", data,
