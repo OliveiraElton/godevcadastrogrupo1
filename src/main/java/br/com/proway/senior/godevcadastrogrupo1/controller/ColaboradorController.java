@@ -66,7 +66,7 @@ public class ColaboradorController {
 	 *                         (false).
 	 * @param String           genero Genero do colaborador
 	 * @param IdentidadeGenero identidadeGenero Identidade de genero colaborador.
-	 * @param Escolaridade     escolaridade nível de instrucao do colaborador.
+	 * @param Escolaridade     escolaridade nivel de instrucao do colaborador.
 	 * @param EstadoCivil      estadoCivil Estado civil do colaborador, conforme
 	 *                         opcoes legais.
 	 * @param String           nomeMae Nome da mae do colaborador.
