@@ -36,9 +36,9 @@
             <br>
             <label>Identidade de Gênero</label>
             <br>
-            <input type="radio" name="identGenero" id="igTrans">
+            <input type="radio" name="identGenero" value="Trans" id="igTrans">
             <label>Trans</label>
-            <input type="radio" name="identGenero" id="igCis">
+            <input type="radio" name="identGenero" value="Cis" id="igCis">
             <label>Cis</label>
             <br>
             <label>Data de Nascimento</label>
@@ -47,11 +47,27 @@
             <br>
             <label>Nacionalidade</label>
             <br>
-            <input type="text" id="nacioPrest">
+            <select id="nacioPrest">
+                <option>Selecione</option>
+                <option>Brasil</option>
+                <option>Argentina</option>
+                <option>Haiti</option>
+                <option>França</option>
+                <option>Chile</option>
+                <option>Espanha</option>
+            </select>
             <br>
             <label>Naturalidade</label>
             <br>
-            <input type="text" id="natuPrest">
+            <select id="natuPrest">
+                <option>Selecione</option>
+                <option>São Paulo - SP</option>
+                <option>Florianópolis - SC</option>
+                <option>Bagé - RS</option>
+                <option>Rio de Janeiro - RJ</option>
+                <option>Curitiba - PR</option>
+                <option>Exterior</option>
+            </select>
             <br>
             <label>RG</label>
             <br>
@@ -107,9 +123,9 @@
         <br>
         <input type="number" placeholder="Cadastro">
         <br>
-        <input type="reset" value="Cancelar"> 
-        <br>
         <input type="button" value="Enviar Dados">
+        <br>
+        <input type="reset" value="Cancelar"> 
     </section>
 
 </body>
