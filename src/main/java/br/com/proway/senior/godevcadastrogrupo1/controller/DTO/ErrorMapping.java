@@ -35,4 +35,10 @@ public class ErrorMapping implements ErrorController{
 		return "<h1>Erro de parâmetro, endereço na url ou objeto não pode ser criado (null etc).</h1>";
 	}
 
+	@Override
+	public String getErrorPath() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
