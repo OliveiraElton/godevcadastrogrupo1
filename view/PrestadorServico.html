@@ -120,13 +120,6 @@
                 <section id="dadosEmpresa" class="segundaColuna">
                     <h2 id="tituloEmpresa">Dados da Empresa</h2>
                     <br>
-
-                    <fieldset class="legenda">
-                        <legend>Cadastro</legend>
-                        <input type="number" placeholder="Ex.: 123" id="campoCadastro" class="input">
-                    </fieldset>
-
-                    <br>
                     <fieldset class="legenda">
                         <legend>Empresa</legend>
                         <input type="number" id="idEmpresa" class="input fonte" required>
@@ -156,7 +149,6 @@
                         <input type="date" id="dataInicioPrest" class="input fonte" required>
                     </fieldset>
 
-                    <br>
                 </section>
             </div>
 
@@ -166,26 +158,29 @@
                     <br>
                     <fieldset class="legenda">
                         <legend>Telefone Principal</legend>
-                        <input type="text" placeholder="47999999999" id="fonePrincPrest" class="input fonte" required>
+                        <input type="text" placeholder="47999999999" id="fonePrincPrest" class="input fonte"
+                            maxlength="11" required>
                     </fieldset>
 
                     <br>
                     <fieldset class="legenda">
                         <legend>Telefone Secundário</legend>
-                        <input type="text" placeholder="47999999999" id="foneSecunPrest" class="input fonte" required>
+                        <input type="text" placeholder="47999999999" id="foneSecunPrest" class="input fonte"
+                            maxlength="11" required>
                     </fieldset>
 
                     <br>
                     <fieldset class="legenda">
                         <legend>E-mail</legend>
                         <input type="email" placeholder="exemplo@exemplo.com" id="emailPrest" class="input fonte"
-                            required>
+                            maxlength="11" required>
                     </fieldset>
 
                     <br>
                     <fieldset class="legenda">
                         <legend>Telefone Familiar</legend>
-                        <input type="text" placeholder="47999999999" id="foneFamPrest" class="input fonte" required>
+                        <input type="text" placeholder="47999999999" id="foneFamPrest" class="input fonte"
+                            maxlength="11" required>
                     </fieldset>
 
                     <br>
@@ -194,6 +189,10 @@
 
             <div class="secao">
                 <section id="botoes" class="segundaColuna">
+                    <fieldset class="legenda" id="fieldCadastro">
+                        <legend>Cadastro</legend>
+                        <input type="number" placeholder="Ex.: 123" id="campoCadastro" class="input">
+                    </fieldset>
                     <br>
                     <input type="submit" value="Enviar Dados" id="botaoEnviar">
                     <br>
