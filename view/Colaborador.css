@@ -40,16 +40,16 @@
   }
  
   .empresa {
-    width: 45px;
-    height: 35px;
+    width: 35px;
+    height: 36px;
     background: url("iconeEmpresa.png");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
     opacity: 1;
     position: absolute;
-    top: 220px;
-    left: 10px;
+    top: 280px;
+    left: 13px;
     overflow: hidden;
   }
 
@@ -128,36 +128,36 @@
   }
 
   .colab {
-    width: 44px;
-    height: 27px;
+    width: 30px;
+    height: 25px;
     background: url("iconeColab.png");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
     opacity: 1;
     position: absolute;
-    top: 165px;
-    left: 10px;
+    top: 200px;
+    left: 13px;
     overflow: hidden;
   }
 
   .config {
-    width: 37px;
-    height: 33px;
+    width: 30px;
+    height: 30px;
     background: url("iconeConfig.png");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
     opacity: 1;
     position: absolute;
-    top: 100px;
-    left: 10px;
+    top: 120px;
+    left: 13px;
     overflow: hidden;
   }
 
   .prestTopo {
-    width: 45px;
-    height: 50px;
+    width: 33px;
+    height: 35px;
     background: url("iconePrest.png");
     background-repeat: no-repeat;
     background-position: center center;
@@ -170,16 +170,16 @@
   }
 
   .prestMenu {
-    width: 45px;
-    height: 50px;
+    width: 33px;
+    height: 35px;
     background: url("iconePrest.png");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
     opacity: 1;
     position: absolute;
-    top: 290px;
-    left: 10px;
+    top: 360px;
+    left: 13px;
     overflow: hidden;
   }
 
