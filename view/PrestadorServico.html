@@ -8,149 +8,147 @@
 </head>
 
 <body>
+    <main>
+        <h1 class="linhaCima"></h1>
+        <h1 class="linhaLado"></h1>
+        <h1 class="empresa"></h1>
+        <a href="colaborador.html">
+            <h1 class="colab"></h1>
+        </a>
+        <h1 class="config"></h1>
+        <h1 class="prestTopo"></h1>
+        <a href="PrestadorServico.html">
+            <h1 class="prestMenu"></h1>
+        </a>
 
-    <h1 class="linhaCima"></h1>
-    <h1 class="linhaLado"></h1>
-    <h1 class="empresa"></h1>
-    <a href="colaborador.html"> <h1 class="colab"></h1></a>
-    <h1 class="config"></h1>
-    <h1 class="prestTopo"></h1>
-    <a href="PrestadorServico.html"> <h1 class="prestMenu"></h1></a>
-    <h1></h1>
+        <h1 id="titulo">Cadastro de Prestador de Serviço</h1>
+        <form action="http://www.proway.com.br" id="form">
+            <div class="secao">
+                <section id="dadosPessoais">
+                    <h2 id="tituloDados">Dados Pessoais</h2>
+                    <fieldset class="legenda">
+                        <legend>Nome</legend>
+                        <input type="text" id="nomePrest"  class="input" required>
+                    </fieldset>
+                    
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Sobrenome</legend>
+                    <input type="text" id="sobrenomePrest"  class="input" required>
+                    </fieldset>
 
-    <h1 id="titulo">Cadastro de Prestador de Serviço</h1>
-    <form action="http://www.proway.com.br" id="form">
-        <section id="dadosPessoais">
-            <h2 id="tituloDados">Dados Pessoais</h2>
-            <label>Nome</label>
-            <br>
-            <input type="text" id="nomePrest" required>
-            <br>
-            <br>
-            <label>Sobrenome</label>
-            <br>
-            <input type="text" id="sobrenomePrest" required>
-            <br>
-            <br>
-            <label>CPF</label>
-            <br>
-            <input type="text" placeholder="   .   .   -  " id="CPFPrest" required>
-            <br>
-            <br>
-            <label>Nome Social</label>
-            <br>
-            <br>
-            <input type="text" id="nomeSociaPrest" required>
-            <br>
-            <br>
-            <label>Gênero</label>
-            <br>
-            <select id="generoPrest" required>
-                <option>Selecione</option>
-                <option>Feminino</option>
-                <option>Masculino</option>
-            </select>
-            <br>
-            <br>
-            <label>Identidade de Gênero</label>
-            <br>
-            <input type="radio" name="identGenero" value="Trans" id="igTrans">
-            <label>Trans</label>
-            <input type="radio" name="identGenero" value="Cis" id="igCis">
-            <label>Cis</label>
-            <br>
-            <br>
-            <label>Data de Nascimento</label>
-            <br>
-            <input type="date" id="dataNascPrest" required>
-            <br>
-            <br>
-            <label>Nacionalidade</label>
-            <br>
-            <select id="nacioPrest" required>
-                <option>Selecione</option>
-                <option>Brasil</option>
-                <option>Argentina</option>
-                <option>Haiti</option>
-                <option>França</option>
-                <option>Chile</option>
-                <option>Espanha</option>
-            </select>
-            <br>
-            <br>
-            <label>Naturalidade</label>
-            <br>
-            <select id="natuPrest" required>
-                <option>Selecione</option>
-                <option>São Paulo - SP</option>
-                <option>Florianópolis - SC</option>
-                <option>Bagé - RS</option>
-                <option>Rio de Janeiro - RJ</option>
-                <option>Curitiba - PR</option>
-                <option>Exterior</option>
-            </select>
-            <br>
-            <br>
-            <label>RG</label>
-            <br>
-            <input type="text" id="RGPrest" required>
-            <br>
-        </section>
+                    <br>
+                    <label>CPF</label>
+                    <br>
+                    <input type="text" placeholder="   .   .   -  " id="CPFPrest" required>
+                    <br>
+                    <label>Nome Social</label>
+                    <br>
+                    <input type="text" id="nomeSociaPrest" required>
+                    <br>
+                    <label>Gênero</label>
+                    <br>
+                    <select id="generoPrest" required>
+                        <option>Selecione</option>
+                        <option>Feminino</option>
+                        <option>Masculino</option>
+                    </select>
+                    <br>
+                    <label>Identidade de Gênero</label>
+                    <br>
+                    <input type="radio" name="identGenero" value="Trans" id="igTrans">
+                    <label>Trans</label>
+                    <input type="radio" name="identGenero" value="Cis" id="igCis">
+                    <label>Cis</label>
+                    <br>
+                    <label>Data de Nascimento</label>
+                    <br>
+                    <input type="date" id="dataNascPrest" required>
+                    <br>
+                    <label>Nacionalidade</label>
+                    <br>
+                    <select id="nacioPrest" required>
+                        <option>Selecione</option>
+                        <option>Brasil</option>
+                        <option>Argentina</option>
+                        <option>Haiti</option>
+                        <option>França</option>
+                        <option>Chile</option>
+                        <option>Espanha</option>
+                    </select>
+                    <br>
+                    <label>Naturalidade</label>
+                    <br>
+                    <select id="natuPrest" required>
+                        <option>Selecione</option>
+                        <option>São Paulo - SP</option>
+                        <option>Florianópolis - SC</option>
+                        <option>Bagé - RS</option>
+                        <option>Rio de Janeiro - RJ</option>
+                        <option>Curitiba - PR</option>
+                        <option>Exterior</option>
+                    </select>
+                    <br>
+                    <label>RG</label>
+                    <br>
+                    <input type="text" id="RGPrest" required>
+                    <br>
+                </section>
+            </div>
 
-        <section id="dadosEmpresa" class="segundaColuna">
-            <h2 id="tituloEmpresa">Dados da Empresa</h2>
-            <label>Empresa</label>
-            <input type="number" id="idEmpresa" required>
-            <label>Nome</label>
-            <input type="text" id="nomeEmpresa" required>
-            <br>
-            <br>
-            <label>Setor</label>
-            <input type="number" id="idSetor" required>
-            <label>Nome</label>
-            <input type="text" id="nomeSetor" required>
-            <br>
-            <br>
-            <label>Data de Início</label>
-            <br>
-            <input type="date" id="dataInicioPrest" required>
-            <br>
-        </section>
+            <div class="secao">
+                <section id="dadosEmpresa" class="segundaColuna">
+                    <h2 id="tituloEmpresa">Dados da Empresa</h2>
+                    <label>Empresa</label>
+                    <input type="number" id="idEmpresa" required>
+                    <label>Nome</label>
+                    <input type="text" id="nomeEmpresa" required>
+                    <br>
+                    <label>Setor</label>
+                    <input type="number" id="idSetor" required>
+                    <label>Nome</label>
+                    <input type="text" id="nomeSetor" required>
+                    <br>
+                    <label>Data de Início</label>
+                    <br>
+                    <input type="date" id="dataInicioPrest" required>
+                    <br>
+                </section>
+            </div>
 
-        <section id="contatos" class="segundaColuna">
-            <h2 id="tituloContatos">Contatos</h2>
-            <label>Telefone Principal</label>
-            <br>
-            <input type="text" placeholder="47999999999" id="fonePrincPrest" required>
-            <br>
-            <br>
-            <label>Telefone Secundário</label>
-            <br>
-            <input type="text" placeholder="47999999999" id="foneSecunPrest" required>
-            <br>
-            <br>
-            <label>E-mail</label>
-            <br>
-            <input type="email" placeholder="exemplo@exemplo.com" id="emailPrest" required>
-            <br>
-            <br>
-            <label>Telefone Familiar</label>
-            <br>
-            <input type="text" placeholder="47999999999" id="foneFamPrest" required>
-            <br>
-        </section>
+            <div class="secao">
+                <section id="contatos" class="segundaColuna">
+                    <h2 id="tituloContatos">Contatos</h2>
+                    <label>Telefone Principal</label>
+                    <input type="text" placeholder="47999999999" id="fonePrincPrest" required>
+                    <br>
+                    <label>Telefone Secundário</label>
+                    <input type="text" placeholder="47999999999" id="foneSecunPrest" required>
+                    <br>
+                    <label>E-mail</label>
+                    <input type="email" placeholder="exemplo@exemplo.com" id="emailPrest" required>
+                    <br>
+                    <label>Telefone Familiar</label>
+                    <input type="text" placeholder="47999999999" id="foneFamPrest" required>
+                    <br>
+                </section>
+            </div>
 
-        <section id="botoes">
-            <br>
-            <input type="number" placeholder="Cadastro">
-            <br>
-            <br>
-            <input type="submit" value="Enviar Dados" id="botaoEnviar">
-            <br>
-            <br>
-            <input type="reset" value="Cancelar" id="botaoCancelar">
-        </section>
-    </form>
+            <div class="secao">
+                <section id="botoes" class="segundaColuna">
+                    <br>
+                    <label id="cadastro">Cadastro</label>
+                    <input type="number" placeholder="Cadastro" id="campoCadastro">
+                    <br>
+                    <input type="submit" value="Enviar Dados" id="botaoEnviar">
+                    <br>
+                    <input type="button" value="Excluir" id="botaoExcluir">
+                    <br>
+                    <input type="reset" value="Cancelar" id="botaoCancelar">
+                </section>
+            </div>
+        </form>
 </body>
+</main>
 
 </html>
