@@ -221,7 +221,6 @@
     text-align: left;
   }
   .legenda {
-    display: flex;
     color: rgba(134,68,158,0.8199999928474426);
     border-color: rgba(134,68,158,0.8199999928474426);
     border-top-left-radius: 10px;
@@ -235,7 +234,7 @@
     margin-bottom: 10px;
   }
   .input {
-    
+
     border-color: white;
     border-style: unset;
     width: 250px;
