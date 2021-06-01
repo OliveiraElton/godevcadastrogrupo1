@@ -66,55 +66,55 @@
         
                 <fieldset class="legenda">
                     <legend>Escolaridade</legend>
-                    <select name="escolaridade" class="select">
-                        <option value=""> ANALFABETO </option>
-                        <option value=""> ATE_QUARTA_SERIE </option>
-                        <option value=""> FUNDAMENTAL_COMPLETO </option>
-                        <option value=""> MEDIO_INCOMPLETO </option>
-                        <option value=""> MEDIO_COMPLETO </option>
-                        <option value=""> SUPERIOR_INCOMPLETO </option>
-                        <option value=""> SUPERIOR_COMPLETO </option>
-                        <option value=""> POS_GRADUACAO </option>
-                        <option value=""> MESTRADO </option>
-                        <option value=""> DOUTORADO </option>
+                    <select name="escolaridade" class="select" required>
+                        <option value="ANALFABETO"> ANALFABETO </option>
+                        <option value="ATE_QUARTA_SERIE"> ATÉ QUARTA SÉRIE </option>
+                        <option value="FUNDAMENTAL_COMPLETO"> FUNDAMENTAL COMPLETO </option>
+                        <option value="MEDIO_INCOMPLETO"> MÉDIO INCOMPLETO </option>
+                        <option value="MEDIO_COMPLETO"> MÉDIO COMPLETO </option>
+                        <option value="SUPERIOR_INCOMPLETO"> SUPERIOR INCOMPLETO </option>
+                        <option value="SUPERIOR_COMPLETO"> SUPERIOR COMPLETO </option>
+                        <option value="POS_GRADUACAO"> PÓS GRADUAÇÃO </option>
+                        <option value="MESTRADO"> MESTRADO </option>
+                        <option value="DOUTORADO"> DOUTORADO </option>
                       
                     </select>
                 </fieldset>
                 <br>
                 <fieldset class="legenda">
                     <legend> Estado Civil </legend>
-                    <select name="estadoCivil" class="select">
-                        <option value=""> SOLTEIRO </option>
-                        <option value=""> CASADO </option>
-                        <option value=""> UNIAO_ESTAVEL </option>
-                        <option value=""> VIUVO</option>
-                        <option value=""> DIVORCIADO </option>
-                        <option value=""> SEPARADO </option>
+                    <select name="estadoCivil" class="select" required>
+                        <option value="SOLTEIRO"> SOLTEIRO </option>
+                        <option value="CASADO"> CASADO </option>
+                        <option value="UNIAO_ESTAVEL"> UNIÃO ESTÁVEL </option>
+                        <option value="VIUVO"> VIÚVO</option>
+                        <option value="DIVORCIADO"> DIVORCIADO </option>
+                        <option value="SEPARADO"> SEPARADO </option>
                 </select>
                 </fieldset>
                 <br>  
 
                 <fieldset class="legenda">
                     <legend>Data de Nascimento</legend>
-                    <input type="date" class="input" name="dataNascimento">
+                    <input type="date" class="input" name="dataNascimento" required>
                 </fieldset>
                 <br>
                 
                 <fieldset class="legenda">
                     <legend>Nacionalidade</legend>
-                    <input type="text" class="input" name="nacionalidade">
+                    <input type="text" class="input" name="nacionalidade" required>
                 </fieldset>
                 <br>
 
                 <fieldset class="legenda">
                     <legend>Naturalidade</legend>
-                    <input type="text" class="input" name="naturalidade">
+                    <input type="text" class="input" name="naturalidade" required>
                 </fieldset>
                 <br>
 
                 <fieldset class="legenda">
                     <legend>RG</legend>
-                    <input type="number" class="input" name="rg">
+                    <input type="number" class="input" name="rg" required>
                 </fieldset>
                 <br>
 
@@ -122,46 +122,61 @@
         
         <section class="dados">
             <h2 class="tituloDados">Dados Contratuais</h2>
-                <label for="pis">PIS/PIS</label><br>
-                <input type="text" id="pis" name="pis" required>
+            <fieldset class="legenda">
+                <legend>PIS/NIS</legend>
+                <input type="text" class="input" name="pis" required>
+            </fieldset>
+            <br>
+            <fieldset class=legenda>
+                <legend>CTPS</legend>
+                <input type="text" class="input" name="ctps" required>
+            </fieldset>
                 <br>
-                <label for="ctps">CTPS</label><br>
-                <input type="text" id="ctps" name="ctps" required>
-                <br>
-                
-                <label for="em">Exame Médico</label><br>
-                <input type="text" id="em" name="em" required>
-                <br>
-                
-                <label for="em">Se enquadra como PCD?</label><br>
-                <input type="radio" id="scales" name="scales" checked>
-                <label for ="sim">Sim </label>
-                <label for="scales"></label>
-                <input type="radio" id="scales" name="scales" checked>
-                <label for ="nao">Não </label> 
-                <label for="scales"></label>
-                <br>
+            <fieldset class=legenda>
+                <legend>Exame Médico</legend>
+                <input type="text" class="input" name="em" required>
+            </fieldset>
+             <br>
+            <fieldset class="legenda">
+                <legend>Se enquadra como PCD?</legend>
+                <input type="radio" id="pcd" name="pcd" value="other" checked>
+                 <label for="pcd">Sim</label>
+                <input type="radio" id="pcd" name="pcd" value="other" checked>
+                <label for="pcd">Não</label>
+            </fieldset>
+            <br> 
         </section>
    
 
         <section class="dados">
             <h2 class="tituloDados">Contatos</h2>
            
-                    <label for="principal">Telefone Principal</label><br>
-                    <input type="text" id="principal" name="principal" required>
-                    <br>
-
-                    <label for="secundario">Telefone Secundário</label><br>
-                    <input type="text" id="secundario" name="secundario">
-                    <br>
-
-                    <label for="email">Email</label><br>
-                    <input type="text" id="email" name="email" placeholder="joao@gmail.com" required>
-                    <br>
-
-                    <label for="emergencia">Telefone de Emergência</label><br>
-                    <input type="text" id="emergencia" name="emergencia" required>
-                    <br>
+            <fieldset class=legenda>
+                <legend>Exame Médico</legend>
+                <input type="text" class="input" name="em" required>
+            </fieldset>
+            <br>
+            <fieldset class=legenda>
+                <legend>Telefone Principal</legend>
+                <input type="text" class="input" name="principal" maxlength="11" required>
+            </fieldset>
+            <br>
+            <fieldset class=legenda>
+                <legend>Telefone Secundário</legend>
+                <input type="text" class="input" name="secundario"  maxlength="11" required>
+            </fieldset>
+            <br>
+            <fieldset class=legenda>
+                <legend>Email</legend>
+                <input type="email" class="input" name="email" required>
+            </fieldset>
+            <br>
+            <fieldset class=legenda>
+                <legend>Telefone de Emergência</legend>
+                <input type="text" class="input" name="emergencia"  maxlength="11" required>
+            </fieldset>
+            <br>
+    
      
         </section>
 
