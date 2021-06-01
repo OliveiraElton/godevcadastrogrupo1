@@ -6,6 +6,7 @@
   body {
     font-size: 14px;
     border: border-box;
+    /*background-image: linear-gradient(to bottom, rgba(148,13,196,1)5%, rgba(213,191,221,0.8199999928474426)90%);*/
   }
 
   .segundaColuna {
@@ -22,7 +23,7 @@
   }
 
   #tituloDados {
-    width: 200px;
+    width: 220px;
     height: 30px;
     background: rgba(213,191,221,0.8199999928474426);
     color: rebeccapurple;
@@ -39,7 +40,7 @@
   }
 
   #tituloEmpresa {
-    width: 200px;
+    width: 220px;
     height: 30px;
     background: rgba(213,191,221,0.8199999928474426);
     color: rebeccapurple;
@@ -56,7 +57,7 @@
   }
 
   #tituloContatos {
-    width: 200px;
+    width: 220px;
     height: 30px;
     background: rgba(213,191,221,0.8199999928474426);
     color: rebeccapurple;
@@ -240,11 +241,11 @@
   
   #titulo {
     color: white;
-    width: 500px;
+    width: 700px;
     position: fixed;
-    top: 16px;
+    top: 12px;
     left: 100px;
-    font-family: Inter;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: Bold;
     font-size: 34px;
     opacity: 1;
@@ -268,7 +269,6 @@
   }
 
   .input {
-      border-color: white;
       border-style: unset;
       width: 300px;
       outline: none;
@@ -279,7 +279,7 @@
      align-items: center;
      align-self: center;
      justify-content: center;
-     margin-left: 65px;
+     margin-left: 58px;
   }
 
   #fonte {
@@ -306,4 +306,8 @@
 
   #campoCadastro{
     width: 90px;
+  }
+
+  #idGenero{
+    align-content: space-between;
   }
