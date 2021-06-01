@@ -3,14 +3,25 @@
 
 <head>
     <meta charset="UTF-8">
+    <link href="EstiloPrestador.css" rel="stylesheet">
     <title>Prestador de Serviço</title>
 </head>
 
 <body>
-    <h1>Cadastro de Prestador de Serviço</h1>
-    <form action="http://www.proway.com.br">
+
+    <h1 class="linhaCima"></h1>
+    <h1 class="linhaLado"></h1>
+    <h1 class="empresa"></h1>
+    <a href="https://flexboxfroggy.com/"> <h1 class="colab"></h1></a>
+    <h1 class="config"></h1>
+    <h1 class="prestTopo"></h1>
+    <h1 class="prestMenu"></h1>
+    <h1></h1>
+
+    <h1 id="titulo">Cadastro de Prestador de Serviço</h1>
+    <form action="http://www.proway.com.br" id="form">
         <section id="dadosPessoais">
-            <h2>Dados Pessoais</h2>
+            <h2 id="tituloDados">Dados Pessoais</h2>
             <label>Nome</label>
             <br>
             <input type="text" id="nomePrest" required>
@@ -84,11 +95,10 @@
             <br>
             <input type="text" id="RGPrest" required>
             <br>
-            <hr>
         </section>
 
-        <section id="dadosEmpresa">
-            <h2>Dados da Empresa</h2>
+        <section id="dadosEmpresa" class="segundaColuna">
+            <h2 id="tituloEmpresa">Dados da Empresa</h2>
             <label>Empresa</label>
             <input type="number" id="idEmpresa" required>
             <label>Nome</label>
@@ -105,11 +115,10 @@
             <br>
             <input type="date" id="dataInicioPrest" required>
             <br>
-            <hr>
         </section>
 
-        <section id="contatos" required>
-            <h2>Contatos</h2>
+        <section id="contatos" class="segundaColuna">
+            <h2 id="tituloContatos">Contatos</h2>
             <label>Telefone Principal</label>
             <br>
             <input type="text" placeholder="47999999999" id="fonePrincPrest" required>
@@ -129,7 +138,6 @@
             <br>
             <input type="text" placeholder="47999999999" id="foneFamPrest" required>
             <br>
-            <hr>
         </section>
 
         <section id="botoes">
@@ -137,10 +145,10 @@
             <input type="number" placeholder="Cadastro">
             <br>
             <br>
-            <input type="submit" value="Enviar Dados">
+            <input type="submit" value="Enviar Dados" id="botaoEnviar">
             <br>
             <br>
-            <input type="reset" value="Cancelar">
+            <input type="reset" value="Cancelar" id="botaoCancelar">
         </section>
     </form>
 </body>
