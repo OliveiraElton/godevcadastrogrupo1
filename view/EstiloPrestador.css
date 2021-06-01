@@ -20,7 +20,7 @@
     margin: 100px;
   }
 
-  #tituloDados {
+  .tituloDados {
     width: 200px;
     height: 30px;
     background: rgba(213,191,221,0.8199999928474426);
@@ -234,6 +234,11 @@
     position: absolute;
     top: 765px;
     left: 1834px;
+  }
+  
+  .formSecao{
+    flex-direction: column;
+    
   }
 
   #dadosPessoais {
