@@ -42,63 +42,82 @@
 
                 <br>
 
-                <label for="nomeSocial"></label>Nome Social</label><br>
-                <input type="text" id="nomeSocial" name="nomeSocial"> 
-                <br>
+                <fieldset class="legenda">
+                    <legend>Nome Social</legend>
+                    <input type="text" id="nomeSocial"  class="input">
+                </fieldset>
                 
-                <label for="genero">Gênero</label><br>
-                <input type="text" id="genero" name="genero"> 
-                <br>
-                
-                <label for="identidadeGenero">Identidade de Gênero</label>
                 <br>
 
-                <input type="radio" id="identidadeGenero" name="identidadeGenero" value="other">
-                <label for="identidadeGenero">CIS</label>
-                <input type="radio" id="identidadeGenero" name="identidadeGenero" value="other">
-                <label for="identidadeGenero">TRANS</label>
+                <fieldset class="legenda">
+                    <legend>Gênero</legend>
+                    <input type="text" id="genero"  class="input" required>
+                </fieldset>
+            
+                <br>
+                <fieldset class="legenda">
+                    <legend>Identidade de Gênero</legend>
+                    <input type="radio" id="identidadeGenero" name="identidadeGenero" value="other" checked>
+                     <label for="identidadeGenero">CIS</label>
+                    <input type="radio" id="identidadeGenero" name="identidadeGenero" value="other" checked>
+                    <label for="identidadeGenero">TRANS</label>
+                </fieldset>
+                <br>
+        
+                <fieldset class="legenda">
+                    <legend>Escolaridade</legend>
+                    <select name="escolaridade" class="select">
+                        <option value=""> ANALFABETO </option>
+                        <option value=""> ATE_QUARTA_SERIE </option>
+                        <option value=""> FUNDAMENTAL_COMPLETO </option>
+                        <option value=""> MEDIO_INCOMPLETO </option>
+                        <option value=""> MEDIO_COMPLETO </option>
+                        <option value=""> SUPERIOR_INCOMPLETO </option>
+                        <option value=""> SUPERIOR_COMPLETO </option>
+                        <option value=""> POS_GRADUACAO </option>
+                        <option value=""> MESTRADO </option>
+                        <option value=""> DOUTORADO </option>
+                      
+                    </select>
+                </fieldset>
+                <br>
+                <fieldset class="legenda">
+                    <legend> Estado Civil </legend>
+                    <select name="estadoCivil" class="select">
+                        <option value=""> SOLTEIRO </option>
+                        <option value=""> CASADO </option>
+                        <option value=""> UNIAO_ESTAVEL </option>
+                        <option value=""> VIUVO</option>
+                        <option value=""> DIVORCIADO </option>
+                        <option value=""> SEPARADO </option>
+                </select>
+                </fieldset>
+                <br>  
+
+                <fieldset class="legenda">
+                    <legend>Data de Nascimento</legend>
+                    <input type="date" class="input" name="dataNascimento">
+                </fieldset>
+                <br>
+                
+                <fieldset class="legenda">
+                    <legend>Nacionalidade</legend>
+                    <input type="text" class="input" name="nacionalidade">
+                </fieldset>
                 <br>
 
-                <label for="escolaridade"> Escolaridade </label> <br>
-                <select name="escolaridade" id="escolaridade">
-                    <option value=""> ANALFABETO </option>
-                    <option value=""> ATE_QUARTA_SERIE </option>
-                    <option value=""> FUNDAMENTAL_COMPLETO </option>
-                    <option value=""> MEDIO_INCOMPLETO </option>
-                    <option value=""> MEDIO_COMPLETO </option>
-                    <option value=""> SUPERIOR_INCOMPLETO </option>
-                    <option value=""> SUPERIOR_COMPLETO </option>
-                    <option value=""> POS_GRADUACAO </option>
-                    <option value=""> MESTRADO </option>
-                    <option value=""> DOUTORADO </option>
-                  
-                </select>
+                <fieldset class="legenda">
+                    <legend>Naturalidade</legend>
+                    <input type="text" class="input" name="naturalidade">
+                </fieldset>
                 <br>
-                <label for="estadoCivil"> Estado Civil </label> <br>
-                <select name="estadoCivil" id="estadoCivil">
-                    <option value=""> SOLTEIRO </option>
-                    <option value=""> CASADO </option>
-                    <option value=""> UNIAO_ESTAVEL </option>
-                    <option value=""> VIUVO</option>
-                    <option value=""> DIVORCIADO </option>
-                    <option value=""> SEPARADO </option>
-                    
-                </select>
-                <br>           
-                
-                <label for="dataNascimento">Data de Nascimento</label><br>
-                <input type="date" id="dataNascimento" name="dataNascimento" placeholder="00/00/0000">
+
+                <fieldset class="legenda">
+                    <legend>RG</legend>
+                    <input type="number" class="input" name="rg">
+                </fieldset>
                 <br>
-                
-                <label for="nacionalidade">Nacionalidade</label><br>
-                <input type="text" id="nacionalidade" name="nacionalidade">
-                <br>
-                <label for="naturalidade">Naturalidade</label><br>
-                <input type="text" id="naturalidade" name="naturalidade">
-                <br>
-                <label for="rg">RG</label><br>
-                <input type="number" id="rg" name="rg" placeholder="0.000.000">
-                <br>
+
         </section>
         
         <section class="dados">

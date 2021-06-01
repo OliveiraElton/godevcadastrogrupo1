@@ -232,12 +232,19 @@
 }
   input, select{
     margin-bottom: 10px;
+    outline: none;
+  }
+  .select{
+    border: none;
+    outline: none;
+    width: 250px;
   }
   .input {
-
-    border-color: white;
+    border-color: none;
     border-style: unset;
     width: 250px;
     outline: none;
-    
+  }
+  #escolaridade{
+    outline: none;
   }
