@@ -1,0 +1,244 @@
+* {
+    margin: 0px;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-size: 14px;
+    border: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+
+  
+
+  .tituloDados {
+    width: 200px;
+    height: 30px;
+    background: rgba(213,191,221,0.8199999928474426);
+    color: rebeccapurple;
+    text-align: center;
+    opacity: 1;
+    flex-flow: column wrap;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+
+  .linhaLado {
+    width: 60px;
+    height: 1300px;
+    background: rgba(213,191,221,0.8199999928474426);
+    opacity: 1;
+    position: fixed;
+    top: 71px;
+    left: 0px;
+    overflow: hidden;
+  }
+ 
+  .empresa {
+    width: 45px;
+    height: 35px;
+    background: url("iconeEmpresa.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 220px;
+    left: 10px;
+    overflow: hidden;
+  }
+
+  .linhaCima {
+    width: 100%;
+    height: 70px;
+    background: linear-gradient(rgba(148,13,196,1), rgba(214,165,231,0.8199999928474426));
+    opacity: 1;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+
+  #botaoEnviar {
+    width: 100px;
+    height: 30px;
+    background: rgba(134,68,158,0.8199999928474426);
+    color: white;
+    text-align: center;
+    font-weight: Bold;
+    opacity: 1;
+    position: absolute;
+    top: 300px;
+    left: 1380px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow: hidden;
+  }
+
+  .naoSei {
+    width: 228px;
+    color: rgba(255,255,255,1);
+    position: absolute;
+    top: 942px;
+    left: 1589px;
+    font-family: Inter;
+    font-weight: Semi Bold;
+    font-size: 26px;
+    opacity: 1;
+    text-align: center;
+  }
+
+  #botaoCancelar {
+    width: 100px;
+    height: 30px;
+    background: rgba(134,68,158,0.8199999928474426);
+    color: white;
+    text-align: center;
+    font-weight: Bold;
+    opacity: 1;
+    position: absolute;
+    top: 240px;
+    left: 1380px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow: hidden;
+  }
+
+  .v35_1 {
+    width: 228px;
+    color: rgba(255,255,255,1);
+    position: absolute;
+    top: 861px;
+    left: 1589px;
+    font-family: Inter;
+    font-weight: Semi Bold;
+    font-size: 26px;
+    opacity: 1;
+    text-align: center;
+  }
+
+  .colab {
+    width: 44px;
+    height: 27px;
+    background: url("iconeColab.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 165px;
+    left: 10px;
+    overflow: hidden;
+  }
+
+  .config {
+    width: 37px;
+    height: 33px;
+    background: url("iconeConfig.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 100px;
+    left: 10px;
+    overflow: hidden;
+  }
+
+  .prestTopo {
+    width: 45px;
+    height: 50px;
+    background: url("iconePrest.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: fixed;
+    top: 8px;
+    left: 10px;
+    overflow: hidden;
+  }
+
+  .prestMenu {
+    width: 45px;
+    height: 50px;
+    background: url("iconePrest.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 290px;
+    left: 10px;
+    overflow: hidden;
+  }
+
+  .v60_4827 {
+    width: 23px;
+    height: 23px;
+    background: rgba(119,59,194,1);
+    opacity: 1;
+    position: absolute;
+    top: 765px;
+    left: 1834px;
+  }
+
+  .formulario{
+    display: flex;
+    margin-left: 100px;
+    margin-top: 100px;
+   
+  }
+
+  .dados{
+    box-sizing: border-box;
+    flex-flow: row wrap;
+    align-content: flex-start;
+    top: 150px;
+    margin: 50px;
+  }
+  
+  #titulo {
+    color: white;
+    width: 500px;
+    position: fixed;
+    top: 20px;
+    left: 100px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: Bold;
+    font-size: 34px;
+    opacity: 1;
+    text-align: left;
+  }
+  .legenda {
+    display: flex;
+    color: rgba(134,68,158,0.8199999928474426);
+    border-color: rgba(134,68,158,0.8199999928474426);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height: 42px;
+    font-weight: bolder;
+}
+  input, select{
+    margin-bottom: 10px;
+  }
+  .input {
+    
+    border-color: white;
+    border-style: unset;
+    width: 250px;
+    outline: none;
+    
+  }
