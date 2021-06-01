@@ -63,7 +63,6 @@
     color: rebeccapurple;
     text-align: center;
     opacity: 1;
-    position: static;
     top: 100px;
     left: 1030px;
     border-top-left-radius: 10px;
@@ -71,6 +70,9 @@
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .linhaLado {
@@ -217,9 +219,18 @@
     overflow: hidden;
   }
 
+  h2 {
+      text-align: center;
+  }
+
+  .titulo {
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
   #dadosPessoais {
     float: left;
-    padding-bottom: 10px;
     margin-left: 100px;
   }
 
@@ -308,6 +319,18 @@
     width: 90px;
   }
 
-  #idGenero{
-    align-content: space-between;
+  .idGenero{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    color: rgba(134,68,158,0.8199999928474426);
   }
+
+  #igTrans {
+      color: black;
+  }
+
+  .ig {
+    color: black;
+    margin-left: 5px;
+}
