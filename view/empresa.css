@@ -27,7 +27,7 @@
     color: rebeccapurple;
     text-align: center;
     opacity: 1;
-    position: static;
+    position: absolute;
     top: 100px;
     left: 150px;
     border-top-left-radius: 10px;
@@ -46,7 +46,7 @@
     justify-content: space-around;
     text-align: center;
     opacity: 1;
-    position: static;
+    position: absolute;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -61,7 +61,7 @@
     color: rebeccapurple;
     text-align: center;
     opacity: 1;
-    position: static;
+    position: absolute;
     top: 100px;
     left: 1030px;
     border-top-left-radius: 10px;
@@ -113,17 +113,18 @@
     height: 30px;
     background: rgba(134,68,158,0.8199999928474426);
     color: white;
-    text-align: center;
     font-weight: Bold;
     opacity: 1;
     position: absolute;
-    top: 800px;
-    left: 650px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    top: 725px;
+    left: 550px;
+    border-radius: 10px 10px 10px 10px;
     overflow: hidden;
+    text-align: center;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
   }
 
   .naoSei {
@@ -144,17 +145,38 @@
     height: 30px;
     background: rgba(134,68,158,0.8199999928474426);
     color: white;
-    text-align: center;
     font-weight: Bold;
     opacity: 1;
     position: absolute;
-    top: 800px;
-    left: 850px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    top: 725px;
+    left: 660px;
+    border-radius: 10px 10px 10px 10px;
     overflow: hidden;
+    text-align: center;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .button:after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+  }
+
+  .button:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
   }
 
   .v35_1 {
@@ -245,7 +267,7 @@
   #dadosPessoais {
     float: left;
     top: 150px;
-    margin-left: 250px;
+    margin: 50px;
   }
 
   #contatos {
@@ -285,4 +307,18 @@
     width: 300px;
     outline: none;
 }
-  
+
+.button {
+    position: relative;
+    background-color: #4CAF50;
+    border: none;
+    font-size: 28px;
+    color: #FFFFFF;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+  }
