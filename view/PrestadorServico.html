@@ -26,27 +26,28 @@
             <div class="secao">
                 <section id="dadosPessoais">
                     <h2 id="tituloDados">Dados Pessoais</h2>
+                    <br>
                     <fieldset class="legenda">
                         <legend>Nome</legend>
                         <input type="text" id="nomePrest" class="input" required>
                     </fieldset>
-                    
+
                     <br>
                     <fieldset class="legenda">
                         <legend>Sobrenome</legend>
-                    <input type="text" id="sobrenomePrest" class="input" required>
+                        <input type="text" id="sobrenomePrest" class="input" required>
                     </fieldset>
 
                     <br>
                     <fieldset class="legenda">
                         <legend>CPF</legend>
-                    <input type="text" placeholder="   .   .   -  " id="CPFPrest" class="input" required>
+                        <input type="text" placeholder="   .   .   -  " id="CPFPrest" class="input" required>
                     </fieldset>
 
                     <br>
                     <fieldset class="legenda">
                         <legend>Nome Social</legend>
-                    <input type="text" id="nomeSociaPrest" class="input" required>
+                        <input type="text" id="nomeSociaPrest" class="input" required>
                     </fieldset>
 
                     <br>
@@ -71,7 +72,7 @@
                     <br>
                     <fieldset class="legenda">
                         <legend>Data Nascimento</legend>
-                    <input type="date" id="dataNascPrest" class="input" required>
+                        <input type="date" id="dataNascPrest" class="input" required>
                     </fieldset>
 
                     <br>
@@ -105,7 +106,7 @@
                     <br>
                     <fieldset class="legenda">
                         <legend>RG</legend>
-                    <input type="text" id="RGPrest" class="input" required>
+                        <input type="text" id="RGPrest" class="input" required>
                     </fieldset>
 
                     <br>
@@ -115,19 +116,36 @@
             <div class="secao">
                 <section id="dadosEmpresa" class="segundaColuna">
                     <h2 id="tituloEmpresa">Dados da Empresa</h2>
-                    <label>Empresa</label>
-                    <input type="number" id="idEmpresa" required>
-                    <label>Nome</label>
-                    <input type="text" id="nomeEmpresa" required>
                     <br>
-                    <label>Setor</label>
-                    <input type="number" id="idSetor" required>
-                    <label>Nome</label>
-                    <input type="text" id="nomeSetor" required>
+                    <fieldset class="legenda">
+                        <legend>Empresa</legend>
+                    <input type="number" id="idEmpresa" class="input" required>
+                    </fieldset>
+                    
                     <br>
-                    <label>Data de Início</label>
+                    <fieldset class="legenda">
+                        <legend>Nome Empresa</legend>
+                    <input type="text" id="nomeEmpresa" class="input" required>
+                    </fieldset>
+
                     <br>
-                    <input type="date" id="dataInicioPrest" required>
+                    <fieldset class="legenda">
+                        <legend>Setor</legend>
+                    <input type="number" id="idSetor" class="input" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Nome Setor</legend>
+                    <input type="text" id="nomeSetor" class="input" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Data de Início</legend>
+                    <input type="date" id="dataInicioPrest" class="input" required>
+                    </fieldset>
+
                     <br>
                 </section>
             </div>
@@ -135,17 +153,27 @@
             <div class="secao">
                 <section id="contatos" class="segundaColuna">
                     <h2 id="tituloContatos">Contatos</h2>
-                    <label>Telefone Principal</label>
-                    <input type="text" placeholder="47999999999" id="fonePrincPrest" required>
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Telefone Principal</legend>
+                    <input type="text" placeholder="47999999999" id="fonePrincPrest" class="input" required>
+
+
                     <br>
                     <label>Telefone Secundário</label>
                     <input type="text" placeholder="47999999999" id="foneSecunPrest" required>
+
+
                     <br>
                     <label>E-mail</label>
                     <input type="email" placeholder="exemplo@exemplo.com" id="emailPrest" required>
+
+
                     <br>
                     <label>Telefone Familiar</label>
                     <input type="text" placeholder="47999999999" id="foneFamPrest" required>
+
+
                     <br>
                 </section>
             </div>
