@@ -1,68 +1,113 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="empresa.css" rel="stylesheet">
+    <title>Cadastro de Empresa</title>
 </head>
 <body>
-    <fieldset>
-        <section>
-        <center>
-            <p><h1> Cadastro de Empresa  </h1></p>
-         </center>
-    </fieldset>
-    <fieldset>
-           <form action="mailto:gabrielsimon775@gmail.com">
-           <b><h2>Dados Específicos</h2></b>
-           <br>
-           <b>Razão Social :</b> 
-           <input type="text" name="razaoSocial" max="100" min="1" required><br><br>
-           <b>Data de início do contrato :</b>
-           <input type="date" name="dataContrato" max="2021" min="1960" required><br><br>  
-            <b>CNPJ :</b>
-            <input type="text" name="cnpj" max="14" min="14" required><br><br>
-        </section>
-        <section>
-            <b><h2>Contatos</h2></b>
+    <h1 class="organizadaTela"></h1>
+    <h1 class="linhaCima"></h1>
+    <h1 class="linhaLado"></h1>
+    <h1 class="empresa"></h1>
+    <a href="https://flexboxfroggy.com/"> <h1 class="colab"></h1></a>
+    <h1 class="config"></h1>
+    <h1 class="prestTopo"></h1>
+    <h1 class="prestMenu"></h1>
+    <h1></h1>
+    <h1 id="titulo">Cadastro de Empresa</h1>
+    <form action="http://www.proway.com.br" id="form">
+        <section id="dadosPessoais">
+            <h2 id="tituloDados">Dados de empresa</h2>
+            <fieldset class="legenda">
+                <legend>Razão Social</legend>
+                <input type="text" id="nomePrest" class="input" required>
+            </fieldset>
             <br>
-            <b>Telefone Principal :</b>
-            <input type="text" name="telefonePrincipal" max="11" min="1" required><br><br>
-            <b>Telefone Secundário :</b>
-            <input type="text" name="telefoneSecundario" max="11" min="1" required><br><br>
-            <b>Email :</b>
-            <input type="text" name="email" max="40" min="1" required><br><br>
-            <b>Telefone de Emergência :</b>
-            <input type="text" name="telefoneEmergencia" max="11" min="1" required><br><br>  
-            <b>Rua :</b>
-            <input type="text" name="logradouro" max="40" min="1" required><br><br>  
-            <b>Número :</b>
-            <input type="number" name="numeroCasa" max="10000000" min="1" required><br><br>  
-            <b>Bairro :</b>
-            <input type="text" name="bairro" max="40" min="1" required><br><br>  
-            <b>Complemento :</b>
-            <input type="text" name="complemento" max="50" min="1" required><br><br>  
-            <b>País :</b>
-            <select name="pais" required> <br>
-                <option value="nada"> </option>
-                <option value="Brasil">Brasil</option>
-                <option value="Argentina">Argentina</option>
-                <option value="Venezuela">Venezuela</option>
-                <option value="Estados Unidos">Estados Unidos</option>
-                </select><br><br>
-                <b>Estado :</b>
-                <select name="estado" required> <br>
-                    <option value="nada"> </option>
-                    <option value="SC">SC</option>
-                    <option value="PR">PR</option>
-                    <option value="SC">SC</option>
-                    <option value="MG">MG</option>
-                    </select><br><br>
-            <button type="reset">Cancelar</button>
-            <button type="submit" style="width:90;height:10">Concluir Cadastro</button> 
-            </section>
-        </form>
-    </fieldset>
+            <fieldset class="legenda">
+            <legend>Data de início do contrato</legend>
+            <input type="date" id="dataNascPrest" class="input" required><br>
+            </fieldset>
+            <br>
+            <fieldset class="legenda">
+            <legend>CNPJ</legend>
+            <input type="text" placeholder="   .   .   -  " id="CPFPrest" class="input" required>
+            </fieldset>
+            <br>    
+            <br>
+        </section>
+        <section id="dadosEmpresa" class="segundaColuna">
+            <h2 id="tituloEmpresa">Contatos</h2>
+            <br>
+            <br>
+            <fieldset class="legenda">
+            <legend>Telefone Principal</legend>
+            <input type="text" id="idEmpresa" class="input" required>
+            </fieldset>
+            <br>
+            <fieldset class="legenda">
+            <legend>Telefone Secundário</legend>
+            <input type="text" id="nomeEmpresa" class="input" required>
+            </fieldset>
+            <br>
+            <fieldset class="legenda">
+            <legend>Telefone de emergência</legend>
+            <input type="text" id="nomeSetor" class="input" required>
+            </fieldset>
+            <br>
+            <fieldset class="legenda">
+            <legend>Rua</legend>
+            <input type="text" id="dataInicioPrest" class="input" required>
+            </fieldset>
+            <br>
+            <fieldset class="legenda">
+            <legend>Número</legend>
+            <input type="number" id="fonePrincPrest" class="input" required>
+            </fieldset>
+            <br>
+            <fieldset class="legenda">
+            <legend>Bairro</legend>
+            <input type="text"id="foneSecunPrest" class="input" required>
+            </fieldset>
+            <br>
+            <fieldset class="legenda">
+            <legend>Complemento</legend>
+            <input type="text"id="emailPrest" class="input" required>
+            </fieldset>
+            <br>
+            <fieldset class="legenda">
+            <legend>País</legend>
+            <select id="nacioPrest" class="input" required>
+                <option>Selecione</option>
+                <option>Brasil</option>
+                <option>Argentina</option>
+                <option>Haiti</option>
+                <option>França</option> 
+                <option>Chile</option>
+                <option>Espanha</option>
+            </select>
+            </fieldset>
+            <br>
+            <fieldset class="legenda">
+            <legend>Estado</legend>
+            <select id="natuPrest" class="input" required>
+                <option>Selecione</option>
+                <option>São Paulo - SP</option>
+                <option>Florianópolis - SC</option>
+                <option>Bagé - RS</option>
+                <option>Rio de Janeiro - RJ</option>
+                <option>Curitiba - PR</option>
+                <option>Exterior</option>
+            </select>
+            </fieldset>
+            <br>
+            <input type="submit" value="Enviar Dados" id="botaoEnviar">
+            <br>
+            <br>
+            <input type="reset" value="Cancelar" id="botaoCancelar">
+        </section>
+    </form>
 </body>
 </html>
