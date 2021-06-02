@@ -268,8 +268,8 @@ body {
     background-size: cover;
     opacity: 1;
     position: absolute;
-    top: 185px;
-    left: 1600px;
+    top: 195px;
+    left: 1430px;
     overflow: hidden;
     filter: saturate(100%);
     filter: contrast(100%);
