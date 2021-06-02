@@ -1,86 +1,118 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+    
+<!--Prestador Servico
+Classe implementa as funcionalidades gráficas da tela de 
+Prestador de Serviço
+
+@author: Sarah Neuburger Brito - sarah.brito@senior.com.br-->
 
 <head>
     <meta charset="UTF-8">
     <link href="empresa.css" rel="stylesheet">
-    <title>Cadastro de Empresa</title>
+    <title>Empresa</title>
 </head>
+
 <body>
-    <h1 class="organizadaTela"></h1>
-    <h1 class="linhaCima"></h1>
-    <h1 class="linhaLado"></h1>
-    <h1 class="empresa"></h1>
-    <a href="https://flexboxfroggy.com/"> <h1 class="colab"></h1></a>
-    <h1 class="config"></h1>
-    <h1 class="prestTopo"></h1>
-    <h1 class="prestMenu"></h1>
-    <h1></h1>
-    <h1 id="titulo">Cadastro de Empresa</h1>
-    <form action="http://www.proway.com.br" id="form">
-        <section id="dadosPessoais">
-            <h2 id="tituloDados">Dados de empresa</h2>
-            <fieldset class="legenda">
-                <legend>Razão Social</legend>
-                <input type="text" id="nomePrest" class="input" required>
-            </fieldset>
-            <br>
-            <fieldset class="legenda">
-            <legend>Data de início do contrato</legend>
-            <input type="date" id="dataNascPrest" class="input" required><br>
-            </fieldset>
-            <br>
-            <fieldset class="legenda">
-            <legend>CNPJ</legend>
-            <input type="text" placeholder="   .   .   -  " id="CPFPrest" class="input" required>
-            </fieldset>
-            <br>    
-            <br>
-        </section>
-        <section id="dadosEmpresa" class="segundaColuna">
-            <h2 id="tituloEmpresa">Contatos</h2>
-            <br>
-            <br>
-            <fieldset class="legenda">
-            <legend>Telefone Principal</legend>
-            <input type="text" id="idEmpresa" class="input" required>
-            </fieldset>
-            <br>
-            <fieldset class="legenda">
-            <legend>Telefone Secundário</legend>
-            <input type="text" id="nomeEmpresa" class="input" required>
-            </fieldset>
-            <br>
-            <fieldset class="legenda">
-            <legend>Telefone de emergência</legend>
-            <input type="text" id="nomeSetor" class="input" required>
-            </fieldset>
-            <br>
-            <fieldset class="legenda">
-            <legend>CEP</legend>
-            <input type="text" id="dataInicioPrest" class="input" required>
-            </fieldset>
-            <br>
-            <fieldset class="legenda">
-            <legend>Rua</legend>
-            <input type="text" id="dataInicioPrest" class="input" required>
-            </fieldset>
-            <br>
-            <fieldset class="legenda">
-            <legend>Número</legend>
-            <input type="number" id="fonePrincPrest" class="input" required>
-            </fieldset>
-            <br>
-            <fieldset class="legenda">
-            <legend>Bairro</legend>
-            <input type="text"id="foneSecunPrest" class="input" required>
-            </fieldset>
-            <br>
-            <fieldset class="legenda">
-            <legend>Complemento</legend>
-            <input type="text"id="emailPrest" class="input" required>
-            </fieldset>
-            <br>
+    <main>
+        <h1 class="linhaCima"></h1>
+        <h1 class="linhaLado"></h1>
+
+        <a href="empresa.html">
+            <h1 class="empresa"></h1>
+        </a>
+
+        <a href="colaborador.html">
+            <h1 class="colab"></h1>
+        </a>
+
+        <h1 class="config"></h1>
+        <h1 class="prestTopo"></h1>
+
+        <a href="PrestadorServico.html">
+            <h1 class="prestMenu"></h1>
+        </a>
+
+        <h1 class="lupa"></h1>
+
+        <h1 id="titulo">Empresa</h1>
+        <form action="http://www.proway.com.br" id="form">
+            <div class="secao">
+                <section id="dadosPessoais">
+                    <h2 id="tituloDados" class="titulo">Dados Empresa</h2>
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Razão Social</legend>
+                        <input type="text" id="nomePrest" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Data de início do contrato</legend>
+                        <input type="text" id="sobrenomePrest" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>CNPJ</legend>
+                        <input type="number" placeholder="   .   .   -  " id="CPFPrest" class="input fonte" required
+                            maxlength="11">
+                    </fieldset>
+                </section>
+            </div>
+
+            <div class="secao">
+                <section id="dadosEmpresa" class="segundaColuna">
+                    <h2 id="tituloEmpresa" class="titulo">Contatos</h2>
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Telefone Principal</legend>
+                        <input type="number" id="idEmpresa" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Telefone Secundário</legend>
+                        <input type="text" id="nomeEmpresa" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Telefone de emergência</legend>
+                        <input type="number" id="idSetor" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>CEP</legend>
+                        <input type="text" id="nomeSetor" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Rua</legend>
+                        <input type="text" id="dataInicioPrest" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Número</legend>
+                        <input type="text" id="dataInicioPrest" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Bairro</legend>
+                        <input type="text" id="dataInicioPrest" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Complemento</legend>
+                        <input type="text" id="dataInicioPrest" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
             <fieldset class="legenda">
             <legend>País</legend>
             <select id="nacioPrest" class="input" required>
@@ -105,12 +137,25 @@
                 <option>Curitiba - PR</option>
                 <option>Exterior</option>
             </select>
-            </fieldset>
             <br>
-            <input type="submit" value="Enviar Dados" id="botaoEnviar">
-            <br>
-            <input type="reset" value="Cancelar" id="botaoCancelar">
-        </section>
-    </form>
+                </section>
+            </div>
+            <div class="secao">
+                <section id="botoes" class="segundaColuna">
+                    <fieldset class="legenda" id="fieldCadastro">
+                        <legend>Cadastro</legend>
+                        <input type="number" placeholder="Ex.: 123" id="campoCadastro" class="input">
+                    </fieldset>
+                    <br>
+                    <input type="submit" value="Enviar Dados" id="botaoEnviar">
+                    <br>
+                    <input type="button" value="Excluir" id="botaoExcluir">
+                    <br>
+                    <input type="reset" value="Cancelar" id="botaoCancelar">
+                </section>
+            </div>
+        </form>
 </body>
+</main>
+
 </html>
