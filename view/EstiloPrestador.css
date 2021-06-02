@@ -196,7 +196,7 @@
     height: 36px;
     background: url("iconeEmpresa.png");
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center;
     background-size: cover;
     opacity: 1;
     position: absolute;
@@ -210,13 +210,29 @@
     height: 35px;
     background: url("iconePrest.png");
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center;
     background-size: cover;
     opacity: 1;
     position: absolute;
     top: 360px;
     left: 13px;
     overflow: hidden;
+  }
+
+  .lupa {
+    width: 26px;
+    height: 26px;
+    background: url("iconeLupa.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 185px;
+    left: 1600px;
+    overflow: hidden;
+    filter: saturate(100%); 
+    filter: contrast(100%);
   }
 
   h2 {
@@ -254,11 +270,11 @@
     color: white;
     width: 700px;
     position: fixed;
-    top: 12px;
+    top: 14px;
     left: 100px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: Bold;
-    font-size: 34px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-size: 38px;
     opacity: 1;
     text-align: left;
   }
