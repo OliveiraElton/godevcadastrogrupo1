@@ -37,7 +37,7 @@
 
                 <fieldset class="legenda">
                     <legend>CPF</legend>
-                    <input type="text" id="cpf"  class="input" placeholder="000.000.000-00" required>
+                    <input type="text" id="cpf"  class="input" placeholder="000.000.000-00" maxlength="11" required>
                 </fieldset>
 
                 <br>
@@ -125,7 +125,7 @@
             <h2 class="tituloDados">Dados Contratuais</h2>
             <fieldset class="legenda">
                 <legend>PIS/NIS</legend>
-                <input type="text" class="input" name="pis" required>
+                <input type="text" class="input" name="pis" maxlength="11"  min="0" pattern="[0-9]+$"  required>
             </fieldset>
             <br>
             <fieldset class=legenda>
@@ -161,22 +161,22 @@
             <br>
             <fieldset class=legenda>
                 <legend>Telefone Principal</legend>
-                <input type="text" class="input" name="principal" maxlength="11" required>
+                <input type="number" class="input" name="principal" min="10" maxlength="11" placeholder="4730371234" required>
             </fieldset>
             <br>
             <fieldset class=legenda>
                 <legend>Telefone Secundário</legend>
-                <input type="text" class="input" name="secundario"  maxlength="11" required>
+                <input type="number" class="input" name="secundario" min="10"  maxlength="11" placeholder="4730371234" required>
             </fieldset>
             <br>
             <fieldset class=legenda>
                 <legend>Email</legend>
-                <input type="email" class="input" name="email" required>
+                <input type="email" class="input" name="email" placeholder="joao@gmail.com" required>
             </fieldset>
             <br>
             <fieldset class=legenda>
                 <legend>Telefone de Emergência</legend>
-                <input type="text" class="input" name="emergencia"  maxlength="11" required>
+                <input type="number" class="input" name="emergencia" min="10" maxlength="11" placeholder="4730371234" required>
             </fieldset>
             <br>
     
