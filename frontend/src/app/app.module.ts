@@ -10,12 +10,11 @@ import { ComponentsModule } from './components/components.module';
 
 import { AppComponent } from './app.component';
 
-import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ColaboradorComponent } from './colaborador/colaborador.component';
+import { EmpresaComponent } from './empresa/empresa.component';
 import { TableListComponent } from './table-list/table-list.component';
 import { TypographyComponent } from './typography/typography.component';
-import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
-import { UpgradeComponent } from './upgrade/upgrade.component';
 import {
   AgmCoreModule
 } from '@agm/core';
