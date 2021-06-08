@@ -1,89 +1,129 @@
 <div class="main-content">
-  <div class="container-fluid">
-      <div class="row">
-          <div class="col-md-12">
-              <div class="card">
-                  <div class="card-header card-header-primary">
-                      <h4 class="card-title">Edit Profile</h4>
-                      <p class="card-category">Complete your profile</p>
-                  </div>
-                  <div class="card-body">
-                      <form>
-                          <div class="row">
-                              <div class="col-md-5">
-                                <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Company">
-                                  </mat-form-field>
-                              </div>
-                              <div class="col-md-3">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Username">
-                                  </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Email address" type="email">
-                                  </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-6">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Fist Name" type="text">
-                                </mat-form-field>
-                              </div>
-                              <div class="col-md-6">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Last Name" type="text">
-                                </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-12">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Adress" type="text">
-                                </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="City" type="text">
-                                </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Country" type="text">
-                                </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Postal Code" type="text">
-                                </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-12">
-                                <label>About Me</label>
-                                <mat-form-field class="example-full-width">
-                                   <textarea matInput placeholder="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."></textarea>
-                                 </mat-form-field>
-                                  <!-- <div class="form-group">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">Dados Pessoais</h4>
+                        <p class="card-category"></p>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput id="nome" placeholder="Nome" type="text" required>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput id="sobrenome" placeholder="Sobrenome" type="text" required>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput id="cpf" placeholder="CPF" type="text" maxlength="11" required>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Gênero" type="text" required>
+                                    </mat-form-field>
+                                </div>
 
-                                      <div class="form-group">
-                                          <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
-                                          <textarea class="form-control" rows="5"></textarea>
-                                      </div>
-                                  </div> -->
-                              </div>
-                          </div>
-                          <button mat-raised-button type="submit" class="btn btn-primary pull-right">Update Profile</button>
-                          <div class="clearfix"></div>
-                      </form>
-                  </div>
-              </div>
-          </div>
-    
-      </div>
-  </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Gênero</mat-label>
+                                        <mat-select id="genero" [formControl]="selected">
+                                            <mat-option value="Feminino">Feminino</mat-option>
+                                            <mat-option value="Masculino">Masculino</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Escolaridade</mat-label>
+                                        <mat-select id="escolaridade" [formControl]="selected">
+                                            <mat-option value="ANALFABETO">Analfabeto</mat-option>
+                                            <mat-option value="ATE_QUARTA_SERIE">Até Quarta Série</mat-option>
+                                            <mat-option value="FUNDAMENTAL_COMPLETO">Fundamento Completo</mat-option>
+                                            <mat-option value="MEDIO_INCOMPLETO">Médio Incompleto</mat-option>
+                                            <mat-option value="MEDIO_COMPLETO">Médio Completo</mat-option>
+                                            <mat-option value="SUPERIOR_INCOMPLETO">Superior Incompleto</mat-option>
+                                            <mat-option value="SUPERIOR_COMPLETO">Superior Incompleto</mat-option>
+                                            <mat-option value="POS_GRADUACAO">Pós Graduação</mat-option>
+                                            <mat-option value="MESTRADO">Mestrado</mat-option>
+                                            <mat-option value="DOUTORADO">Doutorado</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Estado Civil</mat-label>
+                                        <mat-select id="estadoCivil" [formControl]="selected">
+                                            <mat-option value="Solteiro">Solteiro</mat-option>
+                                            <mat-option value="Casado">Casado</mat-option>
+                                            <mat-option value="Uniao_Estavel">União Estável</mat-option>
+                                            <mat-option value="Viuvo">Viívo</mat-option>
+                                            <mat-option value="Divorciado">Divorciado</mat-option>
+                                            <mat-option value="Separado">Separado</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row ">
+                                <div class="col-md-12 ">
+                                    <mat-form-field class="example-full-width ">
+                                        <input matInput id="dataNasc" placeholder="Data de Nascimento" type="date" required>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Nacionalidade</mat-label>
+                                    <mat-select id="nacionalidade" [formControl]="selected">
+                                        <mat-option value="Brasileira">Brasileira</mat-option>
+                                        <mat-option value="Haitiana">Haitiana</mat-option>
+                                        <mat-option value="Argentina">Argentina</mat-option>
+                                        <mat-option value="Japonesa">Japonesa</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-3">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Naturalidade</mat-label>
+                                    <mat-select id="naturalidade" [formControl]="selected">
+                                        <mat-option value="Brasileira">Bagé/RS</mat-option>
+                                        <mat-option value="Haitiana">Florianópolis/SC</mat-option>
+                                        <mat-option value="Argentina">São Paulo/SP</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="row ">
+                                <div class="col-md-4 ">
+                                    <mat-form-field class="example-full-width ">
+                                        <input matInput placeholder="RG" type="text">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <button mat-raised-button type="submit" class="btn btn-primary pull-right">Enviar</button>
+                            <button mat-raised-button type="button" class="btn btn-primary pull-right">Excluir</button>
+                            <button mat-raised-button type="reset" class="btn btn-primary pull-right">Cancelar</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
