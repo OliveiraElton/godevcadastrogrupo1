@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    
+<!--Prestador Servico
+Classe implementa as funcionalidades gráficas da tela de 
+Prestador de Serviço
+
+@author: Sarah Neuburger Brito - sarah.brito@senior.com.br-->
+
+<head>
+    <meta charset="UTF-8">
+    <link href="empresa.css" rel="stylesheet">
+    <title>Empresa</title>
+</head>
+
+<body>
+    <main>
+        <h1 class="linhaCima"></h1>
+        <h1 class="linhaLado"></h1>
+
+        <a href="empresa.html">
+            <h1 class="empresa"></h1>
+        </a>
+
+        <a href="colaborador.html">
+            <h1 class="colab"></h1>
+        </a>
+
+        <h1 class="config"></h1>
+        <h1 class="prestTopo"></h1>
+
+        <a href="PrestadorServico.html">
+            <h1 class="prestMenu"></h1>
+        </a>
+
+        <h1 class="lupa"></h1>
+
+        <h1 id="titulo">Empresa</h1>
+        <form action="http://www.proway.com.br" id="form">
+            <div class="secao">
+                <section id="dadosPessoais">
+                    <h2 id="tituloDados" class="titulo">Dados Empresa</h2>
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Razão Social</legend>
+                        <input type="text" id="nomePrest" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Data de início do contrato</legend>
+                        <input type="text" id="sobrenomePrest" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>CNPJ</legend>
+                        <input type="number" placeholder="   .   .   -  " id="CPFPrest" class="input fonte" required
+                            maxlength="11">
+                    </fieldset>
+                </section>
+            </div>
+
+            <div class="secao">
+                <section id="dadosEmpresa" class="segundaColuna">
+                    <h2 id="tituloEmpresa" class="titulo">Contatos</h2>
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Telefone Principal</legend>
+                        <input type="number" id="idEmpresa" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Telefone Secundário</legend>
+                        <input type="text" id="nomeEmpresa" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Telefone de emergência</legend>
+                        <input type="number" id="idSetor" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>CEP</legend>
+                        <input type="text" id="nomeSetor" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Rua</legend>
+                        <input type="text" id="dataInicioPrest" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Número</legend>
+                        <input type="text" id="dataInicioPrest" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Bairro</legend>
+                        <input type="text" id="dataInicioPrest" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Complemento</legend>
+                        <input type="text" id="dataInicioPrest" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+            <fieldset class="legenda">
+            <legend>País</legend>
+            <select id="nacioPrest" class="input" required>
+                <option>Selecione</option>
+                <option>Brasil</option>
+                <option>Argentina</option>
+                <option>Haiti</option>
+                <option>França</option> 
+                <option>Chile</option>
+                <option>Espanha</option>
+            </select>
+            </fieldset>
+            <br>
+            <fieldset class="legenda">
+            <legend>Estado</legend>
+            <select id="natuPrest" class="input" required>
+                <option>Selecione</option>
+                <option>São Paulo - SP</option>
+                <option>Florianópolis - SC</option>
+                <option>Bagé - RS</option>
+                <option>Rio de Janeiro - RJ</option>
+                <option>Curitiba - PR</option>
+                <option>Exterior</option>
+            </select>
+            <br>
+                </section>
+            </div>
+            <div class="secao">
+                <section id="botoes" class="segundaColuna">
+                    <fieldset class="legenda" id="fieldCadastro">
+                        <legend>Cadastro</legend>
+                        <input type="number" placeholder="Ex.: 123" id="campoCadastro" class="input">
+                    </fieldset>
+                    <br>
+                    <input type="submit" value="Enviar Dados" id="botaoEnviar">
+                    <br>
+                    <input type="button" value="Excluir" id="botaoExcluir">
+                    <br>
+                    <input type="reset" value="Cancelar" id="botaoCancelar">
+                </section>
+            </div>
+        </form>
+</body>
+</main>
+
+</html>

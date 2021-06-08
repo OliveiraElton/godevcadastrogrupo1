@@ -1,148 +1,221 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+    
+<!--Prestador Servico
+Classe implementa as funcionalidades gráficas da tela de 
+Prestador de Serviço
+
+@author: Sarah Neuburger Brito - sarah.brito@senior.com.br-->
 
 <head>
     <meta charset="UTF-8">
+    <link href="EstiloPrestador.css" rel="stylesheet">
     <title>Prestador de Serviço</title>
 </head>
 
 <body>
-    <h1>Cadastro de Prestador de Serviço</h1>
-    <form action="http://www.proway.com.br">
-        <section id="dadosPessoais">
-            <h2>Dados Pessoais</h2>
-            <label>Nome</label>
-            <br>
-            <input type="text" id="nomePrest" required>
-            <br>
-            <br>
-            <label>Sobrenome</label>
-            <br>
-            <input type="text" id="sobrenomePrest" required>
-            <br>
-            <br>
-            <label>CPF</label>
-            <br>
-            <input type="text" placeholder="   .   .   -  " id="CPFPrest" required>
-            <br>
-            <br>
-            <label>Nome Social</label>
-            <br>
-            <br>
-            <input type="text" id="nomeSociaPrest" required>
-            <br>
-            <br>
-            <label>Gênero</label>
-            <br>
-            <select id="generoPrest" required>
-                <option>Selecione</option>
-                <option>Feminino</option>
-                <option>Masculino</option>
-            </select>
-            <br>
-            <br>
-            <label>Identidade de Gênero</label>
-            <br>
-            <input type="radio" name="identGenero" value="Trans" id="igTrans">
-            <label>Trans</label>
-            <input type="radio" name="identGenero" value="Cis" id="igCis">
-            <label>Cis</label>
-            <br>
-            <br>
-            <label>Data de Nascimento</label>
-            <br>
-            <input type="date" id="dataNascPrest" required>
-            <br>
-            <br>
-            <label>Nacionalidade</label>
-            <br>
-            <select id="nacioPrest" required>
-                <option>Selecione</option>
-                <option>Brasil</option>
-                <option>Argentina</option>
-                <option>Haiti</option>
-                <option>França</option>
-                <option>Chile</option>
-                <option>Espanha</option>
-            </select>
-            <br>
-            <br>
-            <label>Naturalidade</label>
-            <br>
-            <select id="natuPrest" required>
-                <option>Selecione</option>
-                <option>São Paulo - SP</option>
-                <option>Florianópolis - SC</option>
-                <option>Bagé - RS</option>
-                <option>Rio de Janeiro - RJ</option>
-                <option>Curitiba - PR</option>
-                <option>Exterior</option>
-            </select>
-            <br>
-            <br>
-            <label>RG</label>
-            <br>
-            <input type="text" id="RGPrest" required>
-            <br>
-            <hr>
-        </section>
+    <main>
+        <h1 class="linhaCima"></h1>
+        <h1 class="linhaLado"></h1>
 
-        <section id="dadosEmpresa">
-            <h2>Dados da Empresa</h2>
-            <label>Empresa</label>
-            <input type="number" id="idEmpresa" required>
-            <label>Nome</label>
-            <input type="text" id="nomeEmpresa" required>
-            <br>
-            <br>
-            <label>Setor</label>
-            <input type="number" id="idSetor" required>
-            <label>Nome</label>
-            <input type="text" id="nomeSetor" required>
-            <br>
-            <br>
-            <label>Data de Início</label>
-            <br>
-            <input type="date" id="dataInicioPrest" required>
-            <br>
-            <hr>
-        </section>
+        <a href="empresa.html">
+            <h1 class="empresa"></h1>
+        </a>
 
-        <section id="contatos" required>
-            <h2>Contatos</h2>
-            <label>Telefone Principal</label>
-            <br>
-            <input type="text" placeholder="47999999999" id="fonePrincPrest" required>
-            <br>
-            <br>
-            <label>Telefone Secundário</label>
-            <br>
-            <input type="text" placeholder="47999999999" id="foneSecunPrest" required>
-            <br>
-            <br>
-            <label>E-mail</label>
-            <br>
-            <input type="email" placeholder="exemplo@exemplo.com" id="emailPrest" required>
-            <br>
-            <br>
-            <label>Telefone Familiar</label>
-            <br>
-            <input type="text" placeholder="47999999999" id="foneFamPrest" required>
-            <br>
-            <hr>
-        </section>
+        <a href="colaborador.html">
+            <h1 class="colab"></h1>
+        </a>
 
-        <section id="botoes">
-            <br>
-            <input type="number" placeholder="Cadastro">
-            <br>
-            <br>
-            <input type="submit" value="Enviar Dados">
-            <br>
-            <br>
-            <input type="reset" value="Cancelar">
-        </section>
-    </form>
+        <h1 class="config"></h1>
+        <h1 class="prestTopo"></h1>
+
+        <a href="PrestadorServico.html">
+            <h1 class="prestMenu"></h1>
+        </a>
+
+        <h1 class="lupa"></h1>
+
+        <h1 id="titulo">Prestador de Serviço</h1>
+        <form action="http://www.proway.com.br" id="form">
+            <div class="secao">
+                <section id="dadosPessoais">
+                    <h2 id="tituloDados" class="titulo">Dados Pessoais</h2>
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Nome</legend>
+                        <input type="text" id="nomePrest" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Sobrenome</legend>
+                        <input type="text" id="sobrenomePrest" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>CPF</legend>
+                        <input type="text" placeholder="   .   .   -  " id="CPFPrest" class="input fonte" maxlength="11" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Nome Social</legend>
+                        <input type="text" id="nomeSociaPrest" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Gênero</legend>
+                        <select id="generoPrest" required>
+                            <option>Selecione</option>
+                            <option>Feminino</option>
+                            <option>Masculino</option>
+                        </select>
+                    </fieldset>
+
+
+                    <br>
+                    <fieldset class="legenda idGenero">
+                        <legend>Identidade de Gênero</legend>
+                        <input type="radio" name="identGenero" value="Trans" class="idGenero">
+                        <label class="ig">Trans</label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        <input type="radio" name="identGenero" value="Cis" class="idGenero">
+                        <label class="ig">Cis</label>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Data Nascimento</legend>
+                        <input type="date" id="dataNascPrest" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Nacionalidade</legend>
+                        <select id="nacioPrest" required>
+                            <option>Selecione</option>
+                            <option>Brasil</option>
+                            <option>Argentina</option>
+                            <option>Haiti</option>
+                            <option>França</option>
+                            <option>Chile</option>
+                            <option>Espanha</option>
+                        </select>
+                    </fieldset>
+
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Naturalidade</legend>
+                        <select id="natuPrest" required>
+                            <option>Selecione</option>
+                            <option>São Paulo - SP</option>
+                            <option>Florianópolis - SC</option>
+                            <option>Bagé - RS</option>
+                            <option>Rio de Janeiro - RJ</option>
+                            <option>Curitiba - PR</option>
+                            <option>Exterior</option>
+                        </select>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>RG</legend>
+                        <input type="text" id="RGPrest" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+                </section>
+            </div>
+
+            <div class="secao">
+                <section id="dadosEmpresa" class="segundaColuna">
+                    <h2 id="tituloEmpresa" class="titulo">Dados da Empresa</h2>
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Empresa</legend>
+                        <input type="number" id="idEmpresa" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Nome Empresa</legend>
+                        <input type="text" id="nomeEmpresa" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Setor</legend>
+                        <input type="number" id="idSetor" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Nome Setor</legend>
+                        <input type="text" id="nomeSetor" class="input fonte" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Data de Início</legend>
+                        <input type="date" id="dataInicioPrest" class="input fonte" required>
+                    </fieldset>
+
+                </section>
+            </div>
+
+            <div class="secao">
+                <section id="contatos" class="segundaColuna">
+                    <h2 id="tituloContatos" class="titulo">Contatos</h2>
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Telefone Principal</legend>
+                        <input type="text" placeholder="47999999999" id="fonePrincPrest" class="input fonte"
+                            maxlength="11" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Telefone Secundário</legend>
+                        <input type="text" placeholder="47999999999" id="foneSecunPrest" class="input fonte"
+                            maxlength="11" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>E-mail</legend>
+                        <input type="email" placeholder="exemplo@exemplo.com" id="emailPrest" class="input fonte"
+                            maxlength="11" required>
+                    </fieldset>
+
+                    <br>
+                    <fieldset class="legenda">
+                        <legend>Telefone Familiar</legend>
+                        <input type="text" placeholder="47999999999" id="foneFamPrest" class="input fonte"
+                            maxlength="11" required>
+                    </fieldset>
+
+                    <br>
+                </section>
+            </div>
+
+            <div class="secao">
+                <section id="botoes" class="segundaColuna">
+                    <fieldset class="legenda" id="fieldCadastro">
+                        <legend>Cadastro</legend>
+                        <input type="number" placeholder="Ex.: 123" id="campoCadastro" class="input">
+                    </fieldset>
+                    <br>
+                    <input type="submit" value="Enviar Dados" id="botaoEnviar">
+                    <br>
+                    <input type="button" value="Excluir" id="botaoExcluir">
+                    <br>
+                    <input type="reset" value="Cancelar" id="botaoCancelar">
+                </section>
+            </div>
+        </form>
 </body>
+</main>
 
 </html>
