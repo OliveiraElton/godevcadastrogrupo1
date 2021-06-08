@@ -4,80 +4,112 @@
           <div class="col-md-12">
               <div class="card">
                   <div class="card-header card-header-primary">
-                      <h4 class="card-title">Edit Profile</h4>
-                      <p class="card-category">Complete your profile</p>
+                      <h4 class="card-title">Cadastro de Empresa</h4>
+                      
                   </div>
                   <div class="card-body">
                       <form>
                           <div class="row">
-                              <div class="col-md-5">
+                              <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Company">
+                                    <input type="text" matInput placeholder="Razão Social" id="razaoSocial" name="razaoSocial" required>
                                   </mat-form-field>
                               </div>
-                              <div class="col-md-3">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Username">
-                                  </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Email address" type="email">
-                                  </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-6">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Fist Name" type="text">
-                                </mat-form-field>
-                              </div>
-                              <div class="col-md-6">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Last Name" type="text">
-                                </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-12">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Adress" type="text">
-                                </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="City" type="text">
-                                </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Country" type="text">
-                                </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Postal Code" type="text">
-                                </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-12">
-                                <label>About Me</label>
-                                <mat-form-field class="example-full-width">
-                                   <textarea matInput placeholder="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."></textarea>
-                                 </mat-form-field>
-                                  <!-- <div class="form-group">
 
-                                      <div class="form-group">
-                                          <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
-                                          <textarea class="form-control" rows="5"></textarea>
-                                      </div>
-                                  </div> -->
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="CNPJ" type="text" id="cnpj" name="cnpj" maxlength="14" minlength="14" required>
+                                </mat-form-field>
+                              </div>
+                             
+                              <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input type="date" matInput placeholder="Data de Início de Contrato" id="inicioContrato" name="inicioContrato" required>
+                                  </mat-form-field>
                               </div>
                           </div>
-                          <button mat-raised-button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+
+                          <div class="row">
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Telefone Principal" type="tel" id="telefonePrincipal" name="telefonePrincipal" maxlength="11" required>
+                                </mat-form-field>
+                              </div>
+
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Telefone Secundário" type="tel" id="telefoneSecundario" name="telefoneSecundario" maxlength="11">
+                                </mat-form-field>
+                              </div>
+                             
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Telefone de Emergência" type="tel" id="telefoneEmergencia" name="telefoneEmergencia" maxlength="11">
+                                </mat-form-field>
+                              </div>
+                          </div>
+                      
+                          <div class="row">
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Cep" type="text" id="cep" name="cep" required>
+                                </mat-form-field>
+                              </div>
+                              
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Rua" type="text" id="rua" name="rua" required>
+                                </mat-form-field>
+                              </div>
+
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Número" type="number" id="numero" name="numero" min="1">
+                                </mat-form-field>
+                              </div>
+                          </div>
+
+                          <div class="row">
+                              <div class="col-md-3">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Bairro" type="text" id="bairro" name="bairro" >   
+                                </mat-form-field>
+                              </div>
+
+                              <div class="col-md-3">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput type="text" placeholder="Cidade" name="cidade" id="cidade" required>                              
+                                </mat-form-field>
+                              </div>
+
+                              <div class="col-md-3">
+                                <mat-form-field class="example-full-width">
+                                  <mat-label>Estado</mat-label>
+                                    <mat-select  id="estado">
+                                      <mat-option value="Brasil">Santa Catarina</mat-option>
+                                      <mat-option value="Argentina">Paraná</mat-option>
+                                      <mat-option value="Haiti">Rio de Janeiro</mat-option>
+                                      <mat-option value="Venezuela">Rio Grande do Sul</mat-option>
+                                      <mat-option value="Chile">São Paulo</mat-option>
+                                    </mat-select>                             
+                                  </mat-form-field>
+                              </div>
+
+                              <div class="col-md-3">
+                                <mat-form-field class="example-full-width">
+                                  <mat-label>Pais</mat-label>
+                                    <mat-select [formControl]="selected" id="pais">
+                                      <mat-option value="Brasil">Brasil</mat-option>
+                                      <mat-option value="Argentina">Argentina</mat-option>
+                                      <mat-option value="Haiti">Haiti</mat-option>
+                                      <mat-option value="Venezuela">Venezuela</mat-option>
+                                      <mat-option value="Chile">Chile</mat-option>
+                                    </mat-select>                             
+                                  </mat-form-field>
+                              </div>
+                          </div>
+
+                          <button mat-raised-button type="submit" class="btn btn-primary pull-right">Cadastrar</button>
                           <div class="clearfix"></div>
                       </form>
                   </div>
