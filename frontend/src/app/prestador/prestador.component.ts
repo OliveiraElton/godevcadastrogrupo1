@@ -1,7 +1,6 @@
-import { getLocaleDateFormat } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { EmailValidator, FormControl } from '@angular/forms';
-import { MatInput } from '@angular/material/input';
+import { FormControl, NgForm } from '@angular/forms';
+import { Prestador } from 'app/models/prestador';
 import { PrestadorService } from 'app/prestador.service';
 /*import { EmpresaService } from '../empresa.service';*/
 
@@ -13,10 +12,10 @@ import { PrestadorService } from 'app/prestador.service';
 })
 export class PrestadorComponent implements OnInit {
 
-  genero = new FormControl('outros');
-  identidadeGenero = new FormControl('outros');
+  
   /*empresas: Empresa[] = EmpresaService.getEmpresas();*/
-
+  /*nomeEmpresa = EmpresaService.getEmpresa().getNome()*/
+  prestador = {} as Prestador;
   constructor(private prestadorService : PrestadorService) { 
 
   }
@@ -24,8 +23,22 @@ export class PrestadorComponent implements OnInit {
    /* this.empresas = EmpresaService.getEmpresas();*/
 
   }
+
+  savePrestador(form : NgForm){
+    if(this.prestador.id !== undefined){
+      this.prestadorService.updatePrestador(this.prestador).subscribe(() => {
+        this.cleanForm(form);
+      });
+    }else{
+      this.prestadorService.savePrestador(this.prestador).subscribe(() => {
+        this.cleanForm(form);
+      })
+    }
+  }
   ngOnInit(){
     this.getEmpresas();
   }
-
+  cleanForm(form : NgForm){
+    form.resetForm();
+  }
 }

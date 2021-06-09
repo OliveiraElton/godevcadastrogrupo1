@@ -1,4 +1,5 @@
 <div class="main-content">
+  <form (ngSubmit)=" savePrestador(f)" #f="ngForm">
   <div class="container-fluid">
       <div class="row">
           <div class="col-md-12">
@@ -7,37 +8,36 @@
                       <h4 class="card-title">Dados Pessoais</h4>
                   </div>
                   <div class="card-body">
-                      <form>
+                      
                           <div class="row">
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                    <input matInput name="nome" placeholder="Nome" required>
+                                    <input matInput [(ngModel)]="prestador.nome" name="nome" placeholder="Nome" required>
                                   </mat-form-field>
                               </div>
                               <div class="col-md-4">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput name="sobrenome" placeholder="Sobrenome" required>
+                                    <input matInput [(ngModel)]="prestador.sobrenome" name="sobrenome" placeholder="Sobrenome" required>
                                   </mat-form-field>
                               </div>
                               <div class="col-md-4">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput name="cpf" placeholder="CPF" type="text" maxlength=11 required>
+                                    <input matInput [(ngModel)]="prestador.cpf"name="cpf" placeholder="CPF" type="text" maxlength=11 required>
                                   </mat-form-field>
                               </div>
                           </div>
                           <div class="row">
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput name="nome social" placeholder="Nome social" type="text">
+                                  <input matInput [(ngModel)]="prestador.nomeSocial" name="nomeSocial" placeholder="Nome social" type="text">
                                 </mat-form-field>
                               </div>
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
                                   <mat-label>Gênero</mat-label>
-                                    <mat-select [formControl]="genero" required>
+                                    <mat-select [(ngModel)]="prestador.genero" name="genero" required>
                                       <mat-option value="masculino">Masculino</mat-option>
                                       <mat-option value="feminino">Feminino</mat-option>
-                                      <mat-option value="outros">Outros</mat-option>
                                     </mat-select>
                                 </mat-form-field>
                               </div>
@@ -45,10 +45,9 @@
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
                                   <mat-label>Identidade de Gênero</mat-label>
-                                    <mat-select [formControl]="identidadeGenero" required>
-                                      <mat-option value="cis">Cis</mat-option>
-                                      <mat-option value="trans">Trans</mat-option>
-                                      <mat-option value="outros">Outros</mat-option>
+                                    <mat-select [(ngModel)]="prestador.identidadeGenero" name="identidadeGenero" required>
+                                      <mat-option value="CIS">Cis</mat-option>
+                                      <mat-option value="TRANS">Trans</mat-option>
                                     </mat-select>
                                 </mat-form-field>
                               </div>
@@ -58,19 +57,19 @@
                           <div class="row">
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput name="datanascimento"placeholder="Data de Nascimento" type="date" required>
+                                  <input matInput [(ngModel)]="prestador.dataNascimento" name="dataNascimento"placeholder="Data de Nascimento" type="date" required>
                                 </mat-form-field>
                               </div>
                       
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput name="nacionalidade" placeholder="Nacionalidade" type="text" required>
+                                  <input matInput [(ngModel)]="prestador.nacionalidade" name="nacionalidade" placeholder="Nacionalidade" type="text" required>
                                 </mat-form-field>
                               </div>
                               
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput name="naturalidade" placeholder="Naturalidade" type="text" required>
+                                  <input matInput [(ngModel)]="prestador.naturalidade" name="naturalidade" placeholder="Naturalidade" type="text" required>
                                 </mat-form-field>
                               </div>
                           </div>
@@ -78,12 +77,12 @@
                               <div class="col-md-4">
             
                                 <mat-form-field class="example-full-width">
-                                  <input matInput name="rg" placeholder="RG" type="text" required>
+                                  <input matInput [(ngModel)]="prestador.rg" name="rg" placeholder="RG" type="text" required>
                                 </mat-form-field>
                               </div>
                           </div>
                           <div class="clearfix"></div>
-                      </form>
+                     
                   </div>
               </div>
           </div>
@@ -98,13 +97,14 @@
                     <h4 class="card-title">Dados da Empresa</h4>
                 </div>
                 <div class="card-body">
-                    <form>
+                   
                         <div class="row">
                             <div class="col-md-4">
                               <mat-form-field class="example-full-width">
                                 <mat-label>Empresa</mat-label>
-                                  <mat-select [(ngModel)]="empresa" required>
+                                  <mat-select [(ngModel)]="prestador.empresa" name="empresa">
                                     <mat-option *ngFor="let empresa of empresas" [value]="empresa.name">
+                                      {{empresa.id}}
                                       {{empresa.name}}
                                     </mat-option>
                                   </mat-select>
@@ -112,29 +112,26 @@
                             </div>
                             <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput name="nomeEmpresa" placeholder="Nome da Empresa " required>
+                                  <input matInput name="nomeEmpresa" placeholder="Nome da Empresa " disabled>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput name="setor" placeholder="Setor" type="text" required>
+                                  <input matInput [(ngModel)]="prestador.setor" name="setor" placeholder="Setor" type="text" required>
                                 </mat-form-field>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4">
                               <mat-form-field class="example-full-width">
-                                <input matInput name="datainicio"placeholder="Data de Início" type="date" required>
+                                <input matInput [(ngModel)]="prestador.dataInicio" name="dataInicio"placeholder="Data de Início" type="date" required>
                               </mat-form-field>
                             </div>
                           </div>
-                        <button mat-raised-button type="submit" class="btn btn-primary pull-right">Avançar</button>
                         <div class="clearfix"></div>
-                    </form>
                 </div>
             </div>
         </div>
-  
     </div>
   </div>
   <div class="container-fluid">
@@ -145,38 +142,41 @@
                     <h4 class="card-title">Contatos</h4>
                 </div>
                 <div class="card-body">
-                    <form>
+                  
                         <div class="row">
                             <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput name="telefonePrincipal" placeholder="Telefone Principal" type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) return false;" required>
+                                  <input matInput [(ngModel)]="prestador.telefonePrincipal"name="telefonePrincipal" placeholder="Telefone Principal" type="number" required>
+                                  <!--oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) console.log('arrumaessaporra');"-->
                                 </mat-form-field>
                             </div>
                             <div class="col-md-4">
                               <mat-form-field class="example-full-width">
-                                <input matInput name="telefoneSecundario" placeholder="Telefone Secundario" type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) return false;" required>
+                                <input matInput [(ngModel)]="prestador.telefoneSecundario" name="telefoneSecundario" placeholder="Telefone Secundario" type="number" required>
                               </mat-form-field>
                             </div>
                             <div class="col-md-4">
                               <mat-form-field class="example-full-width">
-                                <input matInput name="email" placeholder="Email" type="email" required>
+                                <input matInput [(ngModel)]="prestador.email"name="email" placeholder="Email" type="email" required>
                               </mat-form-field>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4">
                               <mat-form-field class="example-full-width">
-                                <input matInput name="telefoneFamiliar" placeholder="Telefone Familiar" type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) return false;" required>
+                                <input matInput [(ngModel)]="prestador.telefoneFamiliar" name="telefoneFamiliar" placeholder="Telefone Familiar" type="number" required>
                               </mat-form-field>
                             </div>
                           </div>
-                        <button mat-raised-button type="submit" class="btn btn-primary pull-right">Avançar</button>
-                        <div class="clearfix"></div>
-                    </form>
+                        <button mat-raised-button type="submit" class="btn btn-primary pull-right">Salvar</button>
+                       <button mat-raised-button type="reset" (click)="cleanForm(f)"class="btn btn-primary pull-right">Limpar</button>
+                    <div class="clearfix"></div>
+                    
                 </div>
             </div>
         </div>
   
     </div>
   </div>
+</form>
 </div>
