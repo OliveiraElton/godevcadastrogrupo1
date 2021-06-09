@@ -1,16 +1,10 @@
 import { R3ResolvedDependencyType } from "@angular/compiler";
+import { Contatos } from "./contatos";
+import { Dependentes } from "./dependentes";
 import { Endereco } from "./endereco";
 import { ExameMedico } from "./exameMedico";
 
 export interface Colaborador {
-
-    // String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
-			//String nacionalidade, String naturalidade, Boolean pcd, String genero, IdentidadeGenero identidadeGenero,
-			//Escolaridade escolaridade, EstadoCivil estadoCivil, String nomeMae, String nomePai, Endereco endereco,
-			//String cpf, String rg, Contatos contatos, Integer idPostoDeTrabalho, Integer nit, Boolean optanteVT,
-			//Boolean optanteVAVR, LocalDate dataAdmissao, Boolean optanteDependente, String registro_alistamento,
-			//String email_corporativo, String titulo_eleitor, Conta conta, ExameMedico exameMedico,
-			//Dependente dependente
 
     nomeColab: String;
     sobrenomeColab: String;
@@ -40,5 +34,5 @@ export interface Colaborador {
     tituloColab: String;
     conta: Conta:
     exameMedico: ExameMedico;
-    dependente: Dependente;    
+    dependente: Dependentes;    
 }

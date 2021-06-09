@@ -530,7 +530,7 @@
 
                                 <div class="col-md-4 ">
                                     <mat-form-field class="example-full-width ">
-                                        <input matInput placeholder="Sobrenome " type="text " id="iDsobrenomeColaborador " name="sobrenomeColaborador " required>
+                                        <input matInput placeholder="Sobrenome " type="text " id="iDsobrenomeColaborador " name="sobrenomeDependente " required>
                                     </mat-form-field>
                                 </div>
 
@@ -563,29 +563,14 @@
 
                                 <div class="col-md-4 ">
                                     <mat-form-field class="example-full-width ">
-                                        <mat-label>Naturalidade</mat-label>
-                                        <mat-select id="naturalidade " name="naturalidade " [formControl]="naturalidade ">
-                                            <mat-option name="bage " value="bage ">Bagé/RS</mat-option>
-                                            <mat-option name="saoPaulo " value="saoPaulo ">São Paulo/SP</mat-option>
-                                            <mat-option name="florianopolis " value="florianopolis ">Florianópolis/SC</mat-option>
-                                            <mat-option name="outraNaturalidade " value="outraNaturalidade ">Outra Naturalidade</mat-option>
-
-                                        </mat-select>
-                                    </mat-form-field>
-                                </div>
-
-                                <div class="col-md-4 ">
-                                    <mat-form-field class="example-full-width ">
                                         <mat-label>Se enquada com PCD?</mat-label>
                                         <mat-select id="pcd " name="pcd " [formControl]="pcd ">
-                                            <mat-option name="pcdSim " value="Sim ">Sim</mat-option>
-                                            <mat-option name="pcdNao " value="Nao ">Não</mat-option>
+                                            <mat-option name="pcdSim " value="true ">Sim</mat-option>
+                                            <mat-option name="pcdNao " value="false ">Não</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
-                            </div>
 
-                            <div class="row ">
                                 <div class="col-md-4 ">
                                     <mat-form-field class="example-full-width ">
                                         <mat-label>Gênero</mat-label>
@@ -595,7 +580,9 @@
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
+                            </div>
 
+                            <div class="row ">
                                 <div class="col-md-4 ">
                                     <mat-form-field class="example-full-width ">
                                         <mat-label>Identidade de Gênero</mat-label>
@@ -613,9 +600,6 @@
                                                 " onKeyPress="if(this.value.length==11) return false; ">
                                     </mat-form-field>
                                 </div>
-                            </div>
-
-                            <div class="row ">
                                 <div class="col-md-4 ">
                                     <mat-form-field class="example-full-width ">
                                         <mat-label>Tipo Dependente</mat-label>
@@ -627,20 +611,23 @@
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
+                            </div>
+
+                            <div class="row ">
 
                                 <div class="col-md-4 ">
                                     <mat-form-field class="example-full-width ">
                                         <mat-label>Optante IR</mat-label>
-                                        <mat-select id="optante " name="optante " [formControl]="optante ">
-                                            <mat-option name="opcaoOptanteSim " value="optanteSim ">Sim</mat-option>
-                                            <mat-option name="opcaoOptanteNao " value="optanteNao ">Não</mat-option>
+                                        <mat-select id="optanteIR " name="optanteIR " [formControl]="optanteIR ">
+                                            <mat-option name="opcaoOptanteSim " value="true ">Sim</mat-option>
+                                            <mat-option name="opcaoOptanteNao " value="false ">Não</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
                             </div>
 
                             <!--Botão para mais de um dependente-->
-                            <button mat-raised-button type="reset " name="btnCancelarColab " class="btn btn-primary pull-right ">+</button>
+                            <button mat-raised-button type="reset " name="btnCancelarColab" class="btn btn-primary pull-right ">+</button>
                             <div class="clearfix "></div>
                         </div>
                     </div>
