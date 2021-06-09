@@ -28,8 +28,8 @@ body {
 }
 
 #tituloDados {
-    width: 220px;
-    height: 30px;
+    width: 325px;
+    height: 38px;
     background: rgba(213, 191, 221, 0.8199999928474426);
     color: rebeccapurple;
     text-align: center;
@@ -45,8 +45,8 @@ body {
 }
 
 #tituloEmpresa {
-    width: 220px;
-    height: 30px;
+    width: 325px;
+    height: 38px;
     background: rgba(213, 191, 221, 0.8199999928474426);
     color: rebeccapurple;
     text-align: center;
@@ -62,8 +62,8 @@ body {
 }
 
 #tituloContatos {
-    width: 220px;
-    height: 30px;
+    width: 325px;
+    height: 38px;
     background: rgba(213, 191, 221, 0.8199999928474426);
     color: rebeccapurple;
     text-align: center;
@@ -268,8 +268,8 @@ body {
     background-size: cover;
     opacity: 1;
     position: absolute;
-    top: 185px;
-    left: 1300px;
+    top: 210px;
+    left: 1430px;
     overflow: hidden;
     filter: saturate(100%);
     filter: contrast(100%);
@@ -345,7 +345,6 @@ h2 {
     align-items: center;
     align-self: center;
     justify-content: center;
-    margin-left: 58px;
 }
 
 #fonte {
