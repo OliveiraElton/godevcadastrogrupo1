@@ -26,7 +26,10 @@ export class ColaboradorComponent implements OnInit {
   identGeneroDepen = new FormControl('identGeneroDepen');
   tipoDependente = new FormControl('tipoDependente');
   optante = new FormControl('optante');
-
+  ehOptanteVTColab = new FormControl('ehOptanteVTColab');
+  ehOptanteVAVRColab = new FormControl('ehOptanteVAVRColab');
+  ehOptanteDepColab = new FormControl('ehOptanteDepColab');
+  emailCorpColab = new FormControl('emailCorpColab');
   ngOnInit() {
   }
 
