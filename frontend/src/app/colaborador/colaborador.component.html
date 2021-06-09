@@ -52,8 +52,8 @@
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Identidade de Gênero</mat-label>
                                         <mat-select id="identGeneroColab" name="identGeneroColab" [formControl]="identGeneroColab">
-                                            <mat-option name="igTransColab" value="Trans">Trans</mat-option>
-                                            <mat-option name="igCisColab" value="Cis">Cis</mat-option>
+                                            <mat-option name="igTransColab" value="TRANS">Trans</mat-option>
+                                            <mat-option name="igCisColab" value="CIS">Cis</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
@@ -82,12 +82,12 @@
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Estado Civil</mat-label>
                                         <mat-select id="estadoCivilColab" name="estadoCivilColab" [formControl]="estadoCivilColab">
-                                            <mat-option name="solteiroolab" value="Solteiro">Solteiro</mat-option>
-                                            <mat-option name="casadoColab" value="Casado">Casado</mat-option>
-                                            <mat-option name="uniaoColab" value="Uniao_Estavel">União Estável</mat-option>
-                                            <mat-option name="viuvoColab" value="Viuvo">Viívo</mat-option>
-                                            <mat-option name="divorciadoColab" value="Divorciado">Divorciado</mat-option>
-                                            <mat-option name="separadoColab" value="Separado">Separado</mat-option>
+                                            <mat-option name="solteiroolab" value="SOLTEIRO">Solteiro</mat-option>
+                                            <mat-option name="casadoColab" value="CASADO">Casado</mat-option>
+                                            <mat-option name="uniaoColab" value="UNIAO_ESTAVEL">União Estável</mat-option>
+                                            <mat-option name="viuvoColab" value="VIUVO">Viívo</mat-option>
+                                            <mat-option name="divorciadoColab" value="DIVORCIADO">Divorciado</mat-option>
+                                            <mat-option name="separadoColab" value="SEPARADO">Separado</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
@@ -131,9 +131,9 @@
                             </div>
 
                             <!--BOTÕES DE INTERAÇÃO-->
-                            <button mat-raised-button type="submit" name="btnEnviarColab" class="btn btn-primary pull-right">Enviar</button>
+                            <button mat-raised-button type="submit" name="btnEnviarColab" class="btn btn-primary pull-right">Salvar</button>
                             <button mat-raised-button type="button" name="btnExcluirColab" class="btn btn-primary pull-right">Excluir</button>
-                            <button mat-raised-button type="reset" name="btnCancelarColab" class="btn btn-primary pull-right">Cancelar</button>
+                            <button mat-raised-button type="reset" name="btnCancelarColab" class="btn btn-primary pull-right">Limpar</button>
 
                             <div class="clearfix"></div>
                         </div>
@@ -318,13 +318,13 @@
 
                                 <div class="col-md-4 ">
                                     <mat-form-field class="example-full-width ">
-                                        <input matInput id="rgColab " name="rgColab " placeholder="RG " type="text " required maxlength="20 ">
+                                        <input matInput id="rgColab " name="rgColab" placeholder="RG " type="text " required maxlength="20 ">
                                     </mat-form-field>
                                 </div>
 
                                 <div class="col-md-4 ">
-                                    <mat-form-field class="example-full-width ">
-                                        <input matInput name="reservistaColab " id="reservistaColab " placeholder="Certificado de Reservista | Alistamento " type="text " maxlength="10 ">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="reservistaColab " id="reservistaColab placeholder=" Certificado de Reservista | Alistamento " type="text " maxlength="10 ">
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -336,47 +336,47 @@
         </div>
 
         <!--CARD EXAME MEDICO-->
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header card-header-primary">
-                            <h4 class="card-title">Exame Médico</h4>
-                            <p class="card-category"></p>
+        <div class="container-fluid ">
+            <div class="row ">
+                <div class="col-md-12 ">
+                    <div class="card ">
+                        <div class="card-header card-header-primary ">
+                            <h4 class="card-title ">Exame Médico</h4>
+                            <p class="card-category "></p>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body ">
                             <form>
-                                <div class="row">
+                                <div class="row ">
 
-                                    <div class="col-md-4">
-                                        <mat-form-field class="example-full-width">
+                                    <div class="col-md-4 ">
+                                        <mat-form-field class="example-full-width ">
                                             <mat-label>Tipo do Exame</mat-label>
-                                            <mat-select id="exameMedico" name="exameMedico" [formControl]="exameMedico" required>
-                                                <mat-option name="admissional " value="admissional ">Admissional </mat-option>
-                                                <mat-option name="demissional" value="demissional">Demissional</mat-option>
-                                                <mat-option name="periodico " value="periodico ">Periódico </mat-option>
+                                            <mat-select id="exameMedico " name="exameMedico " [formControl]="exameMedico " required>
+                                                <mat-option name="admissional " value="ADMISSIONAL ">Admissional </mat-option>
+                                                <mat-option name="demissional " value="DEMISSIONAL ">Demissional</mat-option>
+                                                <mat-option name="periodico " value="PERIODICO ">Periódico </mat-option>
                                             </mat-select>
                                         </mat-form-field>
                                     </div>
 
-                                    <div class="col-md-4">
-                                        <mat-form-field class="example-full-width">
-                                            <input matInput placeholder="Data do Exame" type="date" id="dataExameMedico" name="dataExameMedico" required>
+                                    <div class="col-md-4 ">
+                                        <mat-form-field class="example-full-width ">
+                                            <input matInput placeholder="Data do Exame " type="date " id="dataExameMedico " name="dataExameMedico " required>
                                         </mat-form-field>
                                     </div>
 
-                                    <div class="col-md-4">
-                                        <mat-form-field class="example-full-width">
+                                    <div class="col-md-4 ">
+                                        <mat-form-field class="example-full-width ">
                                             <mat-label>Aptidão</mat-label>
-                                            <mat-select id="aptidao" name="aptidao" [formControl]="aptidao" required>
-                                                <mat-option name="true" value="true">Está apto</mat-option>
-                                                <mat-option name="false" value="false">Não está apto</mat-option>
+                                            <mat-select id="aptidao " name="aptidao " [formControl]="aptidao " required>
+                                                <mat-option name="true " value="true ">Está apto</mat-option>
+                                                <mat-option name="false " value="false ">Não está apto</mat-option>
                                             </mat-select>
                                         </mat-form-field>
                                     </div>
 
                                 </div>
-                                <div class="clearfix"></div>
+                                <div class="clearfix "></div>
                             </form>
                         </div>
                     </div>
@@ -397,8 +397,8 @@
                             <div class="row ">
                                 <div class="col-md-4 ">
                                     <mat-form-field class="example-full-width ">
-                                        <input matInput name="cepColab " id="cepColab " placeholder="CEP " type="number " required maxlength="8 " oninput="this.value=this.value.replace(/[^0-9.]/g, ''); this.value=this.value.replace(/(\..*)\./g,
-                                                '$1'); " onKeyPress="if(this.value.length==8) return false; ">
+                                        <input matInput name="cepColab " id="cepColab " placeholder="CEP " type="number " required maxlength="8 " oninput="this.value=this.value.replace(/[^0-9.]/g, ''); this.value=this.value.replace(/(\..*)\./g, '$1');
+                                            " onKeyPress="if(this.value.length==8) return false; ">
                                     </mat-form-field>
                                 </div>
 
@@ -411,7 +411,7 @@
                                 <div class="col-md-4 ">
                                     <mat-form-field class="example-full-width ">
                                         <input matInput name="numEndColab " id="numEndColab " placeholder="Número " type="number " required maxlength="5 " oninput="this.value=this.value.replace(/[^0-9.]/g, ''); this.value=this.value.replace(/(\..*)\./g,
-                                                '$1'); " onKeyPress="if(this.value.length==5) return false; ">
+                                            '$1'); " onKeyPress="if(this.value.length==5) return false; ">
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -478,22 +478,22 @@
                                 <div class="col-md-3 ">
                                     <mat-form-field class="example-full-width ">
                                         <input matInput name="agenciaColab " id="agenciaColab " placeholder="Agência " type="number " required maxlength="5 " oninput="this.value=this.value.replace(/[^0-9.]/g, ''); this.value=this.value.replace(/(\..*)\./g,
-                                                '$1'); " onKeyPress="if(this.value.length==5) return false; ">
+                                            '$1'); " onKeyPress="if(this.value.length==5) return false; ">
                                     </mat-form-field>
                                 </div>
 
 
                                 <div class="col-md-3 ">
                                     <mat-form-field class="example-full-width ">
-                                        <input matInput name="numContaColab " id="numContaColab " placeholder="Número da Conta" type="number " required maxlength="15 " oninput="this.value=this.value.replace(/[^0-9.]/g, '');
-                                                this.value=this.value.replace(/(\..*)\./g, '$1'); " onKeyPress="if(this.value.length==15) return false; ">
+                                        <input matInput name="numContaColab " id="numContaColab " placeholder="Número da Conta " type="number " required maxlength="15 " oninput="this.value=this.value.replace(/[^0-9.]/g, ''); this.value=this.value.replace(/(\..*)\./g,
+                                            '$1'); "onKeyPress="if(this.value.length==15) return false; ">
                                     </mat-form-field>
                                 </div>
 
-                                <div class="col-md-2">
+                                <div class="col-md-2 ">
                                     <mat-form-field class="example-full-width ">
-                                        <input matInput name="digContaColab " id="digContaColab " placeholder="Dígito Verificador" type="number " required maxlength="1 " oninput="this.value=this.value.replace(/[^0-9.]/g, '');
-                                                this.value=this.value.replace(/(\..*)\./g, '$1'); " onKeyPress="if(this.value.length==1) return false; ">
+                                        <input matInput name="digContaColab " id="digContaColab " placeholder="Dígito Verificador " type="number " required maxlength="1 " oninput="this.value=this.value.replace(/[^0-9.]/g, ''); this.value=this.value.replace(/(\..*)\./g,
+                                            '$1'); " onKeyPress="if(this.value.length==1) return false; ">
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -541,7 +541,7 @@
                                         <mat-label>Nacionalidade</mat-label>
                                         <mat-select id="nacionalidade " name="nacionalidade " [formControl]="nacionalidade " required>
                                             <mat-option name="brasileiro " value="brasileiro ">Brasileiro</mat-option>
-                                            <mat-option name="hileno " value="hileno ">Chileno</mat-option>
+                                            <mat-option name="chileno " value="chileno ">Chileno</mat-option>
                                             <mat-option name="argentino " value="argentino ">Argentino</mat-option>
                                             <mat-option name="alemão " value="alemão ">alemão</mat-option>
                                             <mat-option name="francês " value="francês ">Francês</mat-option>
@@ -581,9 +581,8 @@
                                     <mat-form-field class="example-full-width ">
                                         <mat-label>Identidade de Gênero</mat-label>
                                         <mat-select id="identGeneroDepen " name="identGeneroDepen " [formControl]="identGeneroDepen ">
-                                            <mat-option name="igTransDepen " value="Trans ">Trans</mat-option>
-                                            <mat-option name="igCisDepen " value="Cis ">Cis</mat-option>
-                                            <mat-option name="igOutroDepen " value="Outro ">Outro</mat-option>
+                                            <mat-option name="igTransDepen " value="TRANS ">Trans</mat-option>
+                                            <mat-option name="igCisDepen " value="CIS ">Cis</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
@@ -591,17 +590,17 @@
                                 <div class="col-md-4 ">
                                     <mat-form-field class="example-full-width ">
                                         <input matInput placeholder="CPF " type="text " id="idCpf " name="cpf " required maxlength="11 " oninput="this.value=this.value.replace(/[^0-9.]/g, ''); this.value=this.value.replace(/(\..*)\./g, '$1');
-                                                " onKeyPress="if(this.value.length==11) return false; ">
+                                            " onKeyPress="if(this.value.length==11) return false; ">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4 ">
                                     <mat-form-field class="example-full-width ">
                                         <mat-label>Tipo Dependente</mat-label>
-                                        <mat-select id="tipoDependente " name="tipoDependente " [formControl]="tipoDependente ">
-                                            <mat-option name="filhoDepen " value="filho ">Filho</mat-option>
-                                            <mat-option name="maeDepen " value="mae ">Mãe</mat-option>
-                                            <mat-option name="parenteDepen " value="parente ">Parente</mat-option>
-                                            <mat-option name="outroDepen " value="outro ">Outro</mat-option>
+                                        <mat-select id="tipoDependente " name="tipoDependente " [formControl]="tipoDependent ">
+                                            <mat-option name="filhoDepen " value="FILHO ">Filho(a)</mat-option>
+                                            <mat-option name="conjugeDepen " value="CONJUGE ">Cônjuge</mat-option>
+                                            <mat-option name="maeDepen " value="MAE ">Mãe</mat-option>
+                                            <mat-option name="paiDepen " value="PAI ">Pai</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
@@ -621,7 +620,7 @@
                             </div>
 
                             <!--Botão para mais de um dependente-->
-                            <button mat-raised-button type="reset " name="btnCancelarColab" class="btn btn-primary pull-right ">+</button>
+                            <button mat-raised-button type="reset " name="btnCancelarColab " class="btn btn-primary pull-right ">+</button>
                             <div class="clearfix "></div>
                         </div>
                     </div>
