@@ -11,7 +11,7 @@
                       <form>
                           <div class="row">
                               <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
+                                <mat-form-field class="example-full-width"- ç>
                                     <input type="text" matInput placeholder="Razão Social" id="razaoSocial" name="razaoSocial" required>
                                   </mat-form-field>
                               </div>
@@ -109,7 +109,7 @@
                               </div>
                           </div>
 
-                          <button mat-raised-button type="submit" class="btn btn-primary pull-right">Cadastrar</button>
+                          <button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="showNotification('top','right')"> Cadastrar</button>
                           <div class="clearfix"></div>
                       </form>
                   </div>
