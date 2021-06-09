@@ -1,5 +1,5 @@
 <div class="main-content">
-    <form>
+    <form (ngSubmit)="saveColaborador(f)" #f="ngForm">
         <!--CARD DADOS PESSOAIS-->
         <div class="container-fluid">
             <div class="row">
@@ -137,7 +137,7 @@
                             <!--BOTÕES DE INTERAÇÃO-->
                             <button mat-raised-button type="submit" name="btnEnviarColab" class="btn btn-primary pull-right">Salvar</button>
                             <button mat-raised-button type="button" name="btnExcluirColab" class="btn btn-primary pull-right">Excluir</button>
-                            <button mat-raised-button type="reset" name="btnCancelarColab" class="btn btn-primary pull-right">Limpar</button>
+                            <button mat-raised-button type="reset" (click)="cleanForm(f)" name="btnCancelarColab" class="btn btn-primary pull-right">Limpar</button>
 
                             <div class="clearfix"></div>
                         </div>
@@ -250,20 +250,20 @@
                             <div class="row ">
                                 <div class="col-md-4 ">
                                     <mat-form-field class="example-full-width ">
-                                        <input matInput [(ngModel)]="colaborador.fonePrincColab" name="fonePrincColab" id="fonePrincColab " placeholder="Telefone Principal " type="number " required maxlength="11 " oninput="this.value=this.value.replace(/[^0-9.]/g, ''); this.value=this.value.replace(/(\..*)\./g,
+                                        <input matInput [(ngModel)]="contatos.fonePrincColab" name="fonePrincColab" id="fonePrincColab " placeholder="Telefone Principal " type="number " required maxlength="11 " oninput="this.value=this.value.replace(/[^0-9.]/g, ''); this.value=this.value.replace(/(\..*)\./g,
                                                 '$1'); " onKeyPress="if(this.value.length==11) return false; ">
                                     </mat-form-field>
 
                                 </div>
                                 <div class="col-md-4 ">
                                     <mat-form-field class="example-full-width ">
-                                        <input matInput [(ngModel)]="colaborador.foneSecColab" name="foneSecColab " id="foneSecColab " placeholder="Telefone Secundário " type="number " required maxlength="11 " oninput="this.value=this.value.replace(/[^0-9.]/g, ''); this.value=this.value.replace(/(\..*)\./g,
+                                        <input matInput [(ngModel)]="contatos.foneSecColab" name="foneSecColab " id="foneSecColab " placeholder="Telefone Secundário " type="number " required maxlength="11 " oninput="this.value=this.value.replace(/[^0-9.]/g, ''); this.value=this.value.replace(/(\..*)\./g,
                                                 '$1'); " onKeyPress="if(this.value.length==11) return false; ">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4 ">
                                     <mat-form-field class="example-full-width ">
-                                        <input matInput [(ngModel)]="colaborador.foneEmergColab" name="foneEmergColab " id="foneEmergColab " placeholder="Telefone de Emergência " type="number " maxlength="11 " required oninput="this.value=this.value.replace(/[^0-9.]/g, ''); this.value=this.value.replace(/(\..*)\./g,
+                                        <input matInput [(ngModel)]="contatos.foneEmergColab" name="foneEmergColab " id="foneEmergColab " placeholder="Telefone de Emergência " type="number " maxlength="11 " required oninput="this.value=this.value.replace(/[^0-9.]/g, ''); this.value=this.value.replace(/(\..*)\./g,
                                                 '$1'); " onKeyPress="if(this.value.length==11) return false; ">
                                     </mat-form-field>
                                 </div>
@@ -272,7 +272,7 @@
                             <div class="row ">
                                 <div class="col-md-4 ">
                                     <mat-form-field class="example-full-width ">
-                                        <input matInput [(ngModel)]="colaborador.emailColab" name="emailColab " id="emailColab " placeholder="E-mail  Pessoal" type="email " required>
+                                        <input matInput [(ngModel)]="contatos.emailColab" name="emailColab " id="emailColab " placeholder="E-mail  Pessoal" type="email " required>
                                     </mat-form-field>
                                 </div>
 
@@ -329,7 +329,7 @@
 
                                 <div class="col-md-4 ">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput [(ngModel)]="colaborador.reservistaColab" name="reservistaColab " id="reservistaColab placeholder=" Certificado de Reservista | Alistamento " type=" text " maxlength=" 10 ">
+                                        <input matInput [(ngModel)]="colaborador.reservistaColab" name="reservistaColab " id="reservistaColab" placeholder=" Certificado de Reservista | Alistamento " type=" text " maxlength=" 10 ">
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -424,13 +424,13 @@
                             <div class=" row ">
                                 <div class=" col-md-4 ">
                                     <mat-form-field class=" example-full-width ">
-                                        <input [(ngModel)]=" endereco.complEndColab " matInput name=" complEndColab " id=" complEndColab " placeholder=" Complemento " type=" text " maxlength=" 20 ">
+                                        <input matInput [(ngModel)]=" endereco.complEndColab " name=" complEndColab " id=" complEndColab " placeholder=" Complemento " type=" text " maxlength=" 20 ">
                                     </mat-form-field>
                                 </div>
 
                                 <div class=" col-md-4 ">
                                     <mat-form-field class=" example-full-width ">
-                                        <input [(ngModel)]=" endereco.bairroColab " matInput name=" bairroColab " id=" bairroColab " placeholder=" Bairro " type=" text " maxlength=" 20 " required>
+                                        <input matInput [(ngModel)]=" endereco.bairroColab " name=" bairroColab " id=" bairroColab " placeholder=" Bairro " type=" text " maxlength=" 20 " required>
                                     </mat-form-field>
                                 </div>
 
@@ -491,7 +491,7 @@
                                 <div class=" col-md-3 ">
                                     <mat-form-field class=" example-full-width ">
                                         <input matInput [(ngModel)]=" conta.numContaColab " name=" numContaColab " id=" numContaColab " placeholder=" Número da Conta " type=" number " required maxlength=" 15 " oninput=" this.value=this.value.replace(/[^0-9.]/g,
-                                            '' ); this.value=this.value.replace(/(\..*)\./g, '$1' ); "onKeyPress=" if(this.value.length==15) return false; ">
+                                            '' ); this.value=this.value.replace(/(\..*)\./g, '$1' ); " onKeyPress=" if(this.value.length==15) return false; ">
                                     </mat-form-field>
                                 </div>
 
@@ -625,7 +625,7 @@
                             </div>
 
                             <!--Botão para mais de um dependente-->
-                            <button mat-raised-button type=" reset " name=" btnCancelarColab " class=" btn btn-primary pull-right ">+</button>
+                            <button mat-raised-button type="button " name=" btnCancelarColab " class=" btn btn-primary pull-right ">+</button>
                             <div class=" clearfix "></div>
                         </div>
                     </div>

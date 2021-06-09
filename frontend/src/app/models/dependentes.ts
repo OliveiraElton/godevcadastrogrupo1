@@ -6,6 +6,7 @@ export interface Dependentes {
 //String cpf, TiposDependentes tipoDependente,
 //Boolean optanteIR)
 
+id: Number;
 nomeDependente: String;
 sobrenomeDependente: String;
 dataNascDependente: Date;
