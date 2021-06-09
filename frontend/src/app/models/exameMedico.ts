@@ -1,6 +1,6 @@
 export interface ExameMedico {
 
-    exameMedico: String;
+    tipoExameMedico: String;
     dataExameMedico: Date;
     aptidao: String;
 }
