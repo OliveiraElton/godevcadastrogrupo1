@@ -1,3 +1,5 @@
+import { Contatos } from "./contatos";
+
 export interface Prestador {
     id: number;
     nome: string;
@@ -13,8 +15,5 @@ export interface Prestador {
    /* empresa: number; */
     setor: string;
     dataInicio: Date;
-    telefonePrincipal: number;
-    telefoneSecundario: number;
-    telefoneFamiliar: number;
-    email: string;
+    contatos: Contatos;
 }
