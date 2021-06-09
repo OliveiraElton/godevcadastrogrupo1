@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 
 import { ColaboradorComponent } from './colaborador/colaborador.component';
 import { EmpresaComponent } from './empresa/empresa.component';
+import { PrestadorComponent } from './prestador/prestador.component';
 import { TableListComponent } from './table-list/table-list.component';
 import { TypographyComponent } from './typography/typography.component';
 import { NotificationsComponent } from './notifications/notifications.component';

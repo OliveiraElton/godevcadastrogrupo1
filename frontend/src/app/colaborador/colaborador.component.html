@@ -183,12 +183,42 @@
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Se enquadra como PCD?</mat-label>
                                         <mat-select id="ehPcdColab" name="ehPcdColab" [formControl]="ehPcdColab">
-                                            <mat-option name="pcdSimColab" value="Sim">Sim</mat-option>
-                                            <mat-option name="pcdNaoColab" value="Não">Não</mat-option>
+                                            <mat-option name="pcdSimColab" value="true">Sim</mat-option>
+                                            <mat-option name="pcdNaoColab" value="false">Não</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="idPostoTrabalho" placeholder="Posto de Trabalho" type="number" id="idPostoTrabalho" required maxlength="6">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Optante VT?</mat-label>
+                                        <mat-select id="ehOptanteVTColab" name="ehOptanteVTColab" [formControl]="ehOptanteVTColab">
+                                            <mat-option name="vtSimColab" value="true">Sim</mat-option>
+                                            <mat-option name="vtNaoColab" value="false">Não</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Optante VA/VR?</mat-label>
+                                        <mat-select id="ehOptanteVAVRColab" name="ehOptanteVAVRColab" [formControl]="ehOptanteVAVRColab">
+                                            <mat-option name="vaSimColab" value="true">Sim</mat-option>
+                                            <mat-option name="vaNaoColab" value="false">Não</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
                             </div>
+
                             <div class="clearfix"></div>
                         </div>
                     </div>
