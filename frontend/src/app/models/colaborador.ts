@@ -1,3 +1,5 @@
+import { R3ResolvedDependencyType } from "@angular/compiler";
+
 export interface Colaborador {
 
     // String nome, String sobrenome, String nomeSocial, LocalDate dataDeNascimento,
@@ -10,12 +12,31 @@ export interface Colaborador {
 
     nomeColab: String;
     sobrenomeColab: String;
-    cpfColab: String;
     nomeSocialColab: String;
+    dataNascColab: Date;
+    nacionalidadeColab: String;
+    naturalidadeColabo: String;
+    ehPcdColab: Boolean;
     generoColab: String;
-    identGeneroColab; String;
-
-
-
-    
+    identGeneroColab: String;
+    escolaridadeColab: String;
+    estadoCivilColab: String;
+    nomeMaeColab: String;
+    nomePaiColab: String;
+    endereco: Endereco;
+    cpfColab: String;
+    rgColab: String;
+    contatos: Contatos;
+    idPostoTrabalho: Number;
+    pisColab: Number;
+    ehOptanteVTColab: Boolean;
+    ehOptanteVAVRColab: Boolean;
+    dataInicioColab: Date;
+    ehOptanteDepColab: Boolean;
+    reservistaColab: String;
+    emailCorpColab: String;
+    tituloColab: String;
+    conta: Conta:
+    exameMedico: ExameMedico;
+    dependente: Dependente;    
 }
