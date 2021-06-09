@@ -335,6 +335,55 @@
             </div>
         </div>
 
+        <!--CARD EXAME MEDICO-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Exame Médico</h4>
+                            <p class="card-category"></p>
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="row">
+
+                                    <div class="col-md-4">
+                                        <mat-form-field class="example-full-width">
+                                            <mat-label>Tipo do Exame</mat-label>
+                                            <mat-select id="exameMedico" name="exameMedico" [formControl]="exameMedico" required>
+                                                <mat-option name="admissional " value="admissional ">Admissional </mat-option>
+                                                <mat-option name="demissional" value="demissional">Demissional</mat-option>
+                                                <mat-option name="periodico " value="periodico ">Periódico </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput placeholder="Data do Exame" type="date" id="dataExameMedico" name="dataExameMedico" required>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <mat-form-field class="example-full-width">
+                                            <mat-label>Aptidão</mat-label>
+                                            <mat-select id="aptidao" name="aptidao" [formControl]="aptidao" required>
+                                                <mat-option name="true" value="true">Está apto</mat-option>
+                                                <mat-option name="false" value="false">Não está apto</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+
+                                </div>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!--CARD ENDERECO-->
         <div class="container-fluid ">
             <div class="row ">
