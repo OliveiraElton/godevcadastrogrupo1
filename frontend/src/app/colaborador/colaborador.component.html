@@ -475,31 +475,25 @@
                                     </mat-form-field>
                                 </div>
 
-                                <div class="col-md-4 ">
+                                <div class="col-md-3 ">
                                     <mat-form-field class="example-full-width ">
                                         <input matInput name="agenciaColab " id="agenciaColab " placeholder="Agência " type="number " required maxlength="5 " oninput="this.value=this.value.replace(/[^0-9.]/g, ''); this.value=this.value.replace(/(\..*)\./g,
                                                 '$1'); " onKeyPress="if(this.value.length==5) return false; ">
                                     </mat-form-field>
                                 </div>
 
-                                <div class="col-md-4 ">
+
+                                <div class="col-md-3 ">
                                     <mat-form-field class="example-full-width ">
-                                        <mat-label>Operação</mat-label>
-                                        <mat-select id="operacaoContaColab " name="operacaoContaColab " [formControl]="operacaoContaColab ">
-                                            <mat-option name="contaCorrenteIndColab " value="contaCorrenteIndColab ">Conta Corrente Individual</mat-option>
-                                            <mat-option name="contaCorrenteConjColab " value="contaCorrenteConjColab ">Conta Corrente Conjunta</mat-option>
-                                            <mat-option name="contaSalarioColab " value="contaSalarioColab ">Conta Salário </mat-option>
-                                            <mat-option name="contaPoupancaColab " value="contaPoupancaColab ">Conta Poupança</mat-option>
-                                        </mat-select>
+                                        <input matInput name="numContaColab " id="numContaColab " placeholder="Número da Conta" type="number " required maxlength="15 " oninput="this.value=this.value.replace(/[^0-9.]/g, '');
+                                                this.value=this.value.replace(/(\..*)\./g, '$1'); " onKeyPress="if(this.value.length==15) return false; ">
                                     </mat-form-field>
                                 </div>
-                            </div>
 
-                            <div class="row ">
-                                <div class="col-md-4 ">
+                                <div class="col-md-2">
                                     <mat-form-field class="example-full-width ">
-                                        <input matInput name="numContaColab " id="numContaColab " placeholder="Número da Conta (com dígito verificador) " type="number " required maxlength="15 " oninput="this.value=this.value.replace(/[^0-9.]/g, '');
-                                                this.value=this.value.replace(/(\..*)\./g, '$1'); " onKeyPress="if(this.value.length==15) return false; ">
+                                        <input matInput name="digContaColab " id="digContaColab " placeholder="Dígito Verificador" type="number " required maxlength="1 " oninput="this.value=this.value.replace(/[^0-9.]/g, '');
+                                                this.value=this.value.replace(/(\..*)\./g, '$1'); " onKeyPress="if(this.value.length==1) return false; ">
                                     </mat-form-field>
                                 </div>
                             </div>

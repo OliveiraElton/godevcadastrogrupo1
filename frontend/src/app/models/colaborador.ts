@@ -1,4 +1,5 @@
 import { R3ResolvedDependencyType } from "@angular/compiler";
+import { Conta } from "./conta";
 import { Contatos } from "./contatos";
 import { Dependentes } from "./dependentes";
 import { Endereco } from "./endereco";
@@ -32,7 +33,7 @@ export interface Colaborador {
     reservistaColab: String;
     emailCorpColab: String;
     tituloColab: String;
-    conta: Conta:
+    conta: Conta;
     exameMedico: ExameMedico;
     dependente: Dependentes;    
 }
