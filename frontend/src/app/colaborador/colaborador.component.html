@@ -355,6 +355,56 @@
         </div>
     </div>
 
+    <!--CARD CONTA BANCÁRIA-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">Conta Bancária</h4>
+                        <p class="card-category"></p>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="bancoColab" id="bancoColab" placeholder="Banco" type="text" required maxlength="40">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="agenciaColab" id="agenciaColab" placeholder="Agência" type="number" required maxlength="5">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Operação</mat-label>
+                                        <mat-select id="operacaoContaColab" name="operacaoContaColab" [formControl]="selected">
+                                            <mat-option name="contaCorrenteIndColab" value="contaCorrenteIndColab">Conta Corrente Individual</mat-option>
+                                            <mat-option name="contaCorrenteConjColab" value="contaCorrenteConjColab">ContavCorrente Conjunta</mat-option>
+                                            <mat-option name="contaSalarioColab" value="contaSalarioColab">Conta Salário </mat-option>
+                                            <mat-option name="contaPoupancaColab" value="contaPoupancaColab">Conta Poupança</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="numContaColab" id="numContaColab" placeholder="Número da Conta (com dígito verificador)" type="number" required maxlength="20">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!--Fim da Tela-->
 </div>
