@@ -410,7 +410,7 @@
 
                                 <div class="col-md-4 ">
                                     <mat-form-field class="example-full-width ">
-                                        <input matInput name="numEndColab " id="numEndColab " placeholder="Número " type="text " required maxlength="5 " oninput="this.value=this.value.replace(/[^0-9.]/g, ''); this.value=this.value.replace(/(\..*)\./g,
+                                        <input matInput name="numEndColab " id="numEndColab " placeholder="Número " type="number " required maxlength="5 " oninput="this.value=this.value.replace(/[^0-9.]/g, ''); this.value=this.value.replace(/(\..*)\./g,
                                                 '$1'); " onKeyPress="if(this.value.length==5) return false; ">
                                     </mat-form-field>
                                 </div>
@@ -429,15 +429,21 @@
                                     </mat-form-field>
                                 </div>
 
+                                <div class="col-md-4 ">
+                                    <mat-form-field class="example-full-width ">
+                                        <input matInput name="cidadeColab " id="cidadeColab " placeholder="Cidade " type="text " maxlength="20 " required>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row ">
                                 <!--Ver conexão com API, caso não possível, alterar para lista-->
                                 <div class="col-md-4 ">
                                     <mat-form-field class="example-full-width ">
                                         <input matInput name="estadoEndColab " id="estadoEndColab " placeholder="Estado " type="text " maxlength="20 " required>
                                     </mat-form-field>
                                 </div>
-                            </div>
 
-                            <div class="row ">
                                 <!--Ver conexão com API, caso não possível, alterar para lista-->
                                 <div class="col-md-4 ">
                                     <mat-form-field class="example-full-width ">

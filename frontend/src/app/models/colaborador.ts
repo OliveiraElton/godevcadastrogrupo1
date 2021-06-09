@@ -1,4 +1,5 @@
 import { R3ResolvedDependencyType } from "@angular/compiler";
+import { Endereco } from "./endereco";
 
 export interface Colaborador {
 
