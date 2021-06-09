@@ -14,34 +14,29 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput id="nome" placeholder="Nome" type="text" required>
+                                        <input matInput id="nome" name="nomeColab" placeholder="Nome" type="text" required>
                                     </mat-form-field>
 
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput id="sobrenome" placeholder="Sobrenome" type="text" required>
+                                        <input matInput id="sobrenome" name="sobrenomeColab" placeholder="Sobrenome" type="text" required>
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput id="cpf" placeholder="CPF" type="text" maxlength="11" required>
+                                        <input matInput id="cpf" name="cpfColab" placeholder="CPF" type="text" maxlength="11" required>
                                     </mat-form-field>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Gênero" type="text" required>
-                                    </mat-form-field>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <mat-form-field class="example-full-width">
                                         <mat-label>Gênero</mat-label>
-                                        <mat-select id="genero" [formControl]="selected">
-                                            <mat-option value="Feminino">Feminino</mat-option>
-                                            <mat-option value="Masculino">Masculino</mat-option>
+                                        <mat-select id="genero" name="generoColab" [formControl]="selected">
+                                            <mat-option name="genFemininoColab" value="Feminino">Feminino</mat-option>
+                                            <mat-option name="gemMasculinoColab" value="Masculino">Masculino</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
@@ -49,50 +44,65 @@
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Identidade de Gênero</mat-label>
-                                        <mat-select id="genero" [formControl]="selected">
-                                            <mat-option value="Trans">Trans</mat-option>
-                                            <mat-option value="Cis">Cis</mat-option>
+                                        <mat-select id="identGenero" name="identGeneroColab" [formControl]="selected">
+                                            <mat-option name="igTransColab" value="Trans">Trans</mat-option>
+                                            <mat-option name="igCisColab" value="Cis">Cis</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
-                            </div>
 
-                            <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Escolaridade</mat-label>
-                                        <mat-select id="escolaridade" [formControl]="selected">
-                                            <mat-option value="ANALFABETO">Analfabeto</mat-option>
-                                            <mat-option value="ATE_QUARTA_SERIE">Até Quarta Série</mat-option>
-                                            <mat-option value="FUNDAMENTAL_COMPLETO">Fundamento Completo</mat-option>
-                                            <mat-option value="MEDIO_INCOMPLETO">Médio Incompleto</mat-option>
-                                            <mat-option value="MEDIO_COMPLETO">Médio Completo</mat-option>
-                                            <mat-option value="SUPERIOR_INCOMPLETO">Superior Incompleto</mat-option>
-                                            <mat-option value="SUPERIOR_COMPLETO">Superior Incompleto</mat-option>
-                                            <mat-option value="POS_GRADUACAO">Pós Graduação</mat-option>
-                                            <mat-option value="MESTRADO">Mestrado</mat-option>
-                                            <mat-option value="DOUTORADO">Doutorado</mat-option>
+                                        <mat-select id="escolaridade" name="escolaridadeColab" [formControl]="selected">
+                                            <mat-option name="analfabetoColab" value="ANALFABETO">Analfabeto</mat-option>
+                                            <mat-option name="quartaSerieColab" value="ATE_QUARTA_SERIE">Até Quarta Série</mat-option>
+                                            <mat-option name="fundCompColab" value="FUNDAMENTAL_COMPLETO">Fundamento Completo</mat-option>
+                                            <mat-option name="medioIncompColab" value="MEDIO_INCOMPLETO">Médio Incompleto</mat-option>
+                                            <mat-option name="medicoCompColab" value="MEDIO_COMPLETO">Médio Completo</mat-option>
+                                            <mat-option name="supIncompColab" value="SUPERIOR_INCOMPLETO">Superior Incompleto</mat-option>
+                                            <mat-option name="supCompColab" value="SUPERIOR_COMPLETO">Superior Incompleto</mat-option>
+                                            <mat-option name="posColab" value="POS_GRADUACAO">Pós Graduação</mat-option>
+                                            <mat-option name="mestradoColab" value="MESTRADO">Mestrado</mat-option>
+                                            <mat-option name="doutoradoColab" value="DOUTORADO">Doutorado</mat-option>
                                         </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Estado Civil</mat-label>
+                                        <mat-select id="estadoCivil" name="estadoCivilColab" [formControl]="selected">
+                                            <mat-option name="solteiroolab" value="Solteiro">Solteiro</mat-option>
+                                            <mat-option name="casadoColab" value="Casado">Casado</mat-option>
+                                            <mat-option name="uniaoColab" value="Uniao_Estavel">União Estável</mat-option>
+                                            <mat-option name="viuvoColab" value="Viuvo">Viívo</mat-option>
+                                            <mat-option name="divorciadoColab" value="Divorciado">Divorciado</mat-option>
+                                            <mat-option name="separadoColab" value="Separado">Separado</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+
+
+                                <div class="col-md-4 ">
+                                    <mat-form-field class="example-full-width ">
+                                        <input matInput id="dataNasc" name="dataNascColab" placeholder="Data de Nascimento" type="date" required>
                                     </mat-form-field>
                                 </div>
 
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <mat-label>Estado Civil</mat-label>
-                                        <mat-select id="estadoCivil" [formControl]="selected">
-                                            <mat-option value="Solteiro">Solteiro</mat-option>
-                                            <mat-option value="Casado">Casado</mat-option>
-                                            <mat-option value="Uniao_Estavel">União Estável</mat-option>
-                                            <mat-option value="Viuvo">Viívo</mat-option>
-                                            <mat-option value="Divorciado">Divorciado</mat-option>
-                                            <mat-option value="Separado">Separado</mat-option>
+                                        <mat-label>Nacionalidade</mat-label>
+                                        <mat-select id="nacionalidade" name="nacionalidadeColab" [formControl]="selected">
+                                            <mat-option name="brasileiraColab" value="Brasileira">Brasileira</mat-option>
+                                            <mat-option name="haitianaColab" value="Haitiana">Haitiana</mat-option>
+                                            <mat-option name="argentinaColab" value="Argentina">Argentina</mat-option>
+                                            <mat-option name="japonesaColab" value="Japonesa">Japonesa</mat-option>
                                         </mat-select>
-                                    </mat-form-field>
-                                </div>
-
-                                <div class="col-md-4 ">
-                                    <mat-form-field class="example-full-width ">
-                                        <input matInput id="dataNasc" placeholder="Data de Nascimento" type="date" required>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -100,37 +110,27 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <mat-label>Nacionalidade</mat-label>
-                                        <mat-select id="nacionalidade" [formControl]="selected">
-                                            <mat-option value="Brasileira">Brasileira</mat-option>
-                                            <mat-option value="Haitiana">Haitiana</mat-option>
-                                            <mat-option value="Argentina">Argentina</mat-option>
-                                            <mat-option value="Japonesa">Japonesa</mat-option>
+                                        <mat-label>Naturalidade</mat-label>
+                                        <mat-select id="naturalidade" name="naturalidadeColab" [formControl]="selected">
+                                            <mat-option name="natuBageColab" value="Bage/RS">Bagé/RS</mat-option>
+                                            <mat-option name="natuFloripaColab" value="Florianopolis/SC">Florianópolis/SC</mat-option>
+                                            <mat-option name="natuSPColab" value="Sao Paulo/SP">São Paulo/SP</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
 
-                                <div class="col-md-4">
-                                    <mat-form-field class="example-full-width">
-                                        <mat-label>Naturalidade</mat-label>
-                                        <mat-select id="naturalidade" [formControl]="selected">
-                                            <mat-option value="Brasileira">Bagé/RS</mat-option>
-                                            <mat-option value="Haitiana">Florianópolis/SC</mat-option>
-                                            <mat-option value="Argentina">São Paulo/SP</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                </div>
+
 
                                 <div class="col-md-4 ">
                                     <mat-form-field class="example-full-width ">
-                                        <input matInput placeholder="RG" type="text" required>
+                                        <input matInput name="rgColab" placeholder="RG" type="text" required>
                                     </mat-form-field>
                                 </div>
                             </div>
 
-                            <button mat-raised-button type="submit" class="btn btn-primary pull-right">Enviar</button>
-                            <button mat-raised-button type="button" class="btn btn-primary pull-right">Excluir</button>
-                            <button mat-raised-button type="reset" class="btn btn-primary pull-right">Cancelar</button>
+                            <button mat-raised-button type="submit" name="btnEnviarColab" class="btn btn-primary pull-right">Enviar</button>
+                            <button mat-raised-button type="button" name="btnExcluirColab" class="btn btn-primary pull-right">Excluir</button>
+                            <button mat-raised-button type="reset" name="btnCancelarColab" class="btn btn-primary pull-right">Cancelar</button>
                             <div class="clearfix"></div>
                         </form>
                     </div>
@@ -154,17 +154,17 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="PIS/NIS" type="text" id="pis" required>
+                                        <input matInput name="pisColab" placeholder="PIS/NIS" type="text" id="pis" required>
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="CTPS" type="text" id="ctps" required>
+                                        <input matInput name="ctpsColab" placeholder="CTPS" type="text" id="ctps" required>
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Exame Médico" type="text" id="exameMedico" required>
+                                        <input matInput name="exameColab" placeholder="Exame Médico" type="text" id="exameMedico" required>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -172,16 +172,16 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Data de início de contrato" type="date" id="dataInicioContrato" required>
+                                        <input matInput name="dataInicioColab" placeholder="Data de início de contrato" type="date" id="dataInicioContrato" required>
                                     </mat-form-field>
                                 </div>
 
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Se enquadra como PCD?</mat-label>
-                                        <mat-select id="ehPcd" [formControl]="selected">
-                                            <mat-option value="Sim">Sim</mat-option>
-                                            <mat-option value="Não">Não</mat-option>
+                                        <mat-select id="ehPcd" name="ehPcdColab" [formControl]="selected">
+                                            <mat-option name="pcdSimColab" value="Sim">Sim</mat-option>
+                                            <mat-option name="pcdNaoColab" value="Não">Não</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
@@ -209,25 +209,25 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput id="fonePrinc" placeholder="Telefone Principal" type="number" required maxlength="11">
+                                        <input matInput name="fonePrincColab" id="fonePrinc" placeholder="Telefone Principal" type="number" required maxlength="11">
                                     </mat-form-field>
 
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput id="foneSec" placeholder="Telefone Secundário" type="number" required maxlength="11">
+                                        <input matInput name="foneSecColab" id="foneSec" placeholder="Telefone Secundário" type="number" required maxlength="11">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput id="foneEmerg" placeholder="Telefone de Emergência" type="number" maxlength="11" required>
+                                        <input matInput name="foneEmergColab" id="foneEmerg" placeholder="Telefone de Emergência" type="number" maxlength="11" required>
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput id="email" placeholder="E-mail" type="email" required>
+                                        <input matInput name="emailColab" id="email" placeholder="E-mail" type="email" required>
                                     </mat-form-field>
                                 </div>
                             </div>
