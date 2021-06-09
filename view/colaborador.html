@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro Colaborador</title>
-    <link rel="stylesheet" href="Colaborador.css">   
-    </head>
-    <body>
+    <link rel="stylesheet" href="Colaborador.css">
+</head>
+
+<body>
 
     <section class="linhaCima"></section>
     <section class="linhaLado"></section>
@@ -21,49 +23,48 @@
     <form class="formulario">
     <section>
         <section class="dados">
-            <h2 class="tituloDados">Dados pessoais</h2>
-            
-                <fieldset class="legenda">
+            <h2 class="tituloDados">Dados Pessoais</h2>
+                   <fieldset class="legenda">
                     <legend>Nome</legend>
-                    <input type="text" id="nome"  class="input" required>
+                    <input type="text" id="nome" class="input" required>
                 </fieldset>
                 <br>
-                
+
                 <fieldset class="legenda">
                     <legend>Sobrenome</legend>
-                    <input type="text" id="sobrenome"  class="input" required>
+                    <input type="text" id="sobrenome" class="input" required>
                 </fieldset>
                 <br>
 
                 <fieldset class="legenda">
                     <legend>CPF</legend>
-                    <input type="text" id="cpf"  class="input" placeholder="000.000.000-00" required>
+                    <input type="text" id="cpf"  class="input" placeholder="000.000.000-00" maxlength="11" required>
                 </fieldset>
 
                 <br>
 
                 <fieldset class="legenda">
                     <legend>Nome Social</legend>
-                    <input type="text" id="nomeSocial"  class="input">
+                    <input type="text" id="nomeSocial" class="input">
                 </fieldset>
-                
+
                 <br>
 
                 <fieldset class="legenda">
                     <legend>Gênero</legend>
-                    <input type="text" id="genero"  class="input" required>
+                    <input type="text" id="genero" class="input" required>
                 </fieldset>
-            
+
                 <br>
                 <fieldset class="legenda">
                     <legend>Identidade de Gênero</legend>
                     <input type="radio" id="identidadeGenero" name="identidadeGenero" value="other" checked>
-                     <label for="identidadeGenero">CIS</label>
+                    <label for="identidadeGenero">CIS</label>
                     <input type="radio" id="identidadeGenero" name="identidadeGenero" value="other" checked>
                     <label for="identidadeGenero">TRANS</label>
                 </fieldset>
                 <br>
-        
+
                 <fieldset class="legenda">
                     <legend>Escolaridade</legend>
                     <select name="escolaridade" class="select" required>
@@ -92,14 +93,14 @@
                         <option value="SEPARADO"> SEPARADO </option>
                 </select>
                 </fieldset>
-                <br>  
+                <br>
 
                 <fieldset class="legenda">
                     <legend>Data de Nascimento</legend>
                     <input type="date" class="input" name="dataNascimento" required>
                 </fieldset>
                 <br>
-                
+
                 <fieldset class="legenda">
                     <legend>Nacionalidade</legend>
                     <input type="text" class="input" name="nacionalidade" required>
@@ -117,14 +118,14 @@
                     <input type="number" class="input" name="rg" required>
                 </fieldset>
                 <br>
-
-        </section>
+       </section>
+        <br>
         
         <section class="dados">
             <h2 class="tituloDados">Dados Contratuais</h2>
             <fieldset class="legenda">
                 <legend>PIS/NIS</legend>
-                <input type="text" class="input" name="pis" required>
+                <input type="text" class="input" name="pis" maxlength="11"  min="0" pattern="[0-9]+$"  required>
             </fieldset>
             <br>
             <fieldset class=legenda>
@@ -146,8 +147,10 @@
             </fieldset>
             <br> 
         </section>
+        <br>
    
-
+    </section>
+    <section>
         <section class="dados">
             <h2 class="tituloDados">Contatos</h2>
            
@@ -158,198 +161,213 @@
             <br>
             <fieldset class=legenda>
                 <legend>Telefone Principal</legend>
-                <input type="text" class="input" name="principal" maxlength="11" required>
+                <input type="number" class="input" name="principal" min="10" maxlength="11" placeholder="4730371234" required>
             </fieldset>
             <br>
             <fieldset class=legenda>
                 <legend>Telefone Secundário</legend>
-                <input type="text" class="input" name="secundario"  maxlength="11" required>
+                <input type="number" class="input" name="secundario" min="10"  maxlength="11" placeholder="4730371234" required>
             </fieldset>
             <br>
             <fieldset class=legenda>
                 <legend>Email</legend>
-                <input type="email" class="input" name="email" required>
+                <input type="email" class="input" name="email" placeholder="joao@gmail.com" required>
             </fieldset>
             <br>
             <fieldset class=legenda>
                 <legend>Telefone de Emergência</legend>
-                <input type="text" class="input" name="emergencia"  maxlength="11" required>
+                <input type="number" class="input" name="emergencia" min="10" maxlength="11" placeholder="4730371234" required>
             </fieldset>
             <br>
     
      
         </section>
-
+        <br>
+    
         <section class="dados">
             <h2 class="tituloDados">Documentos</h2>
-
                 <fieldset class="legenda">
-                <legend> Nome da Mãe </legend>
-                <input type="text" id="nomeMae" name="nomeMae" class="input" required>
+                    <legend> Nome da Mãe </legend>
+                    <input type="text" id="nomeMae" name="nomeMae" class="input" required>
                 </fieldset>
                 <br>
 
                 <fieldset class="legenda">
-                <legend> Nome do Pai </legend>
-                <input type="text" id="nomePai" name="nomePai" class="input" required>
+                    <legend> Nome do Pai </legend>
+                    <input type="text" id="nomePai" name="nomePai" class="input" required>
                 </fieldset>
                 <br>
 
                 <fieldset class="legenda">
-                <legend> Título de Eleitor </legend>
-                <input type="text" id="tituloEleitor" name="tituloEleitor" class="input" required>
+                    <legend> Título de Eleitor </legend>
+                    <input type="text" id="tituloEleitor" name="tituloEleitor" class="input" required>
                 </fieldset>
                 <br>
 
                 <fieldset class="legenda">
-                <legend> Certíficado de Reservista </legend>
-                <input type="text" id="certificadoReservista" name="certificadoReservista" placeholder="Somente se possuir" class="input">
+                    <legend> Certíficado de Reservista </legend>
+                    <input type="text" id="certificadoReservista" name="certificadoReservista" placeholder="Somente se possuir" class="input">
                 </fieldset>
                 <br>
+            </section>
         </section>
-    </section>
-    <section>
+        <br>
+    
         <section class="dados">
 
-            <h2 class="tituloDados">Endereço</h2>
+                <h2 class="tituloDados">Endereço</h2>
                 <fieldset class="legenda">
-                <legend> Rua </legend>
-                <input type="text" id="rua" name="rua" class="input" required>
+                    <legend> Rua </legend>
+                    <input type="text" id="rua" name="rua" class="input" required>
                 </fieldset>
                 <br>
 
                 <fieldset class="legenda">
-                <legend> Numero da Casa </legend>
-                <input type="text" id="numeroCasa" name="numeroCasa" class="input" required>
+                    <legend> Numero da Casa </legend>
+                    <input type="text" id="numeroCasa" name="numeroCasa" class="input" required>
                 </fieldset>
                 <br>
 
                 <fieldset class="legenda">
-                <legend> Bairro </legend>
-                <input type="text" id="bairro" name="bairro" class="input" required>
+                    <legend> Bairro </legend>
+                    <input type="text" id="bairro" name="bairro" class="input" required>
                 </fieldset>
                 <br>
 
                 <fieldset class="legenda">
-                <legend> Complemento </legend>
-                <input type="text" id="Complemento" name="Complemento" placeholder="casa, apart" class="input" required>
+                    <legend> Complemento </legend>
+                    <input type="text" id="Complemento" name="Complemento" placeholder="casa, apart" class="input" required>
                 </fieldset>
                 <br>
 
                 <fieldset class="legenda">
-                <legend> País </legend>
-                <input type="text" id="pais" name="pais" class="input" required>
+                    <legend> País </legend>
+                    <input type="text" id="pais" name="pais" class="input" required>
                 </fieldset>
                 <br>
 
                 <fieldset class="legenda">
-                <legend> Estado </legend>
-                <input type="text" id="estado" name="estado" required class="input">
+                    <legend> Estado </legend>
+                    <input type="text" id="estado" name="estado" required class="input">
                 </fieldset>
                 <br>
+            </section>
+        <br>
         </section>
-     
-
+        <section>
+            <section class="dados">
+                <h2 class="tituloDados">Dependente</h2>
+    
+                    <fieldset class="legenda">
+                    <legend> Nome </legend>
+                    <input type="text" id="nomeDependente" name="nomeDependente" class="input" required>
+                    </fieldset>
+                    <br>
+    
+                    <fieldset class="legenda">
+                    <legend> Sobrenome </legend>
+                    <input type="text" id="sobrenomeDependente" name="sobrenomeDependente" class="input" required>
+                    </fieldset>
+                    <br>
+    
+                    <fieldset class="legenda">
+                    <legend> Data de Nascimento </legend>
+                    <input type="date"dataNascimentoDep" name="dataNascimentoDep" class="input" required>
+                    </fieldset>
+                    <br>
+    
+                    <fieldset class="legenda">
+                    <legend> Nacionalidade </legend>
+                    <input type="text" id="nacionalidadeDep" name="nacionalidadeDep" class="input" required>
+                    </fieldset>
+                    <br>
+                    
+                    <fieldset class="legenda">
+                    <legend> Se enquadra como PCD? </legend>
+                    <input type="radio" id="pcdDep" name="pcdDep" value="other">
+                    <label for="pcdDep">Sim</label>
+                    <input type="radio" id="pcdDep" name="pcdDep" value="other">
+                    <label for="pcdDep">Não</label>
+                    </fieldset>
+                    <br>
+    
+                    <fieldset class="legenda">
+                    <legend> Gênero </legend>
+                    <input type="text" id="generoDep" name="generoDep" class="input" required>
+                    </fieldset>
+                    <br>
+    
+                    <fieldset class="legenda">
+                    <legend> Identidade de Gênero </legend>
+                    <input type="radio" id="identidadeGeneroDep" name="identidadeGeneroDep" value="other">
+                    <label for="identidadeGeneroDep">CIS</label>
+                    <input type="radio" id="identidadeGeneroDep" name="identidadeGeneroDep" value="other">
+                    <label for="identidadeGeneroDep">TRANS</label>
+                    </fieldset>
+                    <br>
+                    
+                    <fieldset class="legenda">
+                    <legend> Tipo de Dependente </legend>
+                    <input type="text" id="tipoDependente" name="tipoDependente" class="input" required>
+                    </fieldset>
+                    <br>
+                    
+                    <fieldset class="legenda">
+                    <legend> Optante de Imposto de Renda </legend>
+                    <input type="radio" id="optanteIr" name="optanteIr" value="other">
+                    <label for="optanteIr">Sim</label>
+                    <input type="radio" id="optanteIr" name="optanteIr" value="other">
+                    <label for="optanteIr">Não</label>
+                    </fieldset>
+                    <br>
+            </section>
         <section class="dados">
             <h2 class="tituloDados">Conta Bancária</h2>
 
+
                 <fieldset class="legenda">
-                <legend> Banco </legend>
-                <input type="text" id="banco" name="banco" class="input" required>
+                    <legend> Banco </legend>
+                    <input type="text" id="banco" name="banco" class="input" required>
                 </fieldset>
                 <br>
 
                 <fieldset class="legenda">
-                <legend> Agência </legend>
-                <input type="text" id="agencia" name="agencia" class="input" required>
+                    <legend> Agência </legend>
+                    <input type="text" id="agencia" name="agencia" class="input" required>
                 </fieldset>
                 <br>
 
                 <fieldset class="legenda">
-                <legend> Conta </legend>
-                <input type="text" id="conta" name="conta" class="input" required>
+                    <legend> Conta </legend>
+                    <input type="text" id="conta" name="conta" class="input" required>
                 </fieldset>
                 <br>
 
                 <fieldset class="legenda">
-                <legend> Operação </legend>
-                <input type="text" id="op" name="op" class="input" required>
+                    <legend> Operação </legend>
+                    <input type="text" id="op" name="op" class="input" required>
                 </fieldset>
                 <br>
-        </section>
-        
-        <section class="dados">
-            <h2 class="tituloDados">Dependente</h2>
-
-                <fieldset class="legenda">
-                <legend> Nome </legend>
-                <input type="text" id="nomeDependente" name="nomeDependente" class="input" required>
-                </fieldset>
-                <br>
-
-                <fieldset class="legenda">
-                <legend> Sobrenome </legend>
-                <input type="text" id="sobrenomeDependente" name="sobrenomeDependente" class="input" required>
-                </fieldset>
-                <br>
-
-                <fieldset class="legenda">
-                <legend> Data de Nascimento </legend>
-                <input type="date"dataNascimentoDep" name="dataNascimentoDep" class="input" required>
-                </fieldset>
-                <br>
-
-                <fieldset class="legenda">
-                <legend> Nacionalidade </legend>
-                <input type="text" id="nacionalidadeDep" name="nacionalidadeDep" class="input" required>
-                </fieldset>
-                <br>
-                
-                <fieldset class="legenda">
-                <legend> Se enquadra como PCD? </legend>
-                <input type="radio" id="pcdDep" name="pcdDep" value="other">
-                <label for="pcdDep">Sim</label>
-                <input type="radio" id="pcdDep" name="pcdDep" value="other">
-                <label for="pcdDep">Não</label>
-                </fieldset>
-                <br>
-
-                <fieldset class="legenda">
-                <legend> Gênero </legend>
-                <input type="text" id="generoDep" name="generoDep" class="input" required>
-                </fieldset>
-                <br>
-
-                <fieldset class="legenda">
-                <legend> Identidade de Gênero </legend>
-                <input type="radio" id="identidadeGeneroDep" name="identidadeGeneroDep" value="other">
-                <label for="identidadeGeneroDep">CIS</label>
-                <input type="radio" id="identidadeGeneroDep" name="identidadeGeneroDep" value="other">
-                <label for="identidadeGeneroDep">TRANS</label>
-                </fieldset>
-                <br>
-                
-                <fieldset class="legenda">
-                <legend> Tipo de Dependente </legend>
-                <input type="text" id="tipoDependente" name="tipoDependente" class="input" required>
-                </fieldset>
-                <br>
-                
-                <fieldset class="legenda">
-                <legend> Optante de Imposto de Renda </legend>
-                <input type="radio" id="optanteIr" name="optanteIr" value="other">
-                <label for="optanteIr">Sim</label>
-                <input type="radio" id="optanteIr" name="optanteIr" value="other">
-                <label for="optanteIr">Não</label>
-                </fieldset>
-                <br>
-                
+            </section>
+            <br>
             
-        </section>
+        <br>
+        
     </section>
         <br>
-
-        <input id="botaoEnviar" type="submit" value="Salvar" id="salvar">
+                <section class="flexBotoes">
+                    <fieldset class="legenda" id="fieldCadastro">
+                        <legend>Cadastro</legend>
+                        <input type="number" placeholder="Ex.: 123" id="campoCadastro">
+                    </fieldset>
+                    <br>
+                    <input type="submit" value="Enviar Dados" id="botaoEnviar"><h1 class="lupa"></h1>
+                    <br>
+                    <input type="button" value="Excluir" id="botaoExcluir">
+                    <br>
+                    <input type="reset" value="Cancelar" id="botaoCancelar">
+                </section>
+           
     </form>
 </body>
 </html>

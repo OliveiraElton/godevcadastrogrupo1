@@ -1,89 +1,549 @@
 <div class="main-content">
-  <div class="container-fluid">
-      <div class="row">
-          <div class="col-md-12">
-              <div class="card">
-                  <div class="card-header card-header-primary">
-                      <h4 class="card-title">Edit Profile</h4>
-                      <p class="card-category">Complete your profile</p>
-                  </div>
-                  <div class="card-body">
-                      <form>
-                          <div class="row">
-                              <div class="col-md-5">
-                                <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Company">
-                                  </mat-form-field>
-                              </div>
-                              <div class="col-md-3">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Username">
-                                  </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Email address" type="email">
-                                  </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-6">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Fist Name" type="text">
-                                </mat-form-field>
-                              </div>
-                              <div class="col-md-6">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Last Name" type="text">
-                                </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-12">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Adress" type="text">
-                                </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="City" type="text">
-                                </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Country" type="text">
-                                </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Postal Code" type="text">
-                                </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-12">
-                                <label>About Me</label>
-                                <mat-form-field class="example-full-width">
-                                   <textarea matInput placeholder="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."></textarea>
-                                 </mat-form-field>
-                                  <!-- <div class="form-group">
+    <form>
+        <!--CARD DADOS PESSOAIS-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Dados Pessoais</h4>
+                            <p class="card-category"></p>
+                        </div>
+                        <div class="card-body">
 
-                                      <div class="form-group">
-                                          <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
-                                          <textarea class="form-control" rows="5"></textarea>
-                                      </div>
-                                  </div> -->
-                              </div>
-                          </div>
-                          <button mat-raised-button type="submit" class="btn btn-primary pull-right">Update Profile</button>
-                          <div class="clearfix"></div>
-                      </form>
-                  </div>
-              </div>
-          </div>
-    
-      </div>
-  </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput id="nomeColab" name="nomeColab" placeholder="Nome" type="text" required maxlength="20">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput id="sobrenomeColab" name="sobrenomeColab" placeholder="Sobrenome" type="text" required maxlength="80">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput id="cpfColab" name="cpfColab" placeholder="CPF" type="number" required maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) return false;">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput id="nomeSocialColab" name="nomeSocialColab" placeholder="Nome Social" type="text" required maxlength="100">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Gênero</mat-label>
+                                        <mat-select id="generoColab" name="generoColab" [formControl]="generoColab">
+                                            <mat-option name="genFemininoColab" value="Feminino">Feminino</mat-option>
+                                            <mat-option name="gemMasculinoColab" value="Masculino">Masculino</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Identidade de Gênero</mat-label>
+                                        <mat-select id="identGeneroColab" name="identGeneroColab" [formControl]="identGeneroColab">
+                                            <mat-option name="igTransColab" value="Trans">Trans</mat-option>
+                                            <mat-option name="igCisColab" value="Cis">Cis</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Escolaridade</mat-label>
+                                        <mat-select id="escolaridadeColab" name="escolaridadeColab" [formControl]="escolaridadeColab">
+                                            <mat-option name="analfabetoColab" value="ANALFABETO">Analfabeto</mat-option>
+                                            <mat-option name="quartaSerieColab" value="ATE_QUARTA_SERIE">Até Quarta Série</mat-option>
+                                            <mat-option name="fundCompColab" value="FUNDAMENTAL_COMPLETO">Fundamento Completo</mat-option>
+                                            <mat-option name="medioIncompColab" value="MEDIO_INCOMPLETO">Médio Incompleto</mat-option>
+                                            <mat-option name="medicoCompColab" value="MEDIO_COMPLETO">Médio Completo</mat-option>
+                                            <mat-option name="supIncompColab" value="SUPERIOR_INCOMPLETO">Superior Incompleto</mat-option>
+                                            <mat-option name="supCompColab" value="SUPERIOR_COMPLETO">Superior Incompleto</mat-option>
+                                            <mat-option name="posColab" value="POS_GRADUACAO">Pós Graduação</mat-option>
+                                            <mat-option name="mestradoColab" value="MESTRADO">Mestrado</mat-option>
+                                            <mat-option name="doutoradoColab" value="DOUTORADO">Doutorado</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Estado Civil</mat-label>
+                                        <mat-select id="estadoCivilColab" name="estadoCivilColab" [formControl]="estadoCivilColab">
+                                            <mat-option name="solteiroolab" value="Solteiro">Solteiro</mat-option>
+                                            <mat-option name="casadoColab" value="Casado">Casado</mat-option>
+                                            <mat-option name="uniaoColab" value="Uniao_Estavel">União Estável</mat-option>
+                                            <mat-option name="viuvoColab" value="Viuvo">Viívo</mat-option>
+                                            <mat-option name="divorciadoColab" value="Divorciado">Divorciado</mat-option>
+                                            <mat-option name="separadoColab" value="Separado">Separado</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4 ">
+                                    <mat-form-field class="example-full-width ">
+                                        <input matInput id="dataNascColab" name="dataNascColab" placeholder="Data de Nascimento" type="date" required>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Nacionalidade</mat-label>
+                                        <mat-select id="nacionalidadeColab" name="nacionalidadeColab" [formControl]="nacionalidadeColab">
+                                            <mat-option name="brasileiraColab" value="Brasileira">Brasileira</mat-option>
+                                            <mat-option name="haitianaColab" value="Haitiana">Haitiana</mat-option>
+                                            <mat-option name="argentinaColab" value="Argentina">Argentina</mat-option>
+                                            <mat-option name="japonesaColab" value="Japonesa">Japonesa</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Naturalidade</mat-label>
+                                        <mat-select id="naturalidadeColab" name="naturalidadeColab" [formControl]="naturalidadeColab">
+                                            <mat-option name="natuBageColab" value="Bage/RS">Bagé/RS</mat-option>
+                                            <mat-option name="natuFloripaColab" value="Florianopolis/SC">Florianópolis/SC</mat-option>
+                                            <mat-option name="natuSPColab" value="Sao Paulo/SP">São Paulo/SP</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput id="cadColab" name="cadColab" placeholder="Cadastro" type="number" maxlength="6" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==6) return false;">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <!--BOTÕES DE INTERAÇÃO-->
+                            <button mat-raised-button type="submit" name="btnEnviarColab" class="btn btn-primary pull-right">Enviar</button>
+                            <button mat-raised-button type="button" name="btnExcluirColab" class="btn btn-primary pull-right">Excluir</button>
+                            <button mat-raised-button type="reset" name="btnCancelarColab" class="btn btn-primary pull-right">Cancelar</button>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--CARD DADOS CONTRATUAIS-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Dados Contratuais</h4>
+                            <p class="card-category"></p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="pisColab" placeholder="PIS/NIS" type="number" id="pisColab" required maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) return false;">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="ctpsColab" placeholder="CTPS" type="text" id="ctctpsColabps" required maxlength="11">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="exameColab" placeholder="Exame Médico" type="text" id="exameColab" required>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="dataInicioColab" placeholder="Data de início de contrato" type="date" id="dataInicioColab" required>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Se enquadra como PCD?</mat-label>
+                                        <mat-select id="ehPcdColab" name="ehPcdColab" [formControl]="ehPcdColab">
+                                            <mat-option name="pcdSimColab" value="Sim">Sim</mat-option>
+                                            <mat-option name="pcdNaoColab" value="Não">Não</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--CARD CONTATOS-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Contatos</h4>
+                            <p class="card-category"></p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="fonePrincColab" id="fonePrincColab" placeholder="Telefone Principal" type="number" required maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) return false;">
+                                    </mat-form-field>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="foneSecColab" id="foneSecColab" placeholder="Telefone Secundário" type="number" required maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) return false;">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="foneEmergColab" id="foneEmergColab" placeholder="Telefone de Emergência" type="number" maxlength="11" required oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) return false;">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="emailColab" id="emailColab" placeholder="E-mail" type="email" required>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--CARD DOCUMENTOS-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Documentos</h4>
+                            <p class="card-category"></p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="nomeMaeColab" id="nomeMaeColab" placeholder="Nome da Mãe" type="text" required maxlength="100">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="nomePaiColab" id="nomePaiColab" placeholder="Nome do Pai" type="text" required maxlength="100">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="tituloColab" id="tituloColab" placeholder="Titulo de Eleitor" type="text" required maxlength="12">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-4 ">
+                                    <mat-form-field class="example-full-width ">
+                                        <input matInput id="rgColab" name="rgColab" placeholder="RG" type="text" required maxlength="20">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="reservistaColab" id="reservistaColab" placeholder="Certificado de Reservista | Alistamento" type="text" maxlength="10">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--CARD ENDERECO-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Endereço</h4>
+                            <p class="card-category"></p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="cepColab" id="cepColab" placeholder="CEP" type="number" required maxlength="8" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==8) return false;">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="logradouroColab" id="logradouroColab" placeholder="Logradouro" type="text" required>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="numEndColab" id="numEndColab" placeholder="Número" type="text" required maxlength="5" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==5) return false;">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="complEndColab" id="complEndColab" placeholder="Complemento" type="text" maxlength="20">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="bairroColab" id="bairroColab" placeholder="Bairro" type="text" maxlength="20" required>
+                                    </mat-form-field>
+                                </div>
+
+                                <!--Ver conexão com API, caso não possível, alterar para lista-->
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="estadoEndColab" id="estadoEndColab" placeholder="Estado" type="text" maxlength="20" required>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <!--Ver conexão com API, caso não possível, alterar para lista-->
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="paisEndColab" id="paisEndColab" placeholder="País" type="text" maxlength="20" required>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--CARD CONTA BANCÁRIA-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Conta Bancária</h4>
+                            <p class="card-category"></p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="bancoColab" id="bancoColab" placeholder="Banco" type="text" required maxlength="40">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="agenciaColab" id="agenciaColab" placeholder="Agência" type="number" required maxlength="5" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==5) return false;">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Operação</mat-label>
+                                        <mat-select id="operacaoContaColab" name="operacaoContaColab" [formControl]="operacaoContaColab">
+                                            <mat-option name="contaCorrenteIndColab" value="contaCorrenteIndColab">Conta Corrente Individual</mat-option>
+                                            <mat-option name="contaCorrenteConjColab" value="contaCorrenteConjColab">Conta Corrente Conjunta</mat-option>
+                                            <mat-option name="contaSalarioColab" value="contaSalarioColab">Conta Salário </mat-option>
+                                            <mat-option name="contaPoupancaColab" value="contaPoupancaColab">Conta Poupança</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="numContaColab" id="numContaColab" placeholder="Número da Conta (com dígito verificador)" type="number" required maxlength="15" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+                                            onKeyPress="if(this.value.length==15) return false;">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--CARD DEPENDENTE-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Dependentes</h4>
+                            <p class="card-category"></p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Nome" type="text" id="iDnomeDependente" name="nomeDependente" required>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Sobrenome" type="text" id="iDsobrenomeColaborador" name="sobrenomeColaborador" required>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Data de nascimento" type="date" id="iDdataNascDependente" name="dataNascDependente" required>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Nacionalidade</mat-label>
+                                        <mat-select id="nacionalidade" name="nacionalidade" [formControl]="nacionalidade" required>
+                                            <mat-option name="brasileiro" value="brasileiro">Brasileiro</mat-option>
+                                            <mat-option name="hileno" value="hileno">Chileno</mat-option>
+                                            <mat-option name="argentino" value="argentino">Argentino</mat-option>
+                                            <mat-option name="alemão" value="alemão">alemão</mat-option>
+                                            <mat-option name="francês" value="francês">Francês</mat-option>
+                                            <mat-option name="italiano" value="italiano">Italiano</mat-option>
+                                            <mat-option name="indiano" value="indiano">Indiano</mat-option>
+                                            <mat-option name="britânico" value="britânico">Britânico</mat-option>
+                                            <mat-option name="boliviano" value="boliviano">Boliviano</mat-option>
+                                            <mat-option name="americano" value="americano">Americano</mat-option>
+                                            <mat-option name="outro" value="outro">Outro</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Naturalidade</mat-label>
+                                        <mat-select id="naturalidade" name="naturalidade" [formControl]="naturalidade">
+                                            <mat-option name="bage" value="bage">Bagé/RS</mat-option>
+                                            <mat-option name="saoPaulo" value="saoPaulo">São Paulo/SP</mat-option>
+                                            <mat-option name="florianopolis" value="florianopolis">Florianópolis/SC</mat-option>
+                                            <mat-option name="outraNaturalidade" value="outraNaturalidade">Outra Naturalidade</mat-option>
+
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Se enquada com PCD?</mat-label>
+                                        <mat-select id="pcd" name="pcd" [formControl]="pcd">
+                                            <mat-option name="pcdSim" value="Sim">Sim</mat-option>
+                                            <mat-option name="pcdNao" value="Nao">Não</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Gênero</mat-label>
+                                        <mat-select id="generoDepen" name="generoDepen" [formControl]="generoDepen">
+                                            <mat-option name="genFemininoDepen" value="Feminino">Feminino</mat-option>
+                                            <mat-option name="gemMasculinoDepen" value="Masculino">Masculino</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Identidade de Gênero</mat-label>
+                                        <mat-select id="identGeneroDepen" name="identGeneroDepen" [formControl]="identGeneroDepen">
+                                            <mat-option name="igTransDepen" value="Trans">Trans</mat-option>
+                                            <mat-option name="igCisDepen" value="Cis">Cis</mat-option>
+                                            <mat-option name="igOutroDepen" value="Outro">Outro</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="CPF" type="text" id="idCpf" name="cpf" required maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) return false;">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Tipo Dependente</mat-label>
+                                        <mat-select id="tipoDependente" name="tipoDependente" [formControl]="tipoDependente">
+                                            <mat-option name="filhoDepen" value="filho">Filho</mat-option>
+                                            <mat-option name="maeDepen" value="mae">Mãe</mat-option>
+                                            <mat-option name="parenteDepen" value="parente">Parente</mat-option>
+                                            <mat-option name="outroDepen" value="outro">Outro</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Optante IR</mat-label>
+                                        <mat-select id="optante" name="optante" [formControl]="optante">
+                                            <mat-option name="opcaoOptanteSim" value="optanteSim">Sim</mat-option>
+                                            <mat-option name="opcaoOptanteNao" value="optanteNao">Não</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <!--Botão para mais de um dependente-->
+                            <button mat-raised-button type="reset" name="btnCancelarColab" class="btn btn-primary pull-right">+</button>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!--Fim da Tela-->
 </div>
