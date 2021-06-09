@@ -26,7 +26,7 @@
 
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput id="cpfColab" name="cpfColab" placeholder="CPF" type="text" required maxlength="11">
+                                        <input matInput id="cpfColab" name="cpfColab" placeholder="CPF" type="number" required maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) return false;">
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -125,7 +125,7 @@
 
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput id="cadColab" name="cadColab" placeholder="Cadastro" type="number" maxlength="6">
+                                        <input matInput id="cadColab" name="cadColab" placeholder="Cadastro" type="number" maxlength="6" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==6) return false;">
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -157,7 +157,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput name="pisColab" placeholder="PIS/NIS" type="text" id="pisColab" required maxlength="11">
+                                        <input matInput name="pisColab" placeholder="PIS/NIS" type="number" id="pisColab" required maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) return false;">
                                     </mat-form-field>
                                 </div>
 
@@ -211,18 +211,18 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput name="fonePrincColab" id="fonePrincColab" placeholder="Telefone Principal" type="number" required maxlength="11">
+                                        <input matInput name="fonePrincColab" id="fonePrincColab" placeholder="Telefone Principal" type="number" required maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) return false;">
                                     </mat-form-field>
 
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput name="foneSecColab" id="foneSecColab" placeholder="Telefone Secundário" type="number" required maxlength="11">
+                                        <input matInput name="foneSecColab" id="foneSecColab" placeholder="Telefone Secundário" type="number" required maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) return false;">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput name="foneEmergColab" id="foneEmergColab" placeholder="Telefone de Emergência" type="number" maxlength="11" required>
+                                        <input matInput name="foneEmergColab" id="foneEmergColab" placeholder="Telefone de Emergência" type="number" maxlength="11" required oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) return false;">
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -275,7 +275,7 @@
 
                                 <div class="col-md-4 ">
                                     <mat-form-field class="example-full-width ">
-                                        <input matInput id="rgColab" name="rgColab" placeholder="RG" type="text" required>
+                                        <input matInput id="rgColab" name="rgColab" placeholder="RG" type="text" required maxlength="20">
                                     </mat-form-field>
                                 </div>
 
@@ -305,7 +305,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput name="cepColab" id="cepColab" placeholder="CEP" type="number" required maxlength="8">
+                                        <input matInput name="cepColab" id="cepColab" placeholder="CEP" type="number" required maxlength="8" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==8) return false;">
                                     </mat-form-field>
                                 </div>
 
@@ -317,7 +317,7 @@
 
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput name="numEndColab" id="numEndColab" placeholder="Número" type="text" required maxlength="5">
+                                        <input matInput name="numEndColab" id="numEndColab" placeholder="Número" type="text" required maxlength="5" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==5) return false;">
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -377,7 +377,7 @@
 
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput name="agenciaColab" id="agenciaColab" placeholder="Agência" type="number" required maxlength="5">
+                                        <input matInput name="agenciaColab" id="agenciaColab" placeholder="Agência" type="number" required maxlength="5" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==5) return false;">
                                     </mat-form-field>
                                 </div>
 
@@ -397,7 +397,8 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput name="numContaColab" id="numContaColab" placeholder="Número da Conta (com dígito verificador)" type="number" required maxlength="15">
+                                        <input matInput name="numContaColab" id="numContaColab" placeholder="Número da Conta (com dígito verificador)" type="number" required maxlength="15" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+                                            onKeyPress="if(this.value.length==15) return false;">
                                     </mat-form-field>
                                 </div>
                             </div>

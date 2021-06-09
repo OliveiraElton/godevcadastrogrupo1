@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+// Modal imports
+//import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 declare const $: any;
 declare interface RouteInfo {
     path: string;
@@ -15,12 +18,14 @@ export const ROUTES: RouteInfo[] = [
     { path: '/table-list', title: 'Table List',  icon:'content_paste', class: '' },
     { path: '/typography', title: 'Typography',  icon:'library_books', class: '' },
     { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
+    { path: '/search', title: 'Pesquisar',  icon:'lupe', class: '' },
 ];
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+  styleUrls: ['./sidebar.component.css'],
+ // providers: [NgbModalConfig, NgbModal]
 })
 export class SidebarComponent implements OnInit {
   menuItems: any[];
@@ -37,3 +42,14 @@ export class SidebarComponent implements OnInit {
       return true;
   };
 }
+
+//export class NgbdModalConfig {
+ // constructor(config: NgbModalConfig, private modalService: NgbModal) {
+ //   config.backdrop = 'static';
+  //  config.keyboard = false;
+ // }
+
+//  open(content) {
+ //   this.modalService.open(content);
+  //}
+//}
