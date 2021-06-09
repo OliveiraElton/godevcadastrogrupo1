@@ -135,8 +135,6 @@
                             <button mat-raised-button type="button" name="btnExcluirColab" class="btn btn-primary pull-right">Excluir</button>
                             <button mat-raised-button type="reset" name="btnCancelarColab" class="btn btn-primary pull-right">Cancelar</button>
 
-                            <!--Botão para mais de um dependente-->
-                            <button mat-raised-button type="reset" name="btnCancelarColab" class="btn btn-primary pull-right">+</button>
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -410,8 +408,140 @@
             </div>
         </div>
 
-        <div>
-            <div class="clearfix"></div>
+        <!--CARD DEPENDENTE-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Dependentes</h4>
+                            <p class="card-category"></p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Nome" type="text" id="iDnomeDependente" name="nomeDependente" required>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Sobrenome" type="text" id="iDsobrenomeColaborador" name="sobrenomeColaborador" required>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Data de nascimento" type="date" id="iDdataNascDependente" name="dataNascDependente" required>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Nacionalidade</mat-label>
+                                        <mat-select id="nacionalidade" name="nacionalidade" [formControl]="nacionalidade" required>
+                                            <mat-option name="brasileiro" value="brasileiro">Brasileiro</mat-option>
+                                            <mat-option name="hileno" value="hileno">Chileno</mat-option>
+                                            <mat-option name="argentino" value="argentino">Argentino</mat-option>
+                                            <mat-option name="alemão" value="alemão">alemão</mat-option>
+                                            <mat-option name="francês" value="francês">Francês</mat-option>
+                                            <mat-option name="italiano" value="italiano">Italiano</mat-option>
+                                            <mat-option name="indiano" value="indiano">Indiano</mat-option>
+                                            <mat-option name="britânico" value="britânico">Britânico</mat-option>
+                                            <mat-option name="boliviano" value="boliviano">Boliviano</mat-option>
+                                            <mat-option name="americano" value="americano">Americano</mat-option>
+                                            <mat-option name="outro" value="outro">Outro</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Naturalidade</mat-label>
+                                        <mat-select id="naturalidade" name="naturalidade" [formControl]="naturalidade">
+                                            <mat-option name="bage" value="bage">Bagé/RS</mat-option>
+                                            <mat-option name="saoPaulo" value="saoPaulo">São Paulo/SP</mat-option>
+                                            <mat-option name="florianopolis" value="florianopolis">Florianópolis/SC</mat-option>
+                                            <mat-option name="outraNaturalidade" value="outraNaturalidade">Outra Naturalidade</mat-option>
+
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Se enquada com PCD?</mat-label>
+                                        <mat-select id="pcd" name="pcd" [formControl]="pcd">
+                                            <mat-option name="pcdSim" value="Sim">Sim</mat-option>
+                                            <mat-option name="pcdNao" value="Nao">Não</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Gênero</mat-label>
+                                        <mat-select id="generoDepen" name="generoDepen" [formControl]="generoDepen">
+                                            <mat-option name="genFemininoDepen" value="Feminino">Feminino</mat-option>
+                                            <mat-option name="gemMasculinoDepen" value="Masculino">Masculino</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Identidade de Gênero</mat-label>
+                                        <mat-select id="identGeneroDepen" name="identGeneroDepen" [formControl]="identGeneroDepen">
+                                            <mat-option name="igTransDepen" value="Trans">Trans</mat-option>
+                                            <mat-option name="igCisDepen" value="Cis">Cis</mat-option>
+                                            <mat-option name="igOutroDepen" value="Outro">Outro</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="CPF" type="text" id="idCpf" name="cpf" required maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) return false;">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Tipo Dependente</mat-label>
+                                        <mat-select id="tipoDependente" name="tipoDependente" [formControl]="tipoDependente">
+                                            <mat-option name="filhoDepen" value="filho">Filho</mat-option>
+                                            <mat-option name="maeDepen" value="mae">Mãe</mat-option>
+                                            <mat-option name="parenteDepen" value="parente">Parente</mat-option>
+                                            <mat-option name="outroDepen" value="outro">Outro</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Optante IR</mat-label>
+                                        <mat-select id="optante" name="optante" [formControl]="optante">
+                                            <mat-option name="opcaoOptanteSim" value="optanteSim">Sim</mat-option>
+                                            <mat-option name="opcaoOptanteNao" value="optanteNao">Não</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <!--Botão para mais de um dependente-->
+                            <button mat-raised-button type="reset" name="btnCancelarColab" class="btn btn-primary pull-right">+</button>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </form>
 

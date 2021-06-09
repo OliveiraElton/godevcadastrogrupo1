@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-// Modal imports
-//import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
 declare const $: any;
 declare interface RouteInfo {
     path: string;
@@ -42,14 +39,3 @@ export class SidebarComponent implements OnInit {
       return true;
   };
 }
-
-//export class NgbdModalConfig {
- // constructor(config: NgbModalConfig, private modalService: NgbModal) {
- //   config.backdrop = 'static';
-  //  config.keyboard = false;
- // }
-
-//  open(content) {
- //   this.modalService.open(content);
-  //}
-//}
