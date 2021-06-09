@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-empresa',
@@ -8,6 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class EmpresaComponent implements OnInit {
 
   constructor() { }
+
+  //options: FormGroup;
+  estado = new FormControl('estado');
+
+  pais = new FormControl('pais');
 
   ngOnInit() {
   }
