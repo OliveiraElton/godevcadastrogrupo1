@@ -1,16 +1,16 @@
 <div class="main-content">
+    <form>
+        <!--CARD DADOS PESSOAIS-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Dados Pessoais</h4>
+                            <p class="card-category"></p>
+                        </div>
+                        <div class="card-body">
 
-    <!--CARD DADOS PESSOAIS-->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-primary">
-                        <h4 class="card-title">Dados Pessoais</h4>
-                        <p class="card-category"></p>
-                    </div>
-                    <div class="card-body">
-                        <form>
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
@@ -41,7 +41,7 @@
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Gênero</mat-label>
-                                        <mat-select id="generoColab" name="generoColab" [formControl]="selected">
+                                        <mat-select id="generoColab" name="generoColab" [formControl]="generoColab">
                                             <mat-option name="genFemininoColab" value="Feminino">Feminino</mat-option>
                                             <mat-option name="gemMasculinoColab" value="Masculino">Masculino</mat-option>
                                         </mat-select>
@@ -51,7 +51,7 @@
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Identidade de Gênero</mat-label>
-                                        <mat-select id="identGeneroColab" name="identGeneroColab" [formControl]="selected">
+                                        <mat-select id="identGeneroColab" name="identGeneroColab" [formControl]="identGeneroColab">
                                             <mat-option name="igTransColab" value="Trans">Trans</mat-option>
                                             <mat-option name="igCisColab" value="Cis">Cis</mat-option>
                                         </mat-select>
@@ -63,7 +63,7 @@
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Escolaridade</mat-label>
-                                        <mat-select id="escolaridadeColab" name="escolaridadeColab" [formControl]="selected">
+                                        <mat-select id="escolaridadeColab" name="escolaridadeColab" [formControl]="escolaridadeColab">
                                             <mat-option name="analfabetoColab" value="ANALFABETO">Analfabeto</mat-option>
                                             <mat-option name="quartaSerieColab" value="ATE_QUARTA_SERIE">Até Quarta Série</mat-option>
                                             <mat-option name="fundCompColab" value="FUNDAMENTAL_COMPLETO">Fundamento Completo</mat-option>
@@ -81,7 +81,7 @@
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Estado Civil</mat-label>
-                                        <mat-select id="estadoCivilColab" name="estadoCivilColab" [formControl]="selected">
+                                        <mat-select id="estadoCivilColab" name="estadoCivilColab" [formControl]="estadoCivilColab">
                                             <mat-option name="solteiroolab" value="Solteiro">Solteiro</mat-option>
                                             <mat-option name="casadoColab" value="Casado">Casado</mat-option>
                                             <mat-option name="uniaoColab" value="Uniao_Estavel">União Estável</mat-option>
@@ -103,7 +103,7 @@
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Nacionalidade</mat-label>
-                                        <mat-select id="nacionalidadeColab" name="nacionalidadeColab" [formControl]="selected">
+                                        <mat-select id="nacionalidadeColab" name="nacionalidadeColab" [formControl]="nacionalidadeColab">
                                             <mat-option name="brasileiraColab" value="Brasileira">Brasileira</mat-option>
                                             <mat-option name="haitianaColab" value="Haitiana">Haitiana</mat-option>
                                             <mat-option name="argentinaColab" value="Argentina">Argentina</mat-option>
@@ -115,7 +115,7 @@
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Naturalidade</mat-label>
-                                        <mat-select id="naturalidadeColab" name="naturalidadeColab" [formControl]="selected">
+                                        <mat-select id="naturalidadeColab" name="naturalidadeColab" [formControl]="naturalidadeColab">
                                             <mat-option name="natuBageColab" value="Bage/RS">Bagé/RS</mat-option>
                                             <mat-option name="natuFloripaColab" value="Florianopolis/SC">Florianópolis/SC</mat-option>
                                             <mat-option name="natuSPColab" value="Sao Paulo/SP">São Paulo/SP</mat-option>
@@ -134,26 +134,26 @@
                             <button mat-raised-button type="submit" name="btnEnviarColab" class="btn btn-primary pull-right">Enviar</button>
                             <button mat-raised-button type="button" name="btnExcluirColab" class="btn btn-primary pull-right">Excluir</button>
                             <button mat-raised-button type="reset" name="btnCancelarColab" class="btn btn-primary pull-right">Cancelar</button>
+
+                            <!--Botão para mais de um dependente-->
+                            <button mat-raised-button type="reset" name="btnCancelarColab" class="btn btn-primary pull-right">+</button>
                             <div class="clearfix"></div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
-    </div>
 
-    <!--CARD DADOS CONTRATUAIS-->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-primary">
-                        <h4 class="card-title">Dados Contratuais</h4>
-                        <p class="card-category"></p>
-                    </div>
-                    <div class="card-body">
-                        <form>
+        <!--CARD DADOS CONTRATUAIS-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Dados Contratuais</h4>
+                            <p class="card-category"></p>
+                        </div>
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
@@ -184,7 +184,7 @@
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Se enquadra como PCD?</mat-label>
-                                        <mat-select id="ehPcdColab" name="ehPcdColab" [formControl]="selected">
+                                        <mat-select id="ehPcdColab" name="ehPcdColab" [formControl]="ehPcdColab">
                                             <mat-option name="pcdSimColab" value="Sim">Sim</mat-option>
                                             <mat-option name="pcdNaoColab" value="Não">Não</mat-option>
                                         </mat-select>
@@ -192,24 +192,22 @@
                                 </div>
                             </div>
                             <div class="clearfix"></div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!--CARD CONTATOS-->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-primary">
-                        <h4 class="card-title">Contatos</h4>
-                        <p class="card-category"></p>
-                    </div>
-                    <div class="card-body">
-                        <form>
+        <!--CARD CONTATOS-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Contatos</h4>
+                            <p class="card-category"></p>
+                        </div>
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
@@ -236,27 +234,23 @@
                                     </mat-form-field>
                                 </div>
                             </div>
-
                             <div class="clearfix"></div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
-    </div>
 
-    <!--CARD DOCUMENTOS-->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-primary">
-                        <h4 class="card-title">Documentos</h4>
-                        <p class="card-category"></p>
-                    </div>
-                    <div class="card-body">
-                        <form>
+        <!--CARD DOCUMENTOS-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Documentos</h4>
+                            <p class="card-category"></p>
+                        </div>
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
@@ -292,24 +286,22 @@
                                 </div>
                             </div>
                             <div class="clearfix"></div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!--CARD ENDERECO-->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-primary">
-                        <h4 class="card-title">Endereço</h4>
-                        <p class="card-category"></p>
-                    </div>
-                    <div class="card-body">
-                        <form>
+        <!--CARD ENDERECO-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Endereço</h4>
+                            <p class="card-category"></p>
+                        </div>
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
@@ -360,24 +352,22 @@
                                 </div>
                             </div>
                             <div class="clearfix"></div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!--CARD CONTA BANCÁRIA-->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-primary">
-                        <h4 class="card-title">Conta Bancária</h4>
-                        <p class="card-category"></p>
-                    </div>
-                    <div class="card-body">
-                        <form>
+        <!--CARD CONTA BANCÁRIA-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Conta Bancária</h4>
+                            <p class="card-category"></p>
+                        </div>
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
@@ -394,9 +384,9 @@
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Operação</mat-label>
-                                        <mat-select id="operacaoContaColab" name="operacaoContaColab" [formControl]="selected">
+                                        <mat-select id="operacaoContaColab" name="operacaoContaColab" [formControl]="operacaoContaColab">
                                             <mat-option name="contaCorrenteIndColab" value="contaCorrenteIndColab">Conta Corrente Individual</mat-option>
-                                            <mat-option name="contaCorrenteConjColab" value="contaCorrenteConjColab">ContavCorrente Conjunta</mat-option>
+                                            <mat-option name="contaCorrenteConjColab" value="contaCorrenteConjColab">Conta Corrente Conjunta</mat-option>
                                             <mat-option name="contaSalarioColab" value="contaSalarioColab">Conta Salário </mat-option>
                                             <mat-option name="contaPoupancaColab" value="contaPoupancaColab">Conta Poupança</mat-option>
                                         </mat-select>
@@ -413,12 +403,16 @@
                             </div>
 
                             <div class="clearfix"></div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
+        <div>
+            <div class="clearfix"></div>
+        </div>
+    </form>
 
     <!--Fim da Tela-->
 </div>
