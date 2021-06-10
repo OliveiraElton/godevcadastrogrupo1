@@ -27,8 +27,6 @@ export class PrestadorComponent implements OnInit {
     .subscribe(empresas => this.empresas = empresas);
   }
   savePrestador(form : NgForm){
-    
-    debugger;
     this.prestador.contatos = this.contatos;
     this.empresas.forEach(empresaDb => {
       

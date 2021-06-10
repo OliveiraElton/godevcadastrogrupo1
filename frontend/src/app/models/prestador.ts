@@ -14,7 +14,7 @@ export interface Prestador {
     naturalidade: string;
     rg: string;
     empresa: Empresa;
-    setor: number;
+    idSetor: number;
     dataInicio: Date;
     contatos: Contatos;
 }

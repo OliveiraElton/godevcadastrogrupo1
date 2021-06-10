@@ -102,9 +102,9 @@
                             <div class="col-md-4">
                               <mat-form-field class="example-full-width">
                                 <mat-label>Empresa</mat-label>
-                                  <mat-select [(ngModel)]="empresa" name="empresa" >
-                                    <mat-option *ngFor="let empresadb of empresas" [value]="empresadb.id">
-                                      {{empresadb.id}} - {{empresadb.nomeEmpresa}}
+                                  <mat-select [(ngModel)]="empresaId" name="empresa" >
+                                    <mat-option *ngFor="let empresaDb of empresas" [value]="empresaDb.id">
+                                      {{empresaDb.id}} - {{empresaDb.nome}}
 
                                     </mat-option>
                                   </mat-select>
@@ -113,7 +113,7 @@
           
                             <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput [(ngModel)]="prestador.setor" name="setor" placeholder="Setor" type="number" required>
+                                  <input matInput [(ngModel)]="prestador.idSetor" name="idSetor" placeholder="Setor" type="number" required>
                                 </mat-form-field>
                             </div>
                         
