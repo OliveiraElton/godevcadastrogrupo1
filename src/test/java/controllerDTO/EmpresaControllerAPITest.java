@@ -40,7 +40,7 @@ public class EmpresaControllerAPITest {
 		Empresa original = new Empresa("Proway", LocalDate.of(2021, 10, 13), "05.975.585/0001-89", endereco, contatos);
 		Empresa empresaCriada = dao.cadastrar(original);
 		EmpresaDTO dtoRetornada = controllerApi.buscarEmpresaPorId(empresaCriada.getId());
-		assertEquals(empresaCriada.getNomeEmpresa(), dtoRetornada.getNomeEmpresa());
+		assertEquals(empresaCriada.getNome(), dtoRetornada.getNome());
 		assertEquals(empresaCriada.getCnpj(), dtoRetornada.getCnpj());
 		assertEquals(empresaCriada.getDataInicioContrato(), dtoRetornada.getDataInicioContrato());
 		assertEquals(empresaCriada.getEndereco(), dtoRetornada.getEndereco());
@@ -73,10 +73,10 @@ public class EmpresaControllerAPITest {
 		Empresa empresaCriada2 = dao.cadastrar(original2);
 		ArrayList<EmpresaDTO> listaRetorno = (ArrayList<EmpresaDTO>) controllerApi.buscarEmpresaPorNome("Magalu");
 		assertEquals(2, listaRetorno.size());
-		assertEquals(empresaCriada1.getNomeEmpresa(), listaRetorno.get(0).getNomeEmpresa());
+		assertEquals(empresaCriada1.getNome(), listaRetorno.get(0).getNome());
 		assertEquals(empresaCriada1.getContato(), listaRetorno.get(0).getContato());
 		assertEquals(empresaCriada1.getEndereco().getLogradouro(), listaRetorno.get(0).getEndereco().getLogradouro());
-		assertEquals(empresaCriada2.getNomeEmpresa(), listaRetorno.get(1).getNomeEmpresa());
+		assertEquals(empresaCriada2.getNome(), listaRetorno.get(1).getNome());
 		assertEquals(empresaCriada2.getCnpj(), listaRetorno.get(1).getCnpj());
 		assertEquals(empresaCriada2.getEndereco().getLogradouro(), listaRetorno.get(1).getEndereco().getLogradouro());
 	}
@@ -89,7 +89,7 @@ public class EmpresaControllerAPITest {
 		Empresa empresaCriada1 = controllerApi.cadastrarEmpresa(original1);
 		assertEquals(original1.getDataInicioContrato(), empresaCriada1.getDataInicioContrato());
 		assertEquals(original1.getEndereco(), empresaCriada1.getEndereco());
-		assertEquals(original1.getNomeEmpresa(), empresaCriada1.getNomeEmpresa());
+		assertEquals(original1.getNome(), empresaCriada1.getNome());
 	}
 	
 	@Test
@@ -110,7 +110,7 @@ public class EmpresaControllerAPITest {
 		Empresa empresaCriada1 = controllerApi.cadastrarEmpresa(original1);
 		empresaCriada1.setNomeEmpresa("Magula Loja");
 		controllerApi.atualizarEmpresa(empresaCriada1);
-		assertEquals("Magula Loja", empresaCriada1.getNomeEmpresa());
+		assertEquals("Magula Loja", empresaCriada1.getNome());
 	}
 	
 	

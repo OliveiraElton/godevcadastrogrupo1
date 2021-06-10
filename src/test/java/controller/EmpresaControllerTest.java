@@ -62,7 +62,7 @@ public class EmpresaControllerTest {
 				"47988885566", "47888997852", "atendimento@cooper.com", "4788896655", "Rua XV", 78, "Proximo a",
 				"89036789", "Escola Agricola", "Brasil", "Blumenau", "SC");
 		
-		assertEquals("Cooper", empresaCriada.getNomeEmpresa());
+		assertEquals("Cooper", empresaCriada.getNome());
 		assertEquals("05.975.585/0001-89", empresaCriada.getCnpj());
 		assertEquals("Escola Agricola", empresaCriada.getEndereco().getBairro());
 	}
@@ -87,8 +87,8 @@ public class EmpresaControllerTest {
 				LocalDate.of(2021, 11, 29), "05.975.585/0001-89", contatos, endereco);
 		
 		assertEquals(empresaCriada.getId(), empresaAlterada.getId());
-		assertNotEquals("Caixa", empresaAlterada.getNomeEmpresa());
-		assertEquals("Caixa Econ�mica", empresaAlterada.getNomeEmpresa());
+		assertNotEquals("Caixa", empresaAlterada.getNome());
+		assertEquals("Caixa Econ�mica", empresaAlterada.getNome());
 
 	}
 
@@ -105,7 +105,7 @@ public class EmpresaControllerTest {
 		assertEquals(empresaCriada.getContato(), empresaRetornada.getContato());
 		assertEquals(empresaCriada.getDataInicioContrato(), empresaRetornada.getDataInicioContrato());
 		assertEquals(empresaCriada.getEndereco(), empresaRetornada.getEndereco());
-		assertEquals(empresaCriada.getNomeEmpresa(), empresaRetornada.getNomeEmpresa());
+		assertEquals(empresaCriada.getNome(), empresaRetornada.getNome());
 	}
 
 	@Test

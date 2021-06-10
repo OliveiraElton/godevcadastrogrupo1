@@ -54,7 +54,7 @@ public class PrestadorServicoDTOTest {
 
 	@Test
 	public void testGetEmpresa() {
-		assertEquals("Empresa teste", prestadorDTO.getEmpresa().getNomeEmpresa());
+		assertEquals("Empresa teste", prestadorDTO.getEmpresa().getNome());
 	}
 
 	@Test

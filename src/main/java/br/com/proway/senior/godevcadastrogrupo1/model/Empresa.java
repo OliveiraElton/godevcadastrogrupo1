@@ -60,7 +60,7 @@ public class Empresa {
 	public Empresa() {
 	}
 
-	public String getNomeEmpresa() {
+	public String getNome() {
 		return nome;
 	}
 

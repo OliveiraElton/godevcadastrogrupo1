@@ -1,179 +1,216 @@
-<div class="main-content">
+<div class="main-content" *ngIf="prestador.id">
   <form (ngSubmit)=" savePrestador(f)" #f="ngForm">
-  <div class="container-fluid">
+    <div class="container-fluid">
       <div class="row">
-          <div class="col-md-12">
-              <div class="card">
-                  <div class="card-header card-header-primary">
-                      <h4 class="card-title">Dados Pessoais</h4>
-                  </div>
-                  <div class="card-body">
-                      
-                          <div class="row">
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                    <input matInput [(ngModel)]="prestador.nome" name="nome" placeholder="Nome" required>
-                                  </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput [(ngModel)]="prestador.sobrenome" name="sobrenome" placeholder="Sobrenome" required>
-                                  </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput [(ngModel)]="prestador.cpf"name="cpf" placeholder="CPF" type="text" maxlength=11 required>
-                                  </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput [(ngModel)]="prestador.nomeSocial" name="nomeSocial" placeholder="Nome social" type="text">
-                                </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <mat-label>Gênero</mat-label>
-                                    <mat-select [(ngModel)]="prestador.genero" name="genero" required>
-                                      <mat-option value="masculino">Masculino</mat-option>
-                                      <mat-option value="feminino">Feminino</mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-                              </div>
-                          
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <mat-label>Identidade de Gênero</mat-label>
-                                    <mat-select [(ngModel)]="prestador.identidadeGenero" name="identidadeGenero" required>
-                                      <mat-option value="CIS">Cis</mat-option>
-                                      <mat-option value="TRANS">Trans</mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-                              </div>
-                            </div>
-                            <div class="row">
-                          </div>
-                          <div class="row">
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput [(ngModel)]="prestador.dataNascimento" name="dataNascimento"placeholder="Data de Nascimento" type="date" required>
-                                </mat-form-field>
-                              </div>
-                      
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput [(ngModel)]="prestador.nacionalidade" name="nacionalidade" placeholder="Nacionalidade" type="text" required>
-                                </mat-form-field>
-                              </div>
-                              
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput [(ngModel)]="prestador.naturalidade" name="naturalidade" placeholder="Naturalidade" type="text" required>
-                                </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-4">
-            
-                                <mat-form-field class="example-full-width">
-                                  <input matInput [(ngModel)]="prestador.rg" name="rg" placeholder="RG" type="text" required>
-                                </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="clearfix"></div>
-                     
-                  </div>
-              </div>
-          </div>
-    
-      </div>
-  </div>
-  <div class="container-fluid">
-    <div class="row">
         <div class="col-md-12">
-            <div class="card">
-                <div class="card-header card-header-primary">
-                    <h4 class="card-title">Dados da Empresa</h4>
-                </div>
-                <div class="card-body">
-                   
-                        <div class="row">
-                            <div class="col-md-4">
-                              <mat-form-field class="example-full-width">
-                                <mat-label>Empresa</mat-label>
-                                  <mat-select [(ngModel)]="empresaId" name="empresa" >
-                                    <mat-option *ngFor="let empresaDb of empresas" [value]="empresaDb.id">
-                                      {{empresaDb.id}} - {{empresaDb.nome}}
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title">Dados Pessoais</h4>
+            </div>
+            <div class="card-body">
 
-                                    </mat-option>
-                                  </mat-select>
-                              </mat-form-field>
-                            </div>
-          
-                            <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput [(ngModel)]="prestador.idSetor" name="idSetor" placeholder="Setor" type="number" required>
-                                </mat-form-field>
-                            </div>
-                        
-                            <div class="col-md-4">
-                              <mat-form-field class="example-full-width">
-                                <input matInput [(ngModel)]="prestador.dataInicio" name="dataInicio"placeholder="Data de Início" type="date" required>
-                              </mat-form-field>
-                            </div>
-                          </div>
-                    
-                        
-                        <div class="clearfix"></div>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput [(ngModel)]="prestador.nome" name="nome" placeholder="Nome" required>
+                  </mat-form-field>
                 </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput [(ngModel)]="prestador.sobrenome" name="sobrenome" placeholder="Sobrenome" required>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput [(ngModel)]="prestador.cpf" name="cpf" placeholder="CPF" type="text" maxlength=11
+                      required>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput [(ngModel)]="prestador.nomeSocial" name="nomeSocial" placeholder="Nome social"
+                      type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Gênero</mat-label>
+                    <mat-select [(ngModel)]="prestador.genero" name="genero" required>
+                      <mat-option value="masculino">Masculino</mat-option>
+                      <mat-option value="feminino">Feminino</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Identidade de Gênero</mat-label>
+                    <mat-select [(ngModel)]="prestador.identidadeGenero" name="identidadeGenero" required>
+                      <mat-option value="CIS">Cis</mat-option>
+                      <mat-option value="TRANS">Trans</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput [(ngModel)]="prestador.dataNascimento" name="dataNascimento"
+                      placeholder="Data de Nascimento" type="date" required>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput [(ngModel)]="prestador.nacionalidade" name="nacionalidade"
+                      placeholder="Nacionalidade" type="text" required>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput [(ngModel)]="prestador.naturalidade" name="naturalidade" placeholder="Naturalidade"
+                      type="text" required>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+
+                  <mat-form-field class="example-full-width">
+                    <input matInput [(ngModel)]="prestador.rg" name="rg" placeholder="RG" type="text" required>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput [(ngModel)]="prestador.id" id="id" name="idPrest" placeholder="Cadastro"
+                      type="number" maxlength="6"
+                      oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+                      onKeyPress="if(this.value.length==6) return false;">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <!--BOTÕES DE INTERAÇÃO-->
+              <button mat-raised-button type="submit" name="btnEnviar"
+                class="btn btn-primary pull-right">Salvar</button>
+              <button mat-raised-button type="button" name="btnExcluir"
+                class="btn btn-primary pull-right">Excluir</button>
+              <button mat-raised-button type="reset" (click)="cleanForm(f)" name="btnCancelar"
+                class="btn btn-primary pull-right">Limpar</button>
+              <button mat-raised-button type="button" (click)="getPrestador()" name="btnPesquisa"
+                class="btn btn-primary pull-right">Pesquisar</button>
+
+              <div class="clearfix"></div>
+
             </div>
+          </div>
         </div>
+
+      </div>
     </div>
-  </div>
-  <div class="container-fluid">
-    <div class="row">
+    <div class="container-fluid">
+      <div class="row">
         <div class="col-md-12">
-            <div class="card">
-                <div class="card-header card-header-primary">
-                    <h4 class="card-title">Contatos</h4>
-                </div>
-                <div class="card-body">
-                  
-                        <div class="row">
-                            <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput [(ngModel)]="contatos.telefonePrincipal" name="telefonePrincipal" placeholder="Telefone Principal" type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) return false;" required>
-                                  <!--oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) console.log('arrumaessaporra');"-->
-                                </mat-form-field>
-                            </div>
-                            <div class="col-md-4">
-                              <mat-form-field class="example-full-width">
-                                <input matInput [(ngModel)]="contatos.telefoneSecundario" name="telefoneSecundario" placeholder="Telefone Secundario" type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) return false;" required>
-                              </mat-form-field>
-                            </div>
-                            <div class="col-md-4">
-                              <mat-form-field class="example-full-width">
-                                <input matInput [(ngModel)]="contatos.email" name="email" placeholder="Email" type="email" required>
-                              </mat-form-field>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                              <mat-form-field class="example-full-width">
-                                <input matInput [(ngModel)]="contatos.telefoneFamiliar" name="telefoneFamiliar" placeholder="Telefone Familiar" type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) return false;" required>
-                              </mat-form-field>
-                            </div>
-                          </div>
-                        <button mat-raised-button type="submit" class="btn btn-primary pull-right">Salvar</button>
-                       <button mat-raised-button type="reset" (click)="cleanForm(f)"class="btn btn-primary pull-right">Limpar</button>
-                    <div class="clearfix"></div>
-                    
-                </div>
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title">Dados da Empresa</h4>
             </div>
+            <div class="card-body">
+
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Empresa</mat-label>
+                    <mat-select [(ngModel)]="empresaId" name="empresa">
+                      <mat-option *ngFor="let empresaDb of empresas" [value]="empresaDb.id">
+                        {{empresaDb.id}} - {{empresaDb.nome}}
+
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput [(ngModel)]="prestador.idSetor" name="idSetor" placeholder="Setor" type="number"
+                      required>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput [(ngModel)]="prestador.dataInicio" name="dataInicio" placeholder="Data de Início"
+                      type="date" required>
+                  </mat-form-field>
+                </div>
+              </div>
+
+
+              <div class="clearfix"></div>
+            </div>
+          </div>
         </div>
-  
+      </div>
     </div>
-  </div>
-</form>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title">Contatos</h4>
+            </div>
+            <div class="card-body">
+
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput [(ngModel)]="contatos.telefonePrincipal" name="telefonePrincipal"
+                      placeholder="Telefone Principal" type="number"
+                      oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+                      onKeyPress="if(this.value.length==11) return false;" required>
+                    <!--oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) console.log('arrumaessaporra');"-->
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput [(ngModel)]="contatos.telefoneSecundario" name="telefoneSecundario"
+                      placeholder="Telefone Secundario" type="number"
+                      oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+                      onKeyPress="if(this.value.length==11) return false;" required>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput [(ngModel)]="contatos.email" name="email" placeholder="Email" type="email" required>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput [(ngModel)]="contatos.telefoneFamiliar" name="telefoneFamiliar"
+                      placeholder="Telefone Familiar" type="number"
+                      oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+                      onKeyPress="if(this.value.length==11) return false;" required>
+                  </mat-form-field>
+                </div>
+              </div>
+             <!-- <button mat-raised-button type="submit" class="btn btn-primary pull-right">Salvar</button>
+              <button mat-raised-button type="reset" (click)="cleanForm(f)"
+                class="btn btn-primary pull-right">Limpar</button>
+              <div class="clearfix"></div> -->
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </form>
 </div>

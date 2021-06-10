@@ -48,7 +48,7 @@ public class EmpresaTest {
 	public void testSetEGetNomeEmpresa() {
 		Empresa empresa = new Empresa();
 		empresa.setNomeEmpresa("Proway");
-		assertEquals("Proway", empresa.getNomeEmpresa());
+		assertEquals("Proway", empresa.getNome());
 	}
 
 	@Test

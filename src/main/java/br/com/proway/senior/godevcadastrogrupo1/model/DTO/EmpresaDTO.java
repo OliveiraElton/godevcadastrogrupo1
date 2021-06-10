@@ -32,7 +32,7 @@ public class EmpresaDTO {
 	 */
 	public EmpresaDTO (Empresa modelOrginal) {
 		this.id = modelOrginal.getId();
-		this.nome = modelOrginal.getNomeEmpresa();
+		this.nome = modelOrginal.getNome();
 		this.dataInicioContrato = modelOrginal.getDataInicioContrato();
 		this.cnpj = modelOrginal.getCnpj();
 		this.endereco = modelOrginal.getEndereco();
@@ -42,7 +42,7 @@ public class EmpresaDTO {
 	public int getId() {
 		return id;
 	}
-	public String getNomeEmpresa() {
+	public String getNome() {
 		return nome;
 	}
 	public LocalDate getDataInicioContrato() {

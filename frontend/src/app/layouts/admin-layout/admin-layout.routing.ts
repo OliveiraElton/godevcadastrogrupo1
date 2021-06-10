@@ -13,7 +13,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'colaborador',   component: ColaboradorComponent },
     { path: 'empresa',   component: EmpresaComponent },
     { path: 'prestadorservico',   component: PrestadorComponent },
-    { path: 'table-list',     component: TableListComponent },
+    { path: 'registros',     component: TableListComponent },
     { path: 'typography',     component: TypographyComponent },
     { path: 'notifications',  component: NotificationsComponent },
 ];

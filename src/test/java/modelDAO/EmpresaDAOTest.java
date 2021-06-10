@@ -38,7 +38,7 @@ public class EmpresaDAOTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		dao.deletarTodos("empresa");
+	//	dao.deletarTodos("empresa");
 		
 	}
 
@@ -52,7 +52,7 @@ public class EmpresaDAOTest {
 		
 		Empresa empresaCriada = dao.cadastrar(empresa);
 		Empresa empresaRetornada = dao.buscarPorId(Empresa.class, empresaCriada.getId());
-		assertEquals(empresaCriada.getNomeEmpresa(), empresaRetornada.getNomeEmpresa());
+		assertEquals(empresaCriada.getNome(), empresaRetornada.getNome());
 		assertEquals(empresaCriada.getEndereco(), empresaRetornada.getEndereco());
 		assertEquals(empresaCriada.getContato(), empresaRetornada.getContato());
 		
@@ -85,7 +85,7 @@ public class EmpresaDAOTest {
 		
 		Empresa empresa = new Empresa("Senior", LocalDate.now(), "05.975.585/0001-89", endereco, contatos);
 		Empresa empresaCriada = dao.cadastrar(empresa);
-		assertEquals("Senior", empresaCriada.getNomeEmpresa());
+		assertEquals("Senior", empresaCriada.getNome());
 	}
 
 	@Test
@@ -111,7 +111,7 @@ public class EmpresaDAOTest {
 		
 		dao.cadastrar(empresa);
 		empresa.setNomeEmpresa("Senior 2");
-		assertEquals("Senior 2", dao.atualizar(empresa).getNomeEmpresa());
+		assertEquals("Senior 2", dao.atualizar(empresa).getNome());
 	}
 
 	@Test
@@ -135,7 +135,7 @@ public class EmpresaDAOTest {
 		dao.cadastrar(empresa);
 		
 		ArrayList<Empresa> listaRetorno = (ArrayList<Empresa>) dao.buscarPorNome(Empresa.class, "Pro");
-		System.out.println(listaRetorno.get(0).getNomeEmpresa());
+		System.out.println(listaRetorno.get(0).getNome());
 		assertTrue(listaRetorno.size() == 1);		
 	}
 	
