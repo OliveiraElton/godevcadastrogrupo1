@@ -103,16 +103,15 @@
                               <mat-form-field class="example-full-width">
                                 <mat-label>Empresa</mat-label>
                                   <mat-select [(ngModel)]="prestador.empresa" name="empresa">
-                                    <mat-option *ngFor="let empresa of empresas" [value]="empresa.name">
-                                      {{empresa.id}}
-                                      {{empresa.name}}
+                                    <mat-option *ngFor="let empresa of empresas" >
+                                      {{empresa.cnpj}}
                                     </mat-option>
                                   </mat-select>
                               </mat-form-field>
                             </div>
                             <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput name="nomeEmpresa" placeholder="Nome da Empresa " disabled>
+                                  <input matInput name="nomeEmpresa" [(ngModel)]="prestador.empresa" value="empresa.nome" placeholder="Nome da Empresa " disabled>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-4">

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { Prestador } from 'app/models/prestador';
-import { PrestadorService } from 'app/prestador.service';
 import { Contatos } from 'app/models/contatos';
-/*import { EmpresaService } from '../empresa.service';*/
+import { PrestadorService } from 'app/services/prestador.service';
+import { EmpresaService } from '../services/empresa.service'
+import { Empresa } from 'app/models/empresa';
 
 
 @Component({
@@ -14,18 +15,16 @@ import { Contatos } from 'app/models/contatos';
 export class PrestadorComponent implements OnInit {
 
   contatos = {} as Contatos;
-  /*empresas: Empresa[] = EmpresaService.getEmpresas();*/
   /*nomeEmpresa = EmpresaService.getEmpresa().getNome()*/
-
+  empresas: Empresa [] = [];
   prestador = {} as Prestador;
-  constructor(private prestadorService : PrestadorService) { 
+  constructor(private prestadorService : PrestadorService, private empresaService : EmpresaService) { 
 
   }
   getEmpresas(){
-   /* this.empresas = EmpresaService.getEmpresas();*/
-
+    this.empresaService.getEmpresas()
+    .subscribe(empresas => this.empresas = empresas);
   }
-
   savePrestador(form : NgForm){
     if(this.prestador.id !== undefined){
       this.prestador.contatos = this.contatos;
@@ -42,6 +41,7 @@ export class PrestadorComponent implements OnInit {
   ngOnInit(){
     this.getEmpresas();
   }
+  
   cleanForm(form : NgForm){
     form.resetForm();
   }

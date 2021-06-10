@@ -1,4 +1,5 @@
 import { Contatos } from "./contatos";
+import { Empresa } from "./empresa";
 
 export interface Prestador {
     id: number;
@@ -12,7 +13,7 @@ export interface Prestador {
     nacionalidade: string;
     naturalidade: string;
     rg: string;
-   /* empresa: number; */
+   empresa: Empresa;
     setor: string;
     dataInicio: Date;
     contatos: Contatos;
