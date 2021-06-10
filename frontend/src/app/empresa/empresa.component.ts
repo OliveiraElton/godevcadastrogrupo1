@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, NgForm} from '@angular/forms';
+import { Contatos } from 'app/models/contatos';
+import { Empresa } from 'app/models/empresa';
+import { Endereco } from 'app/models/endereco';
+import { EmpresaService } from 'app/services/empresa.service';
 
 declare var $: any;
 
@@ -10,7 +14,12 @@ declare var $: any;
 })
 export class EmpresaComponent implements OnInit {
 
-  constructor() { }
+  empresa = {} as Empresa;
+  contatos = {} as Contatos;
+  empresas : Empresa [];
+  endereco = {} as Endereco;
+
+  constructor(private empresaService : EmpresaService) { }
 
   //options: FormGroup;
   estado = new FormControl('estado');
@@ -20,7 +29,23 @@ export class EmpresaComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  saveEmpresa(form : NgForm){
+    if(this.empresa.id !== undefined){
+      this.empresa.contatos = this.contatos;
+      this.empresa.endereco = this.endereco;
+      this.empresaService.updateEmpresa(this.empresa).subscribe(() => {
+        this.cleanForm(form);
+      });
+    }else{
+      this.empresa.contatos = this.contatos;
+      this.empresaService.saveEmpresa(this.empresa).subscribe(() => {
+        this.cleanForm(form);
+      })
+    }
+  }
+  cleanForm(form : NgForm){
+    form.resetForm();
+  }
   showNotification(from, align){
     const type = ['','info','success','warning','danger'];
 

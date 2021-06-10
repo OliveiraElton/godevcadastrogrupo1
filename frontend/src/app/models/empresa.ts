@@ -2,8 +2,9 @@ import { Contatos } from "./contatos";
 import { Endereco } from "./endereco";
 
 export interface Empresa {
-    razaoSocial: String;
-    cnpj: String;
+    id: number;
+    razaoSocial: string;
+    cnpj: string;
     inicioContrato: Date;
     contatos: Contatos;
     endereco: Endereco;

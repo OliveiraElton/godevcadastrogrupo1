@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { Prestador } from 'app/models/prestador';
-import { PrestadorService } from 'app/prestador.service';
 import { Contatos } from 'app/models/contatos';
+import { PrestadorService } from 'app/services/prestador.service';
 /*import { EmpresaService } from '../empresa.service';*/
 
 

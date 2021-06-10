@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { Prestador } from './models/prestador';
+import { Prestador } from 'app/models/prestador';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +25,13 @@ export class PrestadorService {
       retry(2),
       catchError(this.handlerError))
   }
+  getPrestador(id : number): Observable<Prestador>{
+    return this.httpClient.get<Prestador>(this.url + '/' + id)
+      .pipe(
+        retry(2),
+        catchError(this.handlerError)
+      )
+  }
   savePrestador(prestador : Prestador) : Observable<Prestador>{
     return this.httpClient.post<Prestador>(this.url, JSON.stringify(prestador), this.httpOptions)
     .pipe(
@@ -36,6 +43,13 @@ export class PrestadorService {
       .pipe(
         retry(1),
         catchError(this.handlerError))
+  }
+  deletePrestador(prestador: Prestador) {
+    return this.httpClient.delete<Prestador>(this.url + '/' + prestador.id, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.handlerError)
+      )
   }
   handlerError(error: HttpErrorResponse){
     let errorMessage = '';
