@@ -250,7 +250,7 @@ public class Director {
 	 * @param telefoneSecundario
 	 * @param email
 	 * @param telefoneFamiliar
-	 * @param nomeEmpresa
+	 * @param nome
 	 * @param cnpj
 	 * @throws Exception
 	 */
