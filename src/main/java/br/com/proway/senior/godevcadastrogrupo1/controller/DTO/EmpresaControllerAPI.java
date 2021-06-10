@@ -43,6 +43,7 @@ public class EmpresaControllerAPI {
 	 * @param empresa {@link Empresa} que sera criada.
 	 * @return o objeto {@link Empresa} cadastrado no banco de dados.
 	 */
+	@CrossOrigin
 	@RequestMapping(value = "/empresa", method = RequestMethod.POST)
 	public @ResponseBody Empresa cadastrarEmpresa(@RequestBody Empresa empresa) {
 		return daoEmpresa.cadastrar(empresa);
@@ -56,6 +57,7 @@ public class EmpresaControllerAPI {
 	 * @param id identificacao da empresa que sera excluida.
 	 * @return boolean
 	 */
+	@CrossOrigin
 	@RequestMapping(value = "/empresa/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody boolean deletarEmpresa(@PathVariable ("id") Integer id) {
 		Empresa empresa = daoEmpresa.buscarPorId(Empresa.class, id);
@@ -71,6 +73,7 @@ public class EmpresaControllerAPI {
 	 * @param empresa objeto {@link Empresa}.
 	 * @return objeto {@link Empresa} atualizado.
 	 */
+	@CrossOrigin
 	@RequestMapping(value = "/empresa", method = RequestMethod.PUT)
 	public @ResponseBody Empresa atualizarEmpresa(@RequestBody Empresa empresa) {
 		return daoEmpresa.atualizar(empresa);
@@ -86,6 +89,7 @@ public class EmpresaControllerAPI {
 	 * @param idEmpresa identificacao da empresa que sera retornada.
 	 * @return EmpresaDTO objeto com as informacoes do banco.
 	 */
+	@CrossOrigin
 	@RequestMapping(value = "/empresa/{id}", method = RequestMethod.GET)
 	public @ResponseBody EmpresaDTO buscarEmpresaPorId(@PathVariable ("id") Integer idEmpresa) {
 		EmpresaDTO empresaDTO = new EmpresaDTO(daoEmpresa.buscarPorId(Empresa.class, idEmpresa));
@@ -100,6 +104,7 @@ public class EmpresaControllerAPI {
 	 * 
 	 * @return listaEmpresaDTO lista de registros localizados.
 	 */
+	@CrossOrigin
 	@RequestMapping(value = "/empresa", method = RequestMethod.GET)
 	public @ResponseBody List<EmpresaDTO> buscarTodasEmpresas() {
 		List<EmpresaDTO> listaEmpresaDTO = new ArrayList<EmpresaDTO>();
@@ -120,6 +125,7 @@ public class EmpresaControllerAPI {
 	 * @param nomeEmpresa nome dos registros que estao sendo procurados.
 	 * @return ArrayList Empresa lista de registros localizados.
 	 */
+	@CrossOrigin
 	@RequestMapping(value = "/empresa/nome/{nome}", method = RequestMethod.GET)
 	public @ResponseBody List<EmpresaDTO> buscarEmpresaPorNome(@PathVariable ("nome") 
 			String nome) {

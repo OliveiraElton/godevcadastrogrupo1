@@ -45,6 +45,7 @@ public class PrestadorServicoCompletoControllerAPI {
 	 * @param prestador
 	 * @return o objeto do registro criado no banco dedados.
 	 */
+	@CrossOrigin
 	@RequestMapping(value = "/prestadorservico", method = RequestMethod.POST)
 	public @ResponseBody PrestadorServico cadastrarPrestador(@RequestBody PrestadorServico prestador) {
 		return daoPrestadorServicos.cadastrar(prestador);
@@ -59,6 +60,7 @@ public class PrestadorServicoCompletoControllerAPI {
 	 * @param prestador {@link PrestadorServico}
 	 * @return prestador {@link PrestadorServico} atualizado
 	 */
+	@CrossOrigin
 	@RequestMapping (value = "/prestadorservico", method = RequestMethod.PUT)
 	public @ResponseBody PrestadorServico atualizarPrestador(@RequestBody PrestadorServico prestador) {
 		return daoPrestadorServicos.atualizar(prestador);
@@ -73,6 +75,7 @@ public class PrestadorServicoCompletoControllerAPI {
 	 * @param id Identificacao do prestador de servico a ser excluido
 	 * @return boolean
 	 */
+	@CrossOrigin
 	@RequestMapping(value = "/prestadorservico/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody boolean deletarPrestador(@PathVariable("id") Integer id) {
 		PrestadorServico prestadorServico = daoPrestadorServicos.buscarPorId(PrestadorServico.class, id);
@@ -89,6 +92,7 @@ public class PrestadorServicoCompletoControllerAPI {
 	 * @param id identificacao do prestador procurado.
 	 * @return {@link PrestadorServicoCompletoDTO}
 	 */
+	@CrossOrigin
 	@RequestMapping(value = "/prestadorservico/{id}", method = RequestMethod.GET)
 	public @ResponseBody PrestadorServicoCompletoDTO buscarPrestadorServicoPorId(@PathVariable("id") Integer id) {
 	PrestadorServicoCompletoDTO prestadorCompletoDTO = new PrestadorServicoCompletoDTO(daoPrestadorServicos.buscarPorId(PrestadorServico.class, id));
@@ -103,6 +107,7 @@ public class PrestadorServicoCompletoControllerAPI {
 	 * 
 	 * @return listaPrestadorCompletoDTO lista de registros localizados.
 	 */
+	@CrossOrigin
 	@RequestMapping(value = "/prestadorservico", method = RequestMethod.GET)
 	public @ResponseBody List<PrestadorServicoCompletoDTO> buscarTodosPrestadoresServico() {
 		List<PrestadorServicoCompletoDTO> listaPrestadorCompletoDTO = new ArrayList<PrestadorServicoCompletoDTO>();
@@ -122,6 +127,7 @@ public class PrestadorServicoCompletoControllerAPI {
 	 * @param nome String
 	 * @return ArrayList {@link PrestadorServico} lista de registros localizados.
 	 */
+	@CrossOrigin
 	@RequestMapping(value = "/prestadorservico/nome/{nome}", method = RequestMethod.GET)
 	public @ResponseBody List<PrestadorServicoCompletoDTO> buscarPrestadorServicoPorNome(@PathVariable("nome") String nome){
 		List<PrestadorServicoCompletoDTO> listaPrestadorCompletoDTO = new ArrayList<PrestadorServicoCompletoDTO>();

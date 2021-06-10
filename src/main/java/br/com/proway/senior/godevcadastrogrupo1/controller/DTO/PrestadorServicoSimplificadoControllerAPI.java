@@ -45,6 +45,7 @@ public class PrestadorServicoSimplificadoControllerAPI {
 	 * @param empresa {@link PrestadorServico}.
 	 * @return objeto do registro criado.
 	 */
+	@CrossOrigin
 	@RequestMapping(value = "/prestadorsimplificado", method = RequestMethod.POST)
 	public @ResponseBody PrestadorServico cadastrarPrestadorServico(@RequestBody PrestadorServico prestador) {
 		System.out.println("");
@@ -60,6 +61,7 @@ public class PrestadorServicoSimplificadoControllerAPI {
 	 * @param id identificacao do prestador que sera excluido.
 	 * @return boolean
 	 */
+	@CrossOrigin
 	@RequestMapping(value = "/prestadorsimplificado/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody boolean deletePrestadorServico(@PathVariable("id") Integer id) {
 		PrestadorServico prestador = daoPrestador.buscarPorId(PrestadorServico.class, id);
@@ -76,6 +78,7 @@ public class PrestadorServicoSimplificadoControllerAPI {
 	 * @param prestador objeto {@link PrestadorServico}.
 	 * @return objeto {@link PrestadorServico} atualizado.
 	 */
+	@CrossOrigin
 	@RequestMapping(value = "/prestadorsimplificado", method = RequestMethod.PUT)
 	public @ResponseBody PrestadorServico atualizarPrestadorServico(@RequestBody PrestadorServico prestador) {
 		return daoPrestador.atualizar(prestador);
@@ -91,6 +94,7 @@ public class PrestadorServicoSimplificadoControllerAPI {
 	 * @param id
 	 * @return PrestadorServicoDTO
 	 */
+	@CrossOrigin
 	@RequestMapping(value = "/prestadorsimplificado/{id}", method = RequestMethod.GET)
 	public @ResponseBody PrestadorServicoSimplificadoDTO buscarPrestadorServicoPorId(@PathVariable("id") Integer id) {
 		PrestadorServicoSimplificadoDTO prestadorDTO = new PrestadorServicoSimplificadoDTO(daoPrestador.buscarPorId(PrestadorServico.class, id));
@@ -106,6 +110,7 @@ public class PrestadorServicoSimplificadoControllerAPI {
 	 * @author Vitor Peres <b>vitor.peres@senior.com.br</b>
 	 * @return listaPrestadorDTO
 	 */
+	@CrossOrigin
 	@RequestMapping(value = "/prestadorsimplificado", method = RequestMethod.GET)
 	public @ResponseBody List<PrestadorServicoSimplificadoDTO> buscarTodosPrestadoresServico() {
 		List<PrestadorServicoSimplificadoDTO> listaPrestadorDTO = new ArrayList<PrestadorServicoSimplificadoDTO>();
@@ -125,6 +130,7 @@ public class PrestadorServicoSimplificadoControllerAPI {
 	 * @param String nome procurado
 	 * @return lista listaPrestadorDTO
 	 */
+	@CrossOrigin
 	@RequestMapping(value = "/prestadorsimplificado/nome/{nome}", method = RequestMethod.GET)
 	public List<PrestadorServicoSimplificadoDTO> buscarPrestadorServicoPorNome(@PathVariable("nome") String nome) {
 		List<PrestadorServicoSimplificadoDTO> listaPrestadorDTO = new ArrayList<PrestadorServicoSimplificadoDTO>();

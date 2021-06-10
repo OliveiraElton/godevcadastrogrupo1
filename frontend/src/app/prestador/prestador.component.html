@@ -1,4 +1,4 @@
-<div class="main-content" *ngIf="prestador.id">
+<div class="main-content" >
   <form (ngSubmit)=" savePrestador(f)" #f="ngForm">
     <div class="container-fluid">
       <div class="row">
@@ -99,11 +99,11 @@
               <!--BOTÕES DE INTERAÇÃO-->
               <button mat-raised-button type="submit" name="btnEnviar"
                 class="btn btn-primary pull-right">Salvar</button>
-              <button mat-raised-button type="button" name="btnExcluir"
-                class="btn btn-primary pull-right">Excluir</button>
+              <button mat-raised-button type="delete" name="btnExcluir"
+                class="btn btn-primary pull-right" (click)="deletePrestador(prestador)">Excluir</button>
               <button mat-raised-button type="reset" (click)="cleanForm(f)" name="btnCancelar"
                 class="btn btn-primary pull-right">Limpar</button>
-              <button mat-raised-button type="button" (click)="getPrestador()" name="btnPesquisa"
+              <button mat-raised-button type="button" (click)="getPrestador(prestador.id)" name="btnPesquisa"
                 class="btn btn-primary pull-right">Pesquisar</button>
 
               <div class="clearfix"></div>

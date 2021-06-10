@@ -20,6 +20,7 @@ export class PrestadorComponent implements OnInit {
   empresaId: number;
   prestador = {} as Prestador;
   prestadores: Prestador[];
+  empresa = {} as Empresa;
   @Input() prestadorSelecionado?: Prestador;
 
   constructor(private prestadorService: PrestadorService, private empresaService: EmpresaService) {
@@ -56,19 +57,21 @@ export class PrestadorComponent implements OnInit {
   // Obter todos
   getPrestador() {
     this.prestadorService.getPrestador(this.prestador.id).subscribe((prestador: Prestador) => {
+      this.empresa = prestador.empresa;
+      this.contatos = prestador.contatos;
       this.prestador = prestador;
     });
   }
 
   // Deletar 
-  deleteColaborador(prestador: Prestador) {
+  deletePrestador(prestador: Prestador) {
     this.prestadorService.deletePrestador(prestador).subscribe(() => {
       this.getPrestadores();
     });
   }
 
   // ???
-  editColaborador(prestador: Prestador) {
+  editPrestador(prestador: Prestador) {
     this.prestador = { ...prestador };
   }
 
@@ -77,6 +80,6 @@ export class PrestadorComponent implements OnInit {
   }
 
   cleanForm(form: NgForm) {
-    //  form.resetForm();
+    form.resetForm();
   }
 }

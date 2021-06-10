@@ -38,7 +38,7 @@ public class PrestadorServico extends Pessoa {
 
 	private LocalDate dataInicioContrato;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.PERSIST)
 	private Empresa empresa;
 	private Integer idSetor;
 

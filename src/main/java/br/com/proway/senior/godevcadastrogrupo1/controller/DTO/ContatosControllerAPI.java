@@ -43,6 +43,7 @@ public class ContatosControllerAPI {
 	 * @param o objeto cadastrado de fato, com a respectiva ID.
 	 * @author Elton Oliveira <b>elton.oliveira@senior.com.br</b>
 	 */
+	@CrossOrigin
 	@RequestMapping(value = "/contatos", method = RequestMethod.POST)
 	public @ResponseBody Contatos cadastrarContatos(@RequestBody Contatos contatos) {
 		return daoContatos.cadastrar(contatos);
@@ -59,6 +60,7 @@ public class ContatosControllerAPI {
 	 * @return boolean
 	 * @author Elton Oliveira <b>elton.oliveira@senior.com.br</b>
 	 */
+	@CrossOrigin
 	@RequestMapping(value = "/contatos/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody boolean deletarContatos(@PathVariable ("id") Integer id) {
 		Contatos contatos = daoContatos.buscarPorId(Contatos.class, id);
@@ -76,6 +78,7 @@ public class ContatosControllerAPI {
 	 * @return objeto do banco de dados com os dados atualizados.
 	 * @author Elton Oliveira <b>elton.oliveira@senior.com.br</b>
 	 */
+	@CrossOrigin
 	@RequestMapping(value = "/contatos/{id}", method = RequestMethod.PUT)
 	public @ResponseBody Contatos atualizarContatos(@PathVariable ("id")  Integer id, @RequestBody Contatos contatos) {
 		contatos.setId(id);
@@ -94,6 +97,7 @@ public class ContatosControllerAPI {
 	 * @return listaEmpresaDTO lista de registros localizados.
 	 * @author Elton Oliveira <b>elton.oliveira@senior.com.br</b>
 	 */
+	@CrossOrigin
 	@RequestMapping(value = "/contatos/{id}", method = RequestMethod.GET)
 	public @ResponseBody ContatosDTO buscarContatosPorId(@PathVariable ("id") Integer id) {
 		ContatosDTO contatosDTO = new ContatosDTO(ContatosDAO.getInstance(session).buscarPorId(Contatos.class, id));
@@ -110,6 +114,7 @@ public class ContatosControllerAPI {
 	 * @return listaEmpresaDTO lista de registros localizados.
 	 * @author Elton Oliveira <b>elton.oliveira@senior.com.br</b>
 	 */
+	@CrossOrigin
 	@RequestMapping(value = "/contatos", method = RequestMethod.GET)
 	public @ResponseBody List<ContatosDTO> buscarTodosContatos() {
 		List<ContatosDTO> listaContatosDTO = new ArrayList<ContatosDTO>();
@@ -133,6 +138,7 @@ public class ContatosControllerAPI {
 	 * @return listaEmpresaDTO lista de registros localizados.
 	 * @author Elton Oliveira <b>elton.oliveira@senior.com.br</b>
 	 */
+	@CrossOrigin
 	@RequestMapping(value = "/contatos/{email}", method = RequestMethod.GET)
 	public @ResponseBody List<ContatosDTO> buscarContatosPorEmail(@PathVariable ("email") String email) {
 		List<ContatosDTO> listaContatosDTO = new ArrayList<ContatosDTO>();
