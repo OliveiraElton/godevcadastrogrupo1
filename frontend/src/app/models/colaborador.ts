@@ -7,6 +7,7 @@ import { ExameMedico } from "./exameMedico";
 
 export interface Colaborador {
 
+    idColab: Number;
     nomeColab: String;
     sobrenomeColab: String;
     nomeSocialColab: String;

@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, NgForm } from '@angular/forms';
+import { Colaborador } from 'app/models/colaborador';
+import { Contatos } from 'app/models/contatos';
+import { Dependentes } from 'app/models/dependentes';
+import { Endereco } from 'app/models/endereco';
+import { ExameMedico } from 'app/models/exameMedico';
+import { ColaboradorService } from 'app/services/colaborador.service';
 
 @Component({
   selector: 'app-colaborador',
@@ -8,7 +14,13 @@ import { FormControl } from '@angular/forms';
 })
 export class ColaboradorComponent implements OnInit {
 
-  constructor() { }
+  colaborador = {} as Colaborador;
+  endereco = {} as Endereco;
+  contatos = {} as Contatos;
+  dependentes = {} as Dependentes;
+  examesMedicos = {} as ExameMedico;
+  colaboradores: Colaborador[];
+  constructor(private colaboradorService : ColaboradorService) { }
 
   // Necessário para que não haja problema no carregamento da tela devido às listas
   generoColab = new FormControl('generoColab');
@@ -35,6 +47,45 @@ export class ColaboradorComponent implements OnInit {
 
 
   ngOnInit() {
+  }
+
+   // Define se um colaborador será criado ou atualizado
+   saveColaborador(form: NgForm) {
+    if (this.colaborador.idColab !== undefined) {
+      this.colaboradorService.updateColaborador(this.colaborador).subscribe(() => {
+        this.cleanForm(form);
+      });
+    } else {
+      this.colaboradorService.saveColaborador(this.colaborador).subscribe(() => {
+        this.cleanForm(form);
+      });
+    }
+  }
+
+  // Obter todos os colaboradores
+  getColaboradores() {
+    this.colaboradorService.getColaboradores().subscribe((colaboradores: Colaborador[]) => {
+      this.colaboradores = colaboradores;
+    });
+  }
+
+  // Deletar um colaborador
+  deleteColaborador(colaborador: Colaborador) {
+    this.colaboradorService.deleteCar(colaborador).subscribe(() => {
+      this.getColaboradores();
+    });
+  }
+
+  // ???
+  editColaborador(colaborador: Colaborador) {
+    this.colaborador = { ...colaborador };
+  }
+
+  // Limpar o formulário
+  cleanForm(form: NgForm) {
+    this.getColaboradores();
+    form.resetForm();
+    this.colaborador = {} as Colaborador;
   }
 
 }

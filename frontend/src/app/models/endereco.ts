@@ -1,5 +1,6 @@
 export interface Endereco {
 
+    id: Number;
     cepColab: String;
     logradouroColab: String;
     numEndColab: Number;
