@@ -1,130 +1,159 @@
 <div class="main-content">
-    <form (ngSubmit)=" saveEmpresa(f)" #f="ngForm"></form>
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-primary">
                         <h4 class="card-title">Cadastro de Empresa</h4>
-
                     </div>
                     <div class="card-body">
-                        
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <mat-form-field class="example-full-width">
-                                        <input type="text" [(ngModel)]="empresa.razaoSocial" matInput placeholder="Razão Social" id="razaoSocial" name="razaoSocial" required>
-                                    </mat-form-field>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <mat-form-field class="example-full-width">
-                                        <input matInput [(ngModel)]="empresa.cnpj" placeholder="CNPJ" type="number" id="cnpj" name="cnpj" required oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==14) return false;">
-                                    </mat-form-field>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <mat-form-field class="example-full-width">
-                                        <input type="date" matInput [(ngModel)]="empresa.inicioContrato" placeholder="Data de Início de Contrato" id="inicioContrato" name="inicioContrato" required>
-                                    </mat-form-field>
-                                </div>
+                        <form (ngSubmit)=" saveEmpresa(f)" #f="ngForm">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input type="text" [(ngModel)]="empresa.razaoSocial" matInput
+                                        placeholder="Razão Social" id="razaoSocial" name="razaoSocial" required>
+                                </mat-form-field>
                             </div>
 
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <mat-form-field class="example-full-width">
-                                        <input matInput [(ngModel)]="contatos.telefonePrincipal" placeholder="Telefone Principal" type="number" id="telefonePrincipal" name="telefonePrincipal" required oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) return false;">
-                                    </mat-form-field>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <mat-form-field class="example-full-width">
-                                        <input matInput [(ngModel)]="contatos.telefoneSecundario" placeholder="Telefone Secundário" type="number" id="telefoneSecundario" name="telefoneSecundario" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) return false;">
-                                    </mat-form-field>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <mat-form-field class="example-full-width">
-                                        <input matInput [(ngModel)]="contatos.telefoneEmergencia" placeholder="Telefone de Emergência" type="number" id="telefoneEmergencia" name="telefoneEmergencia" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) return false;">
-                                    </mat-form-field>
-                                </div>
+                            <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput [(ngModel)]="empresa.cnpj" placeholder="CNPJ" type="number"
+                                        id="cnpj" name="cnpj" required
+                                        oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+                                        onKeyPress="if(this.value.length==14) return false;">
+                                </mat-form-field>
                             </div>
 
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <mat-form-field class="example-full-width">
-                                        <input matInput [(ngModel)]="endereco.cep" placeholder="Cep" type="number" id="cep" name="cep" required oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==8) return false;">
-                                    </mat-form-field>
-                                </div>
+                            <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input type="date" matInput [(ngModel)]="empresa.inicioContrato"
+                                        placeholder="Data de Início de Contrato" id="inicioContrato"
+                                        name="inicioContrato" required>
+                                </mat-form-field>
+                            </div>
+                        </div>
 
-                                <div class="col-md-4">
-                                    <mat-form-field class="example-full-width">
-                                        <input matInput [(ngModel)]="endereco.rua" placeholder="Rua" type="text" id="rua" name="rua" required>
-                                    </mat-form-field>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <mat-form-field class="example-full-width">
-                                        <input matInput [(ngModel)]="endereco.numero" placeholder="Número" type="number" id="numero" name="numero" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==6) return false;">
-                                    </mat-form-field>
-                                </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput [(ngModel)]="contatos.telefonePrincipal"
+                                        placeholder="Telefone Principal" type="number" id="telefonePrincipal"
+                                        name="telefonePrincipal" required
+                                        oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+                                        onKeyPress="if(this.value.length==11) return false;">
+                                </mat-form-field>
                             </div>
 
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <mat-form-field class="example-full-width">
-                                        <input matInput [(ngModel)]="endereco.bairro" placeholder="Bairro" type="text" id="bairro" name="bairro">
-                                    </mat-form-field>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <mat-form-field class="example-full-width">
-                                        <input matInput [(ngModel)]="endereco.cidade" type="text" placeholder="Cidade" name="cidade" id="cidade" required>
-                                    </mat-form-field>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <mat-form-field class="example-full-width">
-                                        <input matInput [(ngModel)]="endereco.complemento" type="text" placeholder="Complemento" name="complemento" id="complemento" required>
-                                    </mat-form-field>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <mat-form-field class="example-full-width">
-                                        <mat-label>Estado</mat-label>
-                                        <mat-select [(ngModel))]="endereco.estado" name="estado">
-                                            <mat-option value="Santa Catarina">Santa Catarina</mat-option>
-                                            <mat-option value="Parana">Paraná</mat-option>
-                                            <mat-option value="Rio de Janeiro">Rio de Janeiro</mat-option>
-                                            <mat-option value="Rio Grande do Sul">Rio Grande do Sul</mat-option>
-                                            <mat-option value="Sao Paulo">São Paulo</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <mat-form-field class="example-full-width">
-                                        <mat-label>Pais</mat-label>
-                                        <mat-select [(ngModel))]="endereco.pais" name="pais">
-                                            <mat-option value="Brasil">Brasil</mat-option>
-                                            <mat-option value="Argentina">Argentina</mat-option>
-                                            <mat-option value="Haiti">Haiti</mat-option>
-                                            <mat-option value="Venezuela">Venezuela</mat-option>
-                                            <mat-option value="Chile">Chile</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                </div>
+                            <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput [(ngModel)]="contatos.telefoneSecundario"
+                                        placeholder="Telefone Secundário" type="number" id="telefoneSecundario"
+                                        name="telefoneSecundario"
+                                        oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+                                        onKeyPress="if(this.value.length==11) return false;">
+                                </mat-form-field>
                             </div>
 
-                            <button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="showNotification('top','right')"> Cadastrar</button>
-                            <button mat-raised-button type="reset" (click)="cleanForm(f)"class="btn btn-primary pull-right">Limpar</button>
-                            <div class="clearfix"></div>
-                        
+                            <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput [(ngModel)]="contatos.telefoneEmergencia"
+                                        placeholder="Telefone de Emergência" type="number" id="telefoneEmergencia"
+                                        name="telefoneEmergencia"
+                                        oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+                                        onKeyPress="if(this.value.length==11) return false;">
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput [(ngModel)]="endereco.cep" placeholder="Cep" type="number" id="cep"
+                                        name="cep" required
+                                        oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+                                        onKeyPress="if(this.value.length==8) return false;">
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput [(ngModel)]="endereco.rua" placeholder="Rua" type="text" id="rua"
+                                        name="rua" required>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput [(ngModel)]="endereco.numero" placeholder="Número" type="number"
+                                        id="numero" name="numero"
+                                        oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+                                        onKeyPress="if(this.value.length==6) return false;">
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput [(ngModel)]="endereco.bairro" placeholder="Bairro" type="text"
+                                        id="bairro" name="bairro">
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-3">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput [(ngModel)]="endereco.cidade" type="text" placeholder="Cidade"
+                                        name="cidade" id="cidade" required>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-3">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput [(ngModel)]="endereco.complemento" type="text"
+                                        placeholder="Complemento" name="complemento" id="complemento" required>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-3">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Estado</mat-label>
+                                    <mat-select [(ngModel))]="endereco.estado" name="estado">
+                                        <mat-option value="Santa Catarina">Santa Catarina</mat-option>
+                                        <mat-option value="Parana">Paraná</mat-option>
+                                        <mat-option value="Rio de Janeiro">Rio de Janeiro</mat-option>
+                                        <mat-option value="Rio Grande do Sul">Rio Grande do Sul</mat-option>
+                                        <mat-option value="Sao Paulo">São Paulo</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-3">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Pais</mat-label>
+                                    <mat-select [(ngModel))]="endereco.pais" name="pais">
+                                        <mat-option value="Brasil">Brasil</mat-option>
+                                        <mat-option value="Argentina">Argentina</mat-option>
+                                        <mat-option value="Haiti">Haiti</mat-option>
+                                        <mat-option value="Venezuela">Venezuela</mat-option>
+                                        <mat-option value="Chile">Chile</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <button mat-raised-button type="submit" class="btn btn-primary pull-right"
+                            (click)="showNotification('top','right')"> Cadastrar</button>
+                        <button mat-raised-button type="reset" (click)="cleanForm(f)"
+                            class="btn btn-primary pull-right">Limpar</button>
+                        <div class="clearfix"></div>
+                    </form>
                     </div>
                 </div>
             </div>
 
         </div>
     </div>
-</form>
+
 </div>
