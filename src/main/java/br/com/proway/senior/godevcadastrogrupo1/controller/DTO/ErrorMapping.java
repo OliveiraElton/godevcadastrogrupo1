@@ -1,6 +1,7 @@
 package br.com.proway.senior.godevcadastrogrupo1.controller.DTO;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Vitor Cesar Peres <b>vitor.peres@senior.com.br</b>
  *
  */
+@CrossOrigin
 @RestController
 public class ErrorMapping implements ErrorController{
 	

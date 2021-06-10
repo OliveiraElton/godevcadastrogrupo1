@@ -13,8 +13,8 @@ export interface Prestador {
     nacionalidade: string;
     naturalidade: string;
     rg: string;
-   empresa: Empresa;
-    setor: string;
+    empresa: Empresa;
+    setor: number;
     dataInicio: Date;
     contatos: Contatos;
 }

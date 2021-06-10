@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,7 @@ import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
  * @author Sarah Neuburger Brito <b>sarah.brito@senior.com.br</b>
  * @author Gabriel Simon <b>gabriel.simon@senior.com.br</b>
  */
-
+@CrossOrigin
 @RestController
 public class ColaboradorCompletoControllerAPI {
 

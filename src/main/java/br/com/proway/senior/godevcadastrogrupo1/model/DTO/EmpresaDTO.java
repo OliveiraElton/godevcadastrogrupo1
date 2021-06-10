@@ -18,7 +18,7 @@ import br.com.proway.senior.godevcadastrogrupo1.model.Endereco;
 public class EmpresaDTO {
 
 	private int id;
-	private String nomeEmpresa;
+	private String nome;
 	private LocalDate dataInicioContrato;
 	private String cnpj;
 	private Endereco endereco;
@@ -32,7 +32,7 @@ public class EmpresaDTO {
 	 */
 	public EmpresaDTO (Empresa modelOrginal) {
 		this.id = modelOrginal.getId();
-		this.nomeEmpresa = modelOrginal.getNomeEmpresa();
+		this.nome = modelOrginal.getNomeEmpresa();
 		this.dataInicioContrato = modelOrginal.getDataInicioContrato();
 		this.cnpj = modelOrginal.getCnpj();
 		this.endereco = modelOrginal.getEndereco();
@@ -43,7 +43,7 @@ public class EmpresaDTO {
 		return id;
 	}
 	public String getNomeEmpresa() {
-		return nomeEmpresa;
+		return nome;
 	}
 	public LocalDate getDataInicioContrato() {
 		return dataInicioContrato;

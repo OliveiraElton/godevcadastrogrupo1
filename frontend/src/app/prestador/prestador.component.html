@@ -102,31 +102,29 @@
                             <div class="col-md-4">
                               <mat-form-field class="example-full-width">
                                 <mat-label>Empresa</mat-label>
-                                  <mat-select [(ngModel)]="prestador.empresa" name="empresa">
-                                    <mat-option *ngFor="let empresa of empresas" >
-                                      {{empresa.cnpj}}
+                                  <mat-select [(ngModel)]="empresa" name="empresa" >
+                                    <mat-option *ngFor="let empresadb of empresas" [value]="empresadb.id">
+                                      {{empresadb.id}} - {{empresadb.nomeEmpresa}}
+
                                     </mat-option>
                                   </mat-select>
                               </mat-form-field>
                             </div>
+          
                             <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput name="nomeEmpresa" [(ngModel)]="prestador.empresa" value="empresa.nome" placeholder="Nome da Empresa " disabled>
+                                  <input matInput [(ngModel)]="prestador.setor" name="setor" placeholder="Setor" type="number" required>
                                 </mat-form-field>
                             </div>
-                            <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput [(ngModel)]="prestador.setor" name="setor" placeholder="Setor" type="text" required>
-                                </mat-form-field>
-                            </div>
-                        </div>
-                        <div class="row">
+                        
                             <div class="col-md-4">
                               <mat-form-field class="example-full-width">
                                 <input matInput [(ngModel)]="prestador.dataInicio" name="dataInicio"placeholder="Data de Início" type="date" required>
                               </mat-form-field>
                             </div>
                           </div>
+                    
+                        
                         <div class="clearfix"></div>
                 </div>
             </div>

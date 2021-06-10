@@ -15,8 +15,9 @@ import { Empresa } from 'app/models/empresa';
 export class PrestadorComponent implements OnInit {
 
   contatos = {} as Contatos;
-  /*nomeEmpresa = EmpresaService.getEmpresa().getNome()*/
+  
   empresas: Empresa [] = [];
+  empresaId: number;
   prestador = {} as Prestador;
   constructor(private prestadorService : PrestadorService, private empresaService : EmpresaService) { 
 
@@ -26,13 +27,18 @@ export class PrestadorComponent implements OnInit {
     .subscribe(empresas => this.empresas = empresas);
   }
   savePrestador(form : NgForm){
+    
+    debugger;
+    this.prestador.contatos = this.contatos;
+    this.empresas.forEach(empresaDb => {
+      
+      if(empresaDb.id == this.empresaId) this.prestador.empresa = empresaDb;
+    })
     if(this.prestador.id !== undefined){
-      this.prestador.contatos = this.contatos;
       this.prestadorService.updatePrestador(this.prestador).subscribe(() => {
         this.cleanForm(form);
       });
     }else{
-      this.prestador.contatos = this.contatos;
       this.prestadorService.savePrestador(this.prestador).subscribe(() => {
         this.cleanForm(form);
       })
@@ -43,6 +49,6 @@ export class PrestadorComponent implements OnInit {
   }
   
   cleanForm(form : NgForm){
-    form.resetForm();
+  //  form.resetForm();
   }
 }

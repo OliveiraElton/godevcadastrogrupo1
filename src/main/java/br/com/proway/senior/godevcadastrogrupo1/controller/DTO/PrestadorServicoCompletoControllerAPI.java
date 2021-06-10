@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +29,7 @@ import br.com.proway.senior.godevcadastrogrupo1.persistencia.BDConexao;
 * @author Lucas Walim <lucas.walim@senior.com.br>
  *
  */
+@CrossOrigin
 @RestController
 public class PrestadorServicoCompletoControllerAPI {
 	

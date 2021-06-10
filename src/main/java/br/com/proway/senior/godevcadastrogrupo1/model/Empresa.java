@@ -42,15 +42,15 @@ public class Empresa {
 	/**
 	 * Construtor padrao da classe.
 	 * 
-	 * @param nomeEmpresa
+	 * @param nome
 	 * @param dataInicioContrato
 	 * @param cnpj
 	 * @param endereco
 	 * @param contato
 	 * @throws Exception 
 	 */
-	public Empresa(String nomeEmpresa, LocalDate dataInicioContrato, String cnpj, Endereco endereco, Contatos contato) throws Exception {
-		this.setNomeEmpresa(nomeEmpresa);
+	public Empresa(String nome, LocalDate dataInicioContrato, String cnpj, Endereco endereco, Contatos contato) throws Exception {
+		this.setNomeEmpresa(nome);
 		this.setDataInicioContrato(dataInicioContrato);
 		this.setCnpj(cnpj);
 		this.setEndereco(endereco);
@@ -64,8 +64,8 @@ public class Empresa {
 		return nome;
 	}
 
-	public void setNomeEmpresa(String nomeEmpresa) {
-		this.nome = nomeEmpresa;
+	public void setNomeEmpresa(String nome) {
+		this.nome = nome;
 	}
 
 	public LocalDate getDataInicioContrato() {
