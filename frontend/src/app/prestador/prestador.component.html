@@ -146,25 +146,25 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput [(ngModel)]="prestador.telefonePrincipal"name="telefonePrincipal" placeholder="Telefone Principal" type="number" required>
+                                  <input matInput [(ngModel)]="contatos.telefonePrincipal" name="telefonePrincipal" placeholder="Telefone Principal" type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) return false;" required>
                                   <!--oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) console.log('arrumaessaporra');"-->
                                 </mat-form-field>
                             </div>
                             <div class="col-md-4">
                               <mat-form-field class="example-full-width">
-                                <input matInput [(ngModel)]="prestador.telefoneSecundario" name="telefoneSecundario" placeholder="Telefone Secundario" type="number" required>
+                                <input matInput [(ngModel)]="contatos.telefoneSecundario" name="telefoneSecundario" placeholder="Telefone Secundario" type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) return false;" required>
                               </mat-form-field>
                             </div>
                             <div class="col-md-4">
                               <mat-form-field class="example-full-width">
-                                <input matInput [(ngModel)]="prestador.email"name="email" placeholder="Email" type="email" required>
+                                <input matInput [(ngModel)]="contatos.email" name="email" placeholder="Email" type="email" required>
                               </mat-form-field>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4">
                               <mat-form-field class="example-full-width">
-                                <input matInput [(ngModel)]="prestador.telefoneFamiliar" name="telefoneFamiliar" placeholder="Telefone Familiar" type="number" required>
+                                <input matInput [(ngModel)]="contatos.telefoneFamiliar" name="telefoneFamiliar" placeholder="Telefone Familiar" type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyPress="if(this.value.length==11) return false;" required>
                               </mat-form-field>
                             </div>
                           </div>
