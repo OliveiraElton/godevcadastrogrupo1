@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, NgForm } from '@angular/forms';
 import { Colaborador } from 'app/models/colaborador';
+import { Conta } from 'app/models/conta';
 import { Contatos } from 'app/models/contatos';
 import { Dependentes } from 'app/models/dependentes';
 import { Endereco } from 'app/models/endereco';
@@ -17,9 +18,10 @@ export class ColaboradorComponent implements OnInit {
   colaborador = {} as Colaborador;
   endereco = {} as Endereco;
   contatos = {} as Contatos;
-  dependentes = {} as Dependentes;
+  dependente = {} as Dependentes;
   examesMedicos = {} as ExameMedico;
   colaboradores: Colaborador[];
+  conta = {} as Conta;
   constructor(private colaboradorService : ColaboradorService) { }
 
   // Necessário para que não haja problema no carregamento da tela devido às listas
@@ -49,7 +51,8 @@ export class ColaboradorComponent implements OnInit {
   ngOnInit() {
   }
 
-   // Define se um colaborador será criado ou atualizado
+  /*
+  // Define se um colaborador será criado ou atualizado
    saveColaborador(form: NgForm) {
     if (this.colaborador.idColab !== undefined) {
       this.colaboradorService.updateColaborador(this.colaborador).subscribe(() => {
@@ -87,5 +90,5 @@ export class ColaboradorComponent implements OnInit {
     form.resetForm();
     this.colaborador = {} as Colaborador;
   }
-
+*/
 }

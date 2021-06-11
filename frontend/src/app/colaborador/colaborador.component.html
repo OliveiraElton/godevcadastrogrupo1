@@ -41,7 +41,7 @@
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Gênero</mat-label>
-                                        <mat-select [(ngModel)]="colaborador.generoColab" id="generoColab" name="generoColab" [formControl]="generoColab">
+                                        <mat-select [(ngModel)]="colaborador.generoColab" id="generoColab" name="generoColab" class="generoColab">
                                             <mat-option name="genFemininoColab" value="Feminino">Feminino</mat-option>
                                             <mat-option name="gemMasculinoColab" value="Masculino">Masculino
                                             </mat-option>
@@ -52,7 +52,7 @@
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Identidade de Gênero</mat-label>
-                                        <mat-select [(ngModel)]="colaborador.identGeneroColab" id="identGeneroColab" name="identGeneroColab" [formControl]="identGeneroColab">
+                                        <mat-select [(ngModel)]="colaborador.identGeneroColab" id="identGeneroColab" name="identGeneroColab" class="identGeneroColab">
                                             <mat-option name="igTransColab" value="TRANS">Trans</mat-option>
                                             <mat-option name="igCisColab" value="CIS">Cis</mat-option>
                                         </mat-select>
@@ -64,7 +64,7 @@
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Escolaridade</mat-label>
-                                        <mat-select [(ngModel)]="colaborador.escolaridadeColab" id="escolaridadeColab" name="escolaridadeColab" [formControl]="escolaridadeColab">
+                                        <mat-select [(ngModel)]="colaborador.escolaridadeColab" id="escolaridadeColab" name="escolaridadeColab" class="escolaridadeColab">
                                             <mat-option name="analfabetoColab" value="ANALFABETO">Analfabeto</mat-option>
                                             <mat-option name="quartaSerieColab" value="ATE_QUARTA_SERIE">Até Quarta Série</mat-option>
                                             <mat-option name="fundCompColab" value="FUNDAMENTAL_COMPLETO">Fundamento Completo</mat-option>
@@ -82,7 +82,7 @@
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Estado Civil</mat-label>
-                                        <mat-select [(ngModel)]="colaborador.estadoCivilColab" id="estadoCivilColab" name="estadoCivilColab" [formControl]="estadoCivilColab">
+                                        <mat-select [(ngModel)]="colaborador.estadoCivilColab" id="estadoCivilColab" name="estadoCivilColab" class="estadoCivilColab">
                                             <mat-option name="solteiroolab" value="SOLTEIRO">Solteiro</mat-option>
                                             <mat-option name="casadoColab" value="CASADO">Casado</mat-option>
                                             <mat-option name="uniaoColab" value="UNIAO_ESTAVEL">União Estável</mat-option>
@@ -104,7 +104,7 @@
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Nacionalidade</mat-label>
-                                        <mat-select [(ngModel)]="colaborador.nacionalidadeColab" id="nacionalidadeColab" name="nacionalidadeColab" [formControl]="nacionalidadeColab">
+                                        <mat-select [(ngModel)]="colaborador.nacionalidadeColab" id="nacionalidadeColab" name="nacionalidadeColab" class="nacionalidadeColab">
                                             <mat-option name="brasileiraColab" value="Brasileira">Brasileira
                                             </mat-option>
                                             <mat-option name="haitianaColab" value="Haitiana">Haitiana</mat-option>
@@ -117,7 +117,7 @@
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Naturalidade</mat-label>
-                                        <mat-select [(ngModel)]="colaborador.naturalidadeColab" id="naturalidadeColab" name="naturalidadeColab" [formControl]="naturalidadeColab">
+                                        <mat-select [(ngModel)]="colaborador.naturalidadeColab" id="naturalidadeColab" name="naturalidadeColab" class="naturalidadeColab">
                                             <mat-option name="natuBageColab" value="Bage/RS">Bagé/RS</mat-option>
                                             <mat-option name="natuFloripaColab" value="Florianopolis/SC">
                                                 Florianópolis/SC</mat-option>
@@ -138,7 +138,7 @@
                             <button mat-raised-button type="submit" name="btnEnviarColab" class="btn btn-primary pull-right">Salvar</button>
                             <button mat-raised-button type="button" name="btnExcluirColab" class="btn btn-primary pull-right">Excluir</button>
                             <button mat-raised-button type="reset" (click)="cleanForm(f)" name="btnCancelarColab" class="btn btn-primary pull-right">Limpar</button>
-
+                            <button mat-raised-button type="button" (click)="getPrestador(prestador.id)" name="btnPesquisa" class="btn btn-primary pull-right">Pesquisar</button>
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -181,7 +181,7 @@
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Se enquadra como PCD?</mat-label>
-                                        <mat-select [(ngModel)]="colaborador.ehPcdColab" id="ehPcdColab" name="ehPcdColab" [formControl]="ehPcdColab">
+                                        <mat-select [(ngModel)]="colaborador.ehPcdColab" id="ehPcdColab" name="ehPcdColab" class="ehPcdColab">
                                             <mat-option name="pcdSimColab" value="true">Sim</mat-option>
                                             <mat-option name="pcdNaoColab" value="false">Não</mat-option>
                                         </mat-select>
@@ -197,7 +197,7 @@
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Optante Dependente?</mat-label>
-                                        <mat-select [(ngModel)]="colaborador.ehOptanteDepColab" id="ehOptanteDepColab" name="ehOptanteDepColab" [formControl]="ehOptanteVAVRColab">
+                                        <mat-select [(ngModel)]="colaborador.ehOptanteDepColab" id="ehOptanteDepColab" name="ehOptanteDepColab" class="ehOptanteVAVRColab">
                                             <mat-option name="depSimColab" value="true">Sim</mat-option>
                                             <mat-option name="depNaoColab " value="false ">Não</mat-option>
                                         </mat-select>
@@ -211,7 +211,7 @@
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Optante VT?</mat-label>
-                                        <mat-select [(ngModel)]="colaborador.ehOptanteVTColab" id="ehOptanteVTColab" name="ehOptanteVTColab" [formControl]="ehOptanteVTColab">
+                                        <mat-select [(ngModel)]="colaborador.ehOptanteVTColab" id="ehOptanteVTColab" name="ehOptanteVTColab" class="ehOptanteVTColab">
                                             <mat-option name="vtSimColab" value="true">Sim</mat-option>
                                             <mat-option name="vtNaoColab" value="false">Não</mat-option>
                                         </mat-select>
@@ -221,7 +221,7 @@
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Optante VA/VR?</mat-label>
-                                        <mat-select [(ngModel)]="colaborador.ehOptanteVAVRColab" id="ehOptanteVAVRColab" name="ehOptanteVAVRColab" [formControl]="ehOptanteVAVRColab">
+                                        <mat-select [(ngModel)]="colaborador.ehOptanteVAVRColab" id="ehOptanteVAVRColab" name="ehOptanteVAVRColab" class="ehOptanteVAVRColab">
                                             <mat-option name="vaSimColab" value="true">Sim</mat-option>
                                             <mat-option name="vaNaoColab" value="false">Não</mat-option>
                                         </mat-select>
@@ -356,7 +356,7 @@
                                     <div class=" col-md-4 ">
                                         <mat-form-field class=" example-full-width ">
                                             <mat-label>Tipo do Exame</mat-label>
-                                            <mat-select [(ngModel)]="exameMedico.tipoExameMedico " id=" tipoExameMedico " name=" tipoExameMedico " [formControl]=" exameMedico " required>
+                                            <mat-select [(ngModel)]="exameMedico.tipoExameMedico " id=" tipoExameMedico " name=" tipoExameMedico " class=" exameMedico " required>
                                                 <mat-option name=" admissional " value=" ADMISSIONAL ">Admissional </mat-option>
                                                 <mat-option name=" demissional " value=" DEMISSIONAL ">Demissional</mat-option>
                                                 <mat-option name=" periodico " value=" PERIODICO ">Periódico </mat-option>
@@ -373,7 +373,7 @@
                                     <div class=" col-md-4 ">
                                         <mat-form-field class=" example-full-width ">
                                             <mat-label>Aptidão</mat-label>
-                                            <mat-select [(ngModel)]="exameMedico.aptidao " id=" aptidao " name=" aptidao " [formControl]=" aptidao " required>
+                                            <mat-select [(ngModel)]="exameMedico.aptidao " id=" aptidao " name=" aptidao " class=" aptidao " required>
                                                 <mat-option name=" true " value="true ">Está apto</mat-option>
                                                 <mat-option name=" false " value="false ">Não está apto</mat-option>
                                             </mat-select>
@@ -544,7 +544,7 @@
                                 <div class=" col-md-4 ">
                                     <mat-form-field class=" example-full-width ">
                                         <mat-label>Nacionalidade</mat-label>
-                                        <mat-select [(ngModel)]=" dependente.nacionalidade " id=" nacionalidade " name=" nacionalidade " [formControl]=" nacionalidade " required>
+                                        <mat-select [(ngModel)]=" dependente.nacionalidade " id=" nacionalidade " name=" nacionalidade " class=" nacionalidade " required>
                                             <mat-option name=" brasileiro " value=" brasileiro ">Brasileiro</mat-option>
                                             <mat-option name=" chileno " value=" chileno ">Chileno</mat-option>
                                             <mat-option name=" argentino " value=" argentino ">Argentino</mat-option>
@@ -563,7 +563,7 @@
                                 <div class=" col-md-4 ">
                                     <mat-form-field class=" example-full-width ">
                                         <mat-label>Se enquada com PCD?</mat-label>
-                                        <mat-select [(ngModel)]="dependente.pcd " id=" pcd " name=" pcd " [formControl]=" pcd ">
+                                        <mat-select [(ngModel)]="dependente.pcd " id=" pcd " name=" pcd " class=" pcd ">
                                             <mat-option name=" pcdSim " value=" true ">Sim</mat-option>
                                             <mat-option name=" pcdNao " value=" false ">Não</mat-option>
                                         </mat-select>
@@ -573,7 +573,7 @@
                                 <div class=" col-md-4 ">
                                     <mat-form-field class=" example-full-width ">
                                         <mat-label>Gênero</mat-label>
-                                        <mat-select [(ngModel)]="dependente.generoDepen " id=" generoDepen " name=" generoDepen " [formControl]=" generoDepen ">
+                                        <mat-select [(ngModel)]="dependente.generoDepen " id=" generoDepen " name=" generoDepen " class=" generoDepen ">
                                             <mat-option name=" genFemininoDepen " value=" Feminino ">Feminino</mat-option>
                                             <mat-option name=" gemMasculinoDepen " value=" Masculino ">Masculino</mat-option>
                                         </mat-select>
@@ -585,7 +585,7 @@
                                 <div class=" col-md-4 ">
                                     <mat-form-field class=" example-full-width ">
                                         <mat-label>Identidade de Gênero</mat-label>
-                                        <mat-select [(ngModel)]="dependente.identGeneroDepen " id=" identGeneroDepen " name=" identGeneroDepen " [formControl]=" identGeneroDepen ">
+                                        <mat-select [(ngModel)]="dependente.identGeneroDepen " id=" identGeneroDepen " name=" identGeneroDepen " class=" identGeneroDepen ">
                                             <mat-option name=" igTransDepen " value=" TRANS ">Trans</mat-option>
                                             <mat-option name=" igCisDepen " value=" CIS ">Cis</mat-option>
                                         </mat-select>
@@ -601,7 +601,7 @@
                                 <div class=" col-md-4 ">
                                     <mat-form-field class=" example-full-width ">
                                         <mat-label>Tipo Dependente</mat-label>
-                                        <mat-select [(ngModel)]=" dependente.tipoDependente " id=" tipoDependente " name=" tipoDependente " [formControl]=" tipoDependent ">
+                                        <mat-select [(ngModel)]=" dependente.tipoDependente " id=" tipoDependente " name=" tipoDependente " class=" tipoDependent ">
                                             <mat-option name=" filhoDepen " value=" FILHO ">Filho(a)</mat-option>
                                             <mat-option name=" conjugeDepen " value=" CONJUGE ">Cônjuge</mat-option>
                                             <mat-option name=" maeDepen " value=" MAE ">Mãe</mat-option>
@@ -616,7 +616,7 @@
                                 <div class=" col-md-4 ">
                                     <mat-form-field class=" example-full-width ">
                                         <mat-label>Optante IR</mat-label>
-                                        <mat-select [(ngModel)]=" dependente.optanteIR " id=" optanteIR " name=" optanteIR " [formControl]=" optanteIR ">
+                                        <mat-select [(ngModel)]=" dependente.optanteIR " id=" optanteIR " name=" optanteIR " class=" optanteIR ">
                                             <mat-option name=" opcaoOptanteSim " value=" true ">Sim</mat-option>
                                             <mat-option name=" opcaoOptanteNao " value=" false ">Não</mat-option>
                                         </mat-select>
